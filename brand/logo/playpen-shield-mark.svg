@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 120" width="100" height="120" role="img" aria-label="Playpen shield mark">
+  <title>Playpen Shield Mark</title>
+  <desc>Simplified digital mark derived from the Playpen crest. For favicons, app icons, social avatars and any application below 60px.</desc>
+  <defs>
+    <linearGradient id="pp-gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%"   stop-color="#8A5C22"/>
+      <stop offset="28%"  stop-color="#C89B3C"/>
+      <stop offset="52%"  stop-color="#F1DD6D"/>
+      <stop offset="76%"  stop-color="#C89B3C"/>
+      <stop offset="100%" stop-color="#8A5C22"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Gold shield border -->
+  <path d="M2 4 H98 V60 C98 88 79 108 50 118 C21 108 2 88 2 60 Z" fill="url(#pp-gold)"/>
+
+  <!-- Crimson field -->
+  <path d="M11 13 H89 V59 C89 82 73 99 50 108 C27 99 11 82 11 59 Z" fill="#8A171A"/>
+
+  <!-- Five stars, arced, as on the heritage crest -->
+  <g fill="#F1DD6D">
+    <path d="M25 36 l1.9 3.9 4.3.6 -3.1 3 .7 4.3 -3.8-2 -3.8 2 .7-4.3 -3.1-3 4.3-.6z"/>
+    <path d="M37.5 29 l1.9 3.9 4.3.6 -3.1 3 .7 4.3 -3.8-2 -3.8 2 .7-4.3 -3.1-3 4.3-.6z"/>
+    <path d="M50 26 l1.9 3.9 4.3.6 -3.1 3 .7 4.3 -3.8-2 -3.8 2 .7-4.3 -3.1-3 4.3-.6z"/>
+    <path d="M62.5 29 l1.9 3.9 4.3.6 -3.1 3 .7 4.3 -3.8-2 -3.8 2 .7-4.3 -3.1-3 4.3-.6z"/>
+    <path d="M75 36 l1.9 3.9 4.3.6 -3.1 3 .7 4.3 -3.8-2 -3.8 2 .7-4.3 -3.1-3 4.3-.6z"/>
+  </g>
+
+  <!-- P monogram -->
+  <text x="50" y="86" text-anchor="middle"
+        font-family="Fraunces, Georgia, 'Times New Roman', serif"
+        font-size="46" font-weight="700" fill="#FFFFFF" letter-spacing="-1">P</text>
+</svg>

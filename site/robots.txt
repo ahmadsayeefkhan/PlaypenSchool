@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://playpen.edu.bd/sitemap.xml

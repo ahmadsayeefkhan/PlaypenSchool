@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Playpen School — Brand Guidelines</title>
+<meta name="description" content="The complete brand specification for Playpen School: foundation, logo system, colour, typography, imagery, voice and application standards.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --crimson:#8A171A;--crimson-deep:#6E1215;--maroon:#5C0F12;--maroon-ink:#3A0A0C;
+  --gold:#C89B3C;--gold-light:#F1DD6D;--bronze:#8A5C22;
+  --ink:#1A1614;--ink-soft:#4A423D;--ink-muted:#6E645D;
+  --parchment:#FBF7F0;--sand:#EFE7DA;--white:#fff;
+  --display:'Fraunces',Georgia,serif;--body:'Plus Jakarta Sans','Segoe UI',sans-serif;
+  --mono:ui-monospace,'Consolas','Courier New',monospace;
+  --rule:rgba(26,22,20,.12);--rule-gold:rgba(200,155,60,.45);
+}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;overflow-x:hidden;background:var(--parchment);color:var(--ink);font-family:var(--body);
+  font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+img,svg{max-width:100%;display:block}
+h1,h2,h3,h4{margin:0;font-family:var(--display);font-weight:600;letter-spacing:-.025em;line-height:1.1}
+p{margin:0 0 1em}p:last-child{margin-bottom:0}
+a{color:var(--crimson)}
+ul,ol{margin:0 0 1em;padding-left:1.2em}
+li{margin-bottom:.45em}
+code{font-family:var(--mono);font-size:.86em;background:var(--sand);padding:.12em .4em;border-radius:2px}
+table{border-collapse:collapse;width:100%;font-size:14.5px;margin:0 0 1.5em}
+th,td{text-align:left;padding:.7rem .85rem;border-bottom:1px solid var(--rule);vertical-align:top}
+thead th{background:var(--sand);font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:700}
+tbody tr:last-child td{border-bottom:0}
+.tbl{overflow-x:auto;margin:0 0 1.5em;-webkit-overflow-scrolling:touch;
+  background:
+    linear-gradient(to right, var(--parchment) 30%, rgba(251,247,240,0)) left center,
+    linear-gradient(to left,  var(--parchment) 30%, rgba(251,247,240,0)) right center,
+    radial-gradient(farthest-side at 0 50%,   rgba(26,22,20,.14), rgba(26,22,20,0)) left center,
+    radial-gradient(farthest-side at 100% 50%, rgba(26,22,20,.14), rgba(26,22,20,0)) right center;
+  background-repeat:no-repeat;
+  background-size:40px 100%,40px 100%,14px 100%,14px 100%;
+  background-attachment:local,local,scroll,scroll}
+.tbl table{margin:0}
+@media(max-width:760px){ .tbl table{min-width:540px} }
+
+/* layout */
+.wrap{display:grid;grid-template-columns:262px 1fr;max-width:1320px;margin:0 auto;gap:0}
+.toc{position:sticky;top:0;align-self:start;height:100vh;overflow-y:auto;padding:2.5rem 1.5rem 3rem;
+  border-right:1px solid var(--rule);background:var(--parchment)}
+.toc-brand{display:flex;align-items:center;gap:.6rem;margin-bottom:1.75rem}
+.toc-brand img{width:36px}
+.toc-brand b{font-family:var(--display);font-size:17px;color:var(--crimson);letter-spacing:-.02em;display:block;line-height:1}
+.toc-brand span{font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-muted);font-weight:600}
+.toc ol{list-style:none;padding:0;margin:0;counter-reset:s}
+.toc li{margin:0;counter-increment:s}
+.toc a{display:block;padding:.42rem 0 .42rem 2rem;font-size:13.5px;color:var(--ink-soft);
+  position:relative;border-left:1px solid transparent;text-decoration:none;transition:color .2s,border-color .2s}
+.toc a::before{content:counter(s,decimal-leading-zero);position:absolute;left:.55rem;
+  font-family:var(--mono);font-size:10px;color:var(--bronze);opacity:.7;top:.62rem}
+.toc a:hover{color:var(--crimson)}
+.toc .sub{padding-left:2rem;font-size:12.5px;color:var(--ink-muted);border-left:1px solid var(--rule);
+  margin-left:.55rem;padding-top:.25rem;padding-bottom:.25rem}
+.toc .sub::before{content:none}
+.doc{padding:3rem clamp(1.5rem,4vw,4rem) 6rem;max-width:920px}
+@media(max-width:1000px){
+  .wrap{grid-template-columns:1fr}
+  .toc{position:static;height:auto;border-right:0;border-bottom:1px solid var(--rule)}
+  .doc{padding-top:2rem}
+}
+
+.doc-head{border-bottom:2px solid var(--crimson);padding-bottom:2rem;margin-bottom:3rem}
+.doc-head h1{font-size:clamp(2.2rem,5vw,3.6rem);letter-spacing:-.035em}
+.doc-head .sub{font-size:19px;color:var(--ink-soft);margin-top:1rem;max-width:60ch}
+.doc-head .meta{margin-top:1.5rem;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-muted)}
+
+section{scroll-margin-top:1.5rem;padding-top:1rem;margin-bottom:3.5rem}
+section>h2{font-size:clamp(1.7rem,3.2vw,2.35rem);margin-bottom:.85rem;padding-bottom:.6rem;
+  border-bottom:1px solid var(--rule-gold)}
+section>h2 .n{font-family:var(--mono);font-size:.42em;color:var(--bronze);
+  letter-spacing:.1em;display:block;margin-bottom:.5rem;font-weight:400}
+h3{font-size:1.28rem;margin:2.2rem 0 .7rem}
+h4{font-size:1.04rem;margin:1.5rem 0 .4rem;font-family:var(--body);font-weight:700;letter-spacing:0}
+.lede{font-size:18px;color:var(--ink-soft);max-width:66ch}
+
+.note{background:var(--sand);border-left:3px solid var(--gold);padding:1.1rem 1.3rem;
+  border-radius:0 3px 3px 0;margin:1.5rem 0;font-size:14.5px}
+.note--warn{background:rgba(138,23,26,.055);border-left-color:var(--crimson)}
+.note h4{margin-top:0}
+.rule-list{list-style:none;padding:0;margin:1rem 0}
+.rule-list li{padding:.65rem 0 .65rem 1.9rem;border-bottom:1px solid var(--rule);position:relative;
+  margin:0;font-size:14.5px}
+.rule-list li::before{content:'';position:absolute;left:.35rem;top:1.15rem;width:6px;height:6px;
+  background:var(--gold);border-radius:50%}
+.rule-list li:last-child{border-bottom:0}
+
+.sw-row{display:grid;grid-template-columns:78px 1fr;gap:1.1rem;align-items:center;
+  padding:.9rem 0;border-bottom:1px solid var(--rule)}
+.sw-row:last-child{border-bottom:0}
+.sw{height:62px;border-radius:3px;border:1px solid var(--rule)}
+.sw-row b{font-family:var(--display);font-size:16px;letter-spacing:-.015em;display:block}
+.sw-row code{background:none;padding:0;color:var(--ink-muted);font-size:12px;display:block;margin:.15rem 0 .3rem}
+.sw-row span{font-size:13.5px;color:var(--ink-soft);display:block;line-height:1.5}
+
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin:1.5rem 0}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin:1.5rem 0}
+@media(max-width:700px){.grid2,.grid3{grid-template-columns:1fr}}
+.tile{border:1px solid var(--rule);border-radius:3px;background:var(--white);padding:1.25rem}
+.tile--dark{background:var(--maroon);border-color:transparent;color:rgba(251,247,240,.8)}
+.tile--dark h4,.tile--dark b{color:#fff}
+.logo-frame{border:1px solid var(--rule);border-radius:3px;padding:1.4rem;background:var(--parchment);
+  display:grid;place-items:center;min-height:130px}
+.logo-frame--dark{background:var(--maroon);border-color:transparent}
+.cap{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-muted);
+  margin-top:.55rem;font-weight:600}
+
+.ok,.no{font-weight:700;font-size:13px}
+.ok{color:#4A5A34}.no{color:var(--crimson)}
+
+pre{background:var(--maroon-ink);color:#EFE7DA;padding:1.1rem 1.3rem;border-radius:3px;
+  overflow-x:auto;font-family:var(--mono);font-size:12.5px;line-height:1.7;margin:1.2rem 0}
+pre code{background:none;padding:0;color:inherit;font-size:inherit}
+.tok-c{color:var(--gold-light)}.tok-k{color:#E8A0A2}.tok-m{color:#9C8E80}
+
+footer.gl{border-top:1px solid var(--rule);margin-top:4rem;padding-top:2rem;
+  font-size:13px;color:var(--ink-muted)}
+
+@media print{
+  .toc{display:none}
+  .wrap{grid-template-columns:1fr;max-width:none}
+  .doc{padding:0;max-width:none}
+  body{background:#fff;font-size:10.5pt}
+  section{page-break-inside:auto}
+  section>h2{page-break-after:avoid}
+  .tile,.note,table{page-break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- ============ TOC ============ -->
+<nav class="toc" aria-label="Contents">
+  <div class="toc-brand">
+    <img src="logo/playpen-shield-mark.svg" alt="">
+    <span><b>Playpen</b><span>Brand Guidelines</span></span>
+  </div>
+  <ol>
+    <li><a href="#foundation">Brand foundation</a></li>
+    <li><a href="#logo">Logo system</a></li>
+    <li><a href="#colour">Colour</a></li>
+    <li><a href="#type">Typography</a></li>
+    <li><a href="#imagery">Imagery</a></li>
+    <li><a href="#voice">Voice &amp; tone</a></li>
+    <li><a href="#ui">Digital UI kit</a></li>
+    <li><a href="#applications">Applications</a></li>
+    <li><a href="#accessibility">Accessibility</a></li>
+    <li><a href="#governance">Governance</a></li>
+    <li><a href="#audit">Audit checklist</a></li>
+  </ol>
+  <p class="cap" style="margin-top:1.75rem">Also see</p>
+  <div class="sub"><a href="brand-board.html" style="padding-left:0">Brand board &mdash; one page</a></div>
+  <div class="sub"><a href="BRAND-GUIDELINES.md" style="padding-left:0">Markdown spec</a></div>
+</nav>
+
+<!-- ============ DOC ============ -->
+<main class="doc">
+  <div class="doc-head">
+    <h1>Playpen School<br>Brand Guidelines</h1>
+    <p class="sub">Everything needed to produce on-brand work for Playpen &mdash; specific enough that a designer who has never worked with the school could get it right the first time.</p>
+    <p class="meta">Version 1.0 &middot; 2026 &middot; Prepared alongside the website redesign</p>
+  </div>
+
+<!-- 01 FOUNDATION -->
+<section id="foundation">
+  <h2><span class="n">01</span>Brand foundation</h2>
+  <p class="lede">A visual identity without a foundation is decoration. Everything in this document traces back to the five statements below.</p>
+
+  <h3>Positioning</h3>
+  <div class="note">
+    <p style="font-family:var(--display);font-size:19px;line-height:1.35;letter-spacing:-.015em">For families in Dhaka choosing an English-medium education, <strong>Playpen</strong> is the Cambridge school that carries a child from Playgroup to A Level in one continuous, unhurried programme &mdash; on a campus built for the purpose, by teachers who stay.</p>
+  </div>
+  <p>Each clause is doing work. <em>One continuous programme</em> is the structural advantage over schools a family must leave at Class V. <em>Unhurried</em> is the school&rsquo;s own language about pressure. <em>Built for the purpose</em> distinguishes the 2018 campus from converted buildings. <em>Teachers who stay</em> is supported by faculty with thirty and forty years of service.</p>
+
+  <h3>Mission</h3>
+  <p>To give every student a well-balanced programme in a creative learning environment &mdash; grounding them in history and culture, giving them real proficiency in language, and providing a practical education they can apply to daily life.</p>
+
+  <h3>Vision</h3>
+  <p>That every child who passes through Playpen reaches their full potential, and leaves prepared to take part in the world as a global citizen of the 21st century.</p>
+
+  <h3>Values</h3>
+  <div class="tbl"><table>
+    <thead><tr><th style="width:26%">Value</th><th>What it means in practice</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Care</strong></td><td>Two teachers in every junior classroom. A counsellor on standby. The sentence &ldquo;we assure you of the best possible care and education for your child&rdquo; treated as a commitment, not a slogan.</td></tr>
+      <tr><td><strong>Balance</strong></td><td>Academics and everything beside them. Believing that academic excellence alone does not guarantee a sound education.</td></tr>
+      <tr><td><strong>Curiosity</strong></td><td>&ldquo;Children must be taught how to think, not what to think.&rdquo; Students encouraged to think outside the box, from Junior School upward.</td></tr>
+      <tr><td><strong>Rootedness</strong></td><td>English as the medium, with deliberate emphasis on Bengali and on Bangladesh&rsquo;s cultural heritage and secular community values.</td></tr>
+      <tr><td><strong>Continuity</strong></td><td>One curriculum, one campus, one community from three years old to eighteen. Forty-eight years of it.</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>Personality</h3>
+  <p>Playpen behaves like <strong>a settled, attentive, unshowy institution</strong>. It is the teacher who remembers your child&rsquo;s name and does not need to tell you they are the best in the city. Four adjectives govern every piece of communication: <strong>warm, specific, plain, settled</strong>.</p>
+
+  <h3>Audiences, in priority order</h3>
+  <div class="tbl"><table>
+    <thead><tr><th style="width:24%">Audience</th><th>What they need</th><th style="width:22%">Primary action</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Prospective parents</strong></td><td>Philosophy, class availability, curriculum, safety, facilities, the admission steps, location, cost.</td><td>Explore admissions</td></tr>
+      <tr><td><strong>Parents comparing schools</strong></td><td>The Cambridge pathway, stage structure, student support, ECA, achievements, teacher quality.</td><td>Visit the campus</td></tr>
+      <tr><td><strong>Current parents</strong></td><td>Notices, calendar, fee payment, portal, transport, uniform, rules.</td><td>Parent portal</td></tr>
+      <tr><td><strong>Students</strong></td><td>Activities, achievements, counselling, university guidance.</td><td>Engagement</td></tr>
+      <tr><td><strong>Alumni</strong></td><td>Reconnection, memory, news.</td><td>Register</td></tr>
+      <tr><td><strong>Teachers &amp; applicants</strong></td><td>Culture, opportunities, how to apply.</td><td>Apply</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<!-- 02 LOGO -->
+<section id="logo">
+  <h2><span class="n">02</span>Logo system</h2>
+  <p class="lede">The crest is not being redrawn. It is a genuine piece of institutional equity, and it is being given the system it never had.</p>
+
+  <h3>The seven assets</h3>
+  <div class="grid3">
+    <div><div class="logo-frame"><img src="logo/heritage-crest.png" alt="Playpen heritage crest" style="max-height:110px;width:auto"></div><p class="cap">Heritage crest</p></div>
+    <div><div class="logo-frame"><img src="logo/playpen-shield-mark.svg" alt="Playpen shield mark" style="max-height:110px;width:auto"></div><p class="cap">Shield mark</p></div>
+    <div><div class="logo-frame"><img src="logo/playpen-mark-mono.svg" alt="Playpen single-colour mark" style="max-height:110px;width:auto"></div><p class="cap">Single colour</p></div>
+  </div>
+  <div class="grid2">
+    <div><div class="logo-frame"><img src="logo/playpen-wordmark.svg" alt="Playpen wordmark"></div><p class="cap">Wordmark</p></div>
+    <div><div class="logo-frame"><img src="logo/playpen-lockup-horizontal.svg" alt="Playpen horizontal lockup"></div><p class="cap">Horizontal lockup</p></div>
+  </div>
+  <div class="grid2">
+    <div><div class="logo-frame logo-frame--dark"><img src="logo/playpen-lockup-horizontal-inverted.svg" alt="Playpen inverted lockup"></div><p class="cap">Inverted lockup</p></div>
+    <div><div class="logo-frame"><img src="logo/playpen-lockup-stacked.svg" alt="Playpen stacked lockup" style="max-height:190px;width:auto"></div><p class="cap">Stacked lockup</p></div>
+  </div>
+
+  <h3>Which asset, when</h3>
+  <div class="tbl"><table>
+    <thead><tr><th style="width:28%">Asset</th><th>Use it for</th><th style="width:20%">Minimum size</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Heritage crest</strong></td><td>Certificates, ID cards, uniforms, gate and hall signage, ceremonial print, the prospectus cover.</td><td>100px / 32mm wide</td></tr>
+      <tr><td><strong>Shield mark</strong></td><td>Favicon, app icon, social avatar, compact site header, watermark, anywhere the crest would turn to mush.</td><td>24px / 8mm wide</td></tr>
+      <tr><td><strong>Wordmark</strong></td><td>Document headers, email signatures, co-branded material where a second crest would compete.</td><td>140px / 32mm wide</td></tr>
+      <tr><td><strong>Horizontal lockup</strong></td><td>Website header, letterhead, presentation title slides, banners, vehicle livery.</td><td>180px / 40mm wide</td></tr>
+      <tr><td><strong>Stacked lockup</strong></td><td>Square and portrait formats: social profiles, tote bags, notebooks, roller banners.</td><td>120px / 28mm wide</td></tr>
+      <tr><td><strong>Inverted lockup</strong></td><td>Deep Maroon or Crimson grounds, and photography carrying a dark colour block.</td><td>As above</td></tr>
+      <tr><td><strong>Single colour</strong></td><td>Embossing, foil, engraving, rubber stamp, single-ink garment transfer, fax.</td><td>24px / 8mm wide</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>Clear space</h3>
+  <p>Clear space on all four sides equals <strong>the height of the shield&rsquo;s crown</strong> &mdash; the vertical distance from the top edge of the shield to the centre of the middle star. In the SVG that is 26 units on a 120-unit shield, or roughly 22% of the mark&rsquo;s height. Nothing enters that zone: no text, no rules, no page furniture, no photographic detail.</p>
+
+  <h3>Backgrounds</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>Background</th><th>Use</th><th style="width:16%">Verdict</th></tr></thead>
+    <tbody>
+      <tr><td>Parchment <code>#FBF7F0</code> / White</td><td>Full-colour crest or lockup</td><td class="ok">Approved</td></tr>
+      <tr><td>Sand <code>#EFE7DA</code></td><td>Full-colour crest or lockup</td><td class="ok">Approved</td></tr>
+      <tr><td>Deep Maroon <code>#5C0F12</code> / Maroon Ink <code>#3A0A0C</code></td><td>Inverted lockup</td><td class="ok">Approved</td></tr>
+      <tr><td>Crimson <code>#8A171A</code></td><td>Inverted lockup, or the shield mark in white</td><td class="ok">Approved</td></tr>
+      <tr><td>Playpen Gold <code>#C89B3C</code></td><td>Single-colour mark in Deep Maroon only</td><td class="ok">Approved</td></tr>
+      <tr><td>Photography</td><td>Only with a solid colour block or a gradient scrim behind the mark</td><td class="no">Conditional</td></tr>
+      <tr><td>Any other colour</td><td>&mdash;</td><td class="no">Not approved</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>Prohibited</h3>
+  <ul class="rule-list">
+    <li>Stretching, squashing, skewing or rotating any mark.</li>
+    <li>Adding drop shadows, glows, bevels, outlines or strokes.</li>
+    <li>Recolouring the shield field to anything other than Crimson, Deep Maroon, or one flat ink.</li>
+    <li>Removing, reordering or changing the count of the five stars.</li>
+    <li>Rebuilding the wordmark in a different typeface, or re-tracking it.</li>
+    <li>Placing the crest on a busy photograph without a colour block behind it.</li>
+    <li>Using the crest below 100px &mdash; substitute the shield mark instead.</li>
+    <li>Enclosing any mark in a box, circle or badge it did not ship with.</li>
+  </ul>
+
+  <h3>Co-branding</h3>
+  <p>When Playpen appears beside a partner mark &mdash; Cambridge Assessment International Education, the British Council, a competition organiser &mdash; the partner mark sits to the right, separated by a 1px Bronze vertical rule with clear space on both sides. Neither mark exceeds the other&rsquo;s cap height by more than 15%. Playpen always leads on Playpen-owned surfaces.</p>
+
+  <div class="note">
+    <h4>Production note on the SVG files</h4>
+    <p>The supplied SVGs set the wordmark as live text in Fraunces and Plus Jakarta Sans. That is correct for web, where the fonts load. <strong>For print, outline the text before sending to a printer</strong> so the letterforms cannot substitute. Ask the supplier for outlined EPS and PDF versions to keep on file.</p>
+  </div>
+</section>
+
+<!-- 03 COLOUR -->
+<section id="colour">
+  <h2><span class="n">03</span>Colour</h2>
+  <p class="lede">Seven values, five of which came out of the crest itself. Every one has a defined job, and none of them is decorative.</p>
+
+  <h3>The palette</h3>
+  <div class="sw-row"><div class="sw" style="background:#8A171A"></div><div><b>Playpen Crimson</b><code>HEX #8A171A &middot; RGB 138 23 26 &middot; CMYK 21 96 89 12 &middot; Pantone 1815 C (nearest)</code><span><strong>Primary.</strong> The brand colour, sampled from the crest field. Primary buttons, active navigation, headings on light ground, the announcement bar, links in body copy.</span></div></div>
+  <div class="sw-row"><div class="sw" style="background:#6E1215"></div><div><b>Crimson Deep</b><code>HEX #6E1215 &middot; RGB 110 18 21</code><span><strong>State.</strong> Hover and pressed states for Crimson buttons. Not used as a standalone fill.</span></div></div>
+  <div class="sw-row"><div class="sw" style="background:#5C0F12"></div><div><b>Deep Maroon</b><code>HEX #5C0F12 &middot; RGB 92 15 18 &middot; CMYK 32 95 88 43 &middot; Pantone 490 C (nearest)</code><span><strong>Dark surface.</strong> Full-width dark sections, hero overlays, signage grounds.</span></div></div>
+  <div class="sw-row"><div class="sw" style="background:#3A0A0C"></div><div><b>Maroon Ink</b><code>HEX #3A0A0C &middot; RGB 58 10 12</code><span><strong>Deepest surface.</strong> The footer, the utility bar, and the darkest end of image gradients.</span></div></div>
+  <div class="sw-row"><div class="sw" style="background:linear-gradient(135deg,#8A5C22,#C89B3C 30%,#F1DD6D 52%,#C89B3C 74%,#8A5C22)"></div><div><b>Gold family</b><code>Dark #8A5C22 &middot; Mid #C89B3C &middot; Light #F1DD6D</code><span><strong>Accent.</strong> The gradient exists only inside the shield&rsquo;s border. Elsewhere use the flat values.</span></div></div>
+  <div class="sw-row"><div class="sw" style="background:#C89B3C"></div><div><b>Playpen Gold</b><code>HEX #C89B3C &middot; RGB 200 155 60 &middot; CMYK 22 39 89 4 &middot; Pantone 8383 C (nearest)</code><span><strong>Accent on dark.</strong> Overlines, hairline rules, stat figures, the gold button, icons on Deep Maroon. On light ground it is decorative only &mdash; never text.</span></div></div>
+  <div class="sw-row"><div class="sw" style="background:#8A5C22"></div><div><b>Bronze</b><code>HEX #8A5C22 &middot; RGB 138 92 34 &middot; CMYK 30 58 100 21</code><span><strong>Accent on light.</strong> The gold family made legible on Parchment. Every overline, kicker, small label and list marker on a light surface.</span></div></div>
+  <div class="sw-row"><div class="sw" style="background:#1A1614"></div><div><b>Ink</b><code>HEX #1A1614 &middot; RGB 26 22 20</code><span><strong>Text.</strong> All body copy and headings on light surfaces. Warm near-black, never <code>#000</code>.</span></div></div>
+  <div class="sw-row"><div class="sw" style="background:#4A423D"></div><div><b>Ink Soft</b><code>HEX #4A423D</code><span><strong>Secondary text.</strong> Lead paragraphs, card body copy, table body.</span></div></div>
+  <div class="sw-row"><div class="sw" style="background:#6E645D"></div><div><b>Ink Muted</b><code>HEX #6E645D</code><span><strong>Tertiary text.</strong> Captions, metadata, helper text. Never below 13px.</span></div></div>
+  <div class="sw-row"><div class="sw" style="background:#FBF7F0"></div><div><b>Parchment</b><code>HEX #FBF7F0 &middot; RGB 251 247 240</code><span><strong>Page ground.</strong> The default background everywhere. Warmer than white, which stops the crimson reading as clinical.</span></div></div>
+  <div class="sw-row"><div class="sw" style="background:#EFE7DA"></div><div><b>Sand</b><code>HEX #EFE7DA &middot; RGB 239 231 218</code><span><strong>Secondary surface.</strong> Alternating sections, table headers, callouts, subtle cards.</span></div></div>
+
+  <h3>Contrast</h3>
+  <p>Every combination below has been calculated, not estimated. WCAG AA requires 4.5:1 for text under 18pt and 3:1 for large text and UI boundaries.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>Foreground</th><th>Background</th><th style="width:15%">Ratio</th><th style="width:26%">Verdict</th></tr></thead>
+    <tbody>
+      <tr><td>Ink <code>#1A1614</code></td><td>Parchment</td><td>16.3&#8239;:&#8239;1</td><td class="ok">AAA &mdash; all sizes</td></tr>
+      <tr><td>Ink Soft <code>#4A423D</code></td><td>Parchment</td><td>9.0&#8239;:&#8239;1</td><td class="ok">AAA &mdash; all sizes</td></tr>
+      <tr><td>Ink Muted <code>#6E645D</code></td><td>Parchment</td><td>5.1&#8239;:&#8239;1</td><td class="ok">AA &mdash; all sizes</td></tr>
+      <tr><td>Crimson <code>#8A171A</code></td><td>Parchment</td><td>8.9&#8239;:&#8239;1</td><td class="ok">AAA &mdash; all sizes</td></tr>
+      <tr><td>Bronze <code>#8A5C22</code></td><td>Parchment</td><td>5.4&#8239;:&#8239;1</td><td class="ok">AA &mdash; all sizes</td></tr>
+      <tr><td>White</td><td>Crimson</td><td>9.4&#8239;:&#8239;1</td><td class="ok">AAA &mdash; all sizes</td></tr>
+      <tr><td>Parchment</td><td>Deep Maroon</td><td>14.3&#8239;:&#8239;1</td><td class="ok">AAA &mdash; all sizes</td></tr>
+      <tr><td>Playpen Gold <code>#C89B3C</code></td><td>Deep Maroon</td><td>5.3&#8239;:&#8239;1</td><td class="ok">AA &mdash; all sizes</td></tr>
+      <tr><td>Gold Light <code>#F1DD6D</code></td><td>Deep Maroon</td><td>10.6&#8239;:&#8239;1</td><td class="ok">AAA &mdash; all sizes</td></tr>
+      <tr><td>Maroon Ink <code>#3A0A0C</code></td><td>Playpen Gold</td><td>6.4&#8239;:&#8239;1</td><td class="ok">AA &mdash; all sizes</td></tr>
+      <tr><td><strong>Playpen Gold</strong></td><td><strong>Parchment</strong></td><td><strong>2.4&#8239;:&#8239;1</strong></td><td class="no">Fails &mdash; use Bronze</td></tr>
+      <tr><td><strong>Crimson</strong></td><td><strong>Deep Maroon</strong></td><td><strong>1.6&#8239;:&#8239;1</strong></td><td class="no">Fails &mdash; never pair</td></tr>
+      <tr><td><strong>White</strong></td><td><strong>Playpen Gold</strong></td><td><strong>2.1&#8239;:&#8239;1</strong></td><td class="no">Fails &mdash; use Maroon Ink</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>Application rules</h3>
+  <ul class="rule-list">
+    <li><strong>Gold is a hairline, not a fill.</strong> Rules, borders, small figures, icons on dark. A large gold field makes the crest look like costume jewellery.</li>
+    <li><strong>Gold text becomes Bronze on light ground.</strong> No exceptions &mdash; Playpen Gold fails AA on Parchment at 2.4:1.</li>
+    <li><strong>One accent per element.</strong> Crimson carries the action; Bronze or Gold carries the label. Never both on the same component.</li>
+    <li><strong>Sections alternate Parchment &rarr; Sand &rarr; Deep Maroon.</strong> Never two dark sections back to back.</li>
+    <li><strong>No colour outside this list.</strong> That includes the brighter reds and the blue-greys that drifted into the old site.</li>
+    <li><strong>No gradients</strong> except the gold border inside the shield mark, and the Deep Maroon scrims over photography.</li>
+  </ul>
+
+  <div class="note note--warn">
+    <h4>Print production</h4>
+    <p>Always supply CMYK for print, never RGB or hex. Pantone references above are <em>nearest match</em> and must be proofed against a physical swatch before any bulk run &mdash; particularly the gold, which shifts badly between coated and uncoated stock. Bleed 3mm all sides; keep critical content 5mm inside the trim.</p>
+  </div>
+</section>
+
+<!-- 04 TYPE -->
+<section id="type">
+  <h2><span class="n">04</span>Typography</h2>
+  <p class="lede">Two families, both under the SIL Open Font License, both free for web, print, app and merchandise with no seat limits or page-view caps.</p>
+
+  <div class="tbl"><table>
+    <thead><tr><th style="width:22%">Family</th><th style="width:20%">Role</th><th>Why</th><th style="width:18%">Licence</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Fraunces</strong></td><td>Display &amp; headings</td><td>A variable serif with warmth and a slight old-style quirk. It carries 48 years of history without looking like a law firm. Optical sizing holds the letterforms from 16px to 120px.</td><td>SIL OFL 1.1<br>Google Fonts</td></tr>
+      <tr><td><strong>Plus Jakarta Sans</strong></td><td>Body, UI, labels</td><td>Geometric, highly legible at small sizes and on the mid-range Android devices most Bangladeshi parents browse on. Neutral enough to let Fraunces lead.</td><td>SIL OFL 1.1<br>Google Fonts</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>Fallback stacks</h3>
+  <pre><code><span class="tok-c">--font-display</span>: <span class="tok-k">'Fraunces'</span>, Georgia, <span class="tok-k">'Times New Roman'</span>, serif;
+<span class="tok-c">--font-body</span>:    <span class="tok-k">'Plus Jakarta Sans'</span>, <span class="tok-k">'Segoe UI'</span>, <span class="tok-k">'Helvetica Neue'</span>, sans-serif;</code></pre>
+  <p>In Microsoft Office and Google Workspace where the brand fonts are not installed, substitute <strong>Georgia</strong> for Fraunces and <strong>Segoe UI</strong> or <strong>Arial</strong> for Plus Jakarta Sans. Do not substitute anything else.</p>
+
+  <h3>Scale</h3>
+  <p>Fluid, built with <code>clamp()</code>. The two figures are the mobile minimum and the desktop maximum.</p>
+  <div class="tbl"><table>
+    <thead><tr><th style="width:22%">Role</th><th style="width:20%">Family &amp; weight</th><th style="width:16%">Size</th><th style="width:14%">Line height</th><th>Tracking</th></tr></thead>
+    <tbody>
+      <tr><td>Display / Hero</td><td>Fraunces 600</td><td>44&ndash;104px</td><td>0.96</td><td>&minus;0.035em</td></tr>
+      <tr><td>H1</td><td>Fraunces 600</td><td>40&ndash;80px</td><td>1.02</td><td>&minus;0.03em</td></tr>
+      <tr><td>H2</td><td>Fraunces 600</td><td>32&ndash;56px</td><td>1.08</td><td>&minus;0.025em</td></tr>
+      <tr><td>H3</td><td>Fraunces 600</td><td>26&ndash;40px</td><td>1.08</td><td>&minus;0.02em</td></tr>
+      <tr><td>H4</td><td>Fraunces 600</td><td>21&ndash;28px</td><td>1.2</td><td>&minus;0.015em</td></tr>
+      <tr><td>H5 / card title</td><td>Fraunces 600</td><td>18&ndash;21px</td><td>1.3</td><td>&minus;0.01em</td></tr>
+      <tr><td>Lead</td><td>Jakarta 400</td><td>18&ndash;21px</td><td>1.55</td><td>0</td></tr>
+      <tr><td>Body</td><td>Jakarta 400</td><td>16&ndash;17px</td><td>1.65</td><td>0</td></tr>
+      <tr><td>Small</td><td>Jakarta 400</td><td>14&ndash;15px</td><td>1.6</td><td>0</td></tr>
+      <tr><td>Caption</td><td>Jakarta 400</td><td>12&ndash;13px</td><td>1.45</td><td>0</td></tr>
+      <tr><td>Overline / label</td><td>Jakarta 600</td><td>12&ndash;13px</td><td>1.2</td><td>0.18em, uppercase</td></tr>
+      <tr><td>Button</td><td>Jakarta 600</td><td>14&ndash;15px</td><td>1</td><td>0.02em</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>Rules</h3>
+  <ul class="rule-list">
+    <li>Fraunces sets headings only. It is never used for body copy &mdash; it tires the eye past two lines.</li>
+    <li>Body copy never below 16px on screen, or 10pt in print.</li>
+    <li>Measure capped at 68 characters. Beyond that the eye loses the line return.</li>
+    <li>Headings take negative tracking; body copy takes none.</li>
+    <li>Italic Fraunces marks exactly one emphasised phrase per page, in the hero. Never more.</li>
+    <li>Two families is a hard limit &mdash; in decks, PDFs and merchandise as well as on the web.</li>
+    <li>Never set Fraunces in all caps. Uppercase belongs to Plus Jakarta Sans 600 with 0.18em tracking.</li>
+    <li>Use <code>text-wrap: balance</code> on headings so short lines do not orphan a single word.</li>
+  </ul>
+</section>
+
+<!-- 05 IMAGERY -->
+<section id="imagery">
+  <h2><span class="n">05</span>Imagery</h2>
+  <p class="lede">Photography is where this brand is either credible or not. Parents in Dhaka can spot a stock library image instantly, and it costs the school trust every time.</p>
+
+  <h3>Photography direction</h3>
+  <div class="tbl"><table>
+    <thead><tr><th style="width:22%">Dimension</th><th>Standard</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Subject</strong></td><td>Real Playpen students and staff, mid-activity. Writing, climbing, performing, experimenting, competing, helping. Never a line-up facing the lens.</td></tr>
+      <tr><td><strong>People</strong></td><td>Teachers in frame with students wherever possible &mdash; it is the visual proof of &ldquo;individual attention&rdquo;. Show the full age range across a page set.</td></tr>
+      <tr><td><strong>Light</strong></td><td>Natural daylight. The campus has good light on the playground, in the gallery spaces and on the field. Avoid direct flash and mixed fluorescent colour casts.</td></tr>
+      <tr><td><strong>Composition</strong></td><td>Alternate scale: a wide frame that shows the building or the field, then a close frame that shows one face. Leave headroom on frames that will carry text.</td></tr>
+      <tr><td><strong>Colour</strong></td><td>Natural. Do not tint or duotone. If an image clashes badly with the palette, replace it rather than filter it.</td></tr>
+      <tr><td><strong>Events</strong></td><td>Photograph the people in front of the banner, not the banner. A stage backdrop is not a subject.</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>Treatment</h3>
+  <ul class="rule-list">
+    <li>Corner radius 4px on every image container.</li>
+    <li>On dark sections, apply a Deep Maroon gradient at 60&ndash;95% opacity from the bottom so type stays legible.</li>
+    <li>On light sections, images are untinted.</li>
+    <li>Aspect ratios: <strong>4&#8239;:&#8239;3</strong> cards, <strong>3&#8239;:&#8239;4</strong> portraits, <strong>16&#8239;:&#8239;10</strong> full-width, <strong>1&#8239;:&#8239;1</strong> gallery tiles.</li>
+    <li>Ship at a maximum of 1800px on the long edge, JPEG quality 78&ndash;82. Nothing on the site should exceed 400KB.</li>
+    <li>Every image needs alt text describing what is happening, not what the file is called.</li>
+  </ul>
+
+  <div class="note note--warn">
+    <h4>Consent</h4>
+    <p>Obtain and record parent or student consent before publishing an identifiable student, by name or by face. Keep the consent register with the school office and check it before each publication. Where a family withdraws consent, remove the image from the site, the gallery and any cached social post.</p>
+  </div>
+
+  <h3>Illustration &amp; iconography</h3>
+  <p>Playpen does not use illustration. Where a diagram is genuinely needed &mdash; the admission process, the stage structure &mdash; build it from type, rules and numbers in the brand palette rather than drawing characters.</p>
+  <p>Icons are stroke-based at 1.4&ndash;1.6px on a 20px grid, rounded caps and joins, drawn in Bronze on light and Gold on dark. Icons never carry meaning on their own; they always sit beside a label.</p>
+</section>
+
+<!-- 06 VOICE -->
+<section id="voice">
+  <h2><span class="n">06</span>Voice &amp; tone</h2>
+  <p class="lede">Playpen has enough real evidence that it never needs a superlative. State the specific thing and let the reader draw the conclusion.</p>
+
+  <h3>Voice attributes</h3>
+  <div class="tbl"><table>
+    <thead><tr><th style="width:16%">Attribute</th><th style="width:42%">What it means</th><th>What it is not</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Warm</strong></td><td>Writes to a parent, not a market segment. Assumes the reader is anxious and treats that seriously.</td><td>Sentimental. Cute about children. Gushing.</td></tr>
+      <tr><td><strong>Specific</strong></td><td>&ldquo;Junior classes have both a Class Teacher and an Assistant Teacher.&rdquo; Numbers, names, dates, subjects.</td><td>&ldquo;A world-class holistic educational ecosystem.&rdquo;</td></tr>
+      <tr><td><strong>Plain</strong></td><td>Short sentences. Active voice. One idea per paragraph. The word a parent would use.</td><td>Bureaucratic. A notice written as a decree.</td></tr>
+      <tr><td><strong>Settled</strong></td><td>The age is stated once and then demonstrated. The school has nothing to prove.</td><td>Nostalgic. Defensive about competitors.</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>Tone by context</h3>
+  <div class="tbl"><table>
+    <thead><tr><th style="width:24%">Context</th><th style="width:34%">Dial</th><th>Example shift</th></tr></thead>
+    <tbody>
+      <tr><td>Homepage &amp; admissions</td><td>Confident, welcoming</td><td>Lead with the child, close with a next step. &ldquo;Come and see the school for yourself.&rdquo;</td></tr>
+      <tr><td>Academic pages</td><td>Precise, unadorned</td><td>Subject lists, minimum requirements, when subjects are chosen. Almost no adjectives.</td></tr>
+      <tr><td>Notices</td><td>Calm, operational</td><td>What, when, who it affects, what to do. Never alarmed, never chatty.</td></tr>
+      <tr><td>Policies &amp; conduct</td><td>Neutral, exact</td><td>Preserve the official meaning exactly; simplify the grammar only.</td></tr>
+      <tr><td>Achievements</td><td>Factual</td><td>Name, class, competition, placing, date. The facts are the boast.</td></tr>
+      <tr><td>Alumni</td><td>Personal, inviting</td><td>&ldquo;Once a Playpen student, always part of the community.&rdquo;</td></tr>
+      <tr><td>Careers</td><td>Honest, grounded</td><td>&ldquo;Many faculty members have been here thirty or forty years. They stay because there is job security, job satisfaction and a career path.&rdquo;</td></tr>
+      <tr><td>Social media</td><td>Lighter, still specific</td><td>A real photograph with a one-line caption beats a designed graphic every time.</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>Vocabulary</h3>
+  <div class="grid2">
+    <div class="tile">
+      <h4 class="ok">Use consistently</h4>
+      <p style="font-size:14.5px">students &middot; parents &middot; teachers &middot; school &middot; Cambridge curriculum &middot; CAIE &middot; O Level &middot; A Level &middot; learning &middot; wellbeing &middot; student support &middot; Playgroup &middot; Class I&ndash;XII</p>
+    </div>
+    <div class="tile">
+      <h4 class="no">Avoid</h4>
+      <p style="font-size:14.5px">best &middot; No. 1 &middot; world-class &middot; unparalleled &middot; premier &middot; leverage &middot; state-of-the-art (unless quoting the school&rsquo;s own lab copy) &middot; guaranteed admission &middot; CIE (use CAIE) &middot; switching between pupils / children / learners / students</p>
+    </div>
+  </div>
+
+  <h3>House style</h3>
+  <ul class="rule-list">
+    <li><strong>Class numbering:</strong> Roman numerals &mdash; Class I, Class VIII, Class XII. Never &ldquo;Class 8&rdquo;.</li>
+    <li><strong>Stages:</strong> Elementary School, Junior School, Middle School, Senior School. Capitalised, always with &ldquo;School&rdquo;.</li>
+    <li><strong>Qualifications:</strong> O Level and A Level &mdash; no hyphen, no apostrophe, both words capitalised. &ldquo;AS Level&rdquo; for Advanced Subsidiary.</li>
+    <li><strong>Examination board:</strong> Cambridge Assessment International Education on first mention, CAIE thereafter. Never CIE.</li>
+    <li><strong>Academic year:</strong> July 2026 &ndash; June 2027, with an en dash and spaces.</li>
+    <li><strong>Dates:</strong> 19 July 2018. Day, month, year &mdash; no ordinal suffix.</li>
+    <li><strong>Phone numbers:</strong> grouped as 01755 515 885 for display, full international format in <code>tel:</code> links.</li>
+    <li><strong>Spelling:</strong> British English throughout &mdash; programme, organised, enrolment, practise (verb).</li>
+    <li><strong>Time-sensitive pages</strong> carry a visible <em>Last updated: Month Year</em>.</li>
+  </ul>
+</section>
+
+<!-- 07 UI -->
+<section id="ui">
+  <h2><span class="n">07</span>Digital UI kit</h2>
+  <p class="lede">The tokens the website is built on. Copy them into any new digital product so it matches without guesswork.</p>
+
+  <pre><code><span class="tok-m">/* Colour */</span>
+<span class="tok-c">--crimson</span>: #8A171A;   <span class="tok-c">--crimson-deep</span>: #6E1215;
+<span class="tok-c">--maroon</span>: #5C0F12;    <span class="tok-c">--maroon-ink</span>: #3A0A0C;
+<span class="tok-c">--gold</span>: #C89B3C;      <span class="tok-c">--gold-light</span>: #F1DD6D;  <span class="tok-c">--bronze</span>: #8A5C22;
+<span class="tok-c">--ink</span>: #1A1614;       <span class="tok-c">--ink-soft</span>: #4A423D;    <span class="tok-c">--ink-muted</span>: #6E645D;
+<span class="tok-c">--parchment</span>: #FBF7F0; <span class="tok-c">--sand</span>: #EFE7DA;
+
+<span class="tok-m">/* Radius, rules, shadow */</span>
+<span class="tok-c">--radius</span>: 2px;  <span class="tok-c">--radius-lg</span>: 4px;
+<span class="tok-c">--rule</span>: rgba(26,22,20,.12);
+<span class="tok-c">--rule-gold</span>: rgba(200,155,60,.45);
+<span class="tok-c">--shadow-md</span>: 0 2px 4px rgba(26,22,20,.04), 0 8px 24px rgba(26,22,20,.07);
+
+<span class="tok-m">/* Motion */</span>
+<span class="tok-c">--ease</span>: cubic-bezier(0.22, 1, 0.36, 1);      <span class="tok-m">/* entrances, reveals */</span>
+<span class="tok-c">--ease-soft</span>: cubic-bezier(0.4, 0, 0.2, 1);   <span class="tok-m">/* colour, opacity */</span>
+
+<span class="tok-m">/* Spacing — 4px base */</span>
+4 · 8 · 12 · 16 · 24 · 32 · 44 · 56 · 80 · 112 · 144</code></pre>
+
+  <h3>Components</h3>
+  <div class="tbl"><table>
+    <thead><tr><th style="width:24%">Component</th><th>Specification</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Primary button</strong></td><td>Crimson fill, white label, Jakarta 600 at 14&ndash;15px, padding 0.95em&#8239;/&#8239;1.6em, radius 2px. Hover: Crimson Deep, lift 2px. Arrow icon shifts 3px right.</td></tr>
+      <tr><td><strong>Gold button</strong></td><td>Playpen Gold fill, Maroon Ink label. Used only on dark sections, and only once per section.</td></tr>
+      <tr><td><strong>Outline button</strong></td><td>1px <code>rgba(26,22,20,.28)</code> border, Ink label. Hover: Crimson border and label, 4% Crimson tint.</td></tr>
+      <tr><td><strong>Ghost button</strong></td><td>1px <code>rgba(251,247,240,.35)</code> border on dark. Hover: Gold border and label.</td></tr>
+      <tr><td><strong>Text link</strong></td><td>Crimson, 600 weight, with a 1px underline that wipes in from the left on hover over 0.4s.</td></tr>
+      <tr><td><strong>Card</strong></td><td>White, 1px rule border, radius 4px. Hover: lift 5px, medium shadow, border shifts to <code>--rule-gold</code>. Image scales to 1.06 over 1s.</td></tr>
+      <tr><td><strong>Overline</strong></td><td>Bronze on light, Gold on dark. 12&ndash;13px, 600, 0.18em tracking, uppercase, preceded by a 28px hairline.</td></tr>
+      <tr><td><strong>Input</strong></td><td>1px rule border, radius 2px, 16px text. Focus: Crimson border plus a 3px <code>rgba(138,23,26,.1)</code> ring. Never remove the focus ring.</td></tr>
+      <tr><td><strong>Table</strong></td><td>Sand header with uppercase 11px labels. Rows separated by 1px rules. Row hover: 6% Gold tint.</td></tr>
+      <tr><td><strong>Accordion</strong></td><td>Fraunces 600 summary, Bronze plus-to-cross marker rotating 135&deg; over 0.35s.</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>Motion</h3>
+  <ul class="rule-list">
+    <li>Scroll reveals: 26px rise plus fade, 0.9s, <code>--ease</code>, triggered at 8% into the viewport, once only.</li>
+    <li>Stagger between siblings: 0.09s, up to five steps.</li>
+    <li>Hover transitions: 0.3s. Page-level transitions: 0.6&ndash;1.2s.</li>
+    <li>Fast in, slow out. Everything decelerates into its final position.</li>
+    <li><code>prefers-reduced-motion: reduce</code> disables every animation and shows all content immediately. This is not optional.</li>
+  </ul>
+</section>
+
+<!-- 08 APPLICATIONS -->
+<section id="applications">
+  <h2><span class="n">08</span>Applications</h2>
+
+  <h3>Website</h3>
+  <p>Parchment ground, alternating Sand and Deep Maroon sections, 1280px container with a fluid gutter. The crest sits in the header at 46px; the shield mark serves as the favicon. One primary Crimson action per screen &mdash; usually <em>Apply Now</em>.</p>
+
+  <h3>Stationery</h3>
+  <div class="tbl"><table>
+    <thead><tr><th style="width:24%">Item</th><th>Specification</th></tr></thead>
+    <tbody>
+      <tr><td>Letterhead A4</td><td>Horizontal lockup top left at 40mm. Contact block bottom, Jakarta 8pt in Ink Muted, with a 0.5pt Bronze rule above it. Body type Plus Jakarta Sans 10.5pt on Ink.</td></tr>
+      <tr><td>Business card</td><td>90 &times; 55mm. Front: Maroon Ink ground, shield mark top left at 12mm, name in Fraunces 11pt white, role in Jakarta 6.5pt Gold with 0.16em tracking. Reverse: Parchment, wordmark at 32mm, address in Jakarta 6.5pt Ink Muted.</td></tr>
+      <tr><td>Compliment slip</td><td>210 &times; 99mm. Wordmark only, Parchment ground, single Bronze rule.</td></tr>
+      <tr><td>Envelope</td><td>Horizontal lockup at 40mm, top left, 15mm from each edge.</td></tr>
+      <tr><td>Certificates</td><td>Heritage crest centred at 45mm. Fraunces for the recipient&rsquo;s name at 28pt. Double gold rule border at 1.5pt and 0.5pt, 12mm inside the trim.</td></tr>
+      <tr><td>Student ID card</td><td>Shield mark, student photograph, name in Fraunces, class and ID in Jakarta. Crimson band across the head of the card.</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>Social media</h3>
+  <ul class="rule-list">
+    <li><strong>Profile image:</strong> the shield mark on Maroon Ink with a 2px Gold ring, at 400 &times; 400px.</li>
+    <li><strong>Cover image:</strong> a real campus photograph with a Deep Maroon gradient from the left and the inverted lockup on that side.</li>
+    <li><strong>Posts:</strong> a photograph carries the post. Where a graphic is needed, Deep Maroon ground, Fraunces headline, Gold overline, shield mark bottom right at 48px.</li>
+    <li>Keep all type inside a 10% safe margin, and never place type over a face.</li>
+    <li>One message per post. Achievement posts follow the house style: name, class, competition, placing, date.</li>
+  </ul>
+
+  <h3>Presentations</h3>
+  <p>Title slide: Maroon Ink ground, Fraunces headline in white, Gold overline, inverted lockup bottom left. Content slides: Parchment ground, Crimson H2, Ink body at 18pt minimum. Data slides use Crimson, Bronze, Gold and Ink Muted in that order &mdash; never a default chart palette. Embed the fonts, or substitute Georgia and Segoe UI before sharing.</p>
+
+  <h3>Email</h3>
+  <p>Inline styles only, single column at 600px, web-safe fallbacks declared on every rule. The logo goes in as a linked PNG at 2&times; resolution with alt text. Crimson buttons are built as bulletproof table cells, not background images.</p>
+
+  <h3>Signage &amp; environment</h3>
+  <p>Deep Maroon ground with the heritage crest at scale, a 1pt gold rule, and the descriptor tracked to 0.2em. Nothing else on the surface. Wayfinding uses Plus Jakarta Sans 600 in white on Deep Maroon, with arrow glyphs matching the site&rsquo;s icon weight.</p>
+</section>
+
+<!-- 09 ACCESSIBILITY -->
+<section id="accessibility">
+  <h2><span class="n">09</span>Accessibility</h2>
+  <p class="lede">Most of Playpen&rsquo;s audience reads this on a phone, often on a mid-range Android device, sometimes in bright daylight. Accessibility here is not compliance theatre &mdash; it is whether a parent can read the admission deadline.</p>
+  <ul class="rule-list">
+    <li>All text meets WCAG AA. Body copy and headings on Parchment exceed AAA.</li>
+    <li>Body type never below 16px. Captions never below 12px, and never carrying essential information alone.</li>
+    <li>Every interactive element keeps a visible focus ring &mdash; 2px Crimson at 3px offset. Never <code>outline: none</code>.</li>
+    <li>Tap targets at least 44 &times; 44px.</li>
+    <li>Every image has alt text. Decorative images take <code>alt=""</code>.</li>
+    <li>Heading levels descend in order. One <code>h1</code> per page.</li>
+    <li>A skip link to main content is the first focusable element on every page.</li>
+    <li>Colour never carries meaning on its own &mdash; a notice tag has a word as well as a colour.</li>
+    <li><code>prefers-reduced-motion</code> is fully honoured, including the hero crossfade and all scroll reveals.</li>
+    <li>Forms have visible labels, not placeholder-only fields, and errors are announced in text.</li>
+  </ul>
+</section>
+
+<!-- 10 GOVERNANCE -->
+<section id="governance">
+  <h2><span class="n">10</span>Governance</h2>
+  <p class="lede">Brand consistency is a trust signal, not a design preference. Every deviation erodes recognition. Someone has to own each piece.</p>
+  <div class="tbl"><table>
+    <thead><tr><th style="width:30%">Content</th><th style="width:34%">Owner</th><th>Review cycle</th></tr></thead>
+    <tbody>
+      <tr><td>Homepage</td><td>School leadership &amp; communications</td><td>Monthly</td></tr>
+      <tr><td>Admissions pages &amp; forms</td><td>Admissions Office</td><td>Monthly during admission periods</td></tr>
+      <tr><td>Academic pages &amp; subject lists</td><td>Academic leadership</td><td>Each academic year</td></tr>
+      <tr><td>Notices</td><td>Administration</td><td>As required; archive on expiry</td></tr>
+      <tr><td>Events &amp; calendar</td><td>Administration</td><td>Weekly</td></tr>
+      <tr><td>Achievements</td><td>Academic &amp; ECA coordinators</td><td>Monthly</td></tr>
+      <tr><td>Gallery</td><td>Communications</td><td>After each major event</td></tr>
+      <tr><td>Faculty &amp; leadership</td><td>HR / Administration</td><td>Each academic year</td></tr>
+      <tr><td>Policies &amp; child protection</td><td>Management</td><td>Annually, or on any policy change</td></tr>
+      <tr><td>Fees &amp; payment</td><td>Finance</td><td>Each academic year</td></tr>
+      <tr><td>Contact details</td><td>Administration</td><td>Monthly verification</td></tr>
+      <tr><td>Careers</td><td>HR</td><td>As vacancies arise</td></tr>
+      <tr><td>Alumni</td><td>Alumni coordinator</td><td>Quarterly</td></tr>
+    </tbody>
+  </table></div>
+  <div class="note">
+    <h4>Brand approval</h4>
+    <p>Any new asset carrying the crest &mdash; uniform, merchandise, signage, a partner&rsquo;s material, a vehicle wrap &mdash; is approved by the Principal&rsquo;s office against the audit checklist below before production. Supply the vendor with this document and the logo folder, not a screenshot of the website.</p>
+  </div>
+</section>
+
+<!-- 11 AUDIT -->
+<section id="audit">
+  <h2><span class="n">11</span>Audit checklist</h2>
+  <p class="lede">Run this over any asset before it is printed, posted or published.</p>
+  <ul class="rule-list">
+    <li>Colours are exact palette values &mdash; no approximations, no off-brand reds.</li>
+    <li>Gold appears as a hairline or small accent, never as a large fill.</li>
+    <li>Gold text on light ground has been changed to Bronze.</li>
+    <li>Typefaces are Fraunces and Plus Jakarta Sans only, in the correct weights.</li>
+    <li>Body text is at least 16px on screen, 10pt in print, and under 68 characters per line.</li>
+    <li>The correct logo variant is used for the size and background, with full clear space.</li>
+    <li>The logo is not stretched, rotated, shadowed, outlined or recoloured.</li>
+    <li>Photography is genuine Playpen material, unposed, with consent on record.</li>
+    <li>Every image has meaningful alt text or is marked decorative.</li>
+    <li>Copy matches the voice attributes &mdash; no superlatives, no unsupported claims.</li>
+    <li>House style is applied: Roman class numerals, CAIE not CIE, British spelling.</li>
+    <li>Dates, phone numbers, email addresses and subject lists have been verified as current.</li>
+    <li>Contrast passes AA for every text and UI element.</li>
+    <li>Any co-branding follows the partner sizing and spacing rules.</li>
+    <li>Time-sensitive content carries a <em>Last updated</em> date.</li>
+  </ul>
+</section>
+
+<footer class="gl">
+  <p><strong>Playpen School Brand Guidelines, version 1.0.</strong> Prepared 2026 alongside the website redesign. Colour values sampled directly from the school crest; contrast ratios calculated, not estimated.</p>
+  <p>Companion documents: <a href="brand-board.html">brand board</a> (one-page visual summary) and <a href="BRAND-GUIDELINES.md">BRAND-GUIDELINES.md</a> (plain-text spec for developers and vendors). Logo files are in <code>/brand/logo/</code>.</p>
+</footer>
+</main>
+</div>
+</body>
+</html>

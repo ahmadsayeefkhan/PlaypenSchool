@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 120" width="100" height="120" role="img" aria-label="Playpen shield mark, single colour">
+  <title>Playpen Shield Mark &#8212; Single Colour</title>
+  <desc>One-colour version for stamps, embossing, engraving and any single-ink application. Recolour the dark value to Ink, Crimson or Deep Maroon as required.</desc>
+  <path d="M2 4 H98 V60 C98 88 79 108 50 118 C21 108 2 88 2 60 Z" fill="#1A1614"/>
+  <path d="M11 13 H89 V59 C89 82 73 99 50 108 C27 99 11 82 11 59 Z" fill="#FFFFFF"/>
+  <g fill="#1A1614">
+    <path d="M25 36 l1.9 3.9 4.3.6 -3.1 3 .7 4.3 -3.8-2 -3.8 2 .7-4.3 -3.1-3 4.3-.6z"/>
+    <path d="M37.5 29 l1.9 3.9 4.3.6 -3.1 3 .7 4.3 -3.8-2 -3.8 2 .7-4.3 -3.1-3 4.3-.6z"/>
+    <path d="M50 26 l1.9 3.9 4.3.6 -3.1 3 .7 4.3 -3.8-2 -3.8 2 .7-4.3 -3.1-3 4.3-.6z"/>
+    <path d="M62.5 29 l1.9 3.9 4.3.6 -3.1 3 .7 4.3 -3.8-2 -3.8 2 .7-4.3 -3.1-3 4.3-.6z"/>
+    <path d="M75 36 l1.9 3.9 4.3.6 -3.1 3 .7 4.3 -3.8-2 -3.8 2 .7-4.3 -3.1-3 4.3-.6z"/>
+  </g>
+  <text x="50" y="86" text-anchor="middle" font-family="Fraunces, Georgia, serif"
+        font-size="46" font-weight="700" fill="#1A1614" letter-spacing="-1">P</text>
+</svg>
