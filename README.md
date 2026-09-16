@@ -38,6 +38,7 @@ Playpen-Redesign/
 │   └── build.py                     run this to rebuild
 │
 └── docs/
+    ├── audit-report.html              ← client-facing before/after audit (open this)
     ├── 01-information-architecture.md   48 old pages → 14 new, fully mapped
     ├── 02-redirect-map.md               301 rules for Apache and Nginx
     └── 03-verification-checklist.md     what the school must confirm before launch
