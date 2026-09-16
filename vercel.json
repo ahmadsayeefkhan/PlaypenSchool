@@ -1,0 +1,93 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "buildCommand": null,
+  "installCommand": null,
+  "outputDirectory": "site",
+  "trailingSlash": false,
+
+  "redirects": [
+    { "source": "/about/", "destination": "/about.html", "permanent": true },
+    { "source": "/our-history/", "destination": "/about.html", "permanent": true },
+    { "source": "/mission-vision-and-values/", "destination": "/about.html#values", "permanent": true },
+    { "source": "/school-administration/", "destination": "/leadership.html", "permanent": true },
+    { "source": "/new-campus/", "destination": "/campus.html", "permanent": true },
+    { "source": "/child-protection-policy/", "destination": "/campus-services.html#safeguarding", "permanent": true },
+    { "source": "/playpen-alumni-association/", "destination": "/alumni.html", "permanent": true },
+    { "source": "/career-at-playpen/", "destination": "/careers.html", "permanent": true },
+    { "source": "/contact-us/", "destination": "/contact.html", "permanent": true },
+
+    { "source": "/elementary-school/", "destination": "/academics.html#elementary", "permanent": true },
+    { "source": "/junior-school/", "destination": "/academics.html#junior", "permanent": true },
+    { "source": "/middle-school/", "destination": "/academics.html#middle", "permanent": true },
+    { "source": "/senior-school/", "destination": "/academics.html#senior", "permanent": true },
+    { "source": "/library/", "destination": "/academics.html#facilities", "permanent": true },
+    { "source": "/laboratories/", "destination": "/academics.html#facilities", "permanent": true },
+    { "source": "/student-support/", "destination": "/academics.html#support", "permanent": true },
+    { "source": "/counsellor/", "destination": "/academics.html#support", "permanent": true },
+    { "source": "/examinations/", "destination": "/academics.html#examinations", "permanent": true },
+    { "source": "/achievements-of-playpen-students/", "destination": "/achievements.html", "permanent": true },
+    { "source": "/disciplinary-committee/", "destination": "/campus-services.html#policies", "permanent": true },
+    { "source": "/the-identity-card/", "destination": "/campus-services.html#policies", "permanent": true },
+
+    { "source": "/admission-procedure/", "destination": "/admissions.html", "permanent": true },
+    { "source": "/the-school-uniform/", "destination": "/admissions.html#uniform", "permanent": true },
+    { "source": "/code-of-conduct/", "destination": "/campus-services.html#policies", "permanent": true },
+
+    { "source": "/annual-sports/", "destination": "/student-life.html#sports", "permanent": true },
+    { "source": "/extra-curricular-activities/", "destination": "/student-life.html", "permanent": true },
+    { "source": "/community-service/", "destination": "/student-life.html#service", "permanent": true },
+    { "source": "/cultural-programme/", "destination": "/student-life.html#arts", "permanent": true },
+    { "source": "/science-fair/", "destination": "/student-life.html#science", "permanent": true },
+    { "source": "/workshop-for-students/", "destination": "/student-life.html", "permanent": true },
+    { "source": "/multimedia-projector/", "destination": "/student-life.html#science", "permanent": true },
+
+    { "source": "/online-facility-payment/", "destination": "/campus-services.html#online", "permanent": true },
+    { "source": "/health-center/", "destination": "/campus-services.html#health", "permanent": true },
+    { "source": "/the-school-bookshop/", "destination": "/campus-services.html#bookshop", "permanent": true },
+    { "source": "/school-transportation/", "destination": "/campus-services.html#transport", "permanent": true },
+
+    { "source": "/notice", "destination": "/news.html#notices", "permanent": true },
+    { "source": "/notice/:path*", "destination": "/news.html#notices", "permanent": true },
+    { "source": "/event", "destination": "/news.html#events", "permanent": true },
+    { "source": "/event/:path*", "destination": "/news.html#events", "permanent": true },
+    { "source": "/photo-gallery/", "destination": "/news.html#gallery", "permanent": true },
+
+    { "source": "/feature/academic/", "destination": "/academics.html", "permanent": true },
+    { "source": "/feature/alumni/", "destination": "/alumni.html", "permanent": true },
+    { "source": "/feature/achievements/", "destination": "/achievements.html", "permanent": true },
+    { "source": "/feature/eca/", "destination": "/student-life.html", "permanent": true },
+    { "source": "/feature/student-services/", "destination": "/campus-services.html", "permanent": true },
+    { "source": "/feature/faculty-members/", "destination": "/leadership.html", "permanent": true }
+  ],
+
+  "headers": [
+    {
+      "source": "/assets/img/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    },
+    {
+      "source": "/assets/logo/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    },
+    {
+      "source": "/assets/(css|js)/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=86400, must-revalidate" }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+        { "key": "Permissions-Policy", "value": "geolocation=(), microphone=(), camera=()" }
+      ]
+    }
+  ]
+}
