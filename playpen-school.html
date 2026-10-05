@@ -1,0 +1,420 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Playpen School case study</title>
+<meta name="description" content="How Defined Solution reorganised Playpen School's 48-page website into 14 and wrote the brand guidelines its crest never had.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Defined Solution">
+<meta property="og:title" content="Playpen School case study">
+<meta property="og:description" content="How Defined Solution reorganised Playpen School's 48-page website into 14 and wrote the brand guidelines its crest never had.">
+<meta property="og:url" content="https://mangocasestudy.definedsolution.com/playpen-school.html">
+<meta property="og:image" content="https://mangocasestudy.definedsolution.com/assets/og-image.jpg">
+<meta property="og:image:secure_url" content="https://mangocasestudy.definedsolution.com/assets/og-image.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Case Study on Mango and Playpen by Defined Solution">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Playpen School case study">
+<meta name="twitter:description" content="How Defined Solution reorganised Playpen School's 48-page website into 14 and wrote the brand guidelines its crest never had.">
+<meta name="twitter:image" content="https://mangocasestudy.definedsolution.com/assets/og-image.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..700&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Sans:wght@400..700&display=swap">
+<style>
+:root {
+  --ds-rose: #CB4A68;
+  --bg: #0B090E;
+  --surface: #141118;
+  --line: #2C2433;
+  --line-strong: #3A3243;
+  --fg: #EDEDED;
+  --fg-muted: #9A93A3;
+  --fg-dim: #7E7688;
+  --accent-text: #E0798F;
+  --btn-bg: #EDEDED;
+  --btn-fg: #2C2433;
+  --btn-hover: #FFFFFF;
+  --font-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --bg: #F7F6F8;
+    --surface: #FFFFFF;
+    --line: #E2DEE7;
+    --line-strong: #CFC9D6;
+    --fg: #2C2433;
+    --fg-muted: #5C5468;
+    --fg-dim: #7A7189;
+    --accent-text: #A93A55;
+    --btn-bg: #2C2433;
+    --btn-fg: #F7F6F8;
+    --btn-hover: #0B090E;
+  }
+}
+:root[data-theme="light"] {
+  --bg: #F7F6F8;
+  --surface: #FFFFFF;
+  --line: #E2DEE7;
+  --line-strong: #CFC9D6;
+  --fg: #2C2433;
+  --fg-muted: #5C5468;
+  --fg-dim: #7A7189;
+  --accent-text: #A93A55;
+  --btn-bg: #2C2433;
+  --btn-fg: #F7F6F8;
+  --btn-hover: #0B090E;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.68;
+  padding-inline: clamp(16px, 5vw, 48px);
+  padding-block: 0 48px;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--ds-rose); outline-offset: 3px; border-radius: 4px; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+}
+
+.wrap { max-width: 1120px; margin-inline: auto; }
+.mono {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--fg-dim);
+}
+.period { color: var(--ds-rose); }
+
+/* top bar */
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-block: 28px;
+  border-bottom: 1px solid var(--line);
+}
+.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.brand svg { width: 22px; height: auto; color: var(--fg); }
+.brand span { font-family: var(--font-display); font-weight: 600; font-size: 0.9375rem; letter-spacing: -0.01em; }
+.back { text-decoration: none; transition: color 120ms var(--ease); }
+.back:hover { color: var(--fg); }
+
+/* header */
+.head { padding-block: clamp(56px, 9vw, 112px) clamp(40px, 6vw, 64px); display: grid; gap: 28px; }
+.eyebrow { display: flex; flex-wrap: wrap; gap: 8px 20px; }
+.eyebrow .num { color: var(--accent-text); }
+h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.6rem, 8vw, 5.75rem);
+  font-weight: 700;
+  font-stretch: 118%;
+  line-height: 0.92;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+.lead { font-size: clamp(1.0625rem, 1.5vw, 1.25rem); line-height: 1.6; color: var(--fg-muted); max-width: 58ch; }
+
+.facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 20px 32px;
+  padding-top: 28px;
+  border-top: 1px solid var(--line);
+}
+.facts dt { margin-bottom: 4px; }
+.facts dd { font-size: 0.9375rem; color: var(--fg); }
+.facts dd a { text-underline-offset: 3px; text-decoration-color: var(--line-strong); }
+.facts dd a:hover { text-decoration-color: currentColor; }
+
+/* screenshots */
+.shots { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(16px, 2.4vw, 28px); padding-bottom: clamp(56px, 8vw, 96px); }
+.shot img { width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; object-position: top; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
+.shot figcaption { margin-top: 12px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.shot figcaption b { color: var(--fg); font-weight: 500; }
+
+/* sections */
+.block {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  gap: 16px 48px;
+  padding-block: clamp(40px, 6vw, 72px);
+  border-top: 1px solid var(--line);
+}
+.block > .mono { padding-top: 6px; }
+.block h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-weight: 600;
+  font-stretch: 112%;
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+  max-width: 24ch;
+  margin-bottom: 20px;
+}
+.prose { display: grid; gap: 16px; max-width: 68ch; }
+.prose p { color: var(--fg-muted); }
+.prose strong { color: var(--fg); font-weight: 600; }
+
+.deliverables {
+  list-style: none;
+  padding: 0;
+  margin-top: 32px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  border-top: 1px solid var(--line);
+}
+.deliverables li { padding: 16px 16px 16px 0; border-bottom: 1px solid var(--line); }
+.deliverables b { display: block; font-weight: 600; color: var(--fg); }
+.deliverables span { font-size: 0.875rem; color: var(--fg-muted); }
+
+.table-wrap { overflow-x: auto; margin-top: 28px; }
+table { width: 100%; border-collapse: collapse; font-size: 0.9375rem; min-width: 520px; }
+th {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--fg-dim);
+  text-align: left;
+  padding: 10px 16px 10px 0;
+  border-bottom: 1px solid var(--line-strong);
+}
+td { padding: 13px 16px 13px 0; border-bottom: 1px solid var(--line); vertical-align: top; color: var(--fg-muted); }
+td:first-child { color: var(--fg); }
+td.n { font-variant-numeric: tabular-nums; white-space: nowrap; }
+td.after { color: var(--fg); font-weight: 600; }
+tr.group th { padding-top: 28px; color: var(--fg-muted); border-bottom-color: var(--line); }
+.note { margin-top: 16px; font-size: 0.8125rem; color: var(--fg-dim); max-width: 72ch; }
+
+.open { list-style: none; padding: 0; display: grid; gap: 0; margin-top: 8px; max-width: 68ch; }
+.open li { display: grid; grid-template-columns: 28px 1fr; padding-block: 12px; border-bottom: 1px solid var(--line); color: var(--fg-muted); }
+.open li::before { content: "—"; color: var(--fg-dim); }
+
+.spec { width: 100%; border-collapse: collapse; min-width: 0; }
+.spec th { width: 180px; padding: 14px 16px 14px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+.spec td { padding: 14px 0; color: var(--fg); font-family: var(--font-mono); font-size: 0.8125rem; line-height: 1.7; }
+
+/* actions + footer */
+.actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px; }
+.btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  min-height: 48px; padding: 0 22px;
+  border-radius: 10px;
+  font-family: var(--font-body); font-weight: 600; font-size: 0.9375rem;
+  text-decoration: none;
+  transition: background 120ms var(--ease), border-color 120ms var(--ease), transform 220ms var(--ease);
+}
+.btn-primary { background: var(--btn-bg); color: var(--btn-fg); }
+.btn-primary:hover { background: var(--btn-hover); transform: translateY(-1px); }
+.btn-ghost { border: 1px solid var(--line-strong); color: var(--fg); }
+.btn-ghost:hover { border-color: var(--fg-muted); }
+
+.footer {
+  margin-top: clamp(40px, 6vw, 72px);
+  padding-top: 28px;
+  border-top: 1px solid var(--line);
+  display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px;
+}
+
+@media screen and (max-width: 760px) {
+  .shots { grid-template-columns: 1fr; }
+  .block { grid-template-columns: 1fr; }
+  .spec th { width: 110px; }
+}
+
+@media print {
+  :root, :root:not([data-theme="dark"]), :root[data-theme] {
+    --bg: #FFFFFF; --surface: #FFFFFF; --line: #E2DEE7; --line-strong: #CFC9D6;
+    --fg: #2C2433; --fg-muted: #5C5468; --fg-dim: #7A7189; --accent-text: #A93A55;
+  }
+  @page { size: A4; margin: 16mm 16mm 18mm; }
+  body { font-size: 10.5pt; padding: 0; }
+  .back, .actions, .footer a.btn { display: none; }
+  .head { padding-block: 28px 24px; }
+  h1 { font-size: 44pt; }
+  .shots { padding-bottom: 28px; }
+  .block { padding-block: 22px; grid-template-columns: 150px 1fr; gap: 12px 28px; }
+  .shots, figure, table, .deliverables li, .open li { break-inside: avoid; }
+  .block h2 { break-after: avoid; }
+  table { min-width: 0; }
+  .facts { grid-template-columns: repeat(4, 1fr); }
+  .shot img { border-radius: 6px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="topbar">
+    <a class="brand" href="https://definedsolution.com" target="_blank" rel="noopener">
+      <svg viewBox="0 0 61 87" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><g transform="translate(-69 -56)"><path d="M72.78 142.17C72.63 142.13 72.39 141.96 72.25 141.78C72.00 141.46 71.99 141.33 72.03 137.30C72.06 133.14 72.06 133.14 72.37 132.82C72.67 132.50 72.67 132.50 82.66 132.50C92.37 132.50 92.69 132.49 93.80 132.24C95.65 131.81 96.56 131.10 97.28 129.52C97.84 128.29 97.86 127.65 97.39 126.43C96.90 125.17 96.36 124.52 95.21 123.84C94.32 123.31 94.32 123.31 88.25 123.24C81.43 123.15 80.68 123.09 78.76 122.36C73.19 120.27 69.50 115.16 69.28 109.23C69.17 106.26 70.29 102.74 72.12 100.29C73.37 98.60 75.82 96.57 77.25 96.00C77.49 95.91 77.97 95.68 78.31 95.49C78.67 95.29 79.52 95.03 80.31 94.86C81.68 94.57 81.76 94.57 94.12 94.50C105.95 94.43 106.64 94.41 108.08 94.16C110.75 93.71 113.26 92.37 115.33 90.30C116.76 88.87 117.33 88.08 118.18 86.38C120.33 82.04 119.96 76.64 117.26 72.73C115.87 70.72 115.67 70.51 113.63 68.97C112.46 68.09 110.79 67.24 109.58 66.92C107.45 66.34 106.87 66.27 104.22 66.23C101.67 66.19 101.62 66.20 101.35 66.47C101.06 66.76 101.06 66.76 101.00 79.33C100.94 91.90 100.94 91.90 100.59 92.20C100.24 92.50 100.24 92.50 96.27 92.49C91.98 92.47 91.82 92.46 91.48 92.00C91.25 91.70 91.25 91.05 91.25 74.51C91.25 55.71 91.20 56.91 91.95 56.62C92.50 56.41 106.64 56.47 108.02 56.68C108.66 56.78 109.69 56.92 110.30 57.00C110.92 57.08 111.76 57.28 112.18 57.45C112.60 57.62 113.25 57.84 113.62 57.94C117.80 59.03 124.09 64.26 126.18 68.39C126.41 68.84 126.66 69.32 126.73 69.45C127.83 71.47 128.78 74.39 129.06 76.62C129.32 78.60 129.26 83.05 128.95 84.88C128.43 88.02 126.39 92.49 124.30 95.10C122.41 97.45 119.28 100.12 117.19 101.15C116.84 101.32 116.39 101.55 116.19 101.66C115.30 102.14 113.27 103.00 113.01 103.00C112.86 103.00 112.31 103.14 111.80 103.31C109.42 104.11 108.58 104.16 94.62 104.24C82.56 104.31 82.56 104.31 81.84 104.68C80.63 105.29 79.35 106.92 79.07 108.20C78.84 109.26 79.41 110.85 80.39 111.93C81.71 113.38 82.42 113.50 89.32 113.50C94.55 113.50 94.69 113.51 96.23 113.82C99.08 114.39 101.17 115.56 103.33 117.77C104.69 119.16 105.23 119.92 106.06 121.61C106.75 123.00 106.81 123.23 107.19 125.31C107.52 127.20 107.57 128.07 107.38 129.14C107.31 129.51 107.17 130.34 107.06 130.98C106.82 132.42 106.03 134.32 105.11 135.70C104.18 137.10 101.90 139.32 100.80 139.91C100.33 140.16 99.74 140.48 99.50 140.62C98.30 141.29 96.33 141.89 94.88 142.02C93.47 142.15 73.34 142.28 72.78 142.17Z" fill="currentColor"/><circle cx="119.6" cy="134.73" r="6.5" fill="#CB4A68"/></g></svg>
+      <span>Defined Solution</span>
+    </a>
+    <a class="back mono" href="index.html">← Selected work</a>
+  </header>
+
+    <section class="head">
+    <div class="eyebrow mono"><span><span class="num">02</span> / Case</span><span>Website rebuild · Brand guidelines · Information architecture</span></div>
+    <h1>Playpen School<span class="period">.</span></h1>
+    <p class="lead">A Cambridge-curriculum school in Bashundhara, Dhaka, teaching from Playgroup to A Level. All the content a parent needs was already on its website, spread across 48 pages that were hard to navigate. We reorganised it into 14 pages and wrote the brand rules the school's crest never had.</p>
+    <dl class="facts">
+      <div><dt class="mono">Client</dt><dd>Playpen School</dd></div>
+      <div><dt class="mono">Sector</dt><dd>Education, English medium</dd></div>
+      <div><dt class="mono">Location</dt><dd>Bashundhara, Dhaka</dd></div>
+      <div><dt class="mono">Live preview</dt><dd><a href="https://playpen-school.vercel.app/index.html" target="_blank" rel="noopener">playpen-school.vercel.app ↗</a></dd></div>
+    </dl>
+  </section>
+
+  <section class="shots" aria-label="Homepage before and after">
+    <figure class="shot">
+      <img src="assets/playpen-before.jpg" alt="The old playpen.edu.bd homepage: the school crest and a '49 years' badge above a crimson menu, followed by three pie charts of exam results." width="1600" height="1000">
+      <figcaption class="mono"><b>Before</b><span>playpen.edu.bd</span></figcaption>
+    </figure>
+    <figure class="shot">
+      <img src="assets/playpen-after.jpg" alt="The new Playpen homepage: a crimson-tinted photo of students, the headline 'A balanced education, from first steps to A Level.', an admissions notice and key facts." width="1600" height="1000">
+      <figcaption class="mono"><b>After</b><span>Live preview</span></figcaption>
+    </figure>
+  </section>
+
+  <section class="block">
+    <div class="mono">The problem</div>
+    <div>
+      <h2>The information was all there. Finding it was the problem.</h2>
+      <div class="prose">
+        <p>playpen.edu.bd had 48 pages. Some held a single paragraph: "Multimedia Projector" and "The Identity Card" each had their own menu slot. The O Level and A Level subject lists, the first thing a prospective family looks for, sat inside one long Senior School page. The four school stages were on four separate pages, with no overview linking them.</p>
+        <p>Before a parent saw anything, the homepage loaded 24 stylesheets and 24 scripts. It had no search summary, no structured school data for Google, and five competing main headings. The banner read "Inspring young minds", and the photo gallery said "gallery was not found". There was no enquiry form, so a parent browsing in the evening had to write down a phone number and call during office hours. The school's history also contradicted itself: the site gave a founding year of 1977 in one place and 1997 in another, and said "48 years" on one page and "49" on another.</p>
+        <p>Playpen already had a strong crest: a crimson shield, a gold border, five stars. What it lacked was any written rule for colour, type, clear space or use at small sizes.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="mono">What we built</div>
+    <div>
+      <h2>14 pages, one voice, and a brand system taken from the crest.</h2>
+      <div class="prose">
+        <p>We mapped all 48 old pages into <strong>14 pages</strong>, with sections inside each page that can be linked to directly. Nothing was dropped: every fact from the old site has a documented new home. The O Level and A Level subjects now have <strong>21 subject cards</strong> of their own. We rewrote the copy in one consistent voice and documented a house style so it stays that way.</p>
+        <p>The design direction is editorial heritage. Crimson and gold are sampled from the school's own shield and set on a warm parchment background. Headings use Fraunces and body text uses Plus Jakarta Sans. The pages are static HTML, generated by a small Python script with no dependencies. The header, navigation, footer and structured data are defined once and reused on every page. Motion is plain JavaScript, and the page still works as plain HTML if the script fails. Every page has its own title and search summary, and the site includes School structured data, a sitemap and <strong>46 permanent redirects</strong>, so old bookmarks and Google results still land on the right page.</p>
+        <p>The brand work produced an 11-section guideline, a one-page brand board and 7 logo files, including a simplified shield mark that stays readable at icon size. We added Bronze <strong>#8A5C22</strong> to the palette because the crest's gold measures 2.4:1 on a light background and fails WCAG AA. Bronze is in the same colour family and measures 5.4:1.</p>
+      </div>
+      <ul class="deliverables">
+        <li><b>Website and brand audit</b><span>Findings checked against the live site</span></li>
+        <li><b>Information architecture</b><span>48 old pages mapped to 14</span></li>
+        <li><b>Brand guidelines</b><span>11 sections, brand board, 7 logo files</span></li>
+        <li><b>Website</b><span>14 pages, 360 px to ultrawide</span></li>
+        <li><b>Redirect map</b><span>46 permanent redirects on Vercel</span></li>
+        <li><b>Verification checklist</b><span>Facts only the school can confirm</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="mono">What we kept</div>
+    <div>
+      <h2>A redesign that discards a school's history is a replacement.</h2>
+      <ul class="open">
+        <li>The crest, which we didn't redraw or modernise.</li>
+        <li>The school's own words, including "We assure you of the best possible care and education for your child".</li>
+        <li>The school's own photographs. We added no stock images.</li>
+        <li>Crimson and gold, sampled from the crest rather than replaced.</li>
+        <li>Every existing web address, redirected to its new page.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="mono">The outcome</div>
+    <div>
+      <h2>Measured on both homepages as they stand today.</h2>
+      <div class="prose">
+        <p>The new site is live as a preview. It will replace playpen.edu.bd once the school confirms the facts listed below. Enquiries and rankings can only be measured after launch, so they aren't claimed here. Everything below we measured ourselves on 16 September 2026.</p>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th scope="col">Measure</th><th scope="col">playpen.edu.bd</th><th scope="col">New site</th></tr></thead>
+          <tbody>
+            <tr><td>Pages</td><td class="n">48</td><td class="n after">14</td></tr>
+            <tr><td>Stylesheets and scripts on the homepage</td><td class="n">48</td><td class="n after">3</td></tr>
+            <tr><td>Homepage code</td><td class="n">163 KB</td><td class="n after">45 KB</td></tr>
+            <tr><td>Pages with a search summary</td><td class="n">0</td><td class="n after">14 of 14</td></tr>
+            <tr><td>Structured school data for Google</td><td>None</td><td class="after">Address, phone, founding year, curriculum</td></tr>
+            <tr><td>Main headings on the homepage</td><td class="n">5</td><td class="n after">1</td></tr>
+            <tr><td>Online enquiry forms</td><td class="n">0</td><td class="n after">3, ready to connect</td></tr>
+          </tbody>
+          <tbody>
+            <tr class="group"><th scope="rowgroup" colspan="3">Google Lighthouse, mobile</th></tr>
+            <tr><td>Performance</td><td class="n">46</td><td class="n after">64</td></tr>
+            <tr><td>Accessibility</td><td class="n">82</td><td class="n after">98</td></tr>
+            <tr><td>Best practices</td><td class="n">77</td><td class="n after">100</td></tr>
+            <tr><td>SEO</td><td class="n">92</td><td class="n after">100</td></tr>
+            <tr><td>Largest content visible</td><td class="n">69.4 s</td><td class="n after">5.6 s</td></tr>
+            <tr><td>Homepage download size</td><td class="n">12.6 MB</td><td class="n after">1.9 MB</td></tr>
+            <tr><td>Network requests</td><td class="n">93</td><td class="n after">19</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">Lighthouse 13.4.1, mobile emulation, two runs per site. We report the old site's better run and the new site's worse run. Performance is the weakest result: 3.3 s of the 5.6 s is the hero photo waiting to render, not downloading. That's the first fix after launch.</p>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="mono">Before launch</div>
+    <div>
+      <h2>Five facts only the school can confirm.</h2>
+      <ul class="open">
+        <li>The founding year (1977 or 1997), and whether to show a year count at all, since it goes out of date every September.</li>
+        <li>The 12 O Level and 9 A Level subjects offered for the coming year.</li>
+        <li>All 11 phone numbers and 8 email addresses published across five departments.</li>
+        <li>Which classes are open for admission, and whether the two downloadable forms are current.</li>
+        <li>Consent on record for the 12 students named on the achievements page.</li>
+      </ul>
+      <p class="note">Two items are for whoever hosts the site: connecting the three forms to the school's email, and testing on a real phone.</p>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="mono">Project</div>
+    <div class="table-wrap" style="margin-top:0">
+      <table class="spec">
+        <tr><th scope="row">Stack</th><td>Static HTML, CSS and vanilla JavaScript · Python 3 site generator, no packages · Fraunces + Plus Jakarta Sans · schema.org School data · sitemap.xml · Vercel with redirects and cache headers</td></tr>
+        <tr><th scope="row">Duration</th><td>15–16 September 2026 · content capture to live preview</td></tr>
+        <tr><th scope="row">Team</th><td>Brand · Content and information architecture · Front-end engineering</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="mono">See it</div>
+    <div class="actions">
+      <a class="btn btn-primary" href="https://playpen-school.vercel.app/index.html" target="_blank" rel="noopener">Visit the live site ↗</a>
+      <a class="btn btn-ghost" href="mango-teleservices.html">Previous case: Mango Teleservices →</a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <span class="mono">© 2024 – 2026 Defined Solution. All rights reserved<span class="period">.</span></span>
+    <a class="mono back" href="mailto:hello@definedsolution.com">hello@definedsolution.com</a>
+  </footer>
+
+</div>
+</body>
+</html>
