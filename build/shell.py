@@ -141,6 +141,7 @@ def mobile_nav_html():
     out.append('<a class="m-top" href="parents.html">For Parents</a>')
     out.append('<a class="m-top" href="contact.html">Contact</a>')
     out.append('<div class="m-cta">')
+    out.append('<a class="btn btn--outline" href="report-summary.html">Case Study</a>')
     out.append(f'<a class="btn btn--primary" href="admissions.html">Apply for Admission {ICON_ARROW}</a>')
     out.append(f'<a class="btn btn--outline" href="{SITE["portal"]}" rel="noopener">Parent &amp; Student Portal</a>')
     out.append('</div></nav>')
@@ -178,6 +179,7 @@ def header_html(active, announce=None):
         {nav_html(active)}
       </nav>
       <div class="header-actions">
+        <a class="btn btn--outline btn--sm" href="report-summary.html">Case Study</a>
         <a class="btn btn--outline btn--sm" href="contact.html">Visit Us</a>
         <a class="btn btn--primary btn--sm" href="admissions.html">Apply Now</a>
         <button class="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">

@@ -14,4 +14,6 @@
   <url><loc>https://playpen.edu.bd/alumni.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://playpen.edu.bd/careers.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://playpen.edu.bd/contact.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://playpen.edu.bd/report-summary.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://playpen.edu.bd/audit-report.html</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
 </urlset>

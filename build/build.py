@@ -92,12 +92,19 @@ def main():
         written.append((p["slug"], len(html)))
 
     # sitemap.xml
+    extra = [
+        ("report-summary.html", "monthly", "0.6"),
+        ("audit-report.html", "monthly", "0.5"),
+    ]
     urls = "\n".join(
         '  <url><loc>https://playpen.edu.bd/%s</loc><changefreq>%s</changefreq><priority>%s</priority></url>'
         % ("" if p["slug"] == "index.html" else p["slug"],
            "weekly" if p["slug"] in ("index.html", "news.html", "admissions.html") else "monthly",
            "1.0" if p["slug"] == "index.html" else ("0.9" if p["slug"] in ("admissions.html", "academics.html") else "0.7"))
         for p in PAGES)
+    urls += "\n" + "\n".join(
+        '  <url><loc>https://playpen.edu.bd/%s</loc><changefreq>%s</changefreq><priority>%s</priority></url>'
+        % item for item in extra)
     sitemap = ('<?xml version="1.0" encoding="UTF-8"?>\n'
                '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
                + urls + "\n</urlset>\n")

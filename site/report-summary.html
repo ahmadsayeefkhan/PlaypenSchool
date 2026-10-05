@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Report summary — Playpen School</title>
+<meta name="description" content="A short summary of the Playpen School website and brand audit: what was found, what changed, and where to read the full case study and audit.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500..700;1,9..144,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --crimson:#8A171A;--maroon:#5C0F12;--maroon-ink:#3A0A0C;
+  --gold:#C89B3C;--gold-light:#F1DD6D;--bronze:#8A5C22;
+  --ink:#1A1614;--ink-soft:#4A423D;--ink-muted:#6E645D;
+  --parchment:#FBF7F0;--sand:#EFE7DA;--white:#fff;
+  --green:#5E7343;--green-soft:rgba(94,115,67,.12);
+  --display:'Fraunces',Georgia,serif;--body:'Plus Jakarta Sans','Segoe UI',sans-serif;
+  --rule:rgba(26,22,20,.12);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;overflow-x:hidden;background:var(--parchment);color:var(--ink);
+  font-family:var(--body);font-size:16px;line-height:1.65;
+  -webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+h1,h2,h3{margin:0;font-family:var(--display);font-weight:600;letter-spacing:-.025em;line-height:1.08}
+p{margin:0 0 1em}p:last-child{margin-bottom:0}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--crimson);outline-offset:3px}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition:none !important}
+}
+
+.page{max-width:920px;margin:0 auto;padding:clamp(1rem,3vw,2rem) clamp(1rem,4vw,2rem) 3rem}
+
+.top{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;
+  padding-bottom:1rem;margin-bottom:1.25rem;border-bottom:1px solid var(--rule)}
+.top a{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  text-decoration:none;color:var(--bronze);min-height:44px;display:inline-flex;align-items:center}
+.top a:hover{color:var(--crimson)}
+
+.cover{background:var(--maroon-ink);color:#fff;border-radius:5px;position:relative;overflow:hidden}
+.cover::after{content:'';position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(circle at 12% 0%,rgba(241,221,109,.16),transparent 42%),
+             radial-gradient(circle at 100% 100%,rgba(138,23,26,.55),transparent 50%)}
+.cover-in{position:relative;z-index:1;padding:clamp(1.5rem,5vw,3rem)}
+.eyebrow{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--gold);margin:0 0 .9rem}
+.cover h1{font-size:clamp(2.1rem,7vw,3.4rem);color:#fff;max-width:14ch}
+.cover h1 em{font-style:italic;font-weight:500;color:var(--gold-light)}
+.cover .sub{margin-top:1rem;max-width:46ch;color:rgba(255,255,255,.86);font-size:clamp(15px,1.6vw,18px)}
+
+.block{background:var(--white);border:1px solid var(--rule);border-radius:5px;
+  padding:clamp(1.2rem,3vw,2rem);margin-top:1rem}
+.block h2{font-size:clamp(1.45rem,3vw,2rem);margin-bottom:.6rem}
+.lede{color:var(--ink-soft);font-size:clamp(16px,1.5vw,18px);max-width:62ch}
+
+.metrics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem;margin-top:1.4rem}
+.metric{background:var(--parchment);border-left:3px solid var(--gold);border-radius:4px;padding:1rem 1.05rem}
+.metric b{display:block;font-family:var(--display);font-size:clamp(1.7rem,4vw,2.3rem);
+  font-weight:600;color:var(--crimson);letter-spacing:-.03em;line-height:1}
+.metric span{display:block;margin-top:.4rem;font-size:14px;font-weight:700}
+.metric small{display:block;margin-top:.25rem;color:var(--ink-soft);font-size:13px;line-height:1.45}
+
+.links{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin-top:1.2rem}
+.doc{display:flex;flex-direction:column;gap:.35rem;min-height:44px;text-decoration:none;
+  border-radius:4px;padding:1.1rem 1.15rem;border:1px solid var(--rule);background:var(--white)}
+.doc strong{font-size:1.05rem}
+.doc span{color:var(--ink-soft);font-size:14px;line-height:1.45}
+.doc--study{background:var(--maroon-ink);color:#fff;border-color:transparent}
+.doc--study span{color:rgba(251,247,240,.75)}
+.doc--study:hover{background:var(--maroon)}
+.doc--audit:hover{border-color:var(--crimson);color:var(--crimson)}
+
+.list{margin:1rem 0 0;padding:0;list-style:none;display:grid;gap:0}
+.list li{padding:.85rem 0;border-top:1px solid var(--rule);color:var(--ink-soft)}
+.list li:last-child{border-bottom:1px solid var(--rule)}
+.list b{color:var(--ink)}
+
+.note{margin-top:1rem;background:var(--sand);border-left:3px solid var(--gold);
+  padding:1rem 1.1rem;border-radius:0 4px 4px 0;font-size:14.5px;color:var(--ink-soft)}
+.note b{color:var(--ink)}
+
+.back{display:inline-flex;align-items:center;min-height:48px;margin-top:1.4rem;
+  font-weight:700;color:var(--crimson);text-decoration:none}
+.back:hover{text-decoration:underline;text-underline-offset:3px}
+
+footer{margin-top:2rem;font-size:12.5px;color:var(--ink-muted);text-align:center}
+
+@media (max-width:640px){
+  .metrics,.links{grid-template-columns:1fr}
+  .top{align-items:flex-start}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="top">
+    <a href="index.html">← Playpen School</a>
+    <a href="audit-report.html">Full audit</a>
+  </div>
+
+  <header class="cover">
+    <div class="cover-in">
+      <p class="eyebrow">Report summary · September 2026</p>
+      <h1>The short version <em>of the work.</em></h1>
+      <p class="sub">Playpen’s existing site already held the school’s history, curriculum and campus. The redesign makes that information easier to find, lighter to load, and visible to search engines. Nothing below is a claim about traffic or enquiries. Those can only be measured after launch.</p>
+    </div>
+  </header>
+
+  <section class="block">
+    <h2>What changed</h2>
+    <p class="lede">Forty-eight pages were reorganised into fourteen. Related facts now sit together. Every old address still lands on the right new page. The crest, the school’s own words, and the school’s own photographs were kept.</p>
+    <div class="metrics">
+      <div class="metric">
+        <b>48 → 14</b>
+        <span>Pages</span>
+        <small>Nothing was deleted. Every fact from the old site has a documented new home.</small>
+      </div>
+      <div class="metric">
+        <b>48 → 3</b>
+        <span>Files before the homepage shows</span>
+        <small>The current homepage loads 24 stylesheets and 24 scripts. The new one uses three.</small>
+      </div>
+      <div class="metric">
+        <b>12.6 → 1.9 MB</b>
+        <span>Homepage download</span>
+        <small>Measured 16 September 2026, Lighthouse 13.4.1, mobile. Network requests: 93 → 19.</small>
+      </div>
+      <div class="metric">
+        <b>0 → 14</b>
+        <span>Pages Google can describe</span>
+        <small>The old homepage had no search summary. Each new page has its own.</small>
+      </div>
+    </div>
+    <p class="note"><b>Also measured that day.</b> Lighthouse mobile: performance 46 → 64, accessibility 82 → 98, best practices 77 → 100, SEO 92 → 100. The slowest visible part of the new homepage fell from 69.4 seconds to 5.6 seconds. Performance is still the weakest score, and the first fix after launch is the hero photograph.</p>
+  </section>
+
+  <section class="block">
+    <h2>Read the full documents</h2>
+    <p class="lede">This page is the summary. The case study explains the rebuild. The audit sets out each finding, the brand colours taken from the crest, and the five facts only the school can confirm.</p>
+    <div class="links">
+      <a class="doc doc--study" href="https://mangocasestudy.definedsolution.com/playpen-school.html">
+        <strong>Full case study</strong>
+        <span>The problem, what was built, what was kept, and the measured outcome.</span>
+      </a>
+      <a class="doc doc--audit" href="audit-report.html">
+        <strong>Full audit report</strong>
+        <span>Website and brand findings, side by side, written for the people who approve the work.</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>Still waiting on the school</h2>
+    <p class="lede">The preview is complete. It should not replace playpen.edu.bd until these are confirmed. All five were on the old site and could not be verified as still true.</p>
+    <ul class="list">
+      <li><b>Founding year.</b> The old site says 1977 and 1997, and both “48 years” and “49”.</li>
+      <li><b>Subject lists.</b> Twelve O Level and nine A Level subjects are published.</li>
+      <li><b>Phone numbers and emails.</b> Eleven numbers and eight addresses across five departments.</li>
+      <li><b>Admissions.</b> Which classes are open, and whether the two downloadable forms are current.</li>
+      <li><b>Named students.</b> Twelve students are named with results. The child protection policy requires consent on record.</li>
+    </ul>
+    <a class="back" href="index.html">Back to the school site</a>
+  </section>
+
+  <footer>
+    <p>Playpen School — report summary · September 2026<br>
+    Findings checked against playpen.edu.bd on 16 September 2026. Prepared by Defined Solution.</p>
+  </footer>
+
+</div>
+</body>
+</html>
