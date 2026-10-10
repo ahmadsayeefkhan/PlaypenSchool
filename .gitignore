@@ -14,3 +14,9 @@ desktop.ini
 
 # Local preview scratch
 _*.html
+
+# Dev-only component kit (python build/build.py --kit)
+site/_kit/
+
+# Screenshot tool output, if a relative path is ever mistyped (the QA tool lives in ../qa-tools)
+qa-tools/

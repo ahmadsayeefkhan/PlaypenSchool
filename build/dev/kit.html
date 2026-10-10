@@ -1,0 +1,375 @@
+---
+title: Component kit
+template: T05
+noindex: true
+eyebrow: Development only
+h1: Every inner-page <em>component</em>, rendered once.
+standfirst: This page is not published. It is built by python build/build.py --kit into site/_kit/ so that every component in css/pages.css can be seen at 390 px and 1366 px. The same snippets are in docs/COMPONENTS.md.
+---
+<section class="page-section" aria-labelledby="k-facts">
+  <div class="band">
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Fact strip</span><span class="sheet-rule__purpose">dl.fact-strip</span></div>
+    <h2 id="k-facts" class="section-title">Facts held side by side.</h2>
+    <dl class="fact-strip mt-m" data-reveal>
+      <div class="fact"><dt>Curriculum</dt><dd>Cambridge O Level, AS and A Level</dd></div>
+      <div class="fact"><dt>Classes</dt><dd>Playgroup to Class XII</dd></div>
+      <div class="fact"><dt>Campus</dt><dd>In use since 19 July 2018</dd></div>
+      <div class="fact"><dt>Section head</dt><dd>Mrs Sharmin Hoque<small>Vice Principal</small></dd></div>
+    </dl>
+  </div>
+</section>
+
+<section class="page-section page-section--tint" aria-labelledby="k-prose">
+  <div class="band">
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Prose</span><span class="sheet-rule__purpose">div.prose, 65ch</span></div>
+    <div class="layout">
+      <div class="layout__main">
+        <h2 id="k-prose" class="section-title">A reading column.</h2>
+        <div class="prose mt-m" data-reveal>
+          <p>Body text is Newsreader at 18 px (20 px from 1440), set to a measure of 65 characters. <a href="{{link:/admissions/faq/}}">A link in prose</a> has the gold underline that thickens on hover and focus.</p>
+          <h3>A third-level heading</h3>
+          <ul>
+            <li>Lists keep their gold markers</li>
+            <li>One idea to a line, in plain words</li>
+          </ul>
+          <ol>
+            <li>An ordered list numbers in the small sans</li>
+            <li>The second step</li>
+          </ol>
+          <p><strong>Bold</strong> is a weight of 500, never a shout.</p>
+        </div>
+      </div>
+      <div class="layout__aside layout__aside--sticky">
+        <div class="callout">
+          <span class="callout__label label">Aside</span>
+          <p>div.layout with a sticky .layout__aside.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="page-section" aria-labelledby="k-cards">
+  <div class="band">
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Chapter cards</span><span class="sheet-rule__purpose">ul.chapter-cards</span></div>
+    <h2 id="k-cards" class="section-title">Cards that are one link.</h2>
+    <div class="mt-m">
+      {{children:/learning/ template="T04"}}
+    </div>
+  </div>
+</section>
+
+<section class="page-section page-section--tint" aria-labelledby="k-stage">
+  <div class="band">
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Stage cards</span><span class="sheet-rule__purpose">ul.stage-cards</span></div>
+    <h2 id="k-stage" class="section-title">One school, four stages.</h2>
+    <ul class="stage-cards stage-cards--3 mt-m" data-reveal-group>
+      <li class="stage">
+        <figure class="plate"><div class="plate__frame">{{img src="media/learning-1" alt="Hundreds of young children in yellow shirts and blue headbands on the field in warm morning light." sizes="(min-width: 1024px) 22vw, (min-width: 560px) 45vw, 100vw"}}</div><figcaption class="plate__cap"><span class="plate__n">01</span>Elementary morning on the field, January 2026</figcaption></figure>
+        <p class="stage__n label">01</p>
+        <h3 class="stage__name display-m"><a href="{{link:/learning/elementary/}}">Elementary</a></h3>
+        <p class="stage__classes label">Playgroup, Nursery, KG I, KG II</p>
+        <p>The first classrooms. Admission by assessment; no uniform until KG I.</p>
+      </li>
+      <li class="stage">
+        <figure class="plate"><div class="plate__frame">{{img src="media/ascent-3" alt="Children in white uniforms reading at long tables in the school library." sizes="(min-width: 1024px) 22vw, (min-width: 560px) 45vw, 100vw"}}</div><figcaption class="plate__cap"><span class="plate__n">02</span>The library, 2024</figcaption></figure>
+        <p class="stage__n label">02</p>
+        <h3 class="stage__name display-m"><a href="{{link:/learning/junior/}}">Junior</a></h3>
+        <p class="stage__classes label">Classes I to III</p>
+        <p>Admission by a written test in English, Bengali and Mathematics, then an interview.</p>
+      </li>
+      <li class="stage">
+        <figure class="plate"><div class="plate__frame">{{img src="media/life-7" alt="A wide field of students in red with palm trees and the building behind." sizes="(min-width: 1024px) 22vw, (min-width: 560px) 45vw, 100vw"}}</div><figcaption class="plate__cap"><span class="plate__n">03</span>Annual Sports Day, the field, January 2026</figcaption></figure>
+        <p class="stage__n label">03</p>
+        <h3 class="stage__name display-m"><a href="{{link:/learning/middle/}}">Middle</a></h3>
+        <p class="stage__classes label">Classes IV to VII</p>
+        <p>Four years in two semesters each, with an examination at the end of every semester.</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="page-section" aria-labelledby="k-split">
+  <div class="band">
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Split and figures</span><span class="sheet-rule__purpose">div.split, figure.plate</span></div>
+    <div class="split split--reverse split--center">
+      <div class="split__text">
+        <h2 id="k-split" class="section-title">Text and a plate, side by side.</h2>
+        <div class="prose" data-reveal><p>Use split for text beside one figure. Reverse puts the figure first. The plate keeps its mount, its hairline and its numbered caption.</p></div>
+      </div>
+      <figure class="plate split__figure" data-reveal>
+        <div class="plate__frame">{{img src="media/ascent-3" alt="Children in white uniforms reading at long tables in the school library." sizes="(min-width: 900px) 38vw, 100vw"}}</div>
+        <figcaption class="plate__cap"><span class="plate__n">04</span>The library, 2024</figcaption>
+      </figure>
+    </div>
+  </div>
+  <div class="figure-band">
+    <figure class="plate plate--bleed" data-reveal>
+      <div class="plate__frame">{{img src="media/life-7" alt="A wide field of students in red with palm trees and the building behind." sizes="100vw"}}</div>
+      <figcaption class="plate__cap"><span class="plate__n">05</span>A full-bleed plate: .figure-band wraps figure.plate--bleed</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="page-section page-section--tint" aria-labelledby="k-quote">
+  <div class="band">
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Pull quote</span><span class="sheet-rule__purpose">figure.pull-quote</span></div>
+    <h2 id="k-quote" class="visually-hidden">Pull quote</h2>
+    <figure class="pull-quote" data-reveal>
+      <blockquote><p>Only a quotation that someone said or wrote, with its source, goes here.</p></blockquote>
+      <figcaption><cite>The person or document it came from</cite></figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="page-section" aria-labelledby="k-time">
+  <div class="band">
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Timeline</span><span class="sheet-rule__purpose">ol.timeline</span></div>
+    <h2 id="k-time" class="section-title">Dated entries on a rail.</h2>
+    <ol class="timeline mt-m" data-reveal-group>
+      <li class="timeline__item"><time class="timeline__date" datetime="2003">2003</time><div class="timeline__body"><h3 class="timeline__title">The first O Level candidate</h3><p>Sits the examination.</p></div></li>
+      <li class="timeline__item"><time class="timeline__date" datetime="2013">2013</time><div class="timeline__body"><h3 class="timeline__title">A Level classes begin</h3><p>The school completes the path from Playgroup to A Level.</p></div></li>
+      <li class="timeline__item"><time class="timeline__date timeline__date--sm" datetime="2018-07-19">19 July 2018</time><div class="timeline__body"><h3 class="timeline__title">The move to the new building</h3><p>The school moves into its own ten-storey building in Bashundhara.</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<section class="page-section page-section--tint" aria-labelledby="k-steps">
+  <div class="band">
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Process steps</span><span class="sheet-rule__purpose">ol.process, ol.process--row</span></div>
+    <h2 id="k-steps" class="section-title">Numbered steps.</h2>
+    <ol class="process mt-m" data-reveal-group>
+      <li class="process__step"><span class="process__n">01</span><div class="process__body"><h3>Call or visit.</h3><p>The vertical list takes any number of steps.</p></div></li>
+      <li class="process__step"><span class="process__n">02</span><div class="process__body"><h3>Collect the form.</h3><p>From the Front Office, or from the school's site.</p></div></li>
+    </ol>
+    <ol class="process process--row process--3 mt-l" data-reveal-group>
+      <li class="process__step"><span class="process__n">01</span><div class="process__body"><h3>Call.</h3><p>Row layout from 1024 px, for three to five steps.</p></div></li>
+      <li class="process__step"><span class="process__n">02</span><div class="process__body"><h3>Meet.</h3><p>The same markup, in columns.</p></div></li>
+      <li class="process__step"><span class="process__n">03</span><div class="process__body"><h3>Hear.</h3><p>The result comes by telephone.</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<section class="page-section" aria-labelledby="k-acc">
+  <div class="band">
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Accordion</span><span class="sheet-rule__purpose">details.accordion__item</span></div>
+    <h2 id="k-acc" class="section-title">Questions and answers.</h2>
+    <div class="mt-m" id="k-acc-scope" data-accordion-scope>
+      <div class="accordion__controls"><button class="link link--btn" type="button" data-accordion-toggle="k-acc-scope">Expand all</button></div>
+      <div class="accordion">
+        <details class="accordion__item" id="k-q1">
+          <summary class="accordion__summary"><h3 class="accordion__q">The first question?</h3><span class="accordion__icon" aria-hidden="true"></span></summary>
+          <div class="accordion__body"><p>The answer opens under the question. Each item can be linked by its id: #k-q1 opens it.</p></div>
+        </details>
+        <details class="accordion__item" id="k-q2">
+          <summary class="accordion__summary"><h3 class="accordion__q">The second question?</h3><span class="accordion__icon" aria-hidden="true"></span></summary>
+          <div class="accordion__body"><p>Keyboard: Tab to the question, Enter or Space to open.</p></div>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="page-section page-section--tint" aria-labelledby="k-table">
+  <div class="band">
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Tables</span><span class="sheet-rule__purpose">div.table-wrap > table.table</span></div>
+    <h2 id="k-table" class="section-title">A table that stacks on a phone.</h2>
+    <div class="table-wrap mt-m" data-reveal>
+      <table class="table table--stack">
+        <caption>Entry points</caption>
+        <thead><tr><th scope="col">Stage</th><th scope="col">Classes</th><th scope="col">How the child is assessed</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Elementary</th><td data-label="Classes">Playgroup to KG II</td><td data-label="How the child is assessed">An assessment for Playgroup and Nursery; a written test from KG I</td></tr>
+          <tr><th scope="row">Junior</th><td data-label="Classes">Class I to III</td><td data-label="How the child is assessed">A written test, then an interview</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="page-section" aria-labelledby="k-call">
+  <div class="band">
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Callouts and contact cards</span><span class="sheet-rule__purpose">div.callout, ul.contact-cards</span></div>
+    <h2 id="k-call" class="section-title">Notes and numbers.</h2>
+    <div class="stack mt-m">
+      <div class="callout" data-reveal><span class="callout__label label">Note</span><p>A plain note, with a gold edge.</p></div>
+      <div class="callout callout--important" data-reveal><span class="callout__label label">Important</span><p>The same, with a maroon edge, for what must not be missed.</p></div>
+    </div>
+    <ul class="contact-cards mt-l" data-reveal-group>
+      <li class="contact-card"><h3>Playgroup to Class I</h3><p>{{phone:pg-1 class="contact-card__tel"}}</p><p>Admissions line, {{hours}}</p></li>
+      <li class="contact-card"><h3>Classes II to VI</h3><p>{{phone:ii-vi class="contact-card__tel"}}</p><p>Admissions line, {{hours}}</p></li>
+      <li class="contact-card"><h3>Classes VII to XII</h3><p>{{phone:vii-xii class="contact-card__tel"}}</p><p>Admissions line, {{hours}}</p></li>
+    </ul>
+    <div class="mt-l">{{phones:all}}</div>
+  </div>
+</section>
+
+<section class="page-section page-section--tint" aria-labelledby="k-rows">
+  <div class="band" data-filter-scope>
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">List rows and filters</span><span class="sheet-rule__purpose">ul.rows, ul.chips</span></div>
+    <h2 id="k-rows" class="section-title">Dated items.</h2>
+    <ul class="chips mt-m" aria-label="Filter by kind">
+      <li><button class="chip" type="button" data-filter="all" aria-pressed="true">All</button></li>
+      <li><button class="chip" type="button" data-filter="notice" aria-pressed="false">Notices</button></li>
+      <li><button class="chip" type="button" data-filter="event" aria-pressed="false">Events</button></li>
+    </ul>
+    <p class="chips__status" role="status" aria-live="polite"></p>
+    <ul class="rows">
+      <li class="row" data-tags="notice">
+        <time class="row__date" datetime="2026-10-22"><span class="row__day">22</span><span>Oct 2026</span></time>
+        <div class="row__body"><p class="row__kicker label">Notice</p><h3 class="row__title"><a href="{{link:/notices/}}">A notice with a date</a></h3><p class="row__text">One line of summary, in the sans-free serif the home uses.</p></div>
+      </li>
+      <li class="row" data-tags="event">
+        <time class="row__date" datetime="2026-11-18"><span class="row__day">18</span><span>Nov 2026</span></time>
+        <div class="row__body"><p class="row__kicker label">Event</p><h3 class="row__title"><a href="{{link:/events/}}">An event with a date</a></h3><p class="row__text">The whole row is one link.</p></div>
+      </li>
+    </ul>
+    <p class="filter-empty">Nothing matches that filter.</p>
+  </div>
+</section>
+
+<section class="page-section" aria-labelledby="k-art">
+  <div class="band">
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Article and event box</span><span class="sheet-rule__purpose">.article__meta, .event-box</span></div>
+    <div class="layout">
+      <article class="layout__main">
+        <p class="article__meta"><span>News</span><time datetime="2026-01-24">24 January 2026</time></p>
+        <h2 id="k-art" class="section-title mt-m">An article headline.</h2>
+        <div class="article__body prose" data-reveal><p>The body of a news item or event page is a prose column. Dates are absolute.</p></div>
+      </article>
+      <aside class="layout__aside">
+        <div class="event-box" data-reveal>
+          <h2>Details</h2>
+          <dl><dt>Date</dt><dd>24 January 2026</dd><dt>Venue</dt><dd>The school field</dd><dt>For</dt><dd>Classes I to XII</dd></dl>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="page-section page-section--tint" aria-labelledby="k-gal">
+  <div class="band">
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Gallery and lightbox</span><span class="sheet-rule__purpose">ul.gallery[data-gallery]</span></div>
+    <h2 id="k-gal" class="section-title">Photographs, opened in place.</h2>
+    <ul class="gallery mt-m" data-gallery>
+      <li class="gallery__item"><a class="gallery__link" href="{{asset:media/life-1-1440.jpg}}" data-lightbox data-caption="Annual Sports Day from above, January 2026"><span class="gallery__frame">{{img src="media/life-1" alt="Students in red kneeling in a formation on the white-lined field, seen from above." sizes="(min-width: 1024px) 30vw, (min-width: 560px) 45vw, 100vw" widths="960"}}</span></a><p class="gallery__cap">Annual Sports Day from above, January 2026</p></li>
+      <li class="gallery__item"><a class="gallery__link" href="{{asset:media/life-8-1200.jpg}}" data-lightbox data-caption="The main stair, 2024"><span class="gallery__frame">{{img src="media/life-8" alt="A red-tiled staircase descending between white walls and metal railings." sizes="(min-width: 1024px) 30vw, (min-width: 560px) 45vw, 100vw" widths="720"}}</span></a><p class="gallery__cap">The main stair, 2024</p></li>
+      <li class="gallery__item"><a class="gallery__link" href="{{asset:media/life-7-1440.jpg}}" data-lightbox data-caption="Annual Sports Day, the field, January 2026"><span class="gallery__frame">{{img src="media/life-7" alt="A wide field of students in red with palm trees and the building behind." sizes="(min-width: 1024px) 30vw, (min-width: 560px) 45vw, 100vw" widths="960"}}</span></a><p class="gallery__cap">Annual Sports Day, the field, January 2026</p></li>
+    </ul>
+  </div>
+</section>
+
+<section class="page-section" aria-labelledby="k-people">
+  <div class="band">
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">People</span><span class="sheet-rule__purpose">ul.people</span></div>
+    <h2 id="k-people" class="section-title">Names, roles and the classes they look after.</h2>
+    <ul class="people mt-m" data-reveal-group>
+      <li class="person"><p class="person__role">Principal</p><h3 class="person__name">A name</h3><p class="person__scope">The whole school</p></li>
+      <li class="person"><p class="person__role">Vice Principal</p><h3 class="person__name">Another name</h3><p class="person__scope">Playgroup to Class V</p></li>
+      <li class="person"><p class="person__role">Teacher-in-Charge</p><h3 class="person__name">A third name</h3><p class="person__scope">Class II to III</p></li>
+    </ul>
+  </div>
+</section>
+
+<section class="page-section page-section--tint" aria-labelledby="k-form">
+  <div class="band">
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Form</span><span class="sheet-rule__purpose">form.page-form[data-prototype-form]</span></div>
+    <h2 id="k-form" class="section-title">A prototype form.</h2>
+    <p class="form-note mt-m">This form is a prototype. It checks what you type, then shows the school's numbers. Nothing is sent.</p>
+    <form class="page-form" data-prototype-form novalidate action="#" method="post">
+      <div class="form-row form-row--2">
+        <div class="field"><label for="kf-name">Parent's name</label><input id="kf-name" name="name" type="text" autocomplete="name" required aria-describedby="kf-name-err"><p id="kf-name-err" class="field__error" aria-live="polite"></p></div>
+        <div class="field"><label for="kf-phone">Phone</label><input id="kf-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required aria-describedby="kf-phone-err"><p id="kf-phone-err" class="field__error" aria-live="polite"></p></div>
+      </div>
+      <div class="field"><label for="kf-class">Child's class of entry</label><select id="kf-class" name="class" required aria-describedby="kf-class-err"><option value="">Choose a class</option><option>Playgroup</option><option>Nursery</option><option>KG I</option></select><p id="kf-class-err" class="field__error" aria-live="polite"></p></div>
+      <fieldset class="field-group"><legend>How should we reply?</legend>
+        <label class="choice"><input type="radio" name="reply" value="phone"> By phone</label>
+        <label class="choice"><input type="radio" name="reply" value="visit"> I would like to visit</label>
+      </fieldset>
+      <div class="field"><label for="kf-msg">Message (optional)</label><textarea id="kf-msg" name="message" rows="4"></textarea></div>
+      <button class="btn btn--primary" type="submit"><span class="btn__label">Send enquiry</span></button>
+    </form>
+    <div class="form-notice" role="status"><p class="form-notice__text"></p>{{phones}}</div>
+    <noscript><div class="form-note"><p>This form needs JavaScript. Please call the line for your child's section:</p>{{phones}}</div></noscript>
+  </div>
+</section>
+
+<section class="page-section" aria-labelledby="k-misc">
+  <div class="band">
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Small lists</span><span class="sheet-rule__purpose">dl.dl, ul.doc-list, ul.checklist, ul.tag-list</span></div>
+    <h2 id="k-misc" class="section-title">The smaller parts.</h2>
+    <div class="layout mt-m">
+      <div class="layout__main">
+        <dl class="dl" data-reveal>
+          <div class="dl__row"><dt>Term</dt><dd>A definition, set on a hairline row.</dd></div>
+          <div class="dl__row"><dt>Another term</dt><dd>Its definition.</dd></div>
+        </dl>
+        <ul class="doc-list mt-l" data-reveal>
+          <li>{{ext href="https://playpen.edu.bd/admission-procedure/" label="Admission form"}}<span class="doc-list__meta">PDF</span></li>
+        </ul>
+      </div>
+      <div class="layout__aside">
+        <ul class="checklist" data-reveal><li>A checklist item</li><li>Another item</li></ul>
+        <ul class="tag-list mt-m" data-reveal><li>Functional English</li><li>Fine motor skills</li><li>Group work</li></ul>
+        <ul class="link-list mt-m"><li><a class="link link--arrow" href="{{link:/admissions/faq/}}">A link with an arrow</a></li></ul>
+      </div>
+    </div>
+    <nav class="pager mt-l" aria-label="Pages in this set">
+      <a class="pager__link pager__link--prev" href="{{link:/learning/elementary/}}"><span class="pager__label">Previous</span><span class="pager__title">Elementary School</span></a>
+      <a class="pager__link pager__link--next" href="{{link:/learning/middle/}}"><span class="pager__label">Next</span><span class="pager__title">Middle School</span><span class="pager__sub">Classes IV to VII</span></a>
+    </nav>
+  </div>
+</section>
+
+<section class="page-section" aria-labelledby="k-story">
+  <div class="band">
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Story pages</span><span class="sheet-rule__purpose">.story, .chapter-nav, .story-chapter</span></div>
+    <h2 id="k-story" class="visually-hidden">Story pages</h2>
+    <div class="story">
+      <nav class="chapter-nav" aria-label="Chapters of this example">
+        <ol>
+          <li><a href="#c-one">The first chapter</a></li>
+          <li><a href="#c-two">The second chapter</a></li>
+          <li><a href="#c-three">A third chapter with a longer name</a></li>
+        </ol>
+      </nav>
+      <div class="story__chapters">
+        <section class="story-chapter" id="c-one" aria-labelledby="c-one-h">
+          <h2 id="c-one-h" class="section-title">The first chapter.</h2>
+          <div class="prose mt-m" data-reveal><p>A long page is cut into chapters. The index follows the chapter on screen: a sticky list on the left from 1024 px, a scrolling row under the header on a phone.</p><p>Each chapter is a section with the class story-chapter, an id for the index to point at, and a heading.</p></div>
+        </section>
+        <section class="story-chapter" id="c-two" aria-labelledby="c-two-h">
+          <h2 id="c-two-h" class="section-title">The second chapter.</h2>
+          <div class="prose mt-m" data-reveal><p>The class story-chapter is for story pages. The home's own scene uses a class called chapter, which hides and resizes its blocks: never use that one on an inner page.</p></div>
+        </section>
+        <section class="story-chapter" id="c-three" aria-labelledby="c-three-h">
+          <h2 id="c-three-h" class="section-title">A third chapter.</h2>
+          <div class="prose mt-m" data-reveal><p>The last chapter has no rule under it.</p></div>
+        </section>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="page-section is-night" aria-labelledby="k-night">
+  <div class="band">
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Night section</span><span class="sheet-rule__purpose">section.page-section.is-night</span></div>
+    <h2 id="k-night" class="section-title">The same parts on the dark ground.</h2>
+    <dl class="fact-strip mt-m"><div class="fact"><dt>Curriculum</dt><dd>Cambridge</dd></div><div class="fact"><dt>Classes</dt><dd>Playgroup to XII</dd></div></dl>
+    <div class="prose mt-m"><p>Links, rules, numbers and labels switch to the gold of the home's ledger.</p></div>
+  </div>
+</section>
+
+<section class="page-section" aria-labelledby="wn-title">
+  <div class="band where-next">
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Routes</span></div>
+    <h2 id="wn-title" class="where-next__title">Where next?</h2>
+    <div class="where-next__grid where-next--3">
+      <div class="where-next__col"><h3>New families</h3><ul><li><a class="link" href="{{link:/admissions/visit/}}">Book a visit</a></li><li><a class="link" href="{{link:/admissions/how-to-apply/}}">How to apply</a></li></ul></div>
+      <div class="where-next__col"><h3>Current parents</h3><ul><li><a class="link" href="{{link:/notices/}}">Notices</a></li></ul></div>
+      <div class="where-next__col"><h3>Teachers</h3><ul><li><a class="link" href="{{link:/about/careers/}}">Careers at Playpen</a></li></ul></div>
+    </div>
+  </div>
+</section>
+
+{{cta}}

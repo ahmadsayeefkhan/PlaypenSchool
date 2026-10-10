@@ -1,0 +1,8 @@
+# Photographs cleared for public use
+#
+# docs/image-catalogue.md marks the frames that show identifiable children (or lettering the site must not repeat).
+# build/build.py refuses to put such a frame on an inner page, and build/check.py reports it, until the school has
+# agreed IN WRITING and the stem is listed here, one per line (for example: media/learning-2).
+#
+# Only the coordinator edits this file, and only after the school's written consent. Page agents never do.
+# Lines starting with # are comments.

@@ -1,0 +1,24 @@
+---
+title: Search
+template: T05
+noindex: true
+standfirst: Search the pages of this website. Type a word or two, such as fees, uniform, A Level or transport.
+---
+<section class="page-section" aria-labelledby="search-h">
+  <div class="band">
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Search</span></div>
+    <h2 id="search-h" class="visually-hidden">Search this website</h2>
+    <div data-search data-index="{{asset:search-index.json}}">
+      <form class="search-form" role="search" action="{{link:/search/}}" method="get">
+        <div class="field">
+          <label for="q">Search the website</label>
+          <input id="q" name="q" type="search" autocomplete="off">
+        </div>
+        <button class="btn btn--primary" type="submit"><span class="btn__label">Search</span></button>
+      </form>
+      <p class="search-status" role="status" aria-live="polite"></p>
+      <ol class="search-results"></ol>
+      <noscript><p class="form-note">Search needs JavaScript. Every page of the website is listed on the <a class="link" href="{{link:/sitemap/}}">sitemap</a>.</p></noscript>
+    </div>
+  </div>
+</section>

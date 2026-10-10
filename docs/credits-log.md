@@ -1,0 +1,144 @@
+# Credits log
+
+One line per photograph used on the site that is not already in `playpen-school-v1/docs/CREDITS.md`, and one line for each use of a graded photograph on an inner page. Append only; never rewrite this file. `python build/images.py ... --credit ... --source ...` appends a line for you.
+
+All photographs belong to The Playpen School (taken by the school's photographers or posted by the school on its website). They are used here with the school's knowledge for its own website.
+
+- 2026-10-11  media/ground-1  /about/ hero plate. Source: playpen.edu.bd/wp-content/uploads/2021/10/ABOUT-OUR-CAMPUS-1ST-PIC-1.jpg (see CREDITS.md). Foundation.
+- 2026-10-11  media/ascent-1  /about/ split figure. Source: playpen.edu.bd/wp-content/uploads/2024/03/DSC01262.jpg (see CREDITS.md). Foundation.
+- 2026-10-11  media/learning-1  /learning/elementary/ split figure. Source: playpen.edu.bd/wp-content/uploads/2026/02/PXL_20260131_033348127-scaled.jpg (see CREDITS.md). Foundation.
+- 2026-10-11  media/menu-1..6  the menu previews on every page (same set as the home). Foundation.
+- 2026-10-11  site/assets/img/elementary-hero-*  credit: The Playpen School  source: playpen.edu.bd/wp-content/uploads/2026/02/PXL_20260131_033348127-scaled.jpg (wide crop of the frame the home uses as learning-1)
+- 2026-10-11  media/ascent-5  /about/ hero plate (replaces media/ground-1, which stays on the home). Source: playpen.edu.bd/wp-content/uploads/2024/03/DSC01243.jpg (see CREDITS.md). Foundation, round 2.
+- 2026-10-11  media/ground-1 and media/learning-1: no longer used on /about/ and /learning/elementary/ (the pages now open on media/ascent-5 and img/elementary-hero, so the first photograph is not the home's). Foundation, round 2.
+- 2026-10-11  site/assets/img/sl-hurdles-hero-*  credit: The Playpen School  source: playpen.edu.bd/wp-content/uploads/2026/02/DSC01394-scaled.jpg (album Annual Sports Day 2026). schoollife
+- 2026-10-11  site/assets/img/sl-clay-hero-*  credit: The Playpen School  source: playpen.edu.bd/wp-content/uploads/2023/08/DSC00695-scaled.jpg. schoollife
+- 2026-10-11  site/assets/img/sl-boishakh-hero-*  credit: The Playpen School  source: playpen.edu.bd/wp-content/uploads/2025/04/DSC02338-scaled.jpg (album POHELA BOISHAKH 1432). schoollife
+- 2026-10-11  site/assets/img/admissions-stairs-*  credit: The Playpen School  source: playpen.edu.bd/wp-content/uploads/2024/03/DSC01235.jpg (wide crop; the home's media/life-8 is the 4:5 crop of the same frame)
+- 2026-10-11  site/assets/img/sl-street-hero-*  credit: The Playpen School  source: playpen.edu.bd/wp-content/uploads/2024/03/DSC03968.jpg. schoollife
+- 2026-10-11  site/assets/img/admissions-atrium-*  credit: The Playpen School  source: playpen.edu.bd/wp-content/uploads/2024/03/DSC01290.jpg (wide crop; the menu's media/menu-2 is the 16:10 crop of the same frame)
+- 2026-10-11  site/assets/img/admissions-terrace-*  credit: The Playpen School  source: playpen.edu.bd/wp-content/uploads/2024/03/DSC01294.jpg (wide crop)
+- 2026-10-11  site/assets/img/admissions-entrance-*  credit: The Playpen School  source: playpen.edu.bd/wp-content/uploads/2024/03/DSC03968.jpg (portrait crop on the crest)
+- 2026-10-11  site/assets/img/admissions-lawn-*  credit: The Playpen School  source: playpen.edu.bd/wp-content/uploads/2023/05/319327738_561026345838393_5377673549009714948_n.jpg (Facebook export; same frame as img/admission-1.jpg)
+- 2026-10-11  site/assets/img/sl-race-wide-*  credit: The Playpen School  source: playpen.edu.bd/wp-content/uploads/2023/04/DSC06193-scaled.jpg. schoollife
+- 2026-10-11  site/assets/img/sl-models-*  credit: The Playpen School  source: playpen.edu.bd/wp-content/uploads/2023/08/IMG_20221105_095641-scaled.jpg. schoollife
+- 2026-10-11  site/assets/img/sl-tiger-mask-*  credit: The Playpen School  source: playpen.edu.bd/wp-content/uploads/2025/04/DSC02586-scaled.jpg (album POHELA BOISHAKH 1432). schoollife
+- 2026-10-11  site/assets/img/learning-terrace-*  credit: The Playpen School  source: playpen.edu.bd/wp-content/uploads/2024/03/DSC01294.jpg
+- 2026-10-11  site/assets/img/learning-atrium-*  credit: The Playpen School  source: playpen.edu.bd/wp-content/uploads/2024/03/DSC01290.jpg
+- 2026-10-11  site/assets/img/about-history-crest-*  credit: The Playpen School  source: playpen.edu.bd/wp-content/uploads/2024/03/DSC03968.jpg
+- 2026-10-11  site/assets/img/learning-stair-*  credit: The Playpen School  source: playpen.edu.bd/wp-content/uploads/2024/03/DSC01235.jpg
+- 2026-10-11  site/assets/img/about-leadership-planter-*  credit: The Playpen School  source: playpen.edu.bd/wp-content/uploads/2024/03/DSC01278.jpg
+- 2026-10-11  site/assets/img/about-campus-atrium-*  credit: The Playpen School  source: playpen.edu.bd/wp-content/uploads/2024/03/DSC01290.jpg
+- 2026-10-11  site/assets/img/about-campus-terrace-*  credit: The Playpen School  source: playpen.edu.bd/wp-content/uploads/2024/03/DSC01294.jpg
+- 2026-10-11  site/assets/img/about-safeguarding-stairs-*  credit: The Playpen School  source: playpen.edu.bd/wp-content/uploads/2024/03/DSC01235.jpg
+- 2026-10-11  site/assets/img/about-campus-facade-*  credit: The Playpen School  source: playpen.edu.bd/wp-content/uploads/2021/01/IMG_20210105_125446.jpg
+- 2026-10-11  site/assets/img/community-parents-hero-*  credit: The Playpen School  source: playpen.edu.bd/wp-content/uploads/2024/03/DSC03968.jpg (community group, /community/parents/ hero)
+- 2026-10-11  site/assets/img/community-alumni-hero-*  credit: The Playpen School  source: playpen.edu.bd/wp-content/uploads/2024/03/DSC01235.jpg (community group, /community/alumni/ hero)
+- 2026-10-11  site/assets/img/gal-sports-march-*  credit: The Playpen School  source: playpen.edu.bd/wp-content/uploads/2026/02/DSC00515-scaled.jpg (community group, /gallery/)
+- 2026-10-11  site/assets/img/gal-boishakh-tiger-*  credit: The Playpen School  source: playpen.edu.bd/wp-content/uploads/2025/04/DSC02586-scaled.jpg (community group, /gallery/)
+- 2026-10-11  site/assets/img/gal-grad-hall-*  credit: The Playpen School  source: playpen.edu.bd/wp-content/uploads/2025/07/DSC06075-scaled.jpg, cropped to the stage and the graduates' backs (community group, /gallery/)
+- 2026-10-11  site/assets/img/gal-art-clay-*  credit: The Playpen School  source: playpen.edu.bd/wp-content/uploads/2023/08/DSC00695-scaled.jpg (community group, /gallery/)
+- 2026-10-11  site/assets/img/gal-art-fort-*  credit: The Playpen School  source: playpen.edu.bd/wp-content/uploads/2023/08/DSC00696-scaled.jpg (community group, /gallery/)
+- 2026-10-11  site/assets/img/gal-art-garden-*  credit: The Playpen School  source: playpen.edu.bd/wp-content/uploads/2023/08/IMG_20221105_095641-scaled.jpg (community group, /gallery/)
+- 2026-10-11  site/assets/img/gal-atrium-*  credit: The Playpen School  source: playpen.edu.bd/wp-content/uploads/2024/03/DSC01290.jpg (community group, /gallery/)
+- 2026-10-11  site/assets/img/gal-planter-*  credit: The Playpen School  source: playpen.edu.bd/wp-content/uploads/2024/03/DSC01278.jpg (community group, /gallery/)
+- 2026-10-11  site/assets/img/gal-terrace-*  credit: The Playpen School  source: playpen.edu.bd/wp-content/uploads/2024/03/DSC01294.jpg (community group, /gallery/)
+- 2026-10-11  img/about-playpen.jpg  /contact/ "Find the school" plate (the building from the playground). Source: playpen.edu.bd/wp-content/uploads/2021/06/ABOUT-PLAYPEN-1.jpg (media inventory: 2021-06_ABOUT-PLAYPEN-1.jpg); web copy 1024 x 650, people: none. contact-legal.
+- 2026-10-11  site/assets/img/about-careers-models-*  credit: The Playpen School  source: playpen.edu.bd/wp-content/uploads/2023/08/DSC00695-scaled.jpg
+- 2026-10-11  media/life-7  /admissions/starting-at-playpen/ split plate. Source: playpen.edu.bd/wp-content/uploads/2026/02/DSC09150-scaled.jpg (see CREDITS.md). admissions group.
+- 2026-10-11  media/life-0  /about/campus/ plate (The courtyard on Pohela Boishakh, April 2025). Source: playpen.edu.bd/wp-content/uploads/2025/04/DSC02338-scaled.jpg (see CREDITS.md). about group.
+- 2026-10-11  media/swatch-4  /about/campus/ plate (Glassware on a laboratory bench, September 2024). Source: playpen.edu.bd/wp-content/uploads/2024/09/DSC06552.jpg (see CREDITS.md). about group.
+- 2026-10-11  media/ascent-3  /about/campus/ plate (The library, 2024). Source: playpen.edu.bd/wp-content/uploads/2024/10/DSC06378.jpg (see CREDITS.md). about group.
+- 2026-10-11  media/ascent-4  /about/campus/ plate (The multipurpose hall, December 2024). Source: playpen.edu.bd/wp-content/uploads/2024/12/DSC03293-scaled.jpg (see CREDITS.md). about group.
+- 2026-10-11  img/about-playpen.jpg  /about/history/ plate (The building from the lawn, 2021). Source: the school's web copy of playpen.edu.bd/wp-content/uploads/2021/06/ABOUT-PLAYPEN-1.jpg. about group.
+- 2026-10-11  media/life-1 (hero), media/life-0, media/life-4, media/life-6, media/news-2, media/ascent-4, media/menu-4, media/life-7 (gallery)  /school-life/. Source: playpen.edu.bd/wp-content/uploads/ (see CREDITS.md). schoollife.
+- 2026-10-11  media/life-7, img/campus-1.jpg  /school-life/sports/ (plates). Source: see CREDITS.md and the previous site's campus page. schoollife.
+- 2026-10-11  media/life-4, media/life-6, media/news-2, media/menu-4  /school-life/clubs-and-activities/ and /school-life/culture-and-service/ (plates). Source: see CREDITS.md. schoollife.
+- 2026-10-11  media/ascent-3 (hero), img/examination-2.jpg, media/life-8  /school-life/school-day/ and /school-life/transport-and-safety/ (plates). Source: playpen.edu.bd/wp-content/uploads/2024/10/DSC06378.jpg (ascent-3), 2024/03/DSC01235.jpg (life-8); examination-2 from the previous site. schoollife.
+- 2026-10-11  correction (schoollife): media/life-6 is used on /school-life/clubs-and-activities/ only; /school-life/culture-and-service/ uses media/life-4, media/news-2, media/menu-4 and img/sl-tiger-mask. schoollife.
+- 2026-10-11  media/ascent-4  /learning/ hero plate (the hall during the NASA astronaut's visit). Source: playpen.edu.bd/wp-content/uploads/2024/12/DSC03293-scaled.jpg (see CREDITS.md). Learning group.
+- 2026-10-11  media/learning-1  /learning/ stage card (Elementary). Source: playpen.edu.bd/wp-content/uploads/2026/02/PXL_20260131_033348127-scaled.jpg (see CREDITS.md). Learning group.
+- 2026-10-11  media/swatch-4  /learning/ stage card (Middle) and /learning/middle/ split figure (laboratory glassware). Source: playpen.edu.bd/wp-content/uploads/2024/09/DSC06552.jpg (see CREDITS.md). Learning group.
+- 2026-10-11  img/campus-3.jpg  /learning/ stage card (Junior; children on the school field). Source: previous site (site/assets/img, the school's own photograph). Learning group.
+- 2026-10-11  img/examination-1.jpg  /learning/ stage card (Senior) and /learning/senior/ hero plate (an examination hall seen from above). Source: previous site (site/assets/img, the school's own photograph). Learning group.
+- 2026-10-11  media/life-7  /learning/junior/ hero plate (the field, Annual Sports Day, January 2026). Source: playpen.edu.bd/wp-content/uploads/2026/02 album, see CREDITS.md. Learning group.
+- 2026-10-11  media/ascent-1  /learning/student-support/ hero plate (the courtyard from above). Source: playpen.edu.bd/wp-content/uploads/2024/03/DSC01262.jpg (see CREDITS.md). Learning group.
+- 2026-10-11  img/learning-atrium, img/learning-terrace, img/learning-stair  /learning/middle/, /learning/a-level/ and /learning/cambridge-pathway/ hero plates; logged above by build/images.py. Learning group.
+- 2026-10-11  site/assets/img/sl-displays-*  credit: The Playpen School  source: playpen.edu.bd/wp-content/uploads/2026/02/DSC00516-scaled.jpg (album Annual Sports Day 2026, Class I-XII). schoollife
+- 2026-10-11  img/sl-hurdles-hero: made, then withdrawn and deleted (a runner's face was too clear to call the frame 'distance'); /school-life/sports/ opens on img/sl-race-wide instead. schoollife.
+- 2026-10-11  media/life-1  /events/ hero plate, /news/ lead card, /gallery/ (Annual Sports Day album). Source: playpen.edu.bd/wp-content/uploads/2026/02/DSC00548-scaled.jpg (see CREDITS.md). community.
+- 2026-10-11  media/life-7  /community/parents/ figure band, /gallery/ (Annual Sports Day album). Source: playpen.edu.bd/wp-content/uploads/2026/02/DSC09150-scaled.jpg (see CREDITS.md). community.
+- 2026-10-11  media/life-0  /news/ hero plate, /gallery/ (Pohela Boishakh 1432 album). Source: playpen.edu.bd/wp-content/uploads/2025/04/DSC02338-scaled.jpg (see CREDITS.md). community.
+- 2026-10-11  media/news-1, media/news-2  /gallery/ (Sports Day and Pohela Boishakh albums); media/news-2 also on /news/ (Pohela Boishakh card). Sources: PXL_20260129_074604714-scaled.jpg and DSC02346-scaled.jpg (see CREDITS.md). community.
+- 2026-10-11  media/ascent-4  /gallery/ hero plate, /news/ (the astronaut's visit card). Source: playpen.edu.bd/wp-content/uploads/2024/12/DSC03293-scaled.jpg (see CREDITS.md). community.
+- 2026-10-11  media/life-6, img/hero-students-2.jpg  /gallery/ (Visits and ceremonies album). Sources: 2024/12/DSC03721-scaled.jpg and the school's old Student Life page (see CREDITS.md). community.
+- 2026-10-11  media/ground-1-alt, media/ascent-1, media/ascent-5, img/elementary-hero  /gallery/ (the building and Sports Day albums). Sources as in CREDITS.md and the Foundation's lines above. community.
+- 2026-10-11  img/gal-grad-hall  also on /news/ (Graduation card), /community/alumni/ (night section plate) and /events/ (programme figure uses img/gal-sports-march). Sources as logged by build/images.py above. community.
+- 2026-10-11  img/gal-sports-march  also on /events/ (programme figure) and /gallery/; img/gal-grad-hall as logged above. community.
+- 2026-10-11  correction (schoollife): /school-life/school-day/ uses img/examination-1.jpg (not examination-2); /school-life/sports/ opens on img/sl-displays, with img/sl-race-wide, img/campus-1 and media/life-7 as plates. schoollife.
+- 2026-10-11  media/ascent-3  removed from /about/campus/ in review (the frame shows several children's faces clearly); the earlier line above no longer applies. about group review.
+- 2026-10-11  site/assets/img/sl-courtyard-hero-*  credit: The Playpen School  source: playpen.edu.bd/wp-content/uploads/2024/03/DSC01262.jpg. schoollife
+- 2026-10-11  img/gal-boishakh-tiger  /learning/cambridge-pathway/ plate (the Bengali chapter; folk art at Pohela Boishakh 1432). Source: playpen.edu.bd/wp-content/uploads/2025/04/DSC02586-scaled.jpg (see the line logged for this crop above). Learning group (review).
+- 2026-10-11  media/news-1  /school-life/sports/ plate (Athletes on the track, Annual Sports Day, January 2026). Source: playpen.edu.bd/wp-content/uploads/2026/02/PXL_20260129_074604714-scaled.jpg (see CREDITS.md). schoollife review.
+- 2026-10-11  correction (schoollife review): media/life-7 is no longer used on /school-life/sports/ (replaced by media/news-1); it stays in the /school-life/ gallery. The sl-hurdles-hero line above is stale: that crop was deleted and is not on any page.
+- 2026-10-11  correction (schoollife review): /school-life/school-day/ no longer uses media/ascent-3 (it shows several children's faces); its hero is img/sl-courtyard-hero (logged above, source DSC01262.jpg) and its plate is img/examination-1.jpg (not examination-2.jpg). schoollife review.
+- 2026-10-11  img/gal-boishakh-tiger  also on /news/ (Pohela Boishakh 1432 card, replacing media/news-2 there; media/news-2 stays in the /gallery/ album). Source as logged above. community review.
+
+- 2026-10-11  INTEGRATION RECONCILIATION (coordinator). The lines above were appended by six groups while pages changed, so a few are stale; they stay (append only) and this block is the current state. Corrections that supersede earlier lines: media/ascent-3 is on no inner page (removed from /about/campus/ and /school-life/school-day/ in review; it remains on the home and as the menu preview media/menu-3); /about/ opens on media/ascent-5 and /learning/elementary/ on img/elementary-hero (media/ground-1 and media/learning-1 stay on the home and the /learning/ stage card); /school-life/school-day/ uses img/sl-courtyard-hero and img/examination-1 (not examination-2); /school-life/sports/ opens on img/sl-displays with media/news-1, img/sl-race-wide and img/campus-1 (media/life-7 is no longer there); img/sl-hurdles-hero was deleted and is on no page; media/menu-1..6 are the six menu previews on every page.
+- 2026-10-11  INTEGRATION RECONCILIATION: every photograph on an inner page, by the stems found in the built HTML at integration (the menu previews media/menu-1..6 on every page and the home-only frames are left out). All belong to The Playpen School; each stem has a credit line above or in playpen-school-v1/docs/CREDITS.md.
+  - img/about-campus-atrium: /about/campus/
+  - img/about-campus-facade: /about/campus/
+  - img/about-campus-terrace: /about/campus/
+  - img/about-careers-models: /about/careers/
+  - img/about-history-crest: /about/history/
+  - img/about-leadership-planter: /about/leadership/
+  - img/about-playpen: /about/history/, /contact/
+  - img/about-safeguarding-stairs: /about/child-protection/
+  - img/admissions-atrium: /admissions/how-to-apply/
+  - img/admissions-entrance: /admissions/visit/
+  - img/admissions-lawn: /admissions/
+  - img/admissions-stairs: /admissions/
+  - img/admissions-terrace: /admissions/starting-at-playpen/
+  - img/campus-1: /school-life/sports/
+  - img/campus-3: /learning/
+  - img/community-alumni-hero: /community/alumni/
+  - img/community-parents-hero: /community/parents/
+  - img/elementary-hero: /gallery/, /learning/elementary/
+  - img/examination-1: /learning/, /learning/senior/, /school-life/school-day/
+  - img/gal-art-clay: /gallery/
+  - img/gal-art-fort: /gallery/
+  - img/gal-art-garden: /gallery/
+  - img/gal-atrium: /gallery/
+  - img/gal-boishakh-tiger: /gallery/, /learning/cambridge-pathway/, /news/
+  - img/gal-grad-hall: /community/alumni/, /gallery/, /news/
+  - img/gal-planter: /gallery/
+  - img/gal-sports-march: /events/, /gallery/
+  - img/gal-terrace: /gallery/
+  - img/hero-students-2: /gallery/
+  - img/learning-atrium: /learning/middle/
+  - img/learning-stair: /learning/cambridge-pathway/
+  - img/learning-terrace: /learning/a-level/
+  - img/sl-boishakh-hero: /school-life/culture-and-service/
+  - img/sl-clay-hero: /school-life/clubs-and-activities/
+  - img/sl-courtyard-hero: /school-life/school-day/
+  - img/sl-displays: /school-life/sports/
+  - img/sl-models: /school-life/clubs-and-activities/
+  - img/sl-race-wide: /school-life/sports/
+  - img/sl-street-hero: /school-life/transport-and-safety/
+  - img/sl-tiger-mask: /school-life/culture-and-service/
+  - media/ascent-1: /about/, /gallery/, /learning/student-support/
+  - media/ascent-4: /about/campus/, /gallery/, /learning/, /news/, /school-life/
+  - media/ascent-5: /about/, /gallery/
+  - media/ground-1-alt: /gallery/
+  - media/learning-1: /learning/
+  - media/life-0: /about/campus/, /gallery/, /news/, /school-life/
+  - media/life-1: /events/, /gallery/, /news/, /school-life/
+  - media/life-4: /school-life/, /school-life/clubs-and-activities/, /school-life/culture-and-service/
+  - media/life-6: /gallery/, /school-life/, /school-life/clubs-and-activities/
+  - media/life-7: /admissions/starting-at-playpen/, /community/parents/, /gallery/, /learning/junior/, /school-life/
+  - media/life-8: /school-life/transport-and-safety/
+  - media/news-1: /gallery/, /school-life/sports/
+  - media/news-2: /gallery/, /school-life/, /school-life/culture-and-service/
+  - media/swatch-4: /about/campus/, /learning/, /learning/middle/
+- 2026-10-11  INTEGRATION RECONCILIATION: media/menu-4 (the School life menu preview) is also a plate on /school-life/ and /school-life/culture-and-service/ (logged above). media/menu-3, the Learning menu preview, is the library frame that shows several faces clearly; see docs/CONTENT-TO-CONFIRM.md, A3.
+- 2026-10-11  INTEGRATION: WebP companions made (Pillow, quality 80) for four JPG-only school photographs so browsers fetch the smaller file: img/about-playpen, img/campus-1, img/examination-1, img/hero-students-2. Same frames, same sources as logged above; no new photograph. (img/campus-3 gave a larger WebP, so it stays JPG only.)

@@ -1,0 +1,385 @@
+{
+  "_readme": "SINGLE SOURCE OF TRUTH for the information architecture of The Playpen School site. build.py and shell.py read this file; nothing about which pages exist, how they are grouped, what the menu and footer show, or which phone numbers appear is written anywhere else. Page ids (P02...) are the ids in DS's full site plan (P03 'Welcome from the Principal' is not built: it needs the Principal's own words). 'slug' is always the URL path with a leading and a trailing slash. A page's source lives at build/pages/<slug-without-slashes>.html or build/pages/<slug>/index.html. Fields per page: id, slug, label (short name for menu, footer, breadcrumb), title (document title and default H1), template (T01..T12, see 'templates'), parent (breadcrumb parent slug or null), group (key of the primary-menu group or null), menu (true = listed under its group in the full-screen menu), footer (footer column key or null), description (SEO meta description, 60 to 170 characters, plain text with no HTML entities, factual), summary (one line for chapter cards and the human sitemap), optional: eyebrow, og_image (path under site/assets/), noindex, schema (school | faq | contact | about | collection | article), sitemap (false keeps it out of sitemap.xml and the search index), actions (false hides the sticky actions on that page).",
+
+  "site": {
+    "name": "The Playpen School",
+    "short_name": "Playpen",
+    "title_suffix": " | The Playpen School, Dhaka",
+    "tagline": "Playgroup to A Level, under one roof",
+    "address_line": "House 545/A, Block J, Road 19, Bashundhara R/A, Dhaka 1229",
+    "address": {
+      "street": "House 545/A, Block J, Road 19, Bashundhara R/A",
+      "city": "Dhaka",
+      "postcode": "1229",
+      "country": "BD"
+    },
+    "geo": { "lat": 23.817813743521523, "lng": 90.44017933190598 },
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=House+545%2FA%2C+Block+J%2C+Road+19%2C+Bashundhara+R%2FA%2C+Dhaka+1229",
+    "hours": "9.00 am to 1.00 pm",
+    "hours_between": "between 9.00 am and 1.00 pm",
+    "hours_note": "Admissions lines, 9.00 am to 1.00 pm",
+    "phones": [
+      { "key": "pg-1",  "who": "Playgroup to Class I", "display": "01755 689 482", "tel": "+8801755689482" },
+      { "key": "ii-vi", "who": "Classes II to VI",     "display": "01755 515 893", "tel": "+8801755515893" },
+      { "key": "vii-xii", "who": "Classes VII to XII", "display": "01755 693 623", "tel": "+8801755693623" }
+    ],
+    "further": {
+      "who": "Further queries and emergencies",
+      "numbers": [
+        { "display": "01755 515 885",    "tel": "+8801755515885" },
+        { "display": "+880 9678 434241", "tel": "+8809678434241" }
+      ]
+    },
+    "call_number": { "display": "01755 515 885", "tel": "+8801755515885" },
+    "designer": { "label": "Defined Solution", "url": "https://definedsolution.com" },
+    "external_note": "Links marked “current site” open playpen.edu.bd"
+  },
+
+  "utility": [
+    { "key": "portal", "label": "Portal",   "href": "https://portal.playpen.edu.bd/login", "external": true },
+    { "key": "pay",    "label": "Pay fees", "href": "https://playpen.edu.bd/online-facility-payment/", "external": true },
+    { "key": "notices", "label": "Notices",  "slug": "/notices/" },
+    { "key": "search",  "label": "Search",   "slug": "/search/" }
+  ],
+
+  "sticky_actions": [
+    { "label": "Book a visit", "slug": "/admissions/visit/", "primary": true },
+    { "label": "Enquire",      "slug": "/admissions/enquire/" },
+    { "label": "Apply",        "slug": "/admissions/how-to-apply/" }
+  ],
+
+  "groups": [
+    { "key": "about",       "label": "About",       "hub": "/about/",       "landing": "/about/",             "preview": "media/menu-1-960.jpg" },
+    { "key": "learning",    "label": "Learning",    "hub": "/learning/",    "landing": "/learning/",          "preview": "media/menu-3-960.jpg" },
+    { "key": "admissions",  "label": "Admissions",  "hub": "/admissions/",  "landing": "/admissions/",        "preview": "media/menu-5-960.jpg" },
+    { "key": "school-life", "label": "School life", "hub": "/school-life/", "landing": "/school-life/",       "preview": "media/menu-4-960.jpg" },
+    { "key": "community",   "label": "Community",   "hub": null,            "landing": "/community/parents/", "preview": "media/menu-2-960.jpg" },
+    { "key": "contact",     "label": "Contact",     "hub": "/contact/",     "landing": "/contact/",           "preview": "media/menu-6-960.jpg" }
+  ],
+
+  "footer": {
+    "columns": [
+      { "key": "about",      "heading": "About",      "hub": "/about/" },
+      { "key": "learning",   "heading": "Learning",   "hub": "/learning/" },
+      { "key": "admissions", "heading": "Admissions", "hub": "/admissions/" },
+      { "key": "community",  "heading": "Community",  "hub": null }
+    ],
+    "always": ["/about/child-protection/", "/about/policies/"],
+    "legal": ["/privacy/", "/terms/", "/sitemap/"],
+    "current_parents": ["/notices/", "/school-life/transport-and-safety/", "/search/", "/contact/"]
+  },
+
+  "templates": {
+    "T01": "Home",
+    "T02": "Hub",
+    "T03": "Story",
+    "T04": "Stage",
+    "T05": "Information",
+    "T06": "Admissions step",
+    "T07": "Form",
+    "T08": "Listing",
+    "T09": "Article",
+    "T10": "Gallery",
+    "T11": "People",
+    "T12": "Facts and results"
+  },
+
+  "redirects": {
+    "_readme": "Old flat pages of the previous site. build.py writes a meta-refresh stub for each at site/<old>. 'to' is the default target; 'hashes' maps an old #anchor to a better target (the stub's inline script reads location.hash).",
+    "about.html":          { "to": "/about/", "hashes": { "values": "/about/" } },
+    "academics.html":      { "to": "/learning/", "hashes": { "elementary": "/learning/elementary/", "junior": "/learning/junior/", "middle": "/learning/middle/", "senior": "/learning/senior/", "subjects": "/learning/senior/", "examinations": "/learning/examinations/", "facilities": "/about/campus/", "support": "/learning/student-support/" } },
+    "achievements.html":   { "to": "/learning/results/", "hashes": {} },
+    "admissions.html":     { "to": "/admissions/", "hashes": { "entry": "/admissions/how-to-apply/", "process": "/admissions/how-to-apply/", "documents": "/admissions/how-to-apply/", "forms": "/admissions/how-to-apply/", "uniform": "/admissions/starting-at-playpen/", "faq": "/admissions/faq/" } },
+    "alumni.html":         { "to": "/community/alumni/", "hashes": {} },
+    "campus.html":         { "to": "/about/campus/", "hashes": {} },
+    "campus-services.html": { "to": "/school-life/transport-and-safety/", "hashes": { "safeguarding": "/about/child-protection/", "policies": "/about/policies/", "transport": "/school-life/transport-and-safety/", "health": "/school-life/transport-and-safety/", "bookshop": "/admissions/starting-at-playpen/", "online": "/admissions/fees/" } },
+    "careers.html":        { "to": "/about/careers/", "hashes": {} },
+    "contact.html":        { "to": "/contact/", "hashes": {} },
+    "leadership.html":     { "to": "/about/leadership/", "hashes": {} },
+    "news.html":           { "to": "/news/", "hashes": { "notices": "/notices/", "events": "/events/", "gallery": "/gallery/" } },
+    "parents.html":        { "to": "/community/parents/", "hashes": { "calendar": "/events/" } },
+    "student-life.html":   { "to": "/school-life/", "hashes": { "sports": "/school-life/sports/", "arts": "/school-life/clubs-and-activities/", "clubs": "/school-life/clubs-and-activities/", "science": "/school-life/clubs-and-activities/", "service": "/school-life/culture-and-service/", "events": "/events/" } }
+  },
+
+  "wordpress": {
+    "_readme": "Paths of the old WordPress site (playpen.edu.bd) and the page that replaces each one. check.py reports any link to these paths that is not on the external_ok list ('use {{link:...}}'); vercel.json gets a 301 for each (build.py writes it).",
+    "/our-history/": "/about/history/",
+    "/mission-vision-and-values/": "/about/",
+    "/school-administration/": "/about/leadership/",
+    "/new-campus/": "/about/campus/",
+    "/child-protection-policy/": "/about/child-protection/",
+    "/playpen-alumni-association/": "/community/alumni/",
+    "/career-at-playpen/": "/about/careers/",
+    "/current-vacancy/": "/about/careers/",
+    "/contact-us/": "/contact/",
+    "/elementary-school/": "/learning/elementary/",
+    "/junior-school/": "/learning/junior/",
+    "/middle-school/": "/learning/middle/",
+    "/senior-school/": "/learning/senior/",
+    "/library/": "/about/campus/",
+    "/laboratories/": "/about/campus/",
+    "/student-support/": "/learning/student-support/",
+    "/counsellor/": "/learning/student-support/",
+    "/examinations/": "/learning/examinations/",
+    "/achievements-of-playpen-students/": "/learning/results/",
+    "/disciplinary-committee/": "/about/policies/",
+    "/the-identity-card/": "/about/policies/",
+    "/admission-procedure/": "/admissions/how-to-apply/",
+    "/the-school-uniform/": "/admissions/starting-at-playpen/",
+    "/code-of-conduct/": "/about/policies/",
+    "/annual-sports/": "/school-life/sports/",
+    "/extra-curricular-activities/": "/school-life/clubs-and-activities/",
+    "/community-service/": "/school-life/culture-and-service/",
+    "/cultural-programme/": "/school-life/culture-and-service/",
+    "/science-fair/": "/school-life/clubs-and-activities/",
+    "/workshop-for-students/": "/school-life/clubs-and-activities/",
+    "/multimedia-projector/": "/school-life/clubs-and-activities/",
+    "/online-facility-payment/": "/admissions/fees/",
+    "/health-center/": "/school-life/transport-and-safety/",
+    "/the-school-bookshop/": "/admissions/starting-at-playpen/",
+    "/school-transportation/": "/school-life/transport-and-safety/",
+    "/notice/": "/notices/",
+    "/event/": "/events/",
+    "/photo-gallery/": "/gallery/",
+    "/feature/academic/": "/learning/",
+    "/feature/alumni/": "/community/alumni/",
+    "/feature/achievements/": "/learning/results/",
+    "/feature/eca/": "/school-life/",
+    "/feature/student-services/": "/school-life/transport-and-safety/",
+    "/feature/faculty-members/": "/about/leadership/"
+  },
+
+  "external_ok": [
+    "https://portal.playpen.edu.bd/",
+    "https://playpen.edu.bd/online-facility-payment/",
+    "https://playpen.edu.bd/admission-procedure/",
+    "https://playpen.edu.bd/mission-vision-and-values/",
+    "https://playpen.edu.bd/wp-content/uploads/",
+    "https://playpen.edu.bd/"
+  ],
+
+  "pages": [
+    {
+      "id": "P01", "slug": "/", "label": "Home", "title": "The Playpen School, Dhaka: Playgroup to A Level, under one roof",
+      "template": "T01", "parent": null, "group": null, "menu": false, "footer": null, "source": "handbuilt",
+      "description": "An English-medium day school in Bashundhara R/A, Dhaka. Cambridge O Level, AS and A Level. Playgroup to Class XII on one purpose-built campus of ten storeys.",
+      "summary": "The school in one scroll."
+    },
+
+    {
+      "id": "P02", "footer_label": "Overview", "slug": "/about/", "label": "About", "title": "About Playpen", "template": "T02", "parent": null, "group": "about", "menu": false, "footer": "about", "schema": "school",
+      "description": "The Playpen School is an English-medium day school in Bashundhara R/A, Dhaka: Playgroup to Class XII on one campus, with Cambridge O Level, AS and A Level.",
+      "summary": "What the school is, and where to read more about its history, people, campus and policies."
+    },
+    {
+      "id": "P04", "slug": "/about/history/", "label": "History", "title": "Our history", "template": "T03", "parent": "/about/", "group": "about", "menu": true, "footer": "about",
+      "description": "The school's history in dates: the first O Level candidate in 2003, A Level classes from 2013 and the move into its own ten-storey building on 19 July 2018.",
+      "summary": "The school in dates, from the first O Level candidate to the move into its own building."
+    },
+    {
+      "id": "P05", "slug": "/about/leadership/", "label": "Leadership", "title": "Leadership and management", "template": "T11", "parent": "/about/", "group": "about", "menu": true, "footer": "about",
+      "description": "The Chairman, Managing Director, Principal, Vice Principals and Teachers-in-Charge of The Playpen School, and the classes each of them looks after.",
+      "summary": "Who leads the school, and which classes each Vice Principal and Teacher-in-Charge looks after."
+    },
+    {
+      "id": "P06", "slug": "/about/campus/", "label": "Campus", "title": "Our campus", "template": "T03", "parent": "/about/", "group": "about", "menu": true, "footer": "about",
+      "description": "A purpose-built building of ten storeys in Bashundhara R/A, in use since 19 July 2018: classrooms, laboratories, library, hall, playground and a rooftop basketball court.",
+      "summary": "One building of ten storeys in Bashundhara R/A, and what it holds, from laboratories to the rooftop court."
+    },
+    {
+      "id": "P07", "slug": "/about/child-protection/", "label": "Child protection", "title": "Child protection and safeguarding", "template": "T05", "parent": "/about/", "group": "about", "menu": true, "footer": null,
+      "description": "How The Playpen School approaches child protection and safeguarding, and how families can raise a concern.",
+      "summary": "How the school looks after children, and how to raise a concern."
+    },
+    {
+      "id": "P08", "slug": "/about/policies/", "label": "Policies", "title": "Policies and documents", "template": "T05", "parent": "/about/", "group": "about", "menu": true, "footer": null,
+      "description": "The code of conduct, uniform rules, attendance and other policies of The Playpen School, with the documents families may need.",
+      "summary": "The code of conduct, uniform, attendance and other documents, in one place."
+    },
+    {
+      "id": "P09", "slug": "/about/careers/", "label": "Careers", "title": "Careers at Playpen", "template": "T05", "parent": "/about/", "group": "about", "menu": true, "footer": "about",
+      "description": "Teach at The Playpen School: how to apply, what to send and where current vacancies are listed.",
+      "summary": "Teaching at Playpen: how to apply and where vacancies are listed."
+    },
+
+    {
+      "id": "P10", "footer_label": "Overview", "slug": "/learning/", "label": "Learning", "title": "Learning at Playpen", "template": "T02", "parent": null, "group": "learning", "menu": false, "footer": "learning",
+      "description": "One Cambridge curriculum from Playgroup to Class XII: the Elementary, Junior, Middle and Senior stages, then O Level, AS and A Level, on one campus in Dhaka.",
+      "summary": "One path from Playgroup to A Level, in four stages."
+    },
+    {
+      "id": "P11", "slug": "/learning/elementary/", "label": "Elementary", "title": "Elementary School: Playgroup to KG II", "template": "T04", "parent": "/learning/", "group": "learning", "menu": true, "footer": "learning",
+      "description": "The first classrooms at Playpen: Playgroup, Nursery, KG I and KG II. What children learn, what they wear, how they are assessed and how to join.",
+      "summary": "Playgroup, Nursery, KG I and KG II. The first classrooms."
+    },
+    {
+      "id": "P12", "slug": "/learning/junior/", "label": "Junior", "title": "Junior School: Class I to III", "template": "T04", "parent": "/learning/", "group": "learning", "menu": true, "footer": "learning",
+      "description": "Junior School at Playpen, Classes I to III: English, Bengali and Mathematics, library lessons for every level, and how to join.",
+      "summary": "Classes I to III. English, Bengali and Mathematics, with library lessons for every level."
+    },
+    {
+      "id": "P13", "slug": "/learning/middle/", "label": "Middle", "title": "Middle School: Class IV to VII", "template": "T04", "parent": "/learning/", "group": "learning", "menu": true, "footer": "learning",
+      "description": "Middle School at Playpen, Classes IV to VII: two semesters a year, an examination at the end of each, and how to join.",
+      "summary": "Classes IV to VII. Two semesters a year, each with an examination."
+    },
+    {
+      "id": "P14", "slug": "/learning/senior/", "label": "Senior", "title": "Senior School: Class VIII to XII and O Level", "template": "T04", "parent": "/learning/", "group": "learning", "menu": true, "footer": "learning",
+      "description": "Senior School at Playpen, Classes VIII to XII: electives chosen in Class VIII, Cambridge O Level with at least six subjects, then AS and A Level.",
+      "summary": "Classes VIII to XII. Electives in Class VIII, Cambridge O Level, then AS and A Level."
+    },
+    {
+      "id": "P15", "slug": "/learning/a-level/", "label": "A Level", "title": "AS and A Level", "template": "T04", "parent": "/learning/", "group": "learning", "menu": true, "footer": "learning",
+      "description": "AS and A Level at The Playpen School, taught since 2013: the subjects offered, how many a student takes and how admission to Class XI works.",
+      "summary": "AS and A Level, taught at Playpen since 2013."
+    },
+    {
+      "id": "P16", "slug": "/learning/cambridge-pathway/", "label": "Cambridge pathway", "title": "The Cambridge pathway, explained", "template": "T03", "parent": "/learning/", "group": "learning", "menu": true, "footer": "learning",
+      "description": "How Cambridge O Level, AS Level and A Level fit together at Playpen, explained in plain English for families.",
+      "summary": "How Cambridge O Level, AS and A Level fit together, in plain English."
+    },
+    {
+      "id": "P17", "slug": "/learning/examinations/", "label": "Examinations", "title": "Examinations and reporting", "template": "T05", "parent": "/learning/", "group": "learning", "menu": true, "footer": null,
+      "description": "Two semesters a year with a written examination at the end of each, how promotion works and how progress reaches families through the portal.",
+      "summary": "Two semesters, an examination at the end of each, and how reports reach families."
+    },
+    {
+      "id": "P18", "slug": "/learning/results/", "label": "Results", "title": "Results and achievements", "template": "T12", "parent": "/learning/", "group": "learning", "menu": true, "footer": null,
+      "description": "Examination results and student achievements at The Playpen School, each with its year and source.",
+      "summary": "Results and achievements, each with its year and source."
+    },
+    {
+      "id": "P19", "slug": "/learning/student-support/", "label": "Student support", "title": "Student support", "template": "T05", "parent": "/learning/", "group": "learning", "menu": true, "footer": null,
+      "description": "The student counsellor, career guidance and university application support available to students at The Playpen School.",
+      "summary": "The counsellor, career guidance and university application support."
+    },
+
+    {
+      "id": "P20", "footer_label": "Overview", "slug": "/admissions/", "label": "Admissions", "title": "Admissions", "template": "T02", "parent": null, "group": "admissions", "menu": false, "footer": "admissions",
+      "description": "Admission to The Playpen School: visit, enquire and apply. Playgroup to Class XII, with applications accepted for the current year if there is space.",
+      "summary": "Visit, enquire, apply."
+    },
+    {
+      "id": "P21", "slug": "/admissions/how-to-apply/", "label": "How to apply", "title": "How to apply", "template": "T06", "parent": "/admissions/", "group": "admissions", "menu": true, "footer": "admissions",
+      "description": "The five steps from first call to result at The Playpen School, the assessment for each entry point, what to bring and where to get the form.",
+      "summary": "The five steps from first call to the result, and what to bring."
+    },
+    {
+      "id": "P22", "slug": "/admissions/fees/", "label": "Fees and payment", "title": "Fees and payment", "template": "T06", "parent": "/admissions/", "group": "admissions", "menu": true, "footer": "admissions",
+      "description": "How fees and monthly tuition are explained after selection at The Playpen School, and how they are paid online through the school's bank.",
+      "summary": "How fees are explained and how they are paid."
+    },
+    {
+      "id": "P23", "slug": "/admissions/visit/", "label": "Book a visit", "title": "Book a visit", "template": "T07", "parent": "/admissions/", "group": "admissions", "menu": true, "footer": "admissions", "actions": false,
+      "description": "Come and see the building and the section your child would join. Call the admissions line for that section between 9.00 am and 1.00 pm.",
+      "summary": "Come and see the building and the section your child would join."
+    },
+    {
+      "id": "P24", "slug": "/admissions/faq/", "label": "FAQ", "title": "Admissions FAQ", "template": "T06", "parent": "/admissions/", "group": "admissions", "menu": true, "footer": "admissions", "schema": "faq",
+      "description": "Answers to the questions families ask most about admission to The Playpen School: tests, documents, fees, uniform, transport and safety.",
+      "summary": "Answers to the questions families ask most, grouped by topic."
+    },
+    {
+      "id": "P25", "slug": "/admissions/enquire/", "label": "Enquire", "title": "Enquire", "template": "T07", "parent": "/admissions/", "group": "admissions", "menu": true, "footer": null, "actions": false,
+      "description": "Ask the Playpen admissions team a question. Lines are open 9.00 am to 1.00 pm; call the number for your child's section.",
+      "summary": "Ask the admissions team a question."
+    },
+    {
+      "id": "P26", "slug": "/admissions/starting-at-playpen/", "label": "Starting at Playpen", "title": "Starting at Playpen", "template": "T05", "parent": "/admissions/", "group": "admissions", "menu": true, "footer": null,
+      "description": "Practical details for a new Playpen family: uniform, books, the school bookshop and what to expect at the start of the year.",
+      "summary": "Uniform, books and the other practical details of the first weeks."
+    },
+
+    {
+      "id": "P27", "slug": "/school-life/", "label": "School life", "title": "School life at Playpen", "template": "T02", "parent": null, "group": "school-life", "menu": false, "footer": "community",
+      "description": "Sport, clubs, the Cultural Programme, community service and the school day at The Playpen School in Bashundhara R/A, Dhaka.",
+      "summary": "The year, in the courtyard and on the field."
+    },
+    {
+      "id": "P28", "slug": "/school-life/sports/", "label": "Sports", "title": "Sports", "template": "T05", "parent": "/school-life/", "group": "school-life", "menu": true, "footer": null,
+      "description": "Football, basketball, handball, athletics, table tennis, chess and carrom at Playpen, with Annual Sports Day on the school field.",
+      "summary": "Football, basketball, handball, athletics, table tennis, chess and carrom."
+    },
+    {
+      "id": "P29", "slug": "/school-life/clubs-and-activities/", "label": "Clubs and activities", "title": "Clubs and activities", "template": "T05", "parent": "/school-life/", "group": "school-life", "menu": true, "footer": null,
+      "description": "Art and Craft, Music, Dance, Drama, Debate, the Olympiads, the Duke of Edinburgh's Award and other clubs at The Playpen School.",
+      "summary": "Art and Craft, Music, Dance, Drama, Debate, the Olympiads and more."
+    },
+    {
+      "id": "P30", "slug": "/school-life/culture-and-service/", "label": "Culture and service", "title": "Culture and service", "template": "T03", "parent": "/school-life/", "group": "school-life", "menu": true, "footer": null,
+      "description": "The Cultural Programme, Pohela Boishakh in the courtyard and community service at The Playpen School.",
+      "summary": "The Cultural Programme, Pohela Boishakh and community service."
+    },
+    {
+      "id": "P31", "slug": "/school-life/transport-and-safety/", "label": "Transport and safety", "title": "Transport and safety", "template": "T05", "parent": "/school-life/", "group": "school-life", "menu": true, "footer": null,
+      "description": "The school bus service, the sick room, CCTV and 24-hour security at The Playpen School, and how to apply for a bus place.",
+      "summary": "School buses, the sick room, and how the campus is kept safe."
+    },
+    {
+      "id": "P32", "slug": "/school-life/school-day/", "label": "The school day", "title": "The school day", "template": "T05", "parent": "/school-life/", "group": "school-life", "menu": true, "footer": null,
+      "description": "How a school day runs at The Playpen School, and the practical things families should know.",
+      "summary": "The shape of a school day, and the practical things to know."
+    },
+
+    {
+      "id": "P33", "slug": "/community/parents/", "label": "Parents", "title": "For parents", "template": "T05", "parent": null, "group": "community", "menu": true, "footer": "community",
+      "description": "For current Playpen parents: the portal, online fee payment, notices, events and the contact line for each section.",
+      "summary": "The portal, fee payment, notices and the contact line for each section."
+    },
+    {
+      "id": "P34", "slug": "/community/alumni/", "label": "Alumni", "title": "Alumni", "template": "T05", "parent": null, "group": "community", "menu": true, "footer": "community",
+      "description": "The Playpen Alumni Association: how former students can register their details and stay in touch with the school.",
+      "summary": "The Playpen Alumni Association, and how former students can stay in touch."
+    },
+    {
+      "id": "P35", "slug": "/news/", "label": "News", "title": "News", "template": "T08", "parent": null, "group": "community", "menu": true, "footer": "community",
+      "description": "News from The Playpen School: reports from Annual Sports Day, the Science and Technology Fair, Pohela Boishakh and the rest of the school year.",
+      "summary": "Reports from the school year."
+    },
+    {
+      "id": "P36", "slug": "/events/", "label": "Events", "title": "Events and term dates", "template": "T08", "parent": null, "group": "community", "menu": true, "footer": "community",
+      "description": "Events and term dates at The Playpen School: the school's calendar for the year.",
+      "summary": "Events and term dates for the year."
+    },
+    {
+      "id": "P37", "slug": "/notices/", "label": "Notices", "title": "Notices", "template": "T08", "parent": null, "group": "community", "menu": true, "footer": "community",
+      "description": "Current notices from The Playpen School, including admission notices and examination dates.",
+      "summary": "Current notices from the school."
+    },
+    {
+      "id": "P38", "slug": "/gallery/", "label": "Gallery", "title": "Gallery", "template": "T10", "parent": null, "group": "community", "menu": true, "footer": "community",
+      "description": "Photographs from the school year at The Playpen School: Annual Sports Day, Pohela Boishakh, the Cultural Programme, the Science and Technology Fair and graduation.",
+      "summary": "Photographs from the school year."
+    },
+    {
+      "id": "P39", "slug": "/contact/", "label": "Contact", "title": "Contact", "template": "T07", "parent": null, "group": "contact", "menu": false, "footer": null, "schema": "contact", "actions": false,
+      "description": "Contact The Playpen School: phone lines for each section, the address in Bashundhara R/A, Dhaka, and the map.",
+      "summary": "Phone lines by section, the address and the map."
+    },
+
+    {
+      "id": "U01", "slug": "/privacy/", "label": "Privacy", "title": "Privacy", "template": "T05", "parent": null, "group": null, "menu": false, "footer": null,
+      "description": "How the website of The Playpen School handles information about its visitors, in plain words.",
+      "summary": "How this website handles information about its visitors."
+    },
+    {
+      "id": "U02", "slug": "/terms/", "label": "Terms of use", "title": "Terms of use", "template": "T05", "parent": null, "group": null, "menu": false, "footer": null,
+      "description": "The terms for using the website of The Playpen School, including links to other sites and use of photographs.",
+      "summary": "The terms for using this website."
+    },
+    {
+      "id": "U03", "slug": "/sitemap/", "label": "Sitemap", "title": "Sitemap", "template": "T05", "parent": null, "group": null, "menu": false, "footer": null,
+      "description": "Every page of The Playpen School website, grouped by section.",
+      "summary": "Every page of the website, grouped by section."
+    },
+    {
+      "id": "U04", "slug": "/search/", "label": "Search", "title": "Search", "template": "T05", "parent": null, "group": null, "menu": false, "footer": null, "noindex": true,
+      "description": "Search the pages of The Playpen School website for admissions, learning, school life, notices and contact details.",
+      "summary": "Search the website."
+    },
+    {
+      "id": "U05", "slug": "/404/", "label": "Page not found", "title": "Page not found", "template": "T05", "parent": null, "group": null, "menu": false, "footer": null, "noindex": true, "sitemap": false,
+      "description": "This page does not exist. Use the menu or search to find what you were looking for.",
+      "summary": "The page you asked for does not exist."
+    }
+  ]
+}

@@ -1,0 +1,220 @@
+---
+title: News
+schema: collection
+template: T08
+description: Reports from the school year at The Playpen School: Annual Sports Day, Pohela Boishakh, a NASA astronaut's visit, graduation, and competition results, with dates.
+h1: Reports from the school <em>year</em>.
+standfirst: Event reports and competition results, each with the date the school's own record gives. Reports for the current school year are published as the school writes them.
+hero_image: media/life-0
+hero_alt: The courtyard seen from above on Pohela Boishakh, with a painted alpona on the floor and a crowd in red, white and saffron.
+hero_caption: Pohela Boishakh in the courtyard, April 2025
+hero_n: 01
+---
+<section class="page-section" aria-labelledby="news-record">
+  <div class="band" data-filter-scope>
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">The record</span><span class="sheet-rule__purpose">Newest first</span></div>
+    <h2 id="news-record" class="section-title">What the school has recorded.</h2>
+
+    <div class="mt-m">
+      <ul class="chips" aria-label="Filter by kind of report">
+        <li><button class="chip" type="button" data-filter="all" aria-pressed="true">All reports</button></li>
+        <li><button class="chip" type="button" data-filter="report" aria-pressed="false">Event reports</button></li>
+        <li><button class="chip" type="button" data-filter="result" aria-pressed="false">Competition results</button></li>
+      </ul>
+      <ul class="chips mt-m" aria-label="Filter by year">
+        <li><button class="chip" type="button" data-filter="all" data-filter-key="year" aria-pressed="true">All years</button></li>
+        <li><button class="chip" type="button" data-filter="2026" data-filter-key="year" aria-pressed="false">2026</button></li>
+        <li><button class="chip" type="button" data-filter="2025" data-filter-key="year" aria-pressed="false">2025</button></li>
+        <li><button class="chip" type="button" data-filter="2024" data-filter-key="year" aria-pressed="false">2024</button></li>
+        <li><button class="chip" type="button" data-filter="2023" data-filter-key="year" aria-pressed="false">2023</button></li>
+      </ul>
+      <p class="chips__status" role="status" aria-live="polite"></p>
+    </div>
+
+    <div class="filter-group">
+      <h3 class="label filter-group__title">Event reports</h3>
+      <!-- CONFIRM: the wording of each event report is ours, written from the school's photograph albums (their titles and what the frames show). Replace it with the school's own account when it supplies one. The months are the ones the home and the albums give; the graduation ceremony and the cultural programme are dated by year only. -->
+      <ul class="news-feed" data-reveal-group>
+        <li class="news-item news-item--lead" id="r-sports-2026" data-tags="report" data-year="2026">
+          <figure class="plate plate--flat" data-reveal><div class="plate__frame">{{img src="media/life-1" alt="Students in red kneeling in a formation on the white-lined field, seen from above." sizes="(min-width: 1024px) 58vw, 100vw"}}</div></figure>
+          <p class="news-item__meta"><time datetime="2026-01">January 2026</time><span>Event report</span></p>
+          <h4 class="news-item__title"><a href="{{link:/gallery/#sports}}">Annual Sports Day 2026</a></h4>
+          <p class="news-item__text">A display in red on the school field, seen from above, a march past, and athletics for the senior classes. The school's own photographs of the day come in two sets, one for Classes I to XII and one for Playgroup to KG II.</p>
+          <span class="news-item__go" aria-hidden="true"></span>
+        </li>
+        <li class="news-item news-item--side" id="r-graduation-2025" data-tags="report" data-year="2025">
+          <figure class="plate plate--flat" data-reveal><div class="plate__frame">{{img src="img/gal-grad-hall" alt="Graduates in black caps, gowns and maroon sashes seen from behind and above, facing a red stage and the ceremony banner." sizes="(min-width: 1024px) 40vw, (min-width: 640px) 50vw, 100vw" widths="960"}}</div></figure>
+          <p class="news-item__meta"><time datetime="2025">2025</time><span>Event report</span></p>
+          <h4 class="news-item__title"><a href="{{link:/gallery/#visits}}">Graduation Ceremony 2025</a></h4>
+          <p class="news-item__text">The Graduation Ceremony of Ordinary and Advanced Level, in the multipurpose hall: the graduates in caps, gowns and maroon sashes before a red stage.</p>
+          <span class="news-item__go" aria-hidden="true"></span>
+        </li>
+        <li class="news-item" id="r-boishakh-2025" data-tags="report" data-year="2025" style="--pos: 50% 26%">
+          <figure class="plate plate--flat" data-reveal><div class="plate__frame">{{img src="img/gal-boishakh-tiger" alt="A painted paper tiger mask and a red elephant on a green and orange board, with a paper pinwheel above." sizes="(min-width: 1024px) 45vw, (min-width: 640px) 50vw, 100vw" widths="960"}}</div></figure>
+          <p class="news-item__meta"><time datetime="2025-04">April 2025</time><span>Event report</span></p>
+          <h4 class="news-item__title"><a href="{{link:/gallery/#festivals}}">Pohela Boishakh 1432</a></h4>
+          <p class="news-item__text">An alpona painted on the courtyard floor, stalls with clay pots and folk art, and dance for the Bengali new year.</p>
+          <span class="news-item__go" aria-hidden="true"></span>
+        </li>
+        <li class="news-item" id="r-nasa-2024" data-tags="report" data-year="2024">
+          <figure class="plate plate--flat" data-reveal><div class="plate__frame">{{img src="media/ascent-4" alt="The multipurpose hall full of students seen from above, with a red carpet running to the stage." sizes="(min-width: 1024px) 45vw, (min-width: 640px) 50vw, 100vw"}}</div></figure>
+          <p class="news-item__meta"><time datetime="2024-12">December 2024</time><span>Event report</span></p>
+          <h4 class="news-item__title"><a href="{{link:/gallery/#visits}}">A NASA astronaut visits the school</a></h4>
+          <p class="news-item__text">NASA astronaut Joseph M. Acaba spoke to the students in the multipurpose hall, which was full for the visit.</p>
+          <span class="news-item__go" aria-hidden="true"></span>
+        </li>
+      </ul>
+
+      <ul class="rows mt-l" data-reveal-group>
+        <li class="row" id="r-science-2024" data-tags="report" data-year="2024">
+          <time class="row__date" datetime="2024-11"><span class="row__day">Nov</span><span>2024</span></time>
+          <div class="row__body">
+            <p class="row__kicker label">Event report</p>
+            <h4 class="row__title"><a href="{{link:/events/#programme}}">Science and Technology Fair 2024</a></h4>
+            <p class="row__text">Project stalls, models and experiments in the hall, with students in laboratory coats at the stalls and judges moving between them.</p>
+          </div>
+        </li>
+        <li class="row" id="r-culture-2024" data-tags="report" data-year="2024">
+          <time class="row__date" datetime="2024"><span class="row__day">2024</span></time>
+          <div class="row__body">
+            <p class="row__kicker label">Event report</p>
+            <h4 class="row__title"><a href="{{link:/school-life/culture-and-service/}}">Annual Cultural Programme 2024</a></h4>
+            <p class="row__text">The school's annual performance event, staged in the multipurpose hall, with dance on stage and young children in traditional dress.</p>
+          </div>
+        </li>
+        <li class="row" id="r-football-2024" data-tags="report" data-year="2024">
+          <time class="row__date" datetime="2024"><span class="row__day">2024</span></time>
+          <div class="row__body">
+            <p class="row__kicker label">Event report</p>
+            <h4 class="row__title"><a href="{{link:/school-life/sports/}}">Playpen Interschool Football Tournament 2024</a></h4>
+            <p class="row__text">Matches on the school's sand pitch, with the brick building behind and spectators along the edge.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="filter-group">
+      <h3 class="label filter-group__title">Competition results</h3>
+      <!-- CONFIRM: every result below is from the school's own achievements list (August 2023 to April 2024). Students are deliberately not named; the school must confirm the consent it holds for each family before any name is published. Dates are as the list gives them: some are a month or a year only. -->
+      <ul class="rows" data-reveal-group>
+        <li class="row" data-tags="result" data-year="2024">
+          <time class="row__date" datetime="2024-04-27"><span class="row__day">27</span><span>Apr 2024</span></time>
+          <div class="row__body">
+            <p class="row__kicker label">Result, olympiad</p>
+            <h4 class="row__title">1st Space Exploration Olympiad</h4>
+            <p class="row__text">Organised by the Bangladesh Innovation Forum at AIUB. Two Playpen students were second runner-up.</p>
+          </div>
+        </li>
+        <li class="row" data-tags="result" data-year="2024">
+          <time class="row__date" datetime="2024-02-24"><span class="row__day">24</span><span>Feb 2024</span></time>
+          <div class="row__body">
+            <p class="row__kicker label">Result, language</p>
+            <h4 class="row__title">13th Bangla Olympiad</h4>
+            <p class="row__text">A Class VII student took first position in Essay Writing, and the school's group dance team also took first position.</p>
+          </div>
+        </li>
+        <li class="row" data-tags="result" data-year="2024">
+          <time class="row__date" datetime="2024-02-24"><span class="row__day">24</span><span>Feb 2024</span></time>
+          <div class="row__body">
+            <p class="row__kicker label">Result, language</p>
+            <h4 class="row__title">Bakeman's 3rd International Language League</h4>
+            <p class="row__text">Three Class IX students were runners-up for their presentation on Bangladeshi folk art.</p>
+          </div>
+        </li>
+        <li class="row" data-tags="result" data-year="2024">
+          <time class="row__date" datetime="2024-02-23"><span class="row__day">23</span><span>Feb 2024</span></time>
+          <div class="row__body">
+            <p class="row__kicker label">Result, mathematics</p>
+            <h4 class="row__title">16th National Abacus and Mental Arithmetic Competition</h4>
+            <p class="row__text">One Playpen student was third runner-up.</p>
+          </div>
+        </li>
+        <li class="row" data-tags="result" data-year="2024">
+          <time class="row__date" datetime="2024-02-09"><span class="row__day">9</span><span>Feb 2024</span></time>
+          <div class="row__body">
+            <p class="row__kicker label">Result, olympiad</p>
+            <h4 class="row__title">Regional Physics Olympiad</h4>
+            <p class="row__text">One Playpen student placed sixth in Category A.</p>
+          </div>
+        </li>
+        <li class="row" data-tags="result" data-year="2024">
+          <time class="row__date" datetime="2024-01"><span class="row__day">Jan</span><span>2024</span></time>
+          <div class="row__body">
+            <p class="row__kicker label">Result, mathematics and technology</p>
+            <h4 class="row__title">Math and Tech Fest</h4>
+            <p class="row__text">Class VIII students took first position in Crypto Craft Chronicles. One student won first place in the Rube Goldberg competition and the campus ambassador award.</p>
+          </div>
+        </li>
+        <li class="row" data-tags="result" data-year="2024">
+          <time class="row__date" datetime="2024-01"><span class="row__day">Jan</span><span>2024</span></time>
+          <div class="row__body">
+            <p class="row__kicker label">Result, football</p>
+            <h4 class="row__title">Scholastica Inter School Football</h4>
+            <p class="row__text">The school's list records two individual awards for Playpen players, a player award and a defender award.</p>
+          </div>
+        </li>
+        <li class="row" data-tags="result" data-year="2023">
+          <time class="row__date" datetime="2023-10-14"><span class="row__day">14</span><span>Oct 2023</span></time>
+          <div class="row__body">
+            <p class="row__kicker label">Result, environment</p>
+            <h4 class="row__title">Eco-Schools Programme</h4>
+            <p class="row__text">Three Class IX students were first runner-up in the presentation category.</p>
+          </div>
+        </li>
+        <li class="row" data-tags="result" data-year="2023">
+          <time class="row__date" datetime="2023-08-26"><span class="row__day">26</span><span>Aug 2023</span></time>
+          <div class="row__body">
+            <p class="row__kicker label">Result, basketball</p>
+            <h4 class="row__title">Inter-House Basketball</h4>
+            <p class="row__text">House Earth Boys won the boys' competition, and House Jupiter Girls won the girls'.</p>
+          </div>
+        </li>
+        <li class="row" data-tags="result" data-year="2023">
+          <time class="row__date" datetime="2023-08"><span class="row__day">Aug</span><span>2023</span></time>
+          <div class="row__body">
+            <p class="row__kicker label">Result, football</p>
+            <h4 class="row__title">Hurdco Inter School Football</h4>
+            <p class="row__text">Playpen were runners-up.</p>
+          </div>
+        </li>
+        <li class="row" data-tags="result" data-year="2023">
+          <time class="row__date" datetime="2023"><span class="row__day">2023</span></time>
+          <div class="row__body">
+            <p class="row__kicker label">Result, language</p>
+            <h4 class="row__title">International Spell Bee Competition</h4>
+            <p class="row__text">A Class I student received an Appreciation Medal, as did a second student. Three further students earned participation certificates.</p>
+          </div>
+        </li>
+      </ul>
+      <p class="filter-group__more"><a class="link link--arrow" href="{{link:/learning/results/}}">Results, with the year and source of each</a></p>
+    </div>
+
+    <p class="filter-empty">Nothing matches those filters. Choose "All reports" and "All years" to see everything.</p>
+
+    <div class="callout mt-l" data-reveal>
+      <span class="callout__label label">About these reports</span>
+      <p>Students are not named here. The school's own list names them, and a name will appear on this site only once the school has confirmed the family's consent. A date is shown as the school's record gives it: where the record names a month or a year only, that is all this page shows.</p>
+    </div>
+  </div>
+</section>
+
+<section class="page-section" aria-labelledby="news-now">
+  <div class="band">
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">This school year</span><span class="sheet-rule__purpose">Where the latest is kept</span></div>
+    <h2 id="news-now" class="visually-hidden">News from the current school year</h2>
+    <!-- CONFIRM: the school has supplied no report from the current academic year (July 2026 to June 2027), and no one is named to write them. The plan asks for about two a month and an editor; an empty or stale news page is worse than none, so the cadence needs an owner. -->
+    <div class="empty-note" data-reveal>
+      <div>
+        <p class="label">To be published by the school</p>
+        <p class="empty-note__title">No report from this school year is listed here yet.</p>
+      </div>
+      <div class="empty-note__body">
+        <p>The school adds a report to this page when it has written one. Until then, the latest dated items are on <a href="{{link:/notices/}}">Notices</a> and <a href="{{link:/events/}}">Events</a>, photographs are in the <a href="{{link:/gallery/}}">Gallery</a>, and {{ext href="https://playpen.edu.bd/" label="the school's current website"}} carries its own pages.</p>
+        <p>To ask about something you have heard of, call the line for your child's section. The school publishes {{hours}} for these lines.</p>
+        {{phones}}
+      </div>
+    </div>
+  </div>
+</section>
+
+{{cta}}

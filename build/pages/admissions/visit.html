@@ -1,0 +1,117 @@
+---
+title: Book a visit
+template: T07
+actions: false
+description: Plan a visit to The Playpen School in Bashundhara R/A, Dhaka. Choose your child's class to see which admissions line to call, 9.00 am to 1.00 pm.
+standfirst: Visit the Front Office to ask your questions or collect a form. Choose a class below and the page shows the line to call before you come.
+---
+<section class="page-section" aria-labelledby="visit-intro">
+  <div class="band">
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Before you come</span><span class="sheet-rule__purpose">What happens next</span></div>
+    <div class="layout">
+      <div class="layout__main">
+        <h2 id="visit-intro" class="section-title">Seeing the school helps you decide.</h2>
+        <div class="prose" data-reveal>
+          <p>The school takes enquiries and hands out admission forms at its Front Office. Before you come, call the admissions line for your child's section, {{hours:between}}, and ask whether you can also see the building and the section your child would join.</p>
+        </div>
+        <ol class="process mt-m" data-reveal-group>
+          <li class="process__step"><span class="process__n">01</span><div class="process__body"><h3>Choose your child's class.</h3><p>The form below shows the admissions line for that class.</p></div></li>
+          <li class="process__step"><span class="process__n">02</span><div class="process__body"><h3>Call to arrange it.</h3><p>The form does not send your request. The school has not published visit days or times, so the call is how you find out.</p></div></li>
+          <li class="process__step"><span class="process__n">03</span><div class="process__body"><h3>Come to the school.</h3><p>The school is at {{address}}. {{map}}</p></div></li>
+        </ol>
+      </div>
+      <div class="layout__aside">
+        <figure class="plate" data-reveal>
+          <div class="plate__frame">{{img src="img/admissions-entrance" alt="The street frontage: a board-marked concrete wall hung with creepers, the school crest and the name PLAYPEN above the entrance." sizes="(min-width: 1024px) 24vw, 100vw" widths="720,960"}}</div>
+          <figcaption class="plate__cap"><span class="plate__n">01</span>The street frontage, 2024</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="page-section" aria-labelledby="visit-form-title">
+  <div class="band">
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Book a visit</span><span class="sheet-rule__purpose">Five short questions</span></div>
+    <div class="layout">
+      <div class="layout__main">
+        <h2 id="visit-form-title" class="section-title">Who is coming?</h2>
+        <p class="form-note mt-m">This form is a prototype. It checks what you type, then shows the school's numbers. Nothing is sent, so please call the line it shows to book the day.</p>
+        <form class="page-form" data-prototype-form novalidate action="#" method="post">
+          <div class="form-row form-row--2">
+            <div class="field"><label for="v-name">Parent's name</label><input id="v-name" name="name" type="text" autocomplete="name" required aria-describedby="v-name-err"><p id="v-name-err" class="field__error" aria-live="polite"></p></div>
+            <div class="field"><label for="v-phone">Phone</label><input id="v-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required aria-describedby="v-phone-err"><p id="v-phone-err" class="field__error" aria-live="polite"></p></div>
+          </div>
+          <div class="field"><label for="v-email">Email (optional)</label><input id="v-email" name="email" type="email" autocomplete="email" aria-describedby="v-email-err"><p id="v-email-err" class="field__error" aria-live="polite"></p></div>
+          <div class="field">
+            <label for="v-class">Child's class of entry</label>
+            <select id="v-class" name="class" required data-route="v-route" aria-describedby="v-class-err v-route">
+              <option value="">Choose a class</option>
+              <option data-line="pg-1">Playgroup</option>
+              <option data-line="pg-1">Nursery</option>
+              <option data-line="pg-1">KG I</option>
+              <option data-line="pg-1">KG II</option>
+              <option data-line="pg-1">Class I</option>
+              <option data-line="ii-vi">Class II</option>
+              <option data-line="ii-vi">Class III</option>
+              <option data-line="ii-vi">Class IV</option>
+              <option data-line="ii-vi">Class V</option>
+              <option data-line="ii-vi">Class VI</option>
+              <option data-line="vii-xii">Class VII</option>
+              <option data-line="vii-xii">Class VIII</option>
+              <option data-line="vii-xii">Class IX</option>
+              <option data-line="vii-xii">Class X</option>
+              <option data-line="vii-xii">Class XI, AS Level</option>
+              <option data-line="vii-xii">Class XII</option>
+              <option>Not sure yet</option>
+            </select>
+            <p id="v-class-err" class="field__error" aria-live="polite"></p>
+          </div>
+          <div id="v-route" class="route-hint" role="status" aria-live="polite">
+            <p class="route-hint__line" data-line="pg-1" hidden>For Playgroup to Class I, the line is {{phone:pg-1}}.</p>
+            <p class="route-hint__line" data-line="ii-vi" hidden>For Classes II to VI, the line is {{phone:ii-vi}}.</p>
+            <p class="route-hint__line" data-line="vii-xii" hidden>For Classes VII to XII, the line is {{phone:vii-xii}}.</p>
+          </div>
+          <div class="field">
+            <label for="v-when">When would you like to come? (optional)</label>
+            <select id="v-when" name="when">
+              <option value="">No preference</option>
+              <option>As soon as possible</option>
+              <option>In the next two weeks</option>
+              <option>In the next month</option>
+              <option>Later: I am planning ahead</option>
+            </select>
+          </div>
+          <button class="btn btn--primary" type="submit"><span class="btn__label">Book a visit</span></button>
+        </form>
+        <div class="form-notice" role="status"><p class="form-notice__text">Nothing was sent: this form is a prototype. To book your visit, call the line for your child's section, {{hours:between}}.</p>{{phones}}</div>
+        <noscript><div class="form-note"><p>This form needs JavaScript. Please call the line for your child's section:</p>{{phones}}</div></noscript>
+      </div>
+      <div class="layout__aside layout__aside--sticky">
+        <!-- CONFIRM: what a visit includes. The school's own pages describe only visiting the Front Office to enquire and to collect a form; they say nothing about a tour of the building or of a section, and nav.json's description of this page offers one. The page therefore tells families to ask when they call. The school must say whether it welcomes such visits, on which days and times, who meets the family, how long it takes and who receives bookings. -->
+        <div class="callout" data-reveal>
+          <span class="callout__label label">What to expect</span>
+          <p>The school has not said what a visit includes. When you call, ask whether you can see the building and the section your child would join, and bring your questions.</p>
+        </div>
+        <div>
+          <p class="label">Prefer to call?</p>
+          {{phones}}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="page-section" aria-labelledby="visit-find">
+  <div class="band">
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Finding the school</span><span class="sheet-rule__purpose">Address and arrival</span></div>
+    <h2 id="visit-find" class="section-title">Bashundhara R/A, Dhaka.</h2>
+    <!-- CONFIRM: parking and arrival times for visitors are not published; only the school's traffic rule for drivers is stated. -->
+    <dl class="dl mt-m" data-reveal>
+      <div class="dl__row"><dt>Address</dt><dd>{{address}}. {{map}}</dd></div>
+      <div class="dl__row"><dt>Admissions lines</dt><dd>Open {{hours}}. One line for each section.</dd></div>
+      <div class="dl__row"><dt>Arriving by car</dt><dd>The school asks drivers to follow its traffic rules, to avoid the horn and to slow down near the premises.</dd></div>
+    </dl>
+    <p class="small-print mt-m">Not ready to visit? <a href="{{link:/admissions/enquire/}}">Ask a question</a>, read the <a href="{{link:/admissions/faq/}}">admissions FAQ</a> or see <a href="{{link:/admissions/how-to-apply/}}">how to apply</a>.</p>
+  </div>
+</section>

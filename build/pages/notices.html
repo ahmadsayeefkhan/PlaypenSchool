@@ -1,0 +1,127 @@
+---
+title: Notices
+schema: collection
+template: T08
+description: Current notices from The Playpen School: admission notices, examination dates and standing reminders, each with the period it covers. Expired notices are marked.
+h1: Notices from the <em>school</em>.
+standfirst: Admission notices, examination dates and standing reminders, each with the period it covers. A notice that has run its course stays on the page, marked as expired.
+---
+<section class="page-section" aria-labelledby="not-board">
+  <div class="band" data-filter-scope>
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">The notice board</span><span class="sheet-rule__purpose">Current notices first</span></div>
+    <h2 id="not-board" class="section-title">What the school has told families.</h2>
+
+    <div class="mt-m">
+      <ul class="chips" aria-label="Filter by topic">
+        <li><button class="chip" type="button" data-filter="all" aria-pressed="true">All topics</button></li>
+        <li><button class="chip" type="button" data-filter="admissions" aria-pressed="false">Admissions</button></li>
+        <li><button class="chip" type="button" data-filter="academic" aria-pressed="false">Academic</button></li>
+        <li><button class="chip" type="button" data-filter="policy" aria-pressed="false">Policy</button></li>
+      </ul>
+      <ul class="chips mt-m" aria-label="Filter by status">
+        <li><button class="chip" type="button" data-filter="all" data-filter-key="status" aria-pressed="true">Current and expired</button></li>
+        <li><button class="chip" type="button" data-filter="current" data-filter-key="status" aria-pressed="false">Current</button></li>
+        <li><button class="chip" type="button" data-filter="expired" data-filter-key="status" aria-pressed="false">Expired</button></li>
+      </ul>
+      <p class="chips__status" role="status" aria-live="polite"></p>
+    </div>
+
+    <!-- CONFIRM: all three notices come from the school's own site (the ticker and its notices page, September 2026). The A Level notice carries no posting date, only the academic year it covers; the examination notice's dates are in 2025 and have passed. The school has supplied no other notice and has not named who owns this page. -->
+    <ul class="rows" data-reveal-group>
+      <li class="row" id="n-alevel" data-tags="admissions" data-status="current">
+        <span class="row__date"><span class="row__day row__day--text">2026 to 27</span><span>Academic year</span></span>
+        <div class="row__body">
+          <p class="row__kicker label">Admissions notice, current</p>
+          <h3 class="row__title"><a href="{{link:/admissions/how-to-apply/}}">A Level admission is open for 2026 to 2027</a></h3>
+          <p class="row__text">The school's notice says that admission to A Level for the academic year July 2026 to June 2027 is open. Forms are available in the admin office and on the school's website.</p>
+          <p class="row__valid">Covers the academic year July 2026 to June 2027</p>
+        </div>
+      </li>
+      <li class="row" id="n-phones" data-tags="policy" data-status="current">
+        <span class="row__date"><span class="row__day row__day--text">Standing</span><span>No end date</span></span>
+        <div class="row__body">
+          <p class="row__kicker label">Policy notice, current</p>
+          <h3 class="row__title"><a href="{{link:/about/policies/}}">Students do not bring mobile phones to school</a></h3>
+          <p class="row__text">Students are not to bring mobile phones to school, and bags are checked at the entry in the morning. A student who needs to reach a parent urgently can use the Admin Office on Level 2 to make a call.</p>
+          <p class="row__valid">Standing notice, from the code of conduct</p>
+        </div>
+      </li>
+      <li class="row row--expired" id="n-exam-2025" data-tags="academic" data-status="expired">
+        <time class="row__date" datetime="2025-11-30"><span class="row__day">30</span><span>Nov 2025</span></time>
+        <div class="row__body">
+          <p class="row__kicker label">Expired notice, academic</p>
+          <h3 class="row__title"><a href="{{link:/learning/examinations/}}">First Semester Examination, 30 November to 11 December 2025</a></h3>
+          <p class="row__text">Examinations were scheduled from 30 November to 11 December 2025. Classes for the younger students, Playgroup to KG II, continued regular sessions until 8 December 2025.</p>
+          <p class="row__valid">Expired on 11 December 2025</p>
+        </div>
+      </li>
+    </ul>
+    <p class="filter-empty">No notice matches those filters. Choose "All topics" and "Current and expired" to see every notice.</p>
+  </div>
+</section>
+
+<section class="page-section" aria-labelledby="not-how">
+  <div class="band">
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">How notices work</span><span class="sheet-rule__purpose">And where the rest are kept</span></div>
+    <div class="layout">
+      <div class="layout__main">
+        <h2 id="not-how" class="section-title">Every notice says when it applies.</h2>
+        <div class="prose mt-m" data-reveal>
+          <p>Each notice here says what it is about, which topic it belongs to and the period it covers. When that period ends, the notice stays on the page and is marked as expired, so a family that saw it once can find it again.</p>
+          <p>Notices for a single class or section, such as the timings of a Parents–Teachers Meeting, are issued through the parent and student portal. Examination schedules and closures are announced there as well as here.</p>
+        </div>
+        <!-- CONFIRM: that expired notices stay on the board marked "Expired" (our proposal from the plan, not a school rule), who at the school owns this page and how often it is updated. The plan asks for a named notice owner; none has been given, and the school's own notice list is short. -->
+        <div class="empty-note mt-l" data-reveal>
+          <div>
+            <p class="label">To be published by the school</p>
+            <p class="empty-note__title">No other notice has been given to this website.</p>
+          </div>
+          <div class="empty-note__body">
+            <p>When the school sends a notice about transport, a closure or an examination date, it is added to the board above with the dates it covers. To ask about something you have heard of, call the line for your child's section. The school publishes {{hours}} for these lines:</p>
+            {{phones}}
+          </div>
+        </div>
+      </div>
+      <div class="layout__aside">
+        <p class="label">Class notices and results</p>
+        <ul class="link-list mt-m">
+          <li>{{ext:portal}}</li>
+          <li><a class="link link--arrow" href="{{link:/events/}}">Events and term dates</a></li>
+          <li><a class="link link--arrow" href="{{link:/community/parents/}}">For parents</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="page-section" aria-labelledby="wn-title">
+  <div class="band where-next">
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Routes</span></div>
+    <h2 id="wn-title" class="where-next__title">Where next?</h2>
+    <div class="where-next__grid where-next--3">
+      <div class="where-next__col">
+        <h3>Current parents</h3>
+        <ul>
+          <li>{{ext:portal}}</li>
+          <li>{{ext:pay}}</li>
+          <li><a class="link" href="{{link:/community/parents/}}">For parents</a></li>
+        </ul>
+      </div>
+      <div class="where-next__col">
+        <h3>Dates and reports</h3>
+        <ul>
+          <li><a class="link" href="{{link:/events/}}">Events and term dates</a></li>
+          <li><a class="link" href="{{link:/news/}}">News</a></li>
+        </ul>
+      </div>
+      <div class="where-next__col">
+        <h3>New families</h3>
+        <ul>
+          <li><a class="link" href="{{link:/admissions/how-to-apply/}}">How to apply</a></li>
+          <li><a class="link" href="{{link:/admissions/faq/}}">Admissions FAQ</a></li>
+          <li><a class="link" href="{{link:/admissions/visit/}}">Book a visit</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

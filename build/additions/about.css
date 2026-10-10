@@ -1,0 +1,25 @@
+/* about group (history, leadership, campus, child protection, policies, careers): extra rules.
+   Prefix: .about-. Tokens only. Written 2026-10-11, group "about". */
+
+/* history, 2026-10-11: the footnote dagger on the dark ground (main.css draws it maroon, which fails on --night) */
+.is-night .fn { color: var(--gold-text); }
+
+/* leadership, 2026-10-11: the management row (Chairman, Managing Director) is set a little larger than the other tiers */
+.about-people--lead .person__name { font-size: clamp(28px, 2.6vw, 40px); }
+
+/* leadership (also fixes every table--stack), 2026-10-11: under 640 px the stacked table's rows are display:block but its
+   caption stayed a table-caption box, which shrink-wrapped to a few characters wide. A block caption takes the full width. */
+@media (max-width: 639px) {
+  .table--stack caption { display: block; width: 100%; }
+}
+
+/* policies, 2026-10-11 (review): the rule links in the index table are one line high inside a 42 px row. The padding and the
+   equal negative margin give each link a 44 px hit area without changing the row's height. */
+.about-index__link { display: inline-block; padding: 13px 0; margin: -13px 0; }
+
+/* campus, 2026-10-11 (review): a tall or square figure inside a .split fills the whole column once the split stacks
+   (560 to 899 px), so the portrait courtyard frame became a 780 x 1170 px page. Cap it at 24 rem there; phones and the
+   side-by-side layout are untouched. */
+@media (min-width: 560px) and (max-width: 899px) {
+  .about-plate--narrow { max-width: 24rem; }
+}

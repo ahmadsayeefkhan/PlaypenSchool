@@ -1,0 +1,110 @@
+/* ==========================================================================
+   Learning group (page group "learning"): extra components
+   Pages: /learning/, /learning/junior/ ... /learning/student-support/
+   Written 2026-10-11. Tokens only; mobile first; no motion.
+   ========================================================================== */
+
+/* /learning/ and /learning/cambridge-pathway/: the class path (learning, 2026-10-11)
+   The sixteen classes in a line, grouped under their four stages, like the rule on the home.
+   A stage is a list item whose width in classes is --n (4, 3, 4, 5). It answers to the width of its own box, not the
+   screen's: from 940 px the stages run in one line (hub's wide band at 1366 px and up, the story column from about
+   1500 px); from 560 px they pair up; below that they stack. The one-line version was first allowed from 760 px and
+   "KG II" ran into its neighbour in the story column (reviewed 2026-10-11): at 940 px a class cell is 56 px wide, and
+   the widest label ("KG II", 2.13 em) needs 2.13 x 18 px + 12 px = 50 px. */
+.class-path { margin-top: clamp(28px, 3vw, 44px); container-type: inline-size; }
+.class-path__stages {
+  list-style: none;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 26px;
+}
+.class-path__stage { border-top: 1px solid var(--ink); padding-top: 12px; min-width: 0; }
+.class-path__name {
+  font: 500 11.5px / 1.2 var(--font-sans);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+.class-path__classes {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(var(--n, 4), minmax(0, 1fr));
+  margin-top: 10px;
+  border-bottom: var(--hairline);
+}
+.class-path__classes li {
+  padding: 14px 6px 16px;
+  border-left: var(--hairline);
+  font: 300 clamp(20px, 5.2vw, 28px) / 1 var(--font-serif);
+  letter-spacing: -0.005em;
+  font-variant-numeric: lining-nums;
+  white-space: nowrap;
+  min-width: 0;
+}
+.class-path__classes li:first-child { border-left: 0; padding-left: 0; }
+.class-path__cambridge {
+  margin-top: 12px;
+  padding-left: 18px;
+  position: relative;
+  font: 500 11.5px / 1.45 var(--font-sans);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--maroon);
+}
+.class-path__cambridge::before { content: ''; position: absolute; left: 0; top: 0.78em; width: 10px; height: 1px; background: var(--maroon); }
+@container (min-width: 560px) {
+  .class-path__stages { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--gutter); }
+  .class-path__classes li { font-size: clamp(20px, 3.4cqw, 26px); padding-left: 6px; padding-right: 6px; }
+}
+@container (min-width: 940px) {
+  .class-path__stages { grid-template-columns: repeat(16, minmax(0, 1fr)); column-gap: 14px; row-gap: 0; }
+  .class-path__stage { grid-column: span var(--n, 4); }
+  .class-path__classes li { padding: 16px 6px 18px; font-size: clamp(18px, 2cqw, 28px); }
+}
+
+/* /learning/a-level/: the subject ledger (learning, 2026-10-11)
+   A numbered, single-column list of subjects in large serif type, for the one night section of the page.
+   It also works on paper. */
+.subject-ledger { list-style: none; border-top: 1px solid var(--ink); }
+.subject-ledger__item {
+  display: grid;
+  grid-template-columns: 52px minmax(0, 1fr);
+  align-items: baseline;
+  padding: 14px 0 16px;
+  border-bottom: var(--hairline);
+}
+.subject-ledger__n {
+  font: 500 11.5px / 1 var(--font-sans);
+  letter-spacing: 0.14em;
+  color: var(--gold);
+  font-variant-numeric: tabular-nums;
+}
+.subject-ledger__name { font: 300 clamp(26px, 3vw, 44px) / 1.15 var(--font-serif); letter-spacing: -0.005em; }
+.is-night .subject-ledger { border-top-color: var(--paper); }
+.is-night .subject-ledger__item { border-bottom-color: var(--night-line); }
+.is-night .subject-ledger__n { color: var(--gold-text); }
+
+/* /learning/senior/: the subject table (learning, 2026-10-11)
+   A table of subjects with the kind of subject in each level. A cell that says "Not listed" is quieter than one that
+   says "Compulsory" or "Elective"; the word is what carries the meaning, not the colour. */
+.subject-table td.is-quiet { color: var(--ink-2); }
+.subject-table td.is-fixed { font-weight: 500; }
+@media (min-width: 640px) {
+  .subject-table th[scope="row"] { width: 34%; }
+}
+
+/* /learning/examinations/ and /learning/results/: a note about something the school has not published (learning, 2026-10-11)
+   The empty state of a results table or of the Cambridge series: a plain statement and the number to call, nothing
+   invented. (Reviewed 2026-10-11: the phone list inside it was dropped, so the .phones rule went too.) */
+.pending-note { max-width: 62ch; }
+
+/* /learning/: four chapter cards in one row (learning, 2026-10-11)
+   {{children:}} writes a three-column list from 1024 px; with four pages under the hub the fourth would sit alone on a
+   second row. The wrapper keeps the token (so the cards stay in step with nav.json) and sets four columns. */
+@media (min-width: 1024px) {
+  .learning-cards4 .chapter-cards { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+
+/* All learning pages: a telephone number never breaks across two lines (learning, 2026-10-11)
+   "01755 693 623" is one thing to dial; inside a narrow column the browser split it after the first group. */
+.process__body a[href^="tel:"], .callout a[href^="tel:"], .accordion__body a[href^="tel:"], .prose a[href^="tel:"], .small-print a[href^="tel:"] { white-space: nowrap; }

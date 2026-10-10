@@ -1,0 +1,167 @@
+---
+title: Contact
+template: T07
+schema: contact
+actions: false
+updated: 2026-10-11
+h1: Call the school, or <em>come</em> and see it.
+standfirst: A telephone line for each section of the school, one address in Bashundhara R/A, and a short form that checks what you type and shows which number to call. The admissions lines are open {{hours}}.
+---
+<section class="page-section is-night" aria-labelledby="ct-lines">
+  <div class="band">
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Telephone</span><span class="sheet-rule__purpose">One line for each section of the school</span></div>
+    <div class="contact-lines">
+      <div class="contact-lines__intro">
+        <h2 id="ct-lines" class="section-title">Call the line for your child's section.</h2>
+        <div class="prose" data-reveal>
+          <p>The school is reached by telephone or in person. Choose the line for the section your child is in, or would join: the first three are the admissions lines, open {{hours:between}}.</p>
+          <!-- CONFIRM: days of the week. The old site said "Sunday to Thursday"; the school's own pages give hours only, so no days are printed. -->
+          <!-- CONFIRM: hours for the further-queries and emergency lines. Only the admissions lines carry published hours. -->
+          <p>The further-queries lines are the school's general numbers, and the ones to use in an emergency.</p>
+        </div>
+      </div>
+      <div class="contact-lines__list" data-reveal>
+        {{phones:all}}
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="page-section page-section--tint" aria-labelledby="ct-form">
+  <div class="band">
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">A question</span><span class="sheet-rule__purpose">A prototype form: nothing is sent</span></div>
+    <div class="layout">
+      <div class="layout__main">
+        <h2 id="ct-form" class="section-title">Not sure which line to call?</h2>
+        <p class="section-lead mt-m" data-reveal>Say what your question is about. The form checks your answers and shows the number to call.</p>
+        <div class="mt-m">
+          <p class="form-note">This form is a prototype. It checks what you type, then shows the school's numbers. Nothing is sent, and the school does not receive your message.</p>
+          <form class="page-form" data-prototype-form novalidate action="#" method="post" aria-labelledby="ct-form">
+            <div class="form-row form-row--2">
+              <div class="field"><label for="ct-name">Your name (optional)</label><input id="ct-name" name="name" type="text" autocomplete="name" aria-describedby="ct-name-err"><p id="ct-name-err" class="field__error" aria-live="polite"></p></div>
+              <div class="field"><label for="ct-phone">Your phone number (optional)</label><input id="ct-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" aria-describedby="ct-phone-err"><p id="ct-phone-err" class="field__error" aria-live="polite"></p></div>
+            </div>
+            <div class="field">
+              <label for="ct-topic">Question topic</label>
+              <select id="ct-topic" name="topic" required aria-describedby="ct-topic-err">
+                <option value="">Choose a topic</option>
+                <option value="admissions" data-reply="For admission, a test or a form, call the line for your child's section: the first three numbers below.">Admission, tests and forms</option>
+                <option value="visit" data-reply="To arrange a visit, call the admissions line for your child's section, or read how a visit works on the Visit page.">Visiting the school</option>
+                <option value="fees" data-reply="Fees, receipts and the portal are looked after by Accounts and Finance or the school office. Call a further-queries line to ask.">Fees, receipts or the portal</option>
+                <option value="current" data-reply="For a child already at the school, call the line for the child's section: the first three numbers below.">A child already at the school</option>
+                <option value="bus" data-reply="Bus applications go to the school's Administrative Office, which confirms routes and availability. Call a further-queries line to ask how to apply.">School bus</option>
+                <option value="careers" data-reply="Read the Careers page for how to apply, then call a further-queries line if you need to ask something first.">Working at the school</option>
+                <option value="alumni" data-reply="The Alumni page explains how former students can stay in touch. To ask a first question, call a further-queries line and say that you are a former student.">Former students</option>
+                <option value="other" data-reply="Call a further-queries line.">Something else</option>
+              </select>
+              <p id="ct-topic-err" class="field__error" aria-live="polite"></p>
+            </div>
+            <div class="field"><label for="ct-msg">Your message (optional)</label><textarea id="ct-msg" name="message" rows="4"></textarea></div>
+            <button class="btn btn--primary" type="submit"><span class="btn__label">Show the number to call</span></button>
+          </form>
+          <div class="form-notice" role="status">
+            <p class="form-notice__text"></p>
+            {{phones:all}}
+            <p class="small-print">Prefer to read first? See <a href="{{link:/admissions/how-to-apply/}}">How to apply</a>, <a href="{{link:/admissions/fees/}}">Fees and payment</a> or <a href="{{link:/school-life/transport-and-safety/}}">Transport and safety</a>.</p>
+          </div>
+          <noscript><div class="form-note"><p>This form needs JavaScript. Please call the line for your child's section:</p>{{phones:all}}</div></noscript>
+        </div>
+      </div>
+      <div class="layout__aside layout__aside--sticky">
+        <div class="callout" data-reveal>
+          <span class="callout__label label">What happens next</span>
+          <p>The form checks your answers in your browser, then shows the telephone number that suits your question. Nothing leaves your device.</p>
+          <p class="legal-more"><a class="link" href="{{link:/privacy/}}">How this site handles information</a></p>
+        </div>
+        <!-- CONFIRM: email. The school's email addresses are hidden on its current site and have not been supplied; none is printed (docs/confirm/foundation.md, docs/confirm/contact-legal.md). -->
+        <div class="callout" data-reveal>
+          <span class="callout__label label">Email</span>
+          <p>The school's email address is not printed on this site. Please telephone: the lines are at the top of this page.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="page-section" aria-labelledby="ct-who">
+  <div class="band">
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Who to ask</span><span class="sheet-rule__purpose">By topic</span></div>
+    <h2 id="ct-who" class="section-title">The right door for your question.</h2>
+    <!-- CONFIRM: routing. Admissions and section lines are the school's published lines (admission procedure, contact page). Sending fees, buses, careers and alumni questions to a further-queries line is our reading, not a published routing. -->
+    <!-- CONFIRM: Accounts and Finance has its own lines on the school's current contact page (three numbers). nav.json holds only the admissions and further-queries lines, so they are not printed here. -->
+    <div class="table-wrap mt-m" data-reveal>
+      <table class="table table--stack legal-table">
+        <caption>Which line or office to ask, and what to read first</caption>
+        <thead><tr><th scope="col">If your question is about</th><th scope="col">Ask</th><th scope="col">Read first</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Admission, tests and forms</th><td data-label="Ask">The admissions line for your child's section</td><td data-label="Read first"><a href="{{link:/admissions/how-to-apply/}}">How to apply</a></td></tr>
+          <tr><th scope="row">Visiting the school</th><td data-label="Ask">The same admissions lines</td><td data-label="Read first"><a href="{{link:/admissions/visit/}}">Book a visit</a></td></tr>
+          <tr><th scope="row">Fees, receipts and the portal</th><td data-label="Ask">Accounts and Finance, or the school office. Start with a further-queries line</td><td data-label="Read first"><a href="{{link:/admissions/fees/}}">Fees and payment</a></td></tr>
+          <tr><th scope="row">A child already at the school</th><td data-label="Ask">The line for the child's section</td><td data-label="Read first"><a href="{{link:/community/parents/}}">For parents</a></td></tr>
+          <tr><th scope="row">The school bus</th><td data-label="Ask">The Administrative Office</td><td data-label="Read first"><a href="{{link:/school-life/transport-and-safety/}}">Transport and safety</a></td></tr>
+          <tr><th scope="row">Working at the school</th><td data-label="Ask">A further-queries line, if the Careers page leaves a question</td><td data-label="Read first"><a href="{{link:/about/careers/}}">Careers at Playpen</a></td></tr>
+          <tr><th scope="row">Former students</th><td data-label="Ask">A further-queries line: say that you are a former student</td><td data-label="Read first"><a href="{{link:/community/alumni/}}">Alumni</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="page-section" aria-labelledby="ct-find">
+  <div class="band">
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Find the school</span><span class="sheet-rule__purpose">Address, map and arrival</span></div>
+    <div class="split split--center">
+      <div class="split__text">
+        <h2 id="ct-find" class="section-title">Bashundhara R/A, Dhaka.</h2>
+        <!-- CONFIRM: map pin. The coordinates in the map link come from the Google Maps embed on the old site; check that the pin lands at the school gate. No static map image is used: none exists in the media set. -->
+        <dl class="dl contact-find mt-m" data-reveal>
+          <div class="dl__row"><dt>Address</dt><dd>{{address}}<br>{{map}}</dd></div>
+          <!-- CONFIRM: bookshop hours (8.30 am to 1.00 pm) are from the old site's contact page; the days are not stated. -->
+          <div class="dl__row"><dt>Bookshop</dt><dd>8.30 am to 1.00 pm</dd></div>
+          <div class="dl__row"><dt>By car</dt><dd>Drivers are asked to follow the school's traffic rules, avoid the horn and slow down near the premises.</dd></div>
+          <!-- CONFIRM: how visits are arranged. The school's pages say only that families may come and see the building and the section; days, times and who receives the booking are not published, so the row says to call the admissions line first. -->
+          <div class="dl__row"><dt>Visiting</dt><dd>To arrange a visit, call the admissions line for your child's section {{hours:between}}.<br><a class="link" href="{{link:/admissions/visit/}}">Book a visit</a></dd></div>
+          <!-- CONFIRM: bus service since March 2014 and the Administrative Office as the place to apply: from the school's transport page; no routes are published. -->
+          <div class="dl__row"><dt>School bus</dt><dd>The school has run its own bus service since March 2014. Parents apply at the Administrative Office.<br><a class="link" href="{{link:/school-life/transport-and-safety/}}">Transport and safety</a></dd></div>
+        </dl>
+      </div>
+      <figure class="plate split__figure" data-reveal>
+        <div class="plate__frame">{{img src="img/about-playpen.jpg" alt="The brick and concrete school building seen from the grass playground, with a football goal in front and a few children far off." sizes="(min-width: 900px) 38vw, 100vw"}}</div>
+        <figcaption class="plate__cap"><span class="plate__n">01</span>The school building seen from the grass playground</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="page-section" aria-labelledby="wn-title">
+  <div class="band where-next">
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Routes</span></div>
+    <h2 id="wn-title" class="where-next__title">Where next?</h2>
+    <div class="where-next__grid where-next--3">
+      <div class="where-next__col">
+        <h3>New families</h3>
+        <ul>
+          <li><a class="link" href="{{link:/admissions/visit/}}">Book a visit</a></li>
+          <li><a class="link" href="{{link:/admissions/how-to-apply/}}">How to apply</a></li>
+          <li><a class="link" href="{{link:/admissions/faq/}}">Admissions FAQ</a></li>
+        </ul>
+      </div>
+      <div class="where-next__col">
+        <h3>Current parents</h3>
+        <ul>
+          <li>{{ext:portal}}</li>
+          <li>{{ext:pay}}</li>
+          <li><a class="link" href="{{link:/notices/}}">Notices</a></li>
+        </ul>
+      </div>
+      <div class="where-next__col">
+        <h3>The rules of this site</h3>
+        <ul>
+          <li><a class="link" href="{{link:/privacy/}}">Privacy</a></li>
+          <li><a class="link" href="{{link:/terms/}}">Terms of use</a></li>
+          <li><a class="link" href="{{link:/about/child-protection/}}">Child protection and safeguarding</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

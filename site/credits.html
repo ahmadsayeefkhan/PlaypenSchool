@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Credits, Playpen sample homepage</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#F5F1EA">
+<link rel="icon" type="image/png" sizes="32x32" href="./assets/media/favicon-32.png">
+<link rel="stylesheet" href="./css/main.css">
+<style>
+  .credits { max-width: 72rem; margin: 0 auto; padding: clamp(32px, 6vw, 96px) clamp(20px, 6vw, 120px); }
+  .credits h1 { font: 400 clamp(30px, 3.2vw, 60px)/1.05 var(--font-serif); letter-spacing: -0.005em; margin: 0 0 24px; }
+  .credits h2 { font: 400 clamp(22px, 1.8vw, 32px)/1.15 var(--font-serif); margin: 56px 0 16px; }
+  .credits h3 { font: 400 clamp(19px, 1.45vw, 24px)/1.3 var(--font-serif); margin: 36px 0 12px; }
+  .credits p { max-width: 64ch; }
+  .credits ul { max-width: 64ch; padding-left: 1.2em; }
+  .credits table { width: 100%; border-collapse: collapse; font: 400 14px/1.45 var(--font-sans); color: var(--ink-2); margin: 16px 0 24px; }
+  .credits th, .credits td { text-align: left; vertical-align: top; padding: 10px 12px 10px 0; border-top: 1px solid var(--clay); }
+  .credits th { font-weight: 500; color: var(--ink); }
+  .credits td:first-child { color: var(--ink); }
+  .credits code { font: 400 13px/1.4 ui-monospace, Consolas, monospace; background: var(--paper-2); padding: 1px 4px; }
+  .credits a { color: var(--ink); text-decoration-color: var(--gold); word-break: break-all; }
+  .credits__back { display: inline-block; margin-bottom: 32px; font: 500 11.5px/1.2 var(--font-sans); letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); }
+</style>
+</head>
+<body class="credits-page">
+<main class="credits" id="content">
+<a class="credits__back" href="./index.html">&larr; Back to the sample homepage</a>
+<h1>Credits: asset sources, Playpen Version 1</h1>
+<p>Private presentation sample. Every asset used on the sample homepage is listed here with its source, so nothing is mistaken for original or licensed work. Add a row for every new asset.</p>
+<h2>Polish pass, 2026-10-09</h2>
+<p>What changed in the shipped set (the full record is <code>docs/polish-notes.md</code> and <code>docs/CREDITS.md</code>): the school's source files moved out of the web root to <code>source-media/</code> (every <code>assets/source/playpen/&hellip;</code> path below now lives there; sources and processing unchanged); every still and the courtyard film were re-exported with the v2 grade (white balance pulled hard to neutral, contrast unified per frame, blacks lifted towards warm paper, cyans and greens pulled 25&nbsp;%); the hero still, its masks, the mobile crop and the OG card were re-baked with the paper zone at 34&nbsp;% of the frame; the generated terrace loop, the two video posters, the crest-on-the-facade swatch, the 903&nbsp;KB pitch GLB, the PNG medallion fallback and <code>logo.png</code> were taken out of the shipped set (kept in <code>raw/unshipped-2026-10-09/</code>); the preloader and the header use the traced <code>logo-mark.svg</code>, the footer a 160&nbsp;px white crest; GSAP's ESM copies and Lenis are minified (sources in <code>raw/vendor-src/</code>).</p>
+<h2>Brand</h2>
+<table><thead><tr><th>Asset (path under <code>site/</code>)</th><th>Source</th><th>Processing</th><th>Notes</th></tr></thead><tbody>
+<tr><td><code>assets/brand/logo-1024.png</code>, <code>logo-256.png</code></td><td>The Playpen School logo, <a href="https://playpen.edu.bd/wp-content/uploads/2022/07/play-pen-logo-01-2048x2048.png" rel="noopener">https://playpen.edu.bd/wp-content/uploads/2022/07/play-pen-logo-01-2048x2048.png</a> (downloaded 2026-10-09; original 2048×2048 PNG kept in <code>raw/logo-02-2048/</code>)</td><td>Trimmed transparent margins, centred on a square canvas with PIL (<code>python -I</code>)</td><td>School's own mark; used for the client sample only</td></tr>
+<tr><td><code>assets/brand/logo-shield-only-1024.png</code></td><td>Same logo</td><td>Ribbon ("ESTABLISHED IN 1977") cut off below the shield tip; transparent PNG</td><td>Used as the crest decal in <code>js/webgl/medallion-procedural.js</code></td></tr>
+<tr><td><code>assets/brand/logo-meshy-input-1024.png</code>, <code>logo-meshy-input-shield-1024.png</code></td><td>Same logo</td><td>Flattened on plain white, 12% padding (inputs for Meshy image-to-3D)</td><td>Not for display</td></tr>
+<tr><td>(not shipped) <code>raw/logo-01-thumb250/play-pen-logo-01.png</code></td><td><a href="https://playpen.edu.bd/wp-content/uploads/elementor/thumbs/play-pen-logo-01-q1q0myxqmbyuil0qm1ymzu0gevysisv97id89de3wk.png" rel="noopener">https://playpen.edu.bd/wp-content/uploads/elementor/thumbs/play-pen-logo-01-q1q0myxqmbyuil0qm1ymzu0gevysisv97id89de3wk.png</a></td><td>none</td><td>250 px thumbnail from the brief; superseded by the 2048 px file</td></tr>
+</tbody></table>
+<h2>Brand files from the media scout (2026-10-09)</h2>
+<table><thead><tr><th>Asset (path under <code>site/</code>)</th><th>Source</th><th>Processing</th><th>Notes</th></tr></thead><tbody>
+<tr><td><code>assets/brand/logo.png</code>, <code>logo-1024.png</code></td><td>The Playpen School logo, master file <a href="https://playpen.edu.bd/wp-content/uploads/2022/07/play-pen-logo-01.png" rel="noopener">https://playpen.edu.bd/wp-content/uploads/2022/07/play-pen-logo-01.png</a> (4500×4500 RGBA PNG, the largest on the site; copy kept as <code>assets/source/playpen/2022-07_play-pen-logo-01.png</code>)</td><td>Transparent margins trimmed, 2% padding (PIL, <code>python -I</code>)</td><td>No SVG exists anywhere on playpen.edu.bd; this PNG is the cleanest master</td></tr>
+<tr><td><code>assets/brand/logo-white.png</code>, <code>logo-white-1024.png</code></td><td>Same logo</td><td>White knockout: every non-white pixel → white, white text → transparent</td><td>For dark backgrounds</td></tr>
+<tr><td><code>assets/brand/logo-mark.png</code>, <code>logo-mark-1024.png</code>, <code>logo-mark-white.png</code></td><td>Same logo</td><td>Ribbon removed by extrapolating the shield edges below the ribbon line</td><td>Shield only</td></tr>
+<tr><td><code>assets/brand/logo-mark.svg</code></td><td>Traced by DS from <code>logo-mark.png</code> (the school's own mark)</td><td><code>tools/vectorise-logo.py</code> (<code>python -I</code>): colour masks at full resolution, pypotrace (potrace) trace of four layers (shield silhouette with a gradient approximating the gold rim, maroon field, white letters, gold stars); 13.5 KB, viewBox 1000 × 1039</td><td>Vector for the record, favicons and future hairline work. The page itself shows the PNG (spec decision 4). The rim gradient is an approximation of the raster; no SVG exists on playpen.edu.bd</td></tr>
+</tbody></table>
+<h2>School photos and video (media scout)</h2>
+<p>All photos in <code>assets/source/playpen/</code> were downloaded on 2026-10-09 from the school's own WordPress media library (<code>https://playpen.edu.bd/wp-content/uploads/…</code>, listed through <code>/wp-json/wp/v2/media</code> and the HTML of the public pages, mainly <code>/photo-gallery/</code>). File names keep the upload year-month and the original file name; the exact source URL of every file is in <code>docs/media-inventory.json</code> (<code>source</code>). Copyright: The Playpen School / its photographers; used only for this private client sample. Files with Facebook-style numeric names (<code>…_n.jpg</code>) were originally posted on the school's Facebook page and re-uploaded by the school to its site.</p>
+<table><thead><tr><th>Asset (path under <code>site/</code>)</th><th>Source</th><th>Processing</th><th>Notes</th></tr></thead><tbody>
+<tr><td><code>assets/source/playpen/video/Z1nMZWILMvo_Welcome_to_PLAYPEN.mp4</code></td><td><a href="https://www.youtube.com/watch?v=Z1nMZWILMvo" rel="noopener">https://www.youtube.com/watch?v=Z1nMZWILMvo</a>, "Welcome to PLAYPEN", Playpen School channel (@playpenschool2381); embedded on the school homepage</td><td>yt-dlp, 1080p H.264 + AAC, no re-encode</td><td>School-made welcome film; source for short b-roll cuts only</td></tr>
+<tr><td><code>assets/source/playpen/video/RGl_uqImEZ4_…Sports_Day_Display_2026.mp4</code></td><td><a href="https://www.youtube.com/watch?v=RGl_uqImEZ4" rel="noopener">https://www.youtube.com/watch?v=RGl_uqImEZ4</a>, same channel</td><td>yt-dlp, 1080p</td><td>Field display shot from above</td></tr>
+<tr><td><code>assets/source/playpen/video/ORU1cYipkLQ_Pohela_Boishakh_1433….mp4</code></td><td><a href="https://www.youtube.com/watch?v=ORU1cYipkLQ" rel="noopener">https://www.youtube.com/watch?v=ORU1cYipkLQ</a>, same channel</td><td>yt-dlp, 1080p</td><td>Festival edit</td></tr>
+<tr><td><code>assets/source/playpen/video/gWhB9TeT2EA_…Education_Fair_2025….mp4</code></td><td><a href="https://www.youtube.com/watch?v=gWhB9TeT2EA" rel="noopener">https://www.youtube.com/watch?v=gWhB9TeT2EA</a>, same channel</td><td>yt-dlp, 1080p</td><td>Reference only</td></tr>
+<tr><td><code>assets/source/playpen/2021-06_Video-from-Wahida-Ferdous.mp4</code></td><td><a href="https://playpen.edu.bd/wp-content/uploads/2021/06/Video-from-Wahida-Ferdous.mp4" rel="noopener">https://playpen.edu.bd/wp-content/uploads/2021/06/Video-from-Wahida-Ferdous.mp4</a> (site-hosted)</td><td>none</td><td>Slideshow of stills with transitions, 720p</td></tr>
+<tr><td><code>assets/source/playpen/_preview/*.jpg</code></td><td>Derived from the files above</td><td>1200 px wide JPEG previews (PIL)</td><td>For review only, not shipped</td></tr>
+</tbody></table>
+<p>No third-party (non-Playpen) media was downloaded by the media scout; <code>assets/source/other/</code> is empty.</p>
+<h2>3D</h2>
+<table><thead><tr><th>Asset (path under <code>site/</code>)</th><th>Source</th><th>Processing</th><th>Notes</th></tr></thead><tbody>
+<tr><td><code>assets/3d/medallion.glb</code></td><td>Generated with Meshy AI (image-to-3D, model meshy-7.1, task <code>01a11e21-d165-76b0-b5d4-03b994ff6d14</code>, 30 credits, 2026-10-09) from <code>logo-meshy-input-shield-1024.png</code></td><td>gltf-transform 4.5.1: base colour resized to 2048², normal and metallic-roughness to 1024²; normal map softened to 55% strength and the red field pulled towards brand maroon #8A0204 with PIL; all textures WebP q85, Draco mesh compression</td><td>57,663 triangles, 903 KB. Raw 22.9 MB output and PNG textures kept in <code>raw/meshy-01-medallion/</code> (not shipped)</td></tr>
+<tr><td><code>assets/3d/medallion-1k.glb</code></td><td>Derived from <code>medallion.glb</code> above (no new credits) by the media producer, 2026-10-09</td><td>gltf-transform 4.5.1 (<code>npx @gltf-transform/cli</code>): base colour and normal resized to 1024², metallic-roughness to 512², mesh simplified to 60 % (meshoptimizer, error 0.0005), textures WebP q85, Draco re-applied (position 13 bits, normal 9, texcoord 11)</td><td>34,597 triangles, 39,199 vertices, 420 KB (target ≤ 450 KB, spec 9); the web variant the Ledger loads. The 903 KB file stays for pitch renders only</td></tr>
+<tr><td><code>assets/3d/brushed-normal-512.png</code>, <code>brushed-roughness-512.png</code></td><td>Procedural (numpy/PIL script, seed 1977), made by DS</td><td>Tileable FFT-filtered streak noise; OpenGL-convention normal map</td><td>Used by the procedural medallion ring</td></tr>
+<tr><td><code>js/webgl/medallion-procedural.js</code></td><td>Written by DS</td><td>—</td><td>Procedural ring + disc + crest decal; no external assets beyond the files above</td></tr>
+<tr><td><code>assets/3d/medallion-fallback-1200.webp</code>, <code>medallion-fallback-1200.png</code></td><td>Render of <code>medallion.glb</code> in three.js (dev preview page)</td><td>Transparent image</td><td>Static image for browsers without WebGL and for prefers-reduced-motion</td></tr>
+<tr><td>(not shipped) <code>docs/renders/medallion-{rest,three-quarter,near-front}-{alpha,night}-1600.png</code></td><td>Rendered by the WebGL engineer (E4) from <code>assets/3d/medallion.glb</code> (the 903 KB pitch file) in headless Chrome on the real GPU with <code>dev/render-medallion.mjs</code>, 2026-10-09</td><td>Six 1600×1600 PNGs: three poses (rest, three-quarter, near-front), each on transparent alpha and on the night ground; the spec 9 rig (RoomEnvironment, warm key, rim)</td><td>Pitch deck only; 0 credits</td></tr>
+</tbody></table>
+<h2>Fonts (<code>vendor/fonts/</code>, E1, 2026-10-09)</h2>
+<p>Two families from Google Fonts, SIL Open Font License 1.1, downloaded 2026-10-09 with a current Chrome user agent so the CSS API served variable WOFF2 files; only the <code>/* latin */</code> subset of each was kept, then <code>pyftsubset</code> (the Latin ranges the page uses, hinting dropped) and <code>fontTools.varLib.instancer</code> narrowed the variable axes (<code>python -I</code> on the downloaded files, which are never executed). Self-hosted; no CDN request at runtime; <code>css/main.css</code> declares them with metric-matched fallbacks. The exact ranges and the rebuild steps are in <code>site/vendor/fonts/README.md</code>.</p>
+<table><thead><tr><th>Asset (path under <code>site/</code>)</th><th>Source</th><th>Processing</th><th>Notes</th></tr></thead><tbody>
+<tr><td><code>vendor/fonts/newsreader-var.woff2</code></td><td>Newsreader (roman) by Production Type, Google Fonts: <a href="https://fonts.gstatic.com/s/newsreader/v26/cY9AfjOCX1hbuyalUrK4397yjA.woff2" rel="noopener">https://fonts.gstatic.com/s/newsreader/v26/cY9AfjOCX1hbuyalUrK4397yjA.woff2</a> (via <a href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800" rel="noopener">https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800</a>)</td><td>Latin subset; axes narrowed to <code>wght</code> 300–400, <code>opsz</code> 16–72</td><td>81 KB; SIL OFL 1.1</td></tr>
+<tr><td><code>vendor/fonts/newsreader-italic-var.woff2</code></td><td>Newsreader (italic), same source: <a href="https://fonts.gstatic.com/s/newsreader/v26/cY9CfjOCX1hbuyalUrK439vCjohC.woff2" rel="noopener">https://fonts.gstatic.com/s/newsreader/v26/cY9CfjOCX1hbuyalUrK439vCjohC.woff2</a></td><td>Latin subset; <code>wght</code> 300–400, <code>opsz</code> 64–72 (display only: one italic word per headline)</td><td>60 KB; SIL OFL 1.1</td></tr>
+<tr><td><code>vendor/fonts/hanken-grotesk-var.woff2</code></td><td>Hanken Grotesk by Hanken Design Co., Google Fonts: <a href="https://fonts.gstatic.com/s/hankengrotesk/v12/ieVn2YZDLWuGJpnzaiwFXS9tYtpd59A.woff2" rel="noopener">https://fonts.gstatic.com/s/hankengrotesk/v12/ieVn2YZDLWuGJpnzaiwFXS9tYtpd59A.woff2</a> (via <a href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900" rel="noopener">https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900</a>)</td><td>Latin subset; <code>wght</code> 400–600</td><td>20 KB; SIL OFL 1.1</td></tr>
+</tbody></table>
+<p>Total 159 KB (budget ≤ 200 KB, spec 2.2).</p>
+<h2>Homepage media in <code>assets/media/</code> (media producer E2, 2026-10-09)</h2>
+<p><strong>How every file was made.</strong> <code>tools/pipeline.py</code> (stills), <code>tools/video.py</code> (both videos) and <code>tools/media_list.py</code> (the file table at the end), all run with <code>python -I</code> from the project folder. They read pixels only, from <code>site/assets/source/playpen/</code> and the two Higgsfield downloads under <code>raw/</code> (untrusted data, never executed), and write only to <code>site/assets/media/</code> (and <code>assets/3d/medallion-1k.glb</code>). Every still and both videos carry the one grade of <code>final-spec.md</code> 2.1, applied once: white balance from the bright near-neutral pixels pulled halfway to neutral (±6 % cap) then a warm tint towards 5,200 K, shadows lifted 4 %, highlights +2 % warm, saturation −8 % with hues 335°–55° (brick, maroon, terracotta) protected, vignette 4 %, no grain. Video frames reuse the gains of their first frame so nothing flickers. Rasters: AVIF q55 + WebP q78 + JPG q78 at the widths of spec 8.1, quality stepped down per file until the ceiling of 8.1 is met (floors AVIF 36, WebP 56, JPG 58). Every <code>&lt;picture&gt;</code> should list AVIF first: the AVIF set meets every ceiling except <code>life-0-720.avif</code> (44 KB against 40); the WebP fallbacks that stay over their ceiling at the floor are <code>learning-1</code>, <code>life-0</code>, <code>life-7</code>, <code>ground-1</code>, <code>ground-1-alt</code> and a few 960/720 plates (all listed in the table by size), the JPG fallbacks of the same files too. No EXIF or profile travels: every source is converted to sRGB on read and saved without metadata. Lettering sweep: every crop was viewed at 2× for Bangla or stray lettering; the only lettering left is the school's own English (the crest and PLAYPEN on the facade, the "ANNUAL CULTURAL PROGRAMME 2024" stage banner, the maroon PLAYPEN sash) and the signatures on the student's painting. Faces: the files marked "faces" below show identifiable minors and are for the private presentation only (spec 16.3).</p>
+<h3>Stills from the school's own photographs (source: <strong>playpen</strong>)</h3>
+<p>Source files live in <code>assets/source/playpen/</code>; the URL is the school's own media library. Crop boxes are source pixels (x0, y0, x1, y1).</p>
+<table><thead><tr><th>ID → files</th><th>Source file</th><th>URL (playpen.edu.bd)</th><th>Album / page</th><th>Crop and treatment</th><th>Faces</th></tr></thead><tbody>
+<tr><td><code>hero-1-{960,1440,1920,2560}.{avif,webp,jpg}</code></td><td><code>2024-03_DSC01227.jpg</code> (5489×2427)</td><td><a href="https://playpen.edu.bd/wp-content/uploads/2024/03/DSC01227.jpg" rel="noopener">https://playpen.edu.bd/wp-content/uploads/2024/03/DSC01227.jpg</a></td><td>pages: new-campus, career-at-playpen</td><td>The whole 2.26:1 frame under a paper band (the band is 21.4 % of the 16:9 frame), graded, the melt baked: white sky → paper by luminosity (<code>smoothstep(0.82, 0.97, luma)</code> with its vertical ramp in the photograph's own height), and a full-width paper fade that dissolves the brick walls from 30 % to 42 % of the frame height so the headline zone is ink on paper (measured: luma 0.946 down to 28 %, 0.88 at 32 %; spec gate 15.1 and risk table "up to 40 %"). Soft noise (±0.06) on the melt edge</td><td>no</td></tr>
+<tr><td><code>hero-1-mobile-{720,1080}</code></td><td>same</td><td>same</td><td>same</td><td>4:5 on the centre tree, box (1568, 0, 3510, 2427); luminosity melt in the top 30 % plus a paper fade in the top 3–10 %</td><td>no</td></tr>
+<tr><td><code>ground-1-{960,1440,1920}</code></td><td><code>2021-10_ABOUT-OUR-CAMPUS-1ST-PIC-1.jpg</code> (3823×2991)</td><td><a href="https://playpen.edu.bd/wp-content/uploads/2021/10/ABOUT-OUR-CAMPUS-1ST-PIC-1.jpg" rel="noopener">https://playpen.edu.bd/wp-content/uploads/2021/10/ABOUT-OUR-CAMPUS-1ST-PIC-1.jpg</a></td><td>pages: new-campus, admission-procedure</td><td>21:9 box (0, 900, 3823, 2538): the lawn edge kept, the goal post out. The flat sky replaced by the page's paper, warmed 35 % towards clay at the horizon, through a luminosity mask limited to a sky zone that follows the building: the stepped roofs, then the left wing's leaning edge (measured on the source every 50 px, the zone 14 px clear of the concrete, feathered 10 px) down to the fence line (re-made 2026-10-09; the earlier straight 478 px strip to y 2039 ran over the wing's windows, stopped with a cut above the fence and was full clay by the crop's foot, which read as a beige wash along the plate's left edge); +8 clarity (local contrast). No cables found at full size (sky strip checked at 1:1), nothing cloned, no AI. Note: a 21:9 window cannot hold the whole building from this frame (the top three storeys on the left are above the crop), so <code>ground-1-alt-{960,1440,1920}</code> (16:9, box (0, 480, 3823, 2630), same treatment) is supplied as the alternate for E1/the art director</td><td>no</td></tr>
+<tr><td><code>swatch-1-480</code> brick</td><td><code>2024-03_DSC01278.jpg</code> (6000×4000)</td><td><a href="https://playpen.edu.bd/wp-content/uploads/2024/03/DSC01278.jpg" rel="noopener">https://playpen.edu.bd/wp-content/uploads/2024/03/DSC01278.jpg</a></td><td>pages: new-campus</td><td>1:1 box (4860, 2650, 5390, 3180): brick courses of the curved planter's right end</td><td>no</td></tr>
+<tr><td><code>swatch-2-480</code> concrete</td><td><code>2024-03_DSC03968.jpg</code> (6000×4000)</td><td><a href="https://playpen.edu.bd/wp-content/uploads/2024/03/DSC03968.jpg" rel="noopener">https://playpen.edu.bd/wp-content/uploads/2024/03/DSC03968.jpg</a></td><td>pages: new-campus, career-at-playpen</td><td>1:1 box (1650, 1400, 2250, 2000): board-marked concrete left of the crest, no wires</td><td>no</td></tr>
+<tr><td><code>swatch-3-480</code> crest (dropped in the polish pass)</td><td>same</td><td>same</td><td>same</td><td>1:1 box (2150, 1325, 3050, 2225): the cast crest and the PLAYPEN letters on the facade (English, the school's own)</td><td>no</td></tr>
+<tr><td><code>swatch-4-480</code> glass</td><td><code>2024-09_DSC06552.jpg</code> (6000×4000)</td><td><a href="https://playpen.edu.bd/wp-content/uploads/2024/09/DSC06552.jpg" rel="noopener">https://playpen.edu.bd/wp-content/uploads/2024/09/DSC06552.jpg</a></td><td>pages: laboratories</td><td>1:1 box (1200, 2080, 2640, 3520): beakers, flasks and a stand on the bench front</td><td>no</td></tr>
+<tr><td><code>ascent-1-{960,1440,1920}</code></td><td><code>2024-03_DSC01262.jpg</code> (6000×4000)</td><td><a href="https://playpen.edu.bd/wp-content/uploads/2024/03/DSC01262.jpg" rel="noopener">https://playpen.edu.bd/wp-content/uploads/2024/03/DSC01262.jpg</a></td><td>pages: new-campus, career-at-playpen</td><td>16:10, full width, centre at 55 % height (chequerboard kept); sharpness checked at 2× on the 1440</td><td>no</td></tr>
+<tr><td><code>ascent-2-{960,1440,1920}</code></td><td><code>2024-09_DSC06552.jpg</code></td><td><a href="https://playpen.edu.bd/wp-content/uploads/2024/09/DSC06552.jpg" rel="noopener">https://playpen.edu.bd/wp-content/uploads/2024/09/DSC06552.jpg</a></td><td>pages: laboratories</td><td>16:10, centre at 52 %</td><td><strong>faces</strong></td></tr>
+<tr><td><code>ascent-3-{960,1440,1920}</code></td><td><code>2024-10_DSC06378.jpg</code> (6000×2710)</td><td><a href="https://playpen.edu.bd/wp-content/uploads/2024/10/DSC06378.jpg" rel="noopener">https://playpen.edu.bd/wp-content/uploads/2024/10/DSC06378.jpg</a></td><td>pages: library</td><td>16:10 from the 2.2:1, sides cropped, tables kept</td><td>backs of heads</td></tr>
+<tr><td><code>ascent-4-{960,1440}</code></td><td><code>2024-12_DSC03293-scaled.jpg</code> (2560×1451)</td><td><a href="https://playpen.edu.bd/wp-content/uploads/2024/12/DSC03293-scaled.jpg" rel="noopener">https://playpen.edu.bd/wp-content/uploads/2024/12/DSC03293-scaled.jpg</a></td><td>album: NASA Astronaut Joseph M. Acaba's visit to PLAYPEN</td><td>16:10 centre; no upscale</td><td>high angle, none identifiable</td></tr>
+<tr><td><code>ascent-5-{960,1440,1920}</code></td><td><code>2024-03_DSC01243.jpg</code> (6000×3346)</td><td><a href="https://playpen.edu.bd/wp-content/uploads/2024/03/DSC01243.jpg" rel="noopener">https://playpen.edu.bd/wp-content/uploads/2024/03/DSC01243.jpg</a></td><td>pages: new-campus</td><td>16:10 centre</td><td>no</td></tr>
+<tr><td><code>learning-1-{720,960,1200}</code></td><td><code>2026-02_PXL_20260131_033348127-scaled.jpg</code> (2560×1282)</td><td><a href="https://playpen.edu.bd/wp-content/uploads/2026/02/PXL_20260131_033348127-scaled.jpg" rel="noopener">https://playpen.edu.bd/wp-content/uploads/2026/02/PXL_20260131_033348127-scaled.jpg</a></td><td>album: Annual Sports Day 2026 (Playgroup - KG II)</td><td>4:5 on the left-centre group (centre x 28 %); the 1200 is a 1.17× upscale of the 1026 px crop</td><td>distance, no single child</td></tr>
+<tr><td><code>learning-2-{720,960,1200}</code></td><td><code>2021-06_THE-SCHOOL-BOOKSHOP-1.jpg</code> (3264×1836)</td><td><a href="https://playpen.edu.bd/wp-content/uploads/2021/06/THE-SCHOOL-BOOKSHOP-1.jpg" rel="noopener">https://playpen.edu.bd/wp-content/uploads/2021/06/THE-SCHOOL-BOOKSHOP-1.jpg</a></td><td>pages: the-school-bookshop</td><td>4:5 on the children and the shelves (centre x 69 %); the "FAIR" sign is out; sharp enough at 2×, so the library fallback was not needed</td><td><strong>faces</strong></td></tr>
+<tr><td><code>learning-3-{720,960,1200}</code></td><td><code>2023-09_SOH4012-scaled.jpg</code> (2560×1707)</td><td><a href="https://playpen.edu.bd/wp-content/uploads/2023/09/SOH4012-scaled.jpg" rel="noopener">https://playpen.edu.bd/wp-content/uploads/2023/09/SOH4012-scaled.jpg</a></td><td>(media library)</td><td>4:5 on the teacher and the first dancers (right-aligned)</td><td><strong>faces</strong></td></tr>
+<tr><td><code>learning-4-{720,960,1200}</code></td><td><code>2024-09_DSC01222.jpg</code> (6000×4000)</td><td><a href="https://playpen.edu.bd/wp-content/uploads/2024/09/DSC01222.jpg" rel="noopener">https://playpen.edu.bd/wp-content/uploads/2024/09/DSC01222.jpg</a></td><td>pages: laboratories</td><td>4:5 on the nearest row of screens (centre x 28 %)</td><td><strong>faces</strong></td></tr>
+<tr><td><code>life-0-{720,1080,1440}</code></td><td><code>2025-04_DSC02338-scaled.jpg</code> (1707×2560)</td><td><a href="https://playpen.edu.bd/wp-content/uploads/2025/04/DSC02338-scaled.jpg" rel="noopener">https://playpen.edu.bd/wp-content/uploads/2025/04/DSC02338-scaled.jpg</a></td><td>album: POHELA BOISHAKH 1432</td><td>2:3 box (0, 460, 1400, 2560): the stage tent (right edge) out, the alpona floor kept; the 1440 is a 1.03× upscale. <code>life-0-mobile-{720,1080}</code> is the 4:5 phone crop, box (0, 810, 1400, 2560)</td><td>crowd from above</td></tr>
+<tr><td><code>life-1-{960,1440,1920}</code></td><td><code>2026-02_DSC00548-scaled.jpg</code> (2560×1707)</td><td><a href="https://playpen.edu.bd/wp-content/uploads/2026/02/DSC00548-scaled.jpg" rel="noopener">https://playpen.edu.bd/wp-content/uploads/2026/02/DSC00548-scaled.jpg</a></td><td>album: Annual Sports Day 2026 (Class I-XII)</td><td>2:1, centre at 55 % height</td><td>from above</td></tr>
+<tr><td><code>life-2-{720,960,1440}</code></td><td><code>2025-04_DSC02351-scaled.jpg</code> (2560×1498)</td><td><a href="https://playpen.edu.bd/wp-content/uploads/2025/04/DSC02351-scaled.jpg" rel="noopener">https://playpen.edu.bd/wp-content/uploads/2025/04/DSC02351-scaled.jpg</a></td><td>album: POHELA BOISHAKH 1432</td><td>3:2 box (801, 509, 2015, 1318): the stage and its banners out; the 1440 is a 1.19× upscale</td><td><strong>faces</strong> (distance)</td></tr>
+<tr><td><code>life-3-{720,960,1440}</code></td><td><code>2024-11_DSC08425-scaled.jpg</code> (2560×1743)</td><td><a href="https://playpen.edu.bd/wp-content/uploads/2024/11/DSC08425-scaled.jpg" rel="noopener">https://playpen.edu.bd/wp-content/uploads/2024/11/DSC08425-scaled.jpg</a></td><td>album: PLAYPEN SCIENCE &amp; TECHNOLOGY FAIR 2024</td><td>3:2 box (597, 418, 2219, 1499): the bunting letters above and the banner below are out</td><td><strong>faces</strong></td></tr>
+<tr><td><code>life-4-{720,960,1200}</code></td><td><code>2024-11_DSC02311-scaled.jpg</code> (2560×1707)</td><td><a href="https://playpen.edu.bd/wp-content/uploads/2024/11/DSC02311-scaled.jpg" rel="noopener">https://playpen.edu.bd/wp-content/uploads/2024/11/DSC02311-scaled.jpg</a></td><td>album: Annual Cultural Programme 2024</td><td>4:5, centre x 57 %, so the whole English banner "ANNUAL CULTURAL PROGRAMME 2024" and the crest sit inside the crop rather than cut mid-word (every stage frame of the album carries this backdrop)</td><td>distance</td></tr>
+<tr><td><code>life-5-{960,1440,1920}</code></td><td><code>2025-07_PK_03050-scaled.jpg</code> (2560×1707)</td><td><a href="https://playpen.edu.bd/wp-content/uploads/2025/07/PK_03050-scaled.jpg" rel="noopener">https://playpen.edu.bd/wp-content/uploads/2025/07/PK_03050-scaled.jpg</a></td><td>album: Graduation Ceremony 2025</td><td>2:1 box (0, 130, 2560, 1410): the "A-LEVEL" sign at the bottom is out</td><td><strong>faces</strong></td></tr>
+<tr><td><code>life-6-{720,960,1200}</code></td><td><code>2024-12_DSC03721-scaled.jpg</code> (2002×2560)</td><td><a href="https://playpen.edu.bd/wp-content/uploads/2024/12/DSC03721-scaled.jpg" rel="noopener">https://playpen.edu.bd/wp-content/uploads/2024/12/DSC03721-scaled.jpg</a></td><td>album: NASA Astronaut Joseph M. Acaba's visit to PLAYPEN</td><td>4:5 box (0, 29, 2002, 2531) inside the paper's edges (no de-skew needed)</td><td>a painting</td></tr>
+<tr><td><code>life-7-{720,960,1440}</code></td><td><code>2026-02_DSC09150-scaled.jpg</code> (2560×1707)</td><td><a href="https://playpen.edu.bd/wp-content/uploads/2026/02/DSC09150-scaled.jpg" rel="noopener">https://playpen.edu.bd/wp-content/uploads/2026/02/DSC09150-scaled.jpg</a></td><td>album: Annual Sports Day 2026 (Class I-XII)</td><td>3:2, the full frame</td><td>distance</td></tr>
+<tr><td><code>life-8-{720,960,1200}</code></td><td><code>2024-03_DSC01235.jpg</code> (6000×4000)</td><td><a href="https://playpen.edu.bd/wp-content/uploads/2024/03/DSC01235.jpg" rel="noopener">https://playpen.edu.bd/wp-content/uploads/2024/03/DSC01235.jpg</a></td><td>pages: new-campus</td><td>4:5 on the red stair, box (1400, 0, 4600, 4000)</td><td>no</td></tr>
+<tr><td><code>life-9-{720,960,1440}</code></td><td><code>2025-07_PK_02920-scaled.jpg</code> (2560×1707)</td><td><a href="https://playpen.edu.bd/wp-content/uploads/2025/07/PK_02920-scaled.jpg" rel="noopener">https://playpen.edu.bd/wp-content/uploads/2025/07/PK_02920-scaled.jpg</a></td><td>album: Graduation Ceremony 2025</td><td>3:2 box (420, 0, 2560, 1427): the "O-LEVEL" sign at the bottom left is out (checked at 2×)</td><td><strong>face</strong></td></tr>
+<tr><td><code>news-1-{480,960}</code></td><td><code>2026-02_PXL_20260129_074604714-scaled.jpg</code> (2560×1440)</td><td><a href="https://playpen.edu.bd/wp-content/uploads/2026/02/PXL_20260129_074604714-scaled.jpg" rel="noopener">https://playpen.edu.bd/wp-content/uploads/2026/02/PXL_20260129_074604714-scaled.jpg</a></td><td>album: Annual Sports Day 2026 (Class I-XII)</td><td>3:2 centre, the facade behind the athletes</td><td>distance</td></tr>
+<tr><td><code>news-2-{480,960}</code></td><td><code>2025-04_DSC02346-scaled.jpg</code> (2560×1221)</td><td><a href="https://playpen.edu.bd/wp-content/uploads/2025/04/DSC02346-scaled.jpg" rel="noopener">https://playpen.edu.bd/wp-content/uploads/2025/04/DSC02346-scaled.jpg</a></td><td>album: POHELA BOISHAKH 1432</td><td>3:2 box (120, 690, 915, 1220), tight on the clay pots: the Bangla poster at the right and the child behind the stall are out; the 960 is a 1.21× upscale</td><td>no</td></tr>
+<tr><td><code>news-3-{480,960}</code></td><td><code>2024-11_DSC08278-scaled.jpg</code> (2560×1707)</td><td><a href="https://playpen.edu.bd/wp-content/uploads/2024/11/DSC08278-scaled.jpg" rel="noopener">https://playpen.edu.bd/wp-content/uploads/2024/11/DSC08278-scaled.jpg</a></td><td>album: PLAYPEN SCIENCE &amp; TECHNOLOGY FAIR 2024</td><td>3:2, the full frame</td><td><strong>faces</strong> (distance)</td></tr>
+<tr><td><code>menu-1-960</code> the school</td><td><code>2024-03_DSC03968.jpg</code></td><td><a href="https://playpen.edu.bd/wp-content/uploads/2024/03/DSC03968.jpg" rel="noopener">https://playpen.edu.bd/wp-content/uploads/2024/03/DSC03968.jpg</a></td><td>pages: new-campus</td><td>16:10 box (930, 1157, 3630, 2844): the crest on the concrete, below the wires</td><td>no</td></tr>
+<tr><td><code>menu-2-960</code> campus</td><td><code>2024-03_DSC01290.jpg</code> (6000×3537)</td><td><a href="https://playpen.edu.bd/wp-content/uploads/2024/03/DSC01290.jpg" rel="noopener">https://playpen.edu.bd/wp-content/uploads/2024/03/DSC01290.jpg</a></td><td>pages: new-campus</td><td>16:10 centre, the atrium</td><td>no</td></tr>
+<tr><td><code>menu-3-960</code> learning</td><td><code>2024-10_DSC06378.jpg</code></td><td><a href="https://playpen.edu.bd/wp-content/uploads/2024/10/DSC06378.jpg" rel="noopener">https://playpen.edu.bd/wp-content/uploads/2024/10/DSC06378.jpg</a></td><td>pages: library</td><td>same crop as ascent-3 (a repeat allowed by spec decision 14)</td><td>backs of heads</td></tr>
+<tr><td><code>menu-4-960</code> school life</td><td><code>2025-04_DSC02690-scaled.jpg</code> (2560×1707)</td><td><a href="https://playpen.edu.bd/wp-content/uploads/2025/04/DSC02690-scaled.jpg" rel="noopener">https://playpen.edu.bd/wp-content/uploads/2025/04/DSC02690-scaled.jpg</a></td><td>album: POHELA BOISHAKH 1432</td><td>16:10 box (819, 853, 2184, 1707): the red banner with Bangla lettering on the building is out; families under the bunting</td><td>distance</td></tr>
+<tr><td><code>menu-5-960</code> admissions</td><td><code>2021-10_ABOUT-OUR-CAMPUS-1ST-PIC-1.jpg</code></td><td><a href="https://playpen.edu.bd/wp-content/uploads/2021/10/ABOUT-OUR-CAMPUS-1ST-PIC-1.jpg" rel="noopener">https://playpen.edu.bd/wp-content/uploads/2021/10/ABOUT-OUR-CAMPUS-1ST-PIC-1.jpg</a></td><td>pages: new-campus</td><td>16:10 box (0, 301, 3823, 2690) of the sky-treated ground frame (a repeat allowed by spec decision 14)</td><td>no</td></tr>
+<tr><td><code>menu-6-960</code> contact</td><td><code>2024-03_DSC01294.jpg</code> (6000×2802)</td><td><a href="https://playpen.edu.bd/wp-content/uploads/2024/03/DSC01294.jpg" rel="noopener">https://playpen.edu.bd/wp-content/uploads/2024/03/DSC01294.jpg</a></td><td>pages: new-campus</td><td>16:10 centre, the terrace garden towards the city</td><td>no</td></tr>
+</tbody></table>
+<h3>Files derived by Defined Solution (source: <strong>DS</strong>, no credits)</h3>
+<table><thead><tr><th>File</th><th>Made from</th><th>How</th></tr></thead><tbody>
+<tr><td><code>hero-1-depth-960.png</code></td><td>the hero master</td><td>3-tone parallax mask at 960×540: paper band and sky 0, walls, trees and skyline 0.5, deck and planters (the lower 30 % of the photograph) 1.0; Gaussian blur 6 px; 18 KB</td></tr>
+<tr><td><code>hero-1-luma-960.jpg</code></td><td>the baked hero still</td><td>Luminance at 960×540, Gaussian blur 12 px, JPG q80; 14 KB</td></tr>
+<tr><td><code>hero-1-loop-poster.jpg</code> (not shipped since the polish pass)</td><td><code>hero-1-1920.jpg</code></td><td>Copy of the graded still at 1920×1080 (spec 8.2: the poster is the still, so the mix is invisible)</td></tr>
+<tr><td><code>ascent-1-film-poster.jpg</code> (not shipped since the polish pass)</td><td>the film cut</td><td>Its first graded frame, 1440×900, JPG q78</td></tr>
+<tr><td><code>disp-brick-512.png</code></td><td><code>2024-03_DSC01278.jpg</code>, box (5045, 2782, 5390, 3127): brick courses only, right of the planter's rim</td><td>512² greyscale (the 345 px crop upscaled 1.5× before the blur), Gaussian blur radius 6, levels normalised to 0.3–0.7 (1st–99th percentile); load with <code>colorSpace = NoColorSpace</code></td></tr>
+<tr><td><code>og-1200x630.jpg</code></td><td>the hero photograph and the paper melt</td><td>1200×630: a 200 px paper band, the photograph below with the same melt; the label "THE PLAYPEN SCHOOL, DHAKA" (Hanken Grotesk 500) and the H1 "The *whole* of a childhood, in one school." (Newsreader 300, the italic word in maroon) set on the paper zone only; 127 KB (≤ 150 KB). English only</td></tr>
+<tr><td><code>favicon-32.png</code>, <code>favicon-180.png</code>, <code>favicon-512.png</code></td><td><code>assets/brand/logo-mark-1024.png</code></td><td>Squared on a transparent canvas, Lanczos resize, light unsharp on the 32 px</td></tr>
+</tbody></table>
+<h3>Videos</h3>
+<table><thead><tr><th>File</th><th>Source</th><th>Processing</th><th>Result</th></tr></thead><tbody>
+<tr><td><code>ascent-1-film.mp4</code> (+ poster above; the <code>.webm</code> twin is not shipped: moved to <code>dev/assets/webm/</code> on 2026-10-09, the page references only the MP4, which is the smaller file)</td><td><code>assets/source/playpen/video/Z1nMZWILMvo_Welcome_to_PLAYPEN.mp4</code>, <a href="https://www.youtube.com/watch?v=Z1nMZWILMvo" rel="noopener">https://www.youtube.com/watch?v=Z1nMZWILMvo</a>, window <strong>0:52.08–0:53.80</strong> (the chequerboard courtyard; the only caption-free seconds in the 0:52–0:57 window: a stairwell cut ends at 52.0 s and the "SENIOR SECTION CLASS VIII TO XII" caption lands at 54.0 s)</td><td>Scaled 1.08×, the 16:10 window taken from the top-left so the top-right corner logo is out, 1440×900, slowed to 70 % with motion interpolation to 24 fps, graded, ping-pong (forward then reverse, turnaround frames not repeated) so it loops without a cut; every frame checked at 6 fps for captions (none). H.264 CRF 26 preset slow yuv420p faststart; VP9 CRF 34</td><td>112 frames, 4.67 s, 1440×900, MP4 0.86 MB, WebM 1.15 MB, no audio track</td></tr>
+<tr><td><code>hero-1-loop.mp4</code> (cut from the shipped set in the polish pass; kept in <code>raw/unshipped-2026-10-09/</code>) (the <code>.webm</code> twin is not shipped: moved to <code>dev/assets/webm/</code> on 2026-10-09, the page references only the MP4, which is the smaller file)</td><td><strong>Generated</strong> (Higgsfield, Kling v3.0 <code>kling3_0</code>, mode pro, 8 s, 16:9, sound off, 14 credits, job <code>26fb9430-c782-4c44-a521-446cb4594912</code>, 2026-10-09) from the ungraded 16:9 centre crop of <code>2024-03_DSC01227.jpg</code>, with the spec 8.2 prompt verbatim ("Static camera locked on a tripod, with a very slow push-in of about 3 percent … the last frame matching the first so the clip loops without a visible cut") plus its avoid list. Raw clip: <code>raw/higgsfield-01-terrace/kling3_0-pro-8s-26fb9430.mp4</code> (1920×1080, 24 fps, 193 frames)</td><td>The model pushed in 1.00 → 1.20× over the clip (measured), so the whole frame could not loop. Processing (<code>tools/video.py loop-crowns</code>): the push-in measured per frame (scale and shift, refined on 480 px frames) and undone by cropping every frame to the field of view of the most magnified frame; the hero still (the same 1920×1080 layout the shader shows) is the base, and only the <strong>three tree crowns</strong> are taken from the clip through soft rounded masks (20 % of the photograph) whose edges lie in the paper sky, the hazy skyline and the lower foliage, never on brick, railing or paving; tone-matched to the still on the crown pixels, the still's grade and the same baked melt applied to every frame; loop by cross-fading the last 0.8 s into the first. H.264 CRF 24 preset slow; VP9 CRF 33</td><td>174 frames, 7.25 s, 1920×1080, MP4 1.43 MB, WebM 1.77 MB, no audio. Accept list (spec 8.2): railing and planters rigid (they are the still), bricks do not swim (the still), no object appears, the sky is paper, exposure swing 0.003, wrap-seam difference 0.59/255 against a frame-to-frame mean of 0.27; the skyline behind the crowns carries the clip's faint heat shimmer, which the prompt asked for</td></tr>
+</tbody></table>
+<p>Generated alternates kept in <code>raw/_video-work/alternates/</code> (not shipped): <code>hero-1-loop-static-run2.*</code> from the second run (Kling v3.0 pro 8 s, 14 credits, job <code>c361ea28-6508-4683-8adf-c6411d1c2751</code>, the full hero layout as both start and end image, "locked-off camera" prompt; raw clip in <code>raw/higgsfield-02-terrace-layout/</code>): a static clip that loops without a visible join, in which the leaves do not visibly move (0.00 % moving pixels per frame in the crowns), usable as a zero-risk stand-in; and <code>hero-1-loop-dezoom-composite-rejected.*</code>, the whole de-zoomed first run laid over the still, rejected because its seams ghost on the window louvres and the paving. Higgsfield spend for the project: 28 of the 60-credit cap (two runs, the spec's limit); every run is in <code>credits-log.md</code>. Nothing else was generated: no relit facade, no rooms, no people, no skies, no audio.</p>
+<h3>Fonts used only to render the OG card</h3>
+<p><code>raw/fonts-newsreader/Newsreader[opsz,wght].ttf</code>, <code>Newsreader-Italic[opsz,wght].ttf</code>, <code>HankenGrotesk[wght].ttf</code>: Google Fonts, SIL Open Font License, downloaded 2026-10-09 from <a href="https://github.com/google/fonts/tree/main/ofl/newsreader" rel="noopener">https://github.com/google/fonts/tree/main/ofl/newsreader</a> and <a href="https://github.com/google/fonts/tree/main/ofl/hankengrotesk" rel="noopener">https://github.com/google/fonts/tree/main/ofl/hankengrotesk</a>. Read by PIL as data to set the OG title; not shipped (the site's WOFF2 files are E1's, <code>site/vendor/fonts/</code>).</p>
+<h3>Not used, on purpose</h3>
+<p><code>2025-04_DSC02586</code> (the painted tiger mask), the Ekushey letter-card photographs (Bangla letters), the 600 px Principal portrait, the classroom frames shot from the back (<code>2023-09_DSC02469</code>), the 2020–2021 stage photographs with LED backdrops, every identifiable close-up of a single young child, and any frame from another school. The second-fallback terrace window of the Welcome film (0:35.5–0:37.7) was checked and is caption-free, but was not needed.</p>
+<h3>File list (dimensions and sizes, generated by <code>tools/media_list.py</code>)</h3>
+<table><thead><tr><th>File</th><th>Dimensions</th><th>Size</th></tr></thead><tbody>
+<tr><td><code>assets/media/ascent-1-1440.avif</code></td><td>1440×900</td><td>107 KB</td></tr>
+<tr><td><code>assets/media/ascent-1-1440.jpg</code></td><td>1440×900</td><td>202 KB</td></tr>
+<tr><td><code>assets/media/ascent-1-1440.webp</code></td><td>1440×900</td><td>116 KB</td></tr>
+<tr><td><code>assets/media/ascent-1-1920.avif</code></td><td>1920×1200</td><td>149 KB</td></tr>
+<tr><td><code>assets/media/ascent-1-1920.jpg</code></td><td>1920×1200</td><td>329 KB</td></tr>
+<tr><td><code>assets/media/ascent-1-1920.webp</code></td><td>1920×1200</td><td>208 KB</td></tr>
+<tr><td><code>assets/media/ascent-1-960.avif</code></td><td>960×600</td><td>49 KB</td></tr>
+<tr><td><code>assets/media/ascent-1-960.jpg</code></td><td>960×600</td><td>89 KB</td></tr>
+<tr><td><code>assets/media/ascent-1-960.webp</code></td><td>960×600</td><td>60 KB</td></tr>
+<tr><td><code>assets/media/ascent-1-film.mp4</code></td><td>1440×900, 4.67 s, h264, no audio</td><td>980 KB</td></tr>
+<tr><td><code>assets/media/ascent-2-1440.avif</code></td><td>1440×900</td><td>72 KB</td></tr>
+<tr><td><code>assets/media/ascent-2-1440.jpg</code></td><td>1440×900</td><td>173 KB</td></tr>
+<tr><td><code>assets/media/ascent-2-1440.webp</code></td><td>1440×900</td><td>102 KB</td></tr>
+<tr><td><code>assets/media/ascent-2-1920.avif</code></td><td>1920×1200</td><td>104 KB</td></tr>
+<tr><td><code>assets/media/ascent-2-1920.jpg</code></td><td>1920×1200</td><td>263 KB</td></tr>
+<tr><td><code>assets/media/ascent-2-1920.webp</code></td><td>1920×1200</td><td>141 KB</td></tr>
+<tr><td><code>assets/media/ascent-2-960.avif</code></td><td>960×600</td><td>41 KB</td></tr>
+<tr><td><code>assets/media/ascent-2-960.jpg</code></td><td>960×600</td><td>84 KB</td></tr>
+<tr><td><code>assets/media/ascent-2-960.webp</code></td><td>960×600</td><td>53 KB</td></tr>
+<tr><td><code>assets/media/ascent-3-1440.avif</code></td><td>1440×900</td><td>83 KB</td></tr>
+<tr><td><code>assets/media/ascent-3-1440.jpg</code></td><td>1440×900</td><td>201 KB</td></tr>
+<tr><td><code>assets/media/ascent-3-1440.webp</code></td><td>1440×900</td><td>108 KB</td></tr>
+<tr><td><code>assets/media/ascent-3-1920.avif</code></td><td>1920×1200</td><td>123 KB</td></tr>
+<tr><td><code>assets/media/ascent-3-1920.jpg</code></td><td>1920×1200</td><td>306 KB</td></tr>
+<tr><td><code>assets/media/ascent-3-1920.webp</code></td><td>1920×1200</td><td>171 KB</td></tr>
+<tr><td><code>assets/media/ascent-3-960.avif</code></td><td>960×600</td><td>46 KB</td></tr>
+<tr><td><code>assets/media/ascent-3-960.jpg</code></td><td>960×600</td><td>90 KB</td></tr>
+<tr><td><code>assets/media/ascent-3-960.webp</code></td><td>960×600</td><td>51 KB</td></tr>
+<tr><td><code>assets/media/ascent-4-1440.avif</code></td><td>1440×900</td><td>99 KB</td></tr>
+<tr><td><code>assets/media/ascent-4-1440.jpg</code></td><td>1440×900</td><td>187 KB</td></tr>
+<tr><td><code>assets/media/ascent-4-1440.webp</code></td><td>1440×900</td><td>119 KB</td></tr>
+<tr><td><code>assets/media/ascent-4-960.avif</code></td><td>960×600</td><td>48 KB</td></tr>
+<tr><td><code>assets/media/ascent-4-960.jpg</code></td><td>960×600</td><td>88 KB</td></tr>
+<tr><td><code>assets/media/ascent-4-960.webp</code></td><td>960×600</td><td>67 KB</td></tr>
+<tr><td><code>assets/media/ascent-5-1440.avif</code></td><td>1440×900</td><td>114 KB</td></tr>
+<tr><td><code>assets/media/ascent-5-1440.jpg</code></td><td>1440×900</td><td>195 KB</td></tr>
+<tr><td><code>assets/media/ascent-5-1440.webp</code></td><td>1440×900</td><td>119 KB</td></tr>
+<tr><td><code>assets/media/ascent-5-1920.avif</code></td><td>1920×1200</td><td>164 KB</td></tr>
+<tr><td><code>assets/media/ascent-5-1920.jpg</code></td><td>1920×1200</td><td>354 KB</td></tr>
+<tr><td><code>assets/media/ascent-5-1920.webp</code></td><td>1920×1200</td><td>212 KB</td></tr>
+<tr><td><code>assets/media/ascent-5-960.avif</code></td><td>960×600</td><td>50 KB</td></tr>
+<tr><td><code>assets/media/ascent-5-960.jpg</code></td><td>960×600</td><td>90 KB</td></tr>
+<tr><td><code>assets/media/ascent-5-960.webp</code></td><td>960×600</td><td>63 KB</td></tr>
+<tr><td><code>assets/media/disp-brick-512.png</code></td><td>512×512</td><td>59 KB</td></tr>
+<tr><td><code>assets/media/favicon-180.png</code></td><td>180×180</td><td>22 KB</td></tr>
+<tr><td><code>assets/media/favicon-32.png</code></td><td>32×32</td><td>3 KB</td></tr>
+<tr><td><code>assets/media/favicon-512.png</code></td><td>512×512</td><td>68 KB</td></tr>
+<tr><td><code>assets/media/ground-1-1440.avif</code></td><td>1440×617</td><td>92 KB</td></tr>
+<tr><td><code>assets/media/ground-1-1440.jpg</code></td><td>1440×617</td><td>191 KB</td></tr>
+<tr><td><code>assets/media/ground-1-1440.webp</code></td><td>1440×617</td><td>152 KB</td></tr>
+<tr><td><code>assets/media/ground-1-1920.avif</code></td><td>1920×823</td><td>149 KB</td></tr>
+<tr><td><code>assets/media/ground-1-1920.jpg</code></td><td>1920×823</td><td>314 KB</td></tr>
+<tr><td><code>assets/media/ground-1-1920.webp</code></td><td>1920×823</td><td>246 KB</td></tr>
+<tr><td><code>assets/media/ground-1-960.avif</code></td><td>960×411</td><td>44 KB</td></tr>
+<tr><td><code>assets/media/ground-1-960.jpg</code></td><td>960×411</td><td>92 KB</td></tr>
+<tr><td><code>assets/media/ground-1-960.webp</code></td><td>960×411</td><td>66 KB</td></tr>
+<tr><td><code>assets/media/ground-1-alt-1440.avif</code></td><td>1440×810</td><td>122 KB</td></tr>
+<tr><td><code>assets/media/ground-1-alt-1440.jpg</code></td><td>1440×810</td><td>252 KB</td></tr>
+<tr><td><code>assets/media/ground-1-alt-1440.webp</code></td><td>1440×810</td><td>154 KB</td></tr>
+<tr><td><code>assets/media/ground-1-alt-1920.avif</code></td><td>1920×1080</td><td>198 KB</td></tr>
+<tr><td><code>assets/media/ground-1-alt-1920.jpg</code></td><td>1920×1080</td><td>414 KB</td></tr>
+<tr><td><code>assets/media/ground-1-alt-1920.webp</code></td><td>1920×1080</td><td>282 KB</td></tr>
+<tr><td><code>assets/media/ground-1-alt-960.avif</code></td><td>960×540</td><td>59 KB</td></tr>
+<tr><td><code>assets/media/ground-1-alt-960.jpg</code></td><td>960×540</td><td>111 KB</td></tr>
+<tr><td><code>assets/media/ground-1-alt-960.webp</code></td><td>960×540</td><td>69 KB</td></tr>
+<tr><td><code>assets/media/hero-1-1440.avif</code></td><td>1440×810</td><td>87 KB</td></tr>
+<tr><td><code>assets/media/hero-1-1440.jpg</code></td><td>1440×810</td><td>115 KB</td></tr>
+<tr><td><code>assets/media/hero-1-1440.webp</code></td><td>1440×810</td><td>113 KB</td></tr>
+<tr><td><code>assets/media/hero-1-1920.avif</code></td><td>1920×1080</td><td>139 KB</td></tr>
+<tr><td><code>assets/media/hero-1-1920.jpg</code></td><td>1920×1080</td><td>215 KB</td></tr>
+<tr><td><code>assets/media/hero-1-1920.webp</code></td><td>1920×1080</td><td>204 KB</td></tr>
+<tr><td><code>assets/media/hero-1-2560.avif</code></td><td>2560×1440</td><td>204 KB</td></tr>
+<tr><td><code>assets/media/hero-1-2560.jpg</code></td><td>2560×1440</td><td>359 KB</td></tr>
+<tr><td><code>assets/media/hero-1-2560.webp</code></td><td>2560×1440</td><td>298 KB</td></tr>
+<tr><td><code>assets/media/hero-1-960.avif</code></td><td>960×540</td><td>42 KB</td></tr>
+<tr><td><code>assets/media/hero-1-960.jpg</code></td><td>960×540</td><td>54 KB</td></tr>
+<tr><td><code>assets/media/hero-1-960.webp</code></td><td>960×540</td><td>53 KB</td></tr>
+<tr><td><code>assets/media/hero-1-depth-960.png</code></td><td>960×540</td><td>18 KB</td></tr>
+<tr><td><code>assets/media/hero-1-luma-960.jpg</code></td><td>960×540</td><td>14 KB</td></tr>
+<tr><td><code>assets/media/hero-1-mobile-1080.avif</code></td><td>1080×1350</td><td>148 KB</td></tr>
+<tr><td><code>assets/media/hero-1-mobile-1080.jpg</code></td><td>1080×1350</td><td>282 KB</td></tr>
+<tr><td><code>assets/media/hero-1-mobile-1080.webp</code></td><td>1080×1350</td><td>195 KB</td></tr>
+<tr><td><code>assets/media/hero-1-mobile-720.avif</code></td><td>720×900</td><td>86 KB</td></tr>
+<tr><td><code>assets/media/hero-1-mobile-720.jpg</code></td><td>720×900</td><td>149 KB</td></tr>
+<tr><td><code>assets/media/hero-1-mobile-720.webp</code></td><td>720×900</td><td>95 KB</td></tr>
+<tr><td><code>assets/media/learning-1-1200.avif</code></td><td>1200×1499</td><td>140 KB</td></tr>
+<tr><td><code>assets/media/learning-1-1200.jpg</code></td><td>1200×1499</td><td>326 KB</td></tr>
+<tr><td><code>assets/media/learning-1-1200.webp</code></td><td>1200×1499</td><td>264 KB</td></tr>
+<tr><td><code>assets/media/learning-1-720.avif</code></td><td>720×899</td><td>64 KB</td></tr>
+<tr><td><code>assets/media/learning-1-720.jpg</code></td><td>720×899</td><td>158 KB</td></tr>
+<tr><td><code>assets/media/learning-1-720.webp</code></td><td>720×899</td><td>158 KB</td></tr>
+<tr><td><code>assets/media/learning-1-960.avif</code></td><td>960×1199</td><td>94 KB</td></tr>
+<tr><td><code>assets/media/learning-1-960.jpg</code></td><td>960×1199</td><td>247 KB</td></tr>
+<tr><td><code>assets/media/learning-1-960.webp</code></td><td>960×1199</td><td>225 KB</td></tr>
+<tr><td><code>assets/media/learning-2-1200.avif</code></td><td>1200×1500</td><td>78 KB</td></tr>
+<tr><td><code>assets/media/learning-2-1200.jpg</code></td><td>1200×1500</td><td>196 KB</td></tr>
+<tr><td><code>assets/media/learning-2-1200.webp</code></td><td>1200×1500</td><td>100 KB</td></tr>
+<tr><td><code>assets/media/learning-2-720.avif</code></td><td>720×900</td><td>38 KB</td></tr>
+<tr><td><code>assets/media/learning-2-720.jpg</code></td><td>720×900</td><td>89 KB</td></tr>
+<tr><td><code>assets/media/learning-2-720.webp</code></td><td>720×900</td><td>53 KB</td></tr>
+<tr><td><code>assets/media/learning-2-960.avif</code></td><td>960×1200</td><td>58 KB</td></tr>
+<tr><td><code>assets/media/learning-2-960.jpg</code></td><td>960×1200</td><td>139 KB</td></tr>
+<tr><td><code>assets/media/learning-2-960.webp</code></td><td>960×1200</td><td>77 KB</td></tr>
+<tr><td><code>assets/media/learning-3-1200.avif</code></td><td>1200×1500</td><td>123 KB</td></tr>
+<tr><td><code>assets/media/learning-3-1200.jpg</code></td><td>1200×1500</td><td>261 KB</td></tr>
+<tr><td><code>assets/media/learning-3-1200.webp</code></td><td>1200×1500</td><td>144 KB</td></tr>
+<tr><td><code>assets/media/learning-3-720.avif</code></td><td>720×900</td><td>48 KB</td></tr>
+<tr><td><code>assets/media/learning-3-720.jpg</code></td><td>720×900</td><td>98 KB</td></tr>
+<tr><td><code>assets/media/learning-3-720.webp</code></td><td>720×900</td><td>56 KB</td></tr>
+<tr><td><code>assets/media/learning-3-960.avif</code></td><td>960×1200</td><td>93 KB</td></tr>
+<tr><td><code>assets/media/learning-3-960.jpg</code></td><td>960×1200</td><td>172 KB</td></tr>
+<tr><td><code>assets/media/learning-3-960.webp</code></td><td>960×1200</td><td>100 KB</td></tr>
+<tr><td><code>assets/media/learning-4-1200.avif</code></td><td>1200×1500</td><td>56 KB</td></tr>
+<tr><td><code>assets/media/learning-4-1200.jpg</code></td><td>1200×1500</td><td>171 KB</td></tr>
+<tr><td><code>assets/media/learning-4-1200.webp</code></td><td>1200×1500</td><td>90 KB</td></tr>
+<tr><td><code>assets/media/learning-4-720.avif</code></td><td>720×900</td><td>26 KB</td></tr>
+<tr><td><code>assets/media/learning-4-720.jpg</code></td><td>720×900</td><td>71 KB</td></tr>
+<tr><td><code>assets/media/learning-4-720.webp</code></td><td>720×900</td><td>40 KB</td></tr>
+<tr><td><code>assets/media/learning-4-960.avif</code></td><td>960×1200</td><td>42 KB</td></tr>
+<tr><td><code>assets/media/learning-4-960.jpg</code></td><td>960×1200</td><td>118 KB</td></tr>
+<tr><td><code>assets/media/learning-4-960.webp</code></td><td>960×1200</td><td>66 KB</td></tr>
+<tr><td><code>assets/media/life-0-1080.avif</code></td><td>1080×1620</td><td>89 KB</td></tr>
+<tr><td><code>assets/media/life-0-1080.jpg</code></td><td>1080×1620</td><td>263 KB</td></tr>
+<tr><td><code>assets/media/life-0-1080.webp</code></td><td>1080×1620</td><td>204 KB</td></tr>
+<tr><td><code>assets/media/life-0-1440.avif</code></td><td>1440×2160</td><td>160 KB</td></tr>
+<tr><td><code>assets/media/life-0-1440.jpg</code></td><td>1440×2160</td><td>391 KB</td></tr>
+<tr><td><code>assets/media/life-0-1440.webp</code></td><td>1440×2160</td><td>272 KB</td></tr>
+<tr><td><code>assets/media/life-0-720.avif</code></td><td>720×1080</td><td>50 KB</td></tr>
+<tr><td><code>assets/media/life-0-720.jpg</code></td><td>720×1080</td><td>138 KB</td></tr>
+<tr><td><code>assets/media/life-0-720.webp</code></td><td>720×1080</td><td>116 KB</td></tr>
+<tr><td><code>assets/media/life-0-mobile-1080.avif</code></td><td>1080×1350</td><td>155 KB</td></tr>
+<tr><td><code>assets/media/life-0-mobile-1080.jpg</code></td><td>1080×1350</td><td>259 KB</td></tr>
+<tr><td><code>assets/media/life-0-mobile-1080.webp</code></td><td>1080×1350</td><td>165 KB</td></tr>
+<tr><td><code>assets/media/life-0-mobile-720.avif</code></td><td>720×900</td><td>69 KB</td></tr>
+<tr><td><code>assets/media/life-0-mobile-720.jpg</code></td><td>720×900</td><td>118 KB</td></tr>
+<tr><td><code>assets/media/life-0-mobile-720.webp</code></td><td>720×900</td><td>103 KB</td></tr>
+<tr><td><code>assets/media/life-1-1440.avif</code></td><td>1440×720</td><td>103 KB</td></tr>
+<tr><td><code>assets/media/life-1-1440.jpg</code></td><td>1440×720</td><td>201 KB</td></tr>
+<tr><td><code>assets/media/life-1-1440.webp</code></td><td>1440×720</td><td>119 KB</td></tr>
+<tr><td><code>assets/media/life-1-1920.avif</code></td><td>1920×960</td><td>179 KB</td></tr>
+<tr><td><code>assets/media/life-1-1920.jpg</code></td><td>1920×960</td><td>335 KB</td></tr>
+<tr><td><code>assets/media/life-1-1920.webp</code></td><td>1920×960</td><td>213 KB</td></tr>
+<tr><td><code>assets/media/life-1-960.avif</code></td><td>960×480</td><td>48 KB</td></tr>
+<tr><td><code>assets/media/life-1-960.jpg</code></td><td>960×480</td><td>86 KB</td></tr>
+<tr><td><code>assets/media/life-1-960.webp</code></td><td>960×480</td><td>66 KB</td></tr>
+<tr><td><code>assets/media/life-2-1440.avif</code></td><td>1440×960</td><td>81 KB</td></tr>
+<tr><td><code>assets/media/life-2-1440.jpg</code></td><td>1440×960</td><td>178 KB</td></tr>
+<tr><td><code>assets/media/life-2-1440.webp</code></td><td>1440×960</td><td>114 KB</td></tr>
+<tr><td><code>assets/media/life-2-720.avif</code></td><td>720×480</td><td>29 KB</td></tr>
+<tr><td><code>assets/media/life-2-720.jpg</code></td><td>720×480</td><td>49 KB</td></tr>
+<tr><td><code>assets/media/life-2-720.webp</code></td><td>720×480</td><td>36 KB</td></tr>
+<tr><td><code>assets/media/life-2-960.avif</code></td><td>960×640</td><td>50 KB</td></tr>
+<tr><td><code>assets/media/life-2-960.jpg</code></td><td>960×640</td><td>86 KB</td></tr>
+<tr><td><code>assets/media/life-2-960.webp</code></td><td>960×640</td><td>52 KB</td></tr>
+<tr><td><code>assets/media/life-3-1440.avif</code></td><td>1440×960</td><td>66 KB</td></tr>
+<tr><td><code>assets/media/life-3-1440.jpg</code></td><td>1440×960</td><td>157 KB</td></tr>
+<tr><td><code>assets/media/life-3-1440.webp</code></td><td>1440×960</td><td>79 KB</td></tr>
+<tr><td><code>assets/media/life-3-720.avif</code></td><td>720×480</td><td>26 KB</td></tr>
+<tr><td><code>assets/media/life-3-720.jpg</code></td><td>720×480</td><td>51 KB</td></tr>
+<tr><td><code>assets/media/life-3-720.webp</code></td><td>720×480</td><td>30 KB</td></tr>
+<tr><td><code>assets/media/life-3-960.avif</code></td><td>960×640</td><td>38 KB</td></tr>
+<tr><td><code>assets/media/life-3-960.jpg</code></td><td>960×640</td><td>86 KB</td></tr>
+<tr><td><code>assets/media/life-3-960.webp</code></td><td>960×640</td><td>50 KB</td></tr>
+<tr><td><code>assets/media/life-4-1200.avif</code></td><td>1200×1500</td><td>80 KB</td></tr>
+<tr><td><code>assets/media/life-4-1200.jpg</code></td><td>1200×1500</td><td>197 KB</td></tr>
+<tr><td><code>assets/media/life-4-1200.webp</code></td><td>1200×1500</td><td>97 KB</td></tr>
+<tr><td><code>assets/media/life-4-720.avif</code></td><td>720×900</td><td>41 KB</td></tr>
+<tr><td><code>assets/media/life-4-720.jpg</code></td><td>720×900</td><td>92 KB</td></tr>
+<tr><td><code>assets/media/life-4-720.webp</code></td><td>720×900</td><td>56 KB</td></tr>
+<tr><td><code>assets/media/life-4-960.avif</code></td><td>960×1200</td><td>60 KB</td></tr>
+<tr><td><code>assets/media/life-4-960.jpg</code></td><td>960×1200</td><td>143 KB</td></tr>
+<tr><td><code>assets/media/life-4-960.webp</code></td><td>960×1200</td><td>77 KB</td></tr>
+<tr><td><code>assets/media/life-5-1440.avif</code></td><td>1440×720</td><td>89 KB</td></tr>
+<tr><td><code>assets/media/life-5-1440.jpg</code></td><td>1440×720</td><td>189 KB</td></tr>
+<tr><td><code>assets/media/life-5-1440.webp</code></td><td>1440×720</td><td>118 KB</td></tr>
+<tr><td><code>assets/media/life-5-1920.avif</code></td><td>1920×960</td><td>120 KB</td></tr>
+<tr><td><code>assets/media/life-5-1920.jpg</code></td><td>1920×960</td><td>275 KB</td></tr>
+<tr><td><code>assets/media/life-5-1920.webp</code></td><td>1920×960</td><td>177 KB</td></tr>
+<tr><td><code>assets/media/life-5-960.avif</code></td><td>960×480</td><td>53 KB</td></tr>
+<tr><td><code>assets/media/life-5-960.jpg</code></td><td>960×480</td><td>88 KB</td></tr>
+<tr><td><code>assets/media/life-5-960.webp</code></td><td>960×480</td><td>58 KB</td></tr>
+<tr><td><code>assets/media/life-6-1200.avif</code></td><td>1200×1500</td><td>107 KB</td></tr>
+<tr><td><code>assets/media/life-6-1200.jpg</code></td><td>1200×1500</td><td>247 KB</td></tr>
+<tr><td><code>assets/media/life-6-1200.webp</code></td><td>1200×1500</td><td>141 KB</td></tr>
+<tr><td><code>assets/media/life-6-720.avif</code></td><td>720×900</td><td>51 KB</td></tr>
+<tr><td><code>assets/media/life-6-720.jpg</code></td><td>720×900</td><td>95 KB</td></tr>
+<tr><td><code>assets/media/life-6-720.webp</code></td><td>720×900</td><td>56 KB</td></tr>
+<tr><td><code>assets/media/life-6-960.avif</code></td><td>960×1200</td><td>81 KB</td></tr>
+<tr><td><code>assets/media/life-6-960.jpg</code></td><td>960×1200</td><td>163 KB</td></tr>
+<tr><td><code>assets/media/life-6-960.webp</code></td><td>960×1200</td><td>97 KB</td></tr>
+<tr><td><code>assets/media/life-7-1440.avif</code></td><td>1440×960</td><td>114 KB</td></tr>
+<tr><td><code>assets/media/life-7-1440.jpg</code></td><td>1440×960</td><td>212 KB</td></tr>
+<tr><td><code>assets/media/life-7-1440.webp</code></td><td>1440×960</td><td>168 KB</td></tr>
+<tr><td><code>assets/media/life-7-720.avif</code></td><td>720×480</td><td>30 KB</td></tr>
+<tr><td><code>assets/media/life-7-720.jpg</code></td><td>720×480</td><td>70 KB</td></tr>
+<tr><td><code>assets/media/life-7-720.webp</code></td><td>720×480</td><td>65 KB</td></tr>
+<tr><td><code>assets/media/life-7-960.avif</code></td><td>960×640</td><td>48 KB</td></tr>
+<tr><td><code>assets/media/life-7-960.jpg</code></td><td>960×640</td><td>114 KB</td></tr>
+<tr><td><code>assets/media/life-7-960.webp</code></td><td>960×640</td><td>102 KB</td></tr>
+<tr><td><code>assets/media/life-8-1200.avif</code></td><td>1200×1500</td><td>68 KB</td></tr>
+<tr><td><code>assets/media/life-8-1200.jpg</code></td><td>1200×1500</td><td>211 KB</td></tr>
+<tr><td><code>assets/media/life-8-1200.webp</code></td><td>1200×1500</td><td>113 KB</td></tr>
+<tr><td><code>assets/media/life-8-720.avif</code></td><td>720×900</td><td>34 KB</td></tr>
+<tr><td><code>assets/media/life-8-720.jpg</code></td><td>720×900</td><td>96 KB</td></tr>
+<tr><td><code>assets/media/life-8-720.webp</code></td><td>720×900</td><td>55 KB</td></tr>
+<tr><td><code>assets/media/life-8-960.avif</code></td><td>960×1200</td><td>52 KB</td></tr>
+<tr><td><code>assets/media/life-8-960.jpg</code></td><td>960×1200</td><td>153 KB</td></tr>
+<tr><td><code>assets/media/life-8-960.webp</code></td><td>960×1200</td><td>91 KB</td></tr>
+<tr><td><code>assets/media/life-9-1440.avif</code></td><td>1440×960</td><td>75 KB</td></tr>
+<tr><td><code>assets/media/life-9-1440.jpg</code></td><td>1440×960</td><td>182 KB</td></tr>
+<tr><td><code>assets/media/life-9-1440.webp</code></td><td>1440×960</td><td>110 KB</td></tr>
+<tr><td><code>assets/media/life-9-720.avif</code></td><td>720×480</td><td>28 KB</td></tr>
+<tr><td><code>assets/media/life-9-720.jpg</code></td><td>720×480</td><td>49 KB</td></tr>
+<tr><td><code>assets/media/life-9-720.webp</code></td><td>720×480</td><td>36 KB</td></tr>
+<tr><td><code>assets/media/life-9-960.avif</code></td><td>960×640</td><td>48 KB</td></tr>
+<tr><td><code>assets/media/life-9-960.jpg</code></td><td>960×640</td><td>90 KB</td></tr>
+<tr><td><code>assets/media/life-9-960.webp</code></td><td>960×640</td><td>51 KB</td></tr>
+<tr><td><code>assets/media/menu-1-960.avif</code></td><td>960×600</td><td>48 KB</td></tr>
+<tr><td><code>assets/media/menu-1-960.jpg</code></td><td>960×600</td><td>101 KB</td></tr>
+<tr><td><code>assets/media/menu-1-960.webp</code></td><td>960×600</td><td>72 KB</td></tr>
+<tr><td><code>assets/media/menu-2-960.avif</code></td><td>960×600</td><td>52 KB</td></tr>
+<tr><td><code>assets/media/menu-2-960.jpg</code></td><td>960×600</td><td>102 KB</td></tr>
+<tr><td><code>assets/media/menu-2-960.webp</code></td><td>960×600</td><td>77 KB</td></tr>
+<tr><td><code>assets/media/menu-3-960.avif</code></td><td>960×600</td><td>43 KB</td></tr>
+<tr><td><code>assets/media/menu-3-960.jpg</code></td><td>960×600</td><td>101 KB</td></tr>
+<tr><td><code>assets/media/menu-3-960.webp</code></td><td>960×600</td><td>68 KB</td></tr>
+<tr><td><code>assets/media/menu-4-960.avif</code></td><td>960×601</td><td>67 KB</td></tr>
+<tr><td><code>assets/media/menu-4-960.jpg</code></td><td>960×601</td><td>133 KB</td></tr>
+<tr><td><code>assets/media/menu-4-960.webp</code></td><td>960×601</td><td>78 KB</td></tr>
+<tr><td><code>assets/media/menu-5-960.avif</code></td><td>960×600</td><td>65 KB</td></tr>
+<tr><td><code>assets/media/menu-5-960.jpg</code></td><td>960×600</td><td>133 KB</td></tr>
+<tr><td><code>assets/media/menu-5-960.webp</code></td><td>960×600</td><td>77 KB</td></tr>
+<tr><td><code>assets/media/menu-6-960.avif</code></td><td>960×600</td><td>62 KB</td></tr>
+<tr><td><code>assets/media/menu-6-960.jpg</code></td><td>960×600</td><td>120 KB</td></tr>
+<tr><td><code>assets/media/menu-6-960.webp</code></td><td>960×600</td><td>78 KB</td></tr>
+<tr><td><code>assets/media/news-1-480.avif</code></td><td>480×320</td><td>17 KB</td></tr>
+<tr><td><code>assets/media/news-1-480.jpg</code></td><td>480×320</td><td>28 KB</td></tr>
+<tr><td><code>assets/media/news-1-480.webp</code></td><td>480×320</td><td>23 KB</td></tr>
+<tr><td><code>assets/media/news-1-960.avif</code></td><td>960×640</td><td>66 KB</td></tr>
+<tr><td><code>assets/media/news-1-960.jpg</code></td><td>960×640</td><td>117 KB</td></tr>
+<tr><td><code>assets/media/news-1-960.webp</code></td><td>960×640</td><td>69 KB</td></tr>
+<tr><td><code>assets/media/news-2-480.avif</code></td><td>480×320</td><td>12 KB</td></tr>
+<tr><td><code>assets/media/news-2-480.jpg</code></td><td>480×320</td><td>25 KB</td></tr>
+<tr><td><code>assets/media/news-2-480.webp</code></td><td>480×320</td><td>17 KB</td></tr>
+<tr><td><code>assets/media/news-2-960.avif</code></td><td>960×640</td><td>27 KB</td></tr>
+<tr><td><code>assets/media/news-2-960.jpg</code></td><td>960×640</td><td>67 KB</td></tr>
+<tr><td><code>assets/media/news-2-960.webp</code></td><td>960×640</td><td>36 KB</td></tr>
+<tr><td><code>assets/media/news-3-480.avif</code></td><td>480×320</td><td>16 KB</td></tr>
+<tr><td><code>assets/media/news-3-480.jpg</code></td><td>480×320</td><td>29 KB</td></tr>
+<tr><td><code>assets/media/news-3-480.webp</code></td><td>480×320</td><td>20 KB</td></tr>
+<tr><td><code>assets/media/news-3-960.avif</code></td><td>960×640</td><td>48 KB</td></tr>
+<tr><td><code>assets/media/news-3-960.jpg</code></td><td>960×640</td><td>102 KB</td></tr>
+<tr><td><code>assets/media/news-3-960.webp</code></td><td>960×640</td><td>68 KB</td></tr>
+<tr><td><code>assets/media/og-1200x630.jpg</code></td><td>1200×630</td><td>125 KB</td></tr>
+<tr><td><code>assets/media/swatch-1-480.avif</code></td><td>480×480</td><td>15 KB</td></tr>
+<tr><td><code>assets/media/swatch-1-480.jpg</code></td><td>480×480</td><td>33 KB</td></tr>
+<tr><td><code>assets/media/swatch-1-480.webp</code></td><td>480×480</td><td>19 KB</td></tr>
+<tr><td><code>assets/media/swatch-1-720.avif</code></td><td>720×720</td><td>24 KB</td></tr>
+<tr><td><code>assets/media/swatch-1-720.jpg</code></td><td>720×720</td><td>58 KB</td></tr>
+<tr><td><code>assets/media/swatch-1-720.webp</code></td><td>720×720</td><td>31 KB</td></tr>
+<tr><td><code>assets/media/swatch-2-480.avif</code></td><td>480×480</td><td>15 KB</td></tr>
+<tr><td><code>assets/media/swatch-2-480.jpg</code></td><td>480×480</td><td>30 KB</td></tr>
+<tr><td><code>assets/media/swatch-2-480.webp</code></td><td>480×480</td><td>17 KB</td></tr>
+<tr><td><code>assets/media/swatch-2-720.avif</code></td><td>720×720</td><td>24 KB</td></tr>
+<tr><td><code>assets/media/swatch-2-720.jpg</code></td><td>720×720</td><td>55 KB</td></tr>
+<tr><td><code>assets/media/swatch-2-720.webp</code></td><td>720×720</td><td>28 KB</td></tr>
+<tr><td><code>assets/media/swatch-4-480.avif</code></td><td>480×480</td><td>18 KB</td></tr>
+<tr><td><code>assets/media/swatch-4-480.jpg</code></td><td>480×480</td><td>41 KB</td></tr>
+<tr><td><code>assets/media/swatch-4-480.webp</code></td><td>480×480</td><td>28 KB</td></tr>
+<tr><td><code>assets/media/swatch-4-720.avif</code></td><td>720×720</td><td>32 KB</td></tr>
+<tr><td><code>assets/media/swatch-4-720.jpg</code></td><td>720×720</td><td>74 KB</td></tr>
+<tr><td><code>assets/media/swatch-4-720.webp</code></td><td>720×720</td><td>45 KB</td></tr>
+<tr><td><code>assets/3d/medallion-1k.glb</code></td><td>—</td><td>410 KB</td></tr>
+</tbody></table>
+<p>273 files, 30.1 MB in total. Regenerated after the polish pass (grade v2 re-export, 2026-10-09).</p>
+<p>272 files, 32.5 MB in total.</p>
+</main>
+</body>
+</html>

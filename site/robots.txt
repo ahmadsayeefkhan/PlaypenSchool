@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
+Disallow: /audit-report.html
+Disallow: /report-summary.html
+Disallow: /credits.html
 
-Sitemap: https://playpen.edu.bd/sitemap.xml
+Sitemap: https://playpen-school.vercel.app/sitemap.xml

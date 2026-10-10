@@ -1,0 +1,96 @@
+---
+title: Enquire
+template: T07
+actions: false
+standfirst: Ask the admissions team a question. Choose your child's class and the page shows the line to call. The form checks what you type; nothing is sent.
+---
+<section class="page-section" aria-labelledby="enq-form-title">
+  <div class="band">
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Your question</span><span class="sheet-rule__purpose">Five short fields</span></div>
+    <div class="layout">
+      <div class="layout__main">
+        <h2 id="enq-form-title" class="section-title">What would you like to know?</h2>
+        <div class="prose mt-m" data-reveal>
+          <p>Tell us which class you are asking about and what you would like to know. The page then shows the admissions line for that class.</p>
+        </div>
+        <p class="form-note mt-m">This form is a prototype. It checks what you type, then shows the school's numbers. Nothing is sent, so please call the line it shows.</p>
+        <form class="page-form" data-prototype-form novalidate action="#" method="post">
+          <div class="form-row form-row--2">
+            <div class="field"><label for="e-name">Parent's name</label><input id="e-name" name="name" type="text" autocomplete="name" required aria-describedby="e-name-err"><p id="e-name-err" class="field__error" aria-live="polite"></p></div>
+            <div class="field"><label for="e-phone">Phone</label><input id="e-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required aria-describedby="e-phone-err"><p id="e-phone-err" class="field__error" aria-live="polite"></p></div>
+          </div>
+          <div class="field"><label for="e-email">Email (optional)</label><input id="e-email" name="email" type="email" autocomplete="email" aria-describedby="e-email-err"><p id="e-email-err" class="field__error" aria-live="polite"></p></div>
+          <div class="field">
+            <label for="e-class">Child's class of entry</label>
+            <select id="e-class" name="class" required data-route="e-route" aria-describedby="e-class-err e-route">
+              <option value="">Choose a class</option>
+              <option data-line="pg-1">Playgroup</option>
+              <option data-line="pg-1">Nursery</option>
+              <option data-line="pg-1">KG I</option>
+              <option data-line="pg-1">KG II</option>
+              <option data-line="pg-1">Class I</option>
+              <option data-line="ii-vi">Class II</option>
+              <option data-line="ii-vi">Class III</option>
+              <option data-line="ii-vi">Class IV</option>
+              <option data-line="ii-vi">Class V</option>
+              <option data-line="ii-vi">Class VI</option>
+              <option data-line="vii-xii">Class VII</option>
+              <option data-line="vii-xii">Class VIII</option>
+              <option data-line="vii-xii">Class IX</option>
+              <option data-line="vii-xii">Class X</option>
+              <option data-line="vii-xii">Class XI, AS Level</option>
+              <option data-line="vii-xii">Class XII</option>
+              <option>Not sure yet</option>
+            </select>
+            <p id="e-class-err" class="field__error" aria-live="polite"></p>
+          </div>
+          <div id="e-route" class="route-hint" role="status" aria-live="polite">
+            <p class="route-hint__line" data-line="pg-1" hidden>For Playgroup to Class I, the line is {{phone:pg-1}}.</p>
+            <p class="route-hint__line" data-line="ii-vi" hidden>For Classes II to VI, the line is {{phone:ii-vi}}.</p>
+            <p class="route-hint__line" data-line="vii-xii" hidden>For Classes VII to XII, the line is {{phone:vii-xii}}.</p>
+          </div>
+          <div class="field"><label for="e-msg">Your question</label><textarea id="e-msg" name="message" rows="5" required aria-describedby="e-msg-err"></textarea><p id="e-msg-err" class="field__error" aria-live="polite"></p></div>
+          <button class="btn btn--primary" type="submit"><span class="btn__label">Send enquiry</span></button>
+        </form>
+        <div class="form-notice" role="status"><p class="form-notice__text">Nothing was sent: this form is a prototype. To ask your question, call the line for your child's section, {{hours:between}}.</p>{{phones}}</div>
+        <noscript><div class="form-note"><p>This form needs JavaScript. Please call the line for your child's section:</p>{{phones}}</div></noscript>
+      </div>
+      <div class="layout__aside layout__aside--sticky">
+        <!-- CONFIRM: who reads enquiries, how quickly the school replies, and whether it will take questions on WhatsApp. None is supplied, so the page makes no promise about a reply and shows no WhatsApp number. -->
+        <div class="callout" data-reveal>
+          <span class="callout__label label">Leave a number you answer</span>
+          <p>The school gives admission results by telephone, so give a number on which you can be reached.</p>
+        </div>
+        <div>
+          <p class="label">Answers already on this site</p>
+          <ul class="link-list">
+            <li><a class="link link--arrow" href="{{link:/admissions/faq/}}">Admissions FAQ</a></li>
+            <li><a class="link link--arrow" href="{{link:/admissions/how-to-apply/}}">How to apply</a></li>
+            <li><a class="link link--arrow" href="{{link:/admissions/fees/}}">Fees and payment</a></li>
+            <li><a class="link link--arrow" href="{{link:/admissions/starting-at-playpen/}}">Starting at Playpen</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="page-section page-section--tint" aria-labelledby="enq-call">
+  <div class="band">
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">By telephone</span><span class="sheet-rule__purpose">Lines are open {{hours}}</span></div>
+    <div class="call-band">
+      <div class="call-band__text">
+        <h2 id="enq-call" class="section-title">Or call the line for your child's section.</h2>
+        <p>The admissions lines are open {{hours}}. Each section has its own number.</p>
+      </div>
+      <div>
+        <ul class="call-lines" data-reveal-group>
+          <li class="call-line"><span class="call-line__who">Playgroup to Class I</span>{{phone:pg-1 class="call-line__tel"}}</li>
+          <li class="call-line"><span class="call-line__who">Classes II to VI</span>{{phone:ii-vi class="call-line__tel"}}</li>
+          <li class="call-line"><span class="call-line__who">Classes VII to XII</span>{{phone:vii-xii class="call-line__tel"}}</li>
+        </ul>
+        <p class="call-lines__hours">Further queries and emergencies: {{phone:further}}. The school is at {{address}}. {{map}}</p>
+      </div>
+    </div>
+  </div>
+</section>

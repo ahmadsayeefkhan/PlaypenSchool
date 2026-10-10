@@ -1,0 +1,260 @@
+{
+ "home": "",
+ "groups": [
+  {
+   "key": "about",
+   "label": "About",
+   "url": "about/",
+   "pages": [
+    {
+     "title": "Our history",
+     "label": "History",
+     "url": "about/history/",
+     "summary": "The school in dates, from the first O Level candidate to the move into its own building."
+    },
+    {
+     "title": "Leadership and management",
+     "label": "Leadership",
+     "url": "about/leadership/",
+     "summary": "Who leads the school, and which classes each Vice Principal and Teacher-in-Charge looks after."
+    },
+    {
+     "title": "Our campus",
+     "label": "Campus",
+     "url": "about/campus/",
+     "summary": "One building of ten storeys in Bashundhara R/A, and what it holds, from laboratories to the rooftop court."
+    },
+    {
+     "title": "Child protection and safeguarding",
+     "label": "Child protection",
+     "url": "about/child-protection/",
+     "summary": "How the school looks after children, and how to raise a concern."
+    },
+    {
+     "title": "Policies and documents",
+     "label": "Policies",
+     "url": "about/policies/",
+     "summary": "The code of conduct, uniform, attendance and other documents, in one place."
+    },
+    {
+     "title": "Careers at Playpen",
+     "label": "Careers",
+     "url": "about/careers/",
+     "summary": "Teaching at Playpen: how to apply and where vacancies are listed."
+    }
+   ]
+  },
+  {
+   "key": "learning",
+   "label": "Learning",
+   "url": "learning/",
+   "pages": [
+    {
+     "title": "Elementary School: Playgroup to KG II",
+     "label": "Elementary",
+     "url": "learning/elementary/",
+     "summary": "Playgroup, Nursery, KG I and KG II. The first classrooms."
+    },
+    {
+     "title": "Junior School: Class I to III",
+     "label": "Junior",
+     "url": "learning/junior/",
+     "summary": "Classes I to III. English, Bengali and Mathematics, with library lessons for every level."
+    },
+    {
+     "title": "Middle School: Class IV to VII",
+     "label": "Middle",
+     "url": "learning/middle/",
+     "summary": "Classes IV to VII. Two semesters a year, each with an examination."
+    },
+    {
+     "title": "Senior School: Class VIII to XII and O Level",
+     "label": "Senior",
+     "url": "learning/senior/",
+     "summary": "Classes VIII to XII. Electives in Class VIII, Cambridge O Level, then AS and A Level."
+    },
+    {
+     "title": "AS and A Level",
+     "label": "A Level",
+     "url": "learning/a-level/",
+     "summary": "AS and A Level, taught at Playpen since 2013."
+    },
+    {
+     "title": "The Cambridge pathway, explained",
+     "label": "Cambridge pathway",
+     "url": "learning/cambridge-pathway/",
+     "summary": "How Cambridge O Level, AS and A Level fit together, in plain English."
+    },
+    {
+     "title": "Examinations and reporting",
+     "label": "Examinations",
+     "url": "learning/examinations/",
+     "summary": "Two semesters, an examination at the end of each, and how reports reach families."
+    },
+    {
+     "title": "Results and achievements",
+     "label": "Results",
+     "url": "learning/results/",
+     "summary": "Results and achievements, each with its year and source."
+    },
+    {
+     "title": "Student support",
+     "label": "Student support",
+     "url": "learning/student-support/",
+     "summary": "The counsellor, career guidance and university application support."
+    }
+   ]
+  },
+  {
+   "key": "admissions",
+   "label": "Admissions",
+   "url": "admissions/",
+   "pages": [
+    {
+     "title": "How to apply",
+     "label": "How to apply",
+     "url": "admissions/how-to-apply/",
+     "summary": "The five steps from first call to the result, and what to bring."
+    },
+    {
+     "title": "Fees and payment",
+     "label": "Fees and payment",
+     "url": "admissions/fees/",
+     "summary": "How fees are explained and how they are paid."
+    },
+    {
+     "title": "Book a visit",
+     "label": "Book a visit",
+     "url": "admissions/visit/",
+     "summary": "Come and see the building and the section your child would join."
+    },
+    {
+     "title": "Admissions FAQ",
+     "label": "FAQ",
+     "url": "admissions/faq/",
+     "summary": "Answers to the questions families ask most, grouped by topic."
+    },
+    {
+     "title": "Enquire",
+     "label": "Enquire",
+     "url": "admissions/enquire/",
+     "summary": "Ask the admissions team a question."
+    },
+    {
+     "title": "Starting at Playpen",
+     "label": "Starting at Playpen",
+     "url": "admissions/starting-at-playpen/",
+     "summary": "Uniform, books and the other practical details of the first weeks."
+    }
+   ]
+  },
+  {
+   "key": "school-life",
+   "label": "School life",
+   "url": "school-life/",
+   "pages": [
+    {
+     "title": "Sports",
+     "label": "Sports",
+     "url": "school-life/sports/",
+     "summary": "Football, basketball, handball, athletics, table tennis, chess and carrom."
+    },
+    {
+     "title": "Clubs and activities",
+     "label": "Clubs and activities",
+     "url": "school-life/clubs-and-activities/",
+     "summary": "Art and Craft, Music, Dance, Drama, Debate, the Olympiads and more."
+    },
+    {
+     "title": "Culture and service",
+     "label": "Culture and service",
+     "url": "school-life/culture-and-service/",
+     "summary": "The Cultural Programme, Pohela Boishakh and community service."
+    },
+    {
+     "title": "Transport and safety",
+     "label": "Transport and safety",
+     "url": "school-life/transport-and-safety/",
+     "summary": "School buses, the sick room, and how the campus is kept safe."
+    },
+    {
+     "title": "The school day",
+     "label": "The school day",
+     "url": "school-life/school-day/",
+     "summary": "The shape of a school day, and the practical things to know."
+    }
+   ]
+  },
+  {
+   "key": "community",
+   "label": "Community",
+   "url": "",
+   "pages": [
+    {
+     "title": "For parents",
+     "label": "Parents",
+     "url": "community/parents/",
+     "summary": "The portal, fee payment, notices and the contact line for each section."
+    },
+    {
+     "title": "Alumni",
+     "label": "Alumni",
+     "url": "community/alumni/",
+     "summary": "The Playpen Alumni Association, and how former students can stay in touch."
+    },
+    {
+     "title": "News",
+     "label": "News",
+     "url": "news/",
+     "summary": "Reports from the school year."
+    },
+    {
+     "title": "Events and term dates",
+     "label": "Events",
+     "url": "events/",
+     "summary": "Events and term dates for the year."
+    },
+    {
+     "title": "Notices",
+     "label": "Notices",
+     "url": "notices/",
+     "summary": "Current notices from the school."
+    },
+    {
+     "title": "Gallery",
+     "label": "Gallery",
+     "url": "gallery/",
+     "summary": "Photographs from the school year."
+    }
+   ]
+  },
+  {
+   "key": "contact",
+   "label": "Contact",
+   "url": "contact/",
+   "pages": []
+  }
+ ],
+ "other": [
+  {
+   "title": "Privacy",
+   "label": "Privacy",
+   "url": "privacy/"
+  },
+  {
+   "title": "Terms of use",
+   "label": "Terms of use",
+   "url": "terms/"
+  },
+  {
+   "title": "Sitemap",
+   "label": "Sitemap",
+   "url": "sitemap/"
+  },
+  {
+   "title": "Search",
+   "label": "Search",
+   "url": "search/"
+  }
+ ]
+}

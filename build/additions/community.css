@@ -1,0 +1,125 @@
+/* community group: /community/parents/, /community/alumni/, /news/, /events/, /notices/, /gallery/ (2026-10-11).
+   Components: empty note (.empty-note), filter group (.filter-group), news feed (.news-feed, .news-item), notice date and
+   validity line (.row__day--text, .row__valid), photo album (.album). Each is documented in docs/additions/community.md.
+   Tokens only; 44 px targets; the one transition (the arrow) is switched off by the reduced-motion rule at the end. */
+
+/* ---- empty note (events, notices, news, alumni; 2026-10-11) ---------------------------------------------------------
+   A calm statement where the school has not yet given the site anything to list. A label, a plain sentence, then what
+   to do instead. It carries the same ink rule as .rows and .timeline, so it sits in the column like a list that has not
+   been filled. Replace it with the real rows the day the school supplies them. */
+.empty-note { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; padding: 22px 0 28px; border-top: 1px solid var(--ink); border-bottom: var(--hairline); }
+.empty-note .label { display: block; margin-bottom: 12px; }
+.empty-note__title { font: 400 clamp(24px, 2.3vw, 38px) / 1.12 var(--font-serif); letter-spacing: -0.006em; max-width: 24ch; text-wrap: balance; }
+.empty-note__body > * + * { margin-top: 0.8em; }
+.empty-note__body p { max-width: 58ch; font-size: 17.5px; line-height: 1.6; }
+.empty-note__body .phones { margin-top: 18px; }
+@media (min-width: 900px) {
+  .empty-note { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); column-gap: var(--gutter); padding: 30px 0 36px; }
+}
+
+/* ---- filter group (news, notices; 2026-10-11) -----------------------------------------------------------------------
+   A heading and its list inside a [data-filter-scope]. js/pages-additions.js hides the whole group, heading included,
+   when the chips leave nothing in it, so a heading is never left over an empty list. */
+.filter-group + .filter-group { margin-top: clamp(48px, 6vw, 88px); }
+.filter-group__title { margin-bottom: 14px; }
+.filter-group__more { margin-top: 22px; }
+
+/* ---- news feed (news; 2026-10-11) ----------------------------------------------------------------------------------
+   Event reports with a photograph: a rule, the picture, a dated kicker, a title and one plain sentence. The title's link
+   is stretched over the card, as in .chapter-card and .row. The first card (--lead) is larger; --side and the plain
+   cards fill a twelve-column row: 7 + 5, then 6 + 6. */
+.news-feed { list-style: none; display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(32px, 4vw, 56px) var(--gutter); }
+.news-item { position: relative; display: flex; flex-direction: column; gap: 14px; padding-top: 16px; border-top: 1px solid var(--ink); scroll-margin-top: calc(var(--nav-h) + 24px); }
+.news-item .plate { margin: 0; }
+.news-item .plate img { width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; object-position: var(--pos, 50% 50%); }
+.news-item--lead .plate img { aspect-ratio: 16 / 9; }
+.news-item__meta { display: flex; flex-wrap: wrap; gap: 4px 16px; font: 500 11.5px / 1.2 var(--font-sans); letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.news-item__title { font: 400 clamp(26px, 2.2vw, 38px) / 1.08 var(--font-serif); letter-spacing: -0.005em; text-wrap: balance; }
+.news-item--lead .news-item__title { font-size: clamp(32px, 3.4vw, 56px); }
+.news-item__title a { color: inherit; text-decoration: none; transition: color var(--t-micro); }
+.news-item__title a::after { content: ''; position: absolute; inset: 0; }
+.news-item__title a:focus-visible { outline: none; }
+.news-item__title a:focus-visible::after { outline: 2px solid var(--maroon); outline-offset: 4px; }
+.news-item:hover .news-item__title a { color: var(--maroon); }
+.news-item__text { max-width: 52ch; font-size: 17px; line-height: 1.55; color: var(--ink-2); }
+.news-item__go { position: relative; display: block; flex: none; width: 36px; height: 1px; margin-top: auto; background: var(--ink); transition: width var(--t-hover) var(--ease-out), background var(--t-ui); }
+.news-item__go::after { content: ''; position: absolute; right: 0; top: -3px; width: 7px; height: 7px; border-top: 1px solid currentColor; border-right: 1px solid currentColor; transform: rotate(45deg); color: var(--ink); }
+.news-item:hover .news-item__go { width: 64px; background: var(--maroon); }
+.news-item:hover .news-item__go::after { color: var(--maroon); }
+@media (min-width: 640px) {
+  .news-feed { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .news-item--lead { grid-column: 1 / -1; }
+}
+@media (min-width: 1024px) {
+  .news-feed { grid-template-columns: repeat(12, minmax(0, 1fr)); }
+  .news-item { grid-column: span 6; }
+  .news-item--lead { grid-column: span 7; }
+  .news-item--side { grid-column: span 5; }
+  /* 7 + 5 columns: 19:10 against 4:3 gives the two pictures the same height, so the dates and titles below them line up (review, 2026-10-11) */
+  .news-item--lead .plate img { aspect-ratio: 19 / 10; }
+}
+
+/* ---- notice date and validity line (notices, news; 2026-10-11) -------------------------------------------------------
+   .row__day is a large number. A notice with no single day ("Standing", "2026 to 27") sets its word in a smaller size so it
+   stays on one line beside the date column; .row__valid says in words what period the notice covers. */
+.row__body { min-width: 0; }
+.row__day--text { font-size: clamp(22px, 2vw, 30px); line-height: 1.1; letter-spacing: -0.005em; }
+.row__valid { margin-top: 10px; font: 500 12.5px / 1.45 var(--font-sans); letter-spacing: 0.06em; color: var(--ink-2); }
+
+/* ---- photo album (gallery; 2026-10-11) -------------------------------------------------------------------------------
+   One event or one subject: a rule, the title and what it shows, then the .gallery grid with its own lightbox (the viewer
+   steps through one album at a time). The chips show or hide whole albums. */
+.album { scroll-margin-top: calc(var(--nav-h) + 24px); }
+.album + .album { margin-top: clamp(48px, 6vw, 96px); }
+.album__head { display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px 32px; padding-top: 16px; margin-bottom: 24px; border-top: 1px solid var(--ink); }
+.album__title { font: 400 clamp(28px, 2.8vw, 46px) / 1.08 var(--font-serif); letter-spacing: -0.006em; text-wrap: balance; }
+.album__meta { margin-top: 10px; font: 500 11.5px / 1.2 var(--font-sans); letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.album__note { max-width: 56ch; font-size: 17px; line-height: 1.55; color: var(--ink-2); }
+@media (min-width: 900px) {
+  .album__head { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); align-items: start; }
+}
+
+/* ---- album grid (gallery; review 2026-10-11) -------------------------------------------------------------------------
+   The shared .gallery is a three-column masonry, which leaves ragged columns and gaps when the frames differ in shape. In an
+   album the frames sit in an even grid instead: from 560 px every thumbnail is cut to 4:3 (the lightbox still shows the whole
+   photograph); --pos on the item (a custom property, set in the page) says which part of a tall or wide frame to keep.
+     .gallery__item--wide        spans two columns from 1024 px and the full row from 560 px; beside another frame it takes that
+                                 frame's height, so the row stays level
+     .gallery__item--tablet-wide the third frame of a three-frame album: the full row at 560 to 1023 px, an ordinary tile above
+   Under 560 px each frame keeps its own proportions, one to a row. */
+.album .gallery { columns: auto; display: grid; grid-template-columns: minmax(0, 1fr); gap: 28px var(--gutter); }
+.album .gallery__item { margin: 0; min-width: 0; display: flex; flex-direction: column; break-inside: auto; }
+.album .gallery__link { display: block; }
+@media (min-width: 560px) {
+  .album .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .album .gallery__frame img { aspect-ratio: 4 / 3; object-fit: cover; object-position: var(--pos, 50% 50%); }
+  .album .gallery__item--wide, .album .gallery__item--tablet-wide { grid-column: 1 / -1; }
+  .album .gallery__item--wide .gallery__frame img { aspect-ratio: 2 / 1; }
+  .album .gallery__item--tablet-wide .gallery__frame img { aspect-ratio: 2 / 1; }
+}
+@media (min-width: 1024px) {
+  .album .gallery { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .album .gallery__item--tablet-wide { grid-column: auto; }
+  .album .gallery__item--tablet-wide .gallery__frame img { aspect-ratio: 4 / 3; }
+  .album .gallery__item--wide { grid-column: span 2; }
+  .album .gallery__item--wide .gallery__link { flex: 1 1 0; min-height: 0; position: relative; }
+  .album .gallery__item--wide .gallery__frame { position: absolute; inset: 8px; }
+  .album .gallery__item--wide .gallery__frame img { position: absolute; inset: 0; width: 100%; height: 100%; aspect-ratio: auto; }
+}
+
+/* ---- form first on a phone (alumni; review 2026-10-11) ------------------------------------------------------------------
+   The list of what to have to hand and the number to call come before the form on a phone, where the aside would otherwise fall
+   below the button. From 1024 px the aside sits beside the form as usual. */
+@media (max-width: 1023.98px) {
+  .layout--aside-first .layout__aside { order: -1; }
+}
+
+/* ---- start-here cards (parents; 2026-10-11) --------------------------------------------------------------------------
+   A chapter card that opens the school's current website carries the "current site" tag (.link__site) inside its link.
+   The tag sits on its own line under the title, so the two external cards and the two internal ones line up. */
+.chapter-card__link .link__site { display: block; width: fit-content; margin: 10px 0 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  .news-item__go, .news-item__title a { transition: none; }
+}
+html[data-motion="reduced"] .news-item__go, html[data-motion="reduced"] .news-item__title a { transition: none !important; }

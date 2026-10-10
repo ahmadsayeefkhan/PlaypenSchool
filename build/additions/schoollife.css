@@ -1,0 +1,8 @@
+/* School life group (schoollife), 2026-10-11 */
+
+/* Plate trio: one tall plate beside two landscape plates stacked, one column on a phone. /school-life/culture-and-service/, Pohela Boishakh chapter (2026-10-11, schoollife) */
+.sl-trio { list-style: none; display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--gutter); }
+@media (min-width: 640px) {
+  .sl-trio { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .sl-trio > li:first-child { grid-row: 1 / span 2; }
+}

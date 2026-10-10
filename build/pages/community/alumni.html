@@ -1,0 +1,168 @@
+---
+title: Alumni
+template: T05
+description: The Playpen Alumni Association: how former students can register their details and stay in touch with the school, and what the school has not yet published.
+h1: The Playpen Alumni <em>Association</em>.
+standfirst: The school wants to hear from former students, wherever they are now. This page says how to send your details, and what the school has not yet published.
+hero_image: img/community-alumni-hero
+hero_alt: A red-tiled staircase between concrete and white walls, with a black railing, seen from the landing above.
+hero_caption: The stairs between the floors, 2024
+hero_n: 01
+actions: false
+---
+<section class="page-section" aria-labelledby="alu-what">
+  <div class="band">
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">The association</span><span class="sheet-rule__purpose">Who it is for</span></div>
+    <div class="layout">
+      <div class="layout__main">
+        <h2 id="alu-what" class="section-title">Keeping in touch with former students.</h2>
+        <!-- CONFIRM: the association's own wording, who may register and who coordinates it. The school's alumni page says it wishes to connect with former students "who have excelled in their respective fields", collects their details and a photograph by email, and names no coordinator. It does not say whether every former student may register, so this page does not say so either. The form's fields (class and year, what you do now, a memory) are ours, not the school's: confirm what the association wants to collect. -->
+        <div class="prose mt-m" data-reveal>
+          <p>The Playpen Alumni Association collects the details of former students, with a recent photograph. The school says it wishes to connect with students who have excelled in their fields, wherever in the world that has taken them.</p>
+          <p>The form below is a draft of what to send: your name, your class and the year you left, how to reach you, and a memory of the school if you wish to give one.</p>
+          <p>The school has published little about its former students so far: no alumni events and no named alumni. The sections below say where each of those stands.</p>
+        </div>
+      </div>
+      <div class="layout__aside">
+        <p class="label">Read first</p>
+        <ul class="link-list mt-m">
+          <li><a class="link link--arrow" href="{{link:/about/history/}}">History of the school</a></li>
+          <li><a class="link link--arrow" href="{{link:/about/campus/}}">The campus today</a></li>
+          <li><a class="link link--arrow" href="{{link:/about/leadership/}}">Who leads the school</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="page-section page-section--tint" aria-labelledby="alu-form">
+  <div class="band">
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Register</span><span class="sheet-rule__purpose">A form that checks, and sends nothing</span></div>
+    <h2 id="alu-form" class="section-title">Send your details.</h2>
+    <div class="layout layout--aside-first mt-m">
+      <div class="layout__main">
+        <!-- CONFIRM: the school's alumni email address is not published (it is hidden on the school's current site), and no one is named to read it. Until the school supplies one and a mail handler, this form is a prototype and sends nothing. -->
+        <p class="form-note">This form is a prototype. It checks what you type, then shows the school's numbers. Nothing is sent.</p>
+        <form class="page-form" data-prototype-form novalidate action="#" method="post">
+          <div class="form-row form-row--2">
+            <div class="field"><label for="al-name">Full name</label><input id="al-name" name="name" type="text" autocomplete="name" required aria-describedby="al-name-err"><p id="al-name-err" class="field__error" aria-live="polite"></p></div>
+            <div class="field"><label for="al-year">Class and year you left</label><input id="al-year" name="year" type="text" required aria-describedby="al-year-err"><p id="al-year-err" class="field__error" aria-live="polite"></p></div>
+          </div>
+          <div class="form-row form-row--2">
+            <div class="field"><label for="al-email">Email address</label><input id="al-email" name="email" type="email" autocomplete="email" required aria-describedby="al-email-err"><p id="al-email-err" class="field__error" aria-live="polite"></p></div>
+            <div class="field"><label for="al-phone">Phone (optional)</label><input id="al-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" aria-describedby="al-phone-err"><p id="al-phone-err" class="field__error" aria-live="polite"></p></div>
+          </div>
+          <div class="field"><label for="al-now">What you do now (optional)</label><input id="al-now" name="now" type="text" aria-describedby="al-now-hint"><p id="al-now-hint" class="field__hint">University, work, city: whatever you would like the association to know.</p></div>
+          <div class="field"><label for="al-memory">A memory of Playpen (optional)</label><textarea id="al-memory" name="memory" rows="4"></textarea></div>
+          <button class="btn btn--primary" type="submit"><span class="btn__label">Register as a former student</span></button>
+        </form>
+        <div class="form-notice" role="status"><p class="form-notice__text"></p>{{phones}}</div>
+        <noscript><div class="form-note"><p>This form needs JavaScript. Please call the school instead:</p>{{phones}}</div></noscript>
+        <!-- CONFIRM: whether the school's further-queries line takes alumni registrations by phone. Nothing in the school's pages says so, and the line has no published hours; it is the only general number open to a former student today. -->
+        <div class="callout mt-l" data-reveal>
+          <span class="callout__label label">To reach the school today</span>
+          <p>The school has not published an alumni contact. Its general line, for further queries, is {{phone:further}}.</p>
+        </div>
+      </div>
+      <div class="layout__aside">
+        <p class="label">Have to hand</p>
+        <ul class="checklist mt-m" data-reveal>
+          <li>Your full name</li>
+          <li>Your class and the year you left</li>
+          <li>An email address, and a phone number if you like</li>
+          <li>A recent photograph: the association asks for one, and this form cannot take it</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="page-section is-night" aria-labelledby="alu-years">
+  <div class="band">
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">The school across the years</span><span class="sheet-rule__purpose">From the school's own record</span></div>
+    <div class="layout layout--wide-aside">
+      <div class="layout__main">
+        <h2 id="alu-years" class="section-title">Dates to place your year.</h2>
+        <p class="section-lead mt-m" data-reveal>A few dates from the school's own record. Earlier years are on the <a href="{{link:/about/history/}}">History</a> page.</p>
+        <ol class="timeline mt-l" data-reveal-group>
+          <li class="timeline__item">
+            <time class="timeline__date" datetime="2003">2003</time>
+            <div class="timeline__body"><h3 class="timeline__title">The first O Level candidate</h3><p>Playpen enters its first candidate for the Ordinary Level examination, who takes top marks in seven subjects.</p></div>
+          </li>
+          <li class="timeline__item">
+            <time class="timeline__date" datetime="2013">2013</time>
+            <div class="timeline__body"><h3 class="timeline__title">A Level classes begin</h3><p>The school completes the path from Playgroup to A Level.</p></div>
+          </li>
+          <li class="timeline__item">
+            <time class="timeline__date timeline__date--sm" datetime="2014-03">March 2014</time>
+            <div class="timeline__body"><h3 class="timeline__title">The school's own buses</h3><p>The school begins to run its own bus service.</p></div>
+          </li>
+          <li class="timeline__item">
+            <time class="timeline__date timeline__date--sm" datetime="2018-07-19">19 July 2018</time>
+            <div class="timeline__body"><h3 class="timeline__title">The move to the new building</h3><p>The school moves into its own building in Bashundhara R/A, where it teaches today.</p></div>
+          </li>
+          <li class="timeline__item">
+            <time class="timeline__date" datetime="2025">2025</time>
+            <div class="timeline__body"><h3 class="timeline__title">Graduation of O Level and A Level students</h3><p>The ceremony is held in the multipurpose hall, with the graduates in caps, gowns and maroon sashes.</p></div>
+          </li>
+        </ol>
+      </div>
+      <div class="layout__aside layout__aside--sticky">
+        <figure class="plate" data-reveal>
+          <div class="plate__frame">{{img src="img/gal-grad-hall" alt="Graduates in black caps, gowns and maroon sashes seen from behind and above, facing a red stage and the ceremony banner." sizes="(min-width: 1024px) 36vw, 100vw"}}</div>
+          <figcaption class="plate__cap"><span class="plate__n">02</span>The Graduation Ceremony, 2025</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="page-section" aria-labelledby="alu-stories">
+  <div class="band">
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Stories and events</span><span class="sheet-rule__purpose">Not yet published by the school</span></div>
+    <h2 id="alu-stories" class="visually-hidden">Stories and events</h2>
+    <!-- CONFIRM: alumni stories (the plan holds a place for three, named and consented) and any alumni event. None has been supplied; this note stands in for them. -->
+    <div class="empty-note" data-reveal>
+      <div>
+        <p class="label">To be published by the school</p>
+        <p class="empty-note__title">No stories from former students are published here yet.</p>
+      </div>
+      <div class="empty-note__body">
+        <p>A story will appear on this page only when the person who tells it has agreed to it, by name. The school has not supplied any yet, and it has not published an alumni event.</p>
+        <p>If you would like to tell yours, register above. For news of the school today, see <a href="{{link:/news/}}">News</a> and <a href="{{link:/events/}}">Events</a>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="page-section" aria-labelledby="wn-title">
+  <div class="band where-next">
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Routes</span></div>
+    <h2 id="wn-title" class="where-next__title">Where next?</h2>
+    <div class="where-next__grid where-next--3">
+      <div class="where-next__col">
+        <h3>The school today</h3>
+        <ul>
+          <li><a class="link" href="{{link:/news/}}">News</a></li>
+          <li><a class="link" href="{{link:/events/}}">Events and term dates</a></li>
+          <li><a class="link" href="{{link:/gallery/}}">Gallery</a></li>
+        </ul>
+      </div>
+      <div class="where-next__col">
+        <h3>About the school</h3>
+        <ul>
+          <li><a class="link" href="{{link:/about/history/}}">History</a></li>
+          <li><a class="link" href="{{link:/about/campus/}}">Campus</a></li>
+          <li><a class="link" href="{{link:/learning/results/}}">Results</a></li>
+        </ul>
+      </div>
+      <div class="where-next__col">
+        <h3>Come back</h3>
+        <ul>
+          <li><a class="link" href="{{link:/about/careers/}}">Careers at Playpen</a></li>
+          <li><a class="link" href="{{link:/contact/}}">Contact the school</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

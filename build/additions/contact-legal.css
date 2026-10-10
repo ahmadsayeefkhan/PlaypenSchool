@@ -1,0 +1,69 @@
+/* contact-legal: /contact/, /privacy/, /terms/ (2026-10-11).
+   One component, the call sheet (.contact-lines), used on /contact/. It is the home's phone list ({{phones:all}}) set large
+   on the night ground: a heading and a short note on the left, the four lines as hairline rows on the right. */
+
+/* .contact-lines: the night band at the head of /contact/ (2026-10-11) */
+.contact-lines { display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(28px, 4vw, 56px); }
+.contact-lines__intro .prose { margin-top: clamp(20px, 2.6vw, 36px); }
+.contact-lines__list .phones { margin-top: 0; border-top: 1px solid var(--paper); }
+.contact-lines__list .phones__row {
+  max-width: none;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  padding: 18px 0 20px;
+  border-bottom: 1px solid var(--night-line);
+}
+.contact-lines__list .phones__who {
+  color: var(--gold-text);
+  font: 500 12.5px / 1.3 var(--font-sans);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.contact-lines__list .phones a {
+  color: var(--paper);
+  font: 300 clamp(28px, 2.6vw, 42px) / 1.1 var(--font-serif);
+  font-variant-numeric: tabular-nums lining-nums;
+  letter-spacing: -0.005em;
+  background-image: linear-gradient(var(--gold-text), var(--gold-text));
+  background-position: 0 calc(100% - 6px);
+  padding: 6px 0 10px;
+}
+.contact-lines__list .phones__nums { align-items: flex-start; gap: 12px; }
+.contact-lines__list .phones a:focus-visible { outline: 2px solid var(--amber); outline-offset: 3px; }
+@media (min-width: 640px) {
+  .contact-lines__list .phones__row { flex-direction: row; align-items: baseline; justify-content: space-between; gap: 16px 32px; }
+  .contact-lines__list .phones__nums { align-items: flex-end; }
+}
+@media (min-width: 900px) {
+  .contact-lines { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter); align-items: start; }
+  .contact-lines__intro { grid-column: 1 / span 5; }
+  .contact-lines__list { grid-column: 7 / -1; }
+}
+
+/* .form-notice__text: the first line of the prototype notice, which COMPONENTS.md documents and the form script fills
+   (the stylesheet had no rule for the class); and room above the quiet closing line (2026-10-11) */
+.form-notice__text { margin: 0; }
+.form-notice .small-print { margin-top: 14px; }
+
+/* .legal-table: a stacked table (table--stack) on /contact/ and /privacy/. Under 640 px pages.css turns the table into a
+   block, and its <caption> then collapses to the width of its longest word and runs down the page one word to a line;
+   the caption is made a block of its own. (2026-10-11) */
+@media (max-width: 639px) {
+  .legal-table caption { display: block; width: 100%; }
+}
+
+/* the night fact strip: the small line under a fact is the quiet cream of the night ground, not the paper-ground grey
+   (pages.css leaves it at --ink-2, which disappears on --night). Used on /privacy/. (2026-10-11) */
+.is-night .fact dd small { color: var(--bone-dim); }
+
+/* touch targets (review, 2026-10-11): a link that stands alone in a table cell, a definition or a callout keeps its look and
+   gets the invisible 44 px hit area the footer and the where-next columns have (pages.css only gives it to those lists).
+   Used on /contact/ (the "Read first" column, the Find-the-school rows and the sticky note) and /privacy/ (the table). */
+.legal-table td a, .contact-find dd a, .legal-more a { position: relative; }
+.legal-table td a::before, .contact-find dd a::before, .legal-more a::before { content: ''; position: absolute; inset: -8px -4px; }
+.contact-find dd a::before, .legal-more a::before { inset: -10px -4px; }
+
+/* .legal-chapter: a chapter of a long legal page (/privacy/) sets its heading one step below the home's section title, so
+   seven chapters in a row read as chapters of one document and not as seven competing headlines. (2026-10-11 review) */
+.legal-chapter .section-title { font-size: clamp(30px, 3.1vw, 46px); line-height: 1.1; }

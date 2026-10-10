@@ -1,0 +1,40 @@
+---
+title: Page not found
+template: T05
+standfirst: The address may have changed, or it may have been typed a little wrong. Search the website, use the menu, or call the school.
+---
+<section class="page-section" aria-labelledby="nf-search">
+  <div class="band">
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Look for it</span></div>
+    <div class="layout">
+      <div class="layout__main">
+        <h2 id="nf-search" class="section-title">Search the website.</h2>
+        <form class="search-form mt-m" role="search" action="{{link:/search/}}" method="get">
+          <div class="field">
+            <label for="nf-q">Search for a page</label>
+            <input id="nf-q" name="q" type="search" autocomplete="off">
+          </div>
+          <button class="btn btn--primary" type="submit"><span class="btn__label">Search</span></button>
+        </form>
+      </div>
+      <div class="layout__aside">
+        <p class="label">Pages most families need</p>
+        <ul class="link-list mt-m">
+          <li><a class="link" href="{{link:/admissions/}}">Admissions</a></li>
+          <li><a class="link" href="{{link:/admissions/visit/}}">Book a visit</a></li>
+          <li><a class="link" href="{{link:/learning/}}">Learning at Playpen</a></li>
+          <li><a class="link" href="{{link:/contact/}}">Contact</a></li>
+          <li><a class="link" href="{{link:/sitemap/}}">Every page, on the sitemap</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="page-section page-section--tint" aria-labelledby="nf-call">
+  <div class="band">
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Or call</span><span class="sheet-rule__purpose">Lines are open {{hours}}</span></div>
+    <h2 id="nf-call" class="section-title">The school answers by phone.</h2>
+    <div class="mt-m">{{phones}}</div>
+  </div>
+</section>
