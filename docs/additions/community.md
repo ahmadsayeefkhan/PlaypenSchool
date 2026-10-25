@@ -81,5 +81,31 @@ Plan an album in whole rows: 3, 6 (3 + 3), or 5 (one wide frame beside one, then
 ### Start-here card tag (`.chapter-card__link .link__site`; parents; 2026-10-11, community)
 A chapter card that opens the school's current website carries the "current site" tag inside its link. The tag sits on its own line under the title so external and internal cards line up. The link needs `target="_blank" rel="noopener"` and the hidden "(opens in a new tab)".
 
-### Form first on a phone (`.layout--aside-first`; alumni; review 2026-10-11, community)
-Add the class to a `.layout` whose aside holds what to have to hand: below 1024 px the aside comes before the form (`order: -1`); from 1024 px it sits beside it as usual. Put the section heading above the layout, not inside `.layout__main`, so that on a phone the order is heading, checklist, form.
+## Community-contact redesign, Parents and Alumni pieces (2026-10-24)
+
+The shared cc- kit (`cc-head`, `cc-foot`, `cc-panel`, `cc-plate`, `cc-lines`, `cc-chips`) is documented in `docs/additions/contact-legal.md`. Below are the pieces only `/community/parents/` and `/community/alumni/` use. Two 2026-10-11 entries were retired the same day: `.layout--aside-first` (CSS `order`, replaced by `.cc-aside-first`, which keeps the DOM order) and the start-here `.chapter-card__link .link__site` rule (the cards became `.cc-tiles`).
+
+### Start-here tiles `.cc-tiles` (Parents)
+Four doors a current parent opens most: `ul.cc-tiles > li.cc-tile` with a `.cc-tile__n.label`, an `h3.cc-tile__title > a.cc-tile__link` (stretched over the tile), one `p.cc-tile__text` and the `.cc-tile__go` arrow. 2 x 2 from 0 px so all four sit in one phone screen (under 480 px the text line is clamped to two lines, so the tile still says what it opens; review r1, 2026-10-24), four across from 1024 px. A tile that opens the school's current website carries the `link__site` tag and the hidden "(opens in a new tab)" text, as `{{ext}}` writes them.
+
+### Notices mirrored on a page `.cc-notices` (Parents; review r1, 2026-10-24)
+Add to the `page-section` that holds a feed-synced `nb-grid` (`data-feed="notices-current"`) outside the Notices board. content.js adds `nb-card--feature` to a pinned notice and main.css then spans it over both columns, which only makes sense next to the board's sticky `nb-ask`; here the cards stay two equal columns with the ordinary title size and fact grid, and every card action keeps the outlined (secondary) button, so the page does not end up with one filled admissions button as its only priority. The lead sentence carries a `<span data-feed-line="notices-current">` with count-free built text ("The notices that apply now."); the feed writes "N notices apply now." into it.
+
+### Day-to-day grid `.cc-faq` (Parents)
+Written in phone order: `.cc-faq__worried` (the safeguarding `.venue`, which carries `id="q-concern"` so older `#q-concern` links land on it; the answer is not repeated in the accordion), `.cc-faq__main` (the `.cc-chips` jump row and the `[data-accordion-scope]` with its `accordion-group`s: `h3.label` group titles, `h4.accordion__q` questions, because the sheet already has an H2), `.cc-faq__aside` (the plate and the document links). From 1024 px the questions take 7 columns over two rows and the two side blocks sit on the right, so reading order and focus order stay the DOM order at every width (no CSS `order`).
+
+### Checklist before the panel `.cc-aside-first` (Alumni)
+Add to `.layout` when the aside comes first in the DOM (the phone order); from 1024 px both columns are pinned to grid row 1, so `.layout`'s column rules place them side by side. On Alumni the main column held the prototype form until review r1 (2026-10-24 evening) withdrew it (held in `redesign-2026-10-24-pages/build/alumni-form-held.html`); it now holds the gold "Send your details" `.cc-panel` with the further-queries number (`{{phone:further class="contact-card__tel"}}` in `p.cc-panel__tel`, as on Terms).
+
+### Graduation albums `.cc-years` (Alumni)
+A wrapper for the home's `.ev-grid` photo cards, one per album year (`li.ev > a.ev__card` with `.ev__media > .plate__frame` + `{{img}}`, `.ev__n.label`, `h3.ev__name`, `.ev__text`, `.ev__more`): a stack on phones (the home's snapping row would hide the fourth card), 2 x 2 from 640 px, four across from 1200 px. Each card links to its album; the texts are the albums' `summary` lines from nav.json; the covers are the albums' own people-free frames.
+
+### Night timeline with its plate `.cc-dates` (Alumni)
+`.cc-dates__plate` first (under the lead on phones), then `ol.timeline.cc-dates__list`; from 1024 px the timeline takes 7 columns and the plate column sits on the right in the same grid row, stretched to the timeline's height: the `figure.plate` inside it is sticky at the top, and `.cc-dates__more` (a label and a two-link `link-list` to other sheets of the page, hidden under 1024 px) sits at the foot of the column with `margin-top: auto`, so a full-page view does not show 900 px of empty ground under a short plate (review r1, 2026-10-24). The night plate is a darker, warmer graded copy of the stage frame (`img/alumni-stage-night`), not a CSS filter.
+
+### Round-2 fixes (2026-10-25)
+- `.cc-dates` (Alumni night sheet): the plate column is five of twelve columns from 1024 px with a 4:5 plate (`img/alumni-grad23-night`) at full width; the two "On this page" links sit directly under it (no `margin-top: auto`) and stick with it. This replaces the r1 note above about the links at the foot of the column.
+- `.cc-years` under 640 px: the four albums are a 2 x 2 grid (the card text hidden, the year kept on one line), not a 1,900 px stack.
+- `.cc-notices` under 640 px: each notice card shows its tile, chips, title and one action; the For / What to do / When facts and the source line are hidden, because the action opens the full notice.
+- `.cc-tile__long` / `.cc-tile__short` under 480 px: each Start-here tile shows its own short line instead of a two-line clamp that cut sentences mid-phrase.
+- `.cc-callrow` (Parents phone sheet): the phone list on seven columns and the Book Fair plate on the right from 1024 px, so the row is not half empty.

@@ -1,109 +1,167 @@
 ---
-title: Leadership and management
+title: Who looks after each class
+description: Which Teacher-in-Charge and Vice Principal look after each class at The Playpen School, from Playgroup to Class XII, and the telephone line to call about it.
 template: T11
-h1: Who leads the school, and who looks after each <em>class</em>.
-standfirst: A Chairman and a Managing Director, a Principal, two Vice Principals and six Teachers-in-Charge. The Vice Principals and Teachers-in-Charge look after assigned classes, supervising academic and administrative matters under the Principal's coordination.
-hero_image: img/about-leadership-planter
-hero_alt: A curved brick planter with shrubs and a concrete bench, beside a brick wall inside the school building.
-hero_caption: A planter inside the building, 2024
-hero_n: 01
+h1: Who looks after each <em>class</em>.
+standfirst: Pick your child's class to see the Teacher-in-Charge and the Vice Principal who look after it, and the line to call about it.
 ---
-<!-- CONFIRM: every name, spelling, title and class band below is from the school's own administration page (September 2026). The school should confirm each against its current staff list. No portraits or biographies were supplied; the cards are text only on purpose. -->
-<section class="page-section" aria-labelledby="lead-people">
+<!-- Redesign 2026-10-24 (group "about", plans/about.md section 4): a tool page that opens on the tool. No hero photograph (the planter went to Child protection). Order: 01 the finder, 02 the table (the finder's printed form and the no-JavaScript answer), 03 the lines and what they are for, pager, CTA. The description above repeats nav.json N1 (redesign-2026-10-24-pages/build/about-nav-requests.md). -->
+<!-- CONFIRM: every name, spelling, title and class band is from the school's administration page (September 2026, A8). The lines are the admissions lines (A5): whether they reach the Teacher-in-Charge of a class, or which number does, is for the school to say; the finder says "ask for the Teacher-in-Charge" and nothing more. -->
+<section class="page-section" aria-labelledby="lead-find">
   <div class="band">
-    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">The people</span><span class="sheet-rule__purpose">Titles as the school publishes them</span></div>
-    <h2 id="lead-people" class="visually-hidden">The people who lead the school</h2>
-
-    <div class="people-group">
-      <h3 class="label people-group__title">Management</h3>
-      <ul class="people people--2 about-people--lead" data-reveal-group>
-        <li class="person"><p class="person__role">Chairman</p><h4 class="person__name">Mr A. Mannan Khan</h4><p class="person__scope">Introduced A Level classes in 2013 and oversaw the construction of the building.</p></li>
-        <li class="person"><p class="person__role">Managing Director</p><h4 class="person__name">Mr Mir Masud Kabir</h4></li>
-      </ul>
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">The finder</span><span class="sheet-rule__purpose">One class, one person, one line</span></div>
+    <div class="abt-head abt-head--tight">
+      <h2 id="lead-find" class="section-title abt-head__title" data-reveal>Find your child's class.</h2>
     </div>
+    <div class="adm-finder" data-adm-finder data-abt-clear data-reveal>
+      <div class="adm-finder__grid">
+        <div class="adm-finder__field">
+          <label class="label" for="lead-class">Your child's class</label>
+          <select id="lead-class" class="adm-finder__select" name="class">
+            <option value="">Choose a class</option>
+            <option data-adm-band="pg-kg1">Playgroup</option>
+            <option data-adm-band="pg-kg1">Nursery</option>
+            <option data-adm-band="pg-kg1">KG I</option>
+            <option data-adm-band="kg2-1">KG II</option>
+            <option data-adm-band="kg2-1">Class I</option>
+            <option data-adm-band="2-3">Class II</option>
+            <option data-adm-band="2-3">Class III</option>
+            <option data-adm-band="4-5">Class IV</option>
+            <option data-adm-band="4-5">Class V</option>
+            <option data-adm-band="6">Class VI</option>
+            <option data-adm-band="7">Class VII</option>
+            <option data-adm-band="8-12">Class VIII</option>
+            <option data-adm-band="8-12">Class IX</option>
+            <option data-adm-band="8-12">Class X</option>
+            <option data-adm-band="8-12">Class XI</option>
+            <option data-adm-band="8-12">Class XII</option>
+          </select>
+          <p class="adm-finder__hint">The admissions lines are open {{hours}}. Ask for the Teacher-in-Charge of the class.</p>
+        </div>
+        <div class="adm-finder__out">
+          <p class="adm-finder__intro">Choose a class to see who looks after it. The full table is under this panel.</p>
+          <p class="visually-hidden" role="status" aria-live="polite"></p>
+          <!-- review r3: one worked example fills the result column until a class is chosen (the panel was two-thirds empty); administration.js hides it when a result shows. The names repeat the Classes II to III row of the table. -->
+          <div class="adm-result adm-finder__example" data-adm-example>
+            <p class="label adm-finder__example-label">For example: Class III</p>
+            <dl class="dl">
+              <div class="dl__row"><dt>Teacher-in-Charge</dt><dd>Mrs Qamar Sultana Hamid</dd></div>
+              <div class="dl__row"><dt>Vice Principal</dt><dd>Mrs Sharmin Hoque</dd></div>
+              <div class="dl__row"><dt>The line to call</dt><dd>{{phone:ii-vi class="adm-result__tel"}}<span class="adm-result__for">Admissions line, Classes II to VI</span></dd></div>
+            </dl>
+          </div>
 
-    <div class="people-group">
-      <h3 class="label people-group__title">Senior leadership</h3>
-      <ul class="people" data-reveal-group>
-        <li class="person"><p class="person__role">Principal</p><h4 class="person__name">Mrs Sorabon Tohura</h4><p class="person__scope">Led the move into the school's own building on 19 July 2018.</p></li>
-        <li class="person"><p class="person__role">Vice Principal</p><h4 class="person__name">Mrs Sharmin Hoque</h4><p class="person__scope">Playgroup to Class V</p></li>
-        <li class="person"><p class="person__role">Vice Principal</p><h4 class="person__name">Mr Palash Kumar Kundu</h4><p class="person__scope">Classes VI to XII</p></li>
-      </ul>
+          <div class="adm-finder__result adm-result" data-adm-band="pg-kg1" hidden>
+            <dl class="dl">
+              <div class="dl__row"><dt>Teacher-in-Charge</dt><dd data-adm-tic>Mrs Farhana Rehan</dd></div>
+              <div class="dl__row"><dt>Vice Principal</dt><dd data-adm-vp>Mrs Sharmin Hoque</dd></div>
+              <div class="dl__row"><dt>The line to call</dt><dd>{{phone:pg-1 class="adm-result__tel"}}<span class="adm-result__for">Admissions line, Playgroup to Class I</span></dd></div>
+            </dl>
+          </div>
+          <div class="adm-finder__result adm-result" data-adm-band="kg2-1" hidden>
+            <dl class="dl">
+              <div class="dl__row"><dt>Teacher-in-Charge</dt><dd data-adm-tic>Mrs Farida Yasmin</dd></div>
+              <div class="dl__row"><dt>Vice Principal</dt><dd data-adm-vp>Mrs Sharmin Hoque</dd></div>
+              <div class="dl__row"><dt>The line to call</dt><dd>{{phone:pg-1 class="adm-result__tel"}}<span class="adm-result__for">Admissions line, Playgroup to Class I</span></dd></div>
+            </dl>
+          </div>
+          <div class="adm-finder__result adm-result" data-adm-band="2-3" hidden>
+            <dl class="dl">
+              <div class="dl__row"><dt>Teacher-in-Charge</dt><dd data-adm-tic>Mrs Qamar Sultana Hamid</dd></div>
+              <div class="dl__row"><dt>Vice Principal</dt><dd data-adm-vp>Mrs Sharmin Hoque</dd></div>
+              <div class="dl__row"><dt>The line to call</dt><dd>{{phone:ii-vi class="adm-result__tel"}}<span class="adm-result__for">Admissions line, Classes II to VI</span></dd></div>
+            </dl>
+          </div>
+          <div class="adm-finder__result adm-result" data-adm-band="4-5" hidden>
+            <dl class="dl">
+              <div class="dl__row"><dt>Teacher-in-Charge</dt><dd data-adm-tic>Mrs Samina Abedin</dd></div>
+              <div class="dl__row"><dt>Vice Principal</dt><dd data-adm-vp>Mrs Sharmin Hoque</dd></div>
+              <div class="dl__row"><dt>The line to call</dt><dd>{{phone:ii-vi class="adm-result__tel"}}<span class="adm-result__for">Admissions line, Classes II to VI</span></dd></div>
+            </dl>
+          </div>
+          <div class="adm-finder__result adm-result" data-adm-band="6" hidden>
+            <dl class="dl">
+              <div class="dl__row"><dt>Teacher-in-Charge</dt><dd data-adm-tic>Mrs Roohi Shamima Choudhury</dd></div>
+              <div class="dl__row"><dt>Vice Principal</dt><dd data-adm-vp>Mr Palash Kumar Kundu</dd></div>
+              <div class="dl__row"><dt>The line to call</dt><dd>{{phone:ii-vi class="adm-result__tel"}}<span class="adm-result__for">Admissions line, Classes II to VI</span></dd></div>
+            </dl>
+          </div>
+          <div class="adm-finder__result adm-result" data-adm-band="7" hidden>
+            <dl class="dl">
+              <div class="dl__row"><dt>Teacher-in-Charge</dt><dd data-adm-tic>Mrs Roohi Shamima Choudhury</dd></div>
+              <div class="dl__row"><dt>Vice Principal</dt><dd data-adm-vp>Mr Palash Kumar Kundu</dd></div>
+              <div class="dl__row"><dt>The line to call</dt><dd>{{phone:vii-xii class="adm-result__tel"}}<span class="adm-result__for">Admissions line, Classes VII to XII</span></dd></div>
+            </dl>
+          </div>
+          <div class="adm-finder__result adm-result" data-adm-band="8-12" hidden>
+            <dl class="dl">
+              <div class="dl__row"><dt>Teacher-in-Charge</dt><dd data-adm-tic>Mrs Khurshida Rahman Rimi</dd></div>
+              <div class="dl__row"><dt>Vice Principal</dt><dd data-adm-vp>Mr Palash Kumar Kundu</dd></div>
+              <div class="dl__row"><dt>The line to call</dt><dd>{{phone:vii-xii class="adm-result__tel"}}<span class="adm-result__for">Admissions line, Classes VII to XII</span></dd></div>
+            </dl>
+          </div>
+        </div>
+      </div>
     </div>
-
-    <div class="people-group">
-      <h3 class="label people-group__title">Teachers-in-Charge</h3>
-      <ul class="people" data-reveal-group>
-        <li class="person"><p class="person__role">Teacher-in-Charge</p><h4 class="person__name">Mrs Farhana Rehan</h4><p class="person__scope">Playgroup to KG I</p></li>
-        <li class="person"><p class="person__role">Teacher-in-Charge</p><h4 class="person__name">Mrs Farida Yasmin</h4><p class="person__scope">KG II to Class I</p></li>
-        <li class="person"><p class="person__role">Teacher-in-Charge</p><h4 class="person__name">Mrs Qamar Sultana Hamid</h4><p class="person__scope">Classes II to III</p></li>
-        <li class="person"><p class="person__role">Teacher-in-Charge</p><h4 class="person__name">Mrs Samina Abedin</h4><p class="person__scope">Classes IV to V</p></li>
-        <li class="person"><p class="person__role">Teacher-in-Charge</p><h4 class="person__name">Mrs Roohi Shamima Choudhury</h4><p class="person__scope">Classes VI to VII</p></li>
-        <li class="person"><p class="person__role">Teacher-in-Charge</p><h4 class="person__name">Mrs Khurshida Rahman Rimi</h4><p class="person__scope">Classes VIII to XII</p></li>
-      </ul>
+    <div class="abt-foot">
+      <p class="abt-foot__text">The Principal, Mrs Sorabon Tohura, coordinates the Vice Principals and the Teachers-in-Charge. The whole structure, with the Chairman and the Managing Director, is on School administration.</p>
+      <p class="abt-foot__action"><a class="link link--arrow" href="{{link:/about/school-administration/}}">How the school is organised</a></p>
+      <p class="abt-foot__source caption">Names and class bands from the school's administration page, September 2026. The lines are the admissions lines for each section.</p>
     </div>
-    <!-- CONFIRM: portraits (a shoot day, or a decision to keep text cards) and short biographies; none supplied. -->
-    <p class="small-print mt-m">Portraits and short biographies are to be published by the school.</p>
   </div>
 </section>
 
-<section class="page-section page-section--tint" aria-labelledby="lead-classes">
+<section class="page-section" aria-labelledby="lead-table">
   <div class="band">
-    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">How classes are shared out</span><span class="sheet-rule__purpose">Each class band has one of each</span></div>
-    <div class="layout">
-      <div class="layout__main">
-        <h2 id="lead-classes" class="section-title">Which person looks after which classes.</h2>
-        <div class="table-wrap mt-m" data-reveal>
-          <table class="table table--stack">
-            <caption>Who looks after which classes, September 2026</caption>
-            <thead><tr><th scope="col">Classes</th><th scope="col">Teacher-in-Charge</th><th scope="col">Vice Principal</th></tr></thead>
-            <tbody>
-              <tr><th scope="row">Playgroup to KG I</th><td data-label="Teacher-in-Charge">Mrs Farhana Rehan</td><td data-label="Vice Principal">Mrs Sharmin Hoque</td></tr>
-              <tr><th scope="row">KG II to Class I</th><td data-label="Teacher-in-Charge">Mrs Farida Yasmin</td><td data-label="Vice Principal">Mrs Sharmin Hoque</td></tr>
-              <tr><th scope="row">Classes II to III</th><td data-label="Teacher-in-Charge">Mrs Qamar Sultana Hamid</td><td data-label="Vice Principal">Mrs Sharmin Hoque</td></tr>
-              <tr><th scope="row">Classes IV to V</th><td data-label="Teacher-in-Charge">Mrs Samina Abedin</td><td data-label="Vice Principal">Mrs Sharmin Hoque</td></tr>
-              <tr><th scope="row">Classes VI to VII</th><td data-label="Teacher-in-Charge">Mrs Roohi Shamima Choudhury</td><td data-label="Vice Principal">Mr Palash Kumar Kundu</td></tr>
-              <tr><th scope="row">Classes VIII to XII</th><td data-label="Teacher-in-Charge">Mrs Khurshida Rahman Rimi</td><td data-label="Vice Principal">Mr Palash Kumar Kundu</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-      <div class="layout__aside">
-        <div class="callout" data-reveal>
-          <span class="callout__label label">Under the Principal</span>
-          <p>The Principal, Mrs Sorabon Tohura, coordinates the Vice Principals and the Teachers-in-Charge. The four sections of the school, and what each one teaches, are on <a class="link" href="{{link:/learning/}}">Learning at Playpen</a>.</p>
-        </div>
-        <!-- CONFIRM: the Board of Management, whether to publish the school's registration details, and an audit report link. Nothing supplied; the plan treats this block as optional. -->
-        <div class="callout mt-m" data-reveal>
-          <span class="callout__label label">Governance</span>
-          <p>The names of the Board of Management and the school's registration details are to be published by the school.</p>
-        </div>
-      </div>
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">The table</span><span class="sheet-rule__purpose">The same answers, to scan</span></div>
+    <div class="abt-head abt-head--tight">
+      <h2 id="lead-table" class="section-title abt-head__title" data-reveal>Every class, in one table.</h2>
+    </div>
+    <div class="table-wrap adm-table" data-reveal>
+      <table class="table table--stack">
+        <caption>Who looks after which classes, September 2026</caption>
+        <thead><tr><th scope="col">Classes</th><th scope="col">Teacher-in-Charge</th><th scope="col">Vice Principal</th><th scope="col">Line</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Playgroup to KG I</th><td data-label="Teacher-in-Charge">Mrs Farhana Rehan</td><td data-label="Vice Principal">Mrs Sharmin Hoque</td><td data-label="Line">{{phone:pg-1 class="link adm-table__tel"}}</td></tr>
+          <tr><th scope="row">KG II to Class I</th><td data-label="Teacher-in-Charge">Mrs Farida Yasmin</td><td data-label="Vice Principal">Mrs Sharmin Hoque</td><td data-label="Line">{{phone:pg-1 class="link adm-table__tel"}}</td></tr>
+          <tr><th scope="row">Classes II to III</th><td data-label="Teacher-in-Charge">Mrs Qamar Sultana Hamid</td><td data-label="Vice Principal">Mrs Sharmin Hoque</td><td data-label="Line">{{phone:ii-vi class="link adm-table__tel"}}</td></tr>
+          <tr><th scope="row">Classes IV to V</th><td data-label="Teacher-in-Charge">Mrs Samina Abedin</td><td data-label="Vice Principal">Mrs Sharmin Hoque</td><td data-label="Line">{{phone:ii-vi class="link adm-table__tel"}}</td></tr>
+          <tr><th scope="row">Classes VI to VII</th><td data-label="Teacher-in-Charge">Mrs Roohi Shamima Choudhury</td><td data-label="Vice Principal">Mr Palash Kumar Kundu</td><td data-label="Line">{{phone:ii-vi class="link adm-table__tel"}}<span class="adm-table__for">Class VI</span>{{phone:vii-xii class="link adm-table__tel"}}<span class="adm-table__for">Class VII</span></td></tr>
+          <tr><th scope="row">Classes VIII to XII</th><td data-label="Teacher-in-Charge">Mrs Khurshida Rahman Rimi</td><td data-label="Vice Principal">Mr Palash Kumar Kundu</td><td data-label="Line">{{phone:vii-xii class="link adm-table__tel"}}</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="abt-foot">
+      <p class="abt-foot__text">Two bands straddle a line: Classes VI to VII share a Teacher-in-Charge, but Class VI is on the line for Classes II to VI and Class VII on the line for Classes VII to XII. The finder above resolves them class by class.</p>
+      <p class="abt-foot__source caption">From the school's administration page, September 2026. The pairing of each Teacher-in-Charge with a Vice Principal follows the published class bands.</p>
     </div>
   </div>
 </section>
 
 <section class="page-section" aria-labelledby="lead-contact">
   <div class="band">
-    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Reaching the school</span><span class="sheet-rule__purpose">By section</span></div>
-    <h2 id="lead-contact" class="section-title">Call the line for the section.</h2>
-    <p class="section-lead mt-m" data-reveal>To ask about a particular class, call the line for its section. The admissions lines are open {{hours}}.</p>
-    <ul class="contact-cards mt-l" data-reveal-group>
-      <li class="contact-card"><h3>Playgroup to Class I</h3><p>{{phone:pg-1 class="contact-card__tel"}}</p></li>
-      <li class="contact-card"><h3>Classes II to VI</h3><p>{{phone:ii-vi class="contact-card__tel"}}</p></li>
-      <li class="contact-card"><h3>Classes VII to XII</h3><p>{{phone:vii-xii class="contact-card__tel"}}</p></li>
-    </ul>
-    <p class="small-print mt-m">All lines, and the address, are on <a href="{{link:/contact/}}">Contact</a>.</p>
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Reaching the school</span><span class="sheet-rule__purpose">By section, and for everything else</span></div>
+    <div class="abt-head abt-head--tight">
+      <h2 id="lead-contact" class="section-title abt-head__title" data-reveal>The lines, and what they are for.</h2>
+      <p class="lead abt-head__lead" data-reveal>The admissions lines are open {{hours}}. For anything else, call the further queries and emergencies line.</p>
+    </div>
+    <!-- CONFIRM: governance (Board of Management, registration details, audit report): nothing supplied, so nothing is printed (P05). The school should say whether to publish any of it. -->
+    <!-- review r3: the four lines in two columns of two from 900 px (abt-lines), so the sheet is not a list down its left third -->
+    <div class="abt-lines" data-reveal>{{phones:all}}</div>
+    <div class="abt-foot">
+      <p class="abt-foot__text">All the school's lines, the address and the map are on Contact.</p>
+      <p class="abt-foot__action"><a class="link link--arrow" href="{{link:/contact/}}">Contact</a></p>
+    </div>
   </div>
 </section>
 
 <section class="page-section" aria-label="Next page">
   <div class="band">
     <nav class="pager" aria-label="About pages">
-      <a class="pager__link pager__link--prev" href="{{link:/about/history/}}"><span class="pager__label">Previous</span><span class="pager__title">Our history</span><span class="pager__sub">The school in dates, from a kindergarten to its own building</span></a>
-      <a class="pager__link pager__link--next" href="{{link:/about/campus/}}"><span class="pager__label">Next</span><span class="pager__title">Our campus</span><span class="pager__sub">One building of ten storeys, from the courtyards to the roof</span></a>
+      <a class="pager__link pager__link--prev" href="{{link:/about/school-administration/}}"><span class="pager__label">Previous</span><span class="pager__title">School administration</span><span class="pager__sub">Who runs the school, and how it is organised</span></a>
+      <a class="pager__link pager__link--next" href="{{link:/about/campus/}}"><span class="pager__label">Next</span><span class="pager__title">Our campus</span><span class="pager__sub">A walk through the building, from the field to the roof</span></a>
     </nav>
   </div>
 </section>
 
-{{cta}}
+{{cta text="Call the admissions line for your child's section first; the office confirms the day. Or book a visit."}}

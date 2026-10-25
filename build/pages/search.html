@@ -2,11 +2,12 @@
 title: Search
 template: T05
 noindex: true
-standfirst: Search the pages of this website. Type a word or two, such as fees, uniform, A Level or transport.
+body_class: cc-page
+standfirst: Search the pages of this website. Type a word or two, or start from one of the suggestions.
 ---
 <section class="page-section" aria-labelledby="search-h">
   <div class="band">
-    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Search</span></div>
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Search</span><span class="sheet-rule__purpose">Type a word or two, or start from a suggestion</span></div>
     <h2 id="search-h" class="visually-hidden">Search this website</h2>
     <div data-search data-index="{{asset:search-index.json}}">
       <form class="search-form" role="search" action="{{link:/search/}}" method="get">
@@ -16,9 +17,53 @@ standfirst: Search the pages of this website. Type a word or two, such as fees, 
         </div>
         <button class="btn btn--primary" type="submit"><span class="btn__label">Search</span></button>
       </form>
+      <ul class="chips cc-chips cc-chips--after" aria-label="Suggested searches" data-reveal>
+        <li><a class="chip" href="{{link:/search/}}?q=fees">fees</a></li>
+        <li><a class="chip" href="{{link:/search/}}?q=uniform">uniform</a></li>
+        <li><a class="chip" href="{{link:/search/}}?q=A+Level">A Level</a></li>
+        <li><a class="chip" href="{{link:/search/}}?q=admission+test">admission test</a></li>
+        <li><a class="chip" href="{{link:/search/}}?q=transport">transport</a></li>
+        <li><a class="chip" href="{{link:/search/}}?q=term+dates">term dates</a></li>
+        <li><a class="chip" href="{{link:/search/}}?q=notices">notices</a></li>
+        <li><a class="chip" href="{{link:/search/}}?q=books">books</a></li>
+      </ul>
       <p class="search-status" role="status" aria-live="polite"></p>
       <ol class="search-results"></ol>
       <noscript><p class="form-note">Search needs JavaScript. Every page of the website is listed on the <a class="link" href="{{link:/sitemap/}}">sitemap</a>.</p></noscript>
+    </div>
+  </div>
+</section>
+
+<section class="page-section" aria-labelledby="search-empty-h">
+  <div class="band">
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">While the box is empty</span><span class="sheet-rule__purpose">Pages most families need, shown until you type</span></div>
+    <h2 id="search-empty-h" class="visually-hidden">Pages most families need</h2>
+    <div class="cc-empty">
+      <div class="cc-empty__note">
+        <div class="empty-note" data-reveal>
+          <div>
+            <p class="label">Pages most families need</p>
+            <p class="empty-note__title"><span class="cc-empty__start">Start from one of these.</span><span class="cc-empty__none" hidden>Nothing matched that word.</span></p>
+          </div>
+          <div class="empty-note__body">
+            <ul class="link-list">
+              <li><a class="link link--arrow" href="{{link:/admissions/}}">Admissions</a></li>
+              <li><a class="link link--arrow" href="{{link:/admissions/visit/}}">Book a visit</a></li>
+              <li><a class="link link--arrow" href="{{link:/admissions/fees/}}">Fees and payment</a></li>
+              <li><a class="link link--arrow" href="{{link:/learning/}}">Learning at Playpen</a></li>
+              <li><a class="link link--arrow" href="{{link:/community/parents/}}">For parents</a></li>
+              <li><a class="link link--arrow" href="{{link:/contact/}}">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="cc-empty__call" data-reveal>
+        <div class="venue">
+          <p class="label">No result?</p>
+          <p class="venue__text">Call the line for your child's section. The admissions lines are open {{hours}}.</p>
+        </div>
+        {{phones}}
+      </div>
     </div>
   </div>
 </section>

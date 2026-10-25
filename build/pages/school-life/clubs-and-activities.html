@@ -2,99 +2,167 @@
 title: Clubs and activities
 template: T05
 h1: What runs <em>beside</em> the timetable.
-standfirst: Art and Craft, Music, Dance, Drama, Debate, Cookery, Spelling Bee, the Olympiads, science and language clubs, and the Duke of Edinburgh's Award.
+standfirst: Art and Craft, Music, Dance, Drama, Debate, Cookery, Spelling Bee, the Olympiads, science and language clubs, the Duke of Edinburgh's Award, and the fairs, trips and workshops that go with them.
 hero_image: img/sl-clay-hero
 hero_alt: Clay models of brick forts and houses laid out on the black-and-white chequerboard floor of the courtyard.
 hero_caption: Clay models laid out on the courtyard floor
 hero_n: 01
 ---
-<section class="page-section" aria-labelledby="ca-facts">
-  <div class="band">
-    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">The list, in four groups</span><span class="sheet-rule__purpose">As the school lists its activities</span></div>
-    <h2 id="ca-facts" class="visually-hidden">The school's activities in four groups</h2>
-    <dl class="fact-strip" data-reveal>
-      <div class="fact"><dt>On stage and in the studio</dt><dd>Art, Music, Dance, Drama<small>Art and Craft. Music, both instrumental and vocal.</small></dd></div>
-      <div class="fact"><dt>Words and numbers</dt><dd>Debate<small>Spelling Bee, and Olympiads in languages, science and mathematics</small></dd></div>
-      <div class="fact"><dt>Hands-on and clubs</dt><dd>Cookery<small>Science clubs, language clubs and other clubs</small></dd></div>
-      <div class="fact"><dt>Award and service</dt><dd>Duke of Edinburgh's Award<small>Community service runs through the year</small></dd></div>
-    </dl>
+<section class="page-section page-section--tint sl-page" aria-labelledby="ca-list">
+  <div class="band" data-filter-scope>
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">The activities</span><span class="sheet-rule__purpose">Filter by group; a maroon edge marks a dated result</span></div>
+    <div class="sl-head">
+      <h2 id="ca-list" class="display-l">The activities the school lists, in five groups.</h2>
+      <p class="lead" data-reveal>Thirteen activities, from the school&rsquo;s activities and events pages. Ages, days and leaders come from the school: call the line for your child's section and ask what is running this semester.</p>
+      <p class="visually-hidden">A tile with a maroon edge carries a dated result from the school's own list of achievements.</p>
+    </div>
+    <!-- CONFIRM (build note, review round 3, 2026-10-24): thirteen tiles again, one per activity the school lists (Cookery, Debate and language clubs each have a short tile of their own, so the filter status reads "Showing all 13" against the lead's thirteen); the design note about the maroon edge left the lead (it stays in the sheet rule and as a hidden legend). The activity names are h3 headings inside the tiles, so a screen reader can move between them. -->
+    <!-- CONFIRM: club days, age bands, leaders and any fee: not supplied. The school's events list also names a Drama Club and a Business Club; confirm which clubs run this year. The Duke of Edinburgh's Award: the school lists it (and has listed it for Classes VIII to XII); confirm it is still running, its levels and its licence. -->
+    <ul class="chips sl-chips" aria-label="Filter the activities by group">
+      <li><button class="chip" type="button" data-filter="all" aria-pressed="true">All</button></li>
+      <li><button class="chip" type="button" data-filter="stage" aria-pressed="false">On stage</button></li>
+      <li><button class="chip" type="button" data-filter="studio" aria-pressed="false">In the studio</button></li>
+      <li><button class="chip" type="button" data-filter="words" aria-pressed="false">Words and numbers</button></li>
+      <li><button class="chip" type="button" data-filter="clubs" aria-pressed="false">Clubs</button></li>
+      <li><button class="chip" type="button" data-filter="service" aria-pressed="false">Award and service</button></li>
+    </ul>
+    <p class="chips__status" role="status" aria-live="polite"></p>
+    <ul class="sl-tiles" data-reveal-group>
+      <li data-tags="stage"><div class="sl-panel sl-tile">
+        <span class="sl-panel__label label">On stage</span>
+        <h3 class="sl-panel__value">Music</h3>
+        <p class="sl-panel__text">Instrumental and vocal, as a regular activity. The building has rooms set aside for music.</p>
+      </div></li>
+      <li data-tags="stage"><div class="sl-panel sl-tile sl-tile--proof">
+        <span class="sl-panel__label label">On stage</span>
+        <h3 class="sl-panel__value">Dance</h3>
+        <p class="sl-panel__text">A regular activity, and part of the Annual Cultural Programme.</p>
+        <p class="sl-panel__meta sl-tile__proof">Group dance: first position, 13th Bangla Olympiad, <time datetime="2024-02-24">24 February 2024</time></p>
+      </div></li>
+      <li data-tags="stage"><div class="sl-panel sl-tile">
+        <span class="sl-panel__label label">On stage</span>
+        <h3 class="sl-panel__value">Drama</h3>
+        <p class="sl-panel__text">Staged in the multipurpose hall. <a href="{{link:/events/annual-drama/}}">The Annual Drama</a> is on the school's events list.</p>
+      </div></li>
+      <li data-tags="studio"><div class="sl-panel sl-tile">
+        <span class="sl-panel__label label">In the studio</span>
+        <h3 class="sl-panel__value">Art and Craft</h3>
+        <p class="sl-panel__text">Paper craft, clay models and miniature gardens, in the school's own album. Art &amp; Design is an O Level elective.</p>
+      </div></li>
+      <li data-tags="studio"><div class="sl-panel sl-tile">
+        <span class="sl-panel__label label">In the studio</span>
+        <h3 class="sl-panel__value">Cookery</h3>
+        <p class="sl-panel__text">On the school's list of activities, without a description of its own.</p>
+      </div></li>
+      <li data-tags="words"><div class="sl-panel sl-tile sl-tile--proof">
+        <span class="sl-panel__label label">Words and numbers</span>
+        <h3 class="sl-panel__value">Spelling Bee</h3>
+        <p class="sl-panel__text">The school enters students in spelling competitions outside it.</p>
+        <p class="sl-panel__meta sl-tile__proof">International Spell Bee: two Appreciation Medals, 2023</p>
+      </div></li>
+      <li data-tags="words"><div class="sl-panel sl-tile sl-tile--proof">
+        <span class="sl-panel__label label">Words and numbers</span>
+        <h3 class="sl-panel__value">The Olympiads</h3>
+        <p class="sl-panel__text">In languages, science and mathematics.</p>
+        <p class="sl-panel__meta sl-tile__proof">Essay Writing: first position, 13th Bangla Olympiad, <time datetime="2024-02-24">24 February 2024</time></p>
+      </div></li>
+      <li data-tags="words"><div class="sl-panel sl-tile">
+        <span class="sl-panel__label label">Words and numbers</span>
+        <h3 class="sl-panel__value">Debate</h3>
+        <p class="sl-panel__text">On the school's list of activities; the school gives no description of it.</p>
+      </div></li>
+      <li data-tags="clubs"><div class="sl-panel sl-tile">
+        <span class="sl-panel__label label">Clubs</span>
+        <h3 class="sl-panel__value">Science clubs</h3>
+        <p class="sl-panel__text">On the school's list, beside the Science and Technology Fair it holds in the hall.</p>
+      </div></li>
+      <li data-tags="clubs"><div class="sl-panel sl-tile">
+        <span class="sl-panel__label label">Clubs</span>
+        <h3 class="sl-panel__value">Language clubs</h3>
+        <p class="sl-panel__text">On the school's list of activities; which languages, the school will say.</p>
+      </div></li>
+      <li data-tags="clubs"><div class="sl-panel sl-tile">
+        <span class="sl-panel__label label">Clubs</span>
+        <h3 class="sl-panel__value">Other clubs</h3>
+        <p class="sl-panel__text">The school's events list also names a Drama Club and a Business Club.</p>
+      </div></li>
+      <li data-tags="service"><div class="sl-panel sl-tile">
+        <span class="sl-panel__label label">Award and service</span>
+        <h3 class="sl-panel__value">The Duke of Edinburgh's Award</h3>
+        <p class="sl-panel__text">Listed among the school's programmes, with workshops on the award for senior students.</p>
+      </div></li>
+      <li data-tags="service"><div class="sl-panel sl-tile">
+        <span class="sl-panel__label label">Award and service</span>
+        <h3 class="sl-panel__value">Community service</h3>
+        <p class="sl-panel__text">An ongoing practice, in four kinds. <a href="{{link:/school-life/culture-and-service/#c-service}}">Culture and service</a> has them.</p>
+      </div></li>
+    </ul>
+    <p class="filter-empty">Nothing matches that filter.</p>
+    <div class="sl-foot" data-reveal>
+      <p class="sl-foot__text">Which clubs run this semester, on which days and for which ages: ask the line for your child's section. The lines are at the foot of this page.</p>
+      <p class="sl-foot__action"><a class="link link--arrow" href="#ca-ask">Ask the school</a></p>
+      <p class="sl-foot__source caption">Source: the school's activities, workshops and events pages, and its list of student achievements, 2023 to 2024.</p>
+    </div>
   </div>
 </section>
 
 <section class="page-section" aria-labelledby="ca-stage">
   <div class="band">
-    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">On stage</span><span class="sheet-rule__purpose">Music, dance and drama</span></div>
-    <div class="split split--center">
-      <div class="split__text">
-        <h2 id="ca-stage" class="section-title">Music, dance and drama.</h2>
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">On stage</span><span class="sheet-rule__purpose">What the year's performances build towards</span></div>
+    <div class="sl-head">
+      <h2 id="ca-stage" class="display-l">Music, dance and drama.</h2>
+      <p class="lead" data-reveal>Music, both instrumental and vocal, Dance and Drama run as regular activities. The building has rooms set aside for art, music, dance, drama and club activity, and Drama is staged in the multipurpose hall.</p>
+    </div>
+    <div class="layout">
+      <div class="layout__main">
         <div class="prose" data-reveal>
-          <p>Music, both instrumental and vocal, Dance and Drama run as regular activities. The building has rooms set aside for art, music, dance, drama and club activity, and Drama is staged in the multipurpose hall.</p>
-          <p>The hall is also where the Annual Cultural Programme takes place, the school's largest performance event. <a href="{{link:/school-life/culture-and-service/#c-programme}}">Read about the Cultural Programme.</a></p>
+          <p>The hall is also where the Annual Cultural Programme takes place, the school's largest performance event; the year's music, dance and drama build towards it. <a href="{{link:/school-life/culture-and-service/#c-programme}}">Read about the Cultural Programme.</a></p>
           <p>On 24 February 2024 the school's group dance team took first position at the 13th Bangla Olympiad.</p>
         </div>
       </div>
-      <figure class="plate plate--4x5 split__figure" data-reveal>
-        <div class="plate__frame">{{img src="media/life-4" alt="Dancers on stage at the annual cultural programme, with an English banner behind them." sizes="(min-width: 900px) 34vw, 100vw"}}</div>
-        <figcaption class="plate__cap"><span class="plate__n">02</span>Dancers at the Annual Cultural Programme, 2024</figcaption>
-      </figure>
+      <div class="layout__aside">
+        <p class="label">Albums</p>
+        <ul class="link-list mt-m" data-reveal>
+          <li><a class="link link--arrow" href="{{link:/gallery/cultural-programme-2024/}}">Annual Cultural Programme 2024</a></li>
+          <li><a class="link link--arrow" href="{{link:/gallery/cultural-programme-2023/}}">Annual Cultural Programme 2023</a></li>
+          <li><a class="link link--arrow" href="{{link:/events/annual-drama/}}">The Annual Drama</a></li>
+        </ul>
+      </div>
     </div>
+    <!-- CONFIRM: a people-free photograph of the stage (the set, backdrop and lights before a show) would carry this section; the 2024 stage frame opens Events and the 2023 one opens Junior School, so neither is repeated here. -->
   </div>
 </section>
 
 <section class="page-section" aria-labelledby="ca-studio">
   <div class="band">
-    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">In the studio</span><span class="sheet-rule__purpose">Art and Craft</span></div>
-    <div class="split split--reverse split--center">
-      <div class="split__text">
-        <h2 id="ca-studio" class="section-title">Art and Craft.</h2>
-        <div class="prose" data-reveal>
-          <p>Art and Craft is on the school's list of activities. The photograph at the top of this page shows clay models of brick forts and houses laid out on the courtyard's chequerboard floor; this one shows models of gardens and houses set out on the brick steps of a terrace.</p>
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">In the studio</span><span class="sheet-rule__purpose">Art and Craft, in the pupils' own work</span></div>
+    <div class="sl-head sl-head--tight">
+      <h2 id="ca-studio" class="display-l">Art and Craft.</h2>
+    </div>
+    <div class="layout">
+      <ul class="sl-pair sl-pair--row layout__main">
+        <li>
+          <figure class="plate plate--3x2" data-reveal>
+            <div class="plate__frame">{{img src="img/sl-models" alt="Models of gardens and houses set out on the brick steps of a terrace, with a small tree and a brick wall behind." sizes="(min-width: 1024px) 32vw, (min-width: 640px) 45vw, 100vw" widths="720,960"}}</div>
+            <figcaption class="plate__cap"><span class="plate__n">02</span>Models set out on the terrace steps</figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure class="plate plate--3x2 sl-pos" style="--sl-pos: 50% 0%" data-reveal>
+            <div class="plate__frame">{{img src="img/gal-art-paper" alt="Paper craft on a table: mushrooms, flowers, birdcages and butterflies made from coloured paper." sizes="(min-width: 1024px) 32vw, (min-width: 640px) 45vw, 100vw" widths="960,1200"}}</div>
+            <figcaption class="plate__cap"><span class="plate__n">03</span>Paper craft from the Art and Craft album</figcaption>
+          </figure>
+        </li>
+      </ul>
+      <!-- CONFIRM (build note, review round 3, 2026-10-24): both plates of the pair are 3:2; the paper-craft frame is 4:3, so the 3:2 window anchored at the top (--sl-pos 50% 0%) drops the bottom quarter, where the printed label sat half-cut (at 4:3 the focal point had no effect, the plate and the file being the same ratio). img/sl-models was re-exported through the home's grade. -->
+      <div class="layout__aside">
+        <div class="prose prose--small" data-reveal>
+          <p>Art and Craft is on the school's list of activities. Its own album shows paper craft, clay models of houses and forts, and miniature gardens set out on the terrace steps.</p>
           <!-- CONFIRM: what the clay models and the terrace models were made for (a class, an exhibition, an event) and when the photographs were taken; the school's albums give no caption. -->
           <p>Students who want to take art further can choose Art &amp; Design as one of their O Level electives. <a href="{{link:/learning/senior/}}">Senior School</a> lists the choices.</p>
+          <!-- CONFIRM: "Art & Design is one of the O Level electives" is from the school's senior school page; confirm for the coming year. -->
         </div>
-      </div>
-      <figure class="plate plate--4x3 split__figure" data-reveal>
-        <div class="plate__frame">{{img src="img/sl-models" alt="Models of gardens and houses set out on the brick steps of a terrace, with a small tree and a brick wall behind." sizes="(min-width: 900px) 38vw, 100vw" widths="720,960"}}</div>
-        <figcaption class="plate__cap"><span class="plate__n">03</span>Models set out on the terrace steps</figcaption>
-      </figure>
-    </div>
-  </div>
-</section>
-
-<section class="page-section page-section--tint" aria-labelledby="ca-words">
-  <div class="band">
-    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Words and numbers</span><span class="sheet-rule__purpose">Debate, Spelling Bee, the Olympiads</span></div>
-    <div class="layout">
-      <div class="layout__main">
-        <h2 id="ca-words" class="section-title">Competitions outside the school.</h2>
-        <div class="prose" data-reveal>
-          <p>Debate, Spelling Bee and the Olympiads in languages, science and mathematics are on the school's list, and students also enter competitions run by others. The table gives the results the school published for 2023 and 2024. Student names are left out.</p>
-        </div>
-        <!-- CONFIRM: these results are from the school's list of student achievements (August 2023 to April 2024), more than a year old; the school should supply the current record. The school's own list names the students: names are left out here because consent to republish them has not been confirmed. Class numbers are as the school gives them. -->
-        <div class="table-wrap mt-m" data-reveal>
-          <table class="table table--stack">
-            <caption>Competition results the school has published, 2023 and 2024</caption>
-            <thead><tr><th scope="col">Date</th><th scope="col">Competition</th><th scope="col">What the school reports</th></tr></thead>
-            <tbody>
-              <tr><th scope="row">2023</th><td data-label="Competition">International Spell Bee Competition</td><td data-label="What the school reports">Two students received Appreciation Medals; three more earned participation certificates.</td></tr>
-              <tr><th scope="row">January 2024</th><td data-label="Competition">Math and Tech Fest</td><td data-label="What the school reports">Class VIII students took first position in Crypto Craft Chronicles. One student won the Rube Goldberg competition and the campus ambassador award.</td></tr>
-              <tr><th scope="row">9 February 2024</th><td data-label="Competition">Regional Physics Olympiad</td><td data-label="What the school reports">A student placed sixth in Category A.</td></tr>
-              <tr><th scope="row">23 February 2024</th><td data-label="Competition">16th National Abacus and Mental Arithmetic Competition</td><td data-label="What the school reports">A student was third runner-up.</td></tr>
-              <tr><th scope="row">24 February 2024</th><td data-label="Competition">13th Bangla Olympiad</td><td data-label="What the school reports">A Class VII student took first position in Essay Writing. The group dance team also took first position.</td></tr>
-              <tr><th scope="row">24 February 2024</th><td data-label="Competition">Bakeman's 3rd International Language League</td><td data-label="What the school reports">Three Class IX students were runners-up for their presentation on Bangladeshi folk art.</td></tr>
-              <tr><th scope="row">27 April 2024</th><td data-label="Competition">Space Exploration Olympiad, organised by the Bangladesh Innovation Forum at AIUB</td><td data-label="What the school reports">Two students were second runners-up.</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <p class="small-print mt-m">Source: the school's own list of student achievements, as published on its website. Sports results are on <a href="{{link:/school-life/sports/#inter-house}}">Sports</a>.</p>
-      </div>
-      <div class="layout__aside">
-        <p class="label">Related pages</p>
-        <ul class="link-list mt-m" data-reveal>
-          <li><a class="link link--arrow" href="{{link:/learning/results/}}">Results</a></li>
-          <li><a class="link link--arrow" href="{{link:/learning/student-support/}}">Student support</a></li>
-          <li><a class="link link--arrow" href="{{link:/school-life/sports/}}">Sports</a></li>
-        </ul>
+        <p><a class="link link--arrow" href="{{link:/gallery/art-and-craft/}}">The Art and Craft album</a></p>
       </div>
     </div>
   </div>
@@ -102,14 +170,17 @@ hero_n: 01
 
 <section class="page-section" aria-labelledby="science-h" id="science">
   <div class="band">
-    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Science and workshops</span><span class="sheet-rule__purpose">Fairs, visits and seminars</span></div>
-    <div class="split split--center">
-      <div class="split__text">
-        <h2 id="science-h" class="section-title">The Science Fair and workshops for seniors.</h2>
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Science, fairs and workshops</span><span class="sheet-rule__purpose">What the school holds, and the topics it lists for seniors</span></div>
+    <div class="layout">
+      <div class="layout__main">
+        <div class="sl-head sl-head--tight">
+          <h2 id="science-h" class="display-l">The Science Fair, and workshops for seniors.</h2>
+        </div>
         <div class="prose" data-reveal>
-          <p>The school holds science fairs and enters students in fairs outside it. The Science and Technology Fair is one of its five annual events: students run stalls of projects, experiments and models in the multipurpose hall.</p>
+          <p>The school holds science fairs and enters students in fairs outside it. At its Science and Technology Fair, one of the events the school names as annual, students run stalls of projects, experiments and models in the multipurpose hall. The most recent album is from 2024.</p>
           <p>Workshops and seminars run through the year, mainly for senior students. The school lists these topics:</p>
         </div>
+        <!-- CONFIRM: the workshop topics are from the school's workshop page; confirm they are current. -->
         <ul class="tag-list mt-m" data-reveal>
           <li>Internet safety and responsible social media</li>
           <li>University applications to international institutions</li>
@@ -118,42 +189,150 @@ hero_n: 01
           <li>The Duke of Edinburgh's Award</li>
         </ul>
         <div class="prose mt-m" data-reveal>
-          <p>In December 2024 NASA astronaut Joseph M. Acaba visited the school and spoke to students in the multipurpose hall. A student painted his portrait.</p>
+          <p>Visitors come too. In December 2024 NASA astronaut Joseph M. Acaba spoke to students in the multipurpose hall, and a student painted his portrait.</p>
         </div>
       </div>
-      <figure class="plate plate--4x5 split__figure" data-reveal>
-        <div class="plate__frame">{{img src="media/life-6" alt="A student-painted portrait of an astronaut in a white suit with an American flag patch." sizes="(min-width: 900px) 34vw, 100vw"}}</div>
-        <figcaption class="plate__cap"><span class="plate__n">04</span>A student's painting of astronaut Joseph M. Acaba, 2024</figcaption>
-      </figure>
+      <div class="layout__aside">
+        <!-- CONFIRM (build note, review round 2026-10-24): img/gal-edufair-mughal left the page. At 960 px its 3:2 crop shows the torsos, arms and hands of the students behind the model, cut at the neck; the source frame (the school's Education Fair upload) has the students standing directly behind and beside the model, so no crop to the model and label alone exists. The aside runs with the album links until the school sends a people-free photograph of a stall (see CONTENT-TO-CONFIRM, P29). -->
+        <p class="label">Albums</p>
+        <ul class="link-list mt-m" data-reveal>
+          <li><a class="link link--arrow" href="{{link:/gallery/science-technology-fair-2024/}}">Science and Technology Fair 2024</a></li>
+          <li><a class="link link--arrow" href="{{link:/gallery/education-fair/}}">Education Fair</a></li>
+          <li><a class="link link--arrow" href="{{link:/gallery/workshop-for-students/}}">Workshop for students</a></li>
+          <li><a class="link link--arrow" href="{{link:/gallery/nasa-astronaut-visit/}}">The astronaut's visit</a></li>
+        </ul>
+      </div>
+    </div>
+    <!-- CONFIRM: a people-free photograph of the Science Fair stalls before opening, and of an Education Fair stall (the model and its label, no one behind it), is awaited; the fairs' own frames show children. -->
+  </div>
+</section>
+
+<section class="page-section" aria-labelledby="ca-trips">
+  <div class="band">
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Trips and away days</span><span class="sheet-rule__purpose">What the school's own albums show</span></div>
+    <div class="sl-head">
+      <h2 id="ca-trips" class="display-l">Beyond the building.</h2>
+      <p class="lead" data-reveal>Three kinds of day away from school, each with an album of its own.</p>
+    </div>
+    <!-- CONFIRM: which classes go on the Study Tour and to Base Camp, how often, and where the rope-course camp is; the albums give no place, date or year group. -->
+    <ul class="sl-grid sl-grid--3" data-reveal-group>
+      <li><div class="sl-panel sl-panel--gold">
+        <span class="sl-panel__label label">Study Tour</span>
+        <h3 class="sl-panel__value">Class trips away from school.</h3>
+        <p class="sl-panel__text">Educational tours are on the school's events list, with parents' permission for each.</p>
+        <ul class="sl-panel__links">
+          <li><a class="link link--arrow" href="{{link:/events/study-tour/}}">The Study Tour</a></li>
+          <li><a class="link link--arrow" href="{{link:/gallery/study-tour/}}">Album</a></li>
+        </ul>
+      </div></li>
+      <li><div class="sl-panel sl-panel--gold">
+        <span class="sl-panel__label label">Base Camp</span>
+        <h3 class="sl-panel__value">An outdoor camp.</h3>
+        <p class="sl-panel__text">The album shows rope courses, obstacle crawls and a pond crossing.</p>
+        <ul class="sl-panel__links">
+          <li><a class="link link--arrow" href="{{link:/gallery/base-camp/}}">Album</a></li>
+        </ul>
+      </div></li>
+      <li><div class="sl-panel sl-panel--gold">
+        <span class="sl-panel__label label">Visit to an Old Home</span>
+        <h3 class="sl-panel__value">A day with the residents of an old people's home.</h3>
+        <p class="sl-panel__text">One of the school's community service visits. <a href="{{link:/school-life/culture-and-service/#c-service}}">Community service</a> has the rest.</p>
+        <ul class="sl-panel__links">
+          <li><a class="link link--arrow" href="{{link:/gallery/visit-to-an-old-home/}}">Album</a></li>
+        </ul>
+      </div></li>
+    </ul>
+  </div>
+</section>
+
+<section class="page-section" aria-labelledby="ca-results">
+  <div class="band">
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Competitions</span><span class="sheet-rule__purpose">Results from 2023 and 2024, without student names</span></div>
+    <div class="layout">
+      <div class="layout__main">
+        <div class="sl-head sl-head--tight">
+          <h2 id="ca-results" class="display-l">Results the school has published, 2023 and 2024.</h2>
+        </div>
+        <ul class="sl-feats sl-feats--3" data-reveal-group>
+          <li class="feat"><span class="feat__n">7</span><span class="feat__t">competitions outside the school with a published result</span></li>
+          <li class="feat"><span class="feat__n">2</span><span class="feat__t">years covered, 2023 and 2024</span></li>
+          <li class="feat"><span class="feat__n">3</span><span class="feat__t">first positions: Essay Writing and group dance at the Bangla Olympiad, Crypto Craft Chronicles at the Math and Tech Fest</span></li>
+        </ul>
+        <!-- CONFIRM: these results are from the school's list of student achievements (August 2023 to April 2024), more than a year old; the school should supply the current record. The school's own list names the students: names are left out here because consent to republish them has not been confirmed. Class numbers are as the school gives them. -->
+        <div class="accordion mt-l" data-accordion-scope data-reveal>
+          <details class="accordion__item" id="q-results">
+            <summary class="accordion__summary"><h3 class="accordion__q">Show the seven results</h3><span class="accordion__icon" aria-hidden="true"></span></summary>
+            <div class="accordion__body">
+              <div class="table-wrap">
+                <table class="table table--stack">
+                  <caption>Competition results the school has published, 2023 and 2024</caption>
+                  <thead><tr><th scope="col">Date</th><th scope="col">Competition</th><th scope="col">What the school reports</th></tr></thead>
+                  <tbody>
+                    <tr><th scope="row">2023</th><td data-label="Competition">International Spell Bee Competition</td><td data-label="What the school reports">Two students received Appreciation Medals; three more earned participation certificates.</td></tr>
+                    <tr><th scope="row">January 2024</th><td data-label="Competition">Math and Tech Fest</td><td data-label="What the school reports">Class VIII students took first position in Crypto Craft Chronicles. One student won the Rube Goldberg competition and the campus ambassador award.</td></tr>
+                    <tr><th scope="row">9 February 2024</th><td data-label="Competition">Regional Physics Olympiad</td><td data-label="What the school reports">A student placed sixth in Category A.</td></tr>
+                    <tr><th scope="row">23 February 2024</th><td data-label="Competition">16th National Abacus and Mental Arithmetic Competition</td><td data-label="What the school reports">A student was third runner-up.</td></tr>
+                    <tr><th scope="row">24 February 2024</th><td data-label="Competition">13th Bangla Olympiad</td><td data-label="What the school reports">A Class VII student took first position in Essay Writing. The group dance team also took first position.</td></tr>
+                    <tr><th scope="row">24 February 2024</th><td data-label="Competition">Bakeman's 3rd International Language League</td><td data-label="What the school reports">Three Class IX students were runners-up for their presentation on Bangladeshi folk art.</td></tr>
+                    <tr><th scope="row">27 April 2024</th><td data-label="Competition">Space Exploration Olympiad, organised by the Bangladesh Innovation Forum at AIUB</td><td data-label="What the school reports">Two students were second runners-up.</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </details>
+        </div>
+      </div>
+      <div class="layout__aside">
+        <p class="label">Related pages</p>
+        <ul class="link-list mt-m" data-reveal>
+          <li><a class="link link--arrow" href="{{link:/learning/results/}}">Examination results</a></li>
+          <li><a class="link link--arrow" href="{{link:/school-life/sports/#inter-house}}">Sports results</a></li>
+          <li><a class="link link--arrow" href="{{link:/learning/student-support/}}">Student support</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="sl-foot" data-reveal>
+      <p class="sl-foot__text">Names are left out until the school confirms which may be published. The current record is awaited from the school.</p>
+      <p class="sl-foot__source caption">Source: the school's own list of student achievements, as published on its website.</p>
     </div>
   </div>
 </section>
 
-<section class="page-section" aria-labelledby="ca-join">
+<section class="page-section" aria-labelledby="ca-ask" id="ca-ask-s">
   <div class="band">
-    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Joining in</span><span class="sheet-rule__purpose">The award, and how to ask</span></div>
-    <div class="layout">
-      <div class="layout__main">
-        <h2 id="ca-join" class="section-title">The Duke of Edinburgh's Award, and how to join a club.</h2>
-        <!-- CONFIRM: the Duke of Edinburgh's Award: the school lists it among its programmes (and has listed it for Classes VIII to XII); confirm that it is still running, its levels and its licence. Club days, age bands and leaders were not supplied. -->
-        <div class="prose" data-reveal>
-          <p>The school lists Duke of Edinburgh's Award programmes among its activities, and holds workshops on the award for senior students. The levels it offers and who leads it have not been published on this site.</p>
-          <p>The same is true of the clubs: the days they meet, the ages they take and who runs them have not been published on this site. Call the line for your child's section and ask what is running this term.</p>
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Ask the school</span><span class="sheet-rule__purpose">What this site has not yet been given</span></div>
+    <div class="sl-panel sl-ask" data-reveal>
+      <div class="sl-ask__grid">
+        <div>
+          <span class="sl-panel__label label">Ask the school</span>
+          <h2 id="ca-ask" class="sl-ask__title">Clubs this semester.</h2>
+          <p class="sl-ask__intro">The school has not yet given this site:</p>
+          <ul class="sl-ask__list">
+            <li>the days clubs meet, the ages they take, who leads them, and any fee</li>
+            <li>which clubs run this year</li>
+            <li>the levels of the Duke of Edinburgh's Award it offers, and its licence</li>
+            <li>the current competition record, and a photograph of the Science Fair stalls</li>
+          </ul>
+        </div>
+        <div>
+          <p class="label">Call the line for your child's section</p>
+          <ul class="sl-ask__lines mt-m">
+            <li class="sl-ask__line"><span class="sl-ask__who">Playgroup to Class I</span>{{phone:pg-1}}</li>
+            <li class="sl-ask__line"><span class="sl-ask__who">Classes II to VI</span>{{phone:ii-vi}}</li>
+            <li class="sl-ask__line"><span class="sl-ask__who">Classes VII to XII</span>{{phone:vii-xii}}</li>
+          </ul>
+          <p class="sl-ask__hours caption">Lines are open {{hours}}.</p>
+          <!-- CONFIRM: the "last checked" date is Defined Solution's review against the school's published pages, not a review by the school; the school should own the date or the line goes. -->
+          <p class="sl-ask__review caption">Last checked against the school's published pages on 24 October 2026.</p>
         </div>
       </div>
     </div>
-    <ul class="contact-cards mt-m" data-reveal-group>
-      <li class="contact-card"><h3>Playgroup to Class I</h3><p>{{phone:pg-1 class="contact-card__tel"}}</p></li>
-      <li class="contact-card"><h3>Classes II to VI</h3><p>{{phone:ii-vi class="contact-card__tel"}}</p></li>
-      <li class="contact-card"><h3>Classes VII to XII</h3><p>{{phone:vii-xii class="contact-card__tel"}}</p></li>
-    </ul>
-    <p class="small-print mt-l">This page was last reviewed on 11 October 2026.</p>
   </div>
 </section>
 
 <section class="page-section" aria-labelledby="wn-title">
   <div class="band where-next">
-    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Routes</span></div>
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Routes</span><span class="sheet-rule__purpose">By who you are</span></div>
     <h2 id="wn-title" class="where-next__title">Where next?</h2>
     <div class="where-next__grid where-next--3">
       <div class="where-next__col">

@@ -54,6 +54,11 @@ function setInert(on) {
   if (visit) visit.closest('.magnet-area').inert = on;
   const util = document.querySelector('.nav__util');
   if (util) util.inert = on;
+  // the header's brand link and the skip links sit outside #content: a screen reader's browse
+  // cursor could leave the open dialog through them (fix round 2026-10-20)
+  const brand = document.querySelector('.nav__brand');
+  if (brand) brand.inert = on;
+  document.querySelectorAll('a.skip').forEach((a) => { a.inert = on; });
 }
 
 function focusables() {

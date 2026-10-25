@@ -2,24 +2,107 @@
 title: Enquire
 template: T07
 actions: false
-standfirst: Ask the admissions team a question. Choose your child's class and the page shows the line to call. The form checks what you type; nothing is sent.
+body_class: adm
+h1: Ask us.
+standfirst: Choose your child's class, ask your question, or call the line for that class {{hours:between}}.
 ---
+<!-- Redesign 2026-10-24 (plans/admissions.md, section 4). The form helps a parent ask and often answers before sending. One phone
+     block on the page (the call band under the plate).
+     Review r1 (2026-10-24): the same button row as the other six pages (primary "Ask a question" to the form, "Or call the line" to
+     the band).
+     Review r2 (2026-10-24): the page opens like the other five, on a mounted plate (21:9 from 768 px, 4:5 on phones) with a frame
+     new to the group: the rooftop terrace's curved brick bench by the brick pier (DSC01243; people none; About and Careers use other
+     parts of the frame; not the home's cover or Ground frame). The crest tile (img/adm-crest, a fourth use of the street front) is
+     gone; the call band follows the plate with its heading at the home's medium size, so the H1 leads the first screen. -->
+<!-- CONFIRM: the terrace photograph (DSC01243, March 2024): public use and the year. -->
+<section class="page-section adm-open" aria-labelledby="enq-open">
+  <div class="band">
+    <h2 id="enq-open" class="visually-hidden">The terrace</h2>
+    <p class="adm-hero-actions" data-reveal><a class="btn btn--primary" href="#enq-fields"><span class="btn__label">Ask a question</span></a><a class="btn btn--text" href="#call">Or call the line</a></p>
+    <figure class="plate adm-plate adm-plate--21x9" data-reveal>
+      <div class="plate__frame">
+        <span class="adm-plate__wide">{{img src="img/adm-enquire-wide" alt="A curved brick bench on the rooftop terrace, the brick pier and railing behind it, planters and the city beyond." sizes="100vw" widths="960,1440,1920"}}</span>
+        <span class="adm-plate__tall">{{img src="img/adm-enquire-tall" alt="The curved brick bench on the rooftop terrace under the oleander, the railing and the city beyond." sizes="100vw" widths="720,960,1200"}}</span>
+      </div>
+    </figure>
+  </div>
+</section>
+
+<!-- The call band: most Dhaka families call, so the three lines come before the form. -->
+<section class="page-section adm-callband-section" aria-labelledby="enq-lines" id="call">
+  <div class="band">
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">The lines</span><span class="sheet-rule__purpose">Open {{hours}}</span></div>
+    <div class="call-band adm-callband">
+      <div class="call-band__text">
+        <p class="label">Prefer to call?</p>
+        <h2 id="enq-lines" class="section-title" data-reveal>One line for each section.</h2>
+        <p>Lines are open {{hours}}. Choose a class in the form below and its line lights up here. Further queries and emergencies: {{phone:further}}.</p>
+      </div>
+      <div class="adm-call" data-reveal>
+        <ul class="call-lines">
+          <li class="call-line" data-line="pg-1"><span class="call-line__who">Playgroup to Class I</span>{{phone:pg-1 class="call-line__tel"}}</li>
+          <li class="call-line" data-line="ii-vi"><span class="call-line__who">Classes II to VI</span>{{phone:ii-vi class="call-line__tel"}}</li>
+          <li class="call-line" data-line="vii-xii"><span class="call-line__who">Classes VII to XII</span>{{phone:vii-xii class="call-line__tel"}}</li>
+        </ul>
+        <p class="call-lines__hours">The school is at {{address}}. {{map}}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 02. Help the parent ask, and answer the common questions before they send. The answers strip comes first in the DOM, so on a phone
+     it is read before the form (critique X18); on a desktop it is the aside. Review r2: "After you send" (the old section 02) is the
+     foot of the right-hand column, after the form in the DOM, so the section closes level. -->
 <section class="page-section" aria-labelledby="enq-form-title">
   <div class="band">
-    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Your question</span><span class="sheet-rule__purpose">Five short fields</span></div>
-    <div class="layout">
-      <div class="layout__main">
-        <h2 id="enq-form-title" class="section-title">What would you like to know?</h2>
-        <div class="prose mt-m" data-reveal>
-          <p>Tell us which class you are asking about and what you would like to know. The page then shows the admissions line for that class.</p>
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Your question</span><span class="sheet-rule__purpose">Six fields</span></div>
+    <div class="adm-head adm-head--tight">
+      <h2 id="enq-form-title" class="section-title" data-reveal>What would you like to know?</h2>
+    </div>
+    <div class="adm-form-layout adm-form-layout--form-first">
+      <div class="adm-form-layout__side">
+        <div data-reveal>
+          <p class="label">Answers already on this site</p>
+          <ul class="link-list">
+            <li><a class="link link--arrow" href="{{link:/admissions/faq/}}">Admissions FAQ</a></li>
+            <li><a class="link link--arrow" href="{{link:/admissions/how-to-apply/}}">How to apply</a></li>
+            <li><a class="link link--arrow" href="{{link:/admissions/fees/}}">Fees and payment</a></li>
+            <li><a class="link link--arrow" href="{{link:/admissions/starting-at-playpen/}}">Starting at Playpen</a></li>
+            <li><a class="link link--arrow" href="{{link:/school-life/transport-and-safety/}}">Transport and safety</a></li>
+          </ul>
         </div>
-        <p class="form-note mt-m">This form is a prototype. It checks what you type, then shows the school's numbers. Nothing is sent, so please call the line it shows.</p>
+      </div>
+      <div class="adm-form-layout__main">
+        <div class="adm-topics" data-adm-topics="e-msg" data-reveal>
+          <p class="label">What is it about?</p>
+          <ul class="chips" aria-label="Choose a topic">
+            <li id="topic-space"><button class="chip" type="button" aria-pressed="false" data-topic="space">Space in a class</button></li>
+            <li id="topic-test"><button class="chip" type="button" aria-pressed="false" data-topic="test">The test</button></li>
+            <li id="topic-fees"><button class="chip" type="button" aria-pressed="false" data-topic="fees">Fees</button></li>
+            <li id="topic-visit"><button class="chip" type="button" aria-pressed="false" data-topic="visit">A visit</button></li>
+            <li id="topic-transport"><button class="chip" type="button" aria-pressed="false" data-topic="transport">Transport</button></li>
+            <li id="topic-uniform"><button class="chip" type="button" aria-pressed="false" data-topic="uniform">Uniform and books</button></li>
+            <li id="topic-other"><button class="chip" type="button" aria-pressed="false" data-topic="other">Something else</button></li>
+          </ul>
+          <p class="chips__status" role="status" aria-live="polite"></p>
+        </div>
+        <!-- The inline answers repeat facts already on the pages they link to; nothing new is claimed here. -->
+        <div class="venue venue--note adm-answer" data-topic="space" hidden><p class="label">Space in a class</p><p class="venue__text">Applications for the current year are accepted if there is space, and space changes by class and by year. The quickest answer is the line for your child's section, above. If you write, say the class and the year.</p></div>
+        <div class="venue venue--note adm-answer" data-topic="test" hidden><p class="label">The test</p><p class="venue__text">Playgroup and Nursery children sit an assessment. From KG I to Class IX the child sits a written test in English, Bengali and Mathematics. Class XI admission is based on the school's mock examinations and the O Level result. <a href="{{link:/admissions/how-to-apply/}}">How to apply</a> has the five steps.</p></div>
+        <div class="venue venue--note adm-answer" data-topic="fees" hidden><p class="label">Fees</p><p class="venue__text">The school explains the admission fee and the monthly tuition after a child has been selected. Amounts come from the admissions office, not from this site. <a href="{{link:/admissions/fees/}}">Fees and payment</a> explains how fees are paid.</p></div>
+        <div class="venue venue--note adm-answer" data-topic="visit" hidden><p class="label">A visit</p><p class="venue__text">Call first; the office confirms the day. Ask whether you can see the building and the section your child would join. <a href="{{link:/admissions/visit/}}">Book a visit</a> has a form and a list of questions to take along.</p></div>
+        <div class="venue venue--note adm-answer" data-topic="transport" hidden><p class="label">Transport</p><p class="venue__text">The school has run its own bus service since March 2014. Parents who want a place apply at the Administrative Office; routes are not published, so ask whether the bus serves your area. <a href="{{link:/school-life/transport-and-safety/}}">Transport and safety</a></p></div>
+        <div class="venue venue--note adm-answer" data-topic="uniform" hidden><p class="label">Uniform and books</p><p class="venue__text">There is no uniform for Playgroup and Nursery; from KG I the uniform is compulsory and made at the school's tailoring house. Books and exercise copies come from the school bookshop. <a href="{{link:/admissions/starting-at-playpen/}}">Starting at Playpen</a></p></div>
+        <div class="venue venue--note adm-answer" data-topic="other" hidden><p class="label">Something else</p><p class="venue__text">Write it below in your own words. If it is about one child, give the class you have in mind so the right section answers.</p></div>
+
+        <!-- CONFIRM (A5, A6): who at the school reads the enquiries sent from this form, and how soon. In this sample the form sends to a demo School Desk on the designer's computer (website portal, 2026-10-23); if the Desk cannot be reached, the form shows the school's numbers as before. -->
+        <p class="form-note" id="enq-fields" tabindex="-1">This form sends your question to the admissions office's Desk and gives you a code. In this sample it goes to a demo Desk on this computer, not to the school, so please also call the line it shows.</p>
+        <!-- Review r2: one column of fields (the two-column first row left the underlines misaligned beside a two-line hint). -->
         <form class="page-form" data-prototype-form novalidate action="#" method="post">
-          <div class="form-row form-row--2">
-            <div class="field"><label for="e-name">Parent's name</label><input id="e-name" name="name" type="text" autocomplete="name" required aria-describedby="e-name-err"><p id="e-name-err" class="field__error" aria-live="polite"></p></div>
-            <div class="field"><label for="e-phone">Phone</label><input id="e-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required aria-describedby="e-phone-err"><p id="e-phone-err" class="field__error" aria-live="polite"></p></div>
-          </div>
+          <div class="field"><label for="e-name">Parent's name</label><input id="e-name" name="name" type="text" autocomplete="name" required aria-describedby="e-name-err"><p id="e-name-err" class="field__error" aria-live="polite"></p></div>
+          <div class="field"><label for="e-phone">Phone</label><p id="e-phone-hint" class="field__hint">Leave a number you answer; the office replies by telephone.</p><input id="e-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required aria-describedby="e-phone-hint e-phone-err"><p id="e-phone-err" class="field__error" aria-live="polite"></p></div>
           <div class="field"><label for="e-email">Email (optional)</label><input id="e-email" name="email" type="email" autocomplete="email" aria-describedby="e-email-err"><p id="e-email-err" class="field__error" aria-live="polite"></p></div>
+          <div class="field"><label for="e-child">Child's first name</label><p id="e-child-hint" class="field__hint">First name only</p><input id="e-child" name="child" type="text" autocomplete="off" maxlength="40" required aria-describedby="e-child-hint e-child-err"><p id="e-child-err" class="field__error" aria-live="polite"></p></div>
           <div class="field">
             <label for="e-class">Child's class of entry</label>
             <select id="e-class" name="class" required data-route="e-route" aria-describedby="e-class-err e-route">
@@ -49,47 +132,34 @@ standfirst: Ask the admissions team a question. Choose your child's class and th
             <p class="route-hint__line" data-line="ii-vi" hidden>For Classes II to VI, the line is {{phone:ii-vi}}.</p>
             <p class="route-hint__line" data-line="vii-xii" hidden>For Classes VII to XII, the line is {{phone:vii-xii}}.</p>
           </div>
-          <div class="field"><label for="e-msg">Your question</label><textarea id="e-msg" name="message" rows="5" required aria-describedby="e-msg-err"></textarea><p id="e-msg-err" class="field__error" aria-live="polite"></p></div>
+          <div class="field"><label for="e-msg">Your question</label><textarea id="e-msg" name="message" rows="5" maxlength="500" required aria-describedby="e-msg-err"></textarea><p id="e-msg-err" class="field__error" aria-live="polite"></p></div>
+          <fieldset class="field-group page-form__consent">
+            <legend>The school may also reach me on (optional)</legend>
+            <div class="page-form__checks">
+              <label class="choice"><input type="checkbox" name="consent" value="whatsapp"> WhatsApp</label>
+              <label class="choice"><input type="checkbox" name="consent" value="sms"> SMS</label>
+              <label class="choice"><input type="checkbox" name="consent" value="email"> Email</label>
+            </div>
+          </fieldset>
+          <!-- Review 2026-10-23 (safeguard-2, -3): the sender confirms they are the parent or guardian; earlier visits are joined to the form only with the second tick (shown only while visits are counted). -->
+          <div class="field page-form__guardian"><label class="choice"><input id="e-guardian" name="guardian" type="checkbox" required aria-describedby="e-guardian-err"> <span>I am the child's parent or guardian</span></label><p id="e-guardian-err" class="field__error" aria-live="polite"></p></div>
+          <div id="e-join-row" class="field page-form__join" data-portal-only hidden><label class="choice"><input id="e-join" name="join" type="checkbox"> <span>Join my earlier visits on this site to this enquiry, so the office can see which pages I read (optional)</span></label></div>
+          <p class="field__hint page-form__privacy">The school uses these details only to answer you. <a class="link" href="{{link:/privacy/#c-forms}}">Privacy</a></p>
           <button class="btn btn--primary" type="submit"><span class="btn__label">Send enquiry</span></button>
         </form>
         <div class="form-notice" role="status"><p class="form-notice__text">Nothing was sent: this form is a prototype. To ask your question, call the line for your child's section, {{hours:between}}.</p>{{phones}}</div>
         <noscript><div class="form-note"><p>This form needs JavaScript. Please call the line for your child's section:</p>{{phones}}</div></noscript>
       </div>
-      <div class="layout__aside layout__aside--sticky">
-        <!-- CONFIRM: who reads enquiries, how quickly the school replies, and whether it will take questions on WhatsApp. None is supplied, so the page makes no promise about a reply and shows no WhatsApp number. -->
-        <div class="callout" data-reveal>
-          <span class="callout__label label">Leave a number you answer</span>
-          <p>The school gives admission results by telephone, so give a number on which you can be reached.</p>
-        </div>
-        <div>
-          <p class="label">Answers already on this site</p>
-          <ul class="link-list">
-            <li><a class="link link--arrow" href="{{link:/admissions/faq/}}">Admissions FAQ</a></li>
-            <li><a class="link link--arrow" href="{{link:/admissions/how-to-apply/}}">How to apply</a></li>
-            <li><a class="link link--arrow" href="{{link:/admissions/fees/}}">Fees and payment</a></li>
-            <li><a class="link link--arrow" href="{{link:/admissions/starting-at-playpen/}}">Starting at Playpen</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="page-section page-section--tint" aria-labelledby="enq-call">
-  <div class="band">
-    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">By telephone</span><span class="sheet-rule__purpose">Lines are open {{hours}}</span></div>
-    <div class="call-band">
-      <div class="call-band__text">
-        <h2 id="enq-call" class="section-title">Or call the line for your child's section.</h2>
-        <p>The admissions lines are open {{hours}}. Each section has its own number.</p>
-      </div>
-      <div>
-        <ul class="call-lines" data-reveal-group>
-          <li class="call-line"><span class="call-line__who">Playgroup to Class I</span>{{phone:pg-1 class="call-line__tel"}}</li>
-          <li class="call-line"><span class="call-line__who">Classes II to VI</span>{{phone:ii-vi class="call-line__tel"}}</li>
-          <li class="call-line"><span class="call-line__who">Classes VII to XII</span>{{phone:vii-xii class="call-line__tel"}}</li>
-        </ul>
-        <p class="call-lines__hours">Further queries and emergencies: {{phone:further}}. The school is at {{address}}. {{map}}</p>
+      <!-- Expectations without a promise the school has not made (no reply time); the old section 02 "Three things happen", now the
+           foot of the right-hand column (after the form in the DOM; grid row 2 on a desktop).
+           CONFIRM (A5, A6): who reads enquiries, how soon the school replies, and whether it takes questions on WhatsApp. -->
+      <div class="adm-form-layout__after adm-after-wrap" data-reveal>
+        <p class="label">After you send</p>
+        <ol class="adm-after">
+          <li>You get a code. Keep it: it tells the office which question is yours when you call.</li>
+          <li>The office reads it. In this sample the question reaches a demo Desk on this computer, not the school. The school has not said how soon it replies.</li>
+          <li>If it is urgent, call <a href="#call">the line for your child's section</a>, {{hours:between}}, and quote your code.</li>
+        </ol>
       </div>
     </div>
   </div>

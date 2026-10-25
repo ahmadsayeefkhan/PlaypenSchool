@@ -1,0 +1,89 @@
+/* notices: page-only layout for /notices/ (2026-10-22, spec redesign-2026-10-22-notices/spec.md §7).
+   The notice cards themselves (nb-card, nb-status, nb-topic, nb-tile, nb-grid, nb-board, nb-empty, nb-ask, nb-count)
+   are shared and live in site/css/main.css. This file only adds nbp- classes and never restyles an nb- class. */
+
+/* 1 ---- the "Notices now" board: a warm paper-2 band, full bleed behind the band's own width (no layout change,
+   no horizontal scroll: the shadow paints outside the box and clip-path keeps it to the band's height) */
+.nbp-now {
+  position: relative;
+  padding-block: clamp(32px, 4vw, 56px);
+  background: var(--paper-2);
+  box-shadow: 0 0 0 100vmax var(--paper-2);
+  clip-path: inset(0 -100vmax);
+}
+
+/* 2 ---- ended notices, folded in a native details (works without JS; Enter and Space open it).
+   2026-10-24 (pages redesign): the label is one span and the round marker is pushed right with margin-left: auto, not
+   justify-content: space-between, so "Ended notices (1)" reads as one phrase instead of a word at each end. */
+.nbp-ended {
+  margin-top: clamp(32px, 4vw, 48px);
+  border-top: 1px solid var(--ink);
+}
+.nbp-ended__summary {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-height: 56px;
+  padding: 12px 0;
+  font: 400 22px / 1.2 var(--font-serif);
+  color: var(--ink);
+  list-style: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.nbp-ended__label { flex: 1 1 auto; min-width: 0; }
+.nbp-ended__summary::-webkit-details-marker { display: none; }
+.nbp-ended__summary::marker { content: ''; }
+.nbp-ended__summary::after {
+  content: '+';
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--ink-2);
+  border-radius: 999px;
+  font: 400 24px / 1 var(--font-sans);
+  color: var(--ink);
+}
+.nbp-ended[open] > .nbp-ended__summary::after { content: '\2212'; }
+.nbp-ended__summary:hover { color: var(--maroon); }
+.nbp-ended__summary:hover::after { border-color: var(--maroon); color: var(--maroon); }
+.nbp-ended__summary:focus-visible { outline: 2px solid var(--maroon); outline-offset: 2px; }
+.nbp-ended[open] .nbp-ended__grid { margin-top: 16px; }
+
+/* the phone action bar sits over the bottom of the screen: keep room under the last button */
+@media (max-width: 719.98px) {
+  .nbp-now { padding-bottom: 72px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nbp-ended__summary, .nbp-ended__summary::after { transition: none; }
+}
+
+@media (forced-colors: active) {
+  .nbp-ended__summary::after { border-color: CanvasText; color: CanvasText; }
+  .nbp-ended__summary:focus-visible { outline-color: Highlight; }
+}
+
+/* 3 ---- the honest empty slot on the board (review r2, 2026-10-24): the dashed box sat between the two cards and the
+   ended-notices rule as a gap. On the page it takes the paper-3 panel of the cards beside it (the dashed line stays, as
+   the inner edge), and it stretches to the row, so the board reads as one full row. Founder decision 6 (a reference
+   card in this slot) replaces it. */
+.nbp-slot {
+  align-self: stretch;
+  min-height: 100%;
+  padding: clamp(20px, 2.2vw, 32px);
+  background: var(--paper-3);
+  border: 1px solid var(--clay);
+  border-top: 4px solid var(--clay);
+  box-shadow: inset 0 0 0 1px transparent;
+}
+.nbp-slot .label { color: var(--ink-2); }
+
+/* final review 2026-10-25: the "No other notice" slot keeps its own height at the top of its cell instead of stretching to the
+   height of the tallest notice beside it (a tall empty box with one line in the middle) */
+.nbp-slot { align-self: start; }

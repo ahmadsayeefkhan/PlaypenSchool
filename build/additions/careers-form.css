@@ -1,0 +1,26 @@
+/* careers-form: "Apply online" on /about/careers/ (2026-10-23). The form sits on a paper card like the admission form;
+   fields use main.css .field. Tokens only; 44 px targets; no motion. */
+
+.cf__intro { max-width: 46rem; margin-top: 14px; color: var(--ink-2); }
+.cf {
+  max-width: 52rem;
+  padding: clamp(20px, 3vw, 40px);
+  background: var(--paper-3);
+  border: 1px solid var(--clay);
+  border-radius: 6px;
+}
+.cf__file input[type="file"] {
+  display: block; width: 100%; min-height: 44px; padding: 8px 0;
+  font: 400 15px / 1.4 var(--font-sans); color: var(--ink-2); background: transparent; border: 0;
+}
+.cf__file input[type="file"]::file-selector-button {
+  min-height: 40px; margin-right: 12px; padding: 0 18px; border: 1px solid var(--ink); border-radius: 999px;
+  background: transparent; font: 500 14px / 1 var(--font-sans); color: var(--ink); cursor: pointer;
+}
+.cf__file input[type="file"]::file-selector-button:hover { background: var(--ink); color: var(--paper); }
+.cf__file input[type="file"]:focus-visible { outline: 2px solid var(--maroon); outline-offset: 2px; }
+.cf button[type="submit"][disabled] { opacity: 0.6; cursor: progress; }
+.cf__status { margin-top: 14px; font: 500 15px / 1.45 var(--font-sans); color: var(--ink-2); }
+.cf__status:empty { display: none; }
+.cf__status--fail { color: var(--maroon); }
+.cf__done { max-width: 52rem; margin-top: 24px; }

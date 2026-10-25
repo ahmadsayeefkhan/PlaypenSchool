@@ -1,136 +1,131 @@
 ---
 title: Child protection and safeguarding
-description: What The Playpen School publishes on child protection, the everyday measures it already takes, and which telephone lines to use to raise a concern.
+description: How The Playpen School keeps children safe every day, and the telephone lines to call if you are worried about a child.
 template: T05
 h1: How the school looks after <em>children</em>, and who to call with a concern.
-standfirst: The school's own statement is one sentence long. This page sets it beside what the school already does every day, and says plainly which documents are still to be published.
-hero_image: img/about-safeguarding-stairs
-hero_alt: A red-tiled stairwell between white walls and metal railings, seen from the landing above.
-hero_caption: A stairwell in the building, 2024
-hero_n: 01
+standfirst: How the school keeps children safe every day, and the telephone lines to call if you are worried about a child.
 ---
-<!-- CONFIRM: the school's child protection page is one sentence (quoted below, wording to be checked against the school's page). The school has not supplied the full written policy, a designated person, a reporting procedure, a photograph consent policy or a review date; this page says so and gives the school's telephone lines as the route. Everything in the accordion is taken from the school's own campus, health, counsellor, identity card, transport and code-of-conduct pages (September 2026). -->
-<section class="page-section page-section--tint" aria-labelledby="cp-statement">
+<!-- Redesign 2026-10-24 (group "about", plans/about.md section 6): the route first, on every screen size; then the everyday measures as a grid, not a closed accordion; the one-sentence statement attributed in third place; routes to talk to the school. No CTA band: the page's action is to talk to the school, not to apply (critique X5). The description above repeats nav.json N3 (redesign-2026-10-24-pages/build/about-nav-requests.md). -->
+<!-- CONFIRM (P07): the school's child protection page is one sentence (quoted in section 03; check the wording against its page). The school has not supplied the full written policy, a designated person, a written reporting procedure, a photograph consent policy or a review date; this page says so once, in body type, and gives the school's telephone lines as the route. Whether safety concerns go to those lines, and to whom, is for the school to say. -->
+<div class="band abt-hero-plate" data-abt-clear>
+  <figure class="plate abt-plate abt-plate--21x9" data-reveal>
+    <div class="plate__frame">{{img src="img/about-leadership-planter" alt="A curved brick planter with shrubs and a concrete bench, beside a brick wall inside the school building." sizes="100vw" loading="eager" fetchpriority="high"}}</div>
+    <figcaption class="plate__cap"><span class="plate__n">01</span>A planter inside the building, 2024</figcaption>
+  </figure>
+</div>
+
+<section class="page-section" id="cp-concern" aria-labelledby="cp-worried">
   <div class="band">
-    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">The school's statement</span><span class="sheet-rule__purpose">One sentence, quoted in full</span></div>
-    <h2 id="cp-statement" class="visually-hidden">The school's statement on child protection</h2>
-    <figure class="pull-quote" data-reveal>
-      <blockquote>
-        <p>Playpen adheres to the local and Cambridge Board's guidelines for child protection policy.</p>
-      </blockquote>
-      <figcaption><cite>The school's statement on child protection, as published on its website.</cite></figcaption>
-    </figure>
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">The route</span><span class="sheet-rule__purpose">Who to call, first</span></div>
+    <div class="abt-head abt-head--tight">
+      <h2 id="cp-worried" class="section-title abt-head__title" data-reveal>If you are worried about a child.</h2>
+    </div>
+    <div class="abt-panel abt-concern" data-reveal>
+      <div class="abt-concern__grid">
+        <div class="abt-concern__lead">
+          <span class="abt-panel__label label">Call the school</span>
+          <p class="abt-concern__text">Call the line for the child's section, {{hours:between}}. Outside those hours, or for anything urgent, call the further queries and emergencies line.</p>
+          <p class="abt-concern__text abt-concern__text--quiet">The school has not yet published a written procedure or named a person for concerns; until it does, these lines are the way to reach it.</p>
+        </div>
+        <div class="abt-concern__lines">
+          <!-- review r3: the lines come from {{phones:all}}, the one token that prints both further-queries numbers (the hand-built list printed only the first); about.css sets them at the call-sheet size with 44 px targets -->
+          {{phones:all}}
+          <p class="call-lines__hours">The admissions lines are open {{hours}}. All the school's numbers are on the <a href="{{link:/contact/}}">contact page</a>.</p>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
 <section class="page-section" aria-labelledby="cp-daily">
   <div class="band">
     <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Every day</span><span class="sheet-rule__purpose">What the school already does</span></div>
-    <div class="layout layout--wide-aside">
-      <div class="layout__main">
-        <h2 id="cp-daily" class="section-title">The everyday measures.</h2>
-        <p class="section-lead mt-m" data-reveal>To raise a concern now, go straight to <a href="#cp-concern">the school's telephone lines</a>.</p>
-        <div id="cp-measures" class="mt-m" data-accordion-scope>
-          <div class="accordion__controls"><button class="link link--btn" type="button" data-accordion-toggle="cp-measures">Expand all</button></div>
-          <div class="accordion" data-reveal>
-            <details class="accordion__item" id="q-campus" open>
-              <summary class="accordion__summary"><h3 class="accordion__q">On the campus</h3><span class="accordion__icon" aria-hidden="true"></span></summary>
-              <div class="accordion__body">
-                <ul class="checklist">
-                  <li>CCTV across the campus</li>
-                  <li>Security staff round the clock</li>
-                  <li>Fire extinguishers on every floor</li>
-                  <li>An internal telephone system between offices and floors</li>
-                </ul>
-                <p>The building is described on <a class="link" href="{{link:/about/campus/}}">Our campus</a>.</p>
-              </div>
-            </details>
-            <details class="accordion__item" id="q-health">
-              <summary class="accordion__summary"><h3 class="accordion__q">Health during the school day</h3><span class="accordion__icon" aria-hidden="true"></span></summary>
-              <div class="accordion__body">
-                <p>A health care facility on the campus handles minor health problems during school hours, and there is a dedicated sick room. Serious cases are handed over to the parents, so that the family can decide about treatment.</p>
-                <p>Drinking water and separate toilets for boys and girls are provided on every floor.</p>
-              </div>
-            </details>
-            <details class="accordion__item" id="q-counsellor">
-              <summary class="accordion__summary"><h3 class="accordion__q">Someone to talk to</h3><span class="accordion__icon" aria-hidden="true"></span></summary>
-              <div class="accordion__body">
-                <p>A designated member of the faculty acts as Student Counsellor and is on standby to answer any query, or to give advice and support when students need it. The counsellor helps with academic concerns, non-academic issues and behavioural matters that teachers raise. <a class="link" href="{{link:/learning/student-support/}}">Student support</a> has the rest.</p>
-              </div>
-            </details>
-            <details class="accordion__item" id="q-id">
-              <summary class="accordion__summary"><h3 class="accordion__q">Identity cards</h3><span class="accordion__icon" aria-hidden="true"></span></summary>
-              <div class="accordion__body">
-                <p>Every student receives an identity card after admission and wears it every day on the school premises. A lost or damaged card is replaced through the school office.</p>
-              </div>
-            </details>
-            <details class="accordion__item" id="q-gate">
-              <summary class="accordion__summary"><h3 class="accordion__q">Arrival, departure and the road</h3><span class="accordion__icon" aria-hidden="true"></span></summary>
-              <div class="accordion__body">
-                <p>Drivers are asked to follow the school's traffic rules, to avoid the horn and to slow down near the premises. Students carry their own bags rather than leaving them in the bus luggage compartment, which reduces crowding at the gate.</p>
-                <p>The school has run its own buses since March 2014. <a class="link" href="{{link:/school-life/transport-and-safety/}}">Transport and safety</a> has the rules for the bus and how to apply for a place.</p>
-              </div>
-            </details>
-            <details class="accordion__item" id="q-conduct">
-              <summary class="accordion__summary"><h3 class="accordion__q">Conduct and discipline</h3><span class="accordion__icon" aria-hidden="true"></span></summary>
-              <div class="accordion__body">
-                <p>The code of conduct says what the school expects of its students. Physical violence or abusive language leads to immediate expulsion, and a Disciplinary Committee of administrators and faculty members oversees behaviour during school hours. Mobile phones are not allowed. The summary is on <a class="link" href="{{link:/about/policies/#conduct}}">Policies and documents</a>.</p>
-              </div>
-            </details>
-            <details class="accordion__item" id="q-photos">
-              <summary class="accordion__summary"><h3 class="accordion__q">Photographs of children</h3><span class="accordion__icon" aria-hidden="true"></span></summary>
-              <div class="accordion__body">
-                <!-- CONFIRM: the school has published no policy on photographing or filming children (the plan asks for the text of one). -->
-                <p>The school has not yet published a policy on photographing and filming children. It is to be published by the school.</p>
-              </div>
-            </details>
-          </div>
-        </div>
-      </div>
-      <div class="layout__aside layout__aside--sticky">
-        <div id="cp-concern" class="callout callout--important" data-reveal>
-          <span class="callout__label label">Raise a concern</span>
-          <p>The school has not published a written procedure, or a named person, for raising a concern. Until it does, these are its telephone lines. Call the one for the child's section {{hours:between}}, or the further queries and emergencies line.</p>
-          {{phones:all}}
-        </div>
-      </div>
+    <div class="abt-head">
+      <h2 id="cp-daily" class="section-title abt-head__title" data-reveal>Seven things the school does every day.</h2>
+      <p class="lead abt-head__lead" data-reveal>Each one is from the school's own pages: the building, the sick room, the counsellor, the identity card, the gate, the code of conduct, and photographs.</p>
+    </div>
+    <ul class="abt-panels abt-panels--3" data-reveal-group>
+      <li class="abt-panel abt-panel--gold">
+        <span class="abt-panel__label label">On the campus</span>
+        <h3 class="abt-panel__title">Watched, staffed and equipped</h3>
+        <ul class="checklist">
+          <li>CCTV across the campus</li>
+          <li>Security staff round the clock</li>
+          <li>Fire extinguishers on every floor, and an internal telephone system</li>
+        </ul>
+        <a class="link link--arrow abt-panel__more" href="{{link:/about/campus/#c-care}}">Our campus</a>
+      </li>
+      <li class="abt-panel abt-panel--gold">
+        <span class="abt-panel__label label">Health during the day</span>
+        <h3 class="abt-panel__title">A sick room, and the parents decide</h3>
+        <p class="abt-panel__text">A health care facility and a sick room for minor problems during school hours. Serious cases are handed to the parents, so the family decides about treatment. Drinking water and separate toilets on every floor.</p>
+      </li>
+      <li class="abt-panel abt-panel--gold">
+        <span class="abt-panel__label label">Someone to talk to</span>
+        <h3 class="abt-panel__title">The Student Counsellor</h3>
+        <p class="abt-panel__text">A designated member of the faculty acts as Student Counsellor, on standby for academic concerns, non-academic issues and behavioural matters that teachers raise.</p>
+        <a class="link link--arrow abt-panel__more" href="{{link:/learning/student-support/}}">Student support</a>
+      </li>
+      <li class="abt-panel abt-panel--gold">
+        <span class="abt-panel__label label">Identity cards</span>
+        <h3 class="abt-panel__title">Issued after admission, worn every day</h3>
+        <p class="abt-panel__text">Every student receives an identity card after admission and wears it on the school premises. A lost or damaged card is replaced through the school office.</p>
+      </li>
+      <li class="abt-panel abt-panel--gold">
+        <span class="abt-panel__label label">Arrival, departure and the road</span>
+        <h3 class="abt-panel__title">A quiet gate</h3>
+        <p class="abt-panel__text">Drivers follow the school's traffic rules, avoid the horn and slow down near the premises. Students carry their own bags, which reduces crowding at the gate. The school has run its own buses since March 2014.</p>
+        <a class="link link--arrow abt-panel__more" href="{{link:/school-life/transport-and-safety/}}">Transport and safety</a>
+      </li>
+      <li class="abt-panel abt-panel--gold">
+        <span class="abt-panel__label label">Conduct and discipline</span>
+        <h3 class="abt-panel__title">The code of conduct</h3>
+        <p class="abt-panel__text">Physical violence or abusive language leads to immediate expulsion. A Disciplinary Committee of administrators and faculty members oversees behaviour during school hours. Mobile phones are not allowed.</p>
+        <a class="link link--arrow abt-panel__more" href="{{link:/about/policies/#conduct}}">Policies</a>
+      </li>
+      <li class="abt-panel abt-panel--gold">
+        <span class="abt-panel__label label">Photographs of children</span>
+        <h3 class="abt-panel__title">On this website</h3>
+        <!-- CONFIRM (P07, A3): the school has published no policy on photographing and filming children. The sentence below describes what this website does, not a school policy: today the home still uses frames the catalogue marks as needing consent (A3), which is why it says "where no child can be recognised, or where the school holds the family's consent". -->
+        <p class="abt-panel__text">A photograph of a child is used on this website only where no child can be recognised, or where the school holds the family's consent. A parent may ask for a photograph to be taken down by calling the further queries line.</p>
+        <a class="link link--arrow abt-panel__more" href="{{link:/privacy/}}">Privacy</a>
+      </li>
+    </ul>
+    <div class="abt-foot">
+      <p class="abt-foot__text">None of these is written as a policy the school adopted; each is a thing the school says it does. Confirm each is current before relying on it.</p>
+      <p class="abt-foot__source caption">From the school's campus, health, counsellor, identity card, transport and code-of-conduct pages, September 2026.</p>
     </div>
   </div>
 </section>
 
-<section class="page-section" aria-labelledby="cp-docs">
+<section class="page-section" aria-labelledby="cp-statement">
   <div class="band">
-    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Documents</span><span class="sheet-rule__purpose">What is published, and what is to come</span></div>
-    <div class="layout">
-      <div class="layout__main">
-        <h2 id="cp-docs" class="section-title">What the school has published.</h2>
-        <!-- CONFIRM: the full written policy (PDF), the designated person and how to reach them, a written reporting procedure for parents, students and staff, a photograph consent policy and a review date. None supplied; each is listed as "to be published by the school" instead of being invented. -->
-        <div class="table-wrap mt-m" data-reveal>
-          <table class="table table--stack">
-            <caption>Child protection documents, September 2026</caption>
-            <thead><tr><th scope="col">Document</th><th scope="col">Status</th></tr></thead>
-            <tbody>
-              <tr><th scope="row">The school's statement</th><td data-label="Status">Published on the school's website; quoted above</td></tr>
-              <tr><th scope="row">The everyday measures</th><td data-label="Status">Published on the school's website; summarised above</td></tr>
-              <tr><th scope="row">The full written policy</th><td data-label="Status">To be published by the school</td></tr>
-              <tr><th scope="row">The designated person and how to reach them</th><td data-label="Status">To be published by the school</td></tr>
-              <tr><th scope="row">A written procedure for raising a concern</th><td data-label="Status">To be published by the school</td></tr>
-              <tr><th scope="row">A policy on photographs of children</th><td data-label="Status">To be published by the school</td></tr>
-              <tr><th scope="row">A review date</th><td data-label="Status">To be published by the school</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <p class="small-print mt-m">Prepared from the school's own website in September 2026. The school has not given a review date.</p>
-      </div>
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">The statement</span><span class="sheet-rule__purpose">One sentence, attributed</span></div>
+    <div class="abt-head abt-head--tight">
+      <h2 id="cp-statement" class="section-title abt-head__title" data-reveal>Our commitment, in the school's words.</h2>
+    </div>
+    <!-- CONFIRM: the wording of the statement against the school's page; the previous copy of the site gave a longer version ending "in all areas of imparting education, and in ensuring all manners of safety, security, health and hygiene" (P07). -->
+    <div class="venue abt-venue" data-reveal>
+      <p class="label">The school's statement on child protection</p>
+      <p class="venue__text">&ldquo;Playpen adheres to the local and Cambridge Board's guidelines for child protection policy.&rdquo;</p>
+      <p class="caption">As published on the school's website. The school's full written policy will be published here when it is ready.</p>
     </div>
   </div>
 </section>
 
 <section class="page-section" aria-labelledby="wn-title">
   <div class="band where-next">
-    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Routes</span></div>
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Routes</span><span class="sheet-rule__purpose">Talk to the school</span></div>
     <h2 id="wn-title" class="where-next__title">Where next?</h2>
     <div class="where-next__grid where-next--3">
+      <div class="where-next__col">
+        <h3>Talk to the school</h3>
+        <ul>
+          <li><a class="link" href="{{link:/contact/}}">Contact</a></li>
+          <li>Further queries and emergencies: {{phone:further}}</li>
+          <li><a class="link" href="{{link:/about/leadership/}}">Who looks after each class</a></li>
+        </ul>
+      </div>
       <div class="where-next__col">
         <h3>Inside the school</h3>
         <ul>
@@ -142,20 +137,20 @@ hero_n: 01
       <div class="where-next__col">
         <h3>The rules</h3>
         <ul>
-          <li><a class="link" href="{{link:/about/policies/}}">Policies and documents</a></li>
+          <li><a class="link" href="{{link:/about/policies/}}">Policies</a></li>
           <li><a class="link" href="{{link:/school-life/transport-and-safety/}}">Transport and safety</a></li>
-        </ul>
-      </div>
-      <div class="where-next__col">
-        <h3>Talk to the school</h3>
-        <ul>
-          <li><a class="link" href="{{link:/contact/}}">Contact</a></li>
-          <li><a class="link" href="{{link:/admissions/visit/}}">Book a visit</a></li>
-          <li><a class="link" href="{{link:/admissions/faq/}}">Admissions FAQ</a></li>
+          <li><a class="link" href="{{link:/privacy/}}">Privacy</a></li>
         </ul>
       </div>
     </div>
   </div>
 </section>
 
-{{cta}}
+<section class="page-section" aria-label="Next page">
+  <div class="band">
+    <nav class="pager" aria-label="About pages">
+      <a class="pager__link pager__link--prev" href="{{link:/about/campus/}}"><span class="pager__label">Previous</span><span class="pager__title">Our campus</span><span class="pager__sub">A walk through the building, from the field to the roof</span></a>
+      <a class="pager__link pager__link--next" href="{{link:/about/policies/}}"><span class="pager__label">Next</span><span class="pager__title">Policies</span><span class="pager__sub">The rule on phones, absence, uniform and the bus, in one glance</span></a>
+    </nav>
+  </div>
+</section>

@@ -1,0 +1,26 @@
+# Additions: administration (/about/school-administration/ and /about/leadership/)
+
+Styles in `build/additions/administration.css`, behaviour in `build/additions/administration.js`. Rewritten 2026-10-24 for the pages redesign (group "about"): the eleven 4:5 monogram posters became an organisation chart, the message cards lost their dashed slots, the skeleton teacher grid is gone, and the class table gained a finder. Prefix `adm-`; note that `admissions.css` also uses `adm-` (`.adm-row`, `.adm-picker`, `.adm-hero-actions`), so every class here is checked against it (the chart's rows are `adm-tier__row` for that reason).
+
+### Portrait slot (`div.adm-portrait`, `--m`, `--photo`; 2026-10-18, kept)
+A crest-coloured initials chip (56 px; `--m` 88 px): `<div class="adm-portrait"><span class="adm-portrait__mono" aria-hidden="true">ST</span></div>`. With a photograph, only with the person's written consent: `<div class="adm-portrait adm-portrait--photo">{{img src="img/admin-..." alt="Mrs ..., Principal" sizes="88px"}}</div>`. The 9.5 px "photo to be supplied" note was removed on 2026-10-24: the gap lives in the CONFIRM comment. Review fixes 2026-10-24: inside `.adm-chart` the chip is quiet (paper-3 field, clay hairline, maroon serif initials); the solid maroon chip stays only in 02 (`adm-heads`).
+
+### Organisation chart (`ol.adm-chart > li.adm-tier` (`--1`, `--2`, `--3`) > `span.adm-tier__label` + `ul.adm-tier__row` (`--1`, `--2`) > `li.adm-card` or `li.adm-branch`; 2026-10-24)
+Four tiers: Management (two cards), the Principal (one), then two `adm-branch` columns, each a Vice Principal card over `ul.adm-branch__kids` of Teacher-in-Charge cards. `adm-card` is the panel recipe (paper-3, 1 px clay, 3 px top rule; `--l` larger name) with the chip top-left and `adm-card__role`, `adm-card__name` (an `h3`, or `h4` under a branch), `adm-card__band`, `adm-card__note`. Top rules in two colours (review fixes 2026-10-24): maroon for the Principal only, `--gold` for every other card (`--ink` exists but is no longer used). `adm-branch` has `align-content: start`, so the two Vice Principal cards are the same width and height whatever the number of Teachers-in-Charge under them. From 768 px hairline connectors are drawn with pseudo-elements (a drop from each tier, a bar across the next tier's row, a stem into each card); the tier label sits on paper over the bar. Under 768 px the chart is an indented list with a left hairline. Names, titles and bands as the school publishes them; the chart gives place, not history (no biographical line); no phone lines here (those are the finder's job).
+
+### The Principal and the Vice Principals (`ul.adm-heads > li.adm-card`; 2026-10-24)
+Three larger panels in a row from 768 px, with the 88 px chip and one `adm-card__note` each.
+
+### Message cards (`ul.adm-messages > li.adm-message`; 2026-10-18, restyled 2026-10-24)
+Head (chip, role, `adm-message__name`), one true context line (`adm-message__context`) and the message. No dashed slot, no placeholder sentence. The rules stay in `administration.css`, but the section is **not built** since the review fixes of 2026-10-24: `data-portal-only` is revealed by `portal.js` whenever the page's `pp:portal-api` meta holds an address (the built HTML carries the local one), so a "will appear here" line would have been public on a hosted copy. Re-add the section only when the school sends the two messages in their own words (the recipe is in the page source's CONFIRM comment). Never write a message for them.
+
+### Class finder (`div.adm-finder[data-adm-finder]`; 2026-10-24)
+`adm-finder__grid` holds `adm-finder__field` (a `label.label` and `select.adm-finder__select`, 52 px high; each `<option>` carries `data-adm-band`) and `adm-finder__out` (`p.adm-finder__intro`, a visually hidden `role="status"`, and one `div.adm-finder__result.adm-result[data-adm-band] hidden` per band: a `dl.dl` with `[data-adm-tic]`, `[data-adm-vp]` and the line as `{{phone:key class="adm-result__tel"}}` plus `span.adm-result__for`). `administration.js` shows the chosen band's block and announces it. Without JavaScript every result stays hidden and the intro sends the reader to the table under the finder. Bands: `pg-kg1`, `kg2-1`, `2-3`, `4-5`, `6`, `7`, `8-12` (Class VI and Class VII resolve to different lines).
+
+### The table's line column (`div.table-wrap.adm-table`, `a.adm-table__tel`, `span.adm-table__for`; 2026-10-24)
+`{{phone:key class="link adm-table__tel"}}` is a 44 px target inside a one-line row (padding and an equal negative margin, with the gold underline moved back under the digits); `adm-table__for` is the small "Class VI" / "Class VII" label when a band straddles two lines.
+
+## Review fixes r3 (2026-10-24, later the same day)
+
+- **Finder example** (`.adm-finder__example[data-adm-example]`): one worked answer (Class III) in the result column until a class is chosen, in `--ink-2`; `administration.js` hides it when a result shows, with the intro line. Keep its names in step with the table.
+- The Administration page's "Principal and Vice Principals" sheet (`.adm-heads`) is no longer used: the one-line notes live in the chart's `adm-card__band`. The `.adm-heads` rules stay for a page that needs three larger cards.

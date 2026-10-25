@@ -28,12 +28,12 @@
     },
     {
       "source": "/school-administration/",
-      "destination": "/about/leadership/",
+      "destination": "/about/school-administration/",
       "permanent": true
     },
     {
       "source": "/school-administration",
-      "destination": "/about/leadership/",
+      "destination": "/about/school-administration/",
       "permanent": true
     },
     {
@@ -248,12 +248,12 @@
     },
     {
       "source": "/annual-sports/",
-      "destination": "/school-life/sports/",
+      "destination": "/events/annual-sports-day/",
       "permanent": true
     },
     {
       "source": "/annual-sports",
-      "destination": "/school-life/sports/",
+      "destination": "/events/annual-sports-day/",
       "permanent": true
     },
     {
@@ -278,22 +278,22 @@
     },
     {
       "source": "/cultural-programme/",
-      "destination": "/school-life/culture-and-service/",
+      "destination": "/events/annual-cultural-programme/",
       "permanent": true
     },
     {
       "source": "/cultural-programme",
-      "destination": "/school-life/culture-and-service/",
+      "destination": "/events/annual-cultural-programme/",
       "permanent": true
     },
     {
       "source": "/science-fair/",
-      "destination": "/school-life/clubs-and-activities/",
+      "destination": "/events/science-and-technology-fair/",
       "permanent": true
     },
     {
       "source": "/science-fair",
-      "destination": "/school-life/clubs-and-activities/",
+      "destination": "/events/science-and-technology-fair/",
       "permanent": true
     },
     {
@@ -438,12 +438,12 @@
     },
     {
       "source": "/feature/faculty-members/",
-      "destination": "/about/leadership/",
+      "destination": "/about/school-administration/",
       "permanent": true
     },
     {
       "source": "/feature/faculty-members",
-      "destination": "/about/leadership/",
+      "destination": "/about/school-administration/",
       "permanent": true
     },
     {

@@ -137,6 +137,9 @@ function waitForImage(img, timeoutMs) {
 
 export async function createHero(options = {}) {
   const { canvas, slides, medallionUrl = null, reducedMotion = false, onProgress = null, warmAfter = null, drawAfter = null } = options;
+  // heroPlane: false (2026-10-20, the home's film hero is a DOM <video>): slide 0 is a placeholder,
+  // the hero plane is never drawn and its still, depth and light maps are never fetched
+  const heroPlane = options.heroPlane !== false;
   const paths = {
     depth: (slides && slides[0] && slides[0].depth) || DEFAULT_PATHS.depth,
     luma: (slides && slides[0] && slides[0].luma) || DEFAULT_PATHS.luma,
@@ -206,7 +209,7 @@ export async function createHero(options = {}) {
     pointer: { x: 0, y: 0, tx: 0, ty: 0, active: false, at: 0 },
     light: { x: 0.5, y: TUNING.idleY },
     medPointer: null,
-    heroVideoEl: (slides[0] && slides[0].video) || null,
+    heroVideoEl: (heroPlane && slides[0] && slides[0].video) || null,
     heroMix: 0,
     ascentMix: 0,
     ascentVideoSlot: -1,
@@ -231,7 +234,7 @@ export async function createHero(options = {}) {
   const t0 = now();
 
   const els = {
-    hero: document.querySelector('[data-gl="hero"]'),
+    hero: heroPlane ? document.querySelector('[data-gl="hero"]') : null,
     ascent: document.querySelector('[data-gl="ascent"]'),
     medallion: document.querySelector('[data-gl="medallion"]'),
   };
@@ -418,7 +421,7 @@ export async function createHero(options = {}) {
     if (medallion) medallion.setFill(fillFor());
     heroU.uDissolve.value = readFade();
     // the <picture> may have switched source (desktop <-> phone crop): rebuild the hero texture
-    const img = slides[0].img;
+    const img = heroPlane ? slides[0].img : null;
     if (img instanceof HTMLImageElement && state.heroReady && img.complete && img.naturalWidth > 0 && img.currentSrc && img.currentSrc !== heroLoadedSrc) {
       rebuildHeroFromImg(img).catch(() => {});
     }
@@ -1197,19 +1200,26 @@ export async function createHero(options = {}) {
 
   (async () => {
     try {
-      const masks = Promise.all([loadMask('depth', paths.depth), loadMask('luma', paths.luma)]).then(([d, l]) => {
-        if (state.disposed) return;
-        tex.depth = d; tex.luma = l;
-        masksOk = !!(d && l);
-        heroU.uDepth.value = d || blank;
-        heroU.uLuma.value = l || blank;
-        heroU.uMasks.value = masksOk ? 1 : 0;
-      });
-      loadDisplacement().catch(() => {});
-      await slideBitmap(0, (p) => reportProgress('hero', p));
-      reportProgress('hero', 1);
-      syncHeroResidency();
-      await Promise.race([masks, new Promise((r) => setTimeout(r, TUNING.masksTimeoutMs))]);
+      if (heroPlane) {
+        const masks = Promise.all([loadMask('depth', paths.depth), loadMask('luma', paths.luma)]).then(([d, l]) => {
+          if (state.disposed) return;
+          tex.depth = d; tex.luma = l;
+          masksOk = !!(d && l);
+          heroU.uDepth.value = d || blank;
+          heroU.uLuma.value = l || blank;
+          heroU.uMasks.value = masksOk ? 1 : 0;
+        });
+        loadDisplacement().catch(() => {});
+        await slideBitmap(0, (p) => reportProgress('hero', p));
+        reportProgress('hero', 1);
+        syncHeroResidency();
+        await Promise.race([masks, new Promise((r) => setTimeout(r, TUNING.masksTimeoutMs))]);
+      } else {
+        // no hero plane: only the Ascent's displacement map is needed
+        state.wantHero = false;
+        loadDisplacement().catch(() => {});
+        reportProgress('hero', 1); reportProgress('depth', 1); reportProgress('luma', 1);
+      }
       if (state.disposed) return;
       state.readyWanted = true;       // the next tick draws the first frame and resolves `ready`
       if (state.wantAscent) ensureAscentBitmaps();

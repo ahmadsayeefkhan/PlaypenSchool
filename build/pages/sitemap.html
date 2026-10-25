@@ -1,11 +1,270 @@
 ---
 title: Sitemap
 template: T05
-standfirst: Every page of the website, grouped by section.
+description: The Playpen School website in one map: where to start, your child's class from Playgroup to A Level, the six sections, the events and the photograph albums.
+updated: 2026-10-25
+body_class: sm-page
 ---
-<section class="page-section" aria-label="All pages">
+<!-- Integrator, 2026-10-25. Plan: ../redesign-2026-10-24-pages/plans/sitemap-ia.md section 1 (and its FOUNDER DECISION of 2026-10-24: the group keeps the label Community and gets its /community/ hub). Every count on this page is computed from build/nav.json (the sitemap count token), and the long lists come from it (the children token with as="list"), so the map, the menu and the footer cannot disagree. Styles: build/additions/sitemap.css (prefix sm-); behaviour: build/additions/sitemap.js (folds the door lists on phones). -->
+<header class="page-hero sm-hero">
   <div class="band">
-    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">All pages</span></div>
-    {{sitemap}}
+    {{breadcrumb}}
+    <div class="sheet-rule page-hero__rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__title">Sitemap</span></div>
+    <h1 class="page-hero__title">Find your way <em>around</em>.</h1>
+    <p class="page-hero__lead lead">Six sections and {{sitemap:count}} pages. Start with where you are, pick your child's class, or search.</p>
+    <form class="search-form sm-search" role="search" action="{{link:/search/}}" method="get">
+      <div class="field">
+        <label for="sm-q">Search the website</label>
+        <input id="sm-q" name="q" type="search" autocomplete="off">
+      </div>
+      <button class="btn btn--primary" type="submit"><span class="btn__label">Search</span></button>
+    </form>
+  </div>
+</header>
+
+<section class="page-section sm-sheet" aria-labelledby="sm-start">
+  <div class="band">
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no:sheet}}</span><span class="sheet-rule__title">Where are you?</span><span class="sheet-rule__purpose">Four steps, then everything else</span></div>
+    <div class="sm-head">
+      <h2 id="sm-start" class="display-l">Start where you <em>are</em>.</h2>
+      <p class="lead">Most families come to the school in the same order: they look, they read about the classes, they visit, they apply. Each step has its pages.</p>
+    </div>
+    <ol class="steps sm-steps">
+      <li class="step" data-reveal>
+        <span class="step__n display-m">01</span>
+        <h3>Discover</h3>
+        <p>See what kind of school this is.</p>
+        <ul class="link-list sm-step__links">
+          <li><a class="link" href="{{link:/about/}}">About Playpen</a></li>
+          <li><a class="link" href="{{link:/about/campus/}}">Our campus</a></li>
+          <li><a class="link" href="{{link:/school-life/}}">School life</a></li>
+          <li><a class="link" href="{{link:/gallery/}}">Photographs</a></li>
+        </ul>
+      </li>
+      <li class="step" data-reveal>
+        <span class="step__n display-m">02</span>
+        <h3>Learn</h3>
+        <p>Find your child's class and how Cambridge works here.</p>
+        <ul class="link-list sm-step__links">
+          <li><a class="link" href="{{link:/learning/}}">Learning at Playpen</a></li>
+          <li><a class="link" href="#classes">Which class is your child in?</a></li>
+          <li><a class="link" href="{{link:/learning/cambridge-pathway/}}">The Cambridge pathway</a></li>
+          <li><a class="link" href="{{link:/learning/results/}}">Results</a></li>
+        </ul>
+      </li>
+      <li class="step" data-reveal>
+        <span class="step__n display-m">03</span>
+        <h3>Visit</h3>
+        <p>Come and see the building and the section your child would join.</p>
+        <ul class="link-list sm-step__links">
+          <li><a class="link" href="{{link:/admissions/visit/}}">Book a visit</a></li>
+          <li><a class="link" href="{{link:/contact/}}">Contact and map</a></li>
+          <li><a class="link" href="{{link:/school-life/transport-and-safety/}}">Transport and safety</a></li>
+        </ul>
+      </li>
+      <li class="step" data-reveal>
+        <span class="step__n display-m">04</span>
+        <h3>Apply</h3>
+        <p>The steps, the fees and the first weeks.</p>
+        <ul class="link-list sm-step__links">
+          <li><a class="link" href="{{link:/admissions/how-to-apply/}}">How to apply</a></li>
+          <li><a class="link" href="{{link:/admissions/fees/}}">Fees and payment</a></li>
+          <li><a class="link" href="{{link:/admissions/faq/}}">Admissions FAQ</a></li>
+          <li><a class="link" href="{{link:/admissions/starting-at-playpen/}}">Starting at Playpen</a></li>
+        </ul>
+      </li>
+    </ol>
+    <div class="sm-panels">
+      <div class="sm-panel" data-reveal>
+        <h3 class="sm-panel__title">Already a Playpen family?</h3>
+        <ul class="link-list">
+          <li>{{ext:portal}}</li>
+          <li>{{ext:pay}}</li>
+          <li><a class="link" href="{{link:/notices/}}">Notices</a></li>
+          <li><a class="link" href="{{link:/community/parents/}}">For parents</a></li>
+        </ul>
+      </div>
+      <div class="sm-panel sm-panel--gold" data-reveal>
+        <h3 class="sm-panel__title">Rather talk to someone?</h3>
+        {{phones}}
+        <p class="sm-panel__note caption">Lines are open {{hours}}. The address and the map are on the <a class="link" href="{{link:/contact/}}">contact page</a>.</p>
+      </div>
+    </div>
   </div>
 </section>
+
+<section class="page-section page-section--tint sm-sheet" id="classes" aria-labelledby="sm-classes">
+  <div class="band">
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no:sheet}}</span><span class="sheet-rule__title">Which class is your child in?</span><span class="sheet-rule__purpose">Playgroup to A Level, one school</span></div>
+    <div class="sm-head">
+      <h2 id="sm-classes" class="display-l">Four stages, <em>then</em> A Level.</h2>
+      <p class="lead">Pick the stage your child is in, or is about to join.</p>
+    </div>
+    <!-- CONFIRM: which classes sit AS and A Level. The A Level page says admission is to Class XI; if the school confirms "Class XI and XII", the fifth step can say so. -->
+    <ol class="sm-ladder" aria-label="Classes from Playgroup to A Level">
+      <li class="sm-ladder__step" data-reveal><a class="sm-ladder__link" href="{{link:/learning/elementary/}}"><span class="sm-ladder__n display-m" aria-hidden="true">01</span><span class="sm-ladder__name">Elementary</span><span class="sm-ladder__range">Playgroup to KG II</span></a></li>
+      <li class="sm-ladder__step" data-reveal><a class="sm-ladder__link" href="{{link:/learning/junior/}}"><span class="sm-ladder__n display-m" aria-hidden="true">02</span><span class="sm-ladder__name">Junior</span><span class="sm-ladder__range">Class I to III</span></a></li>
+      <li class="sm-ladder__step" data-reveal><a class="sm-ladder__link" href="{{link:/learning/middle/}}"><span class="sm-ladder__n display-m" aria-hidden="true">03</span><span class="sm-ladder__name">Middle</span><span class="sm-ladder__range">Class IV to VII</span></a></li>
+      <li class="sm-ladder__step" data-reveal><a class="sm-ladder__link" href="{{link:/learning/senior/}}"><span class="sm-ladder__n display-m" aria-hidden="true">04</span><span class="sm-ladder__name">Senior</span><span class="sm-ladder__range">Class VIII to XII, with O Level</span></a></li>
+      <li class="sm-ladder__step" data-reveal><a class="sm-ladder__link" href="{{link:/learning/a-level/}}"><span class="sm-ladder__n display-m" aria-hidden="true">05</span><span class="sm-ladder__name">AS and A Level</span><span class="sm-ladder__range">From Class XI</span></a></li>
+    </ol>
+    <div class="sm-foot" data-reveal>
+      <div class="sm-foot__text">
+        <p class="label">How learning is explained and measured</p>
+        <ul class="sm-chips">
+          <li><a class="link" href="{{link:/learning/cambridge-pathway/}}">The Cambridge pathway</a></li>
+          <li><a class="link" href="{{link:/learning/examinations/}}">Examinations and reporting</a></li>
+          <li><a class="link" href="{{link:/learning/results/}}">Results</a></li>
+          <li><a class="link" href="{{link:/learning/student-support/}}">Student support</a></li>
+        </ul>
+      </div>
+      <p class="sm-foot__note caption">Each section of the school has its own telephone line; they are listed above and on the <a class="link" href="{{link:/contact/}}">contact page</a>.</p>
+    </div>
+  </div>
+</section>
+
+<section class="page-section sm-sheet" aria-labelledby="sm-doors">
+  <div class="band">
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no:sheet}}</span><span class="sheet-rule__title">The six sections</span><span class="sheet-rule__purpose">The same six as the menu</span></div>
+    <div class="sm-head">
+      <h2 id="sm-doors" class="display-l">Six <em>doors</em>.</h2>
+      <p class="lead">Each section, in the menu's order, with every page in it. Admissions is listed in the order families use it.</p>
+    </div>
+    <div class="sm-doors">
+      <article class="sm-door" aria-labelledby="sm-d1" data-reveal>
+        <div class="sm-door__media">{{img src="media/menu-1" alt="" sizes="(min-width: 900px) 44vw, 92vw"}}</div>
+        <div class="sm-door__body">
+          <p class="sm-door__n label">01 &middot; {{sitemap:count group="about"}} pages</p>
+          <h3 id="sm-d1" class="sm-door__name"><a class="sm-door__link" href="{{link:/about/}}">About</a></h3>
+          <p class="sm-door__text">What the school is, and where to read more about its history, people, campus and policies.</p>
+          <details class="sm-door__fold" open data-sm-fold>
+            <summary class="sm-door__sum">See the {{sitemap:count group="about"}} pages</summary>
+            {{children:group=about as="list"}}
+          </details>
+        </div>
+      </article>
+      <article class="sm-door" aria-labelledby="sm-d2" data-reveal>
+        <!-- AI plates round 2026-10-25: media/swatch-4 (two students in lab coats and a hand; not people-free, now refused by the catalogue) left the Learning door for the Colour Programme wall, a real photograph with no one in it (the Elementary hero, 21:9 like the door). -->
+        <div class="sm-door__media">{{img src="img/learning-elementary-colour" alt="" sizes="(min-width: 900px) 44vw, 92vw" widths="960,1440"}}</div>
+        <div class="sm-door__body">
+          <p class="sm-door__n label">02 &middot; {{sitemap:count group="learning"}} pages</p>
+          <h3 id="sm-d2" class="sm-door__name"><a class="sm-door__link" href="{{link:/learning/}}">Learning</a></h3>
+          <p class="sm-door__text">One path from Playgroup to A Level, in four stages.</p>
+          <details class="sm-door__fold" open data-sm-fold>
+            <summary class="sm-door__sum">See the {{sitemap:count group="learning"}} pages</summary>
+            {{children:group=learning as="list"}}
+          </details>
+        </div>
+      </article>
+      <article class="sm-door" aria-labelledby="sm-d3" data-reveal>
+        <div class="sm-door__media">{{img src="media/menu-5" alt="" sizes="(min-width: 900px) 44vw, 92vw"}}</div>
+        <div class="sm-door__body">
+          <p class="sm-door__n label">03 &middot; {{sitemap:count group="admissions"}} pages</p>
+          <h3 id="sm-d3" class="sm-door__name"><a class="sm-door__link" href="{{link:/admissions/}}">Admissions</a></h3>
+          <p class="sm-door__text">Visit, enquire, apply.</p>
+          <details class="sm-door__fold" open data-sm-fold>
+            <summary class="sm-door__sum">See the {{sitemap:count group="admissions"}} pages, in order</summary>
+            {{children:group=admissions as="list" numbered="yes"}}
+          </details>
+        </div>
+      </article>
+      <article class="sm-door" aria-labelledby="sm-d4" data-reveal>
+        <div class="sm-door__media">{{img src="img/sl-courtyard-hero" alt="" sizes="(min-width: 900px) 44vw, 92vw" widths="960,1440"}}</div>
+        <div class="sm-door__body">
+          <p class="sm-door__n label">04 &middot; {{sitemap:count group="school-life"}} pages</p>
+          <h3 id="sm-d4" class="sm-door__name"><a class="sm-door__link" href="{{link:/school-life/}}">School life</a></h3>
+          <p class="sm-door__text">The year, in the courtyard and on the field.</p>
+          <details class="sm-door__fold" open data-sm-fold>
+            <summary class="sm-door__sum">See the {{sitemap:count group="school-life"}} pages</summary>
+            {{children:group=school-life as="list"}}
+          </details>
+        </div>
+      </article>
+      <article class="sm-door" aria-labelledby="sm-d5" data-reveal>
+        <div class="sm-door__media">{{img src="img/learning-atrium" alt="" sizes="(min-width: 900px) 44vw, 92vw" widths="960,1440"}}</div>
+        <div class="sm-door__body">
+          <p class="sm-door__n label">05 &middot; {{sitemap:count group="community"}} pages</p>
+          <h3 id="sm-d5" class="sm-door__name"><a class="sm-door__link" href="{{link:/community/}}">Community</a></h3>
+          <p class="sm-door__text">Parents, alumni, news, events, notices and photographs.</p>
+          <details class="sm-door__fold" open data-sm-fold>
+            <summary class="sm-door__sum">See the {{sitemap:count group="community"}} pages</summary>
+            {{children:group=community as="list"}}
+          </details>
+          <p class="sm-door__more"><a class="link link--arrow" href="#year">Every event page and photograph album</a></p>
+        </div>
+      </article>
+      <article class="sm-door" aria-labelledby="sm-d6" data-reveal>
+        <div class="sm-door__media">{{img src="media/menu-6" alt="" sizes="(min-width: 900px) 44vw, 92vw"}}</div>
+        <div class="sm-door__body">
+          <p class="sm-door__n label">06 &middot; 1 page</p>
+          <h3 id="sm-d6" class="sm-door__name"><a class="sm-door__link" href="{{link:/contact/}}">Contact</a></h3>
+          <p class="sm-door__text">Phone lines by section, the address and the map, and the two forms that send.</p>
+          <ul class="sm-list">
+            <li class="sm-list__row"><a class="link sm-list__link" href="{{link:/contact/}}">Contact</a><span class="sm-list__note">Lines are open {{hours}}.</span></li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="page-section page-section--tint sm-sheet" id="year" aria-labelledby="sm-year">
+  <div class="band">
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no:sheet}}</span><span class="sheet-rule__title">The school year, page by page</span><span class="sheet-rule__purpose">Events and photograph albums</span></div>
+    <div class="sm-head sm-head--tight">
+      <h2 id="sm-year" class="display-l">Every event, every <em>album</em>.</h2>
+      <p class="lead">Two long lists, folded so the page stays short. Open the one you need.</p>
+    </div>
+    <div class="sm-folds">
+      <details class="sm-fold" id="events-list">
+        <summary class="sm-fold__sum"><span class="sm-fold__title">All {{sitemap:count parent="/events/"}} event pages</span><span class="sm-fold__icon" aria-hidden="true"></span></summary>
+        <div class="sm-fold__body">
+          <p class="sm-fold__lead"><a class="link link--arrow" href="{{link:/events/}}">Events: the school year in one page</a></p>
+          {{children:/events/ as="list"}}
+        </div>
+      </details>
+      <details class="sm-fold" id="albums-list">
+        <summary class="sm-fold__sum"><span class="sm-fold__title">All {{sitemap:count parent="/gallery/"}} photograph albums</span><span class="sm-fold__icon" aria-hidden="true"></span></summary>
+        <div class="sm-fold__body">
+          <p class="sm-fold__lead"><a class="link link--arrow" href="{{link:/gallery/}}">The gallery: every album, with its photographs</a></p>
+          {{children:/gallery/ as="list"}}
+          <p class="sm-fold__note caption">Albums the school has not yet cleared for the website are listed, folded, on the gallery page; they are added here when the school agrees.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="page-section sm-sheet" aria-labelledby="sm-help">
+  <div class="band">
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no:sheet}}</span><span class="sheet-rule__title">Help and site information</span><span class="sheet-rule__purpose">The pages at the foot of every page</span></div>
+    <h2 id="sm-help" class="visually-hidden">Help and site information</h2>
+    <div class="sm-help">
+      <div class="sm-help__col">
+        <h3 class="label">Help</h3>
+        <ul class="link-list">
+          <li><a class="link" href="{{link:/search/}}">Search the website</a></li>
+          <li><a class="link" href="{{link:/notices/}}">Notices</a></li>
+          <li>{{ext:portal}}</li>
+          <li>{{ext:pay}}</li>
+          <li><a class="link" href="{{link:/contact/}}">Contact</a></li>
+        </ul>
+      </div>
+      <div class="sm-help__col">
+        <h3 class="label">About this website</h3>
+        <ul class="link-list">
+          <li><a class="link" href="{{link:/about/child-protection/}}">Child protection and safeguarding</a></li>
+          <li><a class="link" href="{{link:/about/policies/}}">Policies and documents</a></li>
+          <li><a class="link" href="{{link:/privacy/}}">Privacy</a></li>
+          <li><a class="link" href="{{link:/terms/}}">Terms of use</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="sm-foot sm-foot--end">
+      <p class="sm-foot__text">This map is built from the same list as the menu and the footer, so the three always agree.</p>
+      <p class="sm-foot__note caption">Last updated {{updated}}.</p>
+    </div>
+  </div>
+</section>
+
+{{cta heading="Could not find it? Ask the school."}}

@@ -2,51 +2,88 @@
 title: Examinations and reporting
 template: T05
 standfirst: Two semesters a year, a written examination at the end of each, how promotion works and how progress reaches families through the portal.
+hero_image: img/ev-orientation-still
+hero_alt: An illustration, not a photograph of the school: a plain notebook, a pencil and a folded ruled sheet on an old wooden desk against a concrete wall.
+hero_caption: Illustration, not a photograph of the school
+hero_n: 01
+hero_tag: Illustration
+body_class: lr-page lr-hero-3x2
 ---
+<!-- Final review 2026-10-25: the hero was img/learning-exam-desks, cut from a 971 px strip and shown at 1161 px (soft, with a student's arm and a head cut at the edges). It is now the labelled people-free AI plate img/ev-orientation-still (1440 px, also the lead of /events/orientation-day/), with the Illustration tag on the picture and in the alt. A photograph of the empty examination hall from the school would replace it (A3). -->
+<!-- CONFIRM: the hero photograph is the far right of the school's own examination-hall upload (two empty desks and one student seen from behind, from above); confirm the year and that it may appear on a public page (A3). One photograph of the empty examination hall would replace it. -->
+<!-- Review fixes r2 2026-10-24: checked at 100 percent as the school-safeguard step asks: the earlier crop showed two students in three-quarter profile at the lower left, so the frame narrows to the right 971 px of the 3251 px copy (two empty desks, one back). That is the source's only backs-only region, so the file stops at 960 px and the 1200 px mount scales it slightly; the 1440 and 1920 px re-export the review asked for is not possible from this photograph. The hub's Examinations card shows the same frame, as every hub card shows its page's hero. -->
+<!-- CONFIRM (G-1, one decision with the home): the exam-venue line and the three 2026 figures in the aside are the home's, from the school's results summary for the May-June 2026 session. -->
 <section class="page-section" aria-labelledby="ex-year">
   <div class="band">
-    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">The school year</span><span class="sheet-rule__purpose">Two semesters</span></div>
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">The year</span><span class="sheet-rule__purpose">Two semesters</span></div>
+    <div class="lr-head">
+      <h2 id="ex-year" class="section-title">Each semester ends with a written examination.</h2>
+      <p class="lead" data-reveal>The Playpen school year is divided into two semesters, and a formal written examination is taken at the end of each. The year in four steps:</p>
+    </div>
+    <ol class="steps lr-steps lr-steps--4">
+      <li class="step" data-reveal><span class="step__n display-m">01</span><h3>Teach and track.</h3><p>Semester one: teaching, class tests, class work markings and homework, all followed through the portal.</p></li>
+      <li class="step" data-reveal><span class="step__n display-m">02</span><h3>Sit the first examination.</h3><p>A formal written examination ends the first semester. Progress Reports follow.</p></li>
+      <li class="step" data-reveal><span class="step__n display-m">03</span><h3>Continue the year.</h3><p>Semester two: teaching continues. Class VIII students choose their O Level electives at the end of it.</p></li>
+      <li class="step" data-reveal><span class="step__n display-m">04</span><h3>Sit the second examination.</h3><p>A formal written examination ends the school year, and the promotion rule applies.</p></li>
+    </ol>
+    <div class="lr-foot" data-reveal>
+      <p class="lr-foot__text">Progress Reports are issued across the two semesters, and in the junior classes the school uses a range of assessment tools alongside the formal papers. Exact dates change each year: the school publishes class-wise dates on its portal and announces them as <a class="link" href="{{link:/notices/}}">notices</a>; <a class="link" href="{{link:/events/}}">Events</a> carries the calendar.</p>
+      <p class="lr-foot__source caption">From the school's examinations page.</p>
+    </div>
+  </div>
+</section>
+
+<section class="page-section" aria-labelledby="ex-promotion">
+  <div class="band">
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Promotion</span><span class="sheet-rule__purpose">The rule the school states</span></div>
+    <!-- Review fixes 2026-10-24: the rule keeps the main column; the aside carries what to do about it, so the sheet is no longer a panel on the left and nothing on the right. -->
     <div class="layout">
       <div class="layout__main">
-        <h2 id="ex-year" class="section-title">Each semester ends with a written examination.</h2>
-        <div class="prose" data-reveal>
-          <p>The Playpen school year is divided into two semesters. A formal written examination is taken at the end of each. Progress Reports are issued across the two semesters, and in the junior classes the school uses a range of assessment tools alongside the formal papers.</p>
-          <p>Exact dates change each year. The school publishes class-wise dates on its portal and announces them as <a href="{{link:/notices/}}">notices</a>. <a href="{{link:/events/}}">Events</a> carries the calendar.</p>
+        <h2 id="ex-promotion" class="section-title">Promotion, in plain words.</h2>
+        <!-- CONFIRM: the school states the passing-marks rule for its Junior and Senior sections; whether Elementary and Middle follow the same rule is not stated (P17). -->
+        <div class="venue mt-m" data-reveal>
+          <p class="label">Moving up a class</p>
+          <p class="venue__text">To move up to the next class, a student must reach the passing marks in the core subjects. A yearly aggregate below the minimum may mean that a student is not promoted. The school states this rule for its Junior and Senior sections.</p>
         </div>
       </div>
       <div class="layout__aside">
-        <div class="callout" data-reveal>
-          <span class="callout__label label">Promotion</span>
-          <!-- CONFIRM: the school's text states the passing-marks rule for its Junior and Senior sections; whether Elementary and Middle follow the same rule is not stated. -->
-          <p>To be considered for promotion to the next class, students must reach set passing marks in the core subjects. A yearly aggregate below the minimum may mean that a student is not promoted. The school states this rule for its Junior and Senior sections.</p>
+        <div class="lr-panel lr-panel--gold" data-reveal>
+          <p class="label">If you are unsure</p>
+          <ul>
+            <li>Call the line for your child's class, <a class="link" href="#ex-call">listed below</a>, and ask how the rule applies to that class.</li>
+            <li>The stage pages say what each section publishes: <a class="link" href="{{link:/learning/junior/}}">Junior</a>, <a class="link" href="{{link:/learning/middle/}}">Middle</a> and <a class="link" href="{{link:/learning/senior/}}">Senior</a>.</li>
+          </ul>
         </div>
       </div>
     </div>
-    <ol class="process process--row process--4 mt-l" data-reveal-group>
-      <li class="process__step"><span class="process__n">01</span><div class="process__body"><h3>Teach and track.</h3><p>Semester one: teaching, class tests, class work markings and homework, all followed through the portal.</p></div></li>
-      <li class="process__step"><span class="process__n">02</span><div class="process__body"><h3>Sit the first examination.</h3><p>A formal written examination ends the first semester.</p></div></li>
-      <li class="process__step"><span class="process__n">03</span><div class="process__body"><h3>Continue the year.</h3><p>Semester two: teaching continues. Class VIII students choose their O Level electives at the end of it.</p></div></li>
-      <li class="process__step"><span class="process__n">04</span><div class="process__body"><h3>Sit the second examination.</h3><p>A formal written examination ends the school year, and the promotion rule applies.</p></div></li>
-    </ol>
   </div>
 </section>
 
 <section class="page-section" aria-labelledby="ex-cambridge">
   <div class="band">
-    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Cambridge examinations</span><span class="sheet-rule__purpose">O Level, AS and A Level</span></div>
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Cambridge</span><span class="sheet-rule__purpose">O Level, AS and A Level</span></div>
     <div class="layout">
       <div class="layout__main">
-        <h2 id="ex-cambridge" class="section-title">Senior students also sit Cambridge papers.</h2>
+        <h2 id="ex-cambridge" class="section-title">Cambridge papers are sat in this building.</h2>
         <div class="prose" data-reveal>
-          <p>In the Senior stage, students prepare for the examinations of Cambridge Assessment International Education (CAIE) at O Level, AS Level and A Level. Admission to Class XI is based on the school's mock examinations and the O Level result.</p>
-          <p><a href="{{link:/learning/cambridge-pathway/}}">The Cambridge pathway, explained</a> sets out how the three levels fit together.</p>
+          <p>In the Senior stage, students prepare for the examinations of Cambridge Assessment International Education (CAIE) at O Level, AS Level and A Level. Since 2020 the school has been a Cambridge exam venue, approved by the British Council, and students sit their exams in the school's own hall. Admission to Class XI is based on the school's mock examinations and the O Level result.</p>
+          <!-- CONFIRM: the CAIE series the school enters, how students register through the school, the deadlines and the fees. None of this is published by the school. -->
+          <p>For the exam series the school enters, registration and deadlines, call the line for Classes VII to XII, <a href="#ex-call">listed below</a>.</p>
         </div>
+        <ul class="link-list mt-m">
+          <li><a class="link link--arrow" href="{{link:/learning/cambridge-pathway/}}">The Cambridge pathway, explained</a></li>
+          <li><a class="link link--arrow" href="{{link:/learning/results/}}">Results, May–June 2026</a></li>
+        </ul>
       </div>
       <div class="layout__aside">
-        <!-- CONFIRM: the CAIE series the school enters, how students register through the school, the deadlines and the fees. None of this is published by the school. -->
-        <div class="callout pending-note" data-reveal>
-          <span class="callout__label label">Not published by the school</span>
-          <p>The school has not published the Cambridge examination series it enters, how students register or the deadlines. For these, call the line for Classes VII to XII, {{phone:vii-xii}}, {{hours:between}}.</p>
+        <div class="lr-panel lr-panel--gold" data-reveal>
+          <p class="label">The 2026 results</p>
+          <ul>
+            <li>67 in every 100 O Level grades were A* or A</li>
+            <li>46 in every 100 AS Level grades were an a, the top AS grade</li>
+            <li>42 in every 100 A Level grades were A* or A</li>
+          </ul>
+          <p class="lr-panel__foot"><a class="link" href="{{link:/learning/results/}}">See all results</a></p>
         </div>
       </div>
     </div>
@@ -55,59 +92,66 @@ standfirst: Two semesters a year, a written examination at the end of each, how 
 
 <section class="page-section page-section--tint" aria-labelledby="ex-portal">
   <div class="band">
-    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Reporting to families</span><span class="sheet-rule__purpose">The parent and student portal</span></div>
-    <div class="layout">
-      <div class="layout__main">
-        <h2 id="ex-portal" class="section-title">Progress is visible through the year, not only at report time.</h2>
-        <div class="prose" data-reveal>
-          <p>The school runs a website and management system that gives parents access to their child's data as the year goes on. Parents can follow the items below through the portal.</p>
-          <p>The school also holds parent-teacher meetings. Class-wise timings are issued through the portal. {{ext:portal}}</p>
-        </div>
-        <ul class="tag-list mt-m" data-reveal>
-          <li>Academic performance</li><li>Class tests</li><li>Class work markings</li><li>Homework</li><li>Report cards</li><li>Attendance</li><li>Punctuality</li><li>Disciplinary issues</li><li>Academic calendar</li>
-        </ul>
-      </div>
-      <div class="layout__aside">
-        <p class="label">Questions about an examination or a report</p>
-        <div class="mt-m">
-          {{phones:all}}
-        </div>
-      </div>
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Reporting</span><span class="sheet-rule__purpose">The parent and student portal</span></div>
+    <div class="lr-head">
+      <h2 id="ex-portal" class="section-title">Progress is visible through the year, not only at report time.</h2>
+      <p class="lead" data-reveal>The school runs a website and management system that gives parents access to their child's data as the year goes on. Three groups of things to watch:</p>
     </div>
-    <p class="small-print mt-l" data-reveal>Last reviewed <time datetime="2026-10-11">11 October 2026</time>, against the school's own pages.</p>
+    <!-- CONFIRM: that the portal still offers each item (the school's online-services page, September 2026). -->
+    <ul class="lr-panels">
+      <li class="lr-panel" data-reveal>
+        <p class="label">Learning</p>
+        <h3 class="lr-panel__title">Marks as they come in.</h3>
+        <ul>
+          <li>Academic performance</li>
+          <li>Class tests and class work markings</li>
+          <li>Homework</li>
+          <li>Report cards</li>
+        </ul>
+      </li>
+      <li class="lr-panel lr-panel--gold" data-reveal>
+        <p class="label">Attendance and conduct</p>
+        <h3 class="lr-panel__title">The day-to-day record.</h3>
+        <ul>
+          <li>Attendance</li>
+          <li>Punctuality</li>
+          <li>Disciplinary issues</li>
+        </ul>
+      </li>
+      <li class="lr-panel lr-panel--ink" data-reveal>
+        <p class="label">Calendar</p>
+        <h3 class="lr-panel__title">Dates for your child's class.</h3>
+        <ul>
+          <li>The academic calendar</li>
+          <li>Class-wise examination dates</li>
+          <li>Parent-teacher meeting timings</li>
+        </ul>
+      </li>
+    </ul>
+    <div class="lr-foot" data-reveal>
+      <p class="lr-foot__text">The school also holds parent-teacher meetings; class-wise timings are issued through the portal.</p>
+      <div class="lr-foot__action">{{ext:portal label="Open the portal"}}</div>
+      <p class="lr-foot__source caption">From the school's online-services page.</p>
+    </div>
   </div>
 </section>
 
-<section class="page-section" aria-labelledby="wn-title">
-  <div class="band where-next where-next--3">
-    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Routes</span></div>
-    <h2 id="wn-title" class="where-next__title">Where next?</h2>
-    <div class="where-next__grid">
-      <div class="where-next__col">
-        <h3>Current parents</h3>
-        <ul>
-          <li>{{ext:portal}}</li>
-          <li><a class="link" href="{{link:/notices/}}">Notices</a></li>
-          <li><a class="link" href="{{link:/events/}}">Events</a></li>
-          <li><a class="link" href="{{link:/community/parents/}}">For parents</a></li>
-        </ul>
+<section class="page-section" aria-labelledby="ex-call-h">
+  <div class="band">
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Who to ask</span><span class="sheet-rule__purpose">Questions about an examination or a report</span></div>
+    <div class="layout" id="ex-call">
+      <div class="layout__main">
+        <h2 id="ex-call-h" class="section-title">Call the line for your child's class.</h2>
+        <p class="lead" data-reveal>Lines are open {{hours}}. Say which class your child is in and what the question is about.</p>
       </div>
-      <div class="where-next__col">
-        <h3>Senior students</h3>
-        <ul>
-          <li><a class="link" href="{{link:/learning/senior/}}">Senior School and O Level</a></li>
-          <li><a class="link" href="{{link:/learning/a-level/}}">AS and A Level</a></li>
-          <li><a class="link" href="{{link:/learning/student-support/}}">Student support</a></li>
-        </ul>
+      <div class="layout__aside">
+        {{phones:all}}
       </div>
-      <div class="where-next__col">
-        <h3>More on learning</h3>
-        <ul>
-          <li><a class="link" href="{{link:/learning/}}">Learning at Playpen</a></li>
-          <li><a class="link" href="{{link:/learning/results/}}">Results and achievements</a></li>
-          <li><a class="link" href="{{link:/admissions/faq/}}">Admissions FAQ</a></li>
-        </ul>
-      </div>
+    </div>
+    <div class="lr-foot" data-reveal>
+      <p class="lr-foot__source caption">Source: the school's examinations and online-services pages.</p>
     </div>
   </div>
 </section>
+
+{{cta heading="Come and see the examination hall." text="Call the line for your child's class first; the office confirms the day. Ask to see the examination hall."}}

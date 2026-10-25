@@ -2,47 +2,88 @@
 title: Book a visit
 template: T07
 actions: false
-description: Plan a visit to The Playpen School in Bashundhara R/A, Dhaka. Choose your child's class to see which admissions line to call, 9.00 am to 1.00 pm.
-standfirst: Visit the Front Office to ask your questions or collect a form. Choose a class below and the page shows the line to call before you come.
+body_class: adm
+h1: Come and <em>see</em> the school.
+description: Plan a visit to The Playpen School in Bashundhara R/A, Dhaka. Call the admissions line for your child's section, 9.00 am to 1.00 pm; the office confirms the day.
+standfirst: Call the line for your child's section first, {{hours:between}}; the office confirms the day. Then come to the Front Office with your questions.
 ---
+<!-- Redesign 2026-10-24 (plans/admissions.md, section 3; critique X3: no cover outside the hubs, so the page opens on the shell's
+     type hero, a button row and the entrance on a paper mount). Two crops of the same straight-on frame (DSC03968): 16:9 from 768 px
+     (review r1: re-cropped to x 0 to 0.535, so the overhead wires are outside the box), 4:5 on phones (review r1: img/visit-entrance-tall,
+     the crest large, from the same frame as the desktop plate; the oblique img/admissions-entrance is no longer used here).
+     Round-2 fixes (2026-10-25): the desktop plate is re-cut lower (midtones lifted, warmed 2.5 %) so the entrance fills the lower third.
+     A first 16:9 re-cut (px 60,1400 to 3780,3493) let the overhead wire bundle into the top right, and a 16:9 that holds both the
+     crest and the entrance cannot avoid the wires, so the plate is 3:2 on the inset mount (as Fees): px 0,1330 to 3000,3330, the crest
+     whole in the upper right, the lit glazing and the shrub along the bottom; the red canopy is outside the box. -->
+
+<!-- CONFIRM (A5, A6): the entrance photograph (DSC03968, March 2024): public use. -->
+<section class="page-section adm-open" aria-labelledby="visit-open">
+  <div class="band">
+    <h2 id="visit-open" class="visually-hidden">The school from the street</h2>
+    <p class="adm-hero-actions" data-reveal><a class="btn btn--primary" href="#visit-fields"><span class="btn__label">Book a visit</span></a><a class="btn btn--text" href="#call">Or call the line</a></p>
+    <!-- Final review 2026-10-25: the 21:9 band of its siblings (about 498 px tall at 1366) instead of the 3:2 inset plate (751 px), so the soft video-frame crest reads at a smaller size and the section pages line up. A sharper still of the entrance would replace it (A3). -->
+    <figure class="plate adm-plate adm-plate--21x9 adm-plate--crest" data-reveal>
+      <div class="plate__frame">
+        <span class="adm-plate__wide">{{img src="img/visit-entrance-wide" alt="The street front of the school: the crest and the name PLAYPEN on board-marked concrete with hanging creepers, and below it the entrance, its lit glazing and a flowering shrub." sizes="100vw" widths="960,1440,1920"}}</span>
+        <span class="adm-plate__tall">{{img src="img/visit-entrance-tall" alt="The crest and the name PLAYPEN cast in the board-marked concrete, creepers at the left, the brick ground floor below." sizes="100vw" widths="720,960"}}</span>
+      </div>
+    </figure>
+  </div>
+</section>
+
+<!-- 01. What the school has described (the Front Office takes enquiries and hands out forms), said once as help, not as a gap.
+     F2: the one wording for Visit, the FAQ and the nav description: call first, the office confirms the day, ask whether you can
+     see the building and your child's section. No tour is promised. -->
+<!-- CONFIRM (F2, A6): visit format, days and times, who meets the family, how long it takes, who receives bookings. The school's
+     pages describe only visiting the Front Office to enquire and to collect a form. -->
 <section class="page-section" aria-labelledby="visit-intro">
   <div class="band">
-    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Before you come</span><span class="sheet-rule__purpose">What happens next</span></div>
-    <div class="layout">
-      <div class="layout__main">
-        <h2 id="visit-intro" class="section-title">Seeing the school helps you decide.</h2>
-        <div class="prose" data-reveal>
-          <p>The school takes enquiries and hands out admission forms at its Front Office. Before you come, call the admissions line for your child's section, {{hours:between}}, and ask whether you can also see the building and the section your child would join.</p>
-        </div>
-        <ol class="process mt-m" data-reveal-group>
-          <li class="process__step"><span class="process__n">01</span><div class="process__body"><h3>Choose your child's class.</h3><p>The form below shows the admissions line for that class.</p></div></li>
-          <li class="process__step"><span class="process__n">02</span><div class="process__body"><h3>Call to arrange it.</h3><p>The form does not send your request. The school has not published visit days or times, so the call is how you find out.</p></div></li>
-          <li class="process__step"><span class="process__n">03</span><div class="process__body"><h3>Come to the school.</h3><p>The school is at {{address}}. {{map}}</p></div></li>
-        </ol>
-      </div>
-      <div class="layout__aside">
-        <figure class="plate" data-reveal>
-          <div class="plate__frame">{{img src="img/admissions-entrance" alt="The street frontage: a board-marked concrete wall hung with creepers, the school crest and the name PLAYPEN above the entrance." sizes="(min-width: 1024px) 24vw, 100vw" widths="720,960"}}</div>
-          <figcaption class="plate__cap"><span class="plate__n">01</span>The street frontage, 2024</figcaption>
-        </figure>
-      </div>
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Before you come</span><span class="sheet-rule__purpose">What the school has described</span></div>
+    <div class="adm-head">
+      <h2 id="visit-intro" class="section-title" data-reveal>A visit starts with a call.</h2>
+      <p class="lead" data-reveal>The school takes enquiries and hands out admission forms at its Front Office. Three steps get you there with the right questions.</p>
+    </div>
+    <ol class="steps adm-steps--3" data-reveal-group>
+      <li class="step"><span class="step__n display-m" aria-hidden="true">01</span><h3>Choose your child's class.</h3><p>Each section has its own admissions line. The form below shows the line for the class you choose, and remembers it on the other admissions pages.</p></li>
+      <li class="step"><span class="step__n display-m" aria-hidden="true">02</span><h3>Call, or send the form.</h3><p>The office calls back to confirm a day. The school has not published visit days, so no day is promised here.</p></li>
+      <li class="step"><span class="step__n display-m" aria-hidden="true">03</span><h3>Come to the Front Office.</h3><p>{{address}}. {{map}}</p></li>
+    </ol>
+    <div class="venue mt-l" data-reveal>
+      <p class="label">When the office calls</p>
+      <p class="venue__text">Ask whether you can see the building and the section your child would join, and how long to allow. Bring your questions: <a href="#visit-ask">there is a list below</a>.</p>
     </div>
   </div>
 </section>
 
-<section class="page-section" aria-labelledby="visit-form-title">
+<!-- 02. The job of the page. Fewer fields than before (one timing question, not three); the call sheet comes first in the DOM, so a
+     parent on a phone who prefers to call does not scroll past the form (critique X18: DOM order, grid rows on a desktop). -->
+<section class="page-section" aria-labelledby="visit-form-title" id="visit-form">
   <div class="band">
-    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Book a visit</span><span class="sheet-rule__purpose">Five short questions</span></div>
-    <div class="layout">
-      <div class="layout__main">
-        <h2 id="visit-form-title" class="section-title">Who is coming?</h2>
-        <p class="form-note mt-m">This form is a prototype. It checks what you type, then shows the school's numbers. Nothing is sent, so please call the line it shows to book the day.</p>
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Book a visit</span><span class="sheet-rule__purpose">A short form, one tick required</span></div>
+    <div class="adm-head adm-head--tight">
+      <h2 id="visit-form-title" class="section-title" data-reveal>Tell the office who to expect.</h2>
+    </div>
+    <div class="adm-form-layout">
+      <div class="adm-form-layout__side">
+        <div class="adm-call" id="call" data-reveal>
+          <p class="label">Prefer to call?</p>
+          <ul class="call-lines">
+            <li class="call-line" data-line="pg-1"><span class="call-line__who">Playgroup to Class I</span>{{phone:pg-1 class="call-line__tel"}}</li>
+            <li class="call-line" data-line="ii-vi"><span class="call-line__who">Classes II to VI</span>{{phone:ii-vi class="call-line__tel"}}</li>
+            <li class="call-line" data-line="vii-xii"><span class="call-line__who">Classes VII to XII</span>{{phone:vii-xii class="call-line__tel"}}</li>
+          </ul>
+          <p class="call-lines__hours">Lines are open {{hours}}. The class you choose in the form lights its line.</p>
+        </div>
+      </div>
+      <div class="adm-form-layout__main">
+        <!-- CONFIRM: who receives visit requests from this form, and whether the office calls back to confirm the day. In this sample the form sends to a demo School Desk on the designer's computer (website portal, 2026-10-23); if the Desk cannot be reached, the form shows the school's numbers as before. -->
+        <p class="form-note" id="visit-fields" tabindex="-1">This form sends your request to the admissions office's Desk and gives you a code. In this sample it goes to a demo Desk on this computer, not to the school, so please also call the line it shows to book the day.</p>
+        <!-- Review r2: one column of fields (the two-column first row left the underlines misaligned beside a two-line hint). -->
         <form class="page-form" data-prototype-form novalidate action="#" method="post">
-          <div class="form-row form-row--2">
-            <div class="field"><label for="v-name">Parent's name</label><input id="v-name" name="name" type="text" autocomplete="name" required aria-describedby="v-name-err"><p id="v-name-err" class="field__error" aria-live="polite"></p></div>
-            <div class="field"><label for="v-phone">Phone</label><input id="v-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required aria-describedby="v-phone-err"><p id="v-phone-err" class="field__error" aria-live="polite"></p></div>
-          </div>
+          <div class="field"><label for="v-name">Parent's name</label><input id="v-name" name="name" type="text" autocomplete="name" required aria-describedby="v-name-err"><p id="v-name-err" class="field__error" aria-live="polite"></p></div>
+          <div class="field"><label for="v-phone">Phone</label><p id="v-phone-hint" class="field__hint">Leave a number you answer; the office replies by telephone.</p><input id="v-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required aria-describedby="v-phone-hint v-phone-err"><p id="v-phone-err" class="field__error" aria-live="polite"></p></div>
           <div class="field"><label for="v-email">Email (optional)</label><input id="v-email" name="email" type="email" autocomplete="email" aria-describedby="v-email-err"><p id="v-email-err" class="field__error" aria-live="polite"></p></div>
+          <div class="field"><label for="v-child">Child's first name</label><p id="v-child-hint" class="field__hint">First name only</p><input id="v-child" name="child" type="text" autocomplete="off" maxlength="40" required aria-describedby="v-child-hint v-child-err"><p id="v-child-err" class="field__error" aria-live="polite"></p></div>
           <div class="field">
             <label for="v-class">Child's class of entry</label>
             <select id="v-class" name="class" required data-route="v-route" aria-describedby="v-class-err v-route">
@@ -72,46 +113,100 @@ standfirst: Visit the Front Office to ask your questions or collect a form. Choo
             <p class="route-hint__line" data-line="ii-vi" hidden>For Classes II to VI, the line is {{phone:ii-vi}}.</p>
             <p class="route-hint__line" data-line="vii-xii" hidden>For Classes VII to XII, the line is {{phone:vii-xii}}.</p>
           </div>
-          <div class="field">
-            <label for="v-when">When would you like to come? (optional)</label>
-            <select id="v-when" name="when">
-              <option value="">No preference</option>
-              <option>As soon as possible</option>
-              <option>In the next two weeks</option>
-              <option>In the next month</option>
-              <option>Later: I am planning ahead</option>
-            </select>
-          </div>
+          <!-- One timing question, in words, not a date: the school has published no visit days (F2, critique 3.8). -->
+          <div class="field"><label for="v-when">A time that suits you (optional)</label><p id="v-when-hint" class="field__hint">The days or the part of the morning that suit you, in your own words. The admissions office is open {{hours}}; it calls you to confirm the day.</p><input id="v-when" name="when" type="text" maxlength="120" autocomplete="off" aria-describedby="v-when-hint"></div>
+          <fieldset class="field-group page-form__consent">
+            <legend>The school may also reach me on (optional)</legend>
+            <div class="page-form__checks">
+              <label class="choice"><input type="checkbox" name="consent" value="whatsapp"> WhatsApp</label>
+              <label class="choice"><input type="checkbox" name="consent" value="sms"> SMS</label>
+              <label class="choice"><input type="checkbox" name="consent" value="email"> Email</label>
+            </div>
+          </fieldset>
+          <!-- Review 2026-10-23 (safeguard-2, -3): the sender confirms they are the parent or guardian; earlier visits are joined to the form only with the second tick (shown only while visits are counted). -->
+          <div class="field page-form__guardian"><label class="choice"><input id="v-guardian" name="guardian" type="checkbox" required aria-describedby="v-guardian-err"> <span>I am the child's parent or guardian</span></label><p id="v-guardian-err" class="field__error" aria-live="polite"></p></div>
+          <div id="v-join-row" class="field page-form__join" data-portal-only hidden><label class="choice"><input id="v-join" name="join" type="checkbox"> <span>Join my earlier visits on this site to this visit request, so the office can see which pages I read (optional)</span></label></div>
+          <p class="field__hint page-form__privacy">The school uses these details only to answer you. <a class="link" href="{{link:/privacy/#c-forms}}">Privacy</a></p>
           <button class="btn btn--primary" type="submit"><span class="btn__label">Book a visit</span></button>
         </form>
         <div class="form-notice" role="status"><p class="form-notice__text">Nothing was sent: this form is a prototype. To book your visit, call the line for your child's section, {{hours:between}}.</p>{{phones}}</div>
         <noscript><div class="form-note"><p>This form needs JavaScript. Please call the line for your child's section:</p>{{phones}}</div></noscript>
       </div>
-      <div class="layout__aside layout__aside--sticky">
-        <!-- CONFIRM: what a visit includes. The school's own pages describe only visiting the Front Office to enquire and to collect a form; they say nothing about a tour of the building or of a section, and nav.json's description of this page offers one. The page therefore tells families to ask when they call. The school must say whether it welcomes such visits, on which days and times, who meets the family, how long it takes and who receives bookings. -->
-        <div class="callout" data-reveal>
-          <span class="callout__label label">What to expect</span>
-          <p>The school has not said what a visit includes. When you call, ask whether you can see the building and the section your child would join, and bring your questions.</p>
-        </div>
-        <div>
-          <p class="label">Prefer to call?</p>
-          {{phones}}
+      <!-- Review r1 (2026-10-24): "After you press send" sits after the form in the DOM, where the act of sending is. Review r2: on a
+           desktop it takes the foot of the right-hand column (grid row 2, aligned to the end), so the section closes level with the form.
+           CONFIRM (A5): who receives visit requests and how soon the office calls back. No reply time is promised. -->
+      <div class="adm-form-layout__after adm-after-wrap" data-reveal>
+        <p class="label">After you press send</p>
+        <ol class="adm-after">
+          <li>You get a code to quote when you call.</li>
+          <li>In this sample the request reaches a demo Desk on this computer, not the school.</li>
+          <li>The office calls you to confirm the day. If it is urgent, call the line yourself.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03. A tool that needs no school fact and makes the visit useful: our list of questions, printable. -->
+<!-- CONFIRM: the school is happy for this list of questions to be published as the site's own list. -->
+<section class="page-section" aria-labelledby="visit-ask-title">
+  <div class="band">
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Your list</span><span class="sheet-rule__purpose">Print it, tick it</span></div>
+    <div class="adm-head">
+      <h2 id="visit-ask-title" class="section-title" data-reveal>Things worth asking.</h2>
+      <p class="lead" data-reveal>Nine questions a family usually wants answered. The list is ours; the answers come from the admissions office.</p>
+    </div>
+    <div class="adm-row adm-row--centre">
+      <div class="adm-row__main">
+        <div class="adm-panel adm-panel--gold" id="visit-ask" data-reveal>
+          <p class="print-only">The Playpen School, Dhaka: questions to ask when you call or visit.</p>
+          <div class="adm-panel__head"><h3 class="adm-panel__title">Questions to ask when you call or visit</h3><p class="label">Nine questions</p></div>
+          <ul class="adm-check adm-check--cols" data-adm-store="visit">
+            <li class="adm-check__item"><input id="va-1" type="checkbox" value="space"><label for="va-1">Is there space in my child's class this year?</label></li>
+            <li class="adm-check__item"><input id="va-2" type="checkbox" value="test"><label for="va-2">What is the assessment or test like, and when is it held?</label></li>
+            <li class="adm-check__item"><input id="va-3" type="checkbox" value="age"><label for="va-3">What age should a child be for this class?</label></li>
+            <li class="adm-check__item"><input id="va-4" type="checkbox" value="size"><label for="va-4">How many children are in a class?</label></li>
+            <li class="adm-check__item"><input id="va-5" type="checkbox" value="day"><label for="va-5">What is the school day for this section?</label></li>
+            <li class="adm-check__item"><input id="va-6" type="checkbox" value="bus"><label for="va-6">Does the school bus serve our area?</label></li>
+            <li class="adm-check__item"><input id="va-7" type="checkbox" value="uniform"><label for="va-7">Uniform and books: where and when do we get them?</label></li>
+            <li class="adm-check__item"><input id="va-8" type="checkbox" value="fees"><label for="va-8">What are the admission fee and the monthly tuition, and what do they cover?</label></li>
+            <li class="adm-check__item"><input id="va-9" type="checkbox" value="who"><label for="va-9">Who do we call once we have joined?</label></li>
+          </ul>
+          <div class="adm-panel__foot" data-print-skip>
+            <p class="small-print">Ticks stay on this device only. The list is complete without them.</p>
+            <button class="btn btn--secondary" type="button" data-print-list="#visit-ask"><span class="btn__label">Print this list</span></button>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- 04. Getting to the right gate without a third-party map script. The entrance frame is not repeated here: the hero already shows
+     what you look for from the road. -->
+<!-- CONFIRM: the gate to use, parking and landmarks for visitors are not published; only the school's rule for drivers is stated. -->
 <section class="page-section" aria-labelledby="visit-find">
   <div class="band">
-    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Finding the school</span><span class="sheet-rule__purpose">Address and arrival</span></div>
-    <h2 id="visit-find" class="section-title">Bashundhara R/A, Dhaka.</h2>
-    <!-- CONFIRM: parking and arrival times for visitors are not published; only the school's traffic rule for drivers is stated. -->
-    <dl class="dl mt-m" data-reveal>
-      <div class="dl__row"><dt>Address</dt><dd>{{address}}. {{map}}</dd></div>
-      <div class="dl__row"><dt>Admissions lines</dt><dd>Open {{hours}}. One line for each section.</dd></div>
-      <div class="dl__row"><dt>Arriving by car</dt><dd>The school asks drivers to follow its traffic rules, to avoid the horn and to slow down near the premises.</dd></div>
-    </dl>
-    <p class="small-print mt-m">Not ready to visit? <a href="{{link:/admissions/enquire/}}">Ask a question</a>, read the <a href="{{link:/admissions/faq/}}">admissions FAQ</a> or see <a href="{{link:/admissions/how-to-apply/}}">how to apply</a>.</p>
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Finding the school</span><span class="sheet-rule__purpose">Address, map, arrival</span></div>
+    <div class="adm-head">
+      <h2 id="visit-find" class="section-title" data-reveal>Bashundhara R/A, Dhaka.</h2>
+    </div>
+    <!-- Review r2: the arrival card is centred on ten columns and the three routes close the sheet in its foot (no three-link stub beside a half-band). -->
+    <div class="adm-row adm-row--centre">
+      <div class="adm-row__main">
+        <div class="adm-panel" data-reveal>
+          <div class="adm-panel__head"><h3 class="adm-panel__title">How to find the gate</h3><p class="label">Arrival</p></div>
+          <dl class="entry__facts">
+            <div><dt>Address</dt><dd>{{address}}. {{map}}</dd></div>
+            <div><dt>What to look for</dt><dd>The crest and the name PLAYPEN cast in the concrete wall above the entrance, as in the photograph at the top of this page.</dd></div>
+            <div><dt>Arriving by car</dt><dd>The school asks drivers to follow its traffic rules, to avoid the horn and to slow down near the premises.</dd></div>
+          </dl>
+        </div>
+      </div>
+    </div>
+    <div class="adm-foot adm-foot--links" data-reveal>
+      <p class="adm-foot__text">Not ready to visit? Ask a question, read the answers already published, or see how the application runs.</p>
+      <p class="adm-foot__action"><a class="link link--arrow" href="{{link:/admissions/enquire/}}">Ask a question</a><a class="link link--arrow" href="{{link:/admissions/faq/}}">Admissions FAQ</a><a class="link link--arrow" href="{{link:/admissions/how-to-apply/}}">How to apply</a></p>
+    </div>
   </div>
 </section>

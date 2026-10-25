@@ -1,0 +1,138 @@
+---
+title: Community
+template: T02
+h1: The school's <em>families</em>.
+standfirst: For current parents and former students, and the news, events, notices and photographs of the school year.
+hero_image: img/learning-atrium
+hero_alt: The shaded atrium inside the school: a tree growing through a brick planter under the concrete slab, and brick steps, with no one in it.
+hero_caption: The atrium, the frame behind the menu's Community picture
+hero_n: 01
+body_class: sm-hub
+---
+<!-- Integrator, 2026-10-25: the Community hub (founder decision 2026-10-24 in plans/sitemap-ia.md and plans/community-contact.md: the label stays "Community", the group gets a front door at /community/, no slug changes). It opens on the atrium (img/learning-atrium, catalogued "none", the 21:9 crop of the frame behind the menu's Community preview media/menu-2, unused on any other page), so the picture a parent clicked in the menu is the picture the page opens on. The six cards copy the nav.json summaries of the six pages by hand (there is no photo variant of the children token yet); when a summary in nav.json changes, change the card here too. Styles: build/additions/sitemap.css (sm-hub-). -->
+<!-- Final review 2026-10-25: card 01 shows the Parents page's Book Fair sign (the terrace read as a repeat of the atrium hero), and card 03 the whole hall with the stage and lectern (img/campus-hall-stage) instead of the screen-filling spacecraft. -->
+<section class="page-section" aria-labelledby="cm-pages">
+  <div class="band">
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no:sheet}}</span><span class="sheet-rule__title">The six pages</span><span class="sheet-rule__purpose">Each card opens its page</span></div>
+    <div class="sm-head">
+      <h2 id="cm-pages" class="display-l">Parents, alumni and the school <em>year</em>.</h2>
+      <p class="lead" data-reveal>Two pages for the people who belong to the school, then the four that record its year: what happened, what is coming, what the school has announced, and the photographs.</p>
+    </div>
+    <ul class="ev-grid sm-hub-cards" data-reveal-group>
+      <li class="ev">
+        <a class="ev__card" href="{{link:/community/parents/}}">
+          <span class="ev__media"><span class="plate__frame">{{img src="img/parents-bookfair-sign" alt="A hand-painted Book Fair sign: the two words in green on pink, with open books, a caterpillar, a star and paper flowers." sizes="(min-width: 1024px) 32vw, (min-width: 640px) 45vw, 82vw" widths="960,1440"}}</span></span>
+          <span class="ev__n label" aria-hidden="true">01</span>
+          <span class="ev__name">For parents</span>
+          <span class="ev__text">The portal, fee payment, notices and the contact line for each section.</span>
+          <span class="ev__more" aria-hidden="true">For current families</span>
+        </a>
+      </li>
+      <li class="ev">
+        <a class="ev__card" href="{{link:/community/alumni/}}">
+          <span class="ev__media"><span class="plate__frame">{{img src="img/alumni-grad23-stage" alt="The stage before the Graduation Ceremony 2023: a lit blue backdrop with the school crest and the ceremony's name, a table for the guests, and the empty red stage." sizes="(min-width: 1024px) 32vw, (min-width: 640px) 45vw, 82vw" widths="960,1440"}}</span></span>
+          <span class="ev__n label" aria-hidden="true">02</span>
+          <span class="ev__name">Alumni</span>
+          <span class="ev__text">The Playpen Alumni Association, the graduation albums by year, and how to stay in touch.</span>
+          <span class="ev__more" aria-hidden="true">For former students</span>
+        </a>
+      </li>
+      <li class="ev">
+        <a class="ev__card" href="{{link:/news/}}">
+          <span class="ev__media"><span class="plate__frame">{{img src="img/campus-hall-stage" alt="The multipurpose hall during the NASA astronaut&rsquo;s visit: the stage, the lectern and the big screen, with rows of students seen from behind." sizes="(min-width: 1024px) 32vw, (min-width: 640px) 45vw, 82vw" widths="960,1440"}}</span></span>
+          <span class="ev__n label" aria-hidden="true">03</span>
+          <span class="ev__name">News and achievements</span>
+          <span class="ev__text">Reports from the school year and competition results.</span>
+          <span class="ev__more" aria-hidden="true">Read the news</span>
+        </a>
+      </li>
+      <li class="ev">
+        <a class="ev__card" href="{{link:/events/}}">
+          <span class="ev__media"><span class="plate__frame">{{img src="img/events-stage-cover" alt="The stage before the Annual Cultural Programme 2024, with microphones, speakers and plants in front of a backdrop of autumn trees and the Playpen crest, and no one on it." sizes="(min-width: 1024px) 32vw, (min-width: 640px) 45vw, 82vw" widths="960,1440"}}</span></span>
+          <span class="ev__n label" aria-hidden="true">04</span>
+          <span class="ev__name">Events</span>
+          <span class="ev__text">Fifteen events in the school year, the two semesters, and where families find the dates.</span>
+          <span class="ev__more" aria-hidden="true">See the events</span>
+        </a>
+      </li>
+      <li class="ev">
+        <a class="ev__card" href="{{link:/notices/}}">
+          <span class="ev__media"><span class="plate__frame">{{img src="img/community-parents-hero" alt="The street front of the school: a board-marked concrete wall with hanging creepers, the crest and the Playpen sign, and trees on the right." sizes="(min-width: 1024px) 32vw, (min-width: 640px) 45vw, 82vw" widths="960,1440"}}</span></span>
+          <span class="ev__n label" aria-hidden="true">05</span>
+          <span class="ev__name">Notices</span>
+          <span class="ev__text">Current notices from the school, newest first.</span>
+          <span class="ev__more" aria-hidden="true">Read the notices</span>
+        </a>
+      </li>
+      <li class="ev">
+        <a class="ev__card" href="{{link:/gallery/}}">
+          <span class="ev__media"><span class="plate__frame">{{img src="img/gallery-formation" alt="Students in red forming large letters on the white-lined field at Annual Sports Day 2026, seen from high above." sizes="(min-width: 1024px) 32vw, (min-width: 640px) 45vw, 82vw" widths="960,1440"}}</span></span>
+          <span class="ev__n label" aria-hidden="true">06</span>
+          <span class="ev__name">Gallery</span>
+          <span class="ev__text">The school's albums, in frames where no child can be recognised, and the building.</span>
+          <span class="ev__more" aria-hidden="true">See the albums</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="page-section page-section--tint" aria-labelledby="cm-family">
+  <div class="band">
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no:sheet}}</span><span class="sheet-rule__title">Already a Playpen family?</span><span class="sheet-rule__purpose">The links current parents use most</span></div>
+    <div class="sm-hub-two">
+      <div>
+        <h2 id="cm-family" class="display-l">The everyday <em>links</em>.</h2>
+        <p class="lead" data-reveal>The portal and fee payment open the school's own services in a new tab; the rest are pages of this website.</p>
+      </div>
+      <div class="sm-panel" data-reveal>
+        <h3 class="sm-panel__title">For current parents</h3>
+        <ul class="link-list">
+          <li>{{ext:portal}}</li>
+          <li>{{ext:pay}}</li>
+          <li><a class="link" href="{{link:/notices/}}">Notices</a></li>
+          <li><a class="link" href="{{link:/community/parents/}}">For parents</a></li>
+          <li><a class="link" href="{{link:/school-life/school-day/}}">The school day</a></li>
+          <li><a class="link" href="{{link:/school-life/transport-and-safety/}}">Transport and safety</a></li>
+        </ul>
+        <p class="sm-panel__note caption">For anything else, call the line for your child's section, {{hours:between}}.</p>
+        {{phones}}
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="page-section" aria-labelledby="wn-title">
+  <div class="band where-next">
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no:sheet}}</span><span class="sheet-rule__title">Routes</span><span class="sheet-rule__purpose">By who you are</span></div>
+    <h2 id="wn-title" class="where-next__title">Where next?</h2>
+    <div class="where-next__grid where-next--3">
+      <div class="where-next__col">
+        <h3>New families</h3>
+        <ul>
+          <li><a class="link" href="{{link:/admissions/visit/}}">Book a visit</a></li>
+          <li><a class="link" href="{{link:/admissions/}}">Admissions</a></li>
+          <li><a class="link" href="{{link:/school-life/}}">School life</a></li>
+        </ul>
+      </div>
+      <div class="where-next__col">
+        <h3>Former students</h3>
+        <ul>
+          <li><a class="link" href="{{link:/community/alumni/}}">Alumni</a></li>
+          <li><a class="link" href="{{link:/about/history/}}">History</a></li>
+          <li><a class="link" href="{{link:/about/careers/}}">Careers at Playpen</a></li>
+        </ul>
+      </div>
+      <div class="where-next__col">
+        <h3>Every page</h3>
+        <ul>
+          <li><a class="link" href="{{link:/sitemap/}}">The sitemap</a></li>
+          <li><a class="link" href="{{link:/search/}}">Search the website</a></li>
+          <li><a class="link" href="{{link:/contact/}}">Contact the school</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+{{cta}}

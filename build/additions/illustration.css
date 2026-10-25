@@ -1,0 +1,24 @@
+/* ---- the Illustration tag (AI plates round, 2026-10-25): the paper label of the Campus pool plate (.abt-plate__tag),
+   shared so every page that carries one of the four people-free AI plates labels it the same way. It sits top left on
+   the picture itself, inside any positioned frame (.plate__frame, .ev-card__frame), so a parent skimming the page never
+   takes the render for the school. The alt and the caption line say the same, so the tag is aria-hidden. ------------- */
+.ill-tag {
+  position: absolute;
+  top: 12px; left: 12px;
+  z-index: 1;
+  padding: 6px 10px 5px;
+  background: var(--paper);
+  color: var(--ink);
+  border: 1px solid var(--clay);
+  font: 500 11.5px / 1.2 var(--font-sans);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+.ev-card__frame .ill-tag { top: 20px; left: 20px; }
+/* the visible line under a plate that carries the tag: a figcaption with this class (not .plate__cap, which the build
+   removes from inner pages), so the words "Illustration, not a photograph of the school" stay on the page */
+.ill-note { margin-top: 10px; max-width: 46ch; }
+@media print {
+  .ill-tag { position: static; display: inline-block; margin-bottom: 6px; }
+}

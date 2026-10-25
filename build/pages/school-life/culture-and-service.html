@@ -3,12 +3,13 @@ title: Culture and service
 template: T03
 h1: Festival in the courtyard, and <em>service</em> beyond the gate.
 standfirst: The Cultural Programme, Pohela Boishakh in the courtyard, the days the school marks, and the community service its students do each year.
-hero_image: img/sl-boishakh-hero
-hero_alt: A crowd in red and white on the courtyard on Pohela Boishakh, seen from above, with coloured bunting strung across the field.
+hero_image: img/sl-boishakh-courtyard
+hero_alt: Pohela Boishakh in the courtyard, seen from above: red stalls and bunting on the grass, and a crowd in red and white at the foot of the brick wings.
 hero_caption: Pohela Boishakh in the courtyard, April 2025
 hero_n: 01
 ---
-<section class="page-section is-night" aria-labelledby="cs-words">
+<!-- CONFIRM (build note, review round 3, 2026-10-24), hero: the plate is now img/sl-boishakh-courtyard, a 21:9 cut higher up the same April 2025 frame (the stalls, the bunting and the crowd small at the foot of the brick wings; the near rows, where adults' faces were readable at 100% of img/sl-boishakh-hero, are out of the frame). 100% check of the 1440 file: the nearest figures are about 50 px tall, seen from above and behind; no face is readable. Catalogued "crowd"; still listed under A3 for the school's consent review. img/sl-boishakh-hero stays on /events/pohela-boishakh/ (not this group's page). -->
+<section class="page-section is-night sl-page" aria-labelledby="cs-words">
   <div class="band">
     <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">In the school's own words</span><span class="sheet-rule__purpose">From the mission statement</span></div>
     <h2 id="cs-words" class="visually-hidden">What the mission statement says about history and culture</h2>
@@ -26,7 +27,7 @@ hero_n: 01
     <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">The year in four chapters</span><span class="sheet-rule__purpose">Culture first, then service</span></div>
     <h2 id="cs-story" class="visually-hidden">Culture and service in four chapters</h2>
     <div class="story">
-      <nav class="chapter-nav" aria-label="Chapters on this page">
+      <nav class="chapter-nav sl-chapnav" aria-label="Chapters on this page">
         <ol>
           <li><a href="#c-programme">The Cultural Programme</a></li>
           <li><a href="#c-boishakh">Pohela Boishakh</a></li>
@@ -37,27 +38,38 @@ hero_n: 01
 
       <div class="story__chapters">
         <section class="story-chapter" id="c-programme" aria-labelledby="c-programme-h">
-          <h2 id="c-programme-h" class="section-title">The Cultural Programme.</h2>
-          <div class="split mt-m">
+          <div class="sl-head">
+            <h2 id="c-programme-h" class="display-l">The Cultural Programme.</h2>
+            <p class="lead" data-reveal>The school's largest performance event, staged in the multipurpose hall. The year's music, dance and drama build towards it.</p>
+          </div>
+          <div class="split">
             <div class="split__text">
               <div class="prose" data-reveal>
-                <p>The Annual Cultural Programme is the school's largest performance event. It is staged in the multipurpose hall, and the year's music, dance and drama build towards it.</p>
-                <p>The programme sits beside the school's other activities: <a href="{{link:/school-life/clubs-and-activities/}}">Music, Dance and Drama run as regular activities</a>, and a group dance team from the school took first position at the 13th Bangla Olympiad in February 2024.</p>
+                <p>Music, Dance and Drama <a href="{{link:/school-life/clubs-and-activities/}}">run as regular activities</a> through the year, and the programme is where they come together. The 2023 programme was the Elementary and Junior Section's; the 2024 programme has an album of its own.</p>
+                <p>In February 2024 a group dance team from the school took first position at the 13th Bangla Olympiad.</p>
                 <!-- CONFIRM: what the Cultural Programme contains, its running order and its date for 2026 to 2027; the school has supplied only that it is the largest performance event, staged in the multipurpose hall. -->
                 <p>The date of the next programme is announced as a <a href="{{link:/notices/}}">notice</a>.</p>
               </div>
+              <p class="label mt-m">Albums and the event page</p>
+              <ul class="link-list" data-reveal>
+                <li><a class="link link--arrow" href="{{link:/gallery/cultural-programme-2024/}}">Annual Cultural Programme 2024</a></li>
+                <li><a class="link link--arrow" href="{{link:/gallery/cultural-programme-2023/}}">Annual Cultural Programme 2023</a></li>
+                <li><a class="link link--arrow" href="{{link:/events/annual-cultural-programme/}}">The Cultural Programme: the event page</a></li>
+              </ul>
             </div>
-            <figure class="plate plate--4x5 split__figure" data-reveal>
-              <div class="plate__frame">{{img src="media/life-4" alt="Dancers on stage at the annual cultural programme, with an English banner behind them." sizes="(min-width: 1024px) 24vw, (min-width: 900px) 34vw, 100vw"}}</div>
-              <figcaption class="plate__cap"><span class="plate__n">02</span>Dancers at the Annual Cultural Programme, 2024</figcaption>
+            <figure class="plate sl-plate--3x4 split__figure" data-reveal>
+              <div class="plate__frame">{{img src="img/gal-acp24-welcome" alt="A hand-painted board welcoming guests to the Annual Cultural Programme, beside stacked blocks that spell 2024, at the doors of the hall." sizes="(min-width: 1024px) 34vw, (min-width: 900px) 40vw, 100vw" widths="960,1200"}}</div>
+              <figcaption class="plate__cap"><span class="plate__n">02</span>At the doors of the hall, Annual Cultural Programme 2024</figcaption>
             </figure>
           </div>
         </section>
 
         <section class="story-chapter" id="c-boishakh" aria-labelledby="c-boishakh-h">
-          <h2 id="c-boishakh-h" class="section-title">Pohela Boishakh.</h2>
-          <div class="prose mt-m" data-reveal>
-            <p>Pohela Boishakh is the Bengali new year, celebrated across the school and centred on the courtyard.</p>
+          <div class="sl-head">
+            <h2 id="c-boishakh-h" class="display-l">Pohela Boishakh.</h2>
+            <p class="lead" data-reveal>The Bengali new year, 14 April, celebrated across the school and centred on the courtyard.</p>
+          </div>
+          <div class="prose" data-reveal>
             <p>In April 2025 an alpona, a pattern painted on the ground, covered the courtyard floor. There were stalls with clay pots and crafts, dance for the new year, and the school came in red and white. A paper tiger mask and a red elephant, mounted on a board, were on show.</p>
             <!-- CONFIRM: who made the tiger mask board and where it was on show; the school's album (Pohela Boishakh 1432) gives no caption. -->
           </div>
@@ -70,53 +82,93 @@ hero_n: 01
             </li>
             <li>
               <figure class="plate plate--4x3" data-reveal>
-                <div class="plate__frame">{{img src="media/menu-4" alt="Families in red and white under coloured bunting in the courtyard, the brick building above." sizes="(min-width: 1024px) 24vw, (min-width: 640px) 45vw, 100vw" widths="960"}}</div>
-                <figcaption class="plate__cap"><span class="plate__n">04</span>Families under bunting in the courtyard, April 2025</figcaption>
-              </figure>
-            </li>
-            <li>
-              <figure class="plate plate--4x3" data-reveal>
-                <div class="plate__frame">{{img src="media/news-2" alt="Clay pots and traditional crafts on a stall." sizes="(min-width: 1024px) 24vw, (min-width: 640px) 45vw, 100vw" widths="960"}}</div>
-                <figcaption class="plate__cap"><span class="plate__n">05</span>Clay pots on a stall, April 2025</figcaption>
+                <div class="plate__frame">{{img src="img/gal-boishakh-card" alt="The school's Pohela Boishakh greeting: Bangla lettering among kites, masks, a hand fan and pots of sweets, under the Playpen crest." sizes="(min-width: 1024px) 24vw, (min-width: 640px) 45vw, 100vw" widths="960"}}</div>
+                <figcaption class="plate__cap"><span class="plate__n">04</span>The school's new year greeting, 1432</figcaption>
               </figure>
             </li>
           </ul>
+          <!-- Final review 2026-10-25: the pots plate is off the page (soft, 806 px wide at most, the pots cut at the right; a wider cut would show the children standing behind the stall), so the tiger mask and the greeting card stand as a pair. Earlier note: (build note, review round 3, 2026-10-24): the pots plate was img/sl-boishakh-pots, a 16:9 cut from the media/news-2 source centred on the pots (the empty table that filled half the 4:3 plate is out, the tall vase is whole), graded with the home's grade; media/news-2 stays on /gallery/. -->
+          <div class="sl-foot" data-reveal>
+            <p class="sl-foot__text">The album from April 2025 has the day in full.</p>
+            <p class="sl-foot__action"><a class="link link--arrow" href="{{link:/gallery/pohela-boishakh-1432/}}">The album</a><a class="link link--arrow" href="{{link:/events/pohela-boishakh/}}">The event page</a></p>
+            <p class="sl-foot__source caption">Source: the school's album Pohela Boishakh 1432 and the home page.</p>
+          </div>
         </section>
 
         <section class="story-chapter" id="c-days" aria-labelledby="c-days-h">
-          <h2 id="c-days-h" class="section-title">The days the school marks.</h2>
-          <dl class="dl mt-m" data-reveal>
-            <div class="dl__row"><dt>International Mother Language Day</dt><dd>Marked every 21 February.</dd></div>
-            <div class="dl__row"><dt>Independence Day</dt><dd>The national day, marked with a school function.</dd></div>
-            <div class="dl__row"><dt>Victory Day</dt><dd>Commemorated every 16 December.</dd></div>
-            <div class="dl__row"><dt>Pohela Boishakh</dt><dd>The Bengali new year, celebrated across the school.</dd></div>
-            <div class="dl__row"><dt>Annual Milad</dt><dd>Held each year as part of the school's calendar.</dd></div>
-          </dl>
-          <p class="small-print mt-m">The other fixtures of the year are set out on <a href="{{link:/school-life/}}">School life</a>.</p>
+          <div class="sl-head">
+            <h2 id="c-days-h" class="display-l">The days the school marks.</h2>
+            <p class="lead" data-reveal>Four days in the national calendar (three national days and the Bengali new year), in calendar order, and the Annual Milad. Each has its own page.</p>
+          </div>
+          <!-- CONFIRM: 21 February and 16 December are stated by the school; 26 March (Independence Day) and 14 April (Pohela Boishakh) are the national dates of days the school says it marks. People-free photographs of Independence Day and Victory Day are awaited. -->
+          <!-- CONFIRM (build note, review round 3, 2026-10-24): the rail's date column is 13rem at least from 768 px and the dates do not wrap, so "16 December" sits on one line; the tick has 36 px of room before the words. -->
+          <div class="sl-days">
+            <ol class="timeline" data-reveal-group>
+              <li class="timeline__item">
+                <time class="timeline__date timeline__date--sm" datetime="--02-21">21 February</time>
+                <div class="timeline__body"><h3 class="timeline__title"><a href="{{link:/events/shaheed-dibosh/}}">Shaheed Dibosh and International Mother Language Day</a></h3><p>Flowers are laid at a Shaheed Minar on the school field. <a href="{{link:/gallery/ekushe-february/}}">The Ekushe February album</a></p></div>
+              </li>
+              <li class="timeline__item">
+                <time class="timeline__date timeline__date--sm" datetime="--03-26">26 March</time>
+                <div class="timeline__body"><h3 class="timeline__title"><a href="{{link:/events/independence-day/}}">Independence Day</a></h3><p>The national day, marked with a school function and an art competition. <a href="{{link:/gallery/independence-day-art-competition/}}">The art competition album</a></p></div>
+              </li>
+              <li class="timeline__item">
+                <time class="timeline__date timeline__date--sm" datetime="--04-14">14 April</time>
+                <div class="timeline__body"><h3 class="timeline__title"><a href="{{link:/events/pohela-boishakh/}}">Pohela Boishakh</a></h3><p>The Bengali new year, in the courtyard: the chapter above.</p></div>
+              </li>
+              <li class="timeline__item">
+                <time class="timeline__date timeline__date--sm" datetime="--12-16">16 December</time>
+                <div class="timeline__body"><h3 class="timeline__title"><a href="{{link:/events/victory-day/}}">Victory Day</a></h3><p>Commemorated every year.</p></div>
+              </li>
+              <li class="timeline__item">
+                <span class="timeline__date timeline__date--sm">Each year</span>
+                <div class="timeline__body"><h3 class="timeline__title"><a href="{{link:/events/annual-milad/}}">The Annual Milad</a></h3><p>A gathering for prayer and recitation, part of the school's calendar. Its date comes from the school.</p></div>
+              </li>
+            </ol>
+            <div class="sl-frame-col">
+              <!-- final review 2026-10-25: the standard plate at the width of the panels plate under it (the maroon ceremonial frame made it narrower and the only one of its kind on the page) -->
+              <figure class="plate plate--3x2" data-reveal>
+                <div class="plate__frame">{{img src="img/gal-ekushe-minar" alt="A Shaheed Minar framed with Bangla letters on the school field, with flowers laid in front of it and painted panels on either side." sizes="(min-width: 1024px) 40vw, 100vw" widths="960,1200"}}</div>
+                <figcaption class="plate__cap"><span class="plate__n">06</span>The Shaheed Minar on the school field, 21 February</figcaption>
+              </figure>
+              <!-- CONFIRM: the year of the Shaheed Minar photograph (the school's Ekushe February album, uploaded August 2023) is not captioned by the school; the caption gives the day only. -->
+              <figure class="plate plate--3x2" data-reveal>
+                <div class="plate__frame">{{img src="img/gal-artcomp-panels" alt="Painted panels for Independence Day, 26 March, beside a board reading Independence Day Art Competition 2023 with posters." sizes="(min-width: 1024px) 40vw, 100vw" widths="960,1200"}}</div>
+                <figcaption class="plate__cap"><span class="plate__n">07</span>Panels from the Independence Day Art Competition, 2023</figcaption>
+              </figure>
+            </div>
+          </div>
         </section>
 
         <section class="story-chapter" id="c-service" aria-labelledby="c-service-h">
-          <h2 id="c-service-h" class="section-title">Community service.</h2>
-          <div class="layout mt-m">
-            <div class="layout__main">
-              <div class="prose" data-reveal>
-                <p>Community service is an ongoing practice at Playpen, and one of the school's five annual events. Every year students are directly involved in serving their communities in one form or another.</p>
-                <!-- CONFIRM: community service is described by the school only in general terms (no projects, dates, partners or numbers). Photographs of service projects show identifiable children and are not used. The school should supply this year's projects and say which photographs may be shown. -->
-                <p>The school lists the kinds of service its students take part in:</p>
-              </div>
-              <ul class="tag-list mt-m" data-reveal>
-                <li>Helping the poor and the needy</li>
-                <li>Donating clothes during winter</li>
-                <li>Volunteering with social organisations</li>
-                <li>Designing and building small homes for low-income families</li>
-              </ul>
-            </div>
-            <div class="layout__aside">
-              <div class="callout" data-reveal>
-                <span class="callout__label label">Eco-Schools, 2023</span>
-                <p>On 14 October 2023 three Class IX students were first runners-up for <q>Best Presentation</q> at an Eco-Schools programme session.</p>
-              </div>
-            </div>
+          <div class="sl-head">
+            <h2 id="c-service-h" class="display-l">Community service.</h2>
+            <p class="lead" data-reveal>An ongoing practice at Playpen, and one of the events the school names as annual. Every year students serve their communities in one form or another, in four kinds of work the school lists.</p>
+          </div>
+          <!-- CONFIRM: community service is described by the school only in general terms (no projects, dates, partners or numbers). Photographs of service projects show identifiable children and are not used. The school should supply this year's projects and say which photographs may be shown. -->
+          <ul class="sl-grid" data-reveal-group>
+            <li><div class="sl-panel sl-panel--gold">
+              <span class="sl-panel__n" aria-hidden="true">01</span>
+              <p class="sl-panel__value">Helping the poor and the needy.</p>
+            </div></li>
+            <li><div class="sl-panel sl-panel--gold">
+              <span class="sl-panel__n" aria-hidden="true">02</span>
+              <p class="sl-panel__value">Donating clothes during winter.</p>
+            </div></li>
+            <li><div class="sl-panel sl-panel--gold">
+              <span class="sl-panel__n" aria-hidden="true">03</span>
+              <p class="sl-panel__value">Volunteering with social organisations.</p>
+              <p class="sl-panel__text">One album shows a visit to the residents of an old people's home.</p>
+            </div></li>
+            <li><div class="sl-panel sl-panel--gold">
+              <span class="sl-panel__n" aria-hidden="true">04</span>
+              <p class="sl-panel__value">Designing and building small homes for low-income families.</p>
+            </div></li>
+          </ul>
+          <div class="sl-foot" data-reveal>
+            <p class="sl-foot__text">For senior students, service connects to the Duke of Edinburgh's Award, which the school lists among its programmes. On 14 October 2023 three Class IX students were first runners-up for <q>Best Presentation</q> at an Eco-Schools programme session.</p>
+            <p class="sl-foot__action"><a class="link link--arrow" href="{{link:/gallery/visit-to-an-old-home/}}">The album</a><a class="link link--arrow" href="{{link:/school-life/clubs-and-activities/}}">Clubs and activities</a></p>
+            <p class="sl-foot__source caption">Source: the school's community service page and its list of student achievements, 2023. Names are left out.</p>
           </div>
         </section>
       </div>
@@ -124,9 +176,45 @@ hero_n: 01
   </div>
 </section>
 
+<section class="page-section" aria-labelledby="cs-ask">
+  <div class="band">
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Ask the school</span><span class="sheet-rule__purpose">What this site has not yet been given</span></div>
+    <div class="sl-panel sl-ask" data-reveal>
+      <div class="sl-ask__grid">
+        <div>
+          <span class="sl-panel__label label">Ask the school</span>
+          <h2 id="cs-ask" class="sl-ask__title">This year's programme and projects.</h2>
+          <p class="sl-ask__intro">The school has not yet given this site:</p>
+          <ul class="sl-ask__list">
+            <li>the contents and the date of the next Cultural Programme</li>
+            <li>this year's community service projects and partners</li>
+            <li>photographs of Independence Day, Victory Day and the service projects with no one identifiable</li>
+            <li>who made the tiger-mask board shown above</li>
+          </ul>
+          <ul class="sl-ask__more">
+            <li><a class="link link--arrow" href="{{link:/notices/}}">Notices</a></li>
+            <li><a class="link link--arrow" href="{{link:/events/}}">Events</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="label">Call the line for your child's section</p>
+          <ul class="sl-ask__lines mt-m">
+            <li class="sl-ask__line"><span class="sl-ask__who">Playgroup to Class I</span>{{phone:pg-1}}</li>
+            <li class="sl-ask__line"><span class="sl-ask__who">Classes II to VI</span>{{phone:ii-vi}}</li>
+            <li class="sl-ask__line"><span class="sl-ask__who">Classes VII to XII</span>{{phone:vii-xii}}</li>
+          </ul>
+          <p class="sl-ask__hours caption">Lines are open {{hours}}.</p>
+          <!-- CONFIRM: the "last checked" date is Defined Solution's review against the school's published pages, not a review by the school; the school should own the date or the line goes (B7). -->
+          <p class="sl-ask__review caption">Last checked against the school's published pages on 24 October 2026.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="page-section" aria-labelledby="wn-title">
   <div class="band where-next">
-    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Routes</span></div>
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Routes</span><span class="sheet-rule__purpose">By who you are</span></div>
     <h2 id="wn-title" class="where-next__title">Where next?</h2>
     <div class="where-next__grid where-next--3">
       <div class="where-next__col">

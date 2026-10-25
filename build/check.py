@@ -79,7 +79,11 @@ DATA_VOCAB = {'data-reveal', 'data-reveal-group', 'data-accordion-scope', 'data-
               'data-filter-scope', 'data-filter', 'data-filter-key', 'data-filter-item', 'data-tags', 'data-gallery',
               'data-lightbox', 'data-caption', 'data-alt', 'data-prototype-form', 'data-search', 'data-index', 'data-label',
               'data-root', 'data-template', 'data-actions', 'data-hours', 'data-call', 'data-menu-preview', 'data-preview',
-              'data-group', 'data-lenis-prevent', 'data-sample', 'data-motion'}
+              'data-group', 'data-lenis-prevent', 'data-sample', 'data-motion',
+              # website portal (build/additions/portal.js, 2026-10-23)
+              'data-portal-visit', 'data-portal-only', 'data-portal-cta', 'data-portal-form',
+              # website operator content feed (build/additions/content.js, 2026-10-23)
+              'data-feed', 'data-feed-id', 'data-feed-count', 'data-feed-line', 'data-feed-event'}
 # classes with no rule of their own that are still right: structural names in the shell's markup and in the documented
 # snippets (they carry meaning for a reader of the source, or a hook for the script), and the template classes tpl-t01 ...
 ALLOW_CLASSES = {'toggle__label', 'sheet-rule__title', 'menu-btn__label', 'menu__main', 'link--ext', 'is-over-hero', 'foot__ds',
@@ -189,10 +193,25 @@ def hours_of(match):
 
 
 def estimate_weight(rel, c, files, size_of):
+    """Bytes a first visit loads: the HTML, the stylesheets, scripts and preloaded fonts, and one file per <img>. For a
+    photograph that a <picture> also offers as WebP at the same width (media.render_img writes x-960.jpg beside
+    x-960.webp), the WebP is counted, because that is the file every current browser fetches; the JPG is only the
+    fallback (integrator, 2026-10-25; asked for by the About, Admissions, Learning, School life and Community groups).
+    The six menu previews (img.menu__img, loading="lazy" inside the hidden #menu) are not counted: a browser fetches a
+    lazy image only once it is rendered, that is when the visitor opens the menu."""
     total = size_of(rel)
     seen = set()
+    offered = set()
+    for tag, attr, val, line, a, text in c.links:
+        if tag == 'source' and attr == 'srcset' and val:
+            for u in srcset_urls(val):
+                kind, target, _ = resolve(rel, u, files)
+                if kind == 'ok':
+                    offered.add(target)
     for tag, attr, val, line, a, text in c.links:
         if not val:
+            continue
+        if tag == 'img' and a.get('loading') == 'lazy' and 'menu__img' in (a.get('class') or '').split():
             continue
         if tag in ('link', 'script') or (tag == 'img' and attr == 'src'):
             kind, target, _ = resolve(rel, val, files)
@@ -202,6 +221,10 @@ def estimate_weight(rel, c, files, size_of):
                 if tag == 'link' and a.get('rel') == 'preload' and a.get('as') != 'font':
                     continue
                 seen.add(target)
+                if tag == 'img':
+                    twin = re.sub(r'\.(jpe?g|png)$', '.webp', target, flags=re.I)
+                    if twin != target and twin in offered:
+                        target = twin
                 total += size_of(target)
     return total
 
@@ -442,6 +465,13 @@ def main(argv=None):
                     # on the home it is the dated sample notice (data-sample, listed in docs/confirm/foundation.md): a warning only
                     rep.add('warn' if is_home else 'ERROR', rel, line_of(raw, re.escape(m.group(0))), 'hours', 'the hours "%s" are written next to the admissions line but differ from nav.json (%s): use {{hours}} or {{hours:between}}' % (m.group(0), nav.site['hours']))
         addr_left = text_all.replace(nav.site['address_line'], '')
+        # the address may be printed in parts ("House 545/A, Block J, Road 19" on one line, the area under it, as the home's
+        # find-us sheet does): a run of two or more consecutive parts of nav.json's address is nav.json's address; a lone
+        # "House 12" or a different house number is still caught (integrator, 2026-10-25)
+        addr_parts = [x.strip() for x in nav.site['address_line'].split(',')]
+        for n in range(len(addr_parts) - 1, 1, -1):
+            for i in range(len(addr_parts) - n + 1):
+                addr_left = addr_left.replace(', '.join(addr_parts[i:i + n]), '')
         am = ADDRESS_BIT.search(addr_left)
         if am:
             rep.add('ERROR', rel, line_of(raw, re.escape(am.group(0))), 'address', 'an address ("%s") that is not nav.json\'s: use {{address}}' % am.group(0))
@@ -483,7 +513,9 @@ def main(argv=None):
                         tag == 'link' and (a.get('rel') or '') in ('stylesheet', 'preload', 'modulepreload', 'icon', 'apple-touch-icon', 'prefetch'))
                     if resource:
                         rep.add('ERROR', rel, line, 'hot-link', '%s loads "%s" from another site: every file is served from this site (site/assets/, site/vendor/)' % (tag, u[:80]))
-                    elif tag == 'iframe' and not u.startswith('https://www.google.com/maps/'):
+                    # the home's find-us map uses the classic maps?q=...&output=embed form: still the Google Maps embed
+                    elif tag == 'iframe' and not (u.startswith('https://www.google.com/maps/') or
+                                                  (u.startswith('https://www.google.com/maps?') and 'output=embed' in u)):
                         rep.add('ERROR', rel, line, 'hot-link', 'iframe from "%s": only the Google Maps embed is allowed' % u[:80])
                 kind, target, frag = resolve(rel, u, files)
                 if kind == 'bad':
@@ -647,7 +679,7 @@ def main(argv=None):
         for sev, line, code, msg in sorted(by_file[rel], key=lambda x: (x[0] != 'ERROR', x[1] or 0)):
             print('  %-5s %s[%s] %s' % (sev, ('line %d  ' % line) if line else '', code, msg))
     if args.weights:
-        print('\nestimated page weights (html + css + js + fonts + fallback images):')
+        print('\nestimated page weights (html + css + js + fonts + one file per image, the WebP where a <picture> offers it):')
         for w, rel in sorted(weights, reverse=True):
             print('  %6.0f KB  %s' % (w / 1024.0, rel))
     errors = rep.count('ERROR') + (rep.count('warn') if args.strict else 0)

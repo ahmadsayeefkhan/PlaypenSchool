@@ -1,107 +1,185 @@
 ---
 title: Starting at Playpen
 template: T05
+body_class: adm
+h1: Before the first <em>day</em>.
 standfirst: The practical things a new family needs before the first day: uniform, books, the bus, the portal and where fees are paid.
-hero_image: img/admissions-terrace
-hero_alt: The terrace garden between two brick wings, with bunting overhead, trees beyond the railing and the city beyond them.
-hero_caption: The terrace garden, 2024
-hero_n: 01
 ---
-<section class="page-section" aria-labelledby="start-uniform">
+<!-- Redesign 2026-10-24 (plans/admissions.md, section 7). The printable first-day list first, then the detail each item links to, a call band
+     at the end. No cta token: the family is already in. The terrace frame (DSC01294) is kept: calm, people-free, used by no other admissions
+     page. The uniform section runs without a photograph: the only "uniform" file in the vault is a sports-kit parade (image-map.md). -->
+<!-- CONFIRM: the terrace photograph (DSC01294, March 2024): public use and the year. -->
+<!-- CONFIRM: a flat-lay photograph of the uniform (no child wearing it) for the Uniform section, if the school can supply one. -->
+<section class="page-section adm-open" aria-labelledby="start-open">
   <div class="band">
-    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Uniform</span><span class="sheet-rule__purpose">By class, and where to have it made</span></div>
-    <div class="layout">
-      <div class="layout__main">
-        <h2 id="start-uniform" class="section-title">What children wear.</h2>
-        <!-- CONFIRM: uniform rules as set out on the school's uniform page (checked 11 October 2026; colours are not stated there, so none are given here); confirm they are current for the new year. -->
-        <div class="table-wrap mt-m" data-reveal>
-          <table class="table table--stack">
-            <caption>What children wear, by class or item</caption>
-            <thead><tr><th scope="col">Class or item</th><th scope="col">What is worn</th></tr></thead>
-            <tbody>
-              <tr><th scope="row">Playgroup and Nursery</th><td>No uniform. Children wear casual clothes.</td></tr>
-              <tr><th scope="row">KG I onwards</th><td>The school uniform and sportswear, which are compulsory.</td></tr>
-              <tr><th scope="row">Class IV onwards</th><td>Girls wear salwar-kameez. Boys wear full pants.</td></tr>
-              <tr><th scope="row">Footwear</th><td>The school asks all students, especially Classes X to XII, to wear white keds or sneakers with white socks.</td></tr>
-              <tr><th scope="row">Sweaters</th><td>Red and black sweaters are available at the school in the winter season. Classes IX to XII may wear black sweaters, but not hoodies or jackets.</td></tr>
-              <tr><th scope="row">Sportswear</th><td>Bought from the school, and worn on the days a class has Games.</td></tr>
-            </tbody>
-          </table>
-        </div>
+    <h2 id="start-open" class="visually-hidden">The terrace garden</h2>
+    <p class="adm-hero-actions" data-reveal><a class="btn btn--primary" href="#start-list"><span class="btn__label">The first-day list</span></a><a class="btn btn--text" href="#call">Who do I call now?</a></p>
+    <figure class="plate adm-plate adm-plate--21x9 adm-plate--4x3" data-reveal>
+      <div class="plate__frame">
+        <span class="adm-plate__wide">{{img src="img/admissions-terrace" alt="The terrace garden between two brick wings, with bunting overhead, trees beyond the railing and the city beyond them." sizes="100vw" widths="960,1440"}}</span>
+        <span class="adm-plate__tall">{{img src="img/admissions-terrace" alt="The terrace garden between two brick wings, with bunting overhead, trees beyond the railing and the city beyond them." sizes="100vw" widths="960"}}</span>
       </div>
-      <div class="layout__aside">
-        <!-- CONFIRM: the tailoring house and its two branches (Shop 19, Pladium Market, Gulshan-2, and Shop 310, Rupayan Shopping Square, Bashundhara) with their telephone numbers are on the school's uniform page, which calls them "the Tailoring house" and lists a Gulshan Branch and a Bashundhara Branch. The numbers cannot be printed on this page: build/check.py allows only the school's own numbers from nav.json. Ask the Foundation to add them as phone keys if the school wants them shown. -->
-        <p class="label">Where to have the uniform made</p>
-        <p class="small-print">From KG I, uniforms are made to the school's specifications at its tailoring house, which has two branches.</p>
-        <ul class="contact-cards" data-reveal-group>
-          <li class="contact-card"><h3>Gulshan branch</h3><p>Pladium Market, Shop 19, Gulshan-2</p></li>
-          <li class="contact-card"><h3>Bashundhara branch</h3><p>Rupayan Shopping Square, Shop 310, Bashundhara</p></li>
-        </ul>
-        <p class="small-print mt-m">For a branch's telephone number, ask the line for your child's section.</p>
+    </figure>
+  </div>
+</section>
+
+<!-- 01. The real task list comes first (audit 7), light, at the top; each item links to its detail below. -->
+<!-- CONFIRM: what to bring on day one, how the portal login arrives, and settling-in for Playgroup are not published. A "Your first weeks"
+     timeline (before day one, the first day, the first week, the first month) is not built until the school writes it. -->
+<section class="page-section" aria-labelledby="start-list-h" id="start-list">
+  <div class="band">
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Before the first day</span><span class="sheet-rule__purpose">A list you can print and tick</span></div>
+    <div class="adm-head">
+      <h2 id="start-list-h" class="section-title" data-reveal>Six things to have done.</h2>
+      <p class="lead" data-reveal>Every line restates something the school has published, in the order a family usually meets it. The detail is further down the page.</p>
+    </div>
+    <div class="adm-row adm-row--8">
+      <div class="adm-row__main">
+        <div class="adm-panel adm-panel--gold" id="start-checklist" data-reveal>
+          <p class="print-only">The Playpen School, Dhaka: before the first day.</p>
+          <div class="adm-panel__head"><h3 class="adm-panel__title">Before the first day</h3><p class="label">Six things</p></div>
+          <ul class="adm-check adm-check--cols" data-adm-store="start">
+            <li class="adm-check__item"><input id="sl-1" type="checkbox" value="uniform"><label for="sl-1">Uniform made at the school's tailoring house, in Gulshan or Bashundhara (from KG I)</label><p class="adm-check__go" data-print-skip><a class="link" href="#start-uniform">What children wear</a></p></li>
+            <li class="adm-check__item"><input id="sl-2" type="checkbox" value="sports"><label for="sl-2">Sportswear bought from the school</label><p class="adm-check__go" data-print-skip><a class="link" href="#start-books">Books and sportswear</a></p></li>
+            <li class="adm-check__item"><input id="sl-3" type="checkbox" value="books"><label for="sl-3">The yearly books and exercise copies collected from the bookshop</label><p class="adm-check__go" data-print-skip><a class="link" href="#start-books">The bookshop</a></p></li>
+            <li class="adm-check__item"><input id="sl-4" type="checkbox" value="bus"><label for="sl-4">A place on the school bus applied for at the Administrative Office, if you need one</label><p class="adm-check__go" data-print-skip><a class="link" href="#start-practical">The bus</a></p></li>
+            <li class="adm-check__item"><input id="sl-5" type="checkbox" value="portal"><label for="sl-5">Portal login and online fee payment set up</label><p class="adm-check__go" data-print-skip><a class="link" href="#start-practical">The portal and fees</a></p></li>
+            <li class="adm-check__item"><input id="sl-6" type="checkbox" value="contact"><label for="sl-6">Contact details given to the school in writing, and updated whenever they change</label><p class="adm-check__go" data-print-skip><a class="link" href="#start-practical">School rules</a></p></li>
+          </ul>
+          <div class="adm-panel__foot" data-print-skip>
+            <p class="small-print">Ticks stay on this device only. The list is ours, not a school document.</p>
+            <button class="btn btn--secondary" type="button" data-print-list="#start-checklist"><span class="btn__label">Print this list</span></button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="page-section" aria-labelledby="start-books">
+<!-- 02. Uniform as four stage cards (the school's own class bands: KG I, Class IV, Classes IX to XII), notes under them, the tailoring house
+     beside. -->
+<!-- CONFIRM (B3): uniform rules as set out on the school's uniform page (checked 11 October 2026). The page gives no uniform colours; the only
+     colour it names is the winter sweater (red and black). Confirm the rules are current for the new year. -->
+<section class="page-section" aria-labelledby="start-uniform-h" id="start-uniform">
+  <div class="band">
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Uniform</span><span class="sheet-rule__purpose">By class, and where to have it made</span></div>
+    <div class="adm-head">
+      <h2 id="start-uniform-h" class="section-title" data-reveal>What children wear.</h2>
+      <p class="lead" data-reveal>Nothing until KG I; a uniform and sportswear from then on. The rules change at Class IV and again for the senior classes.</p>
+    </div>
+    <div class="layout">
+      <div class="layout__main">
+        <ul class="adm-panels adm-panels--4" data-reveal-group>
+          <li><div class="adm-panel adm-panel--gold"><div class="adm-panel__head"><h3 class="adm-panel__title">Playgroup and Nursery</h3></div><div class="adm-panel__body"><p>No uniform. Children wear casual clothes.</p></div></div></li>
+          <li><div class="adm-panel"><div class="adm-panel__head"><h3 class="adm-panel__title">KG I to Class III</h3></div><div class="adm-panel__body"><p>The school uniform and sportswear, both compulsory.</p></div></div></li>
+          <li><div class="adm-panel"><div class="adm-panel__head"><h3 class="adm-panel__title">Class IV onwards</h3></div><div class="adm-panel__body"><p>Girls wear salwar-kameez. Boys wear full trousers.</p></div></div></li>
+          <li><div class="adm-panel"><div class="adm-panel__head"><h3 class="adm-panel__title">Classes IX to XII</h3></div><div class="adm-panel__body"><p>As above. Black sweaters are allowed in winter; hoodies and jackets are not.</p></div></div></li>
+        </ul>
+        <div class="venue venue--note mt-l" data-reveal>
+          <p class="label">For every class</p>
+          <p class="venue__text">Footwear: white keds or sneakers with white socks, for all students and especially Classes X to XII. Sweaters: red and black sweaters are available at the school in the winter season. Sportswear: bought from the school, worn on the days a class has Games.</p>
+        </div>
+      </div>
+      <div class="layout__aside" data-reveal>
+        <!-- CONFIRM (B1): the tailoring house and its two branches (Shop 19, Pladium Market, Gulshan-2, and Shop 310, Rupayan Shopping Square, Bashundhara) with their telephone numbers are on the school's uniform page, which calls them "the Tailoring house" and lists a Gulshan Branch and a Bashundhara Branch. The numbers cannot be printed on this page: build/check.py allows only the school's own numbers from nav.json (navRequests N5). -->
+        <p class="label">Where to have the uniform made</p>
+        <p class="small-print">From KG I, uniforms are made to the school's specifications at its tailoring house, which has two branches.</p>
+        <ul class="contact-cards">
+          <li class="contact-card"><h3>Gulshan branch</h3><p>Pladium Market, Shop 19, Gulshan-2</p></li>
+          <li class="contact-card"><h3>Bashundhara branch</h3><p>Rupayan Shopping Square, Shop 310, Bashundhara</p></li>
+        </ul>
+        <!-- Review r2: the branches' numbers are public on the school's uniform page, but neither a typed number nor a link to that page
+             passes build/check.py (only the addresses on nav.json external_ok may be linked; /the-school-uniform/ is on the redirect
+             map). navRequests N5 asks for the phone keys or the page on external_ok; until then the line says where the numbers are. -->
+        <p class="small-print mt-m">Both branches' telephone numbers are on the school's own uniform page; they will be printed here once the school confirms them.</p>
+      </div>
+    </div>
+    <div class="adm-foot" data-reveal>
+      <p class="adm-foot__text">The class bands are the school's own: KG I, Class IV and Classes IX to XII. No colours are published for the uniform itself, so none are given here.</p>
+      <p class="adm-foot__source caption">From the school's uniform page, re-read on 11 October 2026.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 03. Books, copies and sportswear, with the school's own Book Fair sign as the picture (replaces the Sports Day frame, which was on five pages
+     and off the topic). Review r1 (2026-10-24): a tighter 3:2 crop on the lettering (img/adm-bookfair-letters), above the painted child figure;
+     it is a photograph of a painted sign, no pupil is photographed (CONTENT-TO-CONFIRM P26). -->
+<!-- CONFIRM (B5): the bookshop's days. The school gives the hours (8.30 am until 1.00 pm) but not the days of the week, nor where on the campus the shop is. The Book Fair sign: the album year. -->
+<section class="page-section" aria-labelledby="start-books-h" id="start-books">
   <div class="band">
     <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Books and the bookshop</span><span class="sheet-rule__purpose">The school's own shop</span></div>
     <div class="split split--center split--reverse">
       <div class="split__text">
-        <h2 id="start-books" class="section-title">Books, copies and sportswear come from the school.</h2>
-        <!-- CONFIRM: the bookshop's days. The school gives the hours (8.30 am until 1.00 pm) but not the days of the week. Its pages call it "our own bookshop" and do not say where on the campus it is. -->
+        <h2 id="start-books-h" class="section-title" data-reveal>Books, copies and sportswear come from the school.</h2>
         <div class="prose" data-reveal>
-          <p>The school has its own bookshop. Parents collect the yearly books and exercise copies there at the beginning of each session. The bookshop is open from 8.30 am until 1.00 pm.</p>
+          <p>The school has its own bookshop. Parents collect the yearly books and exercise copies there at the beginning of each session.</p>
+          <p>Bookshop hours: 8.30 am until 1.00 pm. The days are not published, so ask.</p>
           <p>Sportswear is bought from the school as well. There is a cafeteria on the campus.</p>
         </div>
       </div>
-      <figure class="plate split__figure" data-reveal>
-        <div class="plate__frame">{{img src="media/life-7" alt="Rows of students in red caps and shirts and blue trousers marching across the sand-coloured field, with palm trees and apartment blocks beyond the boundary wall and spectators in the foreground." sizes="(min-width: 900px) 40vw, 100vw"}}</div>
-        <figcaption class="plate__cap"><span class="plate__n">02</span>Annual Sports Day, the field, January 2026</figcaption>
+      <figure class="plate plate--3x2 split__figure" data-reveal>
+        <div class="plate__frame">{{img src="img/adm-bookfair-letters" alt="The school's hand-painted Book Fair sign: a yellow star, open books and the words Book Fair on a pink panel." sizes="(min-width: 900px) 38vw, 100vw"}}</div>
       </figure>
     </div>
   </div>
 </section>
 
-<section class="page-section" aria-labelledby="start-practical">
+<!-- 04. Six facts a parent scans: kept as hairline rows because they work; the reviewed line moves into a foot. -->
+<!-- CONFIRM: identity card rules (who issues it, the photograph, where a lost card is replaced, any fee) and how a new family receives its portal login: the school's pages say neither. -->
+<section class="page-section" aria-labelledby="start-practical-h" id="start-practical">
   <div class="band">
-    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">The practical things</span><span class="sheet-rule__purpose">Bus, card, portal, fees, rules</span></div>
-    <h2 id="start-practical" class="section-title">Six things to know.</h2>
-    <!-- CONFIRM: identity card rules (who issues it, the photograph, where a lost card is replaced, any fee) and how a new family receives its portal login: the school's pages say neither. -->
-    <dl class="dl mt-m" data-reveal>
-      <div class="dl__row"><dt>The school bus</dt><dd>The school has run its own bus service since March 2014. Parents who want a place apply at the Administrative Office. <a href="{{link:/school-life/transport-and-safety/}}">Transport and safety</a> has the details.</dd></div>
-      <div class="dl__row"><dt>The identity card</dt><dd>Every student receives an identity card after admission and wears it every day on school premises. A lost or damaged card must be replaced.</dd></div>
-      <div class="dl__row"><dt>The portal</dt><dd>Parents and students use the portal for academic performance, class tests, homework, report cards and attendance. {{ext:portal}}</dd></div>
-      <div class="dl__row"><dt>Paying fees</dt><dd>Fees are paid online. <a href="{{link:/admissions/fees/}}">Fees and payment</a> explains how. {{ext:pay}}</dd></div>
-      <div class="dl__row"><dt>School rules</dt><dd>The code of conduct covers mobile phones, which are not allowed for students up to Class XII, as well as absence and contact details. Read it on <a href="{{link:/about/policies/}}">Policies and documents</a>.</dd></div>
-      <div class="dl__row"><dt>The school year</dt><dd>The year has two semesters, each ending with a written examination. Dates are published through the school's notices and the portal. See <a href="{{link:/events/}}">Events and term dates</a>, <a href="{{link:/notices/}}">Notices</a> and <a href="{{link:/school-life/school-day/}}">The school day</a>.</dd></div>
-    </dl>
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">The practical things</span><span class="sheet-rule__purpose">Bus, card, portal, fees, rules, the year</span></div>
+    <div class="adm-head adm-head--tight">
+      <h2 id="start-practical-h" class="section-title" data-reveal>Six things to know.</h2>
+    </div>
+    <div class="adm-row adm-row--8">
+      <div class="adm-row__main">
+        <dl class="dl" data-reveal>
+          <div class="dl__row"><dt>The school bus</dt><dd>The school has run its own bus service since March 2014. Parents who want a place apply at the Administrative Office. <a href="{{link:/school-life/transport-and-safety/}}">Transport and safety</a> has the details.</dd></div>
+          <div class="dl__row"><dt>The identity card</dt><dd>Every student receives an identity card after admission and wears it every day on school premises. A lost or damaged card must be replaced.</dd></div>
+          <div class="dl__row"><dt>The portal</dt><dd>Parents and students use the portal for academic performance, class tests, homework, report cards and attendance. {{ext:portal}}</dd></div>
+          <div class="dl__row"><dt>Paying fees</dt><dd>Fees are paid online. <a href="{{link:/admissions/fees/}}">Fees and payment</a> explains how. {{ext:pay}}</dd></div>
+          <div class="dl__row"><dt>School rules</dt><dd>The code of conduct covers mobile phones, which are not allowed for students up to Class XII, as well as absence and contact details. Read it on <a href="{{link:/about/policies/}}">Policies and documents</a>.</dd></div>
+          <div class="dl__row"><dt>The school year</dt><dd>The year has two semesters, each ending with a written examination. Dates are published through the school's notices and the portal. See <a href="{{link:/events/}}">Events and term dates</a>, <a href="{{link:/notices/}}">Notices</a> and <a href="{{link:/school-life/school-day/}}">The school day</a>.</dd></div>
+        </dl>
+      </div>
+    </div>
+    <div class="adm-foot" data-reveal>
+      <p class="adm-foot__text">The identity card rules, the portal login and the first-week routine are not published; the school's pages say only what is here.</p>
+      <p class="adm-foot__source caption">Last reviewed <time datetime="2026-10-11">11 October 2026</time>, against the school's own pages.</p>
+    </div>
   </div>
 </section>
 
-<section class="page-section is-night" aria-labelledby="start-list">
+<!-- 05. A new family's last question is "who do I call now": the night band is the home's grammar for the one quiet, important block. -->
+<section class="page-section is-night" aria-labelledby="start-call" id="call">
   <div class="band">
-    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Before the first day</span><span class="sheet-rule__purpose">A list you can print</span></div>
-    <h2 id="start-list" class="section-title">Six things to have done.</h2>
-    <div id="start-checklist" class="mt-m" data-reveal>
-      <p class="print-only">The Playpen School, Dhaka: before the first day.</p>
-      <ul class="checklist checklist--cols">
-        <li>Uniform made at the school's tailoring house, in Gulshan or Bashundhara (from KG I)</li>
-        <li>Sportswear bought from the school</li>
-        <li>The yearly books and exercise copies collected from the bookshop</li>
-        <li>A place on the school bus applied for at the Administrative Office, if you need one</li>
-        <li>Portal login and online fee payment set up</li>
-        <li>Contact details given to the school in writing, and updated whenever they change</li>
-      </ul>
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Who to call</span><span class="sheet-rule__purpose">Lines are open {{hours}}</span></div>
+    <div class="call-band">
+      <div class="call-band__text">
+        <h2 id="start-call" class="section-title" data-reveal>Questions before the first day?</h2>
+        <p>The line for your child's section answers {{hours:between}}. For anything else, the further queries line is {{phone:further}}.</p>
+        <p class="call-band__actions"><a class="btn btn--primary" href="{{link:/admissions/enquire/}}"><span class="btn__label">Enquire</span></a><a class="btn btn--text" href="{{link:/community/parents/}}">For parents</a></p>
+      </div>
+      <div class="adm-call" data-reveal>
+        <ul class="call-lines">
+          <li class="call-line" data-line="pg-1"><span class="call-line__who">Playgroup to Class I</span>{{phone:pg-1 class="call-line__tel"}}</li>
+          <li class="call-line" data-line="ii-vi"><span class="call-line__who">Classes II to VI</span>{{phone:ii-vi class="call-line__tel"}}</li>
+          <li class="call-line" data-line="vii-xii"><span class="call-line__who">Classes VII to XII</span>{{phone:vii-xii class="call-line__tel"}}</li>
+        </ul>
+        <p class="call-lines__hours">The class chosen on another admissions page lights its line here.</p>
+      </div>
     </div>
-    <p class="print-btn-row"><button class="btn btn--secondary" type="button" data-print-list="#start-checklist"><span class="btn__label">Print this list</span></button></p>
   </div>
 </section>
 
 <section class="page-section" aria-labelledby="wn-title">
   <div class="band where-next">
-    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Routes</span></div>
-    <h2 id="wn-title" class="where-next__title">Where next?</h2>
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Routes</span><span class="sheet-rule__purpose">Where next</span></div>
+    <!-- Review r2: the H2 at display-l like every other H2 on the page (it dropped to the where-next size). -->
+    <div class="adm-head adm-head--tight">
+      <h2 id="wn-title" class="section-title" data-reveal>Where next?</h2>
+    </div>
     <div class="where-next__grid where-next--3">
       <div class="where-next__col">
         <h3>Admissions</h3>
@@ -128,6 +206,5 @@ hero_n: 01
         </ul>
       </div>
     </div>
-    <p class="small-print mt-l">Last reviewed <time datetime="2026-10-11">11 October 2026</time>, against the school's own pages.</p>
   </div>
 </section>

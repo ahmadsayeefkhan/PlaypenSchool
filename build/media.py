@@ -373,3 +373,25 @@ def list_stems(folder):
         if m:
             stems.add(m.group(1))
     return sorted(stems)
+
+
+# --------------------------------------------------------------------------- captions (founder's decision, 2026-10-18)
+# Photographs on the inner pages carry no visible name caption ("The rooftop terrace, 2024"): the alt text says what a
+# picture shows. Page sources may still hold their old captions (they are the record of each frame's event and year);
+# the build removes them from the published HTML here, in one place, so no page has to be edited again:
+#   <figcaption class="plate__cap">...</figcaption>   plates, stage cards, split figures
+#   <p class="gallery__cap">...</p>                    gallery thumbnails
+#   data-caption="..."                                 the lightbox caption (the viewer then shows none)
+# Other figcaptions (a pull quote's source) are kept.
+_CAPTION_RES = (
+    re.compile(r'\s*<figcaption\b[^>]*\bclass="[^"]*\bplate__cap\b[^"]*"[^>]*>.*?</figcaption>', re.S | re.I),
+    re.compile(r'\s*<p\b[^>]*\bclass="[^"]*\bgallery__cap\b[^"]*"[^>]*>.*?</p>', re.S | re.I),
+    re.compile(r'\s+data-caption="[^"]*"', re.I),
+)
+
+
+def strip_captions(html):
+    """Remove the visible name captions of photographs (see above). Returns the new HTML."""
+    for rx in _CAPTION_RES:
+        html = rx.sub('', html)
+    return html

@@ -1,141 +1,298 @@
 ---
 title: How to apply
 template: T06
-standfirst: Five steps from the first call to the result. The school's procedure has families collect or download the form and hand it in at the Front Office; it describes no online application.
-hero_image: img/admissions-atrium
-hero_alt: Brick steps and a planter with a climbing plant in the shaded atrium, under a concrete slab, with classrooms and notice boards behind.
-hero_caption: The atrium, 2024
-hero_n: 01
+body_class: adm
+h1: Five steps, one <em>form</em>.
+standfirst: Five steps from the first call to the result. Fill the form in online and print it, or download the school's PDF, then hand it in at the Front Office.
 ---
-<!-- CONFIRM: "describes no online application": the school's procedure page (checked 11 October 2026) has parents collect or download the form and "usually" hand it in at the Front Office, and mentions enquiring "through school mail". It describes no online submission; confirm there is none. -->
-<section class="page-section" aria-labelledby="apply-entry">
-  <div class="band" data-filter-scope>
-    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Entry points</span><span class="sheet-rule__purpose">Choose your child's class</span></div>
-    <h2 id="apply-entry" class="section-title">Start with your child's class.</h2>
-    <ul class="chips" aria-label="Show one entry point">
-      <li><button class="chip" type="button" data-filter="all" aria-pressed="true">All three</button></li>
-      <li><button class="chip" type="button" data-filter="pg" aria-pressed="false">Playgroup and Nursery</button></li>
-      <li><button class="chip" type="button" data-filter="kg" aria-pressed="false">KG I to Class IX</button></li>
-      <li><button class="chip" type="button" data-filter="xi" aria-pressed="false">Class XI, AS Level</button></li>
-    </ul>
-    <p class="chips__status" role="status" aria-live="polite"></p>
-
-    <!-- CONFIRM: the interview. The school's procedure page says students attend an interview with the Principal along with their parents after selection in the assessment or admission test (Playgroup to Class IX) and describes none for Class XI; confirm that is how it runs. -->
-    <ul class="entry-points" data-reveal-group>
-      <li class="entry" id="entry-pg" data-tags="pg">
-        <p class="entry__n label">Entry point 01</p>
-        <h3 class="entry__title">Playgroup and Nursery</h3>
-        <dl class="entry__facts">
-          <div><dt>How the child is assessed</dt><dd>An assessment</dd></div>
-          <div><dt>Form</dt><dd>Admission form, Playgroup to Class IX (<a href="#forms">listed below</a>)</dd></div>
-          <div><dt>After that</dt><dd>An interview with the Principal and the parents, then the result by telephone</dd></div>
-          <div><dt>Which line to call</dt><dd>{{phone:pg-1}}<br>Playgroup to Class I</dd></div>
-        </dl>
-      </li>
-      <li class="entry" id="entry-kg" data-tags="kg">
-        <p class="entry__n label">Entry point 02</p>
-        <h3 class="entry__title">KG I to Class IX</h3>
-        <dl class="entry__facts">
-          <div><dt>How the child is assessed</dt><dd>A written test in English, Bengali and Mathematics</dd></div>
-          <div><dt>Form</dt><dd>Admission form, Playgroup to Class IX (<a href="#forms">listed below</a>)</dd></div>
-          <div><dt>After that</dt><dd>An interview with the Principal and the parents, then the result by telephone</dd></div>
-          <div><dt>Which line to call</dt><dd>KG I and Class I: {{phone:pg-1}}<br>Classes II to VI: {{phone:ii-vi}}<br>Classes VII to IX: {{phone:vii-xii}}</dd></div>
-        </dl>
-      </li>
-      <li class="entry" id="entry-xi" data-tags="xi">
-        <p class="entry__n label">Entry point 03</p>
-        <h3 class="entry__title">Class XI, AS Level</h3>
-        <dl class="entry__facts">
-          <div><dt>How the child is assessed</dt><dd>The school describes no entrance test. Admission is based on its mock examinations and the O Level result</dd></div>
-          <div><dt>Form</dt><dd>A Level admission form (<a href="#forms">listed below</a>)</dd></div>
-          <div><dt>After that</dt><dd>The result by telephone. The school describes no interview for this entry point</dd></div>
-          <div><dt>Which line to call</dt><dd>{{phone:vii-xii}}<br>Classes VII to XII</dd></div>
-        </dl>
-      </li>
-    </ul>
-    <p class="filter-empty">Nothing matches that choice.</p>
-    <!-- CONFIRM: entry at Classes X and XII is not described anywhere in the school's procedure. -->
-    <p class="small-print">The school's procedure does not describe entry to Class X or Class XII. For those classes, call {{phone:vii-xii}}.</p>
+<!-- Redesign 2026-10-24 (plans/admissions.md, section 5). A guide of about four screens that ends on two "get the form" cards; the
+     long online form opens in place, below them, only when asked. Two crops of the atrium (DSC01290): 21:9 from 768 px (review r1:
+     img/apply-atrium-wide, from the concrete column at x 0.50 rightwards, so neither painted wall is in the frame), 4:5 on phones.
+     Review r1: the first button is primary, as on the hub and Book a visit (the three action pages); see docs/additions/admissions.md. -->
+<!-- CONFIRM (F4): the school's procedure page (checked 11 October 2026) has parents collect or download the form and "usually" hand it
+     in at the Front Office. Confirm it accepts a form filled in online here and printed, and whether it will accept one sent from the
+     site (the "Send online" button is shown only when the demo Desk is on). -->
+<!-- CONFIRM: the atrium photograph (DSC01290, March 2024): public use and the year. -->
+<section class="page-section adm-open" aria-labelledby="apply-open">
+  <div class="band">
+    <h2 id="apply-open" class="visually-hidden">The atrium</h2>
+    <p class="adm-hero-actions" data-reveal><a class="btn btn--primary" href="#get-form"><span class="btn__label">Get the form</span></a><a class="btn btn--text" href="#call">Which line do I call?</a></p>
+    <figure class="plate adm-plate adm-plate--21x9" data-reveal>
+      <div class="plate__frame">
+        <span class="adm-plate__wide">{{img src="img/apply-atrium-wide" alt="Brick steps and a planter with a climbing plant in the shaded atrium, beside a concrete column, under the concrete slab." sizes="100vw" widths="960,1440,1920"}}</span>
+        <span class="adm-plate__tall">{{img src="img/apply-atrium-tall" alt="Brick steps and a planter with a climbing plant under the concrete slab in the atrium." sizes="100vw" widths="720,960"}}</span>
+      </div>
+    </figure>
   </div>
 </section>
 
-<section class="page-section" aria-labelledby="apply-steps">
+<!-- 01. The shared class picker (the same component as the hub; it remembers the choice): one entry card instead of three columns copied
+     from the hub word for word. -->
+<section class="page-section" aria-labelledby="apply-entry" data-adm-scope>
   <div class="band">
-    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">The five steps</span><span class="sheet-rule__purpose">As the school runs them</span></div>
-    <div class="layout">
-      <div class="layout__main">
-        <h2 id="apply-steps" class="section-title">From the first call to the result.</h2>
-        <ol class="process mt-m" data-reveal-group>
-          <li class="process__step"><span class="process__n">01</span><div class="process__body"><h3>Collect the form.</h3><p>Take a printed form from the Front Office, or download it from the school's website. There is one form for Playgroup to Class IX and a separate form for AS and A Level. <a href="#forms">The forms are listed below.</a></p></div></li>
-          <!-- CONFIRM: where the completed form is handed in (the Front Office, as the school's pages say) and whether the Admission Department is the same desk. -->
-          <li class="process__step"><span class="process__n">02</span><div class="process__body"><h3>Hand it in.</h3><p>Take the completed form, with <a href="#apply-bring">the documents under What to bring</a>, to the Front Office. The Admission Department sorts the forms.</p></div></li>
-          <li class="process__step"><span class="process__n">03</span><div class="process__body"><h3>Assessment or test.</h3><p>Once the Principal has approved the form, the school calls the parents for the assessment or test. Playgroup and Nursery children sit an assessment. From KG I to Class IX the child sits a written test in English, Bengali and Mathematics. For Class XI, admission is based on the school's mock examinations and the O Level result.</p></div></li>
-          <li class="process__step"><span class="process__n">04</span><div class="process__body"><h3>Meet the Principal.</h3><p>After the assessment or test, the child and the parents have an interview with the Principal. The Principal looks at the test result and the interview, then makes the final decision. The school describes this for Playgroup to Class IX, and describes no interview for Class XI.</p></div></li>
-          <li class="process__step"><span class="process__n">05</span><div class="process__body"><h3>Hear the result.</h3><p>The result comes by telephone. Make sure the number on the form is one on which you can be reached.</p></div></li>
-        </ol>
-        <div class="callout mt-l" data-reveal>
-          <span class="callout__label label">After selection</span>
-          <p>Once a child has been selected, the school explains the admission fee and the monthly tuition. Payment is made online, through the school's authorised bank. <a href="{{link:/admissions/fees/}}">Fees and payment</a></p>
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Your child's class</span><span class="sheet-rule__purpose">The test, the form and the line</span></div>
+    <div class="adm-head">
+      <h2 id="apply-entry" class="section-title" data-reveal>Start with your child's class.</h2>
+      <p class="lead" data-reveal>The steps are the same for every class; the test and the form are not. Choose the class and the card shows both.</p>
+    </div>
+    <div class="adm-row adm-row--8">
+      <div class="adm-row__main">
+        <div class="adm-picker" role="group" aria-labelledby="adm-pick-l" data-reveal>
+          <p id="adm-pick-l" class="adm-picker__label">Which class is your child joining?</p>
+          <div class="adm-picker__tiles">
+            <div class="adm-picker__group">
+              <p class="label">Playgroup and Nursery</p>
+              <ul class="chips" aria-label="Playgroup and Nursery">
+                <li><button class="chip" type="button" aria-pressed="false" data-class="Playgroup" data-bracket="pg" data-line="pg-1">Playgroup</button></li>
+                <li><button class="chip" type="button" aria-pressed="false" data-class="Nursery" data-bracket="pg" data-line="pg-1">Nursery</button></li>
+              </ul>
+            </div>
+            <div class="adm-picker__group">
+              <p class="label">KG I to Class IX</p>
+              <ul class="chips" aria-label="KG I to Class IX">
+                <li><button class="chip" type="button" aria-pressed="false" data-class="KG I" data-bracket="kg" data-line="pg-1">KG I</button></li>
+                <li><button class="chip" type="button" aria-pressed="false" data-class="KG II" data-bracket="kg" data-line="pg-1">KG II</button></li>
+                <li><button class="chip" type="button" aria-pressed="false" data-class="Class I" data-bracket="kg" data-line="pg-1">Class I</button></li>
+                <li><button class="chip" type="button" aria-pressed="false" data-class="Class II" data-bracket="kg" data-line="ii-vi">Class II</button></li>
+                <li><button class="chip" type="button" aria-pressed="false" data-class="Class III" data-bracket="kg" data-line="ii-vi">Class III</button></li>
+                <li><button class="chip" type="button" aria-pressed="false" data-class="Class IV" data-bracket="kg" data-line="ii-vi">Class IV</button></li>
+                <li><button class="chip" type="button" aria-pressed="false" data-class="Class V" data-bracket="kg" data-line="ii-vi">Class V</button></li>
+                <li><button class="chip" type="button" aria-pressed="false" data-class="Class VI" data-bracket="kg" data-line="ii-vi">Class VI</button></li>
+                <li><button class="chip" type="button" aria-pressed="false" data-class="Class VII" data-bracket="kg" data-line="vii-xii">Class VII</button></li>
+                <li><button class="chip" type="button" aria-pressed="false" data-class="Class VIII" data-bracket="kg" data-line="vii-xii">Class VIII</button></li>
+                <li><button class="chip" type="button" aria-pressed="false" data-class="Class IX" data-bracket="kg" data-line="vii-xii">Class IX</button></li>
+              </ul>
+            </div>
+            <div class="adm-picker__group">
+              <p class="label">Class X to Class XII</p>
+              <ul class="chips" aria-label="Class X to Class XII">
+                <li><button class="chip" type="button" aria-pressed="false" data-class="Class X" data-bracket="xx" data-line="vii-xii">Class X</button></li>
+                <li><button class="chip" type="button" aria-pressed="false" data-class="Class XI, AS Level" data-bracket="xi" data-line="vii-xii">Class XI, AS Level</button></li>
+                <li><button class="chip" type="button" aria-pressed="false" data-class="Class XII" data-bracket="xx" data-line="vii-xii">Class XII</button></li>
+              </ul>
+            </div>
+          </div>
+          <div class="field adm-picker__select">
+            <label for="adm-pick-s">Class</label>
+            <select id="adm-pick-s">
+              <option value="">Choose a class</option>
+              <option>Playgroup</option><option>Nursery</option><option>KG I</option><option>KG II</option>
+              <option>Class I</option><option>Class II</option><option>Class III</option><option>Class IV</option><option>Class V</option><option>Class VI</option>
+              <option>Class VII</option><option>Class VIII</option><option>Class IX</option><option>Class X</option><option>Class XI, AS Level</option><option>Class XII</option>
+            </select>
+          </div>
+          <p class="chips__status" role="status" aria-live="polite"></p>
         </div>
+
+        <!-- CONFIRM (B10): the interview. The school's procedure page says students attend an interview with the Principal along with
+             their parents after selection in the assessment or admission test (Playgroup to Class IX), that the Principal makes the
+             decision, and describes none for Class XI; confirm that is how it runs. -->
+        <ul class="adm-entries" data-reveal-group>
+          <li class="adm-entry adm-panel" id="entry-pg" data-bracket="pg">
+            <div class="adm-panel__head"><h3 class="adm-panel__title">Playgroup and Nursery</h3></div>
+            <dl class="entry__facts">
+              <div><dt>How the child is assessed</dt><dd>An assessment.</dd></div>
+              <div><dt>The form</dt><dd>Admission form, Playgroup to Class IX. <a href="#forms">Fill it in online, or download it</a>.</dd></div>
+              <div><dt>After that</dt><dd>An interview with the Principal and the parents, then the result by telephone.</dd></div>
+              <div><dt>Which line to call</dt><dd>The Playgroup to Class I line, <a href="#call">at the foot of this page</a>.</dd></div>
+            </dl>
+          </li>
+          <li class="adm-entry adm-panel" id="entry-kg" data-bracket="kg">
+            <div class="adm-panel__head"><h3 class="adm-panel__title">KG I to Class IX</h3></div>
+            <dl class="entry__facts">
+              <div><dt>How the child is assessed</dt><dd>A written test in English, Bengali and Mathematics.</dd></div>
+              <div><dt>The form</dt><dd>Admission form, Playgroup to Class IX. <a href="#forms">Fill it in online, or download it</a>.</dd></div>
+              <div><dt>After that</dt><dd>An interview with the Principal and the parents, then the result by telephone.</dd></div>
+              <!-- Review r2: with JavaScript the picker writes the one line name here (admissions.js part 1); the three-part sentence is the fallback. -->
+              <div><dt>Which line to call</dt><dd><span data-adm-line-name>The line for your child's section</span>, <a href="#call">at the foot of this page</a><span data-adm-line-rest>: Playgroup to Class I for KG I and Class I; Classes II to VI; Classes VII to XII</span>.</dd></div>
+            </dl>
+          </li>
+          <li class="adm-entry adm-panel" id="entry-xi" data-bracket="xi">
+            <div class="adm-panel__head"><h3 class="adm-panel__title">Class XI, AS Level</h3></div>
+            <dl class="entry__facts">
+              <div><dt>How the child is assessed</dt><dd>The school's mock examinations and the O Level result. There is no written entrance test.</dd></div>
+              <div><dt>The form</dt><dd>A Level admission form. <a href="#forms">Download it</a>.</dd></div>
+              <div><dt>After that</dt><dd>The result by telephone. There is no interview for Class XI.</dd></div>
+              <div><dt>Which line to call</dt><dd>The Classes VII to XII line, <a href="#call">at the foot of this page</a>.</dd></div>
+            </dl>
+          </li>
+          <!-- CONFIRM: entry at Classes X and XII is not described anywhere in the school's procedure. -->
+          <li class="adm-entry adm-panel adm-panel--gold" id="entry-xx" data-bracket="xx">
+            <div class="adm-panel__head"><h3 class="adm-panel__title">Class X and Class XII</h3><p class="label">Ask the line</p></div>
+            <div class="adm-panel__body">
+              <p>The school's procedure describes entry to Playgroup to Class IX and to Class XI, not to Class X or Class XII. Call the Classes VII to XII line, <a href="#call">at the foot of this page</a>, and ask whether a place is possible.</p>
+            </div>
+          </li>
+        </ul>
+        <!-- CONFIRM (B11): the age for each class is not published; the page says so once and sends families to the line. -->
+        <p class="small-print">The age for each class is not published. Ask the line for your child's section.</p>
       </div>
-      <div class="layout__aside layout__aside--sticky">
-        <div id="apply-bring" data-reveal>
+    </div>
+  </div>
+</section>
+
+<!-- 02. The five steps, one or two sentences each, five across the band like the home and the hub (review r2: the two-column run beside
+     the panel read 01 02 / 03 04 / 05 with an empty slot); What to bring and "After selection" follow as a 7 / 5 row. One wording with
+     the hub and the home. "Once the Principal has approved the form, the school calls" stays a CONFIRM, not on the page. -->
+<!-- CONFIRM: where the completed form is handed in (the Front Office, as the school's pages say) and whether the Admission Department is
+     the same desk; "Upon approval of the Principal, Parents are then called up" (the procedure page): how the call is made and by whom. -->
+<section class="page-section" aria-labelledby="apply-steps-h" id="apply-steps">
+  <div class="band">
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">The five steps</span><span class="sheet-rule__purpose">As the school's procedure page describes them</span></div>
+    <div class="adm-head">
+      <h2 id="apply-steps-h" class="section-title" data-reveal>From the first call to the result.</h2>
+    </div>
+    <ol class="steps" data-reveal-group>
+      <!-- Final review 2026-10-25: the same five steps as the hub (Call or visit, Collect and hand in the form, Assessment, Principal, Result); the hub's "The five steps in detail" link now lands on the same list. -->
+      <li class="step"><span class="step__n display-m" aria-hidden="true">01</span><h3>Call or visit.</h3><p>Call the line for your child's section, {{hours:between}}, or come to the Front Office with your questions.</p></li>
+      <li class="step"><span class="step__n display-m" aria-hidden="true">02</span><h3>Collect and hand in the form.</h3><p>From the Front Office, as the school's PDF, or <a href="#forms">filled in online on this page</a> and printed. One form covers Playgroup to Class IX; AS and A Level has its own. Hand it in at the Front Office with the documents under What to bring.</p></li>
+      <li class="step"><span class="step__n display-m" aria-hidden="true">03</span><h3>Assessment or test.</h3><p>The school calls the parents in. Playgroup and Nursery children sit an assessment; from KG I to Class IX the child sits a written test in English, Bengali and Mathematics; for Class XI, admission is based on the mock examinations and the O Level result.</p></li>
+      <li class="step"><span class="step__n display-m" aria-hidden="true">04</span><h3>Meet the Principal.</h3><p>After the assessment or test, the child and the parents meet the Principal, who makes the decision. There is no interview for Class XI.</p></li>
+      <li class="step"><span class="step__n display-m" aria-hidden="true">05</span><h3>Hear the result.</h3><p>By telephone. Make sure the number on the form is one you answer.</p></li>
+    </ol>
+    <div class="adm-row adm-row--after-steps">
+      <div class="adm-row__main">
+        <!-- CONFIRM: documents for a Playgroup child and any extra documents for A Level; the school's page lists only the four. -->
+        <div class="adm-panel adm-panel--gold" id="apply-bring" data-reveal>
           <p class="print-only">The Playpen School, Dhaka: what to bring with the admission form.</p>
-          <p class="label">What to bring</p>
-          <ul class="checklist">
-            <li>The completed admission form</li>
-            <li>The child's birth certificate</li>
-            <li>The immunisation record</li>
-            <li>Report cards for the last two years</li>
+          <div class="adm-panel__head"><h3 class="adm-panel__title">What to bring</h3><p class="label">With the form</p></div>
+          <ul class="adm-check" data-adm-store="apply">
+            <li class="adm-check__item"><input id="ab-1" type="checkbox" value="form"><label for="ab-1">The completed admission form</label></li>
+            <li class="adm-check__item"><input id="ab-2" type="checkbox" value="birth"><label for="ab-2">The child's birth certificate</label></li>
+            <li class="adm-check__item"><input id="ab-3" type="checkbox" value="immun"><label for="ab-3">The immunisation record</label></li>
+            <li class="adm-check__item"><input id="ab-4" type="checkbox" value="reports"><label for="ab-4">Report cards for the last two years</label></li>
           </ul>
-          <p class="small-print mt-m">Read the form in full before you hand it in. If your child has not been at school before, ask the admissions line which of these apply.</p>
+          <p class="small-print mt-m">Read the form in full before you hand it in. If your child has not been at school before, ask the line which of these apply.</p>
+          <div class="adm-panel__foot" data-print-skip>
+            <p class="small-print">Ticks stay on this device only.</p>
+            <button class="btn btn--secondary" type="button" data-print-list="#apply-bring"><span class="btn__label">Print this list</span></button>
+          </div>
         </div>
-        <p class="print-btn-row"><button class="btn btn--secondary" type="button" data-print-list="#apply-bring"><span class="btn__label">Print this list</span></button></p>
       </div>
+      <div class="adm-row__side">
+        <div class="venue" data-reveal>
+          <p class="label">After selection</p>
+          <p class="venue__text">The school explains the admission fee and the monthly tuition. Payment is online, through the school's bank. <a href="{{link:/admissions/fees/}}">Fees and payment</a></p>
+        </div>
+      </div>
+    </div>
+    <div class="adm-foot" data-reveal>
+      <p class="adm-foot__text">Every class follows these five steps. Only the third one changes with the class.</p>
+      <p class="adm-foot__action"><a class="link link--arrow" href="{{link:/admissions/faq/#q-test}}">The test and the interview, in the FAQ</a></p>
+      <p class="adm-foot__source caption">From the school's admission procedure page, read on 11 October 2026.</p>
     </div>
   </div>
 </section>
 
+<!-- 03. The two ways to get the form are the end of the guide; the online form stays out of the way until it is wanted. The section
+     keeps id="forms" so every existing link to how-to-apply/#forms (FAQ, A Level, Policies) still lands here and opens the panel. -->
 <section class="page-section page-section--tint" aria-labelledby="apply-forms" id="forms">
-  <div class="band">
-    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">The forms</span><span class="sheet-rule__purpose">PDF files on the school's website</span></div>
-    <div class="layout">
-      <div class="layout__main">
-        <h2 id="apply-forms" class="section-title">Download the form for your child's class.</h2>
-        <!-- CONFIRM: the two PDF forms. File names say "2025-2026"; sizes and dates read from the files on 2026-10-11 (Playgroup to Class IX: 522,861 bytes, dated 15 January 2026; A Level: 237,155 bytes, dated 20 October 2025). Confirm they are the forms for the year families are applying to. -->
-        <ul class="doc-list mt-m" data-reveal>
-          <li>{{ext href="https://playpen.edu.bd/wp-content/uploads/2026/01/Admission-Form-2025-2026-Final.pdf" label="Admission form, Playgroup to Class IX"}}<span class="doc-list__meta">PDF, 511 KB, file dated 15 January 2026</span></li>
-          <li>{{ext href="https://playpen.edu.bd/wp-content/uploads/2025/10/AS-LEVEL-FORM-2025-2026.pdf" label="Admission form, AS and A Level (Class XI)"}}<span class="doc-list__meta">PDF, 232 KB, file dated 20 October 2025</span></li>
-        </ul>
-        <p class="small-print mt-m">Both forms are the school's own files. Printed copies are at the Front Office.</p>
+  <div class="band" id="get-form">
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">The form</span><span class="sheet-rule__purpose">Online, or the school's own PDF</span></div>
+    <div class="adm-head">
+      <h2 id="apply-forms" class="section-title" data-reveal>Get the form in one of two ways.</h2>
+      <p class="lead" data-reveal>Both end the same way: a printed form, signed and handed in at the Front Office with your documents.</p>
+    </div>
+    <ul class="adm-panels adm-forms-cards" data-reveal-group>
+      <li>
+        <div class="adm-panel">
+          <div class="adm-panel__head"><h3 class="adm-panel__title">Fill it in online, then print it.</h3><p class="label">On this site</p></div>
+          <div class="adm-panel__body">
+            <ol class="adm-panel__steps">
+              <li>Type your answers on this page.</li>
+              <li>Download the filled form as a PDF.</li>
+              <li>Sign it and hand it in at the Front Office.</li>
+            </ol>
+            <p>Your answers stay on this device.</p>
+          </div>
+          <p class="adm-panel__go"><button class="btn btn--primary" type="button" aria-expanded="false" aria-controls="forms-panel" data-adm-toggle><span class="btn__label">Open the online form</span></button></p>
+        </div>
+      </li>
+      <li>
+        <div class="adm-panel adm-panel--gold">
+          <div class="adm-panel__head"><h3 class="adm-panel__title">Download the school's blank form.</h3><p class="label">The school's PDFs</p></div>
+          <!-- CONFIRM (F1, B9): the two PDF forms. File names say "2025-2026"; sizes and dates read from the files on 2026-10-11 (Playgroup to Class IX: 522,861 bytes, dated 15 January 2026; A Level: 237,155 bytes, dated 20 October 2025). The first file's own title reads "Playgroup to Class X" while the school's pages say Class IX: confirm which classes it covers, and that both are the forms for the year families now apply to. -->
+          <ul class="doc-list">
+            <li>{{ext href="https://playpen.edu.bd/wp-content/uploads/2026/01/Admission-Form-2025-2026-Final.pdf" label="Admission form, Playgroup to Class IX"}}<span class="doc-list__meta">PDF, 511 KB, file dated 15 January 2026</span></li>
+            <li>{{ext href="https://playpen.edu.bd/wp-content/uploads/2025/10/AS-LEVEL-FORM-2025-2026.pdf" label="Admission form, AS and A Level (Class XI)"}}<span class="doc-list__meta">PDF, 232 KB, file dated 20 October 2025</span></li>
+          </ul>
+          <p class="small-print mt-m">Print it and fill it in by hand, in block letters. Printed copies are also at the Front Office.</p>
+        </div>
+      </li>
+    </ul>
+
+    <!-- The online admission form (2026-10-22, founder request). Built by build/additions/admissions-form.js from the fields of the
+         school's two PDFs, in the same order. It sends nothing: it prints an A4 copy (Save as PDF or print). The draft stays in the
+         visitor's browser. Collapsed since 2026-10-24: it opens on the button above, on #forms in the address, or on any link to #forms;
+         without JavaScript it is shown (and the form itself, which needs JavaScript, gives way to the note).
+         CONFIRM: the school accepts a form printed from this page in place of its own printed form. -->
+    <div id="forms-panel" class="adm-forms" hidden tabindex="-1">
+      <div class="af" data-admission-form>
+        <div class="af__top">
+          <div class="af__tabs" role="tablist" aria-label="Choose the form">
+            <button class="af__tab" type="button" role="tab" aria-selected="true" aria-controls="af-form" data-af-tab="pg">Playgroup to Class X</button>
+            <button class="af__tab" type="button" role="tab" aria-selected="false" aria-controls="af-form" data-af-tab="as">AS and A Level (Class XI)</button>
+          </div>
+          <!-- Review r2: the first tab keeps the PDF's own title (F1); one line says why it differs from the page. -->
+          <p class="small-print adm-forms__tabnote">The school's PDF is titled Playgroup to Class X; its pages say Class IX. If your child is joining Class X, call the Classes VII to XII line first.</p>
+          <p class="af__privacy"><span class="af__privacy-text">Download keeps your answers on this device.</span><span data-portal-only hidden> Send online sends only what the office needs to call you back: the student's first name, class, year of birth and gender, the parents' names, emails and contact number, the previous school, whether a brother, sister or cousin is at Playpen, and (AS Level) the subjects. In this sample it goes to a demo Desk on this computer.</span></p>
+        </div>
+        <form id="af-form" class="af__form" role="tabpanel" aria-label="Admission form" novalidate action="#"></form>
+        <!-- Send online (website portal, 2026-10-23): shown only when build/additions/portal.js has a School Desk to send to.
+             Review 2026-10-23: it sends the minimum only (safeguard-1); the parent or guardian ticks the first box (safeguard-2);
+             the visit code goes only with the join tick (safeguard-3).
+             CONFIRM: the school accepts an application sent from this page, and who reads it. -->
+        <div class="af__online" data-portal-only hidden>
+          <p class="af__keep">These answers stay on the printed form you hand in at the Front Office: the address, the emergency contact, nationality, religion, health, the names of brothers, sisters or cousins at Playpen, and the O Level grades. They are not sent online.</p>
+          <p class="af__as-note" hidden>If you are the student, ask a parent or guardian to send this form.</p>
+          <fieldset class="field-group af__consent">
+            <legend>The school may also reach me on (optional)</legend>
+            <div class="af__choices">
+              <label class="choice"><input type="checkbox" name="af-consent" value="whatsapp"> WhatsApp</label>
+              <label class="choice"><input type="checkbox" name="af-consent" value="sms"> SMS</label>
+              <label class="choice"><input type="checkbox" name="af-consent" value="email"> Email</label>
+            </div>
+          </fieldset>
+          <label class="choice af__agree"><input id="af-guardian" type="checkbox" aria-describedby="af-guardian-err"> <span>I am the child's parent or legal guardian, and I agree that the school may use these answers for this admission. <a class="link" href="{{link:/privacy/#c-forms}}">How the school uses this form</a></span></label>
+          <p id="af-guardian-err" class="field__error" aria-live="polite"></p>
+          <label class="choice af__agree af__join"><input id="af-join" type="checkbox"> <span>Join my earlier visits on this site to this form, so the office can see which pages I read (optional)</span></label>
+        </div>
+        <div class="af__bar">
+          <button class="btn btn--gold" type="button" data-af-action="download"><span class="btn__label">Download filled form (PDF)</span></button>
+          <button class="af__more" type="button" aria-expanded="false" aria-controls="af-more" data-adm-more>More</button>
+          <div id="af-more" class="af__more-menu" hidden>
+            <button class="btn btn--primary" type="button" data-af-action="submit" data-portal-only hidden><span class="btn__label">Send the form online</span></button>
+            <button class="btn btn--secondary" type="button" data-af-action="blank"><span class="btn__label">Print blank form</span></button>
+            <button class="af__clear" type="button" data-af-action="clear"><span class="btn__label">Clear form</span></button>
+          </div>
+          <p class="af__status" role="status" aria-live="polite"></p>
+        </div>
       </div>
-      <div class="layout__aside">
-        <p class="label">Related pages</p>
-        <ul class="link-list">
-          <li><a class="link link--arrow" href="{{link:/admissions/faq/}}">Admissions FAQ</a></li>
-          <li><a class="link link--arrow" href="{{link:/admissions/starting-at-playpen/}}">Starting at Playpen</a></li>
-        </ul>
-      </div>
+      <noscript><p class="form-note mt-m">The online form needs JavaScript. You can still download the school's blank forms above.</p></noscript>
+      <p class="adm-forms__close"><button class="btn btn--text" type="button" data-adm-close>Close the online form</button></p>
     </div>
   </div>
 </section>
 
-<section class="page-section" aria-labelledby="apply-dates">
+<!-- 04. Timing, said once in a calm sentence next to the action that answers it, and the page's one phone block. When the school publishes
+     dates, this venue line becomes a dated row. -->
+<!-- CONFIRM: the school publishes no admission calendar, no deadline and no age rule for each class. Left out on purpose; the page says so and sends families to the lines. -->
+<section class="page-section" aria-labelledby="apply-dates" id="call">
   <div class="band">
-    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Dates and timing</span><span class="sheet-rule__purpose">What the school has not published</span></div>
-    <!-- CONFIRM: the school publishes no admission calendar, no deadline and no age rule for each class. Left out on purpose; the page says so and sends families to the lines. -->
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Timing</span><span class="sheet-rule__purpose">What the school has published</span></div>
     <div class="call-band">
       <div class="call-band__text">
-        <h2 id="apply-dates" class="section-title">When can we apply?</h2>
-        <p>Applications for the current year are accepted if there is available space. The school has not published opening or closing dates, a deadline or the age for each class.</p>
-        <p>Space changes by class and by year, so call the line for your child's section before you hand in a form. Lines are open {{hours}}.</p>
+        <h2 id="apply-dates" class="section-title" data-reveal>When can we apply?</h2>
+        <p>Applications for the current year are accepted if there is space. The school has not published opening dates, a deadline or the age for each class, so call the line for your child's section before you hand in a form.</p>
       </div>
-      <div>
-        <ul class="call-lines" data-reveal-group>
-          <li class="call-line"><span class="call-line__who">Playgroup to Class I</span>{{phone:pg-1 class="call-line__tel"}}</li>
-          <li class="call-line"><span class="call-line__who">Classes II to VI</span>{{phone:ii-vi class="call-line__tel"}}</li>
-          <li class="call-line"><span class="call-line__who">Classes VII to XII</span>{{phone:vii-xii class="call-line__tel"}}</li>
+      <div class="adm-call" data-reveal>
+        <p class="label">The line for your child's section</p>
+        <ul class="call-lines">
+          <li class="call-line" data-line="pg-1"><span class="call-line__who">Playgroup to Class I</span>{{phone:pg-1 class="call-line__tel"}}</li>
+          <li class="call-line" data-line="ii-vi"><span class="call-line__who">Classes II to VI</span>{{phone:ii-vi class="call-line__tel"}}</li>
+          <li class="call-line" data-line="vii-xii"><span class="call-line__who">Classes VII to XII</span>{{phone:vii-xii class="call-line__tel"}}</li>
         </ul>
+        <p class="call-lines__hours">Lines are open {{hours}}. The class chosen above lights its line.</p>
       </div>
     </div>
   </div>

@@ -47,6 +47,13 @@ def generate(nav):
     seo = shell.render_seo_head(ctx, home['title'], home['description'], shell.DEFAULT_OG_IMAGE, shell.DEFAULT_OG_SIZE,
                                 shell.DEFAULT_OG_ALT, 'website', False, True, with_title=False)
     seo += '\n<script type="application/ld+json">\n%s\n</script>' % shell.home_jsonld(nav)
+    # the website portal (visit code, forms, question helper): the home loads no additions, so it links build.py's
+    # standalone copies; portal.js is vanilla and guards against running twice
+    meta = shell.portal_meta(nav)
+    if meta:
+        seo += '\n%s\n<link rel="stylesheet" href="./css/portal.css">\n<script src="./js/portal.js" defer></script>' % meta
+        # notices, events and news from the Website Operator's feed (additions/content.js, 2026-10-23)
+        seo += '\n<script src="./js/content.js" defer></script>'
     return {
         'seo': seo,
         'nav': indent(shell.render_primary_links(ctx, None), 0).replace('\n      ', '\n      '),

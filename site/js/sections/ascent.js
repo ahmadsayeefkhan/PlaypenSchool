@@ -45,7 +45,7 @@ export function init(ctx) {
     userPaused = !userPaused;
     pauseBtn.setAttribute('aria-pressed', userPaused ? 'true' : 'false');
     const label = pauseBtn.querySelector('.visually-hidden');
-    if (label) label.textContent = userPaused ? 'Play the courtyard film' : 'Pause the courtyard film';
+    if (label) label.textContent = userPaused ? 'Play the pool film' : 'Pause the pool film';
     syncFilm();
   });
   if (videoEl) {

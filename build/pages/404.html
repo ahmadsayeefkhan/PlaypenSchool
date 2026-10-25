@@ -1,15 +1,20 @@
 ---
 title: Page not found
 template: T05
-standfirst: The address may have changed, or it may have been typed a little wrong. Search the website, use the menu, or call the school.
+body_class: cc-page
+description: This page does not exist. Search the website, pick one of the pages families need most, or call the school.
+standfirst: The address may have changed, or it may have been typed a little wrong. Search the website, pick a page families need most, or call the school.
 ---
 <section class="page-section" aria-labelledby="nf-search">
   <div class="band">
-    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Look for it</span></div>
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Look for it</span><span class="sheet-rule__purpose">Search the website, or pick a page families need most</span></div>
     <div class="layout">
       <div class="layout__main">
-        <h2 id="nf-search" class="section-title">Search the website.</h2>
-        <form class="search-form mt-m" role="search" action="{{link:/search/}}" method="get">
+        <!-- Final review 2026-10-25: the brick band (img/notfound-brick, 900 x 300, soft and washed out at both widths) is gone; "Search the website." leads the sheet. The file stays on disk. -->
+        <div class="cc-mark">
+          <h2 id="nf-search" class="section-title">Search the website.</h2>
+        </div>
+        <form class="search-form" role="search" action="{{link:/search/}}" method="get">
           <div class="field">
             <label for="nf-q">Search for a page</label>
             <input id="nf-q" name="q" type="search" autocomplete="off">
@@ -22,7 +27,10 @@ standfirst: The address may have changed, or it may have been typed a little wro
         <ul class="link-list mt-m">
           <li><a class="link" href="{{link:/admissions/}}">Admissions</a></li>
           <li><a class="link" href="{{link:/admissions/visit/}}">Book a visit</a></li>
+          <li><a class="link" href="{{link:/admissions/fees/}}">Fees and payment</a></li>
           <li><a class="link" href="{{link:/learning/}}">Learning at Playpen</a></li>
+          <li><a class="link" href="{{link:/community/parents/}}">For parents</a></li>
+          <li><a class="link" href="{{link:/notices/}}">Notices</a></li>
           <li><a class="link" href="{{link:/contact/}}">Contact</a></li>
           <li><a class="link" href="{{link:/sitemap/}}">Every page, on the sitemap</a></li>
         </ul>
@@ -31,10 +39,37 @@ standfirst: The address may have changed, or it may have been typed a little wro
   </div>
 </section>
 
+<section class="page-section" aria-labelledby="nf-old">
+  <div class="band">
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">From the old website</span><span class="sheet-rule__purpose">The four most common old addresses</span></div>
+    <div class="cc-head">
+      <h2 id="nf-old" class="display-l cc-head__title" data-reveal><span class="cc-head__line">Came from the school's earlier website?</span></h2>
+      <p class="lead" data-reveal>The addresses changed. These are the pages most old links were looking for.</p>
+    </div>
+    <!-- CONFIRM: the four destinations are the most-linked old pages in docs/02-redirect-map.md and the two utility links in nav.json (portal, fee payment); nothing else is added. -->
+    <div class="cc-panels">
+      <div class="cc-panel" data-reveal>
+        <div class="cc-panel__head"><h3 class="cc-panel__name">Where the old pages went</h3><span class="label">Old address, new page</span></div>
+        <dl class="dl cc-panel__body">
+          <div class="dl__row"><dt>Admission procedure</dt><dd><a class="link" href="{{link:/admissions/how-to-apply/}}">How to apply</a></dd></div>
+          <div class="dl__row"><dt>Parent portal</dt><dd>{{ext:portal label="The parent and student portal"}}</dd></div>
+          <div class="dl__row"><dt>Online fee payment</dt><dd>{{ext:pay label="Pay fees online"}}</dd></div>
+          <div class="dl__row"><dt>Notices</dt><dd><a class="link" href="{{link:/notices/}}">Notices</a></dd></div>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="page-section page-section--tint" aria-labelledby="nf-call">
   <div class="band">
     <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Or call</span><span class="sheet-rule__purpose">Lines are open {{hours}}</span></div>
-    <h2 id="nf-call" class="section-title">The school answers by phone.</h2>
-    <div class="mt-m">{{phones}}</div>
+    <div class="cc-head">
+      <h2 id="nf-call" class="display-l cc-head__title" data-reveal><span class="cc-head__line">The school answers by phone.</span></h2>
+    </div>
+    <div data-reveal>
+      {{phones}}
+      <p class="small-print mt-m">Further queries: {{phone:further}}.</p>
+    </div>
   </div>
 </section>

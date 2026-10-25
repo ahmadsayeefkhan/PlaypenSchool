@@ -1,0 +1,178 @@
+/* ==========================================================================
+   Sitemap and the Community hub (integrator, 2026-10-25; plan: redesign-2026-10-24-pages/plans/sitemap-ia.md).
+   Prefix sm-. Tokens only, mobile first, 44 px targets, a reduced-motion block at the end.
+   Pages: /sitemap/ (body.sm-page) and /community/ (body.sm-hub). Documented in docs/additions/sitemap.md.
+   ========================================================================== */
+
+/* ---- page markers: "Sheet 01 of 05" never breaks inside its rule */
+.sm-page .sheet-rule__n, .sm-hub .sheet-rule__n { white-space: nowrap; }
+
+/* ---- hero: the shell's page-hero, written in the body so the search form can sit in the band */
+.sm-hero .page-hero__lead { max-width: 40ch; }
+.sm-search { margin-top: clamp(28px, 3.4vw, 44px); max-width: 36rem; }
+.sm-search .field input { min-height: 48px; }
+.sm-search .btn { min-height: 48px; }
+@media (min-width: 1280px) { .sm-search { grid-column: 1 / span 7; width: 100%; } }
+@media (max-width: 559px) {
+  .sm-search { flex-direction: column; align-items: stretch; }
+  .sm-search .field { flex: none; }
+  .sm-search .btn { justify-content: center; }
+}
+
+/* ---- sheet head and foot (the kit's pk-head / pk-foot recipe, under this prefix until 0-kit ships) */
+.sm-sheet { scroll-margin-top: calc(var(--nav-h, 72px) + 12px); }
+.sm-head { display: grid; grid-template-columns: minmax(0, 1fr); row-gap: clamp(18px, 2.4vw, 32px); margin-bottom: clamp(32px, 4.2vw, 60px); }
+.sm-head > h2 { max-width: 18ch; text-wrap: balance; }
+.sm-head > .lead { max-width: 54ch; }
+.sm-head--tight { margin-bottom: clamp(24px, 3vw, 40px); }
+@media (min-width: 900px) {
+  .sm-head { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter); }
+  .sm-head > h2 { grid-column: 1 / span 9; }
+  .sm-head > .lead { grid-column: 1 / span 7; }
+}
+.sm-foot { display: grid; grid-template-columns: minmax(0, 1fr); gap: 18px var(--gutter); align-items: end; margin-top: clamp(32px, 4vw, 56px); padding-top: 24px; border-top: var(--hairline); }
+.sm-foot__text { font-size: 18px; line-height: 1.55; max-width: 62ch; }
+.sm-foot__note { max-width: 46ch; }
+.sm-foot__note a, .sm-panel__note a { color: inherit; }
+.sm-foot--end { margin-top: clamp(40px, 5vw, 64px); }
+@media (min-width: 900px) {
+  .sm-foot { grid-template-columns: repeat(12, minmax(0, 1fr)); }
+  .sm-foot__text { grid-column: 1 / span 8; }
+  .sm-foot__note { grid-column: 9 / -1; justify-self: end; text-align: right; }
+}
+
+/* ---- sheet 01: the four steps (the home's .steps, four across) and the two side panels */
+.sm-steps { margin-top: 0; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.sm-steps .step p { max-width: 26ch; }
+.sm-step__links { margin-top: 18px; gap: 4px; }
+.sm-step__links a, .sm-list__link, .sm-chips a, .sm-help .link-list a { display: inline-flex; align-items: center; min-height: 44px; }
+@media (max-width: 1023px) { .sm-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 44px var(--gutter); } }
+@media (max-width: 639px) {
+  .sm-steps { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  /* phones: a step's links wrap as a row, so four steps fit in about two screens */
+  .sm-step__links { flex-direction: row; flex-wrap: wrap; gap: 0 22px; margin-top: 10px; }
+}
+.sm-panels { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--gutter); margin-top: clamp(40px, 5vw, 72px); }
+@media (min-width: 720px) { .sm-panels { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.sm-panel { --sm-edge: var(--maroon); padding: clamp(20px, 2.2vw, 30px) clamp(20px, 2vw, 28px); background: var(--paper-3); border: 1px solid var(--clay); border-top: 3px solid var(--sm-edge); }
+.sm-panel--gold { --sm-edge: var(--gold); }
+.sm-panel__title { margin-bottom: 14px; }
+.sm-panel .link-list { gap: 2px; }
+.sm-panel .link-list a { display: inline-flex; align-items: center; min-height: 44px; }
+.sm-panel .phones { margin-top: 4px; }
+.sm-panel__note { margin-top: 14px; }
+
+/* ---- sheet 02: the class ladder (horizontal from 900 px, vertical under it) */
+.sm-ladder { list-style: none; position: relative; display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; padding-left: 28px; counter-reset: none; }
+.sm-ladder::before { content: ''; position: absolute; left: 7px; top: 8px; bottom: 8px; width: 2px; background: var(--gold); }
+.sm-ladder__step { position: relative; }
+.sm-ladder__step::before { content: ''; position: absolute; left: -26px; top: 50%; width: 12px; height: 12px; margin-top: -6px; border-radius: 50%; background: var(--paper); border: 2px solid var(--gold); }
+.sm-ladder__link { display: grid; grid-template-columns: auto minmax(0, 1fr); grid-template-areas: 'n name' 'n range'; column-gap: 16px; align-items: baseline; min-height: 72px; padding: 14px 18px; background: var(--paper); border: 1px solid var(--clay); color: inherit; text-decoration: none; transition: border-color var(--t-ui) var(--ease-soft); }
+.sm-ladder__n { grid-area: n; align-self: center; color: var(--maroon); font-weight: 300; font-variant-numeric: tabular-nums lining-nums; }
+.sm-ladder__name { grid-area: name; font: 400 clamp(22px, 2vw, 32px) / 1.1 var(--font-serif); }
+.sm-ladder__range { grid-area: range; margin-top: 4px; font: 400 15px / 1.35 var(--font-sans); color: var(--ink-2); }
+.sm-ladder__link:hover, .sm-ladder__link:focus-visible { border-color: var(--ink-2); }
+.sm-ladder__link:hover .sm-ladder__name, .sm-ladder__link:focus-visible .sm-ladder__name { color: var(--maroon); }
+.sm-ladder__link:focus-visible { outline-offset: 4px; }
+@media (min-width: 900px) {
+  .sm-ladder { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: var(--gutter); padding: 28px 0 0; }
+  .sm-ladder::before { left: 0; right: 0; top: 7px; bottom: auto; width: auto; height: 2px; }
+  .sm-ladder__step::before { left: 18px; top: -27px; margin-top: 0; }
+  .sm-ladder__link { height: 100%; grid-template-columns: minmax(0, 1fr); grid-template-areas: 'n' 'name' 'range'; row-gap: 6px; padding: 20px 20px 22px; align-content: start; }
+  .sm-ladder__n { align-self: start; margin-bottom: 8px; }
+}
+.sm-chips { list-style: none; display: flex; flex-wrap: wrap; gap: 0 28px; margin-top: 8px; font: 400 16px / 1.3 var(--font-sans); }
+
+/* ---- sheet 03: the six doors */
+.sm-doors { display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(28px, 3.4vw, 48px) var(--gutter); }
+@media (min-width: 900px) { .sm-doors { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.sm-door { display: flex; flex-direction: column; background: var(--paper-3); border: 1px solid var(--clay); border-top: 3px solid var(--maroon); }
+.sm-door__media { padding: 10px 10px 0; }
+.sm-door__media img { display: block; width: 100%; height: auto; aspect-ratio: 21 / 9; object-fit: cover; object-position: 50% 45%; }
+@media (min-width: 900px) { .sm-door__media img { aspect-ratio: 16 / 10; } }
+.sm-door__body { display: flex; flex-direction: column; gap: 10px; padding: clamp(18px, 2vw, 26px) clamp(18px, 2vw, 28px) clamp(20px, 2.2vw, 30px); }
+.sm-door__n { color: var(--maroon); }
+.sm-door__name { font: 400 clamp(28px, 2.6vw, 40px) / 1.05 var(--font-serif); }
+.sm-door__link { color: inherit; text-decoration: none; background-image: linear-gradient(var(--gold), var(--gold)); background-repeat: no-repeat; background-position: 0 100%; background-size: 0 1px; transition: background-size var(--t-ui) var(--ease-out), color var(--t-ui) var(--ease-soft); }
+.sm-door__link::after { content: ''; display: inline-block; width: 0.32em; height: 0.32em; margin-left: 0.32em; border-top: 1.5px solid currentColor; border-right: 1.5px solid currentColor; transform: translateY(-0.16em) rotate(45deg); }
+.sm-door__link:hover, .sm-door__link:focus-visible { color: var(--maroon); background-size: 100% 1px; }
+.sm-door__text { font-size: 17px; line-height: 1.5; color: var(--ink-2); max-width: 46ch; }
+.sm-door__fold { margin-top: 8px; border-top: 1px solid var(--ink); }
+.sm-door__sum { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 48px; cursor: pointer; list-style: none; font: 500 15px / 1.3 var(--font-sans); }
+.sm-door__sum::-webkit-details-marker { display: none; }
+.sm-door__sum::after { content: ''; flex: none; width: 9px; height: 9px; margin-right: 4px; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: translateY(-3px) rotate(45deg); transition: transform var(--t-ui) var(--ease-out); }
+.sm-door__fold[open] > .sm-door__sum::after { transform: translateY(2px) rotate(-135deg); }
+.sm-door__sum:focus-visible { outline-offset: 2px; }
+.sm-door__more { margin-top: 6px; font: 400 16px / 1.4 var(--font-sans); }
+.sm-door__more a { display: inline-flex; align-items: center; min-height: 44px; }
+/* from 900 px the door lists are always open: the summary is only the phone's fold */
+@media (min-width: 900px) {
+  .sm-door__sum { pointer-events: none; min-height: 0; padding: 12px 0 2px; color: var(--ink-2); font-weight: 400; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; }
+  .sm-door__sum::after { display: none; }
+}
+
+/* ---- the hairline list of pages: label, then the one-line summary ({{children:... as="list"}}) */
+.sm-list { list-style: none; padding: 0; margin: 0; counter-reset: sm-n; }
+.sm-list__row { display: flex; flex-direction: column; gap: 0; padding: 6px 0 10px; border-bottom: var(--hairline); }
+.sm-list__row:last-child { border-bottom: 0; }
+.sm-list__link { position: relative; font: 400 clamp(18px, 1.4vw, 21px) / 1.25 var(--font-serif); align-self: flex-start; }
+.sm-list__note { font: 400 14px / 1.45 var(--font-sans); color: var(--ink-2); max-width: 60ch; }
+ol.sm-list > .sm-list__row { counter-increment: sm-n; padding-left: 38px; position: relative; }
+ol.sm-list > .sm-list__row::before { content: counter(sm-n, decimal-leading-zero); position: absolute; left: 0; top: 18px; font: 500 12px / 1 var(--font-sans); letter-spacing: 0.1em; color: var(--maroon); font-variant-numeric: tabular-nums; }
+
+/* ---- sheet 04: the two long folds */
+.sm-folds { display: grid; grid-template-columns: minmax(0, 1fr); border-top: 1px solid var(--ink); }
+.sm-fold { border-bottom: var(--hairline); scroll-margin-top: calc(var(--nav-h, 72px) + 12px); }
+.sm-fold__sum { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 64px; padding: 10px 0; cursor: pointer; list-style: none; }
+.sm-fold__sum::-webkit-details-marker { display: none; }
+.sm-fold__title { font: 400 clamp(22px, 2vw, 30px) / 1.15 var(--font-serif); }
+.sm-fold__icon { position: relative; flex: none; width: 44px; height: 44px; border: 1px solid var(--clay); border-radius: 50%; }
+.sm-fold__icon::before, .sm-fold__icon::after { content: ''; position: absolute; left: 50%; top: 50%; width: 14px; height: 1.5px; margin: -0.75px 0 0 -7px; background: var(--ink); transition: transform var(--t-ui) var(--ease-out); }
+.sm-fold__icon::after { transform: rotate(90deg); }
+.sm-fold[open] .sm-fold__icon::after { transform: rotate(0deg); }
+.sm-fold__sum:hover .sm-fold__title, .sm-fold__sum:focus-visible .sm-fold__title { color: var(--maroon); }
+.sm-fold__sum:focus-visible { outline-offset: 2px; }
+.sm-fold__body { padding: 4px 0 28px; }
+.sm-fold__lead { margin-bottom: 12px; font: 400 16px / 1.4 var(--font-sans); }
+.sm-fold__lead a { display: inline-flex; align-items: center; min-height: 44px; }
+.sm-fold__note { margin-top: 18px; max-width: 62ch; }
+@media (min-width: 900px) {
+  .sm-fold__body .sm-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--gutter); }
+  .sm-fold__body .sm-list__row:last-child { border-bottom: var(--hairline); }
+}
+
+/* ---- sheet 05: help and site information */
+.sm-help { display: grid; grid-template-columns: minmax(0, 1fr); gap: 32px var(--gutter); }
+@media (min-width: 720px) { .sm-help { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.sm-help .link-list { gap: 2px; }
+.sm-help__col > .label { margin-bottom: 10px; }
+
+/* ---- the Community hub (body.sm-hub): the mounted hero plate (as the School life, Learning and Events hubs), cards
+   and the current-parents panel */
+.sm-hub .page-hero__plate {
+  width: min(100% - 2 * var(--margin), var(--band-max));
+  margin-inline: auto;
+  padding: 12px;
+  border: 1px solid var(--clay);
+  background: var(--paper-3);
+}
+.sm-hub-two .lead { margin-top: clamp(18px, 2.2vw, 28px); }
+.sm-hub-cards .ev__text { color: var(--ink-2); }
+.sm-hub-cards .ev__n { display: block; }
+.sm-hub-cards .ev__media img { object-position: var(--sm-pos, 50% 45%); }
+.sm-hub-two { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--gutter); }
+@media (min-width: 900px) { .sm-hub-two { grid-template-columns: repeat(12, minmax(0, 1fr)); } .sm-hub-two > :first-child { grid-column: 1 / span 6; } .sm-hub-two > :last-child { grid-column: 8 / -1; } }
+.sm-hub-two .lead { max-width: 40ch; }
+
+/* ---- print: the folds print open, the search form does not print */
+@media print {
+  .sm-search { display: none; }
+  .sm-fold__icon, .sm-door__sum::after { display: none; }
+}
+
+/* ---- reduced motion: no transitions on the ladder, the doors or the folds */
+@media (prefers-reduced-motion: reduce) {
+  .sm-ladder__link, .sm-door__link, .sm-door__sum::after, .sm-fold__icon::before, .sm-fold__icon::after { transition: none; }
+}
+html[data-motion="reduced"] .sm-ladder__link, html[data-motion="reduced"] .sm-door__link,
+html[data-motion="reduced"] .sm-door__sum::after, html[data-motion="reduced"] .sm-fold__icon::after { transition: none; }

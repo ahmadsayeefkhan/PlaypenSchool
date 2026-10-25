@@ -1,84 +1,154 @@
 ---
 title: Fees and payment
 template: T06
-standfirst: The school explains the admission fee and the monthly tuition after a child has been selected, and fees are paid online through its bank. This page sets out how that works, and says plainly what the school has not published.
+body_class: adm
+h1: How the fees <em>work</em>.
+standfirst: The school explains the admission fee and the monthly tuition after a child has been selected. Fees are paid online through the school's bank. Amounts come from the admissions office.
 ---
+<!-- Redesign 2026-10-24 (plans/admissions.md, section 6). Built around what a family can do today (three steps and one panel), with the
+     structure Harrow and Tanglin use so a fee table slots in later without a redesign. The headline is no longer a negative.
+     Review r1 (2026-10-24): the gap ("not published") is said once, in the amounts panel; the other three places say what to do. The
+     amounts panel carries id="call" (the group's convention). The old section 05 card to Starting at Playpen is gone: the paying
+     section's foot already carries that route, and the terrace frame is now used once in the group, on Starting at Playpen. -->
+<section class="page-section adm-open" aria-labelledby="fees-open">
+  <div class="band">
+    <h2 id="fees-open" class="visually-hidden">A quiet corner of the building</h2>
+    <p class="adm-hero-actions" data-reveal><a class="btn btn--primary" href="{{link:/admissions/enquire/#topic-fees}}"><span class="btn__label">Ask about fees</span></a><a class="btn btn--text" href="#fees-amounts">Where do the amounts come from?</a></p>
+    <!-- The planter frame (DSC01278 via img/gal-planter): first use outside the gallery; a people-free, quiet frame for a page about money. -->
+    <!-- Final review 2026-10-25: the 21:9 band and the 4:5 phone crop of the other admissions pages (was 3:2 inset, landscape on phones). -->
+    <figure class="plate adm-plate adm-plate--21x9" data-reveal>
+      <div class="plate__frame">
+        <span class="adm-plate__wide">{{img src="img/gal-planter" alt="A curved brick planter with shrubs and a concrete bench beside a brick wall and vertical concrete slats." sizes="100vw"}}</span>
+        <span class="adm-plate__tall">{{img src="img/gal-planter" alt="A curved brick planter with shrubs and a concrete bench beside a brick wall and vertical concrete slats." sizes="100vw" widths="960,1440"}}</span>
+      </div>
+    </figure>
+  </div>
+</section>
+
+<!-- 01. How fees work, before any figure (Harrow and Tanglin open the same way). Three steps where the old page had four, two of them saying
+     the same thing. -->
+<!-- CONFIRM (A4): "Its Admission Department deals with the banking formalities" and "online payment required since 2021 to 2022" are from the
+     school's procedure and payment pages; the day of the month tuition falls due appears only on the school's staging site, so it is not stated. -->
 <section class="page-section" aria-labelledby="fees-how">
   <div class="band">
     <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">How fees work</span><span class="sheet-rule__purpose">In the order they come</span></div>
-    <h2 id="fees-how" class="section-title">Fees are explained after selection.</h2>
-    <ol class="process process--row process--4 mt-m" data-reveal-group>
-      <li class="process__step"><span class="process__n">01</span><div class="process__body"><h3>Your child is selected.</h3><p>The school gives the result by telephone once the admission process is complete.</p></div></li>
-      <li class="process__step"><span class="process__n">02</span><div class="process__body"><h3>The school explains the fees.</h3><p>After selection, the school briefs the family on the admission fee and the monthly tuition. Its Admission Department deals with the banking formalities.</p></div></li>
-      <li class="process__step"><span class="process__n">03</span><div class="process__body"><h3>Payment is made online.</h3><p>Payment goes through a bank the school authorises. The school has required online payment of fees since the 2021 to 2022 session.</p></div></li>
-      <li class="process__step"><span class="process__n">04</span><div class="process__body"><h3>Tuition is monthly.</h3><p>The school describes the tuition as monthly. It has not published the date on which each month's tuition falls due, so ask when you call.</p></div></li>
+    <div class="adm-head">
+      <h2 id="fees-how" class="section-title" data-reveal>Three steps, after selection.</h2>
+      <!-- Review r2: "Nothing is paid before a child has a place" was not in any school source; whether a form, assessment or test fee is
+           charged before selection is a CONFIRM (CONTENT-TO-CONFIRM P22). -->
+      <p class="lead" data-reveal>The office explains the fees once a child has a place, then payment runs online.</p>
+    </div>
+    <ol class="steps adm-steps--3" data-reveal-group>
+      <li class="step"><span class="step__n display-m" aria-hidden="true">01</span><h3>The result comes by telephone.</h3><p>Once the admission process is complete, the school calls the number you gave on the form.</p></li>
+      <li class="step"><span class="step__n display-m" aria-hidden="true">02</span><h3>The office explains the fees.</h3><p>The admission fee, the monthly tuition and the payment details, for your child's class.</p></li>
+      <li class="step"><span class="step__n display-m" aria-hidden="true">03</span><h3>You pay online.</h3><p>Through a bank the school authorises. Online payment has been required since the 2021 to 2022 session. Ask the office for the day of the month it falls due.</p></li>
     </ol>
+    <div class="adm-foot" data-reveal>
+      <p class="adm-foot__text">Tuition is monthly. The list below gives you the questions to ask about what it covers.</p>
+      <p class="adm-foot__action"><a class="link link--arrow" href="#fees-ask">Six questions worth asking</a></p>
+      <p class="adm-foot__source caption">From the school's admission procedure and online payment pages, read on 11 October 2026.</p>
+    </div>
   </div>
 </section>
 
-<section class="page-section page-section--tint" aria-labelledby="fees-amounts">
+<!-- 02. The amounts: the honest fact as a sentence with an action, not a headline. When the school publishes, the panel body becomes a
+     table--stack by class (admission fee, monthly tuition) with the year and a review date in the foot. -->
+<!-- CONFIRM (A4): fee amounts. The school publishes no fee schedule for 2026 to 2027; none is stated here, and no figure from press reports or
+     from an older year is used. If the school agrees to publish, this panel becomes a dated table by class. -->
+<!-- CONFIRM: scholarships and concessions. The school has not stated a policy; no claim is made (a "20 to 50 per cent merit scholarship" figure in press coverage is unverified and is deliberately not used). -->
+<section class="page-section" aria-labelledby="fees-amounts-h" id="fees-amounts">
   <div class="band">
-    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">The amounts</span><span class="sheet-rule__purpose">Not published by the school</span></div>
-    <!-- CONFIRM: fee amounts. The school publishes no fee schedule for 2026 to 2027; none is stated here, and no figure from press reports or from an older year is used. If the school agrees to publish, this panel becomes a dated table by class (admission fee, monthly tuition), with the year and a review date. -->
-    <!-- CONFIRM: scholarships and concessions. The school has not stated a policy; no claim is made (a "20 to 50 per cent merit scholarship" figure in press coverage is unverified and is deliberately not used). -->
-    <div class="fee-panel" data-reveal>
-      <h2 id="fees-amounts" class="fee-panel__lead">The school has not published its fees.</h2>
-      <div class="fee-panel__side">
-        <p>This page does not guess at the amounts. To ask before you apply, call the line for your child's section, {{hours:between}}.</p>
-        {{phones}}
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">The amounts</span><span class="sheet-rule__purpose">From the admissions office</span></div>
+    <div class="adm-head">
+      <h2 id="fees-amounts-h" class="section-title" data-reveal>Amounts come from the admissions office.</h2>
+    </div>
+    <div class="adm-row adm-row--centre">
+      <div class="adm-row__main">
+        <div class="adm-panel adm-call" id="call" data-reveal>
+          <div class="adm-panel__head"><h3 class="adm-panel__title">This page does not guess at the amounts.</h3><p class="label">Ask the line</p></div>
+          <div class="adm-panel__body">
+            <p>The school has not published a fee schedule. To ask before you apply, call the line for your child's section {{hours:between}}, or ask by enquiry.</p>
+          </div>
+          <ul class="call-lines">
+            <li class="call-line" data-line="pg-1"><span class="call-line__who">Playgroup to Class I</span>{{phone:pg-1 class="call-line__tel"}}</li>
+            <li class="call-line" data-line="ii-vi"><span class="call-line__who">Classes II to VI</span>{{phone:ii-vi class="call-line__tel"}}</li>
+            <li class="call-line" data-line="vii-xii"><span class="call-line__who">Classes VII to XII</span>{{phone:vii-xii class="call-line__tel"}}</li>
+          </ul>
+          <div class="adm-panel__foot">
+            <p class="small-print">Lines are open {{hours}}. A class chosen on another admissions page lights its line here.</p>
+            <a class="btn btn--secondary" href="{{link:/admissions/enquire/#topic-fees}}"><span class="btn__label">Ask in writing instead</span></a>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="page-section" aria-labelledby="fees-ask">
+<!-- 03. The most useful part of the old page made actionable: a tickable, printable list, and a button that carries the topic to the enquiry
+     form. -->
+<!-- CONFIRM: refund rules, late-payment rules and whether fees change from year to year: the school has supplied none. The list only gives families the questions. -->
+<section class="page-section" aria-labelledby="fees-ask-h" id="fees-ask">
   <div class="band">
-    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Before you decide</span><span class="sheet-rule__purpose">Questions to put to the school</span></div>
-    <!-- CONFIRM: refund rules, late-payment rules and whether fees change from year to year: the school has supplied none. The list only gives families the questions. -->
-    <div class="layout">
-      <div class="layout__main">
-        <h2 id="fees-ask" class="section-title">Questions worth asking when you call.</h2>
-        <ol class="ask-list mt-m" data-reveal-group>
-          <li>What the admission fee is, and when it is paid.</li>
-          <li>The monthly tuition for your child's class.</li>
-          <li>What the tuition covers.</li>
-          <li>Whether uniform, books, exercise copies, sportswear and the bus are charged separately.</li>
-          <li>How refunds and late payments are handled.</li>
-          <li>Whether the fees change from one year to the next.</li>
-        </ol>
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Before you decide</span><span class="sheet-rule__purpose">Take this list to the call</span></div>
+    <div class="adm-head">
+      <h2 id="fees-ask-h" class="section-title" data-reveal>Six questions worth asking.</h2>
+      <p class="lead" data-reveal>The list is ours; the answers come from the admissions office. Tick what you have asked, or send the whole list as an enquiry.</p>
+    </div>
+    <div class="adm-row adm-row--centre">
+      <div class="adm-row__main">
+        <div class="adm-panel adm-panel--gold" id="fees-list" data-reveal>
+          <p class="print-only">The Playpen School, Dhaka: questions to ask about fees.</p>
+          <div class="adm-panel__head"><h3 class="adm-panel__title">Questions to ask about fees</h3><p class="label">Six questions</p></div>
+          <ul class="adm-check" data-adm-store="fees">
+            <li class="adm-check__item"><input id="fq-1" type="checkbox" value="admission"><label for="fq-1">What is the admission fee, and when is it paid?</label></li>
+            <li class="adm-check__item"><input id="fq-2" type="checkbox" value="monthly"><label for="fq-2">What is the monthly tuition for my child's class?</label></li>
+            <li class="adm-check__item"><input id="fq-3" type="checkbox" value="covers"><label for="fq-3">What does the tuition cover?</label></li>
+            <li class="adm-check__item"><input id="fq-4" type="checkbox" value="extras"><label for="fq-4">Are uniform, books, exercise copies, sportswear and the bus charged separately?</label></li>
+            <li class="adm-check__item"><input id="fq-5" type="checkbox" value="refunds"><label for="fq-5">How are refunds and late payments handled?</label></li>
+            <li class="adm-check__item"><input id="fq-6" type="checkbox" value="change"><label for="fq-6">Do the fees change from one year to the next?</label></li>
+          </ul>
+          <div class="adm-panel__foot" data-print-skip>
+            <a class="btn btn--primary" href="{{link:/admissions/enquire/#topic-fees}}"><span class="btn__label">Ask these by enquiry</span></a>
+            <button class="btn btn--text" type="button" data-print-list="#fees-list">Print this list</button>
+          </div>
+        </div>
       </div>
-      <div class="layout__aside">
-        <p class="label">Related pages</p>
-        <ul class="link-list">
-          <li><a class="link link--arrow" href="{{link:/admissions/faq/#q-fees}}">What are the fees?</a></li>
-          <li><a class="link link--arrow" href="{{link:/admissions/how-to-apply/}}">How to apply</a></li>
-          <li><a class="link link--arrow" href="{{link:/admissions/enquire/}}">Enquire</a></li>
-        </ul>
-      </div>
+    </div>
+    <!-- Review r2: the panel is centred on ten columns and the related links close the sheet in its foot, so no half-band is left blank. -->
+    <div class="adm-foot adm-foot--links" data-reveal>
+      <p class="adm-foot__text">What the school has published about fees is on these pages; the rest comes from the admissions office.</p>
+      <p class="adm-foot__action"><a class="link link--arrow" href="{{link:/admissions/faq/#q-fees}}">What are the fees? (FAQ)</a><a class="link link--arrow" href="{{link:/admissions/how-to-apply/}}">How to apply</a><a class="link link--arrow" href="{{link:/admissions/starting-at-playpen/}}">Starting at Playpen</a></p>
     </div>
   </div>
 </section>
 
+<!-- 04. Paying: the channels parents know by name, grouped, no logos (third-party marks need permission, B2). Review r2: the two
+     tag-lists render as paper chips (.adm .tag-list), not dash lists. -->
+<!-- CONFIRM (B2): payment channels as listed on the school's online payment page; confirm each is still accepted, and whether the school can supply the banks' and wallets' marks with permission. -->
 <section class="page-section" aria-labelledby="fees-pay">
   <div class="band">
     <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Paying</span><span class="sheet-rule__purpose">Online, through the school's bank</span></div>
-    <!-- CONFIRM: payment channels as listed on the school's payment page; confirm that all are still accepted. The monthly window (the 1st to the 10th) appears only on the school's staging site, so it is not stated here: the "Tuition is monthly" step above says the day is not published. -->
+    <div class="adm-head">
+      <h2 id="fees-pay" class="section-title" data-reveal>Fees are paid online.</h2>
+      <p class="lead" data-reveal>Online payment has been required since the 2021 to 2022 session. These are the channels the school lists.</p>
+    </div>
     <div class="layout">
       <div class="layout__main">
-        <h2 id="fees-pay" class="section-title">Fees are paid online.</h2>
-        <div class="prose" data-reveal>
-          <p>Online payment has been required since the 2021 to 2022 session. Among the channels the school lists are:</p>
-        </div>
-        <ul class="tag-list mt-m" data-reveal>
-          <li>EBL, Visa and Mastercard</li><li>DBBL</li><li>Nagad</li><li>bKash</li><li>Rocket</li><li>Upay</li><li>Epay</li>
+        <p class="label" data-reveal>Card and bank</p>
+        <ul class="tag-list" data-reveal>
+          <li>EBL, Visa and Mastercard</li><li>DBBL</li>
         </ul>
-        <p class="small-print mt-m">The school's own list ends with "and many more".</p>
-        <div class="callout mt-l" data-reveal>
-          <span class="callout__label label">A question about a payment</span>
-          <p>Call the line for your child's section, or the further queries line, {{phone:further}}.</p>
+        <p class="label" data-reveal>Mobile wallets</p>
+        <ul class="tag-list" data-reveal>
+          <li>Nagad</li><li>bKash</li><li>Rocket</li><li>Upay</li><li>Epay</li>
+        </ul>
+        <p class="small-print mt-m" data-reveal>The school's own list ends with "and many more".</p>
+        <div class="venue venue--note mt-l" data-reveal>
+          <p class="label">A question about a payment</p>
+          <p class="venue__text">Call the line for your child's section, or the further queries line, {{phone:further}}.</p>
         </div>
       </div>
-      <div class="layout__aside">
+      <div class="layout__aside" data-reveal>
         <p class="label">On the school's current site</p>
         <ul class="link-list">
           <li>{{ext:pay}}</li>
@@ -86,21 +156,11 @@ standfirst: The school explains the admission fee and the monthly tuition after 
         </ul>
       </div>
     </div>
-  </div>
-</section>
-
-<section class="page-section" aria-labelledby="fees-extra">
-  <div class="band">
-    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">School items</span><span class="sheet-rule__purpose">Where families get them</span></div>
-    <h2 id="fees-extra" class="section-title">Uniform, books, sportswear and the bus.</h2>
-    <dl class="dl mt-m" data-reveal>
-      <div class="dl__row"><dt>Uniform</dt><dd>Compulsory from KG I. It is made to the school's specifications at its tailoring house, which has a Gulshan branch and a Bashundhara branch.</dd></div>
-      <div class="dl__row"><dt>Sportswear</dt><dd>Bought from the school.</dd></div>
-      <div class="dl__row"><dt>Books and exercise copies</dt><dd>From the school bookshop. Parents collect the yearly books and copies at the beginning of each session.</dd></div>
-      <div class="dl__row"><dt>The school bus</dt><dd>Parents who want a place apply at the Administrative Office.</dd></div>
-    </dl>
-    <p class="small-print mt-m">The school's pages do not say whether any of these is part of the fees, so ask when you call. The details are on <a href="{{link:/admissions/starting-at-playpen/}}">Starting at Playpen</a> and <a href="{{link:/school-life/transport-and-safety/}}">Transport and safety</a>.</p>
-    <p class="small-print mt-m">Last reviewed <time datetime="2026-10-11">11 October 2026</time>, against the school's own pages.</p>
+    <div class="adm-foot" data-reveal>
+      <p class="adm-foot__text">Uniform, sportswear, books and the bus are bought or applied for separately; ask whether any is included in the fees.</p>
+      <p class="adm-foot__action"><a class="link link--arrow" href="{{link:/admissions/starting-at-playpen/}}">Where families get them</a></p>
+      <p class="adm-foot__source caption">Channels as listed on the school's online payment page. Last reviewed <time datetime="2026-10-11">11 October 2026</time>, against the school's own pages.</p>
+    </div>
   </div>
 </section>
 

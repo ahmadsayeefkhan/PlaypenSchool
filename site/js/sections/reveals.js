@@ -156,9 +156,9 @@ export function create(ctx) {
   if (mark && !still) gsap.from(mark, { scaleY: 0, opacity: 0, duration: 0.9, ease: 'expo.out', scrollTrigger: { trigger: '#mission', start: 'top 85%', once: true } });
 
   /* Generic reveals outside the sections that choreograph their own */
-  const own = '#hero, #ground, #ascent, #learning, #life, #ledger';
+  const own = '#hero, #ascent, #learning';
   const generic = Array.from(document.querySelectorAll('[data-reveal]')).filter((el) => !el.closest(own));
-  const parents = generic.filter((el) => el.closest('#parents'));
+  const parents = generic.filter((el) => el.closest('#parents, #notices'));
   const steps = generic.filter((el) => el.classList.contains('step'));
   const rest = generic.filter((el) => !parents.includes(el) && !steps.includes(el));
 

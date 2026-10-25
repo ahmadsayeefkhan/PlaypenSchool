@@ -2,85 +2,158 @@
 title: Careers at Playpen
 template: T05
 h1: Teaching at Playpen, and how to <em>apply</em>.
-standfirst: How to send an application to teach at the school, and where vacancies are listed. The school says that many of its faculty members have served here for thirty or forty years.
-hero_image: img/about-careers-models
-hero_alt: Student-made clay models of brick houses, forts and courtyards laid out on a black-and-white chequerboard floor, seen from above.
-hero_caption: Clay models made by students, on display on the chequerboard floor, August 2023
-hero_n: 01
+standfirst: Four facts about the school you would join, the school's own words about its teachers, and one route to send an application.
 ---
-<section class="page-section" aria-labelledby="car-facts">
-  <div class="band">
-    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">The school you would join</span></div>
-    <h2 id="car-facts" class="visually-hidden">The school you would join</h2>
-    <dl class="fact-strip" data-reveal>
-      <div class="fact"><dt>Where</dt><dd>Bashundhara R/A, Dhaka<small>A day school, with no boarding</small></dd></div>
-      <div class="fact"><dt>Classes</dt><dd>Playgroup to Class XII<small>In four sections</small></dd></div>
-      <div class="fact"><dt>Curriculum</dt><dd>Cambridge O Level, AS and A Level</dd></div>
-      <div class="fact"><dt>The year</dt><dd>Two semesters<small>A written examination ends each one</small></dd></div>
-    </dl>
-  </div>
-</section>
+<!-- Redesign 2026-10-24 (group "about", plans/about.md section 8): the clay-models strip (also the Clubs hero) gives way to the terrace; the page gives one route at a time (the online form when the website portal is on, the steps when it is off) with the file types the form accepts. Order: mounted plate, 01 why teach here, 02 apply (the one coloured sheet), 03 what happens next, 04 where next. No CTA band and no pager: teachers are not reading the About sequence (the hub and the menu reach this page). -->
+<!-- CONFIRM (P09): the opening photograph img/careers-bench-detail (a close view of two curved brick benches on the terrace, from the school's upload of March 2024). A people-free staff-room frame from the school would replace it. Review fixes 2026-10-24: img/gal-terrace left this page (the same photograph as the Campus walk's terrace plate); review r3: the wide bench-and-tree frame (media/ascent-5) left too, because it was the same terrace from almost the same spot as the Campus plate, so a tight detail of it stands here instead. -->
+<div class="band abt-hero-plate" data-abt-clear>
+  <figure class="plate abt-plate abt-plate--2x1" data-reveal>
+    <div class="plate__frame">{{img src="img/careers-bench-detail" alt="A close view of two curved brick benches on the terrace, planters and a railing behind them, brick paving in front, no one there." sizes="100vw" widths="960,1440,1920" loading="eager" fetchpriority="high"}}</div>
+    <figcaption class="plate__cap"><span class="plate__n">01</span>A corner of the terrace, 2024</figcaption>
+  </figure>
+  <p class="caption abt-plate__line">A corner of the terrace, 2024.</p>
+</div>
 
-<section class="page-section page-section--tint" aria-labelledby="car-words">
+<section class="page-section" aria-labelledby="car-why">
   <div class="band">
-    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">In the school's own words</span><span class="sheet-rule__purpose">From its careers page</span></div>
-    <h2 id="car-words" class="visually-hidden">What the school says about its faculty</h2>
-    <!-- CONFIRM: the tenure claim is the school's own statement and has not been checked; it is quoted and attributed, never stated as a fact. -->
-    <figure class="pull-quote" data-reveal>
-      <blockquote>
-        <p>Many Faculty Members are serving here for as long as 30-40 years.</p>
-      </blockquote>
-      <figcaption><cite>From the careers page of the school's website. The statement is the school's own.</cite></figcaption>
-    </figure>
-  </div>
-</section>
-
-<section class="page-section" aria-labelledby="car-vacancies">
-  <div class="band">
-    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Vacancies</span><span class="sheet-rule__purpose">Open roles</span></div>
-    <div class="layout">
-      <div class="layout__main">
-        <h2 id="car-vacancies" class="section-title">Current vacancies.</h2>
-        <!-- CONFIRM: open roles with closing dates, eligibility and responsibilities; none supplied. When the school gives one, add a <ul class="rows"> here with one <li class="row"> per role (the markup is in docs/COMPONENTS.md, section 4.15) and remove this empty-state box. -->
-        <div class="callout callout--wide mt-m" data-reveal>
-          <span class="callout__label label">Open roles</span>
-          <p>No vacancies are listed on this page today. Openings are listed here when the school is recruiting.</p>
-          <p>You can still send an application: the steps are below.</p>
-        </div>
-      </div>
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">The school you would join</span><span class="sheet-rule__purpose">Four facts and the school's own words</span></div>
+    <div class="abt-head abt-head--tight">
+      <h2 id="car-why" class="section-title abt-head__title" data-reveal>Why teach at Playpen.</h2>
+      <p class="lead abt-head__lead" data-reveal>Nothing here is a promise. These are facts already on the school's pages, and one sentence the school says about its own staff.</p>
+    </div>
+    <!-- CONFIRM: the venue and awards figures are the home's (G-1); the tenure statement is the school's own and has not been checked (P09). Benefits: none supplied, so none written. -->
+    <ul class="abt-panels abt-panels--4" data-reveal-group>
+      <li class="abt-panel abt-panel--gold">
+        <span class="abt-panel__label label">A Cambridge school</span>
+        <h3 class="abt-panel__title">O Level, AS and A Level</h3>
+        <p class="abt-panel__text">Since 2020 the school has been a Cambridge exam venue, approved by the British Council. Students sit their exams in the school's own hall.</p>
+      </li>
+      <li class="abt-panel abt-panel--gold">
+        <span class="abt-panel__label label">One purpose-built building</span>
+        <h3 class="abt-panel__title">Ten storeys, since July 2018</h3>
+        <p class="abt-panel__text">Air-conditioned classrooms, and separate laboratories for Physics, Chemistry, Biology and Computer Science.</p>
+        <a class="link link--arrow abt-panel__more" href="{{link:/about/campus/}}">Our campus</a>
+      </li>
+      <li class="abt-panel abt-panel--gold">
+        <span class="abt-panel__label label">Playgroup to Class XII</span>
+        <h3 class="abt-panel__title">Four sections, two semesters</h3>
+        <p class="abt-panel__text">A day school in Bashundhara, with no boarding. A written examination ends each semester.</p>
+        <a class="link link--arrow abt-panel__more" href="{{link:/learning/}}">Learning at Playpen</a>
+      </li>
+      <li class="abt-panel abt-panel--gold abt-panel--quote">
+        <span class="abt-panel__label label">Long-serving colleagues</span>
+        <blockquote class="abt-panel__quote"><p>Many Faculty Members are serving here for as long as 30-40 years.</p></blockquote>
+        <cite>From the careers page of the school's website. The statement, and its spelling, are the school's own.</cite>
+      </li>
+    </ul>
+    <div class="abt-foot">
+      <p class="abt-foot__text">Every year, Playpen students receive The Daily Star Awards: for six or more A grades at O Level, and for three or more A grades at A Level.</p>
+      <p class="abt-foot__action"><a class="link link--arrow" href="{{link:/learning/results/}}">Results and achievements</a></p>
+      <p class="abt-foot__source caption">From the school's results summary for the May to June 2026 exam session, and the school's careers, campus and admissions pages, September 2026.</p>
     </div>
   </div>
 </section>
 
-<section class="page-section" aria-labelledby="car-apply">
+<section class="page-section page-section--tint abt-tint" id="apply" aria-labelledby="car-apply">
   <div class="band">
-    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">How to apply</span><span class="sheet-rule__purpose">Four steps</span></div>
-    <h2 id="car-apply" class="section-title">Send a CV and a photograph.</h2>
-    <ol class="process process--row process--4 mt-m" data-reveal-group>
-      <li class="process__step"><span class="process__n">01</span><div class="process__body"><h3>Prepare your CV.</h3><p>Save it as a Word or a PDF file.</p></div></li>
-      <li class="process__step"><span class="process__n">02</span><div class="process__body"><h3>Add a photograph.</h3><p>A passport-size photograph, as a JPEG file.</p></div></li>
-      <li class="process__step"><span class="process__n">03</span><div class="process__body"><h3>Email your application.</h3><p>Send both files to the school's careers email address.</p></div></li>
-      <!-- CONFIRM: "what happens next" (taken from the previous copy of the site: the school contacts candidates when an opening matches their qualifications); the school has not stated how long it takes or how it replies. -->
-      <li class="process__step"><span class="process__n">04</span><div class="process__body"><h3>Wait to hear from the school.</h3><p>The school contacts candidates when an opening matches their qualifications.</p></div></li>
-    </ol>
-    <!-- CONFIRM: the school's careers email address. It is hidden behind Cloudflare protection on the school's own site, so none is printed; the school must supply it. Until then the page sends applicants to the further queries line. -->
-    <div class="callout callout--wide mt-l" data-reveal>
-      <span class="callout__label label">Where to send it</span>
-      <p>The school's careers email address is to be published by the school. Until it is, call the further queries and emergencies line, {{phone:further}}, and ask where to send your CV. All the school's lines are on <a class="link" href="{{link:/contact/}}">Contact</a>.</p>
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Apply</span><span class="sheet-rule__purpose">One route</span></div>
+    <div class="abt-head abt-head--tight">
+      <h2 id="car-apply" class="section-title abt-head__title" data-reveal>Send an application.</h2>
+      <!-- CONFIRM: open roles with closing dates, eligibility and responsibilities; none supplied (P09, A6). When the school gives one, a ul.rows list goes above the form (docs/COMPONENTS.md, section 4.15) and this sentence changes. -->
+      <p class="lead abt-head__lead abt-roles" data-reveal>No vacancies are listed today. The school reads every application and contacts candidates when an opening matches their qualifications.</p>
+    </div>
+
+    <!-- Apply online (2026-10-23, kept): shown only when the website portal is on (data-portal-only); sends to the Website Operator app, which gives a JOB- code. Script build/additions/careers-form.js, styles careers-form.css, notes docs/additions/careers-form.md. The steps row under it is hidden when the portal is on (careers-form.js sets data-portal-only on the form and leaves the steps; see the hidden attribute toggled below). -->
+    <div id="apply-online" data-portal-only hidden>
+      <p class="cf__intro">Fill in the form, add your CV and a photograph, and press Send. You get a reference code at once.</p>
+      <form class="page-form cf mt-m" data-careers-form novalidate action="#" method="post">
+        <div class="form-row form-row--2">
+          <div class="field"><label for="cf-name">Full name</label><input id="cf-name" name="fullName" type="text" autocomplete="name" maxlength="80" required aria-describedby="cf-name-err"><p id="cf-name-err" class="field__error" aria-live="polite"></p></div>
+          <div class="field"><label for="cf-phone">Mobile number</label><input id="cf-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required aria-describedby="cf-phone-hint cf-phone-err"><p id="cf-phone-hint" class="field__hint">Eleven digits, starting 01</p><p id="cf-phone-err" class="field__error" aria-live="polite"></p></div>
+        </div>
+        <div class="field"><label for="cf-email">Email</label><input id="cf-email" name="email" type="email" autocomplete="email" maxlength="120" required aria-describedby="cf-email-err"><p id="cf-email-err" class="field__error" aria-live="polite"></p></div>
+        <div class="form-row form-row--2">
+          <div class="field">
+            <label for="cf-position">Position you are applying for</label>
+            <select id="cf-position" name="position" required aria-describedby="cf-position-err">
+              <option value="">Choose a position</option>
+              <option value="teacher">Teacher</option>
+              <option value="assistant">Teaching assistant</option>
+              <option value="office">Office and administration</option>
+              <option value="other">Other</option>
+            </select>
+            <p id="cf-position-err" class="field__error" aria-live="polite"></p>
+          </div>
+          <div class="field">
+            <label for="cf-level">Classes you would like to teach (optional)</label>
+            <select id="cf-level" name="level" aria-describedby="cf-level-err">
+              <option value="">Choose classes</option>
+              <option>Playgroup to Class I</option>
+              <option>Classes II to VI</option>
+              <option>Classes VII to X (O Level)</option>
+              <option>Classes XI and XII (AS and A Level)</option>
+              <option>Any classes</option>
+              <option>Not a teaching role</option>
+            </select>
+            <p id="cf-level-err" class="field__error" aria-live="polite"></p>
+          </div>
+        </div>
+        <div class="field"><label for="cf-subject">Subject or role</label><input id="cf-subject" name="subject" type="text" maxlength="80" required aria-describedby="cf-subject-hint cf-subject-err"><p id="cf-subject-hint" class="field__hint">For example: O Level Physics, English, Accounts office</p><p id="cf-subject-err" class="field__error" aria-live="polite"></p></div>
+        <div class="form-row form-row--2">
+          <div class="field"><label for="cf-qual">Highest qualification</label><input id="cf-qual" name="qualification" type="text" maxlength="120" required aria-describedby="cf-qual-hint cf-qual-err"><p id="cf-qual-hint" class="field__hint">For example: MSc in Physics, University of Dhaka</p><p id="cf-qual-err" class="field__error" aria-live="polite"></p></div>
+          <div class="field"><label for="cf-exp">Years of experience</label><input id="cf-exp" name="experience" type="number" inputmode="numeric" min="0" max="50" step="1" required aria-describedby="cf-exp-err"><p id="cf-exp-err" class="field__error" aria-live="polite"></p></div>
+        </div>
+        <div class="field"><label for="cf-work">Where you work now (optional)</label><input id="cf-work" name="workplace" type="text" maxlength="120" aria-describedby="cf-work-err"><p id="cf-work-err" class="field__error" aria-live="polite"></p></div>
+        <div class="form-row form-row--2">
+          <div class="field cf__file"><label for="cf-cv">Your CV</label><input id="cf-cv" name="cv" type="file" accept="application/pdf,.pdf" required aria-describedby="cf-cv-hint cf-cv-err"><p id="cf-cv-hint" class="field__hint">A PDF file, up to 5 MB</p><p id="cf-cv-err" class="field__error" aria-live="polite"></p></div>
+          <div class="field cf__file"><label for="cf-photo">Passport-size photograph</label><input id="cf-photo" name="photo" type="file" accept="image/jpeg,image/png,.jpg,.jpeg,.png" required aria-describedby="cf-photo-hint cf-photo-err"><p id="cf-photo-hint" class="field__hint">A JPEG or PNG file, up to 2 MB</p><p id="cf-photo-err" class="field__error" aria-live="polite"></p></div>
+        </div>
+        <div class="field"><label for="cf-note">A short note to the school (optional)</label><textarea id="cf-note" name="note" rows="5" maxlength="1000" aria-describedby="cf-note-hint cf-note-err"></textarea><p id="cf-note-hint" class="field__hint">Why you would like to teach at Playpen, in a few lines</p><p id="cf-note-err" class="field__error" aria-live="polite"></p></div>
+        <div class="pp-hp" aria-hidden="true"><label for="cf-hp">Leave this empty</label><input id="cf-hp" name="hp" type="text" tabindex="-1" autocomplete="off"></div>
+        <div class="field page-form__guardian"><label class="choice"><input id="cf-consent" name="consent" type="checkbox" required aria-describedby="cf-consent-err"> The details and files I send are true, and the school may keep them to consider me for a post</label><p id="cf-consent-err" class="field__error" aria-live="polite"></p></div>
+        <p class="field__hint page-form__privacy">The school uses these details only to consider your application. <a class="link" href="{{link:/privacy/#c-forms}}">Privacy</a></p>
+        <button class="btn btn--primary" type="submit"><span class="btn__label">Send application</span></button>
+        <p class="cf__status" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+
+    <!-- The steps, by hand (portal off). The school's careers page said a Word or PDF CV and a JPEG photograph; the online form takes PDF and JPEG or PNG. Each route states its own file types and nothing else (P09). -->
+    <!-- CONFIRM: the school's careers email address (A6). It is hidden behind Cloudflare protection on the school's own site, so none is printed; until the school supplies it, step 03 sends applicants to the further queries line. -->
+    <div class="abt-steps" id="apply-by-hand">
+      <ol class="steps">
+        <li class="step" data-reveal><span class="step__n display-m">01</span><h3>Prepare your CV.</h3><p>Save it as a PDF or a Word file.</p></li>
+        <li class="step" data-reveal><span class="step__n display-m">02</span><h3>Add a photograph.</h3><p>A passport-size photograph, as a JPEG file.</p></li>
+        <li class="step" data-reveal><span class="step__n display-m">03</span><h3>Call to ask where to send it.</h3><p>The school's careers email address is not yet published. Call the further queries and emergencies line, {{phone:further}}, and ask where to send your CV.</p></li>
+        <li class="step" data-reveal><span class="step__n display-m">04</span><h3>Wait to hear from the school.</h3><p>The school contacts candidates when an opening matches their qualifications.</p></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="page-section" aria-labelledby="car-next">
+  <div class="band">
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">After you apply</span><span class="sheet-rule__purpose">What happens next</span></div>
+    <div class="abt-head abt-head--tight">
+      <h2 id="car-next" class="section-title abt-head__title" data-reveal>What happens next.</h2>
+    </div>
+    <!-- CONFIRM: how long a reply takes and how the school replies (P09). Not stated, so not written. "The school contacts candidates when an opening matches their qualifications" is from the previous copy of the site. -->
+    <div class="venue abt-venue" data-reveal>
+      <p class="label">The school's reply</p>
+      <p class="venue__text">Online, you get a reference code at once; by hand, the office tells you how your CV was received. The school contacts candidates when an opening matches their qualifications. No reply time is published.</p>
     </div>
   </div>
 </section>
 
 <section class="page-section" aria-labelledby="wn-title">
   <div class="band where-next">
-    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Routes</span></div>
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Routes</span><span class="sheet-rule__purpose">For a teacher reading on</span></div>
     <h2 id="wn-title" class="where-next__title">Where next?</h2>
     <div class="where-next__grid where-next--3">
       <div class="where-next__col">
         <h3>The school</h3>
         <ul>
           <li><a class="link" href="{{link:/about/history/}}">Our history</a></li>
-          <li><a class="link" href="{{link:/about/leadership/}}">Leadership</a></li>
+          <li><a class="link" href="{{link:/about/school-administration/}}">School administration</a></li>
           <li><a class="link" href="{{link:/about/campus/}}">Our campus</a></li>
         </ul>
       </div>
@@ -95,7 +168,7 @@ hero_n: 01
       <div class="where-next__col">
         <h3>Working here</h3>
         <ul>
-          <li><a class="link" href="{{link:/about/policies/}}">Policies and documents</a></li>
+          <li><a class="link" href="{{link:/about/policies/}}">Policies</a></li>
           <li><a class="link" href="{{link:/about/child-protection/}}">Child protection</a></li>
           <li><a class="link" href="{{link:/contact/}}">Contact</a></li>
         </ul>

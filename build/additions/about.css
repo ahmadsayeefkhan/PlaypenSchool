@@ -1,25 +1,536 @@
-/* about group (history, leadership, campus, child protection, policies, careers): extra rules.
-   Prefix: .about-. Tokens only. Written 2026-10-11, group "about". */
+/* about group (/about/, history, school administration, who looks after each class, campus, child protection, policies,
+   careers): extra rules. Prefix: .abt-. Tokens only. Rewritten 2026-10-24 for the pages redesign (group "about"), on the
+   home's design language (research/design-language.md): the inner page kit is not built yet, so the pieces it names
+   (head, foot, panel, cover, mounted plate, counter, line mask) live here under the group's own prefix. When the
+   Foundation ships build/additions/0-kit.css, each .abt- recipe below can be replaced by its pk- twin.
+   The two older global fixes (the dagger on a night ground, the caption of a stacked table) are kept at the top. */
 
 /* history, 2026-10-11: the footnote dagger on the dark ground (main.css draws it maroon, which fails on --night) */
 .is-night .fn { color: var(--gold-text); }
+/* final review 2026-10-25: the card numbers in the night band of History (01/02/03) were ink-2 on near-black (1.89:1); they take the night labels' light muted ink (about 9:1) */
+.is-night .chapter-card__n { color: var(--bone-dim); }
 
-/* leadership, 2026-10-11: the management row (Chairman, Managing Director) is set a little larger than the other tiers */
-.about-people--lead .person__name { font-size: clamp(28px, 2.6vw, 40px); }
-
-/* leadership (also fixes every table--stack), 2026-10-11: under 640 px the stacked table's rows are display:block but its
-   caption stayed a table-caption box, which shrink-wrapped to a few characters wide. A block caption takes the full width. */
+/* leadership (also fixes every table--stack), 2026-10-11: under 640 px the stacked table's caption stayed a table-caption
+   box and shrink-wrapped. A block caption takes the full width. */
 @media (max-width: 639px) {
   .table--stack caption { display: block; width: 100%; }
 }
 
-/* policies, 2026-10-11 (review): the rule links in the index table are one line high inside a 42 px row. The padding and the
-   equal negative margin give each link a 44 px hit area without changing the row's height. */
-.about-index__link { display: inline-block; padding: 13px 0; margin: -13px 0; }
+/* ---- the cover: a photographic hero at page scale (/about/, /about/campus/; 2026-10-24) ------------------------------
+   The home's film hero, still. The page keeps the breadcrumb and the rule above the photograph on paper (44 px targets,
+   measured contrast), then the picture edge to edge, min(78svh, 760px) tall on a desktop and a 4:5 frame on phones (a
+   second <source> in the <picture>, so one file is downloaded). The H1 and the standfirst sit bottom-left in paper over
+   the home's two-direction ink scrim (the same stops as .hero--film .hero__scrim). Phones keep 96 px clear under the copy
+   for the fixed robot launcher and the visit-code toast. */
+.abt-cover { position: relative; }
+.abt-cover__rule.sheet-rule { margin-bottom: clamp(20px, 2.6vw, 36px); }
+.abt-cover__media {
+  position: relative;
+  height: min(78svh, 760px);
+  min-height: 420px;
+  overflow: hidden;
+  background: var(--ink);
+  color: var(--paper);
+}
+.abt-cover__picture, .abt-cover__picture img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 45%;
+}
+/* review fixes 2026-10-24: the Campus band is the building band of the facade (r3: no sky but a strip at the right,
+   grade v2 only, so it matches the hub's cover), so the frame sits high (the arcade stays under the copy); the hub's
+   crop ends on the arcade, so it sits low */
+.abt-cover--top .abt-cover__picture img { object-position: 50% 30%; }
+.abt-cover--low .abt-cover__picture img { object-position: 50% 62%; }
+/* the scrim (review fixes 2026-10-24, WCAG 1.4.3): the dark band now holds 0.55 up to 58 % of the height and fades
+   out at 78 %, and the left band is stronger, so the first H1 line sits on ink, not on bright brick; measured 2.1:1
+   before on the hub at 1366, the target is 3:1 for large text against the brightest quarter of the backdrop */
+.abt-cover__scrim {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(to top, rgba(28, 23, 21, 0.88) 0, rgba(28, 23, 21, 0.78) 22%, rgba(28, 23, 21, 0.64) 42%, rgba(28, 23, 21, 0.55) 58%, rgba(28, 23, 21, 0.28) 70%, rgba(28, 23, 21, 0) 80%),
+    linear-gradient(to right, rgba(28, 23, 21, 0.46) 0, rgba(28, 23, 21, 0.2) 40%, rgba(28, 23, 21, 0) 64%);
+}
+/* the one-line caption under a cover: what the photograph is and when (figcaptions are stripped by the build) */
+.abt-cover__cap { display: block; margin-top: 10px; text-align: right; }
+.abt-cover__copy {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  z-index: 1;
+  padding-bottom: clamp(28px, 4vh, 44px);
+}
+.abt-cover__title {
+  font: 300 clamp(36px, 5.4vw, 104px) / 0.96 var(--font-serif);
+  letter-spacing: -0.015em;
+  color: var(--paper);
+  max-width: 16ch;
+  text-wrap: balance;
+  text-shadow: 0 1px 2px rgba(28, 23, 21, 0.55), 0 0 24px rgba(28, 23, 21, 0.5);
+}
+/* the lighter gold the home's film hero uses for its em: --gold-text measured 2.67:1 on the brightest frames (main.css) */
+.abt-cover__title em { color: #EBCD88; font-style: italic; font-weight: inherit; }
+.abt-cover__lead {
+  max-width: 46ch;
+  margin-top: clamp(14px, 1.4vw, 22px);
+  font: 400 clamp(17px, 1.3vw, 23px) / 1.4 var(--font-serif);
+  color: var(--paper);
+  text-shadow: 0 1px 2px rgba(28, 23, 21, 0.55), 0 0 18px rgba(28, 23, 21, 0.45);
+}
+.abt-cover :focus-visible { outline-color: var(--paper); }
+@media (max-width: 767px) {
+  .abt-cover__media { height: min(92svh, 640px); min-height: 480px; }
+  .abt-cover__picture img { object-position: 50% 38%; }
+  /* the Campus phone frame (r3) is a people-free 4:5 of the left wing: the whole height shows, the sides are trimmed */
+  .abt-cover--top .abt-cover__picture img { object-position: 50% 50%; }
+  .abt-cover__copy { padding-bottom: 96px; }
+  .abt-cover__title { font-size: clamp(32px, 9vw, 44px); font-weight: 350; }
+  .abt-cover__lead { font-size: 16px; max-width: 36ch; }
+}
+.abt-cover + .page-section { padding-top: clamp(48px, 6vw, 96px); }
 
-/* campus, 2026-10-11 (review): a tall or square figure inside a .split fills the whole column once the split stacks
-   (560 to 899 px), so the portrait courtyard frame became a 780 x 1170 px page. Cap it at 24 rem there; phones and the
-   side-by-side layout are untouched. */
-@media (min-width: 560px) and (max-width: 899px) {
-  .about-plate--narrow { max-width: 24rem; }
+/* ---- the mounted hero plate (history, administration, child protection, careers; 2026-10-24) --------------------------
+   The photograph that opens a page sits on the home's paper-3 mount inside the band (never a bare bleed), with the
+   curtain reveal figure.plate[data-reveal] already gives. 16:9 on a desktop, 4:3 on a phone; --mark is the smaller 3:2
+   plate used when the page's first screen is something else (the organisation chart). */
+.abt-hero-plate { margin-top: calc(-1 * clamp(8px, 1.6vw, 28px)); }
+.abt-hero-plate + .page-section, .abt-hero-side + .page-section { padding-top: clamp(48px, 6vw, 96px); }
+.abt-plate img { aspect-ratio: 16 / 9; object-fit: cover; width: 100%; }
+.abt-plate--21x9 img { aspect-ratio: 21 / 9; }
+.abt-plate--2x1 img { aspect-ratio: 2 / 1; }
+.abt-plate--mark { max-width: min(100%, 44rem); }
+.abt-plate--mark img { aspect-ratio: 3 / 2; }
+/* review fixes 2026-10-24 (r3): where the phone's 4:3 crop should keep the lower part of the frame (the building
+   under the sky on History) */
+.abt-plate--lawn img { object-position: 50% 62%; }
+/* the visible one-line caption under a mounted plate (what and when); the figcaption stays in the source as the record */
+.abt-plate__line { margin-top: 10px; }
+@media (max-width: 767px) {
+  .abt-plate img, .abt-plate--21x9 img, .abt-plate--2x1 img { aspect-ratio: 4 / 3; }
+}
+
+/* ---- the side hero (school administration; review r3): the H1 row with the 3:2 plate beside the standfirst, built in
+   the body like the covers, so the first screen is not a type hero over a small plate alone at the left. The type
+   classes are the shell's (page-hero__title, page-hero__lead, page-hero__rule), so the rise and the sizes match every
+   other inner page; the band's padding repeats .page-hero's without its top padding, which the breadcrumb band the
+   build prepends already gives. From 1024 px: title and lead in columns 1 to 7, the plate in 8 to 12 across both rows. */
+.abt-hero-side { padding-bottom: clamp(8px, 1.6vw, 28px); }
+.abt-hero-side__band { display: grid; grid-template-columns: minmax(0, 1fr); column-gap: var(--gutter); row-gap: 0; align-items: end; }
+.abt-hero-side__rule.sheet-rule { margin-bottom: clamp(28px, 3.6vw, 52px); }
+.abt-hero-side__lead { margin-top: clamp(20px, 2.4vw, 36px); }
+.abt-hero-side__plate { margin-top: clamp(28px, 4vw, 56px); }
+.abt-hero-side__plate .abt-plate--mark { max-width: none; }
+@media (min-width: 1024px) {
+  .abt-hero-side__band { grid-template-columns: repeat(12, minmax(0, 1fr)); }
+  .abt-hero-side__rule { grid-column: 1 / -1; }
+  .abt-hero-side__title { grid-column: 1 / span 7; grid-row: 2; align-self: end; }
+  .abt-hero-side__lead { grid-column: 1 / span 6; grid-row: 3; align-self: start; padding-bottom: 0.5em; }
+  .abt-hero-side__plate { grid-column: 8 / -1; grid-row: 2 / span 2; align-self: end; margin-top: 0; }
+}
+
+/* ---- the paper tag on a plate (the pool illustration; review r3): a small label in the caption style, top left on the
+   photograph itself, so a parent skimming the plates never takes the render for the school ------------------------ */
+.abt-walk__plate .plate__frame { position: relative; }
+.abt-plate__tag {
+  position: absolute;
+  top: 12px; left: 12px;
+  z-index: 1;
+  padding: 6px 10px 5px;
+  background: var(--paper);
+  color: var(--ink);
+  border: 1px solid var(--clay);
+  font: 500 11.5px / 1.2 var(--font-sans);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+
+/* ---- sheet head and sheet foot (every section of the group; 2026-10-24) ----------------------------------------------
+   The home's head grid: the H2 at the display-l size (36 to 96 px) on 10 of 12 columns, one lead paragraph on 7; the
+   foot: a hairline, a sentence on 8 columns, an action on the right, the source line under both (so the source moves
+   from a comment onto the page). */
+.abt-head {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--gutter);
+  row-gap: clamp(20px, 2.6vw, 36px);
+  margin-bottom: clamp(36px, 4.6vw, 64px);
+}
+.abt-head__title {
+  grid-column: 1 / span 10;
+  font-size: clamp(36px, 4.8vw, 96px);
+  line-height: 0.98;
+  letter-spacing: -0.012em;
+  max-width: 18ch;
+}
+.abt-head__title + * { margin-top: 0; }
+.abt-head__lead { grid-column: 1 / span 7; max-width: 54ch; }
+.abt-head--tight { margin-bottom: clamp(24px, 3vw, 44px); }
+@media (max-width: 1023px) {
+  .abt-head__title, .abt-head__lead { grid-column: 1 / -1; }
+}
+/* the H2 rises through a mask like the home's split headline (the whole line, no GSAP): clip from the bottom and a
+   0.4em rise over 1100 ms. Without JavaScript, with reduced motion and in print the heading is simply there. */
+html.js-reveal .abt-head__title[data-reveal] { transition: clip-path var(--t-mask) var(--ease-mask), transform var(--t-mask) var(--ease-mask), opacity var(--t-micro); }
+/* a 1 px sliver stays unclipped: Chrome's IntersectionObserver measures the clipped box, and a fully clipped heading
+   would never be seen entering the screen, so it would never reveal */
+html.js-reveal .abt-head__title[data-reveal]:not(.is-in) { opacity: 1; transform: translateY(0.4em); clip-path: inset(0 0 calc(100% - 2px) 0); }
+html.js-reveal .abt-head__title[data-reveal].is-in { clip-path: inset(-0.1em -0.2em -0.25em -0.2em); }
+@media (prefers-reduced-motion: reduce) {
+  html.js-reveal .abt-head__title[data-reveal] { clip-path: none !important; transform: none !important; transition: none !important; }
+}
+html[data-motion="reduced"] .abt-head__title[data-reveal] { clip-path: none !important; transform: none !important; transition: none !important; }
+
+.abt-foot {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 18px var(--gutter);
+  align-items: end;
+  margin-top: clamp(36px, 4.6vw, 64px);
+  padding-top: 24px;
+  border-top: var(--hairline);
+}
+.abt-foot__text { grid-column: 1 / span 8; max-width: 62ch; font-size: 18px; line-height: 1.55; }
+.abt-foot__action { grid-column: 10 / -1; justify-self: end; font: 400 16px / 1.4 var(--font-sans); }
+.abt-foot__source { grid-column: 1 / -1; max-width: 70ch; }
+.abt-foot__source + .abt-foot__source { margin-top: -8px; }
+@media (max-width: 899px) {
+  .abt-foot__text, .abt-foot__action { grid-column: 1 / -1; justify-self: start; }
+}
+.is-night .abt-foot { border-top-color: var(--night-line); }
+.is-night .abt-foot__text { color: var(--paper); }
+
+/* ---- the one coloured sheet of a page (2026-10-24): the home's full --paper-2 ground, not the 50 % mix ---------------- */
+.page-section.abt-tint { background: var(--paper-2); }
+.abt-tint .abt-panel, .abt-tint .callout { background: var(--paper-3); }
+
+/* ---- panel: the home's results-card recipe as a general card (2026-10-24) ---------------------------------------------
+   paper-3, a 1 px clay border and a 3 px coloured top rule (maroon by default, --gold or --ink by modifier). A head on a
+   hairline (a label and a serif name), 17 px text, an optional short list. .abt-panels lays them in 2, 3 or 4 columns. */
+.abt-panel {
+  --abt-edge: var(--maroon);
+  position: relative;
+  padding: clamp(20px, 2.2vw, 32px);
+  background: var(--paper-3);
+  border: 1px solid var(--clay);
+  border-top: 3px solid var(--abt-edge);
+  min-width: 0;
+}
+.abt-panel--gold { --abt-edge: var(--gold); }
+.abt-panel--ink { --abt-edge: var(--ink); }
+.abt-panel__label { display: block; margin-bottom: 10px; }
+.abt-panel__title { font: 400 clamp(22px, 1.8vw, 30px) / 1.15 var(--font-serif); letter-spacing: -0.005em; text-wrap: balance; overflow-wrap: anywhere; }
+.abt-panel__title--l { font-size: clamp(26px, 2.4vw, 40px); }
+.abt-panel__text { margin-top: 12px; font-size: 17px; line-height: 1.55; color: var(--ink); max-width: 46ch; }
+.abt-panel__text--quiet { color: var(--ink-2); font-size: 16px; }
+.abt-panel__text a { color: inherit; }
+.abt-panel__more { display: inline-block; margin-top: 16px; font: 500 15px / 1.2 var(--font-sans); padding: 6px 0; }
+.abt-panel .checklist { margin-top: 14px; }
+.abt-panel .checklist li { font-size: 16.5px; padding: 10px 0 10px 30px; }
+.abt-panel .checklist li::before { top: 16px; }
+.abt-panel > * + .abt-panel__label { margin-top: 18px; }
+.abt-panels { list-style: none; display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--gutter); }
+@media (min-width: 640px) { .abt-panels { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1024px) {
+  .abt-panels--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .abt-panels--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  /* a last card alone on its row takes the whole row (child protection: seven measures in three columns) */
+  .abt-panels--3 > .abt-panel:last-child:nth-child(3n + 1) { grid-column: 1 / -1; }
+  .abt-panels--3 > .abt-panel:last-child:nth-child(3n + 1) .abt-panel__text { max-width: 70ch; }
+}
+.abt-panels .abt-panel[hidden] { display: none; }
+
+/* ---- fact strip: the numbers in maroon (the home's numerals), two columns on a phone (2026-10-24) ---------------------- */
+.abt-facts .abt-fact--num dd { color: var(--maroon); }
+.abt-facts .fn { margin-left: 4px; }
+@media (max-width: 639px) {
+  .abt-facts .fact-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--gutter); }
+  .abt-facts .fact:nth-last-child(2):nth-child(odd) { border-bottom: 0; }
+  .abt-facts .fact dd { font-size: 21px; }
+}
+
+/* ---- photo doors: the home's event cards as a hub's children (2026-10-24) ---------------------------------------------
+   .ev-grid / .ev__card come from main.css (mounted photograph, label number, serif name, 17 px text, one action, the
+   whole card one link). On a phone the home's row snaps sideways; six pages are a list, so here they stack. */
+.abt-doors { margin-top: 0; }
+.abt-doors .ev__more { color: var(--ink); }
+.abt-doors .ev__media img { object-position: 50% 45%; }
+/* review fixes 2026-10-24: six doors close as two rows of three (every card spans 2 of the 6 columns, 3:2), so no card
+   is left alone on a third row above the finder panel; between 640 and 1023 px main.css would make the first card full
+   width (1 + 2 + 2 + 1), so the first card is an ordinary cell there too (2 + 2 + 2) */
+.abt-doors .ev, .abt-doors .ev--wide { grid-column: span 2; }
+.abt-doors .ev--wide .ev__media img { aspect-ratio: 3 / 2; }
+@media (max-width: 1023px) {
+  .abt-doors .ev, .abt-doors .ev:first-child, .abt-doors .ev--wide { grid-column: auto; }
+}
+/* the type door (Policies): the card's frame holds eight rule topics as a small ledger on the home's paper-2 instead of
+   a texture photograph; the card's name and text carry the meaning, the tile is decoration (aria-hidden) */
+.abt-door-type {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-content: center;
+  gap: 0 18px;
+  aspect-ratio: 3 / 2;
+  padding: clamp(14px, 1.6vw, 24px) clamp(16px, 1.8vw, 28px);
+  background: var(--paper-2);
+  border-top: 3px solid var(--gold);   /* gold, like every other card rule of the group (r3) */
+  overflow: hidden;
+}
+.abt-door-type__row {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  min-width: 0;
+  padding: clamp(5px, 0.6vw, 9px) 0;
+  border-bottom: var(--hairline);
+  font: 400 clamp(14px, 1.1vw, 18px) / 1.25 var(--font-serif);
+  color: var(--ink);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.abt-door-type__row::before { content: ''; flex: none; width: 10px; height: 1px; background: var(--gold); transform: translateY(-0.28em); }
+.abt-door-type__row:nth-last-child(-n + 2) { border-bottom: 0; }
+@media (max-width: 639px) {
+  .abt-doors.ev-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 36px; margin-inline: 0; padding: 0; overflow: visible; }
+  .abt-doors .ev, .abt-doors .ev:first-child { flex: none; }
+  .abt-doors .ev__media img, .abt-doors .ev--wide .ev__media img { aspect-ratio: 16 / 9; }
+  .abt-door-type { aspect-ratio: 16 / 9; }
+  .abt-door-type__row { font-size: 15px; }
+}
+.abt-doors + .abt-panel { margin-top: clamp(28px, 3.5vw, 48px); }
+
+/* a number that counts up once (about.js); the final value is in the markup */
+.abt-count { font-variant-numeric: tabular-nums lining-nums; }
+
+/* ---- proof: the home's .feats beside a list of evidence pages (2026-10-24) -------------------------------------------- */
+.abt-proof { display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(28px, 4vw, 56px) var(--gutter); align-items: start; }
+.abt-proof .feats { margin-top: 0; }
+.abt-proof__links .label { margin-bottom: 14px; }
+@media (min-width: 900px) {
+  .abt-proof { grid-template-columns: repeat(12, minmax(0, 1fr)); }
+  .abt-proof__feats { grid-column: 1 / span 8; }
+  .abt-proof__links { grid-column: 10 / -1; }
+}
+
+/* ---- the quotation sheet: the home's .quote on the left, the four goals on the right (2026-10-24) --------------------- */
+.abt-belief { display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(32px, 4vw, 64px) var(--gutter); align-items: start; }
+.abt-belief .quote__line.display-l { font-size: clamp(28px, 3.6vw, 64px); }
+@media (min-width: 1024px) {
+  .abt-belief { grid-template-columns: repeat(12, minmax(0, 1fr)); }
+  .abt-belief__quote { grid-column: 1 / span 7; }
+  .abt-belief__goals { grid-column: 9 / -1; }
+}
+
+/* ---- the venue panel outside the home's results grid (2026-10-24) ---------------------------------------------------- */
+.abt-venue.venue { grid-column: auto; max-width: 62rem; }
+.abt-venue .venue__text { max-width: 60ch; }
+.abt-venue .venue__text + .caption { margin-top: 12px; }
+
+/* ---- history: three eras, each a story chapter with one plate and its dates (2026-10-24; stacked since the review
+   fixes of the same day) ----------------------------------------------------------------------------------------------
+   The era's plate runs 16:9 across 10 of 12 columns under the era heading, the Campus walk's recipe, and the dated
+   entries follow at full width: the plates read at the home's Ascent scale, and an era without a plate (Beginnings, no
+   cleared archive frame) leaves no empty column. The timeline stays on paper (not night): the dates are the chapter,
+   not a dark ledger. */
+.abt-era { display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(28px, 3.5vw, 48px) var(--gutter); align-items: start; }
+.abt-era .timeline { margin-top: 0; }
+.abt-era__dates { max-width: 64rem; }
+.abt-era__plate { align-self: start; }
+.abt-era__plate img { aspect-ratio: 16 / 9; object-fit: cover; }
+/* the crest sits on the right third of its frame (r3); the phone's 4:3 cut keeps it */
+.abt-era__plate--crest img { object-position: 62% 50%; }
+/* r3: the dates come first, then the plate and its line (history.html); the plate keeps a little air above it */
+.abt-era__dates + .abt-era__plate { margin-top: clamp(8px, 1.4vw, 20px); }
+@media (min-width: 1024px) {
+  .abt-era__plate { width: calc(100% * 10 / 12); }
+}
+@media (max-width: 767px) {
+  .abt-era__plate img { aspect-ratio: 4 / 3; }
+}
+.abt-eras .story-chapter .abt-head { margin-bottom: clamp(24px, 3vw, 40px); }
+/* the visible date line under an era plate (the figcaption is stripped by the build) */
+.abt-era__line { margin-top: 10px; }
+
+/* history 03 and campus 04: three chapter cards on the night ground keep the dark variant pages.css gives them; the
+   quiet status line under them */
+.abt-status { margin-top: clamp(24px, 3vw, 40px); max-width: 60ch; }
+
+/* ---- campus: the facilities grid and the walk (2026-10-24) ----------------------------------------------------------- */
+.abt-facilities.tag-list { grid-template-columns: repeat(auto-fill, minmax(min(100%, 16rem), 1fr)); gap: 0 var(--gutter); border-top: 1px solid var(--ink); }
+.abt-facilities.tag-list li { min-height: 44px; padding: 10px 0; border-bottom: var(--hairline); font-size: 17.5px; }
+.abt-facilities a { color: inherit; }
+@media (max-width: 639px) {
+  .abt-facilities.tag-list { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 16px; }
+  .abt-facilities.tag-list li { font-size: 16px; }
+}
+/* the walk: each space is a head, one large plate (10 of 12 columns, always 16:9, 4:3 on a phone) with a visible
+   one-line caption, and a short definition list; no plate changes size (review fixes 2026-10-24: the small glassware
+   plate and the 3:2 field plate are gone, the three teaching spaces share one chapter and one plate) */
+.abt-walk .story-chapter { padding-block: clamp(40px, 5.6vw, 88px); }
+.abt-walk__plate img { aspect-ratio: 16 / 9; object-fit: cover; }
+.abt-walk__facts { margin-top: clamp(24px, 3vw, 40px); max-width: 60rem; }
+.abt-walk__facts .dl dd { font-size: 17.5px; }
+.abt-walk__facts .label + .dl { margin-top: 10px; }
+.abt-walk__facts .dl + .label { margin-top: 28px; }
+.abt-walk__note { margin-top: 10px; }
+@media (min-width: 1024px) {
+  .abt-walk__plate { width: calc(100% * 10 / 12); }
+}
+@media (max-width: 767px) {
+  .abt-walk__plate img { aspect-ratio: 4 / 3; }
+}
+.abt-walk .abt-head { margin-bottom: clamp(24px, 3vw, 40px); }
+.abt-walk .abt-head__title { font-size: clamp(30px, 3.4vw, 64px); }
+
+/* ---- chapter-nav on a phone (review fixes 2026-10-24; interim, scoped to the group's three story pages until the
+   Foundation adopts one rule in pages.css): the scrolling index gets 40 px of end padding, a paper fade at its right
+   edge so a cut word never shows, and scroll-snap so a chip settles whole ----------------------------------------- */
+@media (max-width: 1023px) {
+  :is(.abt-eras, .abt-walk, .abt-rules) .chapter-nav ol {
+    padding-right: 40px;
+    scroll-snap-type: x proximity;
+    scroll-padding-inline: 0 40px;
+    -webkit-mask-image: linear-gradient(to right, black calc(100% - 44px), transparent);
+    mask-image: linear-gradient(to right, black calc(100% - 44px), transparent);
+  }
+  :is(.abt-eras, .abt-walk, .abt-rules) .chapter-nav a { scroll-snap-align: start; }
+}
+/* r3 (X12): under 480 px the index wraps into rows instead of scrolling, so no label is ever cut mid-word; the labels
+   were shortened in the sources as well (campus.html) */
+@media (max-width: 479px) {
+  :is(.abt-eras, .abt-walk, .abt-rules) .chapter-nav ol {
+    flex-wrap: wrap;
+    gap: 0 20px;
+    overflow: visible;
+    padding-right: 0;
+    scroll-snap-type: none;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+  :is(.abt-eras, .abt-walk, .abt-rules) .chapter-nav a { padding: 13px 0 12px; }
+}
+
+/* ---- the story pages at desktop width (history 01, campus 03; review r3): the 3-column chapter nav left a 25 % gutter
+   empty down the whole record and walk. From 1024 px the nav is a sticky index row across the sheet (the phone
+   treatment, with room), and the chapters take the full sheet width under it, so the plates (10 of 12 columns) get the
+   size the walk promises. Policies keeps the left column: its accordion is narrow by nature. ------------------------ */
+@media (min-width: 1024px) {
+  :is(.abt-eras, .abt-walk) .story { display: block; }
+  :is(.abt-eras, .abt-walk) .chapter-nav {
+    position: sticky;
+    top: var(--nav-h);
+    z-index: 20;
+    margin: 0 calc(-1 * var(--margin)) clamp(16px, 2vw, 28px);
+    padding: 0 var(--margin);
+    background: rgba(245, 241, 234, 0.96);
+    border: 0;
+    border-bottom: var(--hairline);
+  }
+  body.inner:has(.nav.is-hidden) :is(.abt-eras, .abt-walk) .chapter-nav { top: 0; }
+  :is(.abt-eras, .abt-walk) .chapter-nav ol { flex-direction: row; gap: 32px; overflow-x: auto; border-top: 0; font-size: 14px; }
+  :is(.abt-eras, .abt-walk) .chapter-nav a { padding: 17px 0 16px; border-left: 0; border-bottom: 2px solid transparent; font-size: 15px; white-space: nowrap; }
+  :is(.abt-eras, .abt-walk) .chapter-nav a:hover, :is(.abt-eras, .abt-walk) .chapter-nav a[aria-current="true"] { border-bottom-color: var(--maroon); }
+  :is(.abt-eras, .abt-walk) .story__chapters { grid-column: auto; }
+  :is(.abt-eras, .abt-walk) .story-chapter:first-child { padding-top: clamp(24px, 3vw, 40px); }
+}
+
+/* ---- the fixed overlays and the first screen (review r3, interim for Foundation X16): while a cover, a hero plate or
+   the class finder is still in the launcher's corner, the chat launcher, its tease and the first-visit notice step
+   below the viewport (about.js sets html.abt-hero-in from the element's position); they come back as soon as the
+   visitor scrolls past it. The chat panel itself is never moved. ------------------------------------------------- */
+html.abt-hero-in:not(.ppc-open) :is(.ppc-launch, .ppc-tease, .pp-notice) {
+  transform: translateY(calc(100% + 40px));
+  visibility: hidden;
+  transition: transform 0.35s var(--ease-out), visibility 0s 0.35s;
+}
+html:not(.abt-hero-in) :is(.ppc-launch, .ppc-tease, .pp-notice) { transition: transform 0.35s var(--ease-out), visibility 0s; }
+@media (prefers-reduced-motion: reduce) {
+  html.abt-hero-in:not(.ppc-open) :is(.ppc-launch, .ppc-tease, .pp-notice), html:not(.abt-hero-in) :is(.ppc-launch, .ppc-tease, .pp-notice) { transition: none; }
+}
+html[data-motion="reduced"].abt-hero-in:not(.ppc-open) :is(.ppc-launch, .ppc-tease, .pp-notice) { transition: none; }
+
+/* ---- child protection, the lines of the concern card come from {{phones:all}} (r3): the home's .phones list set at the
+   call-sheet size, 44 px targets, both further-queries numbers ------------------------------------------------------- */
+.abt-concern .phones { margin-top: 0; border-top: 1px solid var(--ink); }
+.abt-concern .phones__row { max-width: none; flex-wrap: wrap; gap: 2px 24px; padding: 14px 0 12px; }
+.abt-concern .phones__who { font: 500 12px / 1.3 var(--font-sans); letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-2); }
+.abt-concern .phones a { display: inline-block; padding: 6px 0 8px; font: 300 clamp(28px, 3vw, 46px) / 1.1 var(--font-serif); letter-spacing: -0.005em; background-position: 0 calc(100% - 6px); }
+.abt-concern .phones__nums { align-items: flex-start; gap: 4px; }
+@media (max-width: 479px) { .abt-concern .phones__row { flex-direction: column; align-items: flex-start; } }
+@media (min-width: 640px) { .abt-concern .phones__row { padding: 16px 0 14px; } }
+
+/* ---- who looks after each class, 03 the lines (r3): two columns of two from 900 px, so the sheet is not a list down
+   its left third --------------------------------------------------------------------------------------------------- */
+.abt-lines .phones { margin-top: 0; border-top: 1px solid var(--ink); }
+.abt-lines .phones__row { max-width: none; min-height: 52px; }
+.abt-lines .phones a { font-size: 18px; }
+@media (min-width: 900px) {
+  .abt-lines .phones { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--gutter); }
+}
+
+/* ---- child protection: the concern card (2026-10-24): the maroon-edged panel with the call sheet (admissions.css
+   .call-lines) inside it; the numbers are the biggest thing on the screen and 44 px tel: links ---------------------- */
+.abt-concern { max-width: none; }
+.abt-concern__grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(24px, 3vw, 40px) var(--gutter); align-items: start; }
+.abt-concern .call-lines { border-top-color: var(--ink); }
+.abt-concern .call-line__tel { font-size: clamp(28px, 3vw, 46px); }
+.abt-concern__text { font-size: 18px; line-height: 1.55; max-width: 44ch; }
+.abt-concern__text + .abt-concern__text { margin-top: 14px; }
+.abt-concern__text--quiet { font-size: 16px; color: var(--ink-2); }
+@media (min-width: 900px) {
+  .abt-concern__grid { grid-template-columns: repeat(12, minmax(0, 1fr)); }
+  .abt-concern__lead { grid-column: 1 / span 5; }
+  .abt-concern__lines { grid-column: 7 / -1; }
+}
+
+/* ---- policies: quick answers (2026-10-24): filter chips over four-column panels; each answer one sentence and a link
+   that opens the full rule in the accordion below ------------------------------------------------------------------- */
+.abt-quick .chips { margin-bottom: 4px; }
+.abt-quick .chips__status { margin: 10px 0 18px; }
+.abt-quick .abt-panel__title { font-size: clamp(20px, 1.5vw, 26px); }
+.abt-quick .abt-panel__text { font-size: 16.5px; }
+/* the forms card beside the last group of rules */
+.abt-forms .doc-list a { font-size: clamp(17px, 1.3vw, 20px); }
+.abt-forms .doc-list li { padding: 12px 0; }
+.abt-forms .doc-list__meta { font-size: 13px; }
+/* the current-parents strip: a hairline list in two columns, 44 px rows */
+.abt-fastlane { list-style: none; display: grid; grid-template-columns: minmax(0, 1fr); border-top: 1px solid var(--ink); max-width: 60rem; }
+.abt-fastlane li { display: flex; align-items: center; min-height: 52px; padding: 4px 0; border-bottom: var(--hairline); font: 400 17px / 1.4 var(--font-sans); }
+.abt-fastlane a { padding: 12px 0; }
+@media (min-width: 640px) { .abt-fastlane { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--gutter); } }
+
+/* ---- careers: the home's .steps in four columns, and the one empty-state sentence (2026-10-24) ------------------------ */
+.abt-steps .steps { grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: clamp(28px, 3.5vw, 48px); }
+.abt-steps .step p { max-width: 34ch; }
+@media (max-width: 1023px) { .abt-steps .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px var(--gutter); } }
+@media (max-width: 639px) { .abt-steps .steps { grid-template-columns: minmax(0, 1fr); } }
+.abt-roles { font-size: 18px; line-height: 1.55; max-width: 62ch; }
+/* the panel that holds the school's own words at the home's quote size */
+.abt-panel--quote .abt-panel__quote { margin: 0; }
+.abt-panel--quote .abt-panel__quote p { margin-top: 10px; font: 400 clamp(24px, 2vw, 34px) / 1.15 var(--font-serif); letter-spacing: -0.005em; text-wrap: balance; }
+.abt-panel--quote .abt-panel__quote p::before { content: '\201C'; color: var(--maroon); }
+.abt-panel--quote .abt-panel__quote p::after { content: '\201D'; color: var(--maroon); }
+.abt-panel--quote cite { display: block; margin-top: 12px; font: 400 14px / 1.45 var(--font-sans); font-style: normal; color: var(--ink-2); }
+
+/* ---- the pager and the small print of a reference page --------------------------------------------------------------- */
+.abt-pager-note { margin-top: 18px; }
+
+/* ---- print and high contrast ----------------------------------------------------------------------------------------- */
+@media print {
+  .abt-cover__media { height: auto; }
+  .abt-cover__picture, .abt-cover__picture img { position: static; height: auto; }
+  .abt-cover__scrim { display: none; }
+  .abt-cover__copy { position: static; color: var(--ink); }
+  .abt-cover__title, .abt-cover__lead { color: var(--ink); text-shadow: none; }
+  :is(.abt-eras, .abt-walk, .abt-rules) .chapter-nav ol { -webkit-mask-image: none; mask-image: none; }
+  .abt-plate__tag { position: static; display: inline-block; margin-bottom: 6px; }
+}
+@media (forced-colors: active) {
+  .abt-panel { border-top-width: 3px; }
+  .abt-cover__scrim { display: none; }
 }

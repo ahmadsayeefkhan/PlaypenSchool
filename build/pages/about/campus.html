@@ -1,172 +1,240 @@
 ---
 title: Our campus
 template: T03
-h1: A purpose-built building of ten <em>storeys</em>, in Bashundhara.
-standfirst: The school has taught here since 19 July 2018, from Playgroup to Class XII. The building was designed by the architect Mr Ehsan Khan, and the school lists drinking water, separate toilets for boys and girls and fire extinguishers on every floor.
-hero_image: img/about-campus-atrium
-hero_alt: The shaded atrium, with brick steps, a planter and a climbing plant at the foot of the concrete slab above.
-hero_caption: The atrium, 2024
-hero_n: 01
 ---
-<section class="page-section" aria-labelledby="camp-facts">
+<!-- Redesign 2026-10-24 (group "about", plans/about.md section 5): the page about the building opens on the building (a photographic cover, so the H1 is in the body and the build adds the breadcrumb). Order: cover, 01 at a glance, 02 the facilities grid (the one coloured sheet), 03 the walk (eight spaces, one plate each, the same size every time), 04 coming next, the CTA band as the page's one closing block (the old "Come and walk through it" sheet and the CTA were two CTAs in a row). -->
+<!-- CONFIRM: the cover photograph img/campus-cover (the building band of the stepped facade from the field, January 2020: no student, no one on a balcony; the construction skeleton and most of the sky are out of the frame) and the phone frame campus-cover-tall (the left wing of the same photograph, from its people-free upper band, upscaled 1.6 times, so it is a little soft; the roofline is above the frame at the left of this photograph). The vault file is from January 2020; confirm the year and that the frame may appear on a public page (A3). A people-free photograph of the whole building from the field, in portrait as well as landscape, would replace both. Review fixes r3 2026-10-24: both frames re-cut from the source with the home's grade v2 only (the extra S-curve and brick warming of r2 are gone, so the cover matches the hub's); the source band is 1100 px wide, so the desktop sizes are 960 and 1100. -->
+<!-- The eyebrow prints the page counter with {{pagecount}} (final review 2026-10-25), so it matches the shell-built heroes of the group and never goes stale. -->
+<!-- Final review 2026-10-25: the hall plate is img/campus-hall-stage (the stage and the middle of the hall; the front rows of media/ascent-4 showed side profiles), and the walk plates say their real width in sizes (963 px at 1366), so the 1440 files are chosen. -->
+<header class="abt-cover abt-cover--top" aria-label="Our campus">
   <div class="band">
-    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">The building at a glance</span></div>
+    <div class="sheet-rule abt-cover__rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{pagecount}}</span><span class="sheet-rule__title">About</span></div>
+  </div>
+  <div class="abt-cover__media" data-abt-clear>
+    <picture class="abt-cover__picture">
+      <source media="(max-width: 767px)" type="image/webp" srcset="{{asset:img/campus-cover-tall-720.webp}} 720w" sizes="100vw">
+      <source media="(max-width: 767px)" type="image/jpeg" srcset="{{asset:img/campus-cover-tall-720.jpg}} 720w" sizes="100vw">
+      <source type="image/webp" srcset="{{asset:img/campus-cover-960.webp}} 960w, {{asset:img/campus-cover-1100.webp}} 1100w" sizes="100vw">
+      <img src="{{asset:img/campus-cover-960.jpg}}" srcset="{{asset:img/campus-cover-960.jpg}} 960w, {{asset:img/campus-cover-1100.jpg}} 1100w" sizes="100vw" width="1100" height="471" alt="The stepped brick-and-concrete facade of the school seen from the field, its classroom floors stepping out above the arcade, a strip of pale sky at the right." fetchpriority="high" decoding="async">
+    </picture>
+    <div class="abt-cover__scrim" aria-hidden="true"></div>
+    <div class="band abt-cover__copy">
+      <h1 class="abt-cover__title">A purpose-built building of ten <em>storeys</em>, in Bashundhara.</h1>
+      <!-- CONFIRM: the architect credit (Mr Ehsan Khan) is from the school's own history and campus pages; the school should confirm it may be printed (P06). -->
+      <p class="abt-cover__lead">The school has taught here since 19 July 2018, from Playgroup to Class XII, in a building designed by the architect Mr Ehsan Khan.</p>
+    </div>
+  </div>
+  <div class="band"><p class="caption abt-cover__cap">The building from the field, January 2020</p></div>
+</header>
+
+<section class="page-section abt-facts" aria-labelledby="camp-facts">
+  <div class="band">
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">At a glance</span><span class="sheet-rule__purpose">Where it is, and since when</span></div>
     <h2 id="camp-facts" class="visually-hidden">The building at a glance</h2>
+    <!-- the address closes the strip (review fixes 2026-10-24): on a phone's two-column grid the three-line address no longer sits beside a one-line date -->
     <dl class="fact-strip" data-reveal>
-      <div class="fact"><dt>Address</dt><dd>{{address}}</dd></div>
       <div class="fact"><dt>In use since</dt><dd>19 July 2018</dd></div>
       <div class="fact"><dt>The building</dt><dd>Ten storeys of brick and concrete</dd></div>
-      <!-- CONFIRM: the architect credit (Mr Ehsan Khan) is from the school's own history and campus pages; the plan asks the school to confirm it may be credited here. The project architect named in press coverage is not used. -->
       <div class="fact"><dt>Designed by</dt><dd>The architect Mr Ehsan Khan</dd></div>
+      <div class="fact"><dt>Address</dt><dd>{{address}}<small>{{map label="Get directions"}}</small></dd></div>
     </dl>
-  </div>
-</section>
-
-<section class="page-section" aria-labelledby="camp-story">
-  <div class="band">
-    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">From the ground up</span><span class="sheet-rule__purpose">What the building holds</span></div>
-    <h2 id="camp-story" class="visually-hidden">What the building holds</h2>
-    <div class="story">
-      <nav class="chapter-nav" aria-label="Chapters of the campus">
-        <ol>
-          <li><a href="#c-building">One building</a></li>
-          <li><a href="#c-ground">Field and courtyards</a></li>
-          <li><a href="#c-classrooms">Classrooms and laboratories</a></li>
-          <li><a href="#c-library">Library</a></li>
-          <li><a href="#c-hall">The hall</a></li>
-          <li><a href="#c-roof">Terraces and roof</a></li>
-          <li><a href="#c-care">Safety and health</a></li>
-          <li><a href="#c-next">The second phase</a></li>
-        </ol>
-      </nav>
-      <div class="story__chapters">
-
-        <section class="story-chapter" id="c-building" aria-labelledby="c-building-h">
-          <h2 id="c-building-h" class="section-title">One building for every class.</h2>
-          <div class="split mt-m">
-            <div class="split__text prose" data-reveal>
-              <!-- CONFIRM: the school's facilities list names generator-backed, air-conditioned classrooms. The previous copy of the site also called the laboratories, library, common room and teacher facilities air-conditioned; only the classrooms are stated here until the school confirms the rest. -->
-              <p>From Playgroup to Class XII, every class is taught in this one building. The classrooms are air-conditioned, and generators keep classes running through an electricity failure.</p>
-              <p>Playpen is a day school, with no boarding.</p>
-            </div>
-            <figure class="plate split__figure" data-reveal>
-              <div class="plate__frame">{{img src="img/about-campus-facade" alt="The stepped brick-and-concrete facade seen from below through the branches of a tree, rows of windows and balconies above a fence." sizes="(min-width: 900px) 30vw, 100vw" widths="720"}}</div>
-              <figcaption class="plate__cap"><span class="plate__n">02</span>The facade through the trees, January 2021</figcaption>
-            </figure>
-          </div>
-        </section>
-
-        <section class="story-chapter" id="c-ground" aria-labelledby="c-ground-h">
-          <h2 id="c-ground-h" class="section-title">The field and the courtyards.</h2>
-          <div class="split split--reverse mt-m">
-            <figure class="plate plate--flat split__figure about-plate--narrow" data-reveal>
-              <div class="plate__frame">{{img src="media/life-0" alt="The courtyard seen from above on Pohela Boishakh, its floor painted with alpona patterns and crowded with people in red and white." sizes="(min-width: 900px) 24vw, 100vw" widths="720"}}</div>
-              <figcaption class="plate__cap"><span class="plate__n">03</span>The courtyard on Pohela Boishakh, April 2025</figcaption>
-            </figure>
-            <div class="split__text prose" data-reveal>
-              <p>A grass playground and open courtyards lie at the foot of the building. Annual Sports Day is held on the field, and Pohela Boishakh fills the courtyard.</p>
-              <p>Indoor games, table tennis, chess and carrom, are played through the year. <a href="{{link:/school-life/sports/}}">See the sports the school plays.</a></p>
-            </div>
-          </div>
-        </section>
-
-        <section class="story-chapter" id="c-classrooms" aria-labelledby="c-classrooms-h">
-          <h2 id="c-classrooms-h" class="section-title">Classrooms and laboratories.</h2>
-          <!-- CONFIRM: the school's laboratories page says the labs are "accredited by Cambridge and the British Council" (plan unverified claim). Not repeated here until the school confirms the wording. -->
-          <div class="split mt-m">
-            <div class="split__text prose" data-reveal>
-              <p>The school has separate laboratories for Physics, Chemistry, Biology and Computer Science. The Science Fair is one of the events in the school's year.</p>
-              <p>Students choose their O Level electives in Class VIII. <a href="{{link:/learning/senior/}}">Senior School</a> lists them.</p>
-            </div>
-            <figure class="plate plate--flat split__figure about-plate--narrow" data-reveal>
-              <div class="plate__frame">{{img src="media/swatch-4" alt="Beakers, flasks and a stand on the front of a laboratory bench." sizes="(min-width: 900px) 24vw, 100vw" widths="480"}}</div>
-              <figcaption class="plate__cap"><span class="plate__n">04</span>Glassware on a laboratory bench, September 2024</figcaption>
-            </figure>
-          </div>
-        </section>
-
-        <section class="story-chapter" id="c-library" aria-labelledby="c-library-h">
-          <h2 id="c-library-h" class="section-title">The library and the bookshop.</h2>
-          <!-- CONFIRM: no photograph of the library is used. The only library frame on the site (media/ascent-3, also the home's menu preview) shows several children's faces clearly, although the catalogue lists it as "backs of heads". Add one when the school supplies a frame with nobody identifiable, or consents to that one. -->
-          <dl class="dl mt-m" data-reveal>
-            <div class="dl__row"><dt>Library classes</dt><dd>Run for every level, monitored by a Librarian.</dd></div>
-            <div class="dl__row"><dt>Borrowing</dt><dd>If a book is not returned, the Librarian tells the parents through the class teacher. <a href="{{link:/about/policies/#library}}">Policies and documents</a> has the rule.</dd></div>
-            <div class="dl__row"><dt>The bookshop</dt><dd>It sits alongside the library. Parents collect the year's books and copies at the start of each session; <a href="{{link:/admissions/starting-at-playpen/}}">Starting at Playpen</a> has the details.</dd></div>
-          </dl>
-        </section>
-
-        <section class="story-chapter" id="c-hall" aria-labelledby="c-hall-h">
-          <h2 id="c-hall-h" class="section-title">The hall and the activity rooms.</h2>
-          <div class="split split--reverse mt-m">
-            <figure class="plate split__figure" data-reveal>
-              <div class="plate__frame">{{img src="media/ascent-4" alt="The multipurpose hall full of students watching a speaker on stage, seen from above." sizes="(min-width: 900px) 34vw, 100vw" widths="960"}}</div>
-              <figcaption class="plate__cap"><span class="plate__n">05</span>The multipurpose hall during the visit of NASA astronaut Joseph M. Acaba, December 2024</figcaption>
-            </figure>
-            <div class="split__text prose" data-reveal>
-              <p>The multipurpose hall holds the school's gatherings, from assemblies to cultural programmes and prize-givings. The building also has a students' gallery for group work and presentation, and rooms for art, music, dance, drama and clubs.</p>
-              <p><a href="{{link:/school-life/clubs-and-activities/}}">Clubs and activities</a> says what runs in them.</p>
-            </div>
-          </div>
-        </section>
-
-        <section class="story-chapter" id="c-roof" aria-labelledby="c-roof-h">
-          <h2 id="c-roof-h" class="section-title">The terraces and the roof.</h2>
-          <figure class="plate plate--21x9 mt-m" data-reveal>
-            <div class="plate__frame">{{img src="img/about-campus-terrace" alt="The terrace between the two brick wings, brick benches on either side and trees beyond the railing." sizes="(min-width: 1024px) 62vw, 100vw"}}</div>
-            <figcaption class="plate__cap"><span class="plate__n">06</span>The terrace between the two wings, 2024</figcaption>
-          </figure>
-          <div class="prose mt-m" data-reveal>
-            <p>Brick terraces with benches and trees in planters, and the city beyond the railing. A basketball court sits on the roof.</p>
-          </div>
-        </section>
-
-        <section class="story-chapter" id="c-care" aria-labelledby="c-care-h">
-          <h2 id="c-care-h" class="section-title">Safety, health and water.</h2>
-          <dl class="dl mt-m" data-reveal>
-            <div class="dl__row"><dt>Security</dt><dd>CCTV across the campus, and security staff round the clock.</dd></div>
-            <div class="dl__row"><dt>Health</dt><dd>A sick room for minor health problems during school hours. Serious cases are handed to the parents.</dd></div>
-            <div class="dl__row"><dt>On every floor</dt><dd>Drinking water, separate toilets for boys and girls, and fire extinguishers.</dd></div>
-            <div class="dl__row"><dt>Food</dt><dd>An on-site cafeteria, which the second phase is to expand.</dd></div>
-            <div class="dl__row"><dt>Power and phones</dt><dd>Generators for classes during an electricity failure, and an internal telephone system between offices and floors.</dd></div>
-          </dl>
-          <p class="mt-m" data-reveal><a class="link link--arrow" href="{{link:/about/child-protection/}}">Child protection and safeguarding</a></p>
-          <p data-reveal><a class="link link--arrow" href="{{link:/school-life/transport-and-safety/}}">Transport and safety</a></p>
-        </section>
-
-        <section class="story-chapter" id="c-next" aria-labelledby="c-next-h">
-          <h2 id="c-next-h" class="section-title">The second phase.</h2>
-          <!-- CONFIRM: status of phase 2 (the school's pages say it is in progress; no completion date) and the planned additions (further laboratories, an expanded cafeteria, an advanced library, more recreational facilities), taken from the school's campus page. If phase 2 has finished, move this chapter to the present tense. Press detail on the plot size, classroom sizes and the grounds is not used: it is unconfirmed (F07). -->
-          <div class="prose mt-m" data-reveal>
-            <p>The second phase of the building is in progress.<a class="fn" href="#camp-note" aria-label="Footnote: the building work is being confirmed with the school">&dagger;</a> The school's own pages list further laboratories, an expanded cafeteria, an advanced library and more recreational facilities among the planned additions. No completion date has been published.</p>
-          </div>
-          <!-- CONFIRM: a floor-by-floor list of what is where, photographs for each floor, and any plans or renders of the second phase. None supplied, so the chapters follow the kinds of room, not the floors. -->
-          <div class="callout mt-m" data-reveal>
-            <span class="callout__label label">To be published by the school</span>
-            <p>A floor-by-floor list of what is where will be added here when the school supplies it.</p>
-          </div>
-          <p id="camp-note" class="caption mt-m" data-reveal>&dagger; The building work now in progress is being confirmed with the school.</p>
-        </section>
-
-      </div>
+    <div class="abt-foot">
+      <p class="abt-foot__text">Playpen is a day school, with no boarding. Every class from Playgroup to Class XII is taught in this one building.</p>
+      <p class="abt-foot__action"><a class="link link--arrow" href="{{link:/about/history/}}">How the school got here</a></p>
+      <p class="abt-foot__source caption">From the school's history and campus pages, September 2026.</p>
     </div>
   </div>
 </section>
 
-<section class="page-section page-section--tint" aria-labelledby="camp-find">
+<section class="page-section page-section--tint abt-tint" aria-labelledby="camp-holds">
   <div class="band">
-    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Find the school</span><span class="sheet-rule__purpose">Bashundhara R/A, Dhaka</span></div>
-    <div class="layout">
-      <div class="layout__main">
-        <h2 id="camp-find" class="section-title">Come and walk through it.</h2>
-        <div class="prose mt-m" data-reveal>
-          <p>{{address}}. {{map}}</p>
-          <p>To see the building and the section your child would join, call the admissions line for that section, {{hours:between}}, or <a href="{{link:/admissions/visit/}}">plan a visit</a>.</p>
-        </div>
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">The list</span><span class="sheet-rule__purpose">What the building holds, to scan</span></div>
+    <div class="abt-head">
+      <h2 id="camp-holds" class="section-title abt-head__title" data-reveal>Fourteen things in one building.</h2>
+      <p class="lead abt-head__lead" data-reveal>The school's own list of what the building holds. Each item that has a space of its own links to it in the walk below.</p>
+    </div>
+    <!-- CONFIRM (P06): the rooftop swimming pool (exists or planned, and a photograph), "IT laboratories" and that Cambridge exams are sat in the hall are on the home and not yet on the school's own pages. The list is the home's ledger, verbatim, so the two pages agree. -->
+    <ul class="tag-list abt-facilities" data-reveal>
+      <li><a href="#c-teaching">Air-conditioned classrooms</a></li>
+      <li><a href="#c-teaching">Science laboratories</a></li>
+      <li><a href="#c-teaching">IT laboratories</a></li>
+      <li><a href="#c-teaching">Library</a></li>
+      <li><a href="#c-hall">Multipurpose hall</a></li>
+      <li><a href="#c-care">Cafeteria</a></li>
+      <li><a href="#c-ground">Indoor games</a></li>
+      <li><a href="#c-pool">Rooftop swimming pool</a></li>
+      <li><a href="#c-roof">Rooftop basketball court</a></li>
+      <li><a href="#c-ground">Grass playground</a></li>
+      <li><a href="#c-hall">Drama and activity rooms</a></li>
+      <li><a href="#c-care">Sick room</a></li>
+      <li><a href="#c-care">CCTV and 24-hour security</a></li>
+      <li><a href="{{link:/school-life/transport-and-safety/}}">School transport</a></li>
+    </ul>
+    <div class="abt-foot">
+      <p class="abt-foot__source caption">From the school's list of facilities and the home page; the pool, the IT laboratories and the exams in the hall are being confirmed with the school. The rooftop pool is shown below as an illustration until the school's photograph is ready.</p>
+    </div>
+  </div>
+</section>
+
+<section class="page-section abt-walk" aria-labelledby="camp-walk">
+  <div class="band">
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">The walk</span><span class="sheet-rule__purpose">Six spaces, in the order a visitor meets them</span></div>
+    <div class="abt-head">
+      <h2 id="camp-walk" class="section-title abt-head__title" data-reveal>A walk through the building.</h2>
+      <p class="lead abt-head__lead" data-reveal>From the field at the gate to the roof, one space at a time, each with one photograph.</p>
+    </div>
+    <!-- Review fixes 2026-10-24: six chapters, one plate each at the same width (16:9, 4:3 on a phone) with a visible caption line; the old field photograph (img/campus-1.jpg, a 1024 px web copy with people on the pitch) and the small glassware plate (media/swatch-4) are retired; the classrooms, laboratories and library share one chapter, because no people-free photograph of any of the three rooms exists. -->
+    <div class="story">
+      <!-- short labels (review r3, X12): the index must fit two rows on a 390 px screen without a cut word -->
+      <nav class="chapter-nav" aria-label="The spaces">
+        <ol>
+          <li><a href="#c-ground">Field and courtyards</a></li>
+          <li><a href="#c-teaching">Classrooms, labs, library</a></li>
+          <li><a href="#c-hall">Hall and activity rooms</a></li>
+          <li><a href="#c-roof">Terraces and roof</a></li>
+          <li><a href="#c-pool">Rooftop pool</a></li>
+          <li><a href="#c-care">Safety and health</a></li>
+        </ol>
+      </nav>
+      <div class="story__chapters">
+
+        <section class="story-chapter" id="c-ground" aria-labelledby="c-ground-h">
+          <div class="abt-head">
+            <h3 id="c-ground-h" class="section-title abt-head__title" data-reveal>The field and the courtyards.</h3>
+            <p class="lead abt-head__lead" data-reveal>A grass playground and open courtyards lie at the foot of the building. Annual Sports Day is held on the field, and Pohela Boishakh fills the courtyard.</p>
+          </div>
+          <!-- CONFIRM: a photograph of the grass playground with no one on it (P06). Every field frame in the school's uploads shows a match, a parade or spectators, so the chapter shows the courtyard between the wings (the home's graded frame, 2024) until the school supplies one. -->
+          <figure class="plate abt-walk__plate" data-reveal>
+            <div class="plate__frame">{{img src="media/ascent-1" alt="The courtyard between the brick wings seen from above, with a black-and-white chequerboard floor and bougainvillea." sizes="(min-width: 1100px) 963px, (min-width: 1024px) 88vw, 92vw" widths="960,1440"}}</div>
+            <figcaption class="plate__cap"><span class="plate__n">02</span>The courtyard between the wings, from above, 2024</figcaption>
+          </figure>
+          <p class="caption abt-walk__note" data-reveal>The courtyard between the wings, from above, 2024.</p>
+          <div class="abt-walk__facts" data-reveal>
+            <dl class="dl">
+              <div class="dl__row"><dt>On the field</dt><dd>Annual Sports Day, and the games the school plays. <a href="{{link:/school-life/sports/}}">Sports</a> lists them.</dd></div>
+              <div class="dl__row"><dt>Indoors</dt><dd>Table tennis, chess and carrom are played through the year.</dd></div>
+            </dl>
+          </div>
+        </section>
+
+        <section class="story-chapter" id="c-teaching" aria-labelledby="c-teaching-h">
+          <div class="abt-head">
+            <h3 id="c-teaching-h" class="section-title abt-head__title" data-reveal>The classrooms, the laboratories and the library.</h3>
+            <!-- CONFIRM: the school's facilities list names generator-backed, air-conditioned classrooms. The previous copy of the site also called the laboratories, library, common room and teacher facilities air-conditioned; only the classrooms are stated until the school confirms the rest. -->
+            <p class="lead abt-head__lead" data-reveal>Every class from Playgroup to Class XII is taught in this one building, in air-conditioned classrooms, with separate laboratories for Physics, Chemistry, Biology and Computer Science, and a library with the bookshop alongside.</p>
+          </div>
+          <!-- CONFIRM (P06, first on the Campus list): photographs of an empty classroom, laboratory and library after hours. Every indoor frame in the school's uploads shows children (the library frame has children right under the shelves; the chemistry laboratory has students at every bench), so the chapter shows the classroom floors from outside (the January 2021 photograph, now on this page only: History opens on the building from the lawn, review r3). No AI room is used, with or without people. -->
+          <figure class="plate abt-walk__plate" data-reveal>
+            <div class="plate__frame">{{img src="img/campus-classroom-floors" alt="The classroom floors seen from the street: brick boxes with wide windows and a balcony with a railing, branches at the top left." sizes="(min-width: 1100px) 963px, (min-width: 1024px) 88vw, 92vw" widths="960,1440,1920"}}</div>
+            <figcaption class="plate__cap"><span class="plate__n">03</span>The classroom floors from the street, January 2021</figcaption>
+          </figure>
+          <p class="caption abt-walk__note" data-reveal>The classroom floors from the street, January 2021.</p>
+          <div class="abt-walk__facts" data-reveal>
+            <p class="label">The classrooms</p>
+            <dl class="dl">
+              <div class="dl__row"><dt>Four sections</dt><dd>Elementary, Junior, Middle and Senior. <a href="{{link:/learning/}}">Learning at Playpen</a> says what each one teaches.</dd></div>
+              <div class="dl__row"><dt>Who looks after a class</dt><dd>A Teacher-in-Charge for each band of classes, under a Vice Principal. <a href="{{link:/about/leadership/}}">Find your child's class.</a></dd></div>
+              <div class="dl__row"><dt>Power</dt><dd>Generators keep classes running through an electricity failure.</dd></div>
+            </dl>
+            <!-- CONFIRM: the school's laboratories page says the labs are "accredited by Cambridge and the British Council" (B8); not repeated until the school confirms the wording. -->
+            <p class="label">The laboratories</p>
+            <dl class="dl">
+              <div class="dl__row"><dt>Four laboratories</dt><dd>Physics, Chemistry, Biology and Computer Science, each in its own room. The Science Fair is one of the events in the school's year.</dd></div>
+              <div class="dl__row"><dt>Electives</dt><dd>Students choose their O Level electives in Class VIII. <a href="{{link:/learning/senior/}}">Senior School</a> lists them.</dd></div>
+            </dl>
+            <p class="label">The library and the bookshop</p>
+            <dl class="dl">
+              <div class="dl__row"><dt>Library classes</dt><dd>Run for every level, monitored by a Librarian. If a book is not returned, the Librarian tells the parents through the class teacher. <a href="{{link:/about/policies/#library}}">Policies</a> has the rule.</dd></div>
+              <div class="dl__row"><dt>The bookshop</dt><dd>Parents collect the year's books and copies at the start of each session. <a href="{{link:/admissions/starting-at-playpen/}}">Starting at Playpen</a> has the details.</dd></div>
+            </dl>
+          </div>
+        </section>
+
+        <section class="story-chapter" id="c-hall" aria-labelledby="c-hall-h">
+          <div class="abt-head">
+            <h3 id="c-hall-h" class="section-title abt-head__title" data-reveal>The hall and the activity rooms.</h3>
+            <!-- CONFIRM: "It is also where students sit their Cambridge O and A Level exams" is the home's wording; the school's own pages do not yet say it (P06). -->
+            <p class="lead abt-head__lead" data-reveal>The multipurpose hall holds the school's gatherings, from assemblies to cultural programmes and prize-givings. It is also where students sit their Cambridge O and A Level exams.</p>
+          </div>
+          <figure class="plate abt-walk__plate" data-reveal>
+            <div class="plate__frame">{{img src="img/campus-hall-stage" alt="The multipurpose hall seen from above during a visit: the stage, the lectern and the big screen, with rows of students seen from behind." sizes="(min-width: 1100px) 963px, (min-width: 1024px) 88vw, 92vw" widths="960,1440"}}</div>
+            <figcaption class="plate__cap"><span class="plate__n">04</span>The multipurpose hall during the visit of NASA astronaut Joseph M. Acaba, December 2024</figcaption>
+          </figure>
+          <p class="caption abt-walk__note" data-reveal>The hall during the visit of NASA astronaut Joseph M. Acaba, December 2024.</p>
+          <div class="abt-walk__facts" data-reveal>
+            <dl class="dl">
+              <div class="dl__row"><dt>The activity rooms</dt><dd>A students' gallery for group work and presentation, and rooms for art, music, dance, drama and clubs. <a href="{{link:/school-life/clubs-and-activities/}}">Clubs and activities</a> says what runs in them.</dd></div>
+              <div class="dl__row"><dt>Exams</dt><dd>Since 2020 the school has been a Cambridge exam venue, approved by the British Council. <a href="{{link:/learning/examinations/}}">Examinations and reporting</a></dd></div>
+            </dl>
+          </div>
+        </section>
+
+        <section class="story-chapter" id="c-roof" aria-labelledby="c-roof-h">
+          <div class="abt-head">
+            <h3 id="c-roof-h" class="section-title abt-head__title" data-reveal>The terraces and the roof.</h3>
+            <!-- CONFIRM: "a basketball court on the roof" is from the home and press coverage; the school's own list says only "basketball court" (P06). -->
+            <p class="lead abt-head__lead" data-reveal>Brick terraces with benches and trees in planters, and the city beyond the railing. A basketball court sits on the roof.</p>
+          </div>
+          <figure class="plate abt-walk__plate" data-reveal>
+            <div class="plate__frame">{{img src="img/about-campus-terrace" alt="The terrace between the two brick wings, brick benches on either side and trees beyond the railing." sizes="(min-width: 1100px) 963px, (min-width: 1024px) 88vw, 92vw" widths="960,1440"}}</div>
+            <figcaption class="plate__cap"><span class="plate__n">05</span>The terrace between the two wings, 2024</figcaption>
+          </figure>
+          <p class="caption abt-walk__note" data-reveal>The terrace between the two wings, 2024.</p>
+        </section>
+
+        <section class="story-chapter" id="c-pool" aria-labelledby="c-pool-h">
+          <div class="abt-head">
+            <h3 id="c-pool-h" class="section-title abt-head__title" data-reveal>The rooftop swimming pool.</h3>
+            <!-- CONFIRM: the rooftop swimming pool (exists or planned) and a photograph of it (P06). The plate is the home's own illustration, catalogued as an AI plate and labelled so on the page. -->
+            <p class="lead abt-head__lead" data-reveal>A swimming pool on the roof is on the school's list of facilities. The picture is an illustration until the school's photograph is ready.</p>
+          </div>
+          <figure class="plate abt-walk__plate" data-reveal>
+            <!-- the paper tag on the plate itself (review r3): a parent skimming the plates never takes the render for the school; the alt and the caption say the same, so the tag is decorative -->
+            <div class="plate__frame">{{img src="img/campus-pool" alt="An illustration, not a photograph of the school: a rooftop swimming pool among brick terraces, with no one in it." sizes="(min-width: 1100px) 963px, (min-width: 1024px) 88vw, 92vw" widths="960,1440"}}<span class="abt-plate__tag" aria-hidden="true">Illustration</span></div>
+            <figcaption class="plate__cap"><span class="plate__n">06</span>Illustration; a photograph of the pool will replace it</figcaption>
+          </figure>
+          <p class="caption abt-walk__note" data-reveal>Illustration, not a photograph of the school. A photograph of the pool will replace it.</p>
+        </section>
+
+        <section class="story-chapter" id="c-care" aria-labelledby="c-care-h">
+          <div class="abt-head">
+            <h3 id="c-care-h" class="section-title abt-head__title" data-reveal>Safety and health.</h3>
+            <p class="lead abt-head__lead" data-reveal>What the building has on every floor and round the clock, from the school's own list.</p>
+          </div>
+          <div class="abt-panel abt-panel--gold" data-reveal>
+            <span class="abt-panel__label label">On the campus</span>
+            <ul class="checklist">
+              <li>CCTV across the campus, and security staff round the clock</li>
+              <li>A sick room for minor health problems during school hours; serious cases are handed to the parents</li>
+              <li>Drinking water, separate toilets for boys and girls, and fire extinguishers on every floor</li>
+              <li>An on-site cafeteria, which the second phase is to expand</li>
+              <li>Generators for classes during an electricity failure, and an internal telephone system between offices and floors</li>
+            </ul>
+            <a class="link link--arrow abt-panel__more" href="{{link:/about/child-protection/}}">Child protection, and who to call with a concern</a>
+          </div>
+        </section>
+
       </div>
-      <div class="layout__aside">
-        <p class="label">Admissions lines</p>
-        <div class="mt-m" data-reveal>{{phones}}</div>
-      </div>
+    </div>
+    <div class="abt-foot">
+      <p class="abt-foot__text">The school's own buses have run since March 2014; the rules for the bus and how to apply for a place are on Transport and safety.</p>
+      <p class="abt-foot__action"><a class="link link--arrow" href="{{link:/school-life/transport-and-safety/}}">Transport and safety</a></p>
+      <p class="abt-foot__source caption">From the school's campus, facilities, library, bookshop and health pages, September 2026. The courtyard, terrace and hall photographs are from 2024, the classroom floors from January 2021; the pool is an illustration.</p>
+    </div>
+  </div>
+</section>
+
+<section class="page-section" id="c-next" aria-labelledby="camp-next">
+  <div class="band">
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Coming next</span><span class="sheet-rule__purpose">The second phase</span></div>
+    <div class="abt-head abt-head--tight">
+      <h2 id="camp-next" class="section-title abt-head__title" data-reveal>The second phase.</h2>
+    </div>
+    <!-- CONFIRM: status of phase 2 (the school's pages say it is in progress; no completion date) and the planned additions, from the school's campus page. If phase 2 has finished, this section changes tense. A floor-by-floor list, plans or renders: none supplied, so the walk follows the kinds of room, not the floors. -->
+    <div class="venue abt-venue" data-reveal>
+      <p class="label">In progress</p>
+      <p class="venue__text">The second phase of the building is in progress. The school's own pages list further laboratories, an expanded cafeteria, an advanced library and more recreational facilities among the planned additions. No completion date has been published.</p>
+      <p class="caption">Being confirmed with the school.</p>
     </div>
   </div>
 </section>
@@ -174,10 +242,11 @@ hero_n: 01
 <section class="page-section" aria-label="Next page">
   <div class="band">
     <nav class="pager" aria-label="About pages">
-      <a class="pager__link pager__link--prev" href="{{link:/about/leadership/}}"><span class="pager__label">Previous</span><span class="pager__title">Leadership</span><span class="pager__sub">Who leads the school, and which classes each person looks after</span></a>
-      <a class="pager__link pager__link--next" href="{{link:/about/child-protection/}}"><span class="pager__label">Next</span><span class="pager__title">Child protection</span><span class="pager__sub">How the school looks after children, and who to call with a concern</span></a>
+      <!-- the finder (/about/leadership/) is back in the pager chain (Administration, then the finder, then Campus) and in the menu: nav.json N1 applied by the integrator, 2026-10-25. -->
+      <a class="pager__link pager__link--prev" href="{{link:/about/leadership/}}"><span class="pager__label">Previous</span><span class="pager__title">Who to ask about your child's class</span><span class="pager__sub">Pick the class: the Teacher-in-Charge, the Vice Principal and the line</span></a>
+      <a class="pager__link pager__link--next" href="{{link:/about/child-protection/}}"><span class="pager__label">Next</span><span class="pager__title">Child protection</span><span class="pager__sub">How the school keeps children safe, and who to call</span></a>
     </nav>
   </div>
 </section>
 
-{{cta}}
+{{cta heading="Come and see the building." text="Call the admissions line for your child's section first; the office confirms the day. Or book a visit."}}

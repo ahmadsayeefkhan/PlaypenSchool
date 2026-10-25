@@ -4,6 +4,8 @@
 const state = { pastHero: false, admissions: false, inputFocus: false, sheet: false, menu: false, dialog: false, overHero: true, dir: 0, y: 0, holdUntil: 0 };
 let header, actions, bar, html;
 let ctxRef;
+let overLimit = 80;      // scroll y at which the header leaves the film (set in create)
+let measuring = false;
 
 export function init(ctx) {
   ctxRef = ctx;
@@ -59,6 +61,23 @@ export function create(ctx) {
   const { ScrollTrigger } = ctx;
   if (!header) return null;
 
+  /* measured once per refresh, never during the scroll */
+  const film = header.classList.contains('nav--film') ? document.getElementById('hero') : null;
+  const measure = () => { overLimit = film ? Math.max(80, film.offsetHeight - (bar ? bar.offsetHeight : 72)) : 80; };
+  /* the state from the real position (fix round 2026-10-20): a single jump past the film (an anchor,
+     a scroll restore on reload, a back/forward page) left the header in its over-film state on paper,
+     because the trigger's onUpdate can run before the refresh has re-measured the limit */
+  const sync = () => { state.overHero = window.scrollY < overLimit; apply(); };
+  measure();
+  if (!measuring) {   // once, across matchMedia re-runs
+    measuring = true;
+    ScrollTrigger.addEventListener('refreshInit', measure);
+    ScrollTrigger.addEventListener('refresh', sync);
+    window.addEventListener('load', sync);
+    window.addEventListener('pageshow', sync);
+    window.addEventListener('scrollend', sync);
+  }
+
   /* Direction and the 80 px threshold. `end: 'max'` is re-measured by ScrollTrigger after every
      refresh, once the Ascent's pin spacer is in the page (a function end would be computed before
      the pin and stop short of the real page bottom); refreshPriority -1 orders the refresh after
@@ -71,16 +90,18 @@ export function create(ctx) {
     onUpdate: (self) => {
       const y = self.scroll();
       state.y = y;
-      state.overHero = y < 80;
+      // the film hero (2026-10-20): the header stays clear over the film until its bar reaches the
+      // film's foot; elsewhere (no film) it turns paper after 80 px as before
+      state.overHero = y < overLimit;
       state.dir = performance.now() < state.holdUntil ? 0 : (ctx.lenis ? ctx.lenis.direction : self.direction);
       apply();
     },
   });
 
-  /* Night ground: the Ledger from its top edge at the header's midline (36 px); the footer from
+  /* Night ground: the footer (the only night sheet since the Ledger was removed, 2026-10-18), from
      the line where the header bar meets it, because at some viewport heights the footer's top
      never scrolls past 36 px (1440 × 900: it stops at 64 px) and the header would stay paper */
-  [['#ledger', 'top 36px'], ['#contact', () => 'top ' + (bar ? bar.offsetHeight : 72) + 'px']].forEach(([sel, start]) => {
+  [['#contact', () => 'top ' + (bar ? bar.offsetHeight : 72) + 'px']].forEach(([sel, start]) => {
     if (!document.querySelector(sel)) return;
     ScrollTrigger.create({
       trigger: sel,

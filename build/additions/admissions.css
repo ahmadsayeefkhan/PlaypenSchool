@@ -1,38 +1,320 @@
 /* admissions: /admissions/, /admissions/how-to-apply/, /admissions/fees/, /admissions/visit/, /admissions/enquire/,
-   /admissions/starting-at-playpen/ (2026-10-11).
-   Components: entry points (.entry-points), call sheet (.call-lines), class-to-line hint (.route-hint), fee panel (.fee-panel),
-   printable list (.print-sheet, .print-only). Each is documented in docs/additions/admissions.md.
-   Tokens only; 44 px targets; the one motion (none) needs no reduced-motion rule. */
+   /admissions/starting-at-playpen/, /admissions/faq/ (2026-10-11; redesigned 2026-10-24 to the home's grammar).
+   Every admissions page carries body_class "adm", so the group's restyles are scoped to .adm and touch no other group.
+   Components (each documented in docs/additions/admissions.md):
+     .adm-head / .adm-foot / .adm-panel      the home's sheet head grid, sheet foot and 3 px-ruled panel (kit fallback, adm- prefix)
+     .adm-open / .adm-plate / .adm-hero-actions   the opening plate on a paper mount under the shell's hero, art-directed, with a button row
+     .adm-cover                              the hub's photographic cover (the home's cover at page scale)
+     .adm-picker / .adm-entries              the shared class picker: tiles -> one entry card + the highlighted call line; remembered
+     .call-lines / .call-band (kept)         the three admissions lines set large; .call-line.is-chosen is new
+     .adm-check                              a tickable, printable checklist (ticks remembered per device)
+     .adm-forms                              the collapsed online-form panel on How to apply
+     .adm-search / .adm-jump                 the FAQ's search box and topic links
+     .adm-topics / .venue                    the Enquire topic chips and their one-paragraph answers
+     .route-hint, .print-only, .print-btn-row (kept)
+   Review r1 (2026-10-24): entry__facts dt/dd styled; guardian tick box height; hints above inputs; the hub's six cards stacked under
+     640 px; the inset plate centred.
+   Review r2 (2026-10-24): the hub cover on phones puts the copy and the button on paper above a mounted 4:5 photograph (the fixed
+     consent toast covered the button on the picture); .adm-row--centre (a lone panel on ten columns); .adm-entries align to the top
+     and show title-only cards on phones until a class is chosen (.adm-entries--brief); the Enquire call band's H2 at display-m under
+     the plate; .adm-form-layout__after (the after-send list closes the right column level with the form); 44 px standalone links;
+     .adm .tag-list as paper chips; the Enquire crest tile rules removed.
+   Tokens only; 44 px targets; every motion has a prefers-reduced-motion rule and obeys the footer switch (html[data-motion="reduced"]). */
 
-/* ---- entry points (hub and How to apply, 2026-10-11) --------------------------------------------------------------
-   Three columns on a desktop, stacked on a phone: the classes in large type, then what the school does at that entry
-   point. On /admissions/how-to-apply/ the chips (data-filter-scope) show one column. */
-.entry-points { list-style: none; display: grid; grid-template-columns: minmax(0, 1fr); border-top: 1px solid var(--ink); }
-.entry { display: flex; flex-direction: column; padding: 22px 0 28px; border-bottom: var(--hairline); scroll-margin-top: calc(var(--nav-h) + 24px); }
-.entry__n { color: var(--ink-2); }
-.entry__title { margin-top: 18px; font: 300 clamp(28px, 2.6vw, 44px) / 1.08 var(--font-serif); letter-spacing: -0.01em; text-wrap: balance; }
-.entry__facts { margin-top: 22px; }
-.entry__facts > div { padding: 12px 0; border-top: var(--hairline); }
-.entry__facts dt { font: 500 11.5px / 1.3 var(--font-sans); letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-2); }
-.entry__facts dd { margin-top: 5px; font-size: 17.5px; line-height: 1.45; max-width: 36ch; }
-.entry__go { margin-top: auto; padding-top: 14px; }
-@media (min-width: 900px) {
-  .entry-points { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .entry { padding: 24px var(--gutter) 30px; border-bottom: 0; border-left: var(--hairline); }
-  .entry:first-child { padding-left: 0; border-left: 0; }
-  .entry:last-child { padding-right: 0; }
+/* ---- 0. the H2 voice: the home's display-l on every admissions section title (2026-10-24) ---------------------------- */
+.adm .section-title { font-size: clamp(36px, 4.8vw, 96px); line-height: 0.98; letter-spacing: -0.012em; max-width: 18ch; }
+.adm .section-title em { color: var(--maroon); font-style: italic; }
+.adm .is-night .section-title em { color: var(--gold-text); }
+/* the H2 rises through a mask once, like the home's headline lines (kit [data-pk-split] fallback). Before it is on screen it
+   waits at opacity 0 (never clipped to nothing: an element clipped to zero area is never "intersecting", so the reveal
+   observer would not fire); when .is-in arrives the shell's own pp-title-rise keyframes run once. */
+.adm .section-title[data-reveal] { transition: none; }
+html.js-reveal .adm .section-title[data-reveal]:not(.is-in) { opacity: 0; transform: none; }
+html.js-reveal .adm .section-title[data-reveal].is-in { opacity: 1; animation: pp-title-rise 1100ms var(--ease-mask) both; }
+@media (prefers-reduced-motion: reduce) { .adm .section-title[data-reveal] { animation: none !important; clip-path: none !important; opacity: 1 !important; } }
+html[data-motion="reduced"] .adm .section-title[data-reveal] { animation: none !important; clip-path: none !important; opacity: 1 !important; }
+
+/* ---- 1. adm-head: the home's sheet head (H2 on 10 of 12 columns, lead on 7) ---------------------------------------- */
+.adm-head { display: grid; grid-template-columns: minmax(0, 1fr); row-gap: clamp(20px, 2.6vw, 36px); margin-bottom: clamp(36px, 4.5vw, 64px); }
+.adm-head > .section-title + * { margin-top: 0; }
+.adm-head > .lead { max-width: 54ch; }
+.adm-head > .lead a { color: inherit; }
+@media (min-width: 1024px) {
+  .adm-head { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter); }
+  .adm-head > .section-title { grid-column: 1 / span 10; }
+  .adm-head > .lead { grid-column: 1 / span 7; }
 }
-/* with a chip chosen, one entry point is left: it takes a column of its own instead of a third of the row */
-.entry-points:has(> .entry[hidden]) { grid-template-columns: minmax(0, 46rem); }
-.entry-points:has(> .entry[hidden]) .entry { padding-inline: 0; border-left: 0; border-bottom: var(--hairline); }
-.entry-points + .small-print { margin-top: 22px; }
-[data-filter-scope] > .chips + .chips__status { margin-bottom: 8px; }
+.adm-head--tight { margin-bottom: clamp(24px, 3vw, 40px); }
 
-/* ---- call sheet: the three admissions lines set large (hub, visit, enquire; 2026-10-11) -----------------------------
+/* ---- 2. adm-foot: the sheet foot (hairline, a sentence, an action, a source caption) --------------------------------- */
+.adm-foot { display: grid; grid-template-columns: minmax(0, 1fr); gap: 18px var(--gutter); margin-top: clamp(36px, 4.5vw, 64px); padding-top: 24px; border-top: var(--hairline); }
+.adm-foot__text { font-size: 18px; line-height: 1.55; max-width: 62ch; }
+.adm-foot__action { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 28px; }
+.adm-foot__source { grid-column: 1 / -1; max-width: 80ch; }
+@media (min-width: 1024px) {
+  .adm-foot { grid-template-columns: repeat(12, minmax(0, 1fr)); }
+  .adm-foot__text { grid-column: 1 / span 8; }
+  .adm-foot__action { grid-column: 10 / -1; justify-content: flex-end; }
+  /* review r2: a foot that closes with three routes gives its action five columns, so the links sit on one or two lines, not three */
+  .adm-foot--links .adm-foot__text { grid-column: 1 / span 6; }
+  .adm-foot--links .adm-foot__action { grid-column: 8 / -1; }
+}
+.is-night .adm-foot { border-top-color: var(--night-line); }
+.is-night .adm-foot__source { color: var(--bone-dim); }
+
+/* ---- 3. adm-panel: the home's card recipe (paper-3, 1 px clay, 3 px coloured top rule) ------------------------------ */
+.adm-panel { --adm-edge: var(--maroon); background: var(--paper-3); border: 1px solid var(--clay); border-top: 3px solid var(--adm-edge); padding: clamp(20px, 2.2vw, 32px); }
+.adm-panel--gold { --adm-edge: var(--gold); }
+.adm-panel--ink { --adm-edge: var(--ink); }
+.adm-panel__head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 24px; padding-bottom: 14px; margin-bottom: 16px; border-bottom: var(--hairline); }
+.adm-panel__title { font: 400 clamp(22px, 1.8vw, 32px) / 1.12 var(--font-serif); letter-spacing: -0.005em; text-wrap: balance; }
+.adm-panel__title a { color: inherit; text-decoration: none; background-image: linear-gradient(var(--gold), var(--gold)); background-repeat: no-repeat; background-position: 0 100%; background-size: 100% 1px; }
+.adm-panel__title a:hover, .adm-panel__title a:focus-visible { color: var(--maroon); background-size: 100% 2px; }
+.adm-panel__body > * + * { margin-top: 12px; }
+.adm-panel p { font-size: 17px; line-height: 1.55; max-width: 52ch; }
+.adm-panel .label + p { margin-top: 6px; }
+.adm-panel__foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px; margin-top: 18px; padding-top: 14px; border-top: var(--hairline); }
+.adm-panel__foot .small-print { flex: 1 1 24ch; }
+.adm-panel__go { margin-top: 16px; font: 500 15px / 1.3 var(--font-sans); }
+.adm-panel .call-lines { margin-top: 18px; }
+.adm-panel .checklist li:last-child { border-bottom: 0; }
+.adm-panels { list-style: none; display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--gutter); }
+.adm-panels > li { display: flex; flex-direction: column; }
+.adm-panels > li > .adm-panel { flex: 1 1 auto; display: flex; flex-direction: column; }
+.adm-panels .adm-panel__head, .adm-panels .adm-panel__body, .adm-panels .doc-list, .adm-panels .small-print { flex: 0 0 auto; }
+/* review r2: the card's action (link or button) sits at the foot of an equal-height card, so the spare paper is between body and action */
+.adm-panels .adm-panel__go { margin-top: auto; padding-top: 16px; }
+@media (min-width: 640px) { .adm-panels { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1024px) {
+  .adm-panels--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .adm-panels--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .adm-panels--4 .adm-panel { padding: clamp(18px, 1.6vw, 24px); }
+  .adm-panels--4 .adm-panel__title { font-size: clamp(20px, 1.5vw, 24px); }
+}
+
+/* ---- 4. adm-row: the 7 / 5 (or 8 / 4) two-part sheet, the home's achievement split -------------------------------- */
+.adm-row { display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(32px, 4vw, 56px) var(--gutter); align-items: start; }
+@media (min-width: 1024px) {
+  .adm-row { grid-template-columns: repeat(12, minmax(0, 1fr)); }
+  .adm-row__main { grid-column: 1 / span 7; }
+  .adm-row__side { grid-column: 9 / -1; }
+  .adm-row--8 .adm-row__main { grid-column: 1 / span 8; }
+  .adm-row--8 .adm-row__side { grid-column: 10 / -1; }
+  /* review r2: a panel with nothing beside it takes ten columns, centred, like .adm-plate--inset (no half-band left blank) */
+  .adm-row--centre .adm-row__main { grid-column: 2 / span 10; }
+  .adm-row__side--sticky { position: sticky; top: calc(var(--nav-h) + 24px); }
+}
+.adm-row--after-steps { margin-top: clamp(36px, 4.5vw, 64px); }
+
+/* ---- 5. the opening: a button row and a mounted, art-directed plate right under the shell's hero (2026-10-24) -------
+   The shell writes the breadcrumb, the rule, the H1 and the standfirst; this first body section continues the first screen:
+   .adm-hero-actions (one primary button at most) and .adm-plate, a figure.plate on the paper-3 mount with two pictures,
+   .adm-plate__wide (from 768 px) and .adm-plate__tall (phones), each its own crop of the same frame. The hidden one is
+   display:none and lazy, so a browser fetches only the one it shows. The curtain comes from pages.css (figure.plate[data-reveal]). */
+.adm-open { padding-top: 0; }
+.adm-hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 28px; }
+.adm-hero-actions + .adm-plate { margin-top: clamp(28px, 4vw, 56px); }
+.adm-plate { margin: 0; }
+.adm-plate__wide { display: none; }
+.adm-plate__tall { display: block; }
+.adm-plate img { display: block; width: 100%; height: auto; object-fit: cover; }
+.adm-plate__tall img { aspect-ratio: 4 / 5; }
+.adm-plate--4x3 .adm-plate__tall img { aspect-ratio: 4 / 3; }
+.adm-plate--3x2 .adm-plate__tall img { aspect-ratio: 3 / 2; }
+@media (min-width: 768px) {
+  .adm-plate__wide { display: block; }
+  .adm-plate__tall { display: none; }
+  .adm-plate__wide img { aspect-ratio: 16 / 9; }
+  .adm-plate--21x9 .adm-plate__wide img { aspect-ratio: 21 / 9; }
+  .adm-plate--3x2 .adm-plate__wide img { aspect-ratio: 3 / 2; }
+  /* round-2 fixes (2026-10-25): 3:2 from 768 px only, the phone keeps its own 4:5 crop (Book a visit) */
+  .adm-plate--w3x2 .adm-plate__wide img { aspect-ratio: 3 / 2; }
+}
+@media (min-width: 1024px) { .adm-plate--16x9 .adm-plate__wide img { aspect-ratio: 16 / 9; } }
+/* a plate whose source is 1440 wide stays inside nine columns rather than stretching across the band */
+.adm-plate--inset { max-width: min(100%, 72rem); margin-inline: auto; }   /* review r1: inset on both sides equally, not only the right */
+@media (max-width: 479px) {
+  .adm-hero-actions .btn--primary, .adm-hero-actions .btn--secondary { width: 100%; }
+}
+
+/* ---- 6. adm-cover: the hub's photographic cover, the home's cover at page scale (2026-10-24) -----------------------
+   The breadcrumb (shell) and the rule stay on paper above the photograph; the H1, the lead and one primary button sit
+   bottom-left on the picture, in paper, over the home's two-direction ink scrim (0.86 from the bottom, 0.34 from the left).
+   Two crops: 16:9 from 768 px, 4:5 on phones. Contrast measured on the brightest frame: the copy sits on the lawn, the
+   darkest part of the frame, under the 86 % scrim. */
+.adm-cover .band + .adm-cover__media { margin-top: clamp(14px, 2vw, 28px); }
+.adm-cover__media { position: relative; max-width: var(--band-max); margin-inline: auto; background: var(--night); }
+.adm-cover__wide { display: none; }
+.adm-cover__tall { display: block; }
+.adm-cover__media img { display: block; width: 100%; height: min(92svh, 640px); object-fit: cover; object-position: 50% 45%; }
+.adm-cover__scrim { position: absolute; inset: 0; pointer-events: none;
+  background:
+    linear-gradient(to top, color-mix(in srgb, var(--ink) 86%, transparent) 0%, color-mix(in srgb, var(--ink) 55%, transparent) 38%, transparent 72%),
+    linear-gradient(to right, color-mix(in srgb, var(--ink) 34%, transparent) 0%, transparent 60%); }
+.adm-cover__copy { position: absolute; inset: auto 0 0 0; padding-bottom: clamp(24px, 4vw, 56px); color: var(--paper); }
+.adm-cover__title { font: 300 clamp(40px, 5.4vw, 104px) / 0.98 var(--font-serif); letter-spacing: -0.015em; text-wrap: balance; max-width: 14ch; color: var(--paper); }
+.adm-cover__title em { color: var(--gold-text); font-style: italic; font-weight: inherit; }
+.adm-cover__lead { margin-top: clamp(14px, 2vw, 28px); max-width: 44ch; color: var(--paper); }
+.adm-cover__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 28px; margin-top: clamp(20px, 2.4vw, 32px); }
+.adm-cover .btn--text { color: var(--paper); background-image: linear-gradient(var(--gold-text), var(--gold-text)); }
+.adm-cover .btn:focus-visible { outline: 2px solid var(--amber); outline-offset: 3px; }
+@media (max-width: 479px) {
+  .adm-cover__actions .btn--primary { width: 100%; }
+}
+/* review r2 (2026-10-24): on phones the copy block (H1, lead, the one button) sits on paper above the photograph, as the other six
+   pages open (H1, standfirst, buttons, then the plate), so the button lands in the first screen at about y 400, clear of the fixed
+   consent toast (y 628 to 828 on a 390 x 844 phone, portal.css, N7); the 4:5 crop then follows on a paper mount. No scrim: the
+   type is ink on paper. Replaces the r1 phone scrim (78 % ink to 45 % of the height). */
+@media (max-width: 767px) {
+  .adm-cover__media { display: flex; flex-direction: column; background: none; }
+  .adm-cover__copy { order: -1; position: static; color: var(--ink); padding: 0 0 clamp(24px, 5vw, 36px); }
+  .adm-cover__title, .adm-cover__lead { color: var(--ink); }
+  .adm-cover__title em { color: var(--maroon); }
+  .adm-cover .btn--text { color: var(--ink); background-image: linear-gradient(var(--gold), var(--gold)); }
+  .adm-cover .btn:focus-visible { outline-color: var(--maroon); }
+  .adm-cover__scrim { display: none; }
+  .adm-cover__tall { display: block; margin-inline: var(--margin); padding: 10px; background: var(--paper-3); border: 1px solid var(--clay); }
+  .adm-cover__media img { height: auto; aspect-ratio: 4 / 5; }
+}
+@media (min-width: 768px) {
+  .adm-cover__wide { display: block; }
+  .adm-cover__tall { display: none; }
+  .adm-cover__media img { height: min(78svh, 760px); object-position: 55% 45%; }
+}
+@media (min-width: 1840px) { .adm-cover__media { border-inline: 1px solid var(--clay); } }
+/* the H1 rises through a mask as the shell's does; the lead and buttons fade up after it */
+html.js:not([data-motion="reduced"]) .adm-cover__title { animation: pp-title-rise 1100ms var(--ease-mask) both; }
+html.js:not([data-motion="reduced"]) .adm-cover__lead, html.js:not([data-motion="reduced"]) .adm-cover__actions { animation: pp-fade-rise 900ms var(--ease-out) 250ms both; }
+@media (prefers-reduced-motion: reduce) { .adm-cover__title, .adm-cover__lead, .adm-cover__actions { animation: none !important; } }
+@media (forced-colors: active) { .adm-cover__scrim { display: none; } .adm-cover__copy { position: static; color: CanvasText; padding-top: 16px; } .adm-cover__title { color: CanvasText; } }
+
+/* ---- 7. the home's steps, feats and event cards on an inner page (small fits only) ----------------------------------- */
+.adm .steps { margin-top: 0; }
+.adm .step h3 { font-size: clamp(21px, 1.6vw, 28px); }
+.adm .step p { max-width: 34ch; }
+.adm .step p + p { margin-top: 10px; }
+.adm .step__go { font: 500 15px / 1.3 var(--font-sans); }
+@media (min-width: 640px) { .adm .adm-steps--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (min-width: 1024px) {
+  .adm .adm-steps--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+/* review r2: every short standalone link in the group is a 44 px target (the site-wide rows give 27 to 38 px); the lists lose their
+   22 px gap because the link itself now carries the height */
+.adm .link--arrow, .adm .link-list a, .adm .where-next__col a, .adm .adm-check__go a { min-height: 44px; display: inline-flex; align-items: center; }
+.adm .link-list, .adm .where-next__col ul { gap: 2px; }
+.adm .adm-check__go a { padding: 0; }
+.adm .where-next .section-title { margin-bottom: 0; }
+/* review r2: the payment channels as paper chips, not dash lists (Fees, section 04) */
+.adm .tag-list { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; font: 400 16px / 1.3 var(--font-sans); }
+.adm .tag-list li { min-height: 44px; padding: 0 16px; align-items: center; border: 1px solid var(--clay); background: var(--paper-3); }
+.adm .tag-list li::before { display: none; }
+/* the ink line of each step draws as it comes into view (the home's step draw, kit .pk-steps-draw fallback) */
+.adm .step::before { transition: transform 700ms var(--ease-out); }
+html.js-reveal .adm .step:not(.is-in)::before { transform: scaleX(0); }
+@media (prefers-reduced-motion: reduce) { .adm .step::before { transform: none !important; transition: none !important; } }
+html[data-motion="reduced"] .adm .step::before { transform: none !important; transition: none !important; }
+.adm .step .venue { margin-top: 14px; }
+
+.adm .feats { margin-top: 0; }
+.adm-feats { display: grid; grid-template-columns: minmax(0, 1fr); column-gap: var(--gutter); }
+.adm-feats .feat__t { font-size: 15.5px; max-width: 34ch; }
+@media (max-width: 639px) { .adm-feats .feat { grid-template-columns: 72px minmax(0, 1fr); } .adm-feats .feat__n { font-size: 36px; } }
+@media (min-width: 1024px) {
+  .adm-feats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .adm-feats .feat:nth-child(2) { border-top: var(--hairline); }
+}
+.adm-feats .feat__n small { font-size: 0.5em; letter-spacing: 0; }
+
+.adm .ev-grid { margin-top: 0; }
+.adm .ev__media img { object-position: 50% 50%; }
+/* review r2: the Book a visit card shows the Visit page's own plate. Round-2 fixes (2026-10-25): the plate is now 3:2 like the card,
+   so the card shows all of it; in the 96 px square on phones the window sits at the right, where the crest and the entrance are */
+.adm .ev__card[href*="/visit/"] img { object-position: 100% 50%; }
+@media (min-width: 1024px) {
+  .adm .ev-grid--6 { grid-template-columns: repeat(12, minmax(0, 1fr)); }
+  .adm .ev-grid--6 .ev { grid-column: span 4; }
+}
+/* review r1 (2026-10-24): under 640 px the home's swipe row showed 1.2 of the six cards with no cue; the hub's main navigation
+   is a stacked list instead, 96 px square thumbnails on the left, every page visible without a gesture */
+@media (max-width: 639px) {
+  .adm .ev-grid--6 { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0; margin-inline: 0; padding: 0; overflow: visible; scroll-snap-type: none; border-bottom: var(--hairline); }
+  .adm .ev-grid--6 .ev { flex: none; scroll-snap-align: none; }
+  .adm .ev-grid--6 .ev__card { display: grid; grid-template-columns: 96px minmax(0, 1fr); column-gap: 16px; row-gap: 4px; align-items: start; padding: 16px 0; border-top: var(--hairline); }
+  .adm .ev-grid--6 .ev__media { grid-column: 1; grid-row: 1 / span 4; margin: 0; padding: 4px; }
+  .adm .ev-grid--6 .ev__media img { aspect-ratio: 1; }
+  .adm .ev-grid--6 .ev__n, .adm .ev-grid--6 .ev__name, .adm .ev-grid--6 .ev__text, .adm .ev-grid--6 .ev__more { grid-column: 2; }
+  .adm .ev-grid--6 .ev__name { font-size: 22px; }
+  .adm .ev-grid--6 .ev__text { font-size: 15.5px; line-height: 1.45; }
+  .adm .ev-grid--6 .ev__more { margin-top: 2px; padding: 8px 0 4px; }
+}
+
+/* the one highlighted statement: the home's .venue (paper-2, 3 px gold left rule) used in flow, not in the results grid */
+.adm .venue { grid-column: auto; max-width: 62ch; }
+.adm .venue__text { font-size: clamp(18px, 1.3vw, 22px); }
+.adm .venue__text a { color: inherit; }
+.adm .venue--note .venue__text { font-size: 17.5px; line-height: 1.55; }
+.adm .venue + .venue { margin-top: 16px; }
+.adm .is-night .venue { background: var(--night-2); border-left-color: var(--gold-text); }
+
+/* ---- 8. the class picker (hub, How to apply; 2026-10-24) ------------------------------------------------------------
+   role="group" with a visible label; sixteen tiles in three brackets; under 480 px the select takes over; without
+   JavaScript the picker is hidden and every entry card shows. The chosen class is remembered on the device (pp:adm-class). */
+.adm-picker { padding-bottom: 8px; }
+.adm-picker__label { font: 400 17px / 1.4 var(--font-serif); color: var(--ink); margin-bottom: 14px; }
+.adm-picker__group + .adm-picker__group { margin-top: 14px; }
+.adm-picker__group .label { margin-bottom: 8px; }
+.adm-picker .chips { gap: 8px; }
+.adm-picker .chip { min-width: 52px; padding: 0 14px; font-variant-numeric: tabular-nums lining-nums; }
+.adm-picker .chip[aria-pressed="true"] { border-color: var(--maroon); background: var(--maroon); color: var(--paper); }
+.adm-picker__select { display: none; max-width: 24rem; }
+.adm-picker .chips__status { margin: 14px 0 0; }
+@media (max-width: 479px) {
+  .adm-picker__tiles { display: none; }
+  .adm-picker__select { display: flex; }
+}
+html:not(.js) .adm-picker { display: none; }
+.adm-entries { list-style: none; display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--gutter); align-items: start; margin-top: clamp(20px, 2.4vw, 32px); }
+/* until a class is chosen (and without JavaScript) all four cards show: two columns from 640 px so the page stays short;
+   with one card left it takes the whole column. Review r2: the cards align to the top (align-items: start), so the short gold
+   card is not stretched half empty */
+@media (min-width: 640px) { .adm-entries:not(:has(> [hidden])) { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+html:not(.js) .adm-entries { margin-top: 0; }
+/* review r2: on phones, until a class is chosen the four cards show their title and the first fact only (admissions.js adds
+   .adm-entries--brief while nothing is chosen), so the call sheet is one scroll away; without JavaScript every card is complete */
+@media (max-width: 639px) {
+  .adm-entries--brief .adm-entry .entry__facts > div:not(:first-child),
+  .adm-entries--brief .adm-entry .adm-panel__body,
+  .adm-entries--brief .adm-entry .adm-entry__go { display: none; }
+  .adm-entries--brief .adm-entry { padding-top: 16px; padding-bottom: 16px; }
+  .adm-entries--brief .adm-entry .adm-panel__head { padding-bottom: 10px; margin-bottom: 10px; }
+  .adm-entries--brief .adm-entry .adm-panel__head:last-child { padding-bottom: 0; margin-bottom: 0; border-bottom: 0; }
+  /* round-2 fixes (2026-10-25): the gold Class X and XII card has no facts, only a body (hidden here), so its head closes the card */
+  .adm-entries--brief .adm-entry:not(:has(.entry__facts)) .adm-panel__head { padding-bottom: 0; margin-bottom: 0; border-bottom: 0; }
+  .adm-entries--brief .adm-entry .entry__facts > div:first-child { padding-bottom: 0; }
+}
+/* review r1 (2026-10-24): dl.entry__facts had no dt/dd rule anywhere (pages.css lost .entry with the old entry points), so every card
+   read as ten identical serif lines. The home's nb-card label/value grammar: a small-caps sans label over a 17 px serif value, one
+   hairline row per fact. Used by the entry cards (hub, How to apply) and the arrival card (Book a visit). */
+.adm .entry__facts { margin: 0; }
+.adm .entry__facts > div { padding: 12px 0; border-top: var(--hairline); }
+.adm .entry__facts dt { font: 500 11.5px / 1.3 var(--font-sans); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-2); margin-bottom: 4px; }
+.adm .entry__facts dd { margin: 0; font-size: 17px; line-height: 1.5; max-width: 52ch; }
+.adm-entry .entry__facts { margin-top: 0; }
+.adm-entry .entry__facts > div:first-child { border-top: 0; padding-top: 0; }
+.adm-entry .entry__facts dd { max-width: 44ch; }
+.adm-entry__go { margin-top: 18px; font: 500 15px / 1.3 var(--font-sans); }
+/* round-2 fixes (2026-10-25): under a panel head the first fact loses its own rule (the arrival card drew two hairlines) */
+.adm-panel__head + .entry__facts > div:first-child { border-top: 0; padding-top: 0; }
+.adm-entries + .small-print { margin-top: 18px; }
+
+/* ---- 9. call sheet: the three admissions lines set large (2026-10-11; is-chosen added 2026-10-24) ------------------
    A list of rows: the section on the left, the number in Newsreader on the right (stacked on a phone). The number is a
-   {{phone:key class="call-line__tel"}} link. On the night ground the rules and the numbers turn paper and gold. */
+   {{phone:key class="call-line__tel"}} link. On the night ground the rules and the numbers turn paper and gold.
+   Rule since 2026-10-24: one call sheet per page; the picker's chosen line carries a 3 px gold left rule (.is-chosen). */
 .call-lines { list-style: none; border-top: 1px solid var(--ink); }
-.call-line { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 2px 24px; padding: 14px 0 12px; border-bottom: var(--hairline); }
+.call-line { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 2px 24px; padding: 14px 0 12px; border-bottom: var(--hairline); border-left: 3px solid transparent; transition: padding-left 300ms var(--ease-out), border-color 300ms var(--ease-out); }
+.call-line.is-chosen { padding-left: 14px; border-left-color: var(--gold); }
+.call-line.is-chosen .call-line__who { color: var(--ink); }
 .call-line__who { font: 500 12.5px / 1.3 var(--font-sans); letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-2); }
 .call-line__tel {
   display: inline-block;
@@ -49,54 +331,136 @@
 }
 .call-line__tel:hover, .call-line__tel:focus-visible { background-size: 100% 2px; }
 .call-lines__hours { margin-top: 14px; font: 400 14px / 1.5 var(--font-sans); color: var(--ink-2); }
+.call-lines__hours a { color: inherit; }
 .is-night .call-lines { border-top-color: var(--paper); }
 .is-night .call-line { border-bottom-color: var(--night-line); }
+.is-night .call-line.is-chosen { border-left-color: var(--gold-text); }
+.is-night .call-line.is-chosen .call-line__who { color: var(--paper); }
 .is-night .call-line__who { color: var(--gold-text); }
 .is-night .call-line__tel { color: var(--paper); background-image: linear-gradient(var(--gold-text), var(--gold-text)); }
 .is-night .call-lines__hours { color: var(--bone-dim); }
 @media (max-width: 479px) { .call-line { flex-direction: column; align-items: flex-start; } }
 @media (min-width: 640px) { .call-line { padding: 16px 0 14px; } }
-
+@media (prefers-reduced-motion: reduce) { .call-line { transition: none; } }
+html[data-motion="reduced"] .call-line { transition: none; }
+.adm-call .label { margin-bottom: 12px; }
+.adm-call .call-lines__hours { max-width: 36ch; }
 /* a two-column band on the night ground or a light one: the statement left, the lines right */
 .call-band { display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(28px, 4vw, 56px); align-items: start; }
 .call-band__text > * + * { margin-top: clamp(16px, 2vw, 24px); }
 .call-band__text .section-title { max-width: 14ch; }
 .call-band__text p { max-width: 38ch; font: 400 clamp(18px, 1.4vw, 22px) / 1.45 var(--font-serif); }
+.call-band__text .small-print { font: 400 14px / 1.5 var(--font-sans); }
+.call-band__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 28px; }
+.is-night .call-band .btn--text { color: var(--paper); background-image: linear-gradient(var(--gold-text), var(--gold-text)); }
+.is-night .call-band .btn:focus-visible { outline-color: var(--amber); }
 @media (min-width: 900px) { .call-band { grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); column-gap: var(--gutter); } .call-band__text { padding-right: var(--gutter); } }
-.call-band__note { margin-top: clamp(28px, 3.6vw, 48px); }
+/* the Enquire call band (review r2, 2026-10-24): it follows the opening plate as its own sheet; its H2 runs at the home's medium
+   size (display-m) under the "Prefer to call?" eyebrow, so the page's H1 leads the first screen and the numbers are the object.
+   The r1 crest tile and its phone grid are gone. */
+.adm-callband .section-title { font-size: clamp(28px, 2.9vw, 54px); line-height: 1.05; letter-spacing: -0.005em; max-width: 16ch; }
+.adm-callband-section { padding-top: clamp(40px, 5vw, 72px); }
 
-/* ---- class-to-line hint (visit and enquire; 2026-10-11) ---------------------------------------------------------------
+/* ---- 10. route hint (visit and enquire; 2026-10-11) ------------------------------------------------------------------
    The class chosen in the form picks the admissions line to show under it (js: build/additions/admissions.js). The box is a
-   polite live region that is always in the page and empty (no size) until a class is chosen, so a screen reader announces
-   the line. Without JavaScript it stays empty and the page's phone lists carry the numbers. */
+   polite live region that is always in the page and empty (no size) until a class is chosen. */
 .route-hint { font: 400 16px / 1.5 var(--font-sans); color: var(--ink-2); }
 .route-hint.is-on { margin: -6px 0 24px; padding: 12px 16px 14px; border-left: 2px solid var(--gold); background: var(--paper-3); }
 .route-hint__line { color: var(--ink); }
 .route-hint__line a { display: inline-block; padding: 8px 0 10px; }
 
-/* ---- fee panel: what the school has not published, said plainly (fees; 2026-10-11) ----------------------------------- */
-.fee-panel { display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(28px, 4vw, 56px); padding-top: 26px; border-top: 1px solid var(--ink); }
-.fee-panel__lead { font: 300 clamp(28px, 3.4vw, 56px) / 1.08 var(--font-serif); letter-spacing: -0.012em; max-width: 18ch; text-wrap: balance; }
-.fee-panel__side > * + * { margin-top: 18px; }
-.fee-panel__side p { max-width: 46ch; font-size: 18px; line-height: 1.55; }
-@media (min-width: 900px) { .fee-panel { grid-template-columns: minmax(0, 6fr) minmax(0, 6fr); column-gap: var(--gutter); } }
+/* ---- 11. form layout: the call sheet (or the answers) before the form in the DOM, beside it from 1024 px (2026-10-24)
+   The DOM is in the phone order (WCAG 1.3.2, 2.4.3); the desktop places the two with grid rows, not CSS order. */
+.adm-form-layout { display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(36px, 5vw, 64px); align-items: start; }
+.adm-form-layout__side > * + * { margin-top: 28px; }
+/* review r2: the fields run in one column (no two-column first row), and the after-send list (.adm-form-layout__after, after the
+   form in the DOM) takes the foot of the right-hand column on a desktop, aligned to the end of the form, so the section closes level */
+@media (min-width: 1024px) {
+  .adm-form-layout { grid-template-columns: repeat(12, minmax(0, 1fr)); grid-template-rows: auto minmax(0, 1fr); column-gap: var(--gutter); row-gap: 0; }
+  .adm-form-layout__side { grid-column: 10 / -1; grid-row: 1; }
+  .adm-form-layout__main { grid-column: 1 / span 8; grid-row: 1 / span 2; }
+  .adm-form-layout__after { grid-column: 10 / -1; grid-row: 2; align-self: end; margin-top: 0; padding-top: 40px; }
+}
+.adm-form-layout__side .call-line__tel { font-size: clamp(26px, 2vw, 32px); }
+.adm-after { list-style: none; counter-reset: after; border-top: 1px solid var(--ink); }
+.adm-after li { position: relative; counter-increment: after; padding: 12px 0 12px 40px; border-bottom: var(--hairline); font-size: 16px; line-height: 1.5; }
+.adm-after li::before { content: counter(after, decimal-leading-zero); position: absolute; left: 0; top: 15px; font: 500 12.5px / 1 var(--font-sans); letter-spacing: 0.14em; color: var(--gold); font-variant-numeric: tabular-nums; }
+/* the guardian and join ticks read at 17 px serif like the WhatsApp/SMS ticks (pages.css gives every label inside .field 13 px sans
+   and the field's column layout, which stacked the words above the box) */
+.adm .page-form .field.page-form__guardian, .adm .page-form .field.page-form__join { display: block; }
+.adm .page-form .field.page-form__guardian .choice, .adm .page-form .field.page-form__join .choice { display: flex; flex-direction: row; align-items: flex-start; gap: 12px; min-height: 44px; font: 400 17px / 1.5 var(--font-serif); color: var(--ink); cursor: pointer; }
+/* review r1: main.css gives every input inside .field min-height 48px, which drew the 22 px box in the middle of a 48 px row, a line
+   below its words; min-height 0 and max-height 22px put the box on the first line of the label */
+.adm .page-form .field.page-form__guardian .choice input, .adm .page-form .field.page-form__join .choice input { flex: none; width: 22px; height: 22px; min-height: 0; max-height: 22px; padding: 0; margin: 3px 0 0; }
+/* the hints sit above their input line (the .field is a flex column, so the source order is the visual order), never between an
+   input and the next label; the "after you press send" list follows the form */
+.adm .page-form .field__hint + input, .adm .page-form .field__hint + select { margin-top: 2px; }
+.adm-after-wrap { margin-top: clamp(28px, 3.5vw, 44px); max-width: 40rem; }
+.adm-after-wrap .label { margin-bottom: 10px; }
+.adm .form-note:focus { outline: none; }
+.adm .form-note:focus-visible { outline: 2px solid var(--maroon); outline-offset: 3px; }
+.page-form .field__hint { max-width: 46ch; }
 
-/* ---- list rows for a short run of questions (fees: worth asking when you call) ------------------------------------- */
-.ask-list { list-style: none; counter-reset: ask; border-top: var(--hairline); }
-.ask-list li { position: relative; counter-increment: ask; padding: 12px 0 12px 44px; border-bottom: var(--hairline); font-size: 17.5px; line-height: 1.5; }
-.ask-list li::before { content: counter(ask, decimal-leading-zero); position: absolute; left: 0; top: 16px; font: 500 12.5px / 1 var(--font-sans); letter-spacing: 0.14em; color: var(--gold); font-variant-numeric: tabular-nums; }
+/* ---- 12. Enquire topic chips and their answers (2026-10-24) ------------------------------------------------------------
+   Single-choice chips (aria-pressed); the matching .venue answer shows under them and the question box is pre-filled.
+   #topic-<key> in the URL presses a chip (the Fees page links that way). Hidden without JavaScript. */
+.adm-topics { margin-bottom: 18px; }
+.adm-topics .chips__status { margin: 10px 0 0; min-height: 0; }
+.adm-answer { margin: 18px 0 28px; }
+.adm-answer[hidden] { display: none; }
+html:not(.js) .adm-topics { display: none; }
+.adm-topics .chip[aria-pressed="true"] { border-color: var(--maroon); background: var(--maroon); color: var(--paper); }
 
-/* ---- the night checklist (starting at Playpen; 2026-10-11) ------------------------------------------------------------- */
-.is-night .checklist li { border-bottom-color: var(--night-line); }
-.is-night .checklist li:first-child { border-top-color: var(--night-line); }
-.is-night .checklist li::before { border-color: var(--gold-text); }
-.checklist--cols { display: grid; grid-template-columns: minmax(0, 1fr); column-gap: var(--gutter); }
-@media (min-width: 900px) { .checklist--cols { grid-template-columns: repeat(2, minmax(0, 1fr)); } .checklist--cols li:nth-child(2) { border-top: var(--hairline); } .is-night .checklist--cols li:nth-child(2) { border-top-color: var(--night-line); } }
+/* ---- 13. adm-check: a tickable, printable list (What to bring, fee questions, before the first day; 2026-10-24) -------
+   Real checkboxes; the ticks are remembered on the device (data-adm-store), a convenience the list never needs. */
+.adm-check { list-style: none; }
+.adm-check__item { display: grid; grid-template-columns: 22px minmax(0, 1fr); column-gap: 14px; row-gap: 2px; align-items: start; min-height: 44px; padding: 10px 0; border-bottom: var(--hairline); }
+.adm-check__item:first-child { border-top: var(--hairline); }
+.adm-check__item input { width: 22px; height: 22px; margin: 5px 0 0; accent-color: var(--maroon); cursor: pointer; }
+.adm-check__item input:focus-visible { outline: 2px solid var(--maroon); outline-offset: 2px; }
+.adm-check__item label { font: 400 17.5px / 1.5 var(--font-serif); color: var(--ink); cursor: pointer; padding: 3px 0; }
+.adm-check__item input:checked + label { color: var(--ink-2); }
+.adm-check__go { grid-column: 2; font: 500 14px / 1.4 var(--font-sans); }
+.adm-check__go a { display: inline-block; padding: 6px 0; }
+.adm-panel .adm-check__item:last-child { border-bottom: 0; }
+.adm-panel__head + .adm-check .adm-check__item:first-child, .adm-panel__head + .adm-check--cols .adm-check__item:nth-child(2) { border-top: 0; }
+@media (min-width: 640px) {
+  .adm-check--cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--gutter); }
+  .adm-check--cols .adm-check__item:nth-child(2) { border-top: var(--hairline); }
+}
+html.print-list .print-sheet .adm-check__item { break-inside: avoid; }
 
-/* ---- printable list (how to apply, starting at Playpen; 2026-10-11) -----------------------------------------------------
+/* ---- 14. the collapsed online-form panel on How to apply (2026-10-24) ----------------------------------------------
+   [data-adm-toggle] opens #forms-panel (aria-expanded); a link to #forms opens it too. Without JavaScript the panel is open. */
+.adm-forms[hidden] { display: none; }
+html:not(.js) .adm-forms[hidden] { display: block; }
+html:not(.js) [data-adm-toggle] { display: none; }
+.adm-forms { margin-top: clamp(32px, 4vw, 56px); }
+.adm-forms:focus { outline: none; }
+.adm-forms__close { margin-top: 18px; }
+.adm-forms__tabnote { flex: 1 1 100%; margin: 12px 0 0; max-width: 62ch; }
+.adm-forms-cards .adm-panel .doc-list { margin-top: 14px; border-top-color: var(--clay); }
+.adm-forms-cards .adm-panel .doc-list a { font-size: clamp(17px, 1.3vw, 20px); }
+
+/* ---- 15. the FAQ: search box, topic links, most-asked cards (2026-10-24) ---------------------------------------------- */
+.adm-search { max-width: 36rem; }
+.adm-search .field { margin-bottom: 0; }
+.adm-search input { min-height: 44px; }
+.adm-search__status { margin: 12px 0 0; }
+html:not(.js) .adm-search { display: none; }
+.adm-jump { margin-top: 22px; }
+.adm-jump .label { margin-bottom: 10px; }
+.adm-jump .chip { display: inline-flex; align-items: center; text-decoration: none; color: var(--ink); }
+.adm-jump .chip:hover, .adm-jump .chip:focus-visible { border-color: var(--ink); color: var(--maroon); }
+.adm-faq .accordion-group[hidden], .adm-faq .accordion__item[hidden] { display: none; }
+.adm-faq .accordion__controls { margin-bottom: 14px; }
+@media (max-width: 1023px) { .adm-faq .chapter-nav { display: none; } }
+.adm-faq .chapter-nav a { min-height: 44px; }
+
+/* ---- 16. printable list (how to apply, starting at Playpen, fees, visit; 2026-10-11) ----------------------------------
    The button copies the list into .print-sheet, prints only that, and removes it. Nothing shows on screen. */
 .print-sheet, .print-only { display: none; }
-.print-btn-row { margin-top: 18px; }
+.print-btn-row { margin-top: 18px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 28px; }
 .is-night .print-btn-row .btn--secondary { color: var(--paper); border-color: var(--paper); }
 .is-night .print-btn-row .btn--secondary:hover { color: var(--gold-text); border-color: var(--gold-text); }
 .is-night .print-btn-row .btn--secondary:focus-visible { outline-color: var(--amber); }
@@ -109,20 +473,48 @@ html:not(.js) [data-print-list] { display: none; }
   html.print-list .print-sheet .checklist li { border-bottom: 1px solid var(--ink-2); break-inside: avoid; }
   html.print-list .print-sheet .checklist li::before { border-color: var(--ink); }
   html.print-list .print-sheet .label, html.print-list .print-sheet h2, html.print-list .print-sheet h3 { color: var(--ink); }
+  html.print-list .print-sheet .adm-panel { border: 0; padding: 0; background: none; }
+  html.print-list .print-sheet .adm-panel__foot, html.print-list .print-sheet .print-btn-row { display: none !important; }
 }
 
-/* ---- small spacing for the lists this group uses (how to apply, starting at Playpen; 2026-10-11, review) ----------------
-   A label above a checklist sat on the list's top rule; a note under a label and a stack of cards in a narrow aside. */
+/* ---- 17. small spacing for the lists this group uses (2026-10-11) ---------------------------------------------------- */
 .label + .checklist { margin-top: 14px; }
 .label + .small-print { margin-top: 10px; }
 .small-print + .contact-cards { margin-top: 18px; }
 .layout__aside .contact-cards { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+.adm .layout__aside .label + .link-list { margin-top: 14px; }
+.adm .checklist--cols { display: grid; grid-template-columns: minmax(0, 1fr); column-gap: var(--gutter); }
+@media (min-width: 640px) { .adm .checklist--cols { grid-template-columns: repeat(2, minmax(0, 1fr)); } .adm .checklist--cols li:nth-child(2) { border-top: var(--hairline); } }
+.adm .tag-list + .label { margin-top: 24px; }
+.adm-notice { max-width: 46rem; }
+.adm .nb-card { background: var(--paper-3); }
+.adm-reviewed { margin-top: 16px; }
 
-/* without JavaScript the entry-point chips on /admissions/how-to-apply/ would do nothing: hide them, all three entry points show */
-html:not(.js) [data-filter-scope]:has(.entry-points) > .chips,
-html:not(.js) [data-filter-scope]:has(.entry-points) > .chips__status,
-html:not(.js) [data-filter-scope]:has(.entry-points) > .filter-empty { display: none; }
-
-/* three chapter cards in one row from a tablet up (hub, "Before you apply"): the Foundation's rule gives two columns from 640 px,
-   which leaves the third card alone on its row */
-@media (min-width: 720px) { .chapter-cards--three { grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: var(--gutter); } }
+/* ---- final review 2026-10-25 ----------------------------------------------------------------------------------------------------
+   1. The "Prefer to call?" label inside a call band is the standard small sans label (the band's serif paragraph rule reached it).
+   2. Enquire: under 1024 px the form comes first and the "Answers already on this site" list follows it (it pushed the form about
+      one screen down on a phone); on a desktop it stays the aside.
+   3. Visit: the crest frame in the 21:9 band sits on the crest, not on the middle of the door. */
+.call-band__text p.label { font: 500 11.5px / 1.2 var(--font-sans); letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-2); max-width: none; }
+@media (max-width: 1023px) {
+  .adm-form-layout--form-first .adm-form-layout__main { order: 1; }
+  .adm-form-layout--form-first .adm-form-layout__side { order: 2; }
+  .adm-form-layout--form-first .adm-form-layout__after { order: 3; }
+}
+@media (min-width: 768px) { .adm-plate--crest .adm-plate__wide img { object-position: 50% 8%; } }
+/* 4. How to apply: the class cards have no line sidebar beside them (the lines are at the foot of the page), so the row takes
+      the full band and the four cards stand in one row from 1200 px instead of a 2 x 2 block in the left two thirds. */
+@media (min-width: 900px) {
+  .adm-row:not(:has(> .adm-row__side)) > .adm-row__main { grid-column: 1 / -1; }
+}
+@media (min-width: 1200px) {
+  .adm-row:not(:has(> .adm-row__side)) .adm-entries:not(:has(> [hidden])) { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+@media (min-width: 1024px) {
+  .adm-row:not(:has(> .adm-row__side)) .adm-entries:has(> [hidden]) { max-width: 62%; }
+}
+/* 5. How to apply, the online-form card: its three steps as a short numbered list, so the card is not an empty box beside the
+      taller PDF card */
+.adm-panel__steps { list-style: decimal; padding-left: 1.3em; margin: 0 0 12px; }
+.adm-panel__steps li + li { margin-top: 6px; }
+.adm-panel__steps li::marker { color: var(--maroon); font-variant-numeric: tabular-nums; }

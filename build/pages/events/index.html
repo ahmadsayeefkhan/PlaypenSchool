@@ -1,0 +1,252 @@
+---
+title: Events
+schema: collection
+template: T08
+h1: The school year, <em>event</em> by event.
+standfirst: Fifteen events the school holds every year, each with a page of its own. Four fall on fixed dates; the school announces the rest, as notices and on the parent portal.
+hero_image: img/events-stage-cover
+hero_alt: The stage before the Annual Cultural Programme 2024, with microphones, speakers and plants in front of a backdrop of autumn trees and the Playpen crest, and no one on it.
+hero_caption: The multipurpose hall before the Annual Cultural Programme 2024
+hero_n: 01
+body_class: egn-page
+---
+<!-- Review r2 (2026-10-24): the five card metas say "Announced each year" like the index and the event pages (the operator's featured records too); the index groups carry modifier classes so Academic takes two columns and National days and Sports share one. -->
+<!-- Pages redesign 2026-10-24 (group events-gallery-news): the hub opens on a photograph (the hall before the 2024 programme), the five big days keep their cards with cleared frames, the year is one strip, and the fifteen events are grouped by kind instead of filtered. The full-bleed cover (hero: cover) waits on the shell; until then the mounted plate carries the same frame. -->
+<!-- CONFIRM: the 2026-27 calendar. The school has not supplied dates, so no event on these pages carries a date for the coming year; only the four national days have fixed dates (21 February, 26 March, 14 April, 16 December). The home's three sample events (18 November 2026, January 2027, 14 April 2027) are invented and are not repeated here. The list of events is the prospectus's "Yearly events" (May 2026) plus the records in the school's albums. Class Parties are in the prospectus list but have no page. -->
+<!-- CONFIRM: the crest ribbon on the hero's stage backdrop reads "Established in 1977"; the founding year is decision A1 in docs/CONTENT-TO-CONFIRM.md. Review r2 (2026-10-24): the frame is 21:9 and so is the plate from 1024 px, so no crop can move the ribbon out; the frame stands until A1 is decided. -->
+<section class="page-section" aria-labelledby="ev-featured">
+  <div class="band">
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">The big days</span><span class="sheet-rule__purpose">Five events most families know</span></div>
+    <div class="egn-head">
+      <h2 id="ev-featured" class="display-l egn-rise" data-reveal>The days the whole school comes together.</h2>
+      <p class="lead" data-reveal>Five days a year the whole school is in one place: on the field, in the courtyard, in the hall.</p>
+    </div>
+    <ul class="ev-feature" data-reveal-group data-feed="events-featured">
+      <li class="ev-card ev-card--lead" data-feed-id="E01">
+        <div class="ev-card__frame">{{img src="img/gal-sports26-wave" alt="Rows of students in red caps bent forward in a wave-shaped formation on the white-lined field, seen from directly above." sizes="(min-width: 1100px) 64vw, 100vw"}}</div>
+        <p class="ev-card__meta"><span>Sports</span><span>Announced each year</span></p>
+        <h3 class="ev-card__title"><a class="ev-card__link" href="{{link:/events/annual-sports-day/}}">Annual Sports Day</a></h3>
+        <p class="ev-card__text">The march past, the displays and the races, with every class on the school field.</p>
+        <span class="ev-card__go" aria-hidden="true"></span>
+      </li>
+      <li class="ev-card" data-feed-id="E02" style="--pos: 50% 68%">
+        <div class="ev-card__frame">{{img src="media/life-0" alt="The courtyard seen from above on Pohela Boishakh, with a painted alpona on the floor and a crowd in red, white and saffron." sizes="(min-width: 1100px) 30vw, (min-width: 640px) 50vw, 100vw"}}</div>
+        <p class="ev-card__meta"><span>Culture</span><span>14 April</span></p>
+        <h3 class="ev-card__title"><a class="ev-card__link" href="{{link:/events/pohela-boishakh/}}">Pohela Boishakh</a></h3>
+        <p class="ev-card__text">The Bengali new year, with an alpona in the courtyard, folk art and dance.</p>
+        <span class="ev-card__go" aria-hidden="true"></span>
+      </li>
+      <!-- AI plates round 2026-10-25: media/swatch-4 (two students in lab coats and a hand behind the shelf; not people-free, now refused by the catalogue) is replaced by the labelled AI plate img/ev-science-still (laboratory glassware, no people, no text). -->
+      <!-- CONFIRM: real photograph wanted: a photograph of the Science and Technology Fair the school agrees to show (stalls and models, no identifiable children), or of an empty laboratory, replaces the illustration img/ev-science-still. -->
+      <li class="ev-card" data-feed-id="E03" style="--pos: 50% 60%">
+        <div class="ev-card__frame">{{img src="img/ev-science-still" alt="An illustration, not a photograph of the school: laboratory glassware on a white bench, beakers, a conical flask and a wash bottle." sizes="(min-width: 1100px) 30vw, (min-width: 640px) 50vw, 100vw"}}<span class="ill-tag" aria-hidden="true">Illustration</span></div>
+        <p class="ev-card__meta"><span>Academic</span><span>Announced each year</span></p>
+        <h3 class="ev-card__title"><a class="ev-card__link" href="{{link:/events/science-and-technology-fair/}}">Science and Technology Fair</a></h3>
+        <p class="ev-card__text">Student projects, experiments and models at stalls in the hall.</p>
+        <span class="ev-card__go" aria-hidden="true"></span>
+      </li>
+      <li class="ev-card" data-feed-id="E04">
+        <div class="ev-card__frame">{{img src="img/gal-acp23-stage" alt="The stage set for the Annual Cultural Programme 2023 of the Elementary and Junior Section: a painted banner, paper flowers and a butterfly, with no one on stage." sizes="(min-width: 1100px) 50vw, (min-width: 640px) 50vw, 100vw" widths="480,960"}}</div>
+        <p class="ev-card__meta"><span>Culture</span><span>Announced each year</span></p>
+        <h3 class="ev-card__title"><a class="ev-card__link" href="{{link:/events/annual-cultural-programme/}}">Annual Cultural Programme</a></h3>
+        <p class="ev-card__text">The school's largest performance event: music, dance and drama.</p>
+        <span class="ev-card__go" aria-hidden="true"></span>
+      </li>
+      <li class="ev-card" data-feed-id="E05">
+        <div class="ev-card__frame">{{img src="img/gal-grad-hall" alt="Graduates in black caps, gowns and maroon sashes seen from behind and above, facing a red stage and the ceremony banner." sizes="(min-width: 1100px) 50vw, (min-width: 640px) 50vw, 100vw" widths="960,1440"}}</div>
+        <p class="ev-card__meta"><span>Academic</span><span>Announced each year</span></p>
+        <h3 class="ev-card__title"><a class="ev-card__link" href="{{link:/events/graduation-ceremony/}}">Graduation Ceremony</a></h3>
+        <p class="ev-card__text">The O Level and A Level graduates, in caps, gowns and maroon sashes.</p>
+        <span class="ev-card__go" aria-hidden="true"></span>
+      </li>
+    </ul>
+    <!-- CONFIRM: the school's own list of annual events (its activities page) names Sports Day, community service, the Cultural Programme, the Science Fair and student workshops. The five cards above are the five days with a cleared photograph and a page; sheet 03's foot says which two of the school's five have no page yet, so the two lists never disagree (critique X7; moved out of this foot in review r1, where it read as an aside that contradicted the cards). -->
+    <div class="egn-foot" data-reveal>
+      <p class="egn-foot__text">Every one of these five days happens on the school's own field, in its courtyard or in its multipurpose hall.</p>
+      <p class="egn-foot__action"><a class="btn btn--secondary" href="{{link:/admissions/visit/}}"><span class="btn__label">Book a visit</span></a></p>
+      <p class="egn-foot__source caption">From the school's prospectus (May 2026), its activities page and its photograph albums.</p>
+    </div>
+  </div>
+</section>
+
+<section class="page-section" id="year" aria-labelledby="ev-year">
+  <div class="band">
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">The year</span><span class="sheet-rule__purpose">Two semesters, July to June</span></div>
+    <div class="egn-head">
+      <h2 id="ev-year" class="display-l egn-rise" data-reveal>July to June, in two semesters.</h2>
+      <p class="lead" data-reveal>The first semester runs July to December and the second January to June. A written examination closes each one. Only the national days have fixed dates; the school announces every other event, as a notice and on the parent portal.</p>
+    </div>
+    <!-- CONFIRM: "semester" is the school's own word (the home, the Learning pages and the school's examination notice say "First Semester Examination"); the earlier version of this page said "term". One word on every page (critique X6). -->
+    <!-- CONFIRM: the usual month of each event that is announced each year; the examination weeks; whether Class VIII subject choice has a month. Only the four national days and the two months on record (Annual Sports Day, January 2026; Science and Technology Fair, November 2024) are placed on the strip. -->
+    <div class="ev-year" data-reveal>
+      <div class="ev-year__sem ev-year__sem--1">
+        <div class="ev-year__sem-head"><i class="ev-year__bar" aria-hidden="true"></i><h3 class="ev-year__sem-title">First semester</h3><span class="ev-year__sem-when">July to December</span></div>
+        <ol class="ev-year__months" aria-label="July to December">
+          <li class="ev-year__month ev-year__month--quiet"><span class="ev-year__name">Jul</span></li>
+          <li class="ev-year__month ev-year__month--quiet"><span class="ev-year__name">Aug</span></li>
+          <li class="ev-year__month ev-year__month--quiet"><span class="ev-year__name">Sep</span></li>
+          <li class="ev-year__month ev-year__month--quiet"><span class="ev-year__name">Oct</span></li>
+          <li class="ev-year__month"><span class="ev-year__name">Nov</span>
+            <ul class="ev-year__marks"><li><a class="ev-year__mark" href="{{link:/events/science-and-technology-fair/}}"><span class="label">On record, 2024</span>Science and Technology Fair</a></li></ul>
+          </li>
+          <li class="ev-year__month"><span class="ev-year__name">Dec</span>
+            <ul class="ev-year__marks">
+              <li><a class="ev-year__mark ev-year__mark--fixed" href="{{link:/events/victory-day/}}"><b>16</b>Victory Day</a></li>
+              <li><span class="ev-year__mark ev-year__mark--exam">A written examination closes the semester</span></li>
+            </ul>
+          </li>
+        </ol>
+      </div>
+      <div class="ev-year__sem ev-year__sem--2">
+        <div class="ev-year__sem-head"><i class="ev-year__bar" aria-hidden="true"></i><h3 class="ev-year__sem-title">Second semester</h3><span class="ev-year__sem-when">January to June</span></div>
+        <ol class="ev-year__months" aria-label="January to June">
+          <li class="ev-year__month"><span class="ev-year__name">Jan</span>
+            <ul class="ev-year__marks"><li><a class="ev-year__mark" href="{{link:/events/annual-sports-day/}}"><span class="label">On record, 2026</span>Annual Sports Day</a></li></ul>
+          </li>
+          <li class="ev-year__month"><span class="ev-year__name">Feb</span>
+            <ul class="ev-year__marks"><li><a class="ev-year__mark ev-year__mark--fixed" href="{{link:/events/shaheed-dibosh/}}"><b>21</b>Shaheed Dibosh</a></li></ul>
+          </li>
+          <li class="ev-year__month"><span class="ev-year__name">Mar</span>
+            <ul class="ev-year__marks"><li><a class="ev-year__mark ev-year__mark--fixed" href="{{link:/events/independence-day/}}"><b>26</b>Independence Day</a></li></ul>
+          </li>
+          <li class="ev-year__month"><span class="ev-year__name">Apr</span>
+            <ul class="ev-year__marks"><li><a class="ev-year__mark ev-year__mark--fixed" href="{{link:/events/pohela-boishakh/}}"><b>14</b>Pohela Boishakh</a></li></ul>
+          </li>
+          <li class="ev-year__month ev-year__month--quiet"><span class="ev-year__name">May</span></li>
+          <li class="ev-year__month"><span class="ev-year__name">Jun</span>
+            <ul class="ev-year__marks"><li><span class="ev-year__mark ev-year__mark--exam">A written examination closes the semester</span></li></ul>
+          </li>
+        </ol>
+      </div>
+    </div>
+    <div class="ev-year__announced" data-reveal>
+      <p class="label" id="ev-year-announced">Announced each year, as a notice</p>
+      <ul class="ev-year__pills" aria-labelledby="ev-year-announced">
+        <li><a class="ev-year__pill" href="{{link:/events/annual-cultural-programme/}}">Annual Cultural Programme</a></li>
+        <li><a class="ev-year__pill" href="{{link:/events/graduation-ceremony/}}">Graduation Ceremony</a></li>
+        <li><a class="ev-year__pill" href="{{link:/events/annual-drama/}}">Annual Drama</a></li>
+        <li><a class="ev-year__pill" href="{{link:/events/annual-milad/}}">Annual Milad</a></li>
+        <li><a class="ev-year__pill" href="{{link:/events/orientation-day/}}">Orientation Day</a></li>
+        <li><a class="ev-year__pill" href="{{link:/events/book-fair/}}">Book Fair</a></li>
+        <li><a class="ev-year__pill" href="{{link:/events/education-fair/}}">Education Fair</a></li>
+        <li><a class="ev-year__pill" href="{{link:/events/business-week/}}">Business Week</a></li>
+        <li><a class="ev-year__pill" href="{{link:/events/study-tour/}}">Study Tour</a></li>
+      </ul>
+    </div>
+    <div class="egn-panels egn-panels--3 ev-year__panels" data-reveal-group>
+      <div class="egn-panel">
+        <div class="egn-panel__head"><h3 class="egn-panel__name">First semester</h3><span class="egn-panel__sub">July to December</span></div>
+        <ul class="egn-panel__list">
+          <li>Teaching, class tests, class work marking and homework, all followed on the portal.</li>
+          <li>A formal written examination at the end; progress reports follow.</li>
+        </ul>
+      </div>
+      <div class="egn-panel egn-panel--gold">
+        <div class="egn-panel__head"><h3 class="egn-panel__name">Second semester</h3><span class="egn-panel__sub">January to June</span></div>
+        <ul class="egn-panel__list">
+          <li>Teaching continues. Class VIII students choose their O Level elective subjects.</li>
+          <li>A formal written examination at the end; promotion decisions follow.</li>
+        </ul>
+      </div>
+      <div class="egn-panel egn-panel--ink">
+        <div class="egn-panel__head"><h3 class="egn-panel__name">Through the year</h3><span class="egn-panel__sub">Both semesters</span></div>
+        <ul class="egn-panel__list">
+          <li>Parents-Teachers Meetings, announced at suitable intervals.</li>
+          <li>The events on this page, each announced by the school.</li>
+        </ul>
+        <p class="egn-panel__foot"><a class="link link--arrow" href="{{link:/learning/examinations/}}">Examinations</a></p>
+      </div>
+    </div>
+    <div class="egn-foot" data-reveal>
+      <p class="egn-foot__text">Dates reach families as notices from the school; urgent notices also go by SMS and email; the academic calendar and upcoming events are on the parent portal.</p>
+      <p class="egn-foot__action"><a class="link link--arrow" href="{{link:/notices/}}">Notices</a> {{ext:portal}}</p>
+      <p class="egn-foot__source caption">From the school's prospectus (May 2026). Months marked "on record" are the most recent the school's albums give; nothing else is placed on the strip.</p>
+    </div>
+  </div>
+</section>
+
+<section class="page-section" id="all" aria-labelledby="ev-all">
+  <div class="band">
+    <div class="sheet-rule" id="programme"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Every event</span><span class="sheet-rule__purpose">Fifteen, in four kinds</span></div>
+    <div class="egn-head egn-head--tight">
+      <h2 id="ev-all" class="display-l egn-rise" data-reveal>Fifteen events, four kinds.</h2>
+      <p class="lead" data-reveal>The five days above, and ten more, each with a page of its own.</p>
+    </div>
+    <!-- CONFIRM: the one-line descriptions of Annual Drama, Book Fair, Education Fair and Business Week are proposed wording, written from what the school's pages say about drama, the library, student guidance and the business subjects; the prospectus lists these four by name only. The same lines are requested as nav.json summaries, marked "proposed wording". -->
+    <div class="ev-index" data-reveal-group>
+      <section class="ev-index__group ev-index__group--academic" aria-labelledby="evi-academic">
+        <h3 id="evi-academic" class="label ev-index__kind">Academic<span class="ev-index__count">7</span></h3>
+        <ul class="ev-index__list">
+          <li><a class="ev-index__item" href="{{link:/events/science-and-technology-fair/}}"><span class="ev-index__name">Science and Technology Fair</span><span class="ev-index__when">Announced each year</span><span class="ev-index__line">Student projects, experiments and models at stalls in the hall.</span></a></li>
+          <li><a class="ev-index__item" href="{{link:/events/graduation-ceremony/}}"><span class="ev-index__name">Graduation Ceremony</span><span class="ev-index__when">Announced each year</span><span class="ev-index__line">The graduates of O Level and A Level, in caps, gowns and maroon sashes.</span></a></li>
+          <li><a class="ev-index__item" href="{{link:/events/orientation-day/}}"><span class="ev-index__name">Orientation Day</span><span class="ev-index__when">Announced each year</span><span class="ev-index__line">A day that introduces students and families to the school year.</span></a></li>
+          <li><a class="ev-index__item" href="{{link:/events/book-fair/}}"><span class="ev-index__name">Book Fair</span><span class="ev-index__when">Announced each year</span><span class="ev-index__line">A fair of books, beside the library lessons of every class.</span></a></li>
+          <li><a class="ev-index__item" href="{{link:/events/education-fair/}}"><span class="ev-index__name">Education Fair</span><span class="ev-index__when">Announced each year</span><span class="ev-index__line">Beside the school's guidance on studying further.</span></a></li>
+          <li><a class="ev-index__item" href="{{link:/events/business-week/}}"><span class="ev-index__name">Business Week</span><span class="ev-index__when">Announced each year</span><span class="ev-index__line">For the business subjects and the Business Club.</span></a></li>
+          <li><a class="ev-index__item" href="{{link:/events/study-tour/}}"><span class="ev-index__name">Study Tour</span><span class="ev-index__when">Announced each year</span><span class="ev-index__line">Field trips and outings, with parents' permission.</span></a></li>
+        </ul>
+      </section>
+      <section class="ev-index__group ev-index__group--culture" aria-labelledby="evi-culture">
+        <h3 id="evi-culture" class="label ev-index__kind">Culture<span class="ev-index__count">4</span></h3>
+        <ul class="ev-index__list">
+          <li><a class="ev-index__item" href="{{link:/events/pohela-boishakh/}}"><span class="ev-index__name">Pohela Boishakh</span><span class="ev-index__when"><b>14 April</b></span><span class="ev-index__line">The Bengali new year, celebrated across the school, with an alpona in the courtyard.</span></a></li>
+          <li><a class="ev-index__item" href="{{link:/events/annual-cultural-programme/}}"><span class="ev-index__name">Annual Cultural Programme</span><span class="ev-index__when">Announced each year</span><span class="ev-index__line">The school's largest performance event: music, dance and drama on stage.</span></a></li>
+          <li><a class="ev-index__item" href="{{link:/events/annual-drama/}}"><span class="ev-index__name">Annual Drama</span><span class="ev-index__when">Announced each year</span><span class="ev-index__line">Drama on the hall stage, from the Drama activity and the Drama Club.</span></a></li>
+          <li><a class="ev-index__item" href="{{link:/events/annual-milad/}}"><span class="ev-index__name">Annual Milad</span><span class="ev-index__when">Announced each year</span><span class="ev-index__line">A gathering for prayer and recitation, held each year.</span></a></li>
+        </ul>
+      </section>
+      <section class="ev-index__group ev-index__group--national" aria-labelledby="evi-national">
+        <h3 id="evi-national" class="label ev-index__kind">National days<span class="ev-index__count">3</span></h3>
+        <ul class="ev-index__list">
+          <li><a class="ev-index__item" href="{{link:/events/shaheed-dibosh/}}"><span class="ev-index__name">Shaheed Dibosh</span><span class="ev-index__when"><b>21 February</b></span><span class="ev-index__line">The Language Movement of 1952 remembered, and International Mother Language Day.</span></a></li>
+          <li><a class="ev-index__item" href="{{link:/events/independence-day/}}"><span class="ev-index__name">Independence Day</span><span class="ev-index__when"><b>26 March</b></span><span class="ev-index__line">The national day of Bangladesh, marked with a school function.</span></a></li>
+          <li><a class="ev-index__item" href="{{link:/events/victory-day/}}"><span class="ev-index__name">Victory Day</span><span class="ev-index__when"><b>16 December</b></span><span class="ev-index__line">The victory of 1971, commemorated every year.</span></a></li>
+        </ul>
+      </section>
+      <section class="ev-index__group ev-index__group--sports" aria-labelledby="evi-sports">
+        <h3 id="evi-sports" class="label ev-index__kind">Sports<span class="ev-index__count">1</span></h3>
+        <ul class="ev-index__list">
+          <li><a class="ev-index__item" href="{{link:/events/annual-sports-day/}}"><span class="ev-index__name">Annual Sports Day</span><span class="ev-index__when">Announced each year</span><span class="ev-index__line">The march past, the displays and the races, on the school field.</span></a></li>
+        </ul>
+      </section>
+    </div>
+    <div class="egn-foot" data-reveal>
+      <p class="egn-foot__text">Only the national days fall on a fixed date. The school announces the date of every other event each year. The school's own activities page also names community service and student workshops; they have no page yet.</p>
+      <p class="egn-foot__action"><a class="link link--arrow" href="{{link:/gallery/}}">The albums of these events</a></p>
+      <p class="egn-foot__source caption">From the school's prospectus (May 2026), "Yearly events", and its photograph albums.</p>
+    </div>
+  </div>
+</section>
+
+<section class="page-section" aria-labelledby="wn-title">
+  <div class="band where-next">
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Routes</span><span class="sheet-rule__purpose">Three doors out of this page</span></div>
+    <h2 id="wn-title" class="where-next__title">Where next?</h2>
+    <div class="where-next__grid where-next--3">
+      <div class="where-next__col">
+        <h3>Current parents</h3>
+        <ul>
+          <li>{{ext:portal}}</li>
+          <li><a class="link" href="{{link:/notices/}}">Notices</a></li>
+          <li><a class="link" href="{{link:/community/parents/}}">For parents</a></li>
+        </ul>
+      </div>
+      <div class="where-next__col">
+        <h3>What happened</h3>
+        <ul>
+          <li><a class="link" href="{{link:/news/}}">News and achievements</a></li>
+          <li><a class="link" href="{{link:/gallery/}}">Gallery</a></li>
+        </ul>
+      </div>
+      <div class="where-next__col">
+        <h3>New families</h3>
+        <ul>
+          <li><a class="link" href="{{link:/admissions/visit/}}">Book a visit</a></li>
+          <li><a class="link" href="{{link:/admissions/how-to-apply/}}">How to apply</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+{{cta}}

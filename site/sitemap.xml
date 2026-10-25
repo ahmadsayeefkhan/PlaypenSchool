@@ -3,6 +3,7 @@
   <url><loc>https://playpen-school.vercel.app/</loc></url>
   <url><loc>https://playpen-school.vercel.app/about/</loc></url>
   <url><loc>https://playpen-school.vercel.app/about/history/</loc></url>
+  <url><loc>https://playpen-school.vercel.app/about/school-administration/</loc></url>
   <url><loc>https://playpen-school.vercel.app/about/leadership/</loc></url>
   <url><loc>https://playpen-school.vercel.app/about/campus/</loc></url>
   <url><loc>https://playpen-school.vercel.app/about/child-protection/</loc></url>
@@ -19,26 +20,63 @@
   <url><loc>https://playpen-school.vercel.app/learning/results/</loc></url>
   <url><loc>https://playpen-school.vercel.app/learning/student-support/</loc></url>
   <url><loc>https://playpen-school.vercel.app/admissions/</loc></url>
+  <url><loc>https://playpen-school.vercel.app/admissions/visit/</loc></url>
+  <url><loc>https://playpen-school.vercel.app/admissions/enquire/</loc></url>
   <url><loc>https://playpen-school.vercel.app/admissions/how-to-apply/</loc></url>
   <url><loc>https://playpen-school.vercel.app/admissions/fees/</loc></url>
-  <url><loc>https://playpen-school.vercel.app/admissions/visit/</loc></url>
-  <url><loc>https://playpen-school.vercel.app/admissions/faq/</loc></url>
-  <url><loc>https://playpen-school.vercel.app/admissions/enquire/</loc></url>
   <url><loc>https://playpen-school.vercel.app/admissions/starting-at-playpen/</loc></url>
+  <url><loc>https://playpen-school.vercel.app/admissions/faq/</loc></url>
   <url><loc>https://playpen-school.vercel.app/school-life/</loc></url>
+  <url><loc>https://playpen-school.vercel.app/school-life/school-day/</loc></url>
+  <url><loc>https://playpen-school.vercel.app/school-life/transport-and-safety/</loc></url>
   <url><loc>https://playpen-school.vercel.app/school-life/sports/</loc></url>
   <url><loc>https://playpen-school.vercel.app/school-life/clubs-and-activities/</loc></url>
   <url><loc>https://playpen-school.vercel.app/school-life/culture-and-service/</loc></url>
-  <url><loc>https://playpen-school.vercel.app/school-life/transport-and-safety/</loc></url>
-  <url><loc>https://playpen-school.vercel.app/school-life/school-day/</loc></url>
+  <url><loc>https://playpen-school.vercel.app/community/</loc></url>
   <url><loc>https://playpen-school.vercel.app/community/parents/</loc></url>
   <url><loc>https://playpen-school.vercel.app/community/alumni/</loc></url>
   <url><loc>https://playpen-school.vercel.app/news/</loc></url>
   <url><loc>https://playpen-school.vercel.app/events/</loc></url>
+  <url><loc>https://playpen-school.vercel.app/events/annual-sports-day/</loc></url>
+  <url><loc>https://playpen-school.vercel.app/events/pohela-boishakh/</loc></url>
+  <url><loc>https://playpen-school.vercel.app/events/science-and-technology-fair/</loc></url>
+  <url><loc>https://playpen-school.vercel.app/events/annual-cultural-programme/</loc></url>
+  <url><loc>https://playpen-school.vercel.app/events/graduation-ceremony/</loc></url>
+  <url><loc>https://playpen-school.vercel.app/events/shaheed-dibosh/</loc></url>
+  <url><loc>https://playpen-school.vercel.app/events/independence-day/</loc></url>
+  <url><loc>https://playpen-school.vercel.app/events/victory-day/</loc></url>
+  <url><loc>https://playpen-school.vercel.app/events/annual-drama/</loc></url>
+  <url><loc>https://playpen-school.vercel.app/events/annual-milad/</loc></url>
+  <url><loc>https://playpen-school.vercel.app/events/orientation-day/</loc></url>
+  <url><loc>https://playpen-school.vercel.app/events/book-fair/</loc></url>
+  <url><loc>https://playpen-school.vercel.app/events/education-fair/</loc></url>
+  <url><loc>https://playpen-school.vercel.app/events/business-week/</loc></url>
+  <url><loc>https://playpen-school.vercel.app/events/study-tour/</loc></url>
   <url><loc>https://playpen-school.vercel.app/notices/</loc></url>
   <url><loc>https://playpen-school.vercel.app/gallery/</loc></url>
-  <url><loc>https://playpen-school.vercel.app/contact/</loc><lastmod>2026-10-11</lastmod></url>
-  <url><loc>https://playpen-school.vercel.app/privacy/</loc><lastmod>2026-10-11</lastmod></url>
-  <url><loc>https://playpen-school.vercel.app/terms/</loc><lastmod>2026-10-11</lastmod></url>
-  <url><loc>https://playpen-school.vercel.app/sitemap/</loc></url>
+  <url><loc>https://playpen-school.vercel.app/gallery/annual-sports-day-2026-class-1-12/</loc></url>
+  <url><loc>https://playpen-school.vercel.app/gallery/graduation-2025/</loc></url>
+  <url><loc>https://playpen-school.vercel.app/gallery/pohela-boishakh-1432/</loc></url>
+  <url><loc>https://playpen-school.vercel.app/gallery/nasa-astronaut-visit/</loc></url>
+  <url><loc>https://playpen-school.vercel.app/gallery/cultural-programme-2024/</loc></url>
+  <url><loc>https://playpen-school.vercel.app/gallery/pift-2024/</loc></url>
+  <url><loc>https://playpen-school.vercel.app/gallery/graduation-2024/</loc></url>
+  <url><loc>https://playpen-school.vercel.app/gallery/cultural-programme-2023/</loc></url>
+  <url><loc>https://playpen-school.vercel.app/gallery/graduation-2023/</loc></url>
+  <url><loc>https://playpen-school.vercel.app/gallery/colour-week/</loc></url>
+  <url><loc>https://playpen-school.vercel.app/gallery/class-party-2022-2023/</loc></url>
+  <url><loc>https://playpen-school.vercel.app/gallery/ekushe-february/</loc></url>
+  <url><loc>https://playpen-school.vercel.app/gallery/book-fair/</loc></url>
+  <url><loc>https://playpen-school.vercel.app/gallery/independence-day-art-competition/</loc></url>
+  <url><loc>https://playpen-school.vercel.app/gallery/education-fair/</loc></url>
+  <url><loc>https://playpen-school.vercel.app/gallery/mathematical-olympiad/</loc></url>
+  <url><loc>https://playpen-school.vercel.app/gallery/bangla-olympiad/</loc></url>
+  <url><loc>https://playpen-school.vercel.app/gallery/inter-class-football/</loc></url>
+  <url><loc>https://playpen-school.vercel.app/gallery/teacher-training/</loc></url>
+  <url><loc>https://playpen-school.vercel.app/gallery/art-and-craft/</loc></url>
+  <url><loc>https://playpen-school.vercel.app/gallery/graduation-2022/</loc></url>
+  <url><loc>https://playpen-school.vercel.app/contact/</loc><lastmod>2026-10-24</lastmod></url>
+  <url><loc>https://playpen-school.vercel.app/privacy/</loc><lastmod>2026-10-24</lastmod></url>
+  <url><loc>https://playpen-school.vercel.app/terms/</loc><lastmod>2026-10-24</lastmod></url>
+  <url><loc>https://playpen-school.vercel.app/sitemap/</loc><lastmod>2026-10-25</lastmod></url>
 </urlset>

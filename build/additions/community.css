@@ -107,19 +107,149 @@
   .album .gallery__item--wide .gallery__frame img { position: absolute; inset: 0; width: 100%; height: 100%; aspect-ratio: auto; }
 }
 
-/* ---- form first on a phone (alumni; review 2026-10-11) ------------------------------------------------------------------
-   The list of what to have to hand and the number to call come before the form on a phone, where the aside would otherwise fall
-   below the button. From 1024 px the aside sits beside the form as usual. */
-@media (max-width: 1023.98px) {
-  .layout--aside-first .layout__aside { order: -1; }
-}
-
-/* ---- start-here cards (parents; 2026-10-11) --------------------------------------------------------------------------
-   A chapter card that opens the school's current website carries the "current site" tag (.link__site) inside its link.
-   The tag sits on its own line under the title, so the two external cards and the two internal ones line up. */
-.chapter-card__link .link__site { display: block; width: fit-content; margin: 10px 0 0; }
-
 @media (prefers-reduced-motion: reduce) {
   .news-item__go, .news-item__title a { transition: none; }
 }
 html[data-motion="reduced"] .news-item__go, html[data-motion="reduced"] .news-item__title a { transition: none !important; }
+
+
+/* ======================================================================================================================
+   community-contact redesign, Parents and Alumni pieces (2026-10-24). The shared cc- kit (cc-head, cc-foot, cc-panel,
+   cc-plate, cc-lines, cc-chips) lives in contact-legal.css; here are the pieces only these two pages use. Tokens only;
+   44 px targets; the tile arrow is the one transition and stops under reduced motion (last block). */
+
+/* ---- cc-tiles: Parents' four start-here tiles (2026-10-24) ----------------------------------------------------------------------
+   Four doors a current parent opens most, 2 x 2 from 0 px so all four sit in one phone screen (the four stacked chapter cards
+   ran about 1,400 px), four across from 1024 px. The whole tile is one link (the title's link stretched over it, as .chapter-card
+   does). A tile that opens the school's current website carries the "current site" tag under its title. */
+.cc-tiles { list-style: none; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.cc-tile { position: relative; display: flex; flex-direction: column; gap: 10px; min-height: 150px; min-width: 0; padding: 16px 14px 18px; background: var(--paper-3); border: 1px solid var(--clay); border-top: 3px solid var(--maroon); }
+.cc-tile__n { display: block; }
+.cc-tile__title { font: 400 clamp(19px, 1.9vw, 28px) / 1.1 var(--font-serif); letter-spacing: -0.005em; text-wrap: balance; transition: color var(--t-micro); }
+.cc-tile__link { color: inherit; text-decoration: none; }
+.cc-tile__link::after { content: ''; position: absolute; inset: 0; }
+.cc-tile__link:focus-visible { outline: none; }
+.cc-tile__link:focus-visible::after { outline: 2px solid var(--maroon); outline-offset: 4px; }
+.cc-tile__link .link__site { display: block; width: fit-content; margin: 8px 0 0; }
+.cc-tile__text { font-size: 15px; line-height: 1.45; color: var(--ink-2); max-width: 30ch; }
+.cc-tile__go { position: relative; display: block; flex: none; width: 36px; height: 1px; margin-top: auto; background: var(--ink); transition: width var(--t-hover) var(--ease-out), background var(--t-ui); }
+.cc-tile__go::after { content: ''; position: absolute; right: 0; top: -3px; width: 7px; height: 7px; border-top: 1px solid currentColor; border-right: 1px solid currentColor; transform: rotate(45deg); color: var(--ink); }
+.cc-tile:hover .cc-tile__title { color: var(--maroon); }
+.cc-tile:hover .cc-tile__go { width: 60px; background: var(--maroon); }
+.cc-tile:hover .cc-tile__go::after { color: var(--maroon); }
+.cc-tile__short { display: none; }
+@media (max-width: 479px) {
+  /* the smallest phones: each tile shows its own short line instead of the sentence (review r2, 2026-10-25: the two-line clamp of
+     r1 cut sentences mid-phrase, which read as a rendering fault); the four tiles still sit in one phone screen */
+  .cc-tile { min-height: 132px; gap: 8px; padding: 14px 12px 16px; }
+  .cc-tile__text { font-size: 13.5px; line-height: 1.35; }
+  .cc-tile__long { display: none; }
+  .cc-tile__short { display: inline; }
+}
+@media (min-width: 720px) {
+  .cc-tiles { gap: var(--gutter); }
+  .cc-tile { min-height: 210px; padding: clamp(18px, 2vw, 28px); gap: 12px; }
+  .cc-tile__text { font-size: 16.5px; }
+}
+@media (min-width: 1024px) {
+  .cc-tiles { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+
+/* ---- cc-notices: Parents' Notices-now sheet (review r1, 2026-10-24) ------------------------------------------------------------------
+   The same nb-cards as /notices/, feed-synced; content.js adds nb-card--feature to a pinned notice, and main.css then spans it over
+   both columns (the board's sticky nb-ask fills the space beside the second card on /notices/; here nothing would). On this page the
+   cards sit as two equal columns, the feature card keeps the ordinary title size and fact grid, and every card action keeps the
+   secondary (outlined) button, so a current-parent page does not end up with one filled admissions button as its only priority. */
+.cc-notices .nb-card--feature { grid-column: auto; }
+.cc-notices .nb-card--feature .nb-card__title { font-size: clamp(22px, 2vw, 30px); max-width: none; }
+.cc-notices .nb-card--feature .nb-fact { grid-template-columns: minmax(0, 1fr); gap: 4px; align-items: start; }
+.cc-notices .nb-card .btn { background: transparent; color: var(--ink); border: 1px solid var(--ink); box-shadow: none; }
+.cc-notices .nb-card .btn:hover, .cc-notices .nb-card .btn:focus-visible { color: var(--maroon); border-color: var(--maroon); background: transparent; }
+.cc-notices .nb-card .btn::after { content: none; }
+/* phones (review r2, 2026-10-25): each card shows its tile, chips, title and one action; the For / What to do / When facts and the
+   source line are left to the Notices page, which the card's action and the sheet's "All notices" open. Two full cards ran about
+   1,750 px before the accounts a parent came for. */
+@media (max-width: 639px) {
+  .cc-notices .nb-card__facts, .cc-notices .nb-card__source { display: none; }
+}
+
+/* ---- cc-callrow: Parents' phone sheet (review r2, 2026-10-25) ------------------------------------------------------------------
+   The phone list on 7 columns and the Book Fair plate (moved from the day-to-day aside) on the right 4, so the row is not half
+   empty at 1366 px; one column on phones, the plate after the numbers, with its caption. */
+.cc-callrow { display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(32px, 4vw, 56px) var(--gutter); align-items: start; }
+.cc-callrow .plate { margin: 0; }
+@media (min-width: 1024px) {
+  .cc-callrow { grid-template-columns: repeat(12, minmax(0, 1fr)); }
+  .cc-callrow .cc-lines { grid-column: 1 / span 7; }
+  .cc-callrow__plate { grid-column: 9 / -1; }
+}
+
+/* ---- cc-faq: Parents' day-to-day sheet (2026-10-24) -----------------------------------------------------------------------------
+   Written in phone order: the safeguarding statement (.venue) first, then the jump chips and the grouped questions, then the
+   plate and the document links. From 1024 px the questions take 8 columns over two rows and the statement and the aside sit
+   on the right, so the reading order and the focus order are the DOM order at every width (WCAG 1.3.2, 2.4.3; no CSS order). */
+.cc-faq { display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(32px, 4vw, 56px) var(--gutter); align-items: start; }
+.cc-faq__worried .venue { max-width: none; }
+.cc-faq__main .chips { margin-bottom: 12px; }
+.cc-faq__main .accordion__controls { margin-top: 8px; }
+.cc-faq__aside > * + * { margin-top: 28px; }
+.cc-faq__aside .plate { margin: 0; }
+@media (min-width: 1024px) {
+  .cc-faq { grid-template-columns: repeat(12, minmax(0, 1fr)); }
+  .cc-faq__main { grid-column: 1 / span 7; grid-row: 1 / span 2; }
+  .cc-faq__worried { grid-column: 9 / -1; grid-row: 1; }
+  .cc-faq__aside { grid-column: 9 / -1; grid-row: 2; }
+}
+
+/* ---- cc-aside-first: the checklist before the form (Alumni, Register; 2026-10-24) -------------------------------------------
+   Replaces .layout--aside-first (2026-10-11), which moved the aside with CSS order. The aside is now first in the DOM (the phone
+   order); from 1024 px both columns are pinned to the same grid row, so .layout's column rules place them side by side. */
+@media (min-width: 1024px) {
+  .cc-aside-first .layout__aside, .cc-aside-first .layout__main { grid-row: 1; }
+}
+
+/* ---- cc-years: Alumni's four graduation albums (2026-10-24) -------------------------------------------------------------------
+   The home's .ev-grid photo cards, one per year, each card the link to that year's album: a stack on phones (the home's
+   snapping row would hide the fourth card), 2 x 2 from 640 px, four across from 1200 px. */
+.cc-years .ev-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(28px, 3.5vw, 48px) var(--gutter); margin-inline: 0; padding: 0; overflow: visible; }
+.cc-years .ev, .cc-years .ev:first-child { grid-column: auto; flex: none; }
+.cc-years .ev__media img { aspect-ratio: 16 / 9; object-position: 50% 50%; }
+.cc-years .ev__name { font-size: clamp(22px, 1.7vw, 30px); }
+.cc-years .ev__card:focus-visible { outline: 2px solid var(--maroon); }
+/* phones (review r2, 2026-10-25): 2 x 2 from 0 px, as from 640 px, so four tall pictures do not run 1,900 px in a row; the
+   pictures are for looking, and the year label stays on one line; the card text gives way to the name */
+@media (max-width: 639px) {
+  .cc-years .ev-grid { gap: 24px 12px; }
+  .cc-years .ev__name { font-size: 19px; }
+  .cc-years .ev__text { display: none; }
+  .cc-years .ev__n { white-space: nowrap; }
+}
+@media (min-width: 1200px) {
+  .cc-years .ev-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+
+/* ---- cc-dates: Alumni's night timeline with its sticky plate (2026-10-24; review r1 the same day) -----------------------------------
+   Phone order: the plate under the lead, then the timeline. From 1024 px the timeline takes 7 columns and the plate column on the
+   right stretches to the timeline's height: the plate sticks at the top as the reader scrolls, and .cc-dates__more (two in-page
+   links) sits at the foot of the column, so the column is not empty paper under a short plate in a full-page view.
+   Review r2 (2026-10-25): the plate is a 4:5 cut at the full width of a five-column right column (about 440 px), the two links
+   sit directly under it, and the plate and the links stick together, so the dark sheet is not half empty. */
+.cc-dates { display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(32px, 4vw, 56px) var(--gutter); align-items: start; }
+.cc-dates__plate { display: flex; flex-direction: column; gap: 28px; }
+.cc-dates__plate .plate { margin: 0; }
+.cc-dates__more .label { display: block; margin-bottom: 14px; }
+.cc-dates__more .link-list { gap: 16px; }
+.is-night .cc-dates__more .link { color: var(--paper); }
+@media (max-width: 1023px) {
+  .cc-dates__more { display: none; }   /* on a phone the two sheets it points to are one scroll away; the plate alone follows the lead */
+}
+@media (min-width: 1024px) {
+  .cc-dates { grid-template-columns: repeat(12, minmax(0, 1fr)); }
+  .cc-dates__list { grid-column: 1 / span 6; grid-row: 1; }
+  .cc-dates__plate { grid-column: 8 / -1; grid-row: 1; align-self: start; position: sticky; top: calc(var(--nav-h) + 24px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cc-tile__go, .cc-tile__title { transition: none; }
+}
+html[data-motion="reduced"] .cc-tile__go, html[data-motion="reduced"] .cc-tile__title { transition: none !important; }

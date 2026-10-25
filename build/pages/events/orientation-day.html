@@ -1,0 +1,77 @@
+---
+h1: Orientation <em>Day</em>.
+standfirst: A yearly event that introduces students and families to the school and its year.
+eyebrow: Events
+schema: webpage
+body_class: egn-page
+---
+<!-- Pages redesign 2026-10-24 (group events-gallery-news): hero or honest plate, facts that say something, the day in short, the school's own album, one door for new families, then the pager. The "school announces the day" sheet moved to the events hub. -->
+<!-- CONFIRM: who Orientation Day is for (new students, new parents, a class moving up), what happens and when in the year it is held; photographs or a short account of the day. -->
+<!-- AI plates round 2026-10-25 (founder decision 8: yes): sheet 01 carries the people-free AI plate R4, img/ev-orientation-still (a notebook, a pencil and a ruled sheet on an old desk, board-marked concrete behind, no people, no text), in place of the typographic plate "Orientation Day". Labelled Illustration on the plate, in the alt and in the line under the facts. -->
+<!-- CONFIRM: real photograph wanted: a photograph of the school's Orientation Day the school agrees to show (the hall or a classroom set out, no identifiable children) replaces the illustration img/ev-orientation-still. -->
+<section class="page-section" aria-labelledby="ev-glance">
+  <div class="band">
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">At a glance</span><span class="sheet-rule__purpose">Academic</span></div>
+    <h2 id="ev-glance" class="visually-hidden">Orientation Day at a glance</h2>
+    <div class="ev-glance" data-reveal>
+      <figure class="plate plate--3x2 ev-glance__mark ev-glance__photo" style="--pos: 60% 60%"><div class="plate__frame">{{img src="img/ev-orientation-still" alt="An illustration, not a photograph of the school: a plain notebook, a pencil and a folded ruled sheet on an old wooden desk against a concrete wall." sizes="(min-width: 1024px) 40vw, 100vw"}}<span class="ill-tag" aria-hidden="true">Illustration</span></div></figure>
+      <div class="ev-glance__facts">
+        <dl class="fact-strip fact-strip--2">
+        <div class="fact"><dt>Kind of event</dt><dd>Academic</dd></div>
+        <div class="fact"><dt>When</dt><dd data-feed-event="orientation-day">Announced each year, <a href="{{link:/notices/}}">as a notice</a><small>The school year runs from July to June.</small></dd></div>
+        </dl>
+        <p class="ev-mark__line">The picture is an illustration, not a photograph of the school. The school has not yet agreed to a photograph of this day; one replaces the illustration when it does. <a href="{{link:/gallery/}}">The albums the school has cleared are in the gallery.</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="page-section" aria-labelledby="ev-about">
+  <div class="band">
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">What happens</span><span class="sheet-rule__purpose">The day, in short</span></div>
+    <div class="layout">
+      <div class="layout__main">
+        <h2 id="ev-about" class="display-l egn-rise" data-reveal>A first look at the year.</h2>
+        <div class="prose mt-m" data-reveal>
+          <p>Orientation Day is a yearly event. The school year runs from July to June, in two semesters: July to December, and January to June.</p>
+          <p>For a new family, the practical details of the first weeks, the uniform, the books and the school bookshop, are on Starting at Playpen.</p>
+        </div>
+      </div>
+      <div class="layout__aside">
+        <p class="label">Read more</p>
+        <ul class="link-list">
+          <li><a class="link link--arrow" href="{{link:/admissions/starting-at-playpen/}}">Starting at Playpen</a></li>
+          <li><a class="link link--arrow" href="{{link:/school-life/school-day/}}">The school day</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="page-section" aria-labelledby="ev-hook">
+  <div class="band">
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">See it for yourself</span><span class="sheet-rule__purpose">One door for new families</span></div>
+    <h2 id="ev-hook" class="visually-hidden">See it for yourself</h2>
+    <!-- CONFIRM: the visit format is on the admissions pages, not here; this panel promises no tour, only the call and the day the office confirms (critique X4). -->
+    <div class="ev-hook" data-reveal>
+      <div class="venue">
+        <p class="label">See it for yourself</p>
+        <p class="venue__text">The practical details of the first weeks are on Starting at Playpen.</p>
+        <p class="ev-hook__actions"><a class="link link--arrow" href="{{link:/admissions/starting-at-playpen/}}">Starting at Playpen</a><a class="btn btn--secondary" href="{{link:/admissions/visit/}}"><span class="btn__label">Book a visit</span></a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="page-section" aria-label="More events">
+  <div class="band">
+    <p class="ev-back"><a class="link link--arrow" href="{{link:/events/#all}}">All events</a></p>
+    <nav class="pager" aria-label="Events">
+      <a class="pager__link pager__link--prev" href="{{link:/events/annual-milad/}}"><span class="pager__label">Previous event</span><span class="pager__title">Annual Milad</span><span class="pager__sub">Culture</span></a>
+      <a class="pager__link pager__link--next" href="{{link:/events/book-fair/}}"><span class="pager__label">Next event</span><span class="pager__title">Book Fair</span><span class="pager__sub">Academic</span></a>
+    </nav>
+  </div>
+</section>
+
+{{cta}}

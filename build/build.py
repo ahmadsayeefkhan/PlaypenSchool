@@ -28,6 +28,7 @@ Output (site/)
     <old>.html                      meta-refresh stubs for the old flat pages (about.html ...)
     sitemap.xml, robots.txt, assets/search-index.json, assets/sitemap.json
     css/pages-additions.css, js/pages-additions.js     generated from build/additions/ (never edit by hand)
+    css/portal.css, js/portal.js                       copies of additions/portal.* for the home (website portal)
 
 It never writes site/index.html (the hand-built home) and never touches site/audit-report.html,
 site/report-summary.html or site/credits.html. It fails loudly (exit code 1, readable messages) on an
@@ -66,7 +67,7 @@ BOOL_KEYS = {'noindex', 'actions'}
 DATE_KEYS = ('date', 'updated', 'lastmod')
 SCHEMAS = {'school', 'faq', 'contact', 'about', 'collection', 'article', 'webpage'}
 KNOWN_TOKENS = ('link', 'asset', 'root', 'no', 'breadcrumb', 'phones', 'phone', 'address', 'maps_url', 'map', 'hours', 'cta',
-                'children', 'sitemap', 'img', 'ext')
+                'children', 'sitemap', 'img', 'ext', 'updated', 'pagecount')
 DRAFT_MARK = 'name="pp:draft"'
 GENERATED_ASSETS = {'search-index.json', 'sitemap.json'}      # written by this script, so {{asset:...}} may name them
 CONFIRM_RE = re.compile(r'[ \t]*<!--\s*CONFIRM\b.*?-->[ \t]*\n?', re.S)   # notes for the coordinator: kept in the source, never published
@@ -215,9 +216,17 @@ def parse_attrs(rest):
     return attrs, leftover
 
 
-def expand_tokens(body, ctx, nav, page, crumb_items, line0, errors):
+def long_date(iso):
+    """'2026-10-24' -> '24 October 2026' (the site's date style)."""
+    d = datetime.date.fromisoformat(iso)
+    return '%d %s %d' % (d.day, d.strftime('%B'), d.year)
+
+
+def expand_tokens(body, ctx, nav, page, crumb_items, line0, errors, fm=None):
     """Replace every {{token}} in a body. Appends (message, line) tuples to errors. Returns the new text."""
     counters = {'no': 0}
+    # {{no:sheet}} prints "Sheet 02 of 05": the total is every {{no}} of the body, counted before the first is replaced
+    total_no = sum(1 for t in TOKEN_RE.finditer(body) if t.group(1) == 'no')
     results = {}
 
     def line_of(m):
@@ -270,7 +279,21 @@ def expand_tokens(body, ctx, nav, page, crumb_items, line0, errors):
                 return ctx.root
             if name == 'no':
                 counters['no'] += 1
+                if arg == 'sheet':
+                    return 'Sheet %02d of %02d' % (counters['no'], total_no)
+                if arg:
+                    return fail(m, '{{no:%s}}: use {{no}} ("02") or {{no:sheet}} ("Sheet 02 of 05")' % arg)
                 return '%02d' % counters['no']
+            if name == 'pagecount':
+                # "Page 04 of 07": the shell's hero counter, for a page that builds its own cover in the body (final review 2026-10-25)
+                sheet, _ = shell.eyebrow_text(nav, page)
+                if not sheet:
+                    return fail(m, '{{pagecount}}: this page is not counted among the pages of its group (a hub shows the group name only)')
+                return sheet
+            if name == 'updated':
+                if not fm or not fm.get('updated'):
+                    return fail(m, '{{updated}} prints the front matter date "updated: 2026-10-24"; this page has none')
+                return long_date(fm['updated'])
             if name == 'breadcrumb':
                 return shell.render_breadcrumb(ctx, crumb_items)
             if name == 'phones':
@@ -346,12 +369,41 @@ def expand_tokens(body, ctx, nav, page, crumb_items, line0, errors):
                     kw['template'] = attrs['template']
                 if 'not' in attrs:
                     kw['not_template'] = attrs['not']
+                bad = set(attrs) - {'level', 'template', 'not', 'as', 'numbered'}
+                if bad or left.strip():
+                    return fail(m, '{{children:%s}}: unknown attribute %s (level, template, not, as="list", numbered="yes")'
+                                % (first, ', '.join(sorted(bad)) or left.strip()))
+                if attrs.get('as') == 'list':
+                    # sitemap-ia 1.7: label + summary rows, in nav.json order, without the pages kept out of sitemap.xml
+                    kids = shell.child_pages(nav, kw.get('parent'), kw.get('group'), kw.get('template'), kw.get('not_template'), indexed_only=True)
+                    if not kids:
+                        return fail(m, '{{children:%s as="list"}} found no child pages' % first)
+                    return shell.render_child_list(ctx, kids, numbered=attrs.get('numbered') in ('yes', 'true'))
+                if attrs.get('as') not in (None, 'cards'):
+                    return fail(m, '{{children:%s}}: as="%s" is not known (as="list", or leave it out for cards)' % (first, attrs['as']))
                 cards = shell.render_children(ctx, **kw)
                 if '<li' not in cards:
                     return fail(m, '{{children:%s}} found no child pages' % first)
                 return cards
             if name == 'sitemap':
-                return shell.render_sitemap(ctx)
+                if not arg:
+                    return shell.render_sitemap(ctx)
+                # {{sitemap:count}} pages in sitemap.xml; {{sitemap:count group="about"}} the group's menu pages;
+                # {{sitemap:count parent=/events/}} the indexed children of a page (sitemap-ia 1.7: counts are computed, never typed)
+                what, _, tail = arg.partition(' ')
+                attrs, left = parse_attrs(tail)
+                if what != 'count' or left.strip() or set(attrs) - {'group', 'parent'} or len(attrs) > 1:
+                    return fail(m, '{{sitemap:%s}}: use {{sitemap}}, {{sitemap:count}}, {{sitemap:count group="about"}} or '
+                                   '{{sitemap:count parent="/events/"}}' % arg)
+                if 'group' in attrs:
+                    if attrs['group'] not in nav.group_by_key:
+                        return fail(m, '{{sitemap:count group=%s}}: unknown group' % attrs['group'])
+                    return str(len(shell.child_pages(nav, group=attrs['group'])))
+                if 'parent' in attrs:
+                    if attrs['parent'] not in nav.by_slug:
+                        return fail(m, '{{sitemap:count parent=%s}}: not a page in nav.json' % attrs['parent'])
+                    return str(len(shell.child_pages(nav, parent=attrs['parent'], indexed_only=True)))
+                return str(sum(1 for p in nav.pages if shell.indexable(p)))
             if name == 'img':
                 attrs, left = parse_attrs(rest)
                 allowed = {'src', 'alt', 'sizes', 'class', 'loading', 'fetchpriority', 'widths', 'style', 'width', 'height'}
@@ -493,11 +545,11 @@ def build_page(nav, page, src_path, root_override=None, kit=False):
 
     # tokens first, so {{img}} and {{link}} inside the body are real markup when validated
     raw_body = body
-    body, flat = expand_tokens(body, ctx, nav, page, crumbs, fm_lines, errors)
+    body, flat = expand_tokens(body, ctx, nav, page, crumbs, fm_lines, errors, fm)
     # front matter fields may carry tokens and inline HTML (h1, standfirst, hero_caption)
     for k in ('h1', 'standfirst', 'hero_caption'):
         if fm.get(k):
-            fm[k], _ = expand_tokens(fm[k], ctx, nav, page, crumbs, 0, errors)
+            fm[k], _ = expand_tokens(fm[k], ctx, nav, page, crumbs, 0, errors, fm)
     if fm.get('h1') and len(re.findall(r'<em\b', fm['h1'], re.I)) > 1:
         errors.append(('h1: at most one <em> word (it turns maroon italic, as on the home)', None))
     if fm.get('hero_image'):
@@ -535,6 +587,7 @@ def build_page(nav, page, src_path, root_override=None, kit=False):
         'schema': schema, 'noindex': fm.get('noindex'), 'actions': fm.get('actions', page.get('actions', True)),
         'h1': fm.get('h1'), 'standfirst': fm.get('standfirst'), 'hero_image': fm.get('hero_image'), 'hero_alt': fm.get('hero_alt', ''),
         'hero_caption': fm.get('hero_caption'), 'hero_sizes': fm.get('hero_sizes'), 'hero_n': fm.get('hero_n'),
+        'hero_tag': fm.get('hero_tag'),
         'body_class': fm.get('body_class'), 'date': fm.get('date'), 'updated': fm.get('updated'), 'lastmod': fm.get('lastmod'),
         'breadcrumb_items': crumbs,
     }
@@ -548,6 +601,8 @@ def build_page(nav, page, src_path, root_override=None, kit=False):
             return None, [('hero_image: %s' % e, None)], warnings
     # <!-- CONFIRM: ... --> notes are for the coordinator and the school: they stay in the source and never reach the published HTML
     body, n_confirm = CONFIRM_RE.subn('', body)
+    # photographs carry no visible name caption on the inner pages (founder, 2026-10-18): one rule, in media.py
+    body = media.strip_captions(body)
     doc = shell.render_document(nav, ctx, page, m, body, hero_html, canonical=(root_override is None))
     built = Built(slug, doc, page, m, body)
     built.confirm = n_confirm
@@ -691,8 +746,9 @@ def write_search_index(nav, built_by_slug):
         if b is None or b.draft or b.m.get('noindex'):
             continue
         g = nav.group_of(p)
+        gl = nav.by_slug[p['parent']]['label'] if p.get('parent') in ('/events/', '/gallery/') else (g['label'] if g else '')
         entries.append({'t': b.m['title'], 'u': p['slug'].strip('/') + '/', 'd': b.m['description'],
-                        'h': page_text_summary(b)[:24], 'g': g['label'] if g else ''})
+                        'h': page_text_summary(b)[:24], 'g': gl})
     data = json.dumps(entries, ensure_ascii=False, separators=(',', ':'))
     return write_if_changed(os.path.join(SITE, 'assets', 'search-index.json'), data + '\n'), len(entries)
 
@@ -704,8 +760,12 @@ def write_sitemap_json(nav):
                 for k in nav.menu_children(g['key'])]
         groups.append({'key': g['key'], 'label': g['label'], 'url': (g['hub'] or '').strip('/') + ('/' if g['hub'] else ''), 'pages': kids})
     other = [{'title': p['title'], 'label': p['label'], 'url': p['slug'].strip('/') + '/'} for p in nav.pages
-             if not p.get('group') and p['slug'] not in ('/', '/404/')]
-    data = json.dumps({'home': '', 'groups': groups, 'other': other}, ensure_ascii=False, indent=1)
+             if not p.get('group') and p['slug'] not in ('/', '/404/') and shell.indexable(p)]
+    # the two long lists of the sitemap page (sitemap-ia 1.7), with the same skip rule as sitemap.xml
+    longs = {k: [{'title': p['title'], 'label': p['label'], 'url': p['slug'].strip('/') + '/', 'summary': p['summary']}
+                 for p in shell.child_pages(nav, parent=sl, indexed_only=True)] for k, sl in (('events', '/events/'), ('albums', '/gallery/'))}
+    data = json.dumps({'home': '', 'groups': groups, 'other': other, 'events': longs['events'], 'albums': longs['albums']},
+                      ensure_ascii=False, indent=1)
     return write_if_changed(os.path.join(SITE, 'assets', 'sitemap.json'), data + '\n')
 
 
@@ -741,6 +801,12 @@ ADDITIONS_NOTE = ('GENERATED by build/build.py from build/additions/*.%s, in fil
                   'edit your own file in build/additions/ and run the build.')
 
 
+# additions that the home needs too: also written as site/css/<name> and site/js/<name> (website portal, 2026-10-23)
+STANDALONE_ADDITIONS = ('portal.css', 'portal.js', 'content.js')   # content.js: notices, events, news from the operator feed (2026-10-23)
+STANDALONE_NOTE = ('GENERATED by build/build.py from build/additions/%s, a copy for the hand-built home (sync_home.py links it). '
+                   'Do not edit this file: edit build/additions/ and run the build.')
+
+
 def _css_problem(text):
     """A reason this stylesheet would damage the rules around it (an unclosed brace swallows everything after it), or None."""
     t = re.sub(r'/\*.*?\*/', '', text, flags=re.S)
@@ -765,6 +831,7 @@ def build_additions(quiet=False):
     errors = 0
     node = shutil.which('node')
     parts = {'css': [], 'js': []}
+    standalone = {}
     names = sorted(os.listdir(ADDITIONS_DIR)) if os.path.isdir(ADDITIONS_DIR) else []
     for name in names:
         ext = name.rsplit('.', 1)[-1].lower() if '.' in name else ''
@@ -787,6 +854,8 @@ def build_additions(quiet=False):
                 print('warn   build/additions/%s: colour %s: use a token, var(--ink), var(--maroon), var(--gold) ...' % (name, mm.group(0)))
                 break
             parts['css'].append('/* ---- additions/%s ---- */\n%s\n' % (name, text.strip('\n')))
+            if name in STANDALONE_ADDITIONS:
+                standalone[name] = parts['css'][-1]
         else:
             if node:
                 try:
@@ -800,10 +869,20 @@ def build_additions(quiet=False):
                     continue
             parts['js'].append('/* ---- additions/%s ---- */\n(function () {\n  \'use strict\';\n  try {\n%s\n  } catch (e) {\n'
                                '    if (window.console) console.error(\'[additions/%s]\', e);\n  }\n})();\n' % (name, text.strip('\n'), name))
+            if name in STANDALONE_ADDITIONS:
+                standalone[name] = parts['js'][-1]
     css = '/* %s */\n%s' % (ADDITIONS_NOTE % 'css', '\n'.join(parts['css']))
     js = '/* %s */\n%s' % (ADDITIONS_NOTE % 'js', '\n'.join(parts['js']))
     write_if_changed(os.path.join(SITE, 'css', 'pages-additions.css'), css)
     write_if_changed(os.path.join(SITE, 'js', 'pages-additions.js'), js)
+    # the hand-built home loads no additions, so the website portal also gets its own copies (sync_home.py links them)
+    for name in STANDALONE_ADDITIONS:
+        ext = name.rsplit('.', 1)[-1]
+        out = os.path.join(SITE, ext, name)
+        if name in standalone:
+            write_if_changed(out, '/* %s */\n%s' % (STANDALONE_NOTE % name, standalone[name]))
+        elif os.path.exists(out):
+            os.remove(out)
     if not quiet and (parts['css'] or parts['js']):
         print('additions: %d stylesheet(s) and %d script(s) joined' % (len(parts['css']), len(parts['js'])))
     return errors

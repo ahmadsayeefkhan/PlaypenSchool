@@ -45,7 +45,7 @@ Every photograph on the site, with what it shows and whether it can go on a publ
 | `media/news-3` | 480, 960 | 1.50 | Project stalls and models at the Science and Technology Fair (3:2) | faces (distance) | Needs consent |
 | `media/swatch-1` | 480, 720 | 1.00 | Brick courses, macro (1:1) | none | Texture |
 | `media/swatch-2` | 480, 720 | 1.00 | Board-marked concrete, macro (1:1) | none | Texture |
-| `media/swatch-4` | 480, 720 | 1.00 | Laboratory glassware on a bench, macro (1:1) | none | Texture |
+| `media/swatch-4` | 480, 720 | 1.00 | Laboratory glassware on a bench (1:1); behind the shelf, two students in lab coats seen from the chest down, and one hand (corrected 2026-10-25: it was listed as people-free) | students (no faces in the crop) | Do not use: not people-free. Only the fixed home keeps it (its Science fair card, a founder decision); inner pages use the AI plate img/ev-science-still or img/learning-lab-still |
 
 Also in `media/` and not for inner pages: `hero-1-mobile-*`, `hero-1-depth-960.png`, `hero-1-luma-960.jpg`, `disp-brick-512.png`, `og-1200x630.jpg` (the social card), `favicon-*.png`, `life-0-mobile-*`, `ascent-1-film.mp4`.
 

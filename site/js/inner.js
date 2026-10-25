@@ -413,7 +413,7 @@
         var v = (f.value || '').trim();
         var label = labelOf(f).toLowerCase();
         if (f.type === 'radio') return '';          /* radio groups: fieldset[data-required] */
-        if (f.type === 'checkbox') return (f.required && !f.checked) ? 'Tick ' + label + '.' : '';
+        if (f.type === 'checkbox') return (f.required && !f.checked) ? 'Tick this box to send the form.' : '';
         if (f.required && !v) return f.tagName === 'SELECT' ? 'Choose ' + label + '.' : 'Enter ' + label + '.';
         if (v && f.type === 'tel' && (v.match(/\d/g) || []).length < 8) return 'Enter a phone number with at least 8 digits.';
         if (v && f.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) return 'Enter an email address like name@example.com.';

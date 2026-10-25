@@ -3,132 +3,183 @@ title: Contact
 template: T07
 schema: contact
 actions: false
-updated: 2026-10-11
+updated: 2026-10-24
+body_class: cc-page
+description: Contact The Playpen School: a line for each section, open 9.00 am to 1.00 pm, the address in Bashundhara R/A, Dhaka, the map, and how to ask, book a visit or come in.
 h1: Call the school, or <em>come</em> and see it.
-standfirst: A telephone line for each section of the school, one address in Bashundhara R/A, and a short form that checks what you type and shows which number to call. The admissions lines are open {{hours}}.
+standfirst: One telephone line for each section of the school, open {{hours}}. The address, the map, and how to ask a question, book a visit or come in are below.
 ---
-<section class="page-section is-night" aria-labelledby="ct-lines">
+<section class="page-section" aria-labelledby="ct-lines">
   <div class="band">
-    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Telephone</span><span class="sheet-rule__purpose">One line for each section of the school</span></div>
-    <div class="contact-lines">
-      <div class="contact-lines__intro">
-        <h2 id="ct-lines" class="section-title">Call the line for your child's section.</h2>
-        <div class="prose" data-reveal>
-          <p>The school is reached by telephone or in person. Choose the line for the section your child is in, or would join: the first three are the admissions lines, open {{hours:between}}.</p>
-          <!-- CONFIRM: days of the week. The old site said "Sunday to Thursday"; the school's own pages give hours only, so no days are printed. -->
-          <!-- CONFIRM: hours for the further-queries and emergency lines. Only the admissions lines carry published hours. -->
-          <p>The further-queries lines are the school's general numbers, and the ones to use in an emergency.</p>
-        </div>
-      </div>
-      <div class="contact-lines__list" data-reveal>
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Lines and the gate</span><span class="sheet-rule__purpose">One line for each section, open {{hours}}; the address and the map</span></div>
+    <div class="cc-head">
+      <h2 id="ct-lines" class="display-l cc-head__title" data-reveal><span class="cc-head__line">Call the line for your child's section.</span></h2>
+      <p class="lead" data-reveal>Choose the line for the section your child is in, or would join.</p>
+    </div>
+    <div class="cc-first">
+      <div class="cc-first__lines cc-lines" data-reveal>
         {{phones:all}}
+        <!-- CONFIRM: days of the week. The old site said "Sunday to Thursday"; the school's own pages give hours only, so no days are printed. -->
+        <!-- CONFIRM: hours for the further-queries and emergency lines. Only the admissions lines carry published hours. -->
+        <div class="venue">
+          <p class="label">Hours</p>
+          <p class="venue__text">The first three are the admissions lines, open {{hours:between}}. The further-queries numbers are the school's general lines, and the ones to use in an emergency.</p>
+        </div>
       </div>
+      <div class="cc-first__side">
+        <figure class="plate plate--4x5" data-reveal>
+          <div class="plate__frame">{{img src="img/contact-crest" alt="The school crest and the name PLAYPEN cast into the board-marked concrete of the street front, with creepers hanging at the edge." sizes="(min-width: 900px) 30vw, (min-width: 560px) 40vw, 100vw"}}</div>
+          <figcaption class="plate__cap"><span class="plate__n">01</span>The crest at the street entrance, Bashundhara R/A, 2024</figcaption>
+        </figure>
+        <!-- CONFIRM: map pin. The coordinates in the School JSON-LD come from the Google Maps embed on the old site; check that the pin, and the map search below, land at the school gate. -->
+        <dl class="dl" data-reveal>
+          <div class="dl__row"><dt>Address</dt><dd>{{address}}<br>{{map label="Open in Google Maps"}}</dd></div>
+        </dl>
+        <a class="btn btn--primary" href="{{link:/admissions/visit/}}" data-reveal><span class="btn__label">Book a visit</span></a>
+      </div>
+    </div>
+    <!-- CONFIRM: email. The school's email addresses are hidden on its current site and have not been supplied; none is printed. The footer line "Email: see the contact page" should read "Email: not yet published; please telephone" until an address arrives (request to the Foundation). -->
+    <div class="cc-foot" data-reveal>
+      <p class="cc-foot__text">No email address is published yet, so the school is reached by telephone or in person. If you are not sure which line to call, the table below sorts questions by topic.</p>
+      <p class="cc-foot__action"><a class="link link--arrow" href="#ct-who">Who to ask, by topic</a></p>
+      <p class="cc-foot__source caption">Numbers and hours as the school publishes them on its admission and contact pages.</p>
     </div>
   </div>
 </section>
 
-<section class="page-section page-section--tint" aria-labelledby="ct-form">
+<section class="page-section" aria-labelledby="ct-write">
   <div class="band">
-    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">A question</span><span class="sheet-rule__purpose">A prototype form: nothing is sent</span></div>
-    <div class="layout">
-      <div class="layout__main">
-        <h2 id="ct-form" class="section-title">Not sure which line to call?</h2>
-        <p class="section-lead mt-m" data-reveal>Say what your question is about. The form checks your answers and shows the number to call.</p>
-        <div class="mt-m">
-          <p class="form-note">This form is a prototype. It checks what you type, then shows the school's numbers. Nothing is sent, and the school does not receive your message.</p>
-          <form class="page-form" data-prototype-form novalidate action="#" method="post" aria-labelledby="ct-form">
-            <div class="form-row form-row--2">
-              <div class="field"><label for="ct-name">Your name (optional)</label><input id="ct-name" name="name" type="text" autocomplete="name" aria-describedby="ct-name-err"><p id="ct-name-err" class="field__error" aria-live="polite"></p></div>
-              <div class="field"><label for="ct-phone">Your phone number (optional)</label><input id="ct-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" aria-describedby="ct-phone-err"><p id="ct-phone-err" class="field__error" aria-live="polite"></p></div>
-            </div>
-            <div class="field">
-              <label for="ct-topic">Question topic</label>
-              <select id="ct-topic" name="topic" required aria-describedby="ct-topic-err">
-                <option value="">Choose a topic</option>
-                <option value="admissions" data-reply="For admission, a test or a form, call the line for your child's section: the first three numbers below.">Admission, tests and forms</option>
-                <option value="visit" data-reply="To arrange a visit, call the admissions line for your child's section, or read how a visit works on the Visit page.">Visiting the school</option>
-                <option value="fees" data-reply="Fees, receipts and the portal are looked after by Accounts and Finance or the school office. Call a further-queries line to ask.">Fees, receipts or the portal</option>
-                <option value="current" data-reply="For a child already at the school, call the line for the child's section: the first three numbers below.">A child already at the school</option>
-                <option value="bus" data-reply="Bus applications go to the school's Administrative Office, which confirms routes and availability. Call a further-queries line to ask how to apply.">School bus</option>
-                <option value="careers" data-reply="Read the Careers page for how to apply, then call a further-queries line if you need to ask something first.">Working at the school</option>
-                <option value="alumni" data-reply="The Alumni page explains how former students can stay in touch. To ask a first question, call a further-queries line and say that you are a former student.">Former students</option>
-                <option value="other" data-reply="Call a further-queries line.">Something else</option>
-              </select>
-              <p id="ct-topic-err" class="field__error" aria-live="polite"></p>
-            </div>
-            <div class="field"><label for="ct-msg">Your message (optional)</label><textarea id="ct-msg" name="message" rows="4"></textarea></div>
-            <button class="btn btn--primary" type="submit"><span class="btn__label">Show the number to call</span></button>
-          </form>
-          <div class="form-notice" role="status">
-            <p class="form-notice__text"></p>
-            {{phones:all}}
-            <p class="small-print">Prefer to read first? See <a href="{{link:/admissions/how-to-apply/}}">How to apply</a>, <a href="{{link:/admissions/fees/}}">Fees and payment</a> or <a href="{{link:/school-life/transport-and-safety/}}">Transport and safety</a>.</p>
-          </div>
-          <noscript><div class="form-note"><p>This form needs JavaScript. Please call the line for your child's section:</p>{{phones:all}}</div></noscript>
-        </div>
-      </div>
-      <div class="layout__aside layout__aside--sticky">
-        <div class="callout" data-reveal>
-          <span class="callout__label label">What happens next</span>
-          <p>The form checks your answers in your browser, then shows the telephone number that suits your question. Nothing leaves your device.</p>
-          <p class="legal-more"><a class="link" href="{{link:/privacy/}}">How this site handles information</a></p>
-        </div>
-        <!-- CONFIRM: email. The school's email addresses are hidden on its current site and have not been supplied; none is printed (docs/confirm/foundation.md, docs/confirm/contact-legal.md). -->
-        <div class="callout" data-reveal>
-          <span class="callout__label label">Email</span>
-          <p>The school's email address is not printed on this site. Please telephone: the lines are at the top of this page.</p>
-        </div>
-      </div>
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Ask, book or come in</span><span class="sheet-rule__purpose">Two forms that send, and the Front Office; each says what happens next</span></div>
+    <div class="cc-head">
+      <h2 id="ct-write" class="display-l cc-head__title" data-reveal><span class="cc-head__line">Ask, book, or come in.</span></h2>
+      <p class="lead" data-reveal>Two forms on this website send to the admissions office and give you a code to quote when you call; the third way is to come to the Front Office.</p>
     </div>
+    <ul class="cc-panels cc-panels--3" data-reveal-group>
+      <li class="cc-panel">
+        <div class="cc-panel__head"><h3 class="cc-panel__name">Ask a question</h3><span class="label">ENQ- code</span></div>
+        <div class="cc-panel__body">
+          <p>Enquire sends your question to the admissions office's Desk and gives you an ENQ- code. Choose your child's class and the page shows the line to call.</p>
+        </div>
+        <p class="cc-panel__action"><a class="btn btn--secondary" href="{{link:/admissions/enquire/}}">Enquire</a></p>
+      </li>
+      <li class="cc-panel cc-panel--gold">
+        <div class="cc-panel__head"><h3 class="cc-panel__name">Book a visit</h3><span class="label">VIS- code</span></div>
+        <div class="cc-panel__body">
+          <p>Book a visit sends your request and gives you a VIS- code. Come and see the building and the section your child would join; the office confirms the day.</p>
+        </div>
+        <p class="cc-panel__action"><a class="btn btn--secondary" href="{{link:/admissions/visit/}}">Book a visit</a></p>
+      </li>
+      <li class="cc-panel cc-panel--ink">
+        <div class="cc-panel__head"><h3 class="cc-panel__name">Come to the Front Office</h3><span class="label">In person</span></div>
+        <div class="cc-panel__body">
+          <p>Completed admission forms are handed in at the Front Office, and the Admission Department sorts them. The admissions lines are open {{hours}}.</p>
+        </div>
+        <p class="cc-panel__action"><a class="btn btn--secondary" href="{{link:/admissions/how-to-apply/}}">How to apply</a></p>
+      </li>
+    </ul>
+    <!-- CONFIRM: delete this caption at launch. While the website is a sample, the two forms reach a demonstration desk, not the school's office. -->
+    <p class="caption mt-m" data-reveal>While this website is a sample, the two forms reach a demonstration desk, not the school's office, so please also call the line the form shows.</p>
+    <!-- CONFIRM: the question helper. Once the website portal gives a page hook to open it, add a fourth route here: "The question helper at the bottom right answers from the school's published pages; it is automatic, not a person." -->
   </div>
 </section>
 
-<section class="page-section" aria-labelledby="ct-who">
+<section class="page-section page-section--tint" aria-labelledby="ct-who">
   <div class="band">
-    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Who to ask</span><span class="sheet-rule__purpose">By topic</span></div>
-    <h2 id="ct-who" class="section-title">The right door for your question.</h2>
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Who to ask</span><span class="sheet-rule__purpose">By topic: the right door for your question</span></div>
+    <div class="cc-head">
+      <h2 id="ct-who" class="display-l cc-head__title" data-reveal><span class="cc-head__line">The right door for your question.</span></h2>
+    </div>
     <!-- CONFIRM: routing. Admissions and section lines are the school's published lines (admission procedure, contact page). Sending fees, buses, careers and alumni questions to a further-queries line is our reading, not a published routing. -->
     <!-- CONFIRM: Accounts and Finance has its own lines on the school's current contact page (three numbers). nav.json holds only the admissions and further-queries lines, so they are not printed here. -->
-    <div class="table-wrap mt-m" data-reveal>
+    <div class="table-wrap" data-reveal>
       <table class="table table--stack legal-table">
         <caption>Which line or office to ask, and what to read first</caption>
         <thead><tr><th scope="col">If your question is about</th><th scope="col">Ask</th><th scope="col">Read first</th></tr></thead>
         <tbody>
           <tr><th scope="row">Admission, tests and forms</th><td data-label="Ask">The admissions line for your child's section</td><td data-label="Read first"><a href="{{link:/admissions/how-to-apply/}}">How to apply</a></td></tr>
-          <tr><th scope="row">Visiting the school</th><td data-label="Ask">The same admissions lines</td><td data-label="Read first"><a href="{{link:/admissions/visit/}}">Book a visit</a></td></tr>
-          <tr><th scope="row">Fees, receipts and the portal</th><td data-label="Ask">Accounts and Finance, or the school office. Start with a further-queries line</td><td data-label="Read first"><a href="{{link:/admissions/fees/}}">Fees and payment</a></td></tr>
+          <tr><th scope="row">Visiting the school</th><td data-label="Ask">The same admissions lines</td><td data-label="Read first"><a href="{{link:/admissions/visit/}}">Book a visit (sends a request)</a></td></tr>
+          <tr><th scope="row">Fees, receipts and the portal</th><td data-label="Ask">The further-queries line; ask for Accounts and Finance</td><td data-label="Read first"><a href="{{link:/admissions/fees/}}">Fees and payment</a></td></tr>
           <tr><th scope="row">A child already at the school</th><td data-label="Ask">The line for the child's section</td><td data-label="Read first"><a href="{{link:/community/parents/}}">For parents</a></td></tr>
           <tr><th scope="row">The school bus</th><td data-label="Ask">The Administrative Office</td><td data-label="Read first"><a href="{{link:/school-life/transport-and-safety/}}">Transport and safety</a></td></tr>
           <tr><th scope="row">Working at the school</th><td data-label="Ask">A further-queries line, if the Careers page leaves a question</td><td data-label="Read first"><a href="{{link:/about/careers/}}">Careers at Playpen</a></td></tr>
           <tr><th scope="row">Former students</th><td data-label="Ask">A further-queries line: say that you are a former student</td><td data-label="Read first"><a href="{{link:/community/alumni/}}">Alumni</a></td></tr>
+          <tr><th scope="row">Something on this website</th><td data-label="Ask">The further-queries line</td><td data-label="Read first"><a href="{{link:/privacy/}}">Privacy</a></td></tr>
         </tbody>
       </table>
     </div>
   </div>
 </section>
 
-<section class="page-section" aria-labelledby="ct-find">
+<section class="page-section is-night" aria-labelledby="ct-find">
   <div class="band">
     <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Find the school</span><span class="sheet-rule__purpose">Address, map and arrival</span></div>
-    <div class="split split--center">
-      <div class="split__text">
-        <h2 id="ct-find" class="section-title">Bashundhara R/A, Dhaka.</h2>
-        <!-- CONFIRM: map pin. The coordinates in the map link come from the Google Maps embed on the old site; check that the pin lands at the school gate. No static map image is used: none exists in the media set. -->
-        <dl class="dl contact-find mt-m" data-reveal>
-          <div class="dl__row"><dt>Address</dt><dd>{{address}}<br>{{map}}</dd></div>
-          <!-- CONFIRM: bookshop hours (8.30 am to 1.00 pm) are from the old site's contact page; the days are not stated. -->
-          <div class="dl__row"><dt>Bookshop</dt><dd>8.30 am to 1.00 pm</dd></div>
-          <div class="dl__row"><dt>By car</dt><dd>Drivers are asked to follow the school's traffic rules, avoid the horn and slow down near the premises.</dd></div>
-          <!-- CONFIRM: how visits are arranged. The school's pages say only that families may come and see the building and the section; days, times and who receives the booking are not published, so the row says to call the admissions line first. -->
-          <div class="dl__row"><dt>Visiting</dt><dd>To arrange a visit, call the admissions line for your child's section {{hours:between}}.<br><a class="link" href="{{link:/admissions/visit/}}">Book a visit</a></dd></div>
-          <!-- CONFIRM: bus service since March 2014 and the Administrative Office as the place to apply: from the school's transport page; no routes are published. -->
-          <div class="dl__row"><dt>School bus</dt><dd>The school has run its own bus service since March 2014. Parents apply at the Administrative Office.<br><a class="link" href="{{link:/school-life/transport-and-safety/}}">Transport and safety</a></dd></div>
+    <div class="cc-head">
+      <h2 id="ct-find" class="display-l cc-head__title" data-reveal><span class="cc-head__line">Bashundhara R/A, Dhaka.</span></h2>
+      <p class="lead" data-reveal>The school stands on its own road inside the block. The map below is drawn, not loaded from another company, so this page sends nothing about you to anyone.</p>
+    </div>
+    <div class="cc-find">
+      <div class="cc-find__map">
+        <!-- CONFIRM: nearby landmarks and the gate to use for visitors. None is published, so the map shows only the block, the road, the school's plot and the pin, and says it is not to scale. The three labels (the road, the block, the house number) are the parts of the address in nav.json, written as the map prints them (upper case); they are the only address words on the page outside {{address}}, and change with nav.json. A {{address:road}} / {{address:block}} / {{address:house}} token is requested in community-contact-nav-requests.md so they can be fed from nav.json. The lanes inside the blocks are texture only: none is named. -->
+        <figure class="plate cc-map" data-reveal>
+          <div class="plate__frame">
+            <svg viewBox="0 0 560 380" width="560" height="380" role="img" aria-labelledby="ct-map-title ct-map-desc" focusable="false">
+              <title id="ct-map-title">A drawn map of the school's block</title>
+              <desc id="ct-map-desc">The school's plot is hatched and marked with a pin on the road it stands on, inside its block in Bashundhara Residential Area; a label gives the school's name and house number, and the road and the block are named as in the address below. The drawing is not to scale and names no other street.</desc>
+              <defs>
+                <pattern id="ct-map-hatch" patternUnits="userSpaceOnUse" width="8" height="8" patternTransform="rotate(45)">
+                  <line class="cc-map__hatch" x1="0" y1="0" x2="0" y2="8"></line>
+                </pattern>
+              </defs>
+              <rect class="cc-map__ground" x="0" y="0" width="560" height="380"></rect>
+              <path class="cc-map__road" d="M 40 40 H 520"></path>
+              <path class="cc-map__road" d="M 40 40 V 340"></path>
+              <path class="cc-map__road" d="M 520 40 V 340"></path>
+              <path class="cc-map__road" d="M 40 340 H 520"></path>
+              <path class="cc-map__road" d="M 180 40 V 340"></path>
+              <path class="cc-map__road" d="M 40 190 H 520"></path>
+              <rect class="cc-map__block" x="200" y="210" width="300" height="110" rx="4"></rect>
+              <rect class="cc-map__block" x="200" y="60" width="300" height="110" rx="4"></rect>
+              <rect class="cc-map__block" x="60" y="60" width="100" height="110" rx="4"></rect>
+              <rect class="cc-map__block" x="60" y="210" width="100" height="110" rx="4"></rect>
+              <path class="cc-map__lane" d="M 350 60 V 170"></path>
+              <path class="cc-map__lane" d="M 200 115 H 500"></path>
+              <path class="cc-map__lane" d="M 400 210 V 320"></path>
+              <path class="cc-map__lane" d="M 324 268 H 500"></path>
+              <path class="cc-map__lane" d="M 60 115 H 160"></path>
+              <path class="cc-map__lane" d="M 60 268 H 160"></path>
+              <rect class="cc-map__plot" x="222" y="214" width="84" height="50" rx="2"></rect>
+              <rect class="cc-map__plot-hatch" x="222" y="214" width="84" height="50" rx="2" fill="url(#ct-map-hatch)"></rect>
+              <path class="cc-map__road cc-map__road--main" d="M 190 190 H 510"></path>
+              <text class="cc-map__text cc-map__text--road" x="508" y="206" text-anchor="end">ROAD 19</text>
+              <text class="cc-map__text" x="492" y="306" text-anchor="end">BLOCK J</text>
+              <path class="cc-map__leader" d="M 282 162 H 296"></path>
+              <rect class="cc-map__label" x="296" y="122" width="184" height="54" rx="2"></rect>
+              <text class="cc-map__text cc-map__text--name" x="308" y="147">The Playpen School</text>
+              <text class="cc-map__text cc-map__text--house" x="308" y="167">HOUSE 545/A</text>
+              <path class="cc-map__pin" d="M 262 150 C 248 150 238 161 238 175 C 238 192 262 220 262 220 C 262 220 286 192 286 175 C 286 161 276 150 262 150 Z"></path>
+              <circle class="cc-map__pin-dot" cx="262" cy="175" r="7"></circle>
+              <text class="cc-map__text cc-map__text--scale" x="214" y="306">Not to scale</text>
+            </svg>
+          </div>
+          <figcaption class="plate__cap"><span class="plate__n">02</span>A drawn map: the block, the school's road and its plot. Not to scale.</figcaption>
+        </figure>
+        <!-- the address is printed again here because this is the arrival sheet. Final review 2026-10-25: the drawn map now carries its own Google Maps link beside the address, so a reader at the map does not have to scroll back to the first screen. -->
+        <dl class="dl" data-reveal>
+          <div class="dl__row"><dt>Address</dt><dd>{{address}}<br>{{map label="Open in Google Maps"}}</dd></div>
         </dl>
       </div>
-      <figure class="plate split__figure" data-reveal>
-        <div class="plate__frame">{{img src="img/about-playpen.jpg" alt="The brick and concrete school building seen from the grass playground, with a football goal in front and a few children far off." sizes="(min-width: 900px) 38vw, 100vw"}}</div>
-        <figcaption class="plate__cap"><span class="plate__n">01</span>The school building seen from the grass playground</figcaption>
-      </figure>
+      <!-- CONFIRM: how visits are arranged. The school's pages say only that families may come and see the building and the section; days, times and who receives the booking are not published, so the row says to call first. -->
+      <!-- CONFIRM: bus service since March 2014 and the Administrative Office as the place to apply: from the school's transport page; no routes are published. -->
+      <dl class="dl cc-find__rows" data-reveal>
+        <div class="dl__row"><dt>Visiting</dt><dd>To arrange a visit, call the admissions line for your child's section {{hours:between}}, or <a class="link" href="{{link:/admissions/visit/}}">book a visit online</a>. The office confirms the day.</dd></div>
+        <div class="dl__row"><dt>By car</dt><dd>Drivers are asked to follow the school's traffic rules, avoid the horn and slow down near the premises.</dd></div>
+        <div class="dl__row"><dt>School bus</dt><dd>The school has run its own bus service since March 2014. Parents apply at the Administrative Office. <a class="link" href="{{link:/school-life/transport-and-safety/}}">Transport and safety</a> has the rest.</dd></div>
+      </dl>
+    </div>
+    <div class="cc-foot" data-reveal>
+      <p class="cc-foot__text">The pin, the road and the block are set from the address the school publishes; the Google Maps link sits beside the address above. The school has not published landmarks or a visitors' gate, so none is drawn.</p>
+      <p class="cc-foot__action"><a class="link link--arrow" href="{{link:/school-life/transport-and-safety/}}">Transport and safety</a></p>
+      <p class="cc-foot__source caption">Map drawn by the site's designer from the school's published address; arrival notes from the school's code of conduct and transport page.</p>
     </div>
   </div>
 </section>
@@ -152,6 +203,7 @@ standfirst: A telephone line for each section of the school, one address in Bash
           <li>{{ext:portal}}</li>
           <li>{{ext:pay}}</li>
           <li><a class="link" href="{{link:/notices/}}">Notices</a></li>
+          <li><a class="link" href="{{link:/community/parents/}}">For parents</a></li>
         </ul>
       </div>
       <div class="where-next__col">
@@ -165,3 +217,5 @@ standfirst: A telephone line for each section of the school, one address in Bash
     </div>
   </div>
 </section>
+
+{{cta}}

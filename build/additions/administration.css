@@ -1,0 +1,170 @@
+/* administration group (/about/school-administration/ and /about/leadership/): extra rules.
+   Prefix: .adm-. Tokens only. Rewritten 2026-10-24 for the pages redesign (group "about"): the eleven 4:5 monogram
+   posters became an organisation chart, and the class table gained a finder. The portrait slot keeps its 2026-10-18
+   contract (a crest-coloured monogram until the school sends a photograph, with consent). */
+
+/* ---- portrait slot (2026-10-18, kept): a maroon field inside a paper mount with a gold hairline and the initials.
+   A photograph replaces the monogram: {{img}} inside .adm-portrait plus .adm-portrait--photo. The 9.5 px "photo to be
+   supplied" note is gone (2026-10-24): the gap lives in the CONFIRM comment, not on the page. */
+.adm-portrait { position: relative; flex: none; width: 56px; aspect-ratio: 4 / 5; padding: 4px; background: var(--paper-3); border: 1px solid var(--clay); }
+.adm-portrait::before { content: ''; position: absolute; inset: 4px; background: var(--maroon); }
+.adm-portrait::after { content: ''; position: absolute; inset: 8px; border: 1px solid var(--gold-text); opacity: 0.6; pointer-events: none; }
+.adm-portrait__mono { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; z-index: 1; font: italic 300 22px / 1 var(--font-serif); letter-spacing: 0.02em; color: var(--gold-text); }
+.adm-portrait--m { width: 88px; padding: 5px; }
+.adm-portrait--m::before { inset: 5px; }
+.adm-portrait--m::after { inset: 10px; }
+.adm-portrait--m .adm-portrait__mono { font-size: 30px; }
+.adm-portrait--photo::before, .adm-portrait--photo::after { content: none; }
+.adm-portrait--photo img { display: block; width: 100%; height: 100%; object-fit: cover; }
+/* review fixes 2026-10-24: in the chart (01) the chip is quiet, paper-3 with a clay hairline and the initials in maroon
+   serif, so thirteen maroon squares no longer make maroon the page's colour; the solid maroon chip stays only in 02 */
+.adm-chart .adm-portrait::before { background: var(--paper-3); }
+.adm-chart .adm-portrait::after { border-color: var(--clay); opacity: 1; }
+.adm-chart .adm-portrait__mono { color: var(--maroon); font-weight: 400; }
+
+/* ---- organisation chart (2026-10-24): four tiers, hairline connectors drawn with borders, each person a small panel
+   (the home's results-card recipe: paper-3, 1 px clay, 3 px top rule) with the initials chip top-left.
+   Phones: an indented list. The hierarchy survives as indentation and a left hairline; no connectors. ---------------- */
+.adm-chart { list-style: none; margin-top: clamp(28px, 3.5vw, 48px); }
+.adm-chart ol, .adm-chart ul { list-style: none; }
+.adm-tier { position: relative; }
+.adm-tier--1 { padding-top: 0; }
+.adm-tier + .adm-tier { margin-top: 22px; padding-top: 22px; }
+.adm-tier__label { display: block; margin-bottom: 12px; }
+.adm-tier__row { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; }
+.adm-card {
+  --adm-edge: var(--maroon);
+  position: relative;
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1fr);
+  column-gap: 16px;
+  align-items: start;
+  padding: 16px 18px 18px;
+  background: var(--paper-3);
+  border: 1px solid var(--clay);
+  border-top: 3px solid var(--adm-edge);
+  min-width: 0;
+}
+.adm-card--gold { --adm-edge: var(--gold); }
+.adm-card--ink { --adm-edge: var(--ink); }
+.adm-card__body { min-width: 0; }
+.adm-card__role { font: 500 11.5px / 1.3 var(--font-sans); letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-2); }
+.adm-card__name { margin-top: 6px; font: 400 clamp(20px, 1.6vw, 26px) / 1.15 var(--font-serif); letter-spacing: -0.005em; overflow-wrap: anywhere; }
+.adm-card--l .adm-card__name { font-size: clamp(24px, 2.2vw, 36px); }
+.adm-card__band { margin-top: 6px; font: 400 15px / 1.45 var(--font-sans); color: var(--ink-2); }
+.adm-card__note { margin-top: 10px; font-size: 16px; line-height: 1.5; max-width: 40ch; }
+/* a branch: a Vice Principal with her or his Teachers-in-Charge under it. align-content: start (review fixes 2026-10-24)
+   keeps the branch's own rows at their natural height, so the shorter branch's Vice Principal card is not stretched to
+   fill the row the two branches share; both Vice Principal cards are then the same width and height */
+.adm-branch { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; align-content: start; }
+.adm-branch__kids { display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; margin-left: 20px; padding-left: 18px; border-left: 1px solid var(--clay); }
+.adm-branch__kids .adm-card { padding: 14px 16px 16px; }
+.adm-branch__kids .adm-card__name { font-size: clamp(18px, 1.3vw, 22px); }
+@media (max-width: 767px) {
+  .adm-tier + .adm-tier { margin-left: 0; }
+  .adm-tier--2, .adm-tier--3 { margin-left: 20px; padding-left: 18px; border-left: 1px solid var(--clay); }
+  .adm-tier--3 .adm-branch__kids { margin-left: 0; }
+}
+@media (min-width: 768px) {
+  /* the connectors: a vertical hairline drops from the centre of each tier into the next; the next tier's row carries
+     a horizontal hairline across its cards' centres, and each card a short stem up to it */
+  .adm-tier + .adm-tier { margin-top: 0; padding-top: 44px; }
+  .adm-tier + .adm-tier::before { content: ''; position: absolute; left: 50%; top: 0; width: 1px; height: 22px; background: var(--ink-2); }
+  .adm-tier__row { grid-template-columns: repeat(var(--adm-cols, 2), minmax(0, 1fr)); gap: var(--gutter); }
+  .adm-tier__row--1 { --adm-cols: 1; max-width: 32rem; margin-inline: auto; }
+  .adm-tier__row--2 { --adm-cols: 2; max-width: 56rem; margin-inline: auto; }
+  .adm-tier--3 .adm-tier__row { --adm-cols: 2; max-width: none; }
+  .adm-tier + .adm-tier .adm-tier__row { position: relative; }
+  .adm-tier + .adm-tier .adm-tier__row::before { content: ''; position: absolute; left: 25%; right: 25%; top: -22px; height: 1px; background: var(--ink-2); }
+  .adm-tier + .adm-tier .adm-tier__row--1::before { left: 50%; right: 50%; }
+  .adm-tier + .adm-tier .adm-tier__row > li { position: relative; }
+  .adm-tier + .adm-tier .adm-tier__row > li::before { content: ''; position: absolute; left: 50%; top: -22px; width: 1px; height: 22px; background: var(--ink-2); }
+  .adm-branch__kids { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-left: 0; padding-left: 0; border-left: 0; position: relative; padding-top: 18px; }
+  .adm-branch__kids::before { content: ''; position: absolute; left: 50%; top: 0; width: 1px; height: 18px; background: var(--clay); }
+  /* the tier label sits on paper above the connector, so the hairline never runs through its letters */
+  .adm-tier__label { position: relative; z-index: 1; display: table; margin: 0 auto 12px; padding: 0 14px; background: var(--paper); text-align: center; }
+}
+@media (min-width: 1100px) {
+  .adm-tier--3 .adm-tier__row { --adm-cols: 2; }
+  .adm-branch__kids { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (min-width: 1400px) {
+  .adm-branch__kids .adm-card { padding: 16px 18px 18px; }
+}
+
+/* ---- the Principal and the Vice Principals (2026-10-24): three larger panels in a row; the Principal's card keeps the
+   maroon rule, the Vice Principals' are gold (two colours of top rule on the page, review fixes 2026-10-24) ---------- */
+.adm-heads { list-style: none; display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--gutter); }
+.adm-heads .adm-card { grid-template-columns: 88px minmax(0, 1fr); padding: clamp(20px, 2vw, 28px); }
+@media (min-width: 768px) { .adm-heads { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 1023px) and (min-width: 768px) { .adm-heads .adm-card { grid-template-columns: 56px minmax(0, 1fr); } .adm-heads .adm-portrait--m { width: 56px; padding: 4px; } .adm-heads .adm-portrait--m::before { inset: 4px; } .adm-heads .adm-portrait--m::after { inset: 8px; } .adm-heads .adm-portrait--m .adm-portrait__mono { font-size: 22px; } }
+
+/* ---- message cards (2026-10-18, restyled 2026-10-24): two panels side by side from 900 px; one quiet line in place of
+   the dashed slot. The whole section is hidden on the public build until the words exist (data-portal-only). ---------- */
+.adm-messages { list-style: none; display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--gutter); }
+.adm-message { padding: clamp(22px, 2.6vw, 34px); background: var(--paper-3); border: 1px solid var(--clay); border-top: 3px solid var(--maroon); }
+.adm-message__head { display: flex; align-items: center; gap: 20px; }
+.adm-message__name { margin-top: 6px; font: 400 clamp(24px, 2.2vw, 34px) / 1.1 var(--font-serif); }
+.adm-message__context { margin-top: 22px; max-width: 52ch; font-size: 17px; line-height: 1.55; }
+.adm-message__wait { margin-top: 14px; max-width: 52ch; font-size: 16px; line-height: 1.5; color: var(--ink-2); }
+@media (min-width: 900px) { .adm-messages { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+/* ---- the class finder (/about/leadership/, 2026-10-24): a select on the left, the result on the right from 768 px.
+   All nine results are in the HTML, hidden until chosen; without JavaScript the panel says so and the table below is
+   the answer. The result is a dl: Teacher-in-Charge, Vice Principal, the line to call (large, tap-to-call). ---------- */
+.adm-finder { padding: clamp(22px, 2.6vw, 36px); background: var(--paper-3); border: 1px solid var(--clay); border-top: 3px solid var(--maroon); }
+.adm-finder__grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(24px, 3vw, 40px) var(--gutter); align-items: start; }
+.adm-finder__field label { display: block; margin-bottom: 10px; }
+.adm-finder__select {
+  display: block;
+  width: 100%;
+  min-height: 52px;
+  padding: 12px 44px 12px 16px;
+  font: 400 19px / 1.3 var(--font-serif);
+  color: var(--ink);
+  background: var(--paper);
+  border: 1px solid var(--ink-2);
+  border-radius: 0;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, var(--ink) 50%), linear-gradient(135deg, var(--ink) 50%, transparent 50%);
+  background-position: calc(100% - 22px) 55%, calc(100% - 16px) 55%;
+  background-size: 6px 6px, 6px 6px;
+  background-repeat: no-repeat;
+}
+.adm-finder__select:focus-visible { outline: 2px solid var(--maroon); outline-offset: 2px; }
+.adm-finder__hint { margin-top: 10px; font: 400 14px / 1.5 var(--font-sans); color: var(--ink-2); }
+.adm-finder__result[hidden] { display: none; }
+.adm-finder__intro { font-size: 17px; line-height: 1.55; color: var(--ink-2); max-width: 44ch; }
+.adm-finder__intro[hidden] { display: none; }
+/* the worked example (review r3): the result column shows one answer, quietly, until a class is chosen */
+.adm-finder__example { margin-top: 18px; padding-top: 18px; border-top: var(--hairline); color: var(--ink-2); }
+.adm-finder__example[hidden] { display: none; }
+.adm-finder__example-label { margin-bottom: 4px; }
+.adm-finder__example .dl dd, .adm-finder__example .adm-result__tel { color: var(--ink-2); }
+.adm-result .dl dd { font-size: 19px; }
+.adm-result__tel {
+  display: inline-block;
+  padding: 6px 0 10px;
+  font: 300 clamp(30px, 3vw, 46px) / 1.1 var(--font-serif);
+  font-variant-numeric: tabular-nums lining-nums;
+  letter-spacing: -0.005em;
+  color: var(--ink);
+  text-decoration: none;
+  background-image: linear-gradient(var(--gold), var(--gold));
+  background-repeat: no-repeat;
+  background-position: 0 calc(100% - 6px);
+  background-size: 100% 1px;
+}
+.adm-result__tel:hover, .adm-result__tel:focus-visible { background-size: 100% 2px; }
+.adm-result__for { display: block; margin-top: 2px; font: 400 14px / 1.5 var(--font-sans); color: var(--ink-2); }   /* final review 2026-10-25: always on its own line under the number (it wrapped beside it at 390 px) */
+.adm-result__note { margin-top: 16px; font: 400 15px / 1.5 var(--font-sans); color: var(--ink-2); max-width: 46ch; }
+@media (min-width: 768px) {
+  .adm-finder__grid { grid-template-columns: repeat(12, minmax(0, 1fr)); }
+  .adm-finder__field { grid-column: 1 / span 5; }
+  .adm-finder__out { grid-column: 7 / -1; }
+}
+/* the table: a fourth column, the line, as a 44 px tel link */
+.adm-table .adm-table__tel { display: inline-block; padding: 11px 0; margin: -11px 0; font-variant-numeric: tabular-nums lining-nums; white-space: nowrap; background-position: 0 calc(100% - 13px); }   /* the 44 px padding would otherwise carry the gold underline into the line below */
+.adm-table .adm-table__tel + .adm-table__tel { margin-left: 14px; }
+.adm-table .adm-table__for { display: block; font: 400 13px / 1.4 var(--font-sans); color: var(--ink-2); }

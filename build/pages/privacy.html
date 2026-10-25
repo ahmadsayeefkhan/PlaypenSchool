@@ -1,31 +1,63 @@
 ---
 title: Privacy
 template: T05
-updated: 2026-10-11
-standfirst: This website sets no cookies, shows no advertising and does not measure its visitors, and the forms on it send nothing. This page says what that means, and what happens to information you give the school in other ways.
+updated: 2026-10-24
+body_class: cc-page
+standfirst: This website shows no advertising and uses no outside trackers. It counts visits with a short code kept in your browser, and its admissions forms send what you type to the admissions office. This page says what is kept, for how long, and how to stop it. Last updated 24 October 2026.
 ---
 <section class="page-section is-night" aria-labelledby="pv-glance">
   <div class="band">
-    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">At a glance</span><span class="sheet-rule__purpose">As this site stands on 11 October 2026</span></div>
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">At a glance</span><span class="sheet-rule__purpose">Four facts, as this site stands on 24 October 2026</span></div>
     <h2 id="pv-glance" class="visually-hidden">The site's privacy in four facts</h2>
-    <!-- CONFIRM: these four facts describe the site as built on 11 October 2026 (no cookies, no analytics or advertising script, no third-party requests, prototype forms). If the school adds a measuring tool, an advert or a connected form, this strip and the chapters below must change first. -->
+    <!-- CONFIRM: these four facts describe the site as built on 24 October 2026 with the website portal (a visit code and its private key, each kept in the browser and in a cookie of this site (two cookies), page counting by the site itself, the Enquire, Book a visit and admission forms sending to the School Desk, the question helper). No outside measuring tool or advert. One third-party request: the Google Maps frame on the home page (founder decision pending: swap it for a static map image with a link). If any of that changes, this strip and the chapters below must change first. -->
     <dl class="fact-strip" data-reveal>
-      <div class="fact"><dt>Cookies</dt><dd>None set by this site</dd></div>
-      <div class="fact"><dt>Analytics and advertising</dt><dd>None</dd></div>
-      <div class="fact"><dt>Forms</dt><dd>Checked in your browser; nothing is sent</dd></div>
-      <div class="fact"><dt>Kept on your device</dt><dd>Three small notes, none sent anywhere<small>Listed under &ldquo;What stays on your device&rdquo;.</small></dd></div>
+      <div class="fact"><dt>Visit code</dt><dd>A short code in your browser, with no name<small>You can turn it off at the foot of any page.</small></dd></div>
+      <div class="fact"><dt>Analytics and advertising</dt><dd>No outside tools, no adverts; the site counts visits itself</dd></div>
+      <div class="fact"><dt>Forms</dt><dd>Admissions forms send to the admissions office, each with its own code</dd></div>
+      <div class="fact"><dt>Internet address</dt><dd>Not kept by the site's visit counting<small>The hosting service's routine logs are described under &ldquo;What the site collects&rdquo;.</small></dd></div>
     </dl>
+  </div>
+</section>
+
+<section class="page-section" aria-labelledby="pv-choices">
+  <div class="band">
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Your choices</span><span class="sheet-rule__purpose">What you can do: three actions, in one place</span></div>
+    <div class="cc-head">
+      <h2 id="pv-choices" class="display-l cc-head__title" data-reveal><span class="cc-head__line">Your choices.</span></h2>
+    </div>
+    <div class="venue" data-reveal>
+      <p class="label">In short</p>
+      <p class="venue__text">You can stop the counting, ask to see or delete what you sent, and read what stays on your device.</p>
+    </div>
+    <!-- CONFIRM: that the further-queries line takes requests to see, correct or delete what a form sent (the same confirm as chapter 2), and that the admissions lines take requests to remove a photograph. -->
+    <div class="cc-panels mt-l">
+      <div class="cc-panel cc-panel--gold" data-reveal>
+        <div class="cc-panel__head"><h3 class="cc-panel__name">What you can do</h3><span class="label">Three actions</span></div>
+        <dl class="dl cc-panel__body">
+          <div class="dl__row"><dt>Stop the counting</dt><dd>At the foot of every page, &ldquo;Don&rsquo;t count my visits&rdquo; stops the counting, removes the code from your browser and deletes the visits recorded under it. If your browser sends Do Not Track or Global Privacy Control, no code is given and nothing is counted.</dd></div>
+          <div class="dl__row"><dt>See, correct or delete what you sent</dt><dd>Call the further-queries line, {{phone:further}}, and give your form code (ENQ-, VIS- or APP-). The office corrects a detail by noting it on your record, and deletes a form when you ask.</dd></div>
+          <div class="dl__row"><dt>Photographs of your child</dt><dd>Call the admissions line for your child's section, say which page the photograph is on, and ask for it to be removed.</dd></div>
+        </dl>
+      </div>
+    </div>
+    <div class="cc-foot" data-reveal>
+      <p class="cc-foot__text">Last updated 24 October 2026. The chapters below give the detail.</p>
+      <p class="cc-foot__action"><a class="link link--arrow" href="#c-collect">Read the detail</a></p>
+      <!-- CONFIRM (review r2, 2026-10-25, moved here from the printed source line): written by the site's designer from the site as built; to be approved by the school before the page is relied on. -->
+      <p class="cc-foot__source caption">This page describes the site as built on 24 October 2026.</p>
+    </div>
   </div>
 </section>
 
 <section class="page-section" aria-labelledby="pv-detail">
   <div class="band">
-    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">The detail</span><span class="sheet-rule__purpose">Seven short chapters</span></div>
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">The detail</span><span class="sheet-rule__purpose">Eight short chapters, with a jump list</span></div>
     <h2 id="pv-detail" class="visually-hidden">Privacy, chapter by chapter</h2>
     <div class="story">
       <nav class="chapter-nav" aria-label="Chapters on this page">
         <ol>
           <li><a href="#c-collect">What the site collects</a></li>
+          <li><a href="#c-visit">Your visit code</a></li>
           <li><a href="#c-device">What stays on your device</a></li>
           <li><a href="#c-forms">Forms on this site</a></li>
           <li><a href="#c-school">What you give the school</a></li>
@@ -40,17 +72,35 @@ standfirst: This website sets no cookies, shows no advertising and does not meas
           <h2 id="c-collect-h" class="section-title">What the site collects.</h2>
           <div class="prose mt-m" data-reveal>
             <p>The pages of this site are plain files. Reading them does not ask for your name, an account or any other detail, and the site has no sign-in.</p>
-            <p>Like every website, the service that hosts it receives the technical details your browser sends with each request: your internet address, the page you asked for, the time and the kind of browser. Hosting services keep such records in routine server logs. This site has no tool for following individual visitors or for working out who they are.</p>
+            <p>Like every website, the service that hosts it receives the technical details your browser sends with each request: your internet address, the page you asked for, the time and the kind of browser. Hosting services keep such records in routine server logs. Besides those logs, the site counts visits itself, with a visit code that carries no name; the next chapter says what it records. It has no tool for working out who a visitor is.</p>
             <!-- CONFIRM: the hosting provider and where its logs are kept. The site is served from Vercel at playpen-school.vercel.app today and may move to the school's own domain; the text names no provider. -->
-            <p>The typefaces, scripts and images come from the site's own files. Nothing is loaded from another company's servers while you read.</p>
+            <p>The typefaces and scripts come from the site's own files. The map on the home page is loaded from Google Maps, which receives your internet address when the map shows; the other pages load nothing from another company's servers. The map on the Contact page is a drawing kept on this site.</p>
             <p>The search page matches the words you type against a list of the site's pages, which your browser fetches from this site, and the matching happens in your browser. When you search, your words are added to the end of the page address, so the host receives them like any other address, and a reloaded or shared address carries them.</p>
           </div>
+        </section>
+
+        <section class="story-chapter legal-chapter" id="c-visit" aria-labelledby="c-visit-h">
+          <h2 id="c-visit-h" class="section-title">Your visit code.</h2>
+          <!-- CONFIRM: the whole chapter. Written by the site's designer for the website portal (2026-10-23) from the research note portal/research.md section 4, with Bangladesh's Personal Data Protection Act, 2026 in mind as reported; the official text has not been read, so the public text names no Act until it has. The school must approve it, ideally after its legal adviser reads it, and agree three things: the retention periods below, that the further-queries line takes requests to see, correct or delete, and the wording on who is responsible. -->
+          <div class="prose mt-m" data-reveal>
+            <p><strong>The code.</strong> When you first open this site, your browser is given a short visit code, such as <span class="legal-nowrap">V-7K3Q9M</span>. It is kept in your browser's own storage, with a spare copy in a small cookie of this site. Beside it the browser keeps a private key, made at the same time and kept the same two ways, so only your browser can add visits to your code. Both are made at random: not from your device and not from your internet address. Neither carries a name. So the site sets two cookies, both its own: the visit code and its key.</p>
+            <p><strong>What is recorded.</strong> For each page you open: your visit code, the page, the time, how long the page was open, how far down you read, the buttons you pressed, which forms you started, the website that sent you (its name only), and whether you used a phone, a tablet or a computer.</p>
+            <p><strong>What is not recorded.</strong> Your name, until you send a form; anything you type into a form before you send it; your internet address; your location; anything that identifies your device. The site uses no advertising and no measuring tools from other companies.</p>
+            <p><strong>Forms and the question helper.</strong> If you send an enquiry, a visit request or an admission form, it gets its own code (ENQ-, VIS- or APP-). Your earlier visits are joined to a form only if you tick the box on that form that asks for it. The question helper is automatic, not a person, and answers from the school's published pages. Phone numbers, email addresses, addresses and health details typed into it are removed before a conversation is kept, and a message about a child's safety, health or other personal matters is not kept at all. Admissions staff may read the conversations in the school's own system. Lists show phone numbers part-hidden; the answers of an admission form are open only to the Admissions office and the Principal.</p>
+            <p><strong>Children.</strong> Forms are for parents and guardians, and each form asks the sender to confirm that. Please give only what a form asks for. The site does not show adverts or share your visits. Your visits are joined to a form only if you tick the box on that form.</p>
+            <!-- CONFIRM: retention. 13 months for visit records, 30 days for question-helper conversations and 12 months after an enquiry closes are the defaults of this sample build (Defined Solution's own defaults); the school decides the periods. -->
+            <p><strong>How long things are kept.</strong> Visit records: 13 months. Question-helper conversations: 30 days. Enquiries, visit requests and admission forms: until the admissions office deletes them, and no longer than 12 months after the enquiry closes (to be confirmed with the school).</p>
+            <p><strong>Your choices.</strong> At the foot of every page, &ldquo;Don&rsquo;t count my visits&rdquo; stops the counting, removes the code from your browser and deletes the visits recorded under it. Forms you sent are kept, without the code. If your browser sends Do Not Track or Global Privacy Control, no code is given and nothing is counted; forms still work and give you their own code. To see, correct or delete what you sent, call the further-queries line, {{phone:further}}, and give your code: the office corrects a detail by noting it on your record, and deletes a form when you ask.</p>
+            <p><strong>Who is responsible.</strong> The Playpen School decides how this information is used. Its website provider handles it only on the school's instructions.</p>
+          </div>
+          <!-- CONFIRM: delete this sentence at launch, when the forms and the helper reach the school's own Desk. Before launch, the school should have this page checked by its legal adviser (review r2, 2026-10-25: this note was printed for visitors; it now lives here). -->
+          <p class="small-print mt-m">While this website is a sample, forms and the question helper reach a demonstration desk, not the school's office.</p>
         </section>
 
         <section class="story-chapter legal-chapter" id="c-device" aria-labelledby="c-device-h">
           <h2 id="c-device-h" class="section-title">What stays on your device.</h2>
           <div class="prose mt-m" data-reveal>
-            <p>The site keeps three small notes in your browser's own storage. They are not cookies, they are never sent to the school or to anyone else, and none says who you are.</p>
+            <p>The site keeps a few small notes in your browser's own storage, and two cookies (the visit code and its key). Only the visit code, its key and the note for this visit are sent, with each page count; a form carries the visit code only if you tick the box that asks for it. The other notes never leave your browser, and none says who you are. The small grey name under a note is what the site calls it, in case you look for it in your browser's settings.</p>
           </div>
           <div class="table-wrap mt-m" data-reveal>
             <table class="table table--stack legal-table">
@@ -60,6 +110,17 @@ standfirst: This website sets no cookies, shows no advertising and does not meas
                 <tr><th scope="row">Reduce motion</th><td data-label="What it is for">Remembers that you switched off the movement on the pages, so it stays off on the next page and the next visit.</td><td data-label="How long it stays">Until you switch it back on, or clear this site's data in your browser</td></tr>
                 <tr><th scope="row">Your place on the home page</th><td data-label="What it is for">Lets the home page return you to where you were when you reload it or go back to it.</td><td data-label="How long it stays">Until you close the tab</td></tr>
                 <tr><th scope="row">Opening animation seen</th><td data-label="What it is for">Lets the home page skip its opening animation when you come back to it during the same visit.</td><td data-label="How long it stays">Until you close the tab</td></tr>
+                <tr><th scope="row">Visit code<small class="legal-code">pp_vid</small></th><td data-label="What it is for">The short code described under &ldquo;Your visit code&rdquo;, kept in storage and in a cookie of this site, so the count knows a returning browser.</td><td data-label="How long it stays">13 months, or until you choose &ldquo;Don&rsquo;t count my visits&rdquo;</td></tr>
+                <tr><th scope="row">Visit code key<small class="legal-code">pp_vkey</small></th><td data-label="What it is for">The private key that goes with your visit code, kept in storage and in a second cookie of this site, so only this browser can add visits to the code.</td><td data-label="How long it stays">13 months, or until you choose &ldquo;Don&rsquo;t count my visits&rdquo;</td></tr>
+                <tr><th scope="row">Visits not counted<small class="legal-code">pp:optout</small></th><td data-label="What it is for">Remembers that you turned the visit code off.</td><td data-label="How long it stays">Until you choose &ldquo;Count my visits again&rdquo;, or clear this site's data</td></tr>
+                <tr><th scope="row">Notice closed<small class="legal-code">pp:notice</small></th><td data-label="What it is for">Remembers that you have seen the short note about visit codes, so it does not show again.</td><td data-label="How long it stays">Until you clear this site's data</td></tr>
+                <tr><th scope="row">This visit<small class="legal-code">pp_sid, pp_sid_at</small></th><td data-label="What it is for">Groups the pages of one visit together.</td><td data-label="How long it stays">Until you close the tab, or after 30 minutes without a page</td></tr>
+                <tr><th scope="row">Connection to the school's system<small class="legal-code">pp:portal, pp:portal-api, pp:portal-down</small></th><td data-label="What it is for">Notes for this tab on whether the site is talking to the school's system, and a pause of a few minutes when that system does not answer, so pages do not keep trying.</td><td data-label="How long it stays">Until you close the tab</td></tr>
+                <tr><th scope="row">Question helper button<small class="legal-code">pp:robot, pp:tease</small></th><td data-label="What it is for">Remembers that the question helper's button has been drawn and which short invitation it has shown, so it does not repeat on every page.</td><td data-label="How long it stays">Until you close the tab</td></tr>
+                <tr><th scope="row">Question helper conversation</th><td data-label="What it is for">Keeps the questions and answers of the question helper while you move between pages.</td><td data-label="How long it stays">Until you close the tab</td></tr>
+                <tr><th scope="row">Your form codes</th><td data-label="What it is for">The codes of the last five forms you sent, so you can find them again.</td><td data-label="How long it stays">Until you clear this site's data</td></tr>
+                <tr><th scope="row">Your child's class<small class="legal-code">pp:adm-class</small></th><td data-label="What it is for">Remembers the class you picked on an admissions page, so the matching telephone line is shown on the other admissions pages.</td><td data-label="How long it stays">Until you clear this site's data</td></tr>
+                <tr><th scope="row">Admission form draft</th><td data-label="What it is for">Keeps your answers to the online admission form until you print or send it.</td><td data-label="How long it stays">Until you press &ldquo;Clear form&rdquo;, or clear this site's data</td></tr>
               </tbody>
             </table>
           </div>
@@ -68,19 +129,41 @@ standfirst: This website sets no cookies, shows no advertising and does not meas
         <section class="story-chapter legal-chapter" id="c-forms" aria-labelledby="c-forms-h">
           <h2 id="c-forms-h" class="section-title">Forms on this site.</h2>
           <div class="prose mt-m" data-reveal>
-            <p>Four pages have forms: <a href="{{link:/contact/}}">Contact</a>, <a href="{{link:/admissions/enquire/}}">Enquire</a>, <a href="{{link:/admissions/visit/}}">Book a visit</a> and <a href="{{link:/community/alumni/}}">Alumni</a>. Today they are prototypes: each one checks what you type in your browser, then shows the school's telephone numbers. Nothing you type is sent, saved or shared, and the school does not receive it. Every form says so before you start.</p>
+            <p>Three forms send what you type to the school's admissions office: <a href="{{link:/admissions/enquire/}}">Enquire</a>, <a href="{{link:/admissions/visit/}}">Book a visit</a> and the admission form on <a href="{{link:/admissions/how-to-apply/}}">How to apply</a>. Each asks only for what the office needs to call you back, each asks you to confirm you are the child's parent or guardian, and each gives you a code to quote when you call. The question helper can pass a question to the office in the same way.</p>
           </div>
-          <!-- CONFIRM: wording of this promise. It is ours, not the school's: a form that sends information to the school will need this chapter rewritten first. The list of pages with forms (Contact, Enquire, Book a visit, Alumni) is true on 11 October 2026; add any page that gains a form. -->
+          <div data-reveal>
+            <p class="label mt-m">Sent online, from the admission form</p>
+            <ul class="tag-list">
+              <li>The student's first name, class, year of birth and gender</li>
+              <li>The parents' names, emails and contact number</li>
+              <li>The previous school</li>
+              <li>Whether a brother, sister or cousin is at Playpen</li>
+              <li>For AS Level, the subjects chosen</li>
+            </ul>
+            <p class="label mt-m">Stays on the printed form you hand in</p>
+            <ul class="tag-list">
+              <li>The address</li>
+              <li>The emergency contact</li>
+              <li>Nationality and religion</li>
+              <li>Health</li>
+              <li>Sibling names</li>
+              <li>O Level grades</li>
+            </ul>
+          </div>
+          <div class="prose mt-m" data-reveal>
+            <p>The <a href="{{link:/community/alumni/}}">Alumni</a> page has no form yet: it gives the school's general telephone number, and this chapter will list a form for former students before one is connected. The <a href="{{link:/contact/}}">Contact</a> page has no form.</p>
+          </div>
+          <!-- CONFIRM: wording of this chapter. It is ours, not the school's. The list of pages with forms is true on 24 October 2026 (website portal; the Contact form was removed that day); add any page that gains a form, and change the Alumni sentence if that form is connected (Option A, an ALU- code). In this sample build the three forms send to a demo School Desk on the designer's computer. -->
           <div class="callout mt-m" data-reveal>
-            <span class="callout__label label">If a form is ever connected</span>
-            <p>A form that sends information to the school would need its own explanation on this page first: what is collected, why, who sees it and how long it is kept.</p>
+            <span class="callout__label label">Before you send</span>
+            <p>Every connected form says that it sends, and shows the school's numbers in case you would rather call. If a form cannot reach the office, it says so and nothing is sent.</p>
           </div>
         </section>
 
         <section class="story-chapter legal-chapter" id="c-school" aria-labelledby="c-school-h">
           <h2 id="c-school-h" class="section-title">What you give the school.</h2>
           <div class="prose mt-m" data-reveal>
-            <p>Applying to the school means giving it information on paper or by telephone: the completed admission form, the child's birth certificate, the immunisation record and report cards for the last two years. The form, those documents and whatever you tell the admissions line are handled by the school. This website does not collect them.</p>
+            <p>Applying to the school means giving it information on paper or by telephone: the completed admission form, the child's birth certificate, the immunisation record and report cards for the last two years. The form, those documents and whatever you tell the admissions line are handled by the school. If you send the admission form online, the same answers reach the admissions office through this site; the documents are still handed in at the Front Office.</p>
             <!-- CONFIRM: retention and access. The school has not published how long it keeps admission records, who may see them, or whether it has a written data-protection policy to link here. -->
             <p>The school has not published how long it keeps admission records or who may see them. If you want to know, ask on the admissions line for your child's section; the numbers are in the last chapter.</p>
           </div>
@@ -114,7 +197,7 @@ standfirst: This website sets no cookies, shows no advertising and does not meas
           <!-- CONFIRM: a privacy contact. The school has supplied no email address for this purpose, so the page says to telephone. -->
           <p class="small-print mt-m">There is no email address for privacy questions; please telephone.</p>
           <!-- CONFIRM: approval. This text is a plain-language description of the site as built, written by the site's designer. The school must approve it, and may wish to have it checked by a legal adviser, before it is relied on. -->
-          <p class="small-print mt-m">Last updated 11 October 2026. This page describes the site as it stands on that date. The <a href="{{link:/terms/}}">terms of use</a> cover the rest.</p>
+          <p class="small-print mt-m">Last updated 24 October 2026. This page describes the site as it stands on that date. The <a href="{{link:/terms/}}">terms of use</a> cover the rest.</p>
         </section>
       </div>
     </div>
@@ -131,6 +214,7 @@ standfirst: This website sets no cookies, shows no advertising and does not meas
         <ul>
           <li><a class="link" href="{{link:/terms/}}">Terms of use</a></li>
           <li><a class="link" href="{{link:/sitemap/}}">Sitemap</a></li>
+          <li><a class="link" href="{{link:/search/}}">Search the site</a></li>
         </ul>
       </div>
       <div class="where-next__col">

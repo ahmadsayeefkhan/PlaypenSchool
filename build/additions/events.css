@@ -1,0 +1,393 @@
+/* events group (/events/ and the fifteen /events/<slug>/ pages): extra rules.
+   Prefix: .ev-. Tokens only. Written 2026-10-18, group "events" (pages redesign). */
+
+/* all inner pages, 2026-10-18: photographs carry no name caption any more (media.strip_captions). The lightbox still
+   draws its caption element; with no text it must not leave a gap under the picture. */
+.dialog__cap:empty { display: none; }
+
+/* /events/, featured events, 2026-10-18: five cards, the whole card one link. Phones: one column. Tablet: two. From
+   1100 px a six-column grid: the first card takes four columns and two rows of height, the rest two columns each. */
+.ev-feature { list-style: none; display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(28px, 3vw, 40px) var(--gutter); }
+.ev-card { position: relative; display: flex; flex-direction: column; }
+.ev-card__frame { position: relative; overflow: hidden; aspect-ratio: 4 / 3; padding: 10px; background: var(--paper-3); border: 1px solid var(--clay); }
+.ev-card__frame picture, .ev-card__frame img { display: block; width: 100%; height: 100%; }
+.ev-card__frame img { object-fit: cover; transition: transform var(--t-reveal) var(--ease-out); }
+.ev-card__meta { display: flex; flex-wrap: wrap; gap: 4px 14px; margin-top: 16px; font: 500 11.5px / 1.3 var(--font-sans); letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-2); }
+.ev-card__title { margin-top: 10px; font: 400 clamp(26px, 2.3vw, 38px) / 1.08 var(--font-serif); letter-spacing: -0.005em; }
+.ev-card__link { color: inherit; text-decoration: none; transition: color var(--t-micro); }
+.ev-card__link::after { content: ''; position: absolute; inset: 0; }
+.ev-card__link:focus-visible { outline: none; }
+.ev-card__link:focus-visible::after { outline: 2px solid var(--maroon); outline-offset: 4px; }
+.ev-card__text { margin-top: 8px; max-width: 42ch; font-size: 17px; line-height: 1.5; color: var(--ink-2); }
+.ev-card__go { display: block; position: relative; width: 40px; height: 1px; margin-top: 18px; background: var(--ink); transition: width var(--t-hover) var(--ease-out), background-color var(--t-micro); }
+.ev-card__go::after { content: ''; position: absolute; right: 0; top: -4px; width: 8px; height: 8px; border-top: 1px solid currentColor; border-right: 1px solid currentColor; transform: rotate(45deg); color: var(--ink); }
+.ev-card:hover .ev-card__link, .ev-card:focus-within .ev-card__link { color: var(--maroon); }
+.ev-card:hover .ev-card__go { width: 64px; background: var(--maroon); }
+.ev-card:hover .ev-card__go::after { color: var(--maroon); }
+.ev-card:hover .ev-card__frame img { transform: scale(1.03); }
+@media (min-width: 640px) { .ev-feature { grid-template-columns: repeat(2, minmax(0, 1fr)); } .ev-card--lead { grid-column: 1 / -1; } .ev-card--lead .ev-card__frame { aspect-ratio: 2 / 1; } }
+@media (min-width: 1100px) {
+  .ev-feature { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+  .ev-card { grid-column: span 2; }
+  .ev-card--lead { grid-column: span 4; grid-row: span 2; }
+  .ev-card--lead .ev-card__frame { aspect-ratio: auto; flex: 1 1 auto; min-height: 420px; }
+  .ev-card--lead .ev-card__title { font-size: clamp(34px, 3vw, 52px); }
+  .ev-card:nth-child(n+4) { grid-column: span 3; }
+  .ev-card:nth-child(n+4) .ev-card__frame { aspect-ratio: 16 / 9; }
+}
+/* inside a card the typographic plate's word is set smaller, and never broken mid-word */
+.ev-card__frame .ev-type__word { font-size: clamp(32px, 3vw, 46px); overflow-wrap: normal; }
+
+/* the typographic plate, 2026-10-18: an event with no photograph we may show gets its name (or its date) set large on a
+   maroon field inside the paper mount, with a gold hairline frame. No photograph is faked. Decorative: aria-hidden,
+   because the same words are in the heading next to it. Used inside .ev-card__frame and as .ev-mark on an event page. */
+.ev-type { position: relative; display: flex; flex-direction: column; justify-content: space-between; width: 100%; height: 100%; min-height: 200px; padding: clamp(18px, 2.4vw, 32px); background: var(--maroon); color: var(--paper); }
+.ev-type::before { content: ''; position: absolute; inset: 8px; border: 1px solid var(--gold-text); opacity: 0.55; pointer-events: none; }
+.ev-type__kicker { position: relative; font: 500 11.5px / 1.3 var(--font-sans); letter-spacing: 0.16em; text-transform: uppercase; color: var(--paper); }
+.ev-type__word { position: relative; margin-top: 24px; font: italic 300 clamp(40px, 5.2vw, 84px) / 0.98 var(--font-serif); letter-spacing: -0.015em; color: var(--paper); overflow-wrap: anywhere; }
+.ev-type__word small { display: block; margin-top: 10px; font: inherit; font-size: 0.42em; letter-spacing: 0; color: var(--gold-text); }
+.ev-type__rule { position: relative; display: block; width: 56px; height: 1px; margin-top: 22px; background: var(--gold-text); }
+
+/* an event page's own typographic plate, 2026-10-18: the band-wide version of .ev-type, on the paper mount */
+.ev-mark { padding: 12px; background: var(--paper-3); border: 1px solid var(--clay); }
+.ev-mark .ev-type { min-height: clamp(220px, 30vw, 440px); }
+.ev-mark .ev-type__word { font-size: clamp(48px, 8vw, 132px); }
+
+/* /events/, the index of every event, 2026-10-18: .rows with a "when" column that holds a fixed date or "Each year" */
+.ev-when { font-variant-numeric: tabular-nums; }
+.ev-when__yearly { font: italic 400 clamp(19px, 1.5vw, 22px) / 1.2 var(--font-serif); letter-spacing: 0; text-transform: none; color: var(--ink-2); }
+
+/* an event page, photographs, 2026-10-18: two or three plates side by side, no captions */
+.ev-photos { list-style: none; display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--gutter); }
+.ev-photos .plate__frame { aspect-ratio: 3 / 2; }
+.ev-photos .plate__frame picture, .ev-photos .plate__frame img { display: block; width: 100%; height: 100%; object-fit: cover; }
+@media (min-width: 640px) { .ev-photos { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1024px) { .ev-photos--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+
+/* an event page, the portrait figure beside the text (the Cultural Programme's 4:5 frame), capped so it never fills a phone */
+.ev-figure--tall { max-width: 26rem; }
+
+/* an event page, the back link above the pager */
+.ev-back { margin-bottom: clamp(20px, 2.6vw, 32px); }
+
+@media (prefers-reduced-motion: reduce) {
+  .ev-card__frame img, .ev-card__go { transition: none; }
+  .ev-card:hover .ev-card__frame img { transform: none; }
+}
+html[data-motion="reduced"] .ev-card__frame img, html[data-motion="reduced"] .ev-card__go { transition: none; }
+html[data-motion="reduced"] .ev-card:hover .ev-card__frame img { transform: none; }
+
+/* =====================================================================================================================
+   2026-10-24, pages redesign, group events-gallery-news (/events/, the 15 event pages, /news/; also used by /gallery/ and
+   /notices/). The inner page kit (design-language.md section 3) has not landed as build/additions/0-kit.css, so the
+   pieces this group needs are here under the prefix .egn- (events, gallery, news): sheet head, sheet foot, panel,
+   headline rise, counter and the mounted hero plate. When 0-kit.css lands, these map one to one onto pk-head, pk-foot,
+   pk-panel, [data-pk-split], pk-count and pk-plate and can be deleted. Tokens only; 44 px targets; reduced motion at the end.
+   Documented in docs/additions/events.md. */
+
+/* ---- egn-head: the home's sheet head grid (H2 on 10 of 12 columns, the lead on 7) ----------------------------------- */
+.egn-head { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter); row-gap: clamp(20px, 2.6vw, 36px); margin-bottom: clamp(36px, 4.5vw, 64px); }
+.egn-head > h2 { grid-column: 1 / span 10; max-width: 18ch; text-wrap: balance; }
+.egn-head > .lead { grid-column: 1 / span 7; max-width: 54ch; }
+.egn-head > .lead a { color: inherit; }
+.egn-head--tight { margin-bottom: clamp(24px, 3vw, 44px); }
+@media (max-width: 1023px) { .egn-head > h2, .egn-head > .lead { grid-column: 1 / -1; } }
+
+/* ---- egn-rise: the H2 rises through a mask when its block is revealed (js/inner.js adds .is-in to [data-reveal]) ------ */
+@keyframes egn-rise { from { clip-path: inset(0 0 100% 0); transform: translateY(0.35em); } to { clip-path: inset(-0.2em 0 -0.3em 0); transform: none; } }
+html.js-reveal .egn-rise[data-reveal].is-in { animation: egn-rise 1100ms var(--ease-mask) both; }
+/* (the resting state stays pages.css's: opacity 0 and a 28 px rise; a clip-path at rest would hide the heading from
+   IntersectionObserver, which applies clip-path to the target's box, and it would never be revealed) */
+
+/* ---- egn-foot: every fact-heavy sheet closes on a hairline: a sentence, an action, a source caption ------------------ */
+.egn-foot { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 18px var(--gutter); align-items: end; margin-top: clamp(36px, 4.5vw, 64px); padding-top: 24px; border-top: var(--hairline); }
+.egn-foot__text { grid-column: 1 / span 8; max-width: 62ch; font-size: 18px; line-height: 1.55; }
+.egn-foot__text a { color: inherit; }
+.egn-foot__action { grid-column: 10 / -1; justify-self: end; display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: 12px 24px; }
+.egn-foot__source { grid-column: 1 / -1; }
+@media (max-width: 1023px) {
+  .egn-foot__text, .egn-foot__action { grid-column: 1 / -1; }
+  .egn-foot__action { justify-self: start; justify-content: flex-start; }
+}
+@media (max-width: 639px) { .egn-foot__action .btn { width: 100%; } }
+
+/* ---- egn-panel: the results-card recipe as a general panel (paper-3, clay border, 3 px coloured top rule) ------------ */
+.egn-panel { --egn-edge: var(--maroon); display: flex; flex-direction: column; min-width: 0; padding: clamp(22px, 2.2vw, 34px); background: var(--paper-3); border: 1px solid var(--clay); border-top: 3px solid var(--egn-edge); }
+.egn-panel--gold { --egn-edge: var(--gold); }
+.egn-panel--ink { --egn-edge: var(--ink); }
+.egn-panel__head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 20px; padding-bottom: 14px; margin-bottom: 18px; border-bottom: var(--hairline); }
+.egn-panel__name { font: 400 clamp(24px, 2.1vw, 34px) / 1.1 var(--font-serif); letter-spacing: -0.005em; text-wrap: balance; }
+.egn-panel__sub { font: 400 15px / 1.45 var(--font-sans); color: var(--ink-2); }
+.egn-panel p, .egn-panel li { font-size: 17px; line-height: 1.55; }
+.egn-panel p + p { margin-top: 10px; }
+.egn-panel__list { list-style: none; }
+.egn-panel__list li + li { margin-top: 10px; padding-top: 10px; border-top: var(--hairline); }
+.egn-panel__foot { margin-top: auto; padding-top: 16px; }
+.egn-panel .label + * { margin-top: 10px; }
+.egn-panels { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--gutter); }
+@media (min-width: 720px) { .egn-panels--2, .egn-panels--3 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1024px) { .egn-panels--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+
+/* ---- egn-count: a number that counts up once when it comes on screen (build/additions/events.js); the final number is in
+   the markup, so no JavaScript, reduced motion and print all show it as it is ------------------------------------------- */
+.egn-count { font-variant-numeric: tabular-nums lining-nums; }
+
+/* ---- the mounted hero plate (the kit's pk-plate), only on this group's pages (body.egn-page): the shell's bleed plate is
+   put back on the paper mount inside the band, with the home's curtain on load; a wide crop is cut to 16:9 on a phone, not
+   4:3, so a 21:9 frame keeps its sides. Album pages (body.egn-album) use 2:1 and stop at 1200 px: their frames are 1200 px wide. */
+body.egn-page .page-hero__plate { width: min(100% - 2 * var(--margin), var(--band-max)); margin-inline: auto; padding: 12px; border: 1px solid var(--clay); background: var(--paper-3); }
+body.egn-page .page-hero__plate img { aspect-ratio: 16 / 9; }
+@media (min-width: 1024px) { body.egn-page .page-hero__plate img { aspect-ratio: 21 / 9; } }
+body.egn-album .page-hero__plate { width: min(100% - 2 * var(--margin), 1200px); margin-inline: auto; }
+@media (min-width: 1024px) { body.egn-album .page-hero__plate img { aspect-ratio: 2 / 1; } }
+@media (min-width: 1840px) { body.egn-page .page-hero__plate { border-inline: 1px solid var(--clay); } }
+@keyframes egn-curtain { from { clip-path: inset(100% 0 0 0); } to { clip-path: inset(0); } }
+@keyframes egn-settle { from { transform: scale(1.08); } to { transform: none; } }
+html.js:not([data-motion="reduced"]) body.egn-page .page-hero__plate .plate__frame { animation: egn-curtain 1100ms var(--ease-wipe) 200ms both; }
+html.js:not([data-motion="reduced"]) body.egn-page .page-hero__plate img { animation: egn-settle 1400ms var(--ease-out) 200ms both; }
+
+/* ---- /events/ sheet 01: the five big-day cards keep .ev-feature; the lead card is 3:2 on tablets (was 2:1, which cut the
+   from-above formation) ------------------------------------------------------------------------------------------------ */
+@media (min-width: 640px) and (max-width: 1099.98px) { .ev-card--lead .ev-card__frame { aspect-ratio: 3 / 2; } }
+.ev-card__frame img { object-position: var(--pos, 50% 50%); }
+
+/* ---- /events/ sheet 02, ev-year: the school year as one object. Two semesters side by side from 900 px, each a row of six
+   month columns under a maroon or gold bar that draws left to right when the strip is revealed; every mark is a link with a
+   44 px target. On a phone the semesters stack and each month is a row: name left, marks right. No horizontal scroll. ---- */
+.ev-year { display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(28px, 4vw, 48px) var(--gutter); }
+.ev-year__sem { --ev-edge: var(--maroon); min-width: 0; }
+.ev-year__sem--1 { --ev-edge: var(--maroon); }
+.ev-year__sem--2 { --ev-edge: var(--gold); }
+.ev-year__sem-head { position: relative; display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 20px; padding-top: 16px; margin-bottom: 18px; }
+.ev-year__bar { position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: var(--ev-edge); transform-origin: left center; transition: transform 1100ms var(--ease-out); }
+html.js-reveal .ev-year:not(.is-in) .ev-year__bar { transform: scaleX(0); }
+.ev-year__sem-title { font: 400 clamp(22px, 1.9vw, 30px) / 1.15 var(--font-serif); letter-spacing: -0.005em; }
+.ev-year__sem-when { font: 500 11.5px / 1.3 var(--font-sans); letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-2); }
+.ev-year__months { list-style: none; display: grid; grid-template-columns: minmax(0, 1fr); border-top: 1px solid var(--ink); }
+.ev-year__month { display: grid; grid-template-columns: 64px minmax(0, 1fr); column-gap: 16px; align-items: start; min-height: 44px; padding: 10px 0; border-bottom: var(--hairline); }
+.ev-year__name { padding-top: 6px; font: 500 12.5px / 1.3 var(--font-sans); letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.ev-year__month--quiet .ev-year__name { opacity: 0.7; }
+.ev-year__marks { list-style: none; display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.ev-year__mark { position: relative; display: block; min-height: 44px; padding: 8px 0; font: 400 17px / 1.35 var(--font-serif); color: var(--ink); text-decoration: none; text-wrap: pretty; overflow-wrap: normal; hyphens: manual; }
+.ev-year__month, .ev-year__marks li { overflow-wrap: normal; }
+.ev-year__mark b { display: inline-block; min-width: 2ch; margin-right: 6px; font: 300 clamp(26px, 2vw, 34px) / 0.9 var(--font-serif); color: var(--maroon); font-variant-numeric: tabular-nums lining-nums; vertical-align: -0.08em; }
+.ev-year__mark .label { display: block; margin-bottom: 4px; color: var(--gold); }
+a.ev-year__mark { background-image: linear-gradient(var(--gold), var(--gold)); background-repeat: no-repeat; background-position: 0 calc(100% - 6px); background-size: 0 1px; transition: background-size var(--t-micro) var(--ease-soft), color var(--t-micro); }
+a.ev-year__mark:hover, a.ev-year__mark:focus-visible { color: var(--maroon); background-size: 100% 1px; }
+a.ev-year__mark:focus-visible { outline: 2px solid var(--maroon); outline-offset: 2px; }
+.ev-year__mark--fixed { font-weight: 400; }
+.ev-year__mark--exam { color: var(--ink-2); font-style: italic; }
+.ev-year__mark--exam::before { content: ''; display: inline-block; width: 18px; height: 1px; margin-right: 10px; background: var(--ink-2); vertical-align: middle; }
+@media (min-width: 1280px) { .ev-year__mark { font-size: 16px; } }
+@media (min-width: 900px) {
+  .ev-year { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ev-year__months { grid-template-columns: repeat(6, minmax(0, 1fr)); border-top: 0; }
+  .ev-year__month { grid-template-columns: minmax(0, 1fr); row-gap: 10px; min-height: 180px; padding: 12px 10px 14px 0; border-bottom: 0; border-top: 1px solid var(--ink); }
+  .ev-year__month + .ev-year__month { border-left: var(--hairline); padding-left: 10px; }
+  .ev-year__name { padding-top: 0; }
+  .ev-year__mark { font-size: 15px; line-height: 1.3; }
+  .ev-year__mark b { display: block; margin: 0 0 4px; font-size: clamp(30px, 2.4vw, 40px); }
+  .ev-year__month { padding-right: 6px; }
+  .ev-year__mark--exam::before { display: block; width: 24px; margin: 0 0 8px; }
+}
+.ev-year__announced { margin-top: clamp(24px, 3vw, 40px); }
+.ev-year__pills { list-style: none; display: flex; flex-wrap: wrap; gap: 10px; }
+.ev-year__pill { display: inline-flex; align-items: center; min-height: 44px; padding: 8px 16px; border: 1px solid var(--clay); border-radius: 999px; font: 400 15px / 1.2 var(--font-sans); color: var(--ink); text-decoration: none; transition: border-color var(--t-micro), color var(--t-micro); }
+.ev-year__pill:hover, .ev-year__pill:focus-visible { border-color: var(--maroon); color: var(--maroon); }
+.ev-year__pill:focus-visible { outline: 2px solid var(--maroon); outline-offset: 2px; }
+.ev-year__panels { margin-top: clamp(36px, 4.5vw, 64px); }
+
+/* ---- /events/ sheet 03, ev-index: the fifteen events in four short columns, grouped by kind. One link per entry, the whole
+   entry the target (44 px or more); the chips and filters are gone: grouping replaces filtering ------------------------- */
+.ev-index { display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(28px, 3.5vw, 48px) var(--gutter); }
+.ev-index__group { min-width: 0; padding-top: 14px; border-top: 1px solid var(--ink); }
+.ev-index__kind { color: var(--gold); }
+.ev-index__count { margin-left: 8px; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.ev-index__list { list-style: none; margin-top: 10px; }
+.ev-index__item { display: block; position: relative; min-height: 44px; padding: 14px 0 16px; border-bottom: var(--hairline); color: inherit; text-decoration: none; }
+.ev-index__list li:last-child .ev-index__item { border-bottom: 0; }
+.ev-index__name { display: block; font: 400 clamp(20px, 1.6vw, 24px) / 1.15 var(--font-serif); letter-spacing: -0.004em; transition: color var(--t-micro); }
+.ev-index__when { display: block; margin-top: 5px; font: 500 11.5px / 1.3 var(--font-sans); letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.ev-index__when b { font-weight: 500; color: var(--maroon); }
+.ev-index__line { display: block; margin-top: 7px; font: 400 15px / 1.45 var(--font-sans); color: var(--ink-2); max-width: 36ch; }
+.ev-index__item:hover .ev-index__name, .ev-index__item:focus-visible .ev-index__name { color: var(--maroon); }
+.ev-index__item:focus-visible { outline: 2px solid var(--maroon); outline-offset: 2px; }
+@media (min-width: 640px) { .ev-index { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1100px) { .ev-index { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+
+/* ---- an event page: the facts strip keeps only facts that say something; a fixed date is a maroon numeral -------------- */
+.fact--num dd { color: var(--maroon); }
+.fact--num dd small { color: var(--ink-2); }
+@media (min-width: 1024px) { .fact-strip--2 { --cols: 2; } }
+
+/* ---- an event page, sheet 03, ev-album: three plates from the event's own album, each opening the viewer; the Graduation
+   page shows four album covers as the home's .ev-grid cards instead ------------------------------------------------------ */
+.ev-album { list-style: none; display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--gutter); }
+.ev-album .gallery__link { display: block; padding: 10px; }
+.ev-album .gallery__frame { display: block; overflow: hidden; }
+.ev-album .gallery__frame picture, .ev-album .gallery__frame img { display: block; width: 100%; }
+.ev-album .gallery__frame img { aspect-ratio: 3 / 2; height: auto; object-fit: cover; object-position: var(--pos, 50% 50%); }
+@media (min-width: 640px) { .ev-album { grid-template-columns: repeat(2, minmax(0, 1fr)); } .ev-album--3 > li:first-child:nth-last-child(3) { grid-column: 1 / -1; } }
+@media (min-width: 1024px) { .ev-album--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); } .ev-album--3 > li:first-child:nth-last-child(3) { grid-column: auto; } }
+.ev-years .ev__n { margin-top: 2px; }
+.ev-years .ev__media img { aspect-ratio: 3 / 2; object-position: var(--pos, 50% 45%); }
+@media (min-width: 1024px) { .ev-years .ev { grid-column: span 3; } }
+@media (min-width: 1280px) { .ev-years--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); } .ev-years--4 .ev { grid-column: auto; } }
+
+/* ---- an event page, sheet 04, ev-hook: one admissions moment, the home's .venue panel in a 12-column grid (7 of 12 from
+   1024 px, full width below), one arrow link and the secondary "Book a visit" ------------------------------------------- */
+.ev-hook { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter); }
+.ev-hook .venue { display: flex; flex-direction: column; }
+.ev-hook .venue__text { margin-top: 8px; }
+.ev-hook__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 28px; margin-top: 22px; font: 400 16px / 1.4 var(--font-sans); }
+.ev-hook__actions .link--arrow { position: relative; }
+.ev-hook__actions .link--arrow::before { content: ''; position: absolute; inset: -10px -4px; }
+@media (max-width: 1023px) { .ev-hook .venue { grid-column: 1 / -1; } }
+@media (max-width: 639px) { .ev-hook__actions .btn { width: 100%; } }
+
+/* ---- an event page with no cleared frame: the typographic plate as a band-wide mark (an honest line under the word says
+   the school's photographs come when it agrees to them) ------------------------------------------------------------------ */
+.ev-mark--band { margin-top: clamp(28px, 3.6vw, 52px); }
+.ev-mark--band .ev-type { min-height: clamp(220px, 28vw, 400px); }
+.ev-mark--band .ev-type__word { font-size: clamp(44px, 7vw, 120px); }
+.ev-mark__line { margin-top: 14px; font: 400 15px / 1.5 var(--font-sans); color: var(--ink-2); max-width: 62ch; }
+.ev-mark__line a { color: inherit; }
+
+/* ---- /news/ (no additions file of its own; its rules sit with the events group) ----------------------------------------
+   news-status: the first sheet's one highlighted statement with its links. news-ledger: the eleven competition results as
+   a ledger: the home's .feats row, then one gold-ruled panel per kind with its rows inside (date column 96 px from 768 px). */
+.news-status { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 24px var(--gutter); align-items: start; }
+.news-status .venue { display: flex; flex-direction: column; }
+.news-status__links { grid-column: 9 / -1; align-self: end; }
+.news-status__call { grid-column: 1 / -1; max-width: 62ch; font-size: 17px; line-height: 1.55; color: var(--ink-2); }
+.news-status__call .phones { margin-top: 14px; }
+@media (max-width: 1023px) { .news-status .venue, .news-status__links { grid-column: 1 / -1; } }
+.news-ledger { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--gutter); margin-top: clamp(28px, 3.5vw, 48px); }
+.news-ledger .rows { border-top: 0; }
+.news-ledger .row { padding: 14px 0 16px; }
+.news-ledger .row:last-child { border-bottom: 0; padding-bottom: 4px; }
+.news-ledger .row__day { font-size: clamp(26px, 2vw, 34px); }
+.news-ledger .row__title { font-size: clamp(19px, 1.5vw, 23px); }
+.news-ledger .row__text { font-size: 16px; }
+@media (min-width: 768px) { .news-ledger .row { grid-template-columns: 96px minmax(0, 1fr); column-gap: 20px; } }
+@media (min-width: 1024px) { .news-ledger { grid-template-columns: repeat(2, minmax(0, 1fr)); } .news-ledger .egn-panel--span { grid-column: 1 / -1; } }
+.news-feats { margin-top: 0; }
+.news-feats .feat__n { font-size: clamp(32px, 2.6vw, 44px); }
+.news-feed .plate--flat { padding: 10px; background: var(--paper-3); border: 1px solid var(--clay); }
+.news-feed .news-item .plate img { aspect-ratio: 3 / 2; }
+@media (min-width: 1024px) { .news-feed .news-item--lead .plate img { aspect-ratio: 16 / 9; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .ev-year__bar, a.ev-year__mark, .ev-year__pill, .ev-index__name, .ev-index__item { transition: none !important; }
+  html.js-reveal .egn-rise[data-reveal].is-in { animation: none !important; clip-path: none; }
+  html.js-reveal .ev-year:not(.is-in) .ev-year__bar { transform: none; }
+  body.egn-page .page-hero__plate .plate__frame, body.egn-page .page-hero__plate img { animation: none !important; }
+}
+html[data-motion="reduced"] .ev-year__bar { transition: none !important; }
+html[data-motion="reduced"] .egn-rise[data-reveal].is-in { animation: none !important; clip-path: none !important; }
+html[data-motion="reduced"] .ev-year:not(.is-in) .ev-year__bar { transform: none; }
+html[data-motion="reduced"] body.egn-page .page-hero__plate .plate__frame, html[data-motion="reduced"] body.egn-page .page-hero__plate img { animation: none !important; }
+@media print {
+  .egn-rise[data-reveal] { animation: none !important; clip-path: none !important; transform: none !important; }
+  body.egn-page .page-hero__plate .plate__frame, body.egn-page .page-hero__plate img { animation: none !important; }
+}
+
+/* =====================================================================================================================
+   2026-10-24, review r1 of the events-gallery-news group (see redesign-2026-10-24-pages/build/events-gallery-news.md). */
+
+/* ---- the hero plate's focal point, set per page by a body class (the shell has no hero_pos key yet): /news/ opens on
+   img/gal-nasa-soyuz, whose projected screen carries a Windows taskbar along its bottom edge; anchored to the top, the
+   2:1 and 16:9 cuts take the bottom of the frame off ---------------------------------------------------------------- */
+body.egn-hero-top .page-hero__plate img { object-position: 50% 0%; }
+body.egn-hero-bottom .page-hero__plate img { object-position: 50% 100%; }
+
+/* ---- the hubs' phone hero: events.js adds the 4:5 -tall source for screens up to 639 px and marks the body ---------- */
+@media (max-width: 639px) { body.egn-hero-tall .page-hero__plate img { aspect-ratio: 4 / 5; } }
+
+/* ---- /events/ sheet 01, the lead card from 1100 px: the frame no longer grows to match the two cards beside it (it
+   reached about 900 x 860 and the wave formation became grey sand); it stays 3:2, the frame's own ratio, and the card
+   aligns to the top of its two rows ---------------------------------------------------------------------------------- */
+@media (min-width: 1100px) {
+  .ev-card--lead { align-self: start; }
+  .ev-card--lead .ev-card__frame { aspect-ratio: 3 / 2; flex: 0 0 auto; min-height: 0; }
+}
+
+/* ---- /events/ sheet 02, the year strip from 900 px: 14 px marks, balanced over two lines, no soft hyphens in the
+   markup, so "Independence Day" and "Science and Technology Fair" never break inside a word ------------------------------ */
+@media (min-width: 900px) {
+  .ev-year__month { min-width: 0; }
+  .ev-year__mark { font-size: 14px; line-height: 1.3; text-wrap: balance; overflow-wrap: normal; hyphens: manual; }
+  .ev-year__mark b { font-size: clamp(28px, 2.2vw, 36px); }
+}
+@media (min-width: 1280px) { .ev-year__mark { font-size: 14px; } }
+
+/* ---- an event page, sheet 01, ev-glance: the typographic plate (or the one cleared frame) on 5 of 12 columns beside the
+   fact strip from 1024 px, instead of a band-wide plate that repeated the H1 under the H1. The facts take two columns in
+   their 7; the honest line sits under them. Below 1024 px the plate stacks over the facts ------------------------------ */
+.ev-glance { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: clamp(24px, 3vw, 40px) var(--gutter); align-items: start; }
+.ev-glance__mark { grid-column: 1 / -1; margin: 0; }
+.ev-glance__facts { grid-column: 1 / -1; min-width: 0; }
+.ev-glance__facts .ev-mark__line { margin-top: 18px; }
+@media (min-width: 1024px) {
+  .ev-glance__mark { grid-column: 1 / span 5; }
+  .ev-glance__facts { grid-column: 7 / -1; }
+  .ev-glance__facts .fact-strip { --cols: 2; }
+}
+.ev-mark--side .ev-type { min-height: clamp(220px, 24vw, 320px); }
+.ev-mark--side .ev-type__word { font-size: clamp(36px, 3.6vw, 60px); }
+.ev-glance__photo { padding: 10px; background: var(--paper-3); border: 1px solid var(--clay); }
+.ev-glance__photo .plate__frame picture, .ev-glance__photo .plate__frame img { display: block; width: 100%; }
+.ev-glance__photo .plate__frame img { height: auto; object-fit: cover; object-position: var(--pos, 50% 50%); }
+.ev-glance__photo.plate--4x5 { max-width: 24rem; }
+.ev-glance__photo.plate--4x5 .plate__frame img { aspect-ratio: 4 / 5; }
+
+/* ---- /news/ sheet 03: the panels keep their own height (the Olympiads panel stretched to the Language panel's with a
+   third of it empty); the three numbers are set at the home's size; the third is a span of dates, not a count of one ---- */
+.news-ledger { align-items: start; }
+.news-feats .feat__n { font-size: clamp(44px, 4vw, 64px); }
+.news-feat__span { font-size: clamp(26px, 2.2vw, 40px); line-height: 1.05; white-space: normal; }
+.news-feat__span small { display: block; margin: 4px 0; font: 500 11.5px / 1.3 var(--font-sans); letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-2); }
+
+/* =====================================================================================================================
+   2026-10-24, review r2 of the events-gallery-news group (see redesign-2026-10-24-pages/build/events-gallery-news.md). */
+
+/* ---- /news/ sheet 03, the third feat: main.css gives .feat a fixed 92 px first column, and "Aug 2023 to Apr 2024" at 40 px
+   broke letter by letter into a 600 px column. The first column now grows to the numeral's width; the span stays on one
+   line from 640 px (the "to" inline) and takes three short lines on a phone ---------------------------------------- */
+.news-feats .feat { grid-template-columns: minmax(92px, max-content) minmax(0, 1fr); }
+.news-feat__span { white-space: normal; }
+.news-feat__span small { display: block; margin: 4px 0; }
+@media (min-width: 640px) {
+  .news-feat__span { white-space: nowrap; }
+  .news-feat__span small { display: inline; margin: 0 0.4em; vertical-align: 0.35em; }
+}
+
+/* ---- the mounted hero plate's curtain: fill-mode backwards and no delay, so the resting state is always the whole frame
+   (with "both" and a 200 ms delay, a capture or a restarted animation left the plate blank, as the H2 was once) ---- */
+html.js:not([data-motion="reduced"]) body.egn-page .page-hero__plate .plate__frame { animation: egn-curtain 1100ms var(--ease-wipe) 0ms backwards; }
+html.js:not([data-motion="reduced"]) body.egn-page .page-hero__plate img { animation: egn-settle 1400ms var(--ease-out) 0ms backwards; }
+
+/* ---- the hero plate's focal point, one more position: the Graduation 2023 album opens on the stage frame cut from the
+   bottom, so the crest ribbon above the title ("Established in 1977", decision A1) leaves the 2:1 plate ------------ */
+body.egn-hero-right .page-hero__plate img { object-position: 72% 50%; }
+
+/* ---- /events/ sheet 03, the index from 1100 px: four equal columns with 7 / 4 / 3 / 1 entries left the right half of the
+   band empty under the first row. Academic takes two columns with its seven entries in two sub-columns (four and three,
+   read down), Culture the third, and National days and Sports share the fourth, so the sheet ends roughly level ---- */
+@media (min-width: 1100px) {
+  .ev-index { grid-template-rows: auto auto; align-items: start; }
+  .ev-index__group--academic { grid-column: 1 / span 2; grid-row: 1 / span 2; }
+  .ev-index__group--academic .ev-index__list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-flow: column; grid-template-rows: repeat(4, auto); column-gap: var(--gutter); }
+  .ev-index__group--academic .ev-index__list li:nth-child(4) .ev-index__item { border-bottom: 0; }
+  .ev-index__group--culture { grid-column: 3; grid-row: 1 / span 2; }
+  .ev-index__group--national { grid-column: 4; grid-row: 1; }
+  .ev-index__group--sports { grid-column: 4; grid-row: 2; }
+}
+
+/* ---- the Science and Technology Fair page, sheet 01 (AI plates round, 2026-10-25): media/swatch-4 (a soft 720 px square
+   that also shows two students in lab coats) left the page for the sharp AI plate img/ev-science-still at the group's
+   usual 3:2, so the 360 px cap (.ev-glance__photo--small) it needed is gone ---- */
+
+/* ---- final review 2026-10-25: the gold labels of /events/ ("On record, 2024", the kind headings of the index) measured 4.0:1
+   on paper at 11.5 to 12.5 px; they take a deeper gold (5.8:1 on --paper), still read as gold beside the maroon. */
+.ev-year__mark .label, .ev-index__kind { color: color-mix(in srgb, var(--gold) 72%, var(--ink)); }

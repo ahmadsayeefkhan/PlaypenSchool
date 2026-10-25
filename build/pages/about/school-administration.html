@@ -1,0 +1,138 @@
+---
+title: School administration
+description: The people who run The Playpen School: the Chairman, Managing Director, Principal, Vice Principals and Teachers-in-Charge, and how the school is organised.
+template: T11
+---
+<!-- Redesign 2026-10-24 (group "about", plans/about.md section 3): an organisation chart replaces the eleven 4:5 monogram posters; the messages and the teachers are shown honestly or not at all. Order: the H1 row with the plate beside the standfirst, 01 the chart (with one line each for the Principal and the Vice Principals), 02 the teachers, pager, CTA. The messages section was removed in the review fixes of the same day (see the CONFIRM below 01); the separate "Principal and Vice Principals" sheet was folded into the chart in review r3 (it repeated the chart's three names and bands). The description above repeats nav.json N2 (redesign-2026-10-24-pages/build/about-nav-requests.md). -->
+<!-- The hero is built in the body (as the two covers are) so the 3:2 plate can sit beside the standfirst instead of alone at the left under the type hero with the right half of the band empty (review r3). The build adds the breadcrumb above it; the eyebrow prints "About" only, as the covers do, because the shell's page counter is not available to a body hero. -->
+<!-- CONFIRM: every name, spelling, title and class band on this page is from the school's own administration page (September 2026, A8). The school should confirm each against its current staff list. No portraits were supplied: each card carries an initials chip until the school sends a photograph with the person's written consent (swap the chip for an img token and add adm-portrait--photo; see docs/additions/administration.md). -->
+<header class="abt-hero-side" aria-label="School administration">
+  <div class="band abt-hero-side__band">
+    <div class="sheet-rule page-hero__rule abt-hero-side__rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{pagecount}}</span><span class="sheet-rule__title">About</span></div>
+    <h1 class="page-hero__title abt-hero-side__title">The people who run the <em>school</em>.</h1>
+    <p class="page-hero__lead lead abt-hero-side__lead">The Chairman and the Managing Director, the Principal, two Vice Principals and six Teachers-in-Charge. Each Vice Principal and Teacher-in-Charge looks after a band of classes, under the Principal.</p>
+    <div class="abt-hero-side__plate" data-abt-clear>
+      <!-- review r3: the same creepers, re-cut from the March 2024 frame with the contrast lifted by the home's grade -->
+      <figure class="plate abt-plate abt-plate--mark" data-reveal>
+        <div class="plate__frame">{{img src="img/admin-creepers" alt="Creepers hanging over the board-marked concrete of the school's street front." sizes="(min-width: 1024px) 40vw, 100vw" loading="eager" fetchpriority="high"}}</div>
+        <figcaption class="plate__cap"><span class="plate__n">01</span>The street front, 2024</figcaption>
+      </figure>
+      <p class="caption abt-plate__line">Creepers over the street front of the school, 2024.</p>
+    </div>
+  </div>
+</header>
+
+<section class="page-section" aria-labelledby="adm-structure">
+  <div class="band">
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">The structure</span><span class="sheet-rule__purpose">Titles as the school publishes them</span></div>
+    <div class="abt-head abt-head--tight">
+      <h2 id="adm-structure" class="section-title abt-head__title" data-reveal>How the school is organised.</h2>
+      <p class="lead abt-head__lead" data-reveal>Management, then the Principal, then two Vice Principals, each with the Teachers-in-Charge whose classes fall in her or his band. Someone is responsible for every class from Playgroup to Class XII.</p>
+    </div>
+    <!-- Review fixes 2026-10-24: the chart gives place, not history (the Chairman's A Level line is on History and in no other card here); top rules in two colours, maroon for the Principal and gold for every other card; quiet paper chips in the chart (administration.css). Review r3: the one line a parent needs about the Principal and each Vice Principal sits in their chart card (the separate sheet that repeated the three names is gone). -->
+    <!-- CONFIRM: that admission interviews are with the Principal in person (B10). The home's admissions steps say "Interview, with the Principal and the parents", so that is the only wording used in the Principal's card. -->
+    <ol class="adm-chart" aria-label="The organisation of the school, top to bottom">
+      <li class="adm-tier adm-tier--1">
+        <span class="adm-tier__label label">Management</span>
+        <ul class="adm-tier__row adm-tier__row--2" data-reveal-group>
+          <li class="adm-card adm-card--l adm-card--gold">
+            <div class="adm-portrait"><span class="adm-portrait__mono" aria-hidden="true">AK</span></div>
+            <div class="adm-card__body"><p class="adm-card__role">Chairman</p><h3 class="adm-card__name">Mr A. Mannan Khan</h3></div>
+          </li>
+          <li class="adm-card adm-card--l adm-card--gold">
+            <div class="adm-portrait"><span class="adm-portrait__mono" aria-hidden="true">MK</span></div>
+            <div class="adm-card__body"><p class="adm-card__role">Managing Director</p><h3 class="adm-card__name">Mr Mir Masud Kabir</h3></div>
+          </li>
+        </ul>
+      </li>
+      <li class="adm-tier adm-tier--2">
+        <span class="adm-tier__label label">The Principal</span>
+        <ul class="adm-tier__row adm-tier__row--1" data-reveal-group>
+          <li class="adm-card adm-card--l">
+            <div class="adm-portrait"><span class="adm-portrait__mono" aria-hidden="true">ST</span></div>
+            <div class="adm-card__body"><p class="adm-card__role">Principal</p><h3 class="adm-card__name">Mrs Sorabon Tohura</h3><p class="adm-card__band">Leads the school and coordinates the Vice Principals and the Teachers-in-Charge. At admission, the interview is with the Principal and the parents.</p></div>
+          </li>
+        </ul>
+      </li>
+      <li class="adm-tier adm-tier--3">
+        <span class="adm-tier__label label">Vice Principals and Teachers-in-Charge</span>
+        <ul class="adm-tier__row" data-reveal-group>
+          <li class="adm-branch">
+            <div class="adm-card adm-card--gold">
+              <div class="adm-portrait"><span class="adm-portrait__mono" aria-hidden="true">SH</span></div>
+              <div class="adm-card__body"><p class="adm-card__role">Vice Principal</p><h3 class="adm-card__name">Mrs Sharmin Hoque</h3><p class="adm-card__band">Playgroup to Class V: the Elementary and Junior sections and Classes IV and V, with four Teachers-in-Charge. The person above the Teacher-in-Charge for these classes.</p></div>
+            </div>
+            <ul class="adm-branch__kids" aria-label="Teachers-in-Charge under Mrs Sharmin Hoque">
+              <li class="adm-card adm-card--gold">
+                <div class="adm-portrait"><span class="adm-portrait__mono" aria-hidden="true">FR</span></div>
+                <div class="adm-card__body"><p class="adm-card__role">Teacher-in-Charge</p><h4 class="adm-card__name">Mrs Farhana Rehan</h4><p class="adm-card__band">Playgroup to KG I</p></div>
+              </li>
+              <li class="adm-card adm-card--gold">
+                <div class="adm-portrait"><span class="adm-portrait__mono" aria-hidden="true">FY</span></div>
+                <div class="adm-card__body"><p class="adm-card__role">Teacher-in-Charge</p><h4 class="adm-card__name">Mrs Farida Yasmin</h4><p class="adm-card__band">KG II to Class I</p></div>
+              </li>
+              <li class="adm-card adm-card--gold">
+                <div class="adm-portrait"><span class="adm-portrait__mono" aria-hidden="true">QH</span></div>
+                <div class="adm-card__body"><p class="adm-card__role">Teacher-in-Charge</p><h4 class="adm-card__name">Mrs Qamar Sultana Hamid</h4><p class="adm-card__band">Classes II to III</p></div>
+              </li>
+              <li class="adm-card adm-card--gold">
+                <div class="adm-portrait"><span class="adm-portrait__mono" aria-hidden="true">SA</span></div>
+                <div class="adm-card__body"><p class="adm-card__role">Teacher-in-Charge</p><h4 class="adm-card__name">Mrs Samina Abedin</h4><p class="adm-card__band">Classes IV to V</p></div>
+              </li>
+            </ul>
+          </li>
+          <li class="adm-branch">
+            <div class="adm-card adm-card--gold">
+              <div class="adm-portrait"><span class="adm-portrait__mono" aria-hidden="true">PK</span></div>
+              <div class="adm-card__body"><p class="adm-card__role">Vice Principal</p><h3 class="adm-card__name">Mr Palash Kumar Kundu</h3><p class="adm-card__band">Classes VI to XII: Classes VI and VII and the Senior section, through O Level, AS and A Level, with two Teachers-in-Charge. The person above the Teacher-in-Charge for these classes.</p></div>
+            </div>
+            <ul class="adm-branch__kids" aria-label="Teachers-in-Charge under Mr Palash Kumar Kundu">
+              <li class="adm-card adm-card--gold">
+                <div class="adm-portrait"><span class="adm-portrait__mono" aria-hidden="true">RC</span></div>
+                <div class="adm-card__body"><p class="adm-card__role">Teacher-in-Charge</p><h4 class="adm-card__name">Mrs Roohi Shamima Choudhury</h4><p class="adm-card__band">Classes VI to VII</p></div>
+              </li>
+              <li class="adm-card adm-card--gold">
+                <div class="adm-portrait"><span class="adm-portrait__mono" aria-hidden="true">KR</span></div>
+                <div class="adm-card__body"><p class="adm-card__role">Teacher-in-Charge</p><h4 class="adm-card__name">Mrs Khurshida Rahman Rimi</h4><p class="adm-card__band">Classes VIII to XII</p></div>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ol>
+    <div class="abt-foot">
+      <p class="abt-foot__text">Which person looks after your child's class, and the line to call about it, is one tap away on the next page.</p>
+      <p class="abt-foot__action"><a class="link link--arrow" href="{{link:/about/leadership/}}">Find your child's class</a></p>
+      <p class="abt-foot__source caption">From the school's administration page, September 2026. The pairing of each Teacher-in-Charge with a Vice Principal follows the published class bands. Portraits appear only with each person's written consent. The four sections, and what each one teaches, are on <a class="link" href="{{link:/learning/}}">Learning at Playpen</a>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Messages from the Chairman and the Principal: no section is built (review fixes 2026-10-24). The earlier section was hidden with data-portal-only, but portal.js reveals every [data-portal-only] node whenever the page's pp:portal-api meta holds an address, and the built HTML carries the local one, so two placeholder sentences would have been public on a hosted copy. Nothing is written on their behalf. -->
+<!-- CONFIRM: the Chairman's message and the Principal's message, in their own words (A2). When the school sends them, add here a page-section--tint sheet "From the Chairman and the Principal" with two adm-message panels (docs/additions/administration.md, Message cards): the 02 chip treatment at 56 px, the one line of context from the prospectus (Mr A. Mannan Khan introduced A Level classes in 2013 and, with the Principal, saw the school into its own campus in July 2018; Mrs Sorabon Tohura led the move), then the message. Until then the pitch shows the page as the public sees it. -->
+
+<section class="page-section" id="teachers" aria-labelledby="adm-teachers">
+  <div class="band">
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">The teachers</span><span class="sheet-rule__purpose">The faculty, in one line</span></div>
+    <div class="abt-head abt-head--tight">
+      <h2 id="adm-teachers" class="section-title abt-head__title" data-reveal>The teachers in the classrooms.</h2>
+    </div>
+    <!-- CONFIRM: teachers' names, subjects and photographs, and each teacher's consent to appear (P05A). The sentence below is from the prospectus ("a Faculty of local and foreign qualified, experienced and caring Teachers"). When names arrive, an adm-row of adm-card panels goes here. -->
+    <div class="venue abt-venue" data-reveal>
+      <p class="label">The faculty</p>
+      <p class="venue__text">Playpen's faculty is made up of teachers qualified in Bangladesh and abroad. Teaching at Playpen? <a class="link" href="{{link:/about/careers/}}">Careers at Playpen</a> explains how to apply.</p>
+    </div>
+  </div>
+</section>
+
+<section class="page-section" aria-label="Next page">
+  <div class="band">
+    <nav class="pager" aria-label="About pages">
+      <a class="pager__link pager__link--prev" href="{{link:/about/history/}}"><span class="pager__label">Previous</span><span class="pager__title">Our history</span><span class="pager__sub">The school in three eras</span></a>
+      <!-- the finder (/about/leadership/) is back in the pager chain (Administration, then the finder, then Campus) and in the menu: nav.json N1 applied by the integrator, 2026-10-25. -->
+      <a class="pager__link pager__link--next" href="{{link:/about/leadership/}}"><span class="pager__label">Next</span><span class="pager__title">Who to ask about your child's class</span><span class="pager__sub">Pick the class: the Teacher-in-Charge, the Vice Principal and the line</span></a>
+    </nav>
+  </div>
+</section>
+
+{{cta text="Call the admissions line for your child's section first; the office confirms the day. Or book a visit."}}

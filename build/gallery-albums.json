@@ -1,0 +1,1020 @@
+{
+ "note": "Albums of the school gallery (https://playpen.edu.bd/photo-gallery/), in the order of the school site. Read by build/gallery_albums.py. A frame is listed only if no child can be recognised in it (screened 2026-10-22); 'make' records where a new frame came from. Added 2026-10-24 (pages redesign): 'cover' names the frame on the hub card and the album's hero plate (default: the first frame), 'cover_pos' its focus point, 'sort_year' a year for the hub order only. Added 2026-10-24 (review r1): 'hold_note' on an album explains why its screened frame is held back for a reason other than consent (Foundation Day: the cake's age count).",
+ "albums": [
+  {
+   "slug": "annual-sports-day-2026-playgroup-kg",
+   "name": "Annual Sports Day 2026: Playgroup to KG II",
+   "school_name": "Annual Sports Day 2026 (Playgroup - KG II)",
+   "type": "sports",
+   "years": [
+    "2026"
+   ],
+   "count": 54,
+   "note": "Sports Day on the school field for the youngest classes, Playgroup to KG II.",
+   "frames": []
+  },
+  {
+   "slug": "annual-sports-day-2026-class-1-12",
+   "name": "Annual Sports Day 2026: Class I to XII",
+   "school_name": "Annual Sports Day 2026 (Class I-XII)",
+   "type": "sports",
+   "years": [
+    "2026"
+   ],
+   "count": 51,
+   "note": "Displays, the march past and athletics on the school field for Classes I to XII.",
+   "frames": [
+    {
+     "src": "media/life-1",
+     "alt": "Students in red kneeling in a formation on the white-lined field, seen from above."
+    },
+    {
+     "src": "img/gal-sports-march",
+     "alt": "Rows of students in red tracksuits marching in formation across the field, palm trees and apartment blocks behind, with instructors in black at the front."
+    },
+    {
+     "src": "media/life-7",
+     "alt": "A wide field of students in red tracksuits standing in formation, palm trees and the school building behind, with a few adults watching from the edge."
+    },
+    {
+     "src": "img/gal-sports26-crouch",
+     "alt": "Students in red caps crouching close together in a long formation on the field, seen from above, with instructors in black beside them.",
+     "make": {
+      "file": "a01_005",
+      "url": "https://playpen.edu.bd/wp-content/uploads/2026/02/DSC00625-scaled.jpg",
+      "people": "from above",
+      "shows": "Students in red caps crouching close together in a long formation on the field, seen from above, with instructors in black beside them."
+     }
+    },
+    {
+     "src": "img/gal-sports26-wave",
+     "alt": "Rows of students in red caps bent forward in a wave-shaped formation on the white-lined field, seen from directly above.",
+     "make": {
+      "file": "a01_006",
+      "url": "https://playpen.edu.bd/wp-content/uploads/2026/02/DSC00663-scaled.jpg",
+      "people": "from above",
+      "shows": "Rows of students in red caps bent forward in a wave-shaped formation on the white-lined field, seen from directly above."
+     }
+    }
+   ],
+   "cover": "img/gal-sports26-crouch"
+  },
+  {
+   "slug": "cie-top-achievers-2025",
+   "name": "CIE Top Achievers 2025",
+   "school_name": "CIE TOP ACHIEVERS-2025",
+   "type": "ceremonies",
+   "years": [
+    "2025"
+   ],
+   "count": 1,
+   "note": "The school's album holds one image: a poster congratulating its top achievers in the Cambridge (CIE) examinations of 2025, with their photographs.",
+   "summary": "One poster congratulating the school's top achievers in the Cambridge (CIE) examinations of 2025; shown when the school agrees.",
+   "frames": []
+  },
+  {
+   "slug": "graduation-2025",
+   "name": "Graduation Ceremony 2025",
+   "school_name": "Graduation Ceremony 2025",
+   "type": "ceremonies",
+   "years": [
+    "2025"
+   ],
+   "count": 181,
+   "note": "The Graduation Ceremony of Ordinary and Advanced Level, held in the multipurpose hall.",
+   "frames": [
+    {
+     "src": "img/gal-grad-hall",
+     "alt": "Graduates in black caps, gowns and maroon sashes seen from behind and above, facing a red stage and the ceremony banner."
+    },
+    {
+     "src": "img/gal-grad25-arch",
+     "alt": "A decorated arch over the wooden doors of the hall, with paper mortarboards and stars, the word Graduation down one side, Ceremony down the other and 2025 at the top.",
+     "make": {
+      "file": "a03_000",
+      "url": "https://playpen.edu.bd/wp-content/uploads/2025/07/PK_02702_1-scaled.jpg",
+      "people": "none",
+      "shows": "A decorated arch over the wooden doors of the hall, with paper mortarboards and stars, the word Graduation down one side, Ceremony down the other and 2025 at the top."
+     }
+    },
+    {
+     "src": "img/gal-grad25-banner",
+     "alt": "The stage banner of the Graduation Ceremony of Ordinary and Advanced Level 2025, with balloons, mortarboards and a frieze of graduates in silhouette.",
+     "make": "re-cut 2026-10-24 from the school's original (a03_008, DSC06090) so the speaker at the lectern and the crest ribbon are out of the frame; replaces img/gal-grad25-stage (round-2 fixes, 2026-10-25)"
+    }
+   ],
+   "cover": "img/gal-grad25-arch",
+   "confirm": [
+    "staff consent: the frames show adults (staff and guests) at the ceremony; the speaker at the lectern is no longer shown (the banner re-cut replaces that frame). Confirm the school is content to show its staff at distance on the public site."
+   ]
+  },
+  {
+   "slug": "pohela-boishakh-1432",
+   "name": "Pohela Boishakh 1432",
+   "school_name": "POHELA BOISHAKH 1432",
+   "type": "culture",
+   "years": [
+    "2025"
+   ],
+   "count": 42,
+   "note": "The Bengali new year 1432 at school: an alpona on the courtyard floor, folk art and stalls of clay pots.",
+   "frames": [
+    {
+     "src": "media/life-0",
+     "alt": "The courtyard seen from above on Pohela Boishakh, with a painted alpona on the floor and a crowd in red, white and saffron.",
+     "pos": "50% 68%"
+    },
+    {
+     "src": "img/gal-boishakh-tiger",
+     "alt": "A painted paper tiger mask and a red elephant on a green and orange board, with a paper pinwheel above.",
+     "pos": "50% 35%"
+    },
+    {
+     "src": "media/news-2",
+     "alt": "Clay pots and traditional crafts on a Pohela Boishakh stall."
+    },
+    {
+     "src": "img/gal-boishakh-card",
+     "alt": "The school's Pohela Boishakh greeting: Shubho Noboborsho 1432 in Bangla lettering among kites, masks, a hand fan and pots of sweets, under the Playpen crest.",
+     "make": {
+      "file": "a04_000",
+      "url": "https://playpen.edu.bd/wp-content/uploads/2025/04/1.jpg",
+      "people": "none",
+      "shows": "The school's Pohela Boishakh greeting: Shubho Noboborsho 1432 in Bangla lettering among kites, masks, a hand fan and pots of sweets, under the Playpen crest."
+     }
+    }
+   ],
+   "cover": "media/life-0",
+   "cover_pos": "50% 68%"
+  },
+  {
+   "slug": "nasa-astronaut-visit",
+   "name": "NASA astronaut Joseph M. Acaba's visit",
+   "school_name": "NASA Astronaut Joseph M. Acaba's visit to PLAYPEN",
+   "type": "ceremonies",
+   "years": [
+    "2024"
+   ],
+   "count": 70,
+   "note": "NASA astronaut Joseph M. Acaba visited the school and spoke to students in the multipurpose hall.",
+   "frames": [
+    {
+     "src": "media/ascent-4",
+     "alt": "The multipurpose hall full of students seen from above, with a red carpet running to the stage."
+    },
+    {
+     "src": "img/news-soyuz-wide",
+     "alt": "A spacecraft with solar panels above the Earth on the big screen, the astronaut small at the lectern on the left; cut above the projected taskbar.",
+     "make": "re-cut 2026-10-24 from the school original above the taskbar on the screen (21:9); replaces img/gal-nasa-soyuz"
+    },
+    {
+     "src": "img/hero-students-2.jpg",
+     "alt": "A NASA astronaut in a blue flight suit speaking in front of a large screen that carries a welcome slide with his name."
+    },
+    {
+     "src": "img/gal-nasa-earth",
+     "alt": "The astronaut in silhouette at the Playpen lectern, seen from behind, facing a screen filled with the Earth at night.",
+     "make": {
+      "file": "a05_030",
+      "url": "https://playpen.edu.bd/wp-content/uploads/2024/12/DSC03324-scaled.jpg",
+      "people": "backs of heads",
+      "shows": "The astronaut in silhouette from behind at the Playpen lectern, the Earth at night on the screen; no students in the frame"
+     }
+    },
+    {
+     "src": "img/gal-nasa-station",
+     "alt": "The astronaut, small on the red stage, pointing to a screen that shows the inside of the International Space Station.",
+     "make": {
+      "file": "a05_025",
+      "url": "https://playpen.edu.bd/wp-content/uploads/2024/12/DSC03310-scaled.jpg",
+      "people": "distance",
+      "shows": "The astronaut small on the red stage beside a screen showing the inside of the space station; no students in the frame"
+     }
+    },
+    {
+     "src": "img/gal-nasa-portrait",
+     "alt": "A student-painted portrait of astronaut Joseph M. Acaba in a white spacesuit, with his autograph and the date 15/12/2024 at the right.",
+     "pos": "50% 32%",
+     "make": "media/life-6 cropped 2026-10-24 to 1200 x 1360 so the painter's signature (a legible name at the lower right) is out of the frame (round-2 fixes, 2026-10-25)"
+    }
+   ],
+   "cover": "media/ascent-4"
+  },
+  {
+   "slug": "cultural-programme-2024",
+   "name": "Annual Cultural Programme 2024",
+   "school_name": "Annual Cultural Programme 2024",
+   "type": "culture",
+   "years": [
+    "2024"
+   ],
+   "count": 58,
+   "note": "Dance and music on the stage of the multipurpose hall.",
+   "frames": [
+    {
+     "src": "img/gal-acp24-stage",
+     "alt": "The stage before the Annual Cultural Programme 2024: microphones, speakers and plants in front of a backdrop of autumn trees and the Playpen crest.",
+     "make": {
+      "file": "a06_000",
+      "url": "https://playpen.edu.bd/wp-content/uploads/2024/11/DSC00855-scaled.jpg",
+      "people": "none",
+      "shows": "The stage before the Annual Cultural Programme 2024: microphones, speakers and plants in front of a backdrop of autumn trees and the Playpen crest."
+     }
+    },
+    {
+     "src": "img/gal-acp24-welcome",
+     "alt": "A hand-painted board welcoming guests to the Annual Cultural Programme, beside stacked blocks that spell 2024, at the doors of the hall.",
+     "make": {
+      "file": "a06_001",
+      "url": "https://playpen.edu.bd/wp-content/uploads/2024/11/DSC00857-scaled.jpg",
+      "people": "none",
+      "shows": "A hand-painted board welcoming guests to the Annual Cultural Programme, beside stacked blocks that spell 2024, at the doors of the hall."
+     }
+    }
+   ],
+   "cover": "img/gal-acp24-welcome",
+   "cover_pos": "50% 45%"
+  },
+  {
+   "slug": "science-technology-fair-2024",
+   "name": "Science and Technology Fair 2024",
+   "school_name": "PLAYPEN SCIENCE & TECHNOLOGY FAIR 2024",
+   "type": "fairs",
+   "years": [
+    "2024"
+   ],
+   "count": 44,
+   "note": "Students' science and technology projects on display.",
+   "frames": []
+  },
+  {
+   "slug": "pift-2024",
+   "name": "Playpen Inter-School Football Tournament (PIFT) 2024",
+   "school_name": "PLAYPEN INTERSCHOOL FOOTBALL TOURNAMENT (PIFT) 2024",
+   "type": "sports",
+   "years": [
+    "2024"
+   ],
+   "count": 37,
+   "note": "Football on the school ground, with teams from other schools. The one frame shown is the tournament banner on the building.",
+   "frames": [
+    {
+     "src": "img/gal-pift24-banner",
+     "alt": "The school building above the football ground, with a tall banner for the inter-school football tournament hanging from a balcony.",
+     "make": {
+      "file": "a08_011",
+      "url": "https://playpen.edu.bd/wp-content/uploads/2024/11/DSC00082-scaled.jpg",
+      "people": "none",
+      "shows": "The school building and the tournament banner; a crop that leaves out the players and spectators below",
+      "crop": [
+       0,
+       0,
+       1,
+       0.47
+      ]
+     }
+    }
+   ],
+   "cover": "img/gal-pift24-banner",
+   "cover_pos": "62% 50%"
+  },
+  {
+   "slug": "class-party-2024",
+   "name": "Class Party 2024",
+   "school_name": "CLASS PARTY 2024",
+   "type": "activities",
+   "years": [
+    "2024"
+   ],
+   "count": 39,
+   "note": "Class parties in decorated classrooms.",
+   "frames": []
+  },
+  {
+   "slug": "graduation-2024",
+   "name": "Graduation Ceremony 2024",
+   "school_name": "Graduation Ceremony 2024",
+   "type": "ceremonies",
+   "years": [
+    "2024"
+   ],
+   "count": 216,
+   "note": "The Graduation Ceremony 2024 in the multipurpose hall.",
+   "frames": [
+    {
+     "src": "img/gal-grad24-arch",
+     "alt": "A painted arch reading Graduation Ceremony over the wooden doors of the hall, with plants on either side.",
+     "make": {
+      "file": "a10_000",
+      "url": "https://playpen.edu.bd/wp-content/uploads/2024/10/IMG_4914-scaled.jpg",
+      "people": "none",
+      "shows": "A painted arch reading Graduation Ceremony over the wooden doors of the hall, with plants on either side."
+     }
+    },
+    {
+     "src": "img/gal-grad24-stage",
+     "alt": "The stage set for the graduation: a backdrop reading Congratulations Graduates 2024, balloons, lights and the Playpen lectern.",
+     "make": {
+      "file": "a10_001",
+      "url": "https://playpen.edu.bd/wp-content/uploads/2024/10/IMG_4922-scaled.jpg",
+      "people": "none",
+      "shows": "The stage set for the graduation: a backdrop reading Congratulations Graduates 2024, balloons, lights and the Playpen lectern."
+     }
+    },
+    {
+     "src": "img/gal-grad24-speaker",
+     "alt": "A speaker at the Playpen lectern in front of the Congratulations Graduates 2024 backdrop and its balloons.",
+     "make": {
+      "file": "a10_032",
+      "url": "https://playpen.edu.bd/wp-content/uploads/2024/10/IMG_5031-scaled.jpg",
+      "people": "distance",
+      "shows": "An adult speaker at the Playpen lectern at a distance, the Congratulations Graduates 2024 backdrop behind; no students in the frame"
+     }
+    },
+    {
+     "src": "img/gal-grad24-lectern",
+     "alt": "A speaker at the lectern on the left of the wide red stage, with lights and speakers along its edge.",
+     "make": {
+      "file": "a10_037",
+      "url": "https://playpen.edu.bd/wp-content/uploads/2024/10/IMG_5080-scaled.jpg",
+      "people": "distance",
+      "shows": "An adult speaker at the lectern on the wide red stage, seen at a distance; no students in the frame"
+     }
+    }
+   ],
+   "cover": "img/gal-grad24-arch",
+   "confirm": [
+    "staff consent: one frame shows a speaker at the lectern at a distance. Confirm the school is content to show it."
+   ]
+  },
+  {
+   "slug": "cultural-programme-2023",
+   "name": "Annual Cultural Programme 2023",
+   "school_name": "Annual Cultural Programme 2023",
+   "type": "culture",
+   "years": [
+    "2023"
+   ],
+   "count": 99,
+   "note": "The Annual Cultural Programme of the Elementary and Junior Section.",
+   "frames": [
+    {
+     "src": "img/gal-acp23-welcome",
+     "alt": "A painted board welcoming parents to the Annual Cultural Programme of the Elementary and Junior Section 2023, with butterflies, flowers and cartoon children.",
+     "make": {
+      "file": "a11_000",
+      "url": "https://playpen.edu.bd/wp-content/uploads/2023/12/DSC05101-1-scaled.jpg",
+      "people": "none",
+      "shows": "A painted board welcoming parents to the Annual Cultural Programme of the Elementary and Junior Section 2023, with butterflies, flowers and cartoon children."
+     }
+    },
+    {
+     "src": "img/gal-acp23-stage",
+     "alt": "The stage set for the programme: a large painted butterfly, paper grass and painted trees under the 2023 banner.",
+     "make": {
+      "file": "a11_001",
+      "url": "https://playpen.edu.bd/wp-content/uploads/2023/12/DSC05119-1-scaled.jpg",
+      "people": "none",
+      "shows": "The stage set for the programme: a large painted butterfly, paper grass and painted trees under the 2023 banner."
+     }
+    }
+   ],
+   "cover": "img/gal-acp23-stage"
+  },
+  {
+   "slug": "graduation-2023",
+   "name": "Graduation Ceremony 2023",
+   "school_name": "Graduation Ceremony 2023",
+   "type": "ceremonies",
+   "years": [
+    "2023"
+   ],
+   "count": 145,
+   "note": "The Graduation Ceremony of Ordinary and Advanced Level 2023 in the multipurpose hall.",
+   "frames": [
+    {
+     "src": "img/gal-grad23-arch",
+     "alt": "A decorated arch reading 18th Graduation Ceremony 2023 over the wooden doors of the hall.",
+     "make": {
+      "file": "a12_000",
+      "url": "https://playpen.edu.bd/wp-content/uploads/2023/08/1-2-scaled.jpg",
+      "people": "none",
+      "shows": "A decorated arch reading 18th Graduation Ceremony 2023 over the wooden doors of the hall."
+     }
+    },
+    {
+     "src": "img/gal-grad23-stage",
+     "alt": "The stage before the ceremony: a lit blue backdrop reading Graduation Ceremony of Ordinary and Advanced Level 2023, and a table for the guests.",
+     "make": {
+      "file": "a12_001",
+      "url": "https://playpen.edu.bd/wp-content/uploads/2023/08/IMG_5355-scaled.jpg",
+      "people": "none",
+      "shows": "The stage before the ceremony: a lit blue backdrop reading Graduation Ceremony of Ordinary and Advanced Level 2023, and a table for the guests."
+     }
+    },
+    {
+     "src": "img/gal-grad23-screens",
+     "alt": "Families and graduates seen from behind in the darkened hall, facing the lit stage and its screens.",
+     "make": {
+      "file": "a12_133",
+      "url": "https://playpen.edu.bd/wp-content/uploads/2023/08/DSC01920-scaled.jpg",
+      "people": "backs of heads",
+      "shows": "Families and graduates seen from behind in the darkened hall, facing the lit stage and its screens."
+     }
+    }
+   ],
+   "cover": "img/gal-grad23-stage",
+   "hero_class": "egn-hero-bottom"
+  },
+  {
+   "slug": "colour-week",
+   "name": "Colour Week",
+   "school_name": "Color Week",
+   "type": "activities",
+   "years": [],
+   "count": 10,
+   "note": "A wall display for each colour day, with toys and objects of that colour on the table below.",
+   "frames": [
+    {
+     "src": "img/gal-colour-yellow",
+     "alt": "The Colour Programme wall for Yellow Day: a paper sun, bees and flowers, with yellow balloons and toys on the table.",
+     "make": {
+      "file": "a13_000",
+      "url": "https://playpen.edu.bd/wp-content/uploads/2023/06/YELLOW-DAY-1-scaled.jpg",
+      "people": "none",
+      "shows": "The Colour Programme wall for Yellow Day: a paper sun, bees and flowers, with yellow balloons and toys on the table."
+     }
+    },
+    {
+     "src": "img/gal-colour-blue",
+     "alt": "The Colour Programme wall for Blue Day: a paper whale, blue balloons and paper flowers, with blue toys on the table.",
+     "make": {
+      "file": "a13_001",
+      "url": "https://playpen.edu.bd/wp-content/uploads/2023/06/BLUE-DAY-1-scaled.jpg",
+      "people": "none",
+      "shows": "The Colour Programme wall for Blue Day: a paper whale, blue balloons and paper flowers, with blue toys on the table."
+     }
+    },
+    {
+     "src": "img/gal-colour-green",
+     "alt": "The Colour Programme wall for Green Day: a paper turtle, green balloons and a paper tree, with green objects on the table.",
+     "make": {
+      "file": "a13_003",
+      "url": "https://playpen.edu.bd/wp-content/uploads/2023/06/Green-Day-1-scaled.jpg",
+      "people": "none",
+      "shows": "The Colour Programme wall for Green Day: a paper turtle, green balloons and a paper tree, with green objects on the table."
+     }
+    },
+    {
+     "src": "img/gal-colour-orange",
+     "alt": "The Colour Programme wall for Orange Day: a paper orange, carrots and a paper tree, with orange toys on the table.",
+     "make": {
+      "file": "a13_005",
+      "url": "https://playpen.edu.bd/wp-content/uploads/2023/06/ORANGE-DAY-1-scaled.jpg",
+      "people": "none",
+      "shows": "The Colour Programme wall for Orange Day: a paper orange, carrots and a paper tree, with orange toys on the table."
+     }
+    },
+    {
+     "src": "img/gal-colour-red",
+     "alt": "The Colour Programme wall for Red Day: a paper strawberry, hearts and red balloons, with red toys on the table.",
+     "make": {
+      "file": "a13_007",
+      "url": "https://playpen.edu.bd/wp-content/uploads/2023/06/RED-DAY-1-scaled.jpg",
+      "people": "none",
+      "shows": "The Colour Programme wall for Red Day: a paper strawberry, hearts and red balloons, with red toys on the table."
+     }
+    }
+   ],
+   "cover": "img/gal-colour-yellow"
+  },
+  {
+   "slug": "class-party-2022-2023",
+   "name": "Class Party 2022 to 2023",
+   "school_name": "Class Party (2022-2023)",
+   "type": "activities",
+   "years": [
+    "2022",
+    "2023"
+   ],
+   "count": 14,
+   "note": "Class parties in decorated classrooms.",
+   "frames": [
+    {
+     "src": "img/gal-party23-board",
+     "alt": "A classroom whiteboard decorated with paper bunting that spells Class Party, smiling paper faces and balloons.",
+     "make": {
+      "file": "a14_000",
+      "url": "https://playpen.edu.bd/wp-content/uploads/2023/08/DSC01104-scaled.jpg",
+      "people": "none",
+      "shows": "A classroom whiteboard decorated with paper bunting that spells Class Party, smiling paper faces and balloons."
+     }
+    },
+    {
+     "src": "img/gal-party23-poster",
+     "alt": "A whiteboard with a Class Party poster, paper cartoon animals and balloons, with more balloons hanging from the ceiling.",
+     "make": {
+      "file": "a14_003",
+      "url": "https://playpen.edu.bd/wp-content/uploads/2023/08/DSC01098-scaled.jpg",
+      "people": "none",
+      "shows": "A whiteboard with a Class Party poster, paper cartoon animals and balloons, with more balloons hanging from the ceiling."
+     }
+    }
+   ],
+   "cover": "img/gal-party23-board"
+  },
+  {
+   "slug": "ekushe-february",
+   "name": "Ekushe February",
+   "school_name": "Ekushe February",
+   "type": "culture",
+   "years": [],
+   "count": 10,
+   "note": "21 February, Language Martyrs' Day, marked at school with flowers at a Shaheed Minar.",
+   "frames": [
+    {
+     "src": "img/gal-ekushe-minar",
+     "alt": "A Shaheed Minar framed with Bangla letters on the school field, with flowers laid in front of it and painted panels on either side.",
+     "make": {
+      "file": "a15_007",
+      "url": "https://playpen.edu.bd/wp-content/uploads/2023/08/DSC07747-scaled.jpg",
+      "people": "none",
+      "shows": "A Shaheed Minar framed with Bangla letters on the school field, with flowers laid in front of it and painted panels on either side."
+     }
+    }
+   ],
+   "cover": "img/gal-ekushe-minar"
+  },
+  {
+   "slug": "book-fair",
+   "name": "Book Fair",
+   "school_name": "Book Fair",
+   "type": "fairs",
+   "years": [],
+   "count": 10,
+   "note": "A fair of books at school.",
+   "frames": [
+    {
+     "src": "img/gal-bookfair-sign",
+     "alt": "A hand-painted Book Fair sign with open books, a caterpillar and a painted girl holding a flower.",
+     "make": {
+      "file": "a16_000",
+      "url": "https://playpen.edu.bd/wp-content/uploads/2023/08/1-1-scaled.jpg",
+      "people": "none",
+      "shows": "A hand-painted Book Fair sign with open books, a caterpillar and a painted girl holding a flower."
+     }
+    }
+   ],
+   "cover": "img/gal-bookfair-sign",
+   "cover_pos": "50% 35%"
+  },
+  {
+   "slug": "independence-day-art-competition",
+   "name": "Independence Day Art Competition",
+   "school_name": "Independence Day Art Competition",
+   "type": "fairs",
+   "years": [],
+   "count": 11,
+   "note": "An art competition for Independence Day, 26 March.",
+   "frames": [
+    {
+     "src": "img/gal-artcomp-panels",
+     "alt": "Painted panels for Independence Day, 26 March, beside a board reading Independence Day Art Competition 2023 with posters.",
+     "make": {
+      "file": "a17_002",
+      "url": "https://playpen.edu.bd/wp-content/uploads/2023/08/DSC00143-1ST-scaled.jpg",
+      "people": "none",
+      "shows": "Painted panels for Independence Day, 26 March, beside a board reading Independence Day Art Competition 2023 with posters."
+     }
+    }
+   ],
+   "cover": "img/gal-artcomp-panels"
+  },
+  {
+   "slug": "education-fair",
+   "name": "Education Fair",
+   "school_name": "Education Fair",
+   "type": "fairs",
+   "years": [],
+   "count": 12,
+   "note": "Students' projects and models on display at the Education Fair.",
+   "frames": [
+    {
+     "src": "img/gal-edufair-mughal",
+     "alt": "A student-made model of the Taj Mahal and a Mughal gateway on a table, labelled The Mughal Empire.",
+     "make": {
+      "file": "a18_002",
+      "url": "https://playpen.edu.bd/wp-content/uploads/2022/08/335398534_738801807744753_156018392472305034_n.jpg",
+      "people": "none",
+      "shows": "A student-made model of the Taj Mahal and a Mughal gateway labelled The Mughal Empire; a crop that leaves out the students behind it",
+      "crop": [
+       0,
+       0.4,
+       0.95,
+       1
+      ]
+     }
+    }
+   ],
+   "cover": "img/gal-edufair-mughal"
+  },
+  {
+   "slug": "mathematical-olympiad",
+   "name": "Mathematical Olympiad",
+   "school_name": "Mathematical Olympiad",
+   "type": "fairs",
+   "years": [],
+   "count": 7,
+   "note": "A mathematics competition at school.",
+   "frames": [
+    {
+     "src": "img/gal-matholympiad-board",
+     "alt": "A Math Olympiad 2023 board decorated with numbers, symbols and graphs, standing in the hall.",
+     "make": {
+      "file": "a19_004",
+      "url": "https://playpen.edu.bd/wp-content/uploads/2023/08/1.jpg",
+      "people": "none",
+      "shows": "A Math Olympiad 2023 board decorated with numbers, symbols and graphs, standing in the hall."
+     }
+    }
+   ],
+   "cover": "img/gal-matholympiad-board"
+  },
+  {
+   "slug": "bangla-olympiad",
+   "name": "Bangla Olympiad",
+   "school_name": "Bangla Olympiad",
+   "type": "fairs",
+   "years": [
+    "2023"
+   ],
+   "count": 5,
+   "note": "Students at an inter-school Bangla Olympiad.",
+   "frames": [
+    {
+     "src": "img/gal-banglaolympiad-banner",
+     "alt": "A banner for the 12th inter-school Bangla Olympiad, in Bangla and English.",
+     "make": {
+      "file": "a20_002",
+      "url": "https://playpen.edu.bd/wp-content/uploads/2023/08/337255080_746796643783008_6677141635323016017_n.jpg",
+      "people": "none",
+      "shows": "The banner of the 12th inter-school Bangla Olympiad; a crop that leaves out the students below it",
+      "crop": [
+       0.06,
+       0,
+       0.74,
+       0.56
+      ]
+     }
+    }
+   ],
+   "cover": "img/gal-banglaolympiad-banner",
+   "confirm": [
+    "the album's one screened frame is the banner of the 12th inter-school Bangla Olympiad, printed with the date 18 March 2023, so the album is dated 2023 from the banner; the school's achievements list names the 13th Bangla Olympiad, 24 February 2024 (/news/, not linked here). Confirm which Olympiad, or Olympiads, the album records."
+   ]
+  },
+  {
+   "slug": "eca-cultural-competition",
+   "name": "ECA Cultural Competition",
+   "school_name": "ECA Cultural Competition",
+   "type": "culture",
+   "years": [],
+   "count": 0,
+   "note": "The school's current website lists this album but shows no photographs in it.",
+   "frames": []
+  },
+  {
+   "slug": "inter-class-football",
+   "name": "Inter-Class Football Tournament",
+   "school_name": "Inter Class Football Tournament",
+   "type": "sports",
+   "years": [],
+   "count": 10,
+   "note": "Football between classes on the school ground.",
+   "frames": [
+    {
+     "src": "img/gal-interclass-ground",
+     "alt": "A football match on the grass in front of the school building, the players small at the foot of its brick and concrete storeys.",
+     "make": {
+      "file": "a22_003",
+      "url": "https://playpen.edu.bd/wp-content/uploads/2023/08/334264073_158374720360699_2217192884321193220_n.jpg",
+      "people": "distance",
+      "shows": "A football match on the grass in front of the school building, the players small at the foot of its brick and concrete storeys."
+     }
+    }
+   ],
+   "cover": "img/gal-interclass-ground"
+  },
+  {
+   "slug": "inter-school-football",
+   "name": "Inter-School Football Tournament",
+   "school_name": "Inter School Football Tournament",
+   "type": "sports",
+   "years": [],
+   "count": 8,
+   "note": "Football against teams from other schools.",
+   "frames": []
+  },
+  {
+   "slug": "extra-curricular-activities",
+   "name": "Extra-Curricular Activities",
+   "school_name": "Extra Curricular Activities",
+   "type": "activities",
+   "years": [],
+   "count": 10,
+   "note": "Karate, table tennis, basketball and games on the field.",
+   "frames": []
+  },
+  {
+   "slug": "foundation-day",
+   "name": "Foundation Day celebration",
+   "school_name": "46 years Celebrations",
+   "type": "ceremonies",
+   "years": [],
+   "count": 7,
+   "note": "The school's Foundation Day, marked with a cake and a banner in the school grounds.",
+   "frames": [],
+   "hide_school_name": true,
+   "hold_note": "The one photograph screened for this album, the Foundation Day cake, carries icing that names the school's age; it is added here when the school confirms its founding year (docs/CONTENT-TO-CONFIRM.md, A1)."
+  },
+  {
+   "slug": "study-tour",
+   "name": "Study Tour",
+   "school_name": "Study Tour",
+   "type": "activities",
+   "years": [],
+   "count": 23,
+   "note": "Class trips away from school.",
+   "frames": []
+  },
+  {
+   "slug": "base-camp",
+   "name": "Base Camp",
+   "school_name": "Base Camp",
+   "type": "activities",
+   "years": [],
+   "count": 13,
+   "note": "An outdoor camp with rope courses, obstacle crawls and a pond crossing.",
+   "frames": []
+  },
+  {
+   "slug": "visit-to-an-old-home",
+   "name": "Visit to an Old Home",
+   "school_name": "Visit to Old Home",
+   "type": "activities",
+   "years": [],
+   "count": 13,
+   "note": "Students visiting the residents of an old people's home.",
+   "frames": []
+  },
+  {
+   "slug": "teacher-training",
+   "name": "Teacher Training and Activities",
+   "school_name": "Teacher Training and Activities",
+   "type": "teachers",
+   "years": [],
+   "count": 17,
+   "note": "Training sessions and workshops for teachers.",
+   "frames": [
+    {
+     "src": "img/gal-training-hall",
+     "alt": "A trainer speaking to rows of teachers in the hall, seen from the side.",
+     "make": {
+      "file": "a29_003",
+      "url": "https://playpen.edu.bd/wp-content/uploads/2023/08/IMG_20230108_095050-scaled.jpg",
+      "people": "distance",
+      "shows": "Teachers (adults) at a training session in the hall, seen from the side; no students in the frame"
+     }
+    },
+    {
+     "src": "img/gal-training-session",
+     "alt": "Teachers seen from behind, watching a presenter beside a screen and a wall of children's paintings.",
+     "make": {
+      "file": "a29_007",
+      "url": "https://playpen.edu.bd/wp-content/uploads/2023/08/DSC01400-scaled.jpg",
+      "people": "backs of heads",
+      "shows": "Teachers (adults) seen from behind at a training session; no students in the frame"
+     }
+    },
+    {
+     "src": "img/gal-training-lectern",
+     "alt": "Teachers seen from behind at a session on classroom strategies, the speaker at a lectern beside the screen.",
+     "make": {
+      "file": "a29_008",
+      "url": "https://playpen.edu.bd/wp-content/uploads/2023/08/DSC01436-scaled.jpg",
+      "people": "backs of heads",
+      "shows": "Teachers (adults) seen from behind, a speaker at a lectern; no students in the frame"
+     }
+    }
+   ],
+   "cover": "img/gal-training-hall",
+   "confirm": [
+    "staff consent: the three frames show the school's teachers at training sessions (the hall frame from the side, where faces can be recognised; two from behind). Confirm the teachers agree to appear on the public site, or say which frames to hold back."
+   ]
+  },
+  {
+   "slug": "workshop-for-students",
+   "name": "Workshop for Students",
+   "school_name": "Workshop for Students",
+   "type": "activities",
+   "years": [],
+   "count": 7,
+   "note": "Talks and workshops for senior students in the hall.",
+   "frames": []
+  },
+  {
+   "slug": "art-and-craft",
+   "name": "Art and Craft",
+   "school_name": "Art and Craft",
+   "type": "activities",
+   "years": [],
+   "count": 18,
+   "note": "Work from the Art and Craft programme: paper craft, clay models of houses and forts, and miniature gardens.",
+   "frames": [
+    {
+     "src": "img/gal-art-clay",
+     "alt": "Clay models of brick houses and courtyards laid out on a black-and-white chequerboard floor, seen from above."
+    },
+    {
+     "src": "img/gal-art-fort",
+     "alt": "A pink clay model of a fort around a courtyard with a blue pond, seen close up."
+    },
+    {
+     "src": "img/gal-art-garden",
+     "alt": "Miniature garden and landscape models in trays, set out on stepped brick seating beside a brick wall and a small tree.",
+     "pos": "50% 62%"
+    },
+    {
+     "src": "img/gal-art-paper",
+     "alt": "Paper craft on a table: mushrooms, flowers, birdcages and butterflies made from coloured paper.",
+     "make": {
+      "file": "a31_000",
+      "url": "https://playpen.edu.bd/wp-content/uploads/2023/08/312587191_578723690722415_8393273878435488401_n-1.jpg",
+      "people": "none",
+      "shows": "Paper craft on a table: mushrooms, flowers, birdcages and butterflies made from coloured paper."
+     }
+    },
+    {
+     "src": "img/gal-art-straws",
+     "alt": "Coloured paper straws woven into a mat, paper sunflowers and pen holders with painted faces.",
+     "make": {
+      "file": "a31_005",
+      "url": "https://playpen.edu.bd/wp-content/uploads/2023/08/IMG_20220917_102807-scaled.jpg",
+      "people": "none",
+      "shows": "Coloured paper straws woven into a mat, paper sunflowers and pen holders with painted faces."
+     }
+    },
+    {
+     "src": "img/gal-art-town",
+     "alt": "A model town with a chemical factory, an industrial area, houses, roads and toy cars.",
+     "make": {
+      "file": "a31_009",
+      "url": "https://playpen.edu.bd/wp-content/uploads/2023/08/IMG_20221105_094134-scaled.jpg",
+      "people": "none",
+      "shows": "A model town with a chemical factory, an industrial area, houses, roads and toy cars."
+     }
+    },
+    {
+     "src": "img/gal-art-wall",
+     "alt": "A model of a red brick fort wall with battlements, set in a tray of grass and plants.",
+     "make": {
+      "file": "a31_012",
+      "url": "https://playpen.edu.bd/wp-content/uploads/2023/08/IMG_20221105_095952-scaled.jpg",
+      "people": "none",
+      "shows": "A model of a red brick fort wall with battlements, set in a tray of grass and plants."
+     }
+    },
+    {
+     "src": "img/gal-art-mummy",
+     "alt": "A painted model of an Egyptian mummy case, its lid beside the wrapped figure, with information cards.",
+     "make": {
+      "file": "a31_014",
+      "url": "https://playpen.edu.bd/wp-content/uploads/2023/08/DSC09385-scaled.jpg",
+      "people": "none",
+      "shows": "A painted model of an Egyptian mummy case, its lid beside the wrapped figure, with information cards."
+     }
+    }
+   ],
+   "cover": "img/gal-art-clay"
+  },
+  {
+   "slug": "graduation-2022",
+   "name": "Graduation Ceremony 2022",
+   "school_name": "Graduaton Ceremony 2022",
+   "type": "ceremonies",
+   "years": [
+    "2022"
+   ],
+   "count": 195,
+   "note": "The 17th Graduation Ceremony of Ordinary and Advanced Level, for 2021 and 2022.",
+   "frames": [
+    {
+     "src": "img/gal-grad22-stage",
+     "alt": "The stage screen reading 17th Graduation Ceremony of Ordinary and Advanced Level 2021 and 2022, with balloons along the stage.",
+     "make": {
+      "file": "a32_000",
+      "url": "https://playpen.edu.bd/wp-content/uploads/2022/09/IMG_5704-scaled.jpg",
+      "people": "none",
+      "shows": "The stage screen reading 17th Graduation Ceremony of Ordinary and Advanced Level 2021 and 2022, with balloons along the stage."
+     }
+    },
+    {
+     "src": "img/gal-grad22-welcome",
+     "alt": "A hand-made board welcoming guests to the O and A Level Graduation Ceremony, with paper mortarboards and scrolls.",
+     "make": {
+      "file": "a32_001",
+      "url": "https://playpen.edu.bd/wp-content/uploads/2022/09/IMG_5712-scaled.jpg",
+      "people": "none",
+      "shows": "A hand-made board welcoming guests to the O and A Level Graduation Ceremony, with paper mortarboards and scrolls."
+     }
+    },
+    {
+     "src": "img/gal-grad22-trophies",
+     "alt": "Trophies and cups lined up on a red cloth in front of the guests' table.",
+     "make": {
+      "file": "a32_175",
+      "url": "https://playpen.edu.bd/wp-content/uploads/2022/09/184-scaled.jpg",
+      "people": "none",
+      "shows": "Trophies and cups lined up on a red cloth in front of the guests' table."
+     }
+    }
+   ],
+   "cover": "img/gal-grad22-welcome",
+   "cover_pos": "50% 40%"
+  },
+  {
+   "slug": "sports",
+   "name": "Sports",
+   "school_name": "SPORTS",
+   "type": "sports",
+   "years": [],
+   "count": 12,
+   "note": "Races, football and drills on the school field.",
+   "frames": []
+  },
+  {
+   "slug": "cultural-programme",
+   "name": "Cultural Programme",
+   "school_name": "Cultural Program",
+   "type": "culture",
+   "years": [],
+   "count": 15,
+   "note": "Songs and dances by the Elementary and Junior Section on the hall stage.",
+   "frames": []
+  },
+  {
+   "slug": "science-fair",
+   "name": "Science Fair",
+   "school_name": "Science Fair",
+   "type": "fairs",
+   "years": [],
+   "count": 12,
+   "note": "On the school's current website this album shows the same 12 photographs as the Education Fair album.",
+   "frames": []
+  },
+  {
+   "slug": "student-life",
+   "name": "Student Life",
+   "school_name": "Students Life",
+   "type": "activities",
+   "years": [],
+   "count": 18,
+   "note": "Everyday school life: lessons, the library, the garden, the laboratories and the morning assembly.",
+   "frames": []
+  },
+  {
+   "slug": "pitha-utshob-2024",
+   "name": "Pitha Utshob 2024",
+   "school_name": "Ptha Utshob 2024",
+   "type": "culture",
+   "years": [
+    "2024"
+   ],
+   "count": 0,
+   "note": "The school's current website lists this album but shows no photographs in it.",
+   "frames": []
+  }
+ ],
+ "held_back": [
+  {
+   "src": "img/elementary-hero",
+   "album": "annual-sports-day-2026-playgroup-kg",
+   "why": "front rows of young children: faces 12 to 20 px across at 1440 px, a parent could recognise them"
+  },
+  {
+   "src": "media/news-1",
+   "album": "annual-sports-day-2026-class-1-12",
+   "why": "the runners' faces can be made out at full size (also listed in docs/CONTENT-TO-CONFIRM.md)"
+  },
+  {
+   "src": "img/gal-46years-cake",
+   "album": "foundation-day",
+   "why": "the icing reads 'A glorious journey of 46 years': a printed age count, which the site does not repeat until the founding year is confirmed (A1); legible on the hub card and the album hero (review r1, 2026-10-24)"
+  },
+  {
+   "src": "img/gal-grad23-hall",
+   "album": "graduation-2023",
+   "why": "corrected 2026-10-24 (community-contact review r1, docs/image-catalogue.md): at plate size the front rows, graduates in profile, the speaker and two named portraits on the screens are recognisable; needs consent"
+  }
+ ]
+}

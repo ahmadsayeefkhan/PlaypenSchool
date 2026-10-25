@@ -2,22 +2,87 @@
 title: Admissions FAQ
 template: T06
 schema: faq
+body_class: adm adm-faq
+h1: Questions, <em>answered</em>.
 standfirst: Answers to the questions families ask most, grouped by topic. Where the school has not published an answer, this page says so and gives the number to call.
 ---
+<!-- Redesign 2026-10-24 (plans/admissions.md, section 8). Four answers in one screen, a search box, twenty questions in seven groups, and the
+     lines to call as the close (no cta token: the night band carries the two actions). The chequerboard detail (DSC01262, bottom-left corner)
+     reads as order, apt for a reference page, and is not the home's Ascent frame. Critique 3.6: the "not published" answers are folded into one
+     question, so FAQPage data is not padded with non-answers. -->
+<!-- CONFIRM: the chequerboard photograph (DSC01262, March 2024): public use and the year. -->
+<section class="page-section adm-open" aria-labelledby="faq-open">
+  <div class="band">
+    <h2 id="faq-open" class="visually-hidden">The courtyard floor</h2>
+    <p class="adm-hero-actions" data-reveal><a class="btn btn--primary" href="#faq-search"><span class="btn__label">Search the questions</span></a><a class="btn btn--text" href="#call">Still have a question?</a></p>
+    <figure class="plate adm-plate adm-plate--21x9 adm-plate--4x3" data-reveal>
+      <div class="plate__frame">
+        <span class="adm-plate__wide">{{img src="img/faq-chequer" alt="A corner of the courtyard from above: black-and-white chequerboard squares, red floor tiles and the edge of a brick wing." sizes="100vw" widths="960,1440"}}</span>
+        <span class="adm-plate__tall">{{img src="img/faq-chequer" alt="A corner of the courtyard from above: black-and-white chequerboard squares, red floor tiles and the edge of a brick wing." sizes="100vw" widths="960"}}</span>
+      </div>
+    </figure>
+  </div>
+</section>
+
+<!-- 01. What everyone needs should not be hidden in an accordion: four answers cover most calls. -->
+<section class="page-section" aria-labelledby="faq-most">
+  <div class="band">
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Most asked</span><span class="sheet-rule__purpose">Four answers in one screen</span></div>
+    <div class="adm-head adm-head--tight">
+      <h2 id="faq-most" class="section-title" data-reveal>Start with these four.</h2>
+    </div>
+    <ul class="adm-panels adm-panels--4" data-reveal-group>
+      <li><div class="adm-panel adm-panel--gold"><div class="adm-panel__head"><h3 class="adm-panel__title">Where do I get the form?</h3></div><div class="adm-panel__body"><p>From the Front Office, or on this site: fill it in online and print it, or download the school's PDF.</p></div><p class="adm-panel__go"><a class="link link--arrow" href="{{link:/admissions/how-to-apply/#forms}}">Get the form</a></p></div></li>
+      <li><div class="adm-panel adm-panel--gold"><div class="adm-panel__head"><h3 class="adm-panel__title">Is there an entrance test?</h3></div><div class="adm-panel__body"><p>An assessment for Playgroup and Nursery; a written test from KG I to Class IX; the mock examinations and the O Level result for Class XI.</p></div><p class="adm-panel__go"><a class="link link--arrow" href="#q-test">Full answer</a></p></div></li>
+      <li><div class="adm-panel adm-panel--gold"><div class="adm-panel__head"><h3 class="adm-panel__title">What are the fees?</h3></div><div class="adm-panel__body"><p>The school explains the admission fee and the monthly tuition after selection. Amounts come from the admissions office.</p></div><p class="adm-panel__go"><a class="link link--arrow" href="{{link:/admissions/fees/}}">Fees and payment</a></p></div></li>
+      <li><div class="adm-panel adm-panel--gold"><div class="adm-panel__head"><h3 class="adm-panel__title">Can I visit before I apply?</h3></div><div class="adm-panel__body"><p>Call first; the office confirms the day. Ask whether you can see the building and the section your child would join.</p></div><p class="adm-panel__go"><a class="link link--arrow" href="{{link:/admissions/visit/}}">Book a visit</a></p></div></li>
+    </ul>
+  </div>
+</section>
+
+<!-- 02. A search for twenty questions, and topic links that wrap on phones (the old scrolling row was cut at "Fees and paym"). -->
+<section class="page-section" aria-labelledby="faq-find" id="faq-search">
+  <div class="band">
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Find it</span><span class="sheet-rule__purpose">Type a word, or pick a topic</span></div>
+    <div class="adm-head adm-head--tight">
+      <h2 id="faq-find" class="section-title" data-reveal>Find your question.</h2>
+    </div>
+    <div class="adm-search" data-adm-search="faq" data-reveal>
+      <div class="field"><label for="faq-q">Search the questions</label><input id="faq-q" type="search" autocomplete="off" aria-describedby="faq-q-status" placeholder="For example: uniform, test, bus"></div>
+      <p id="faq-q-status" class="chips__status adm-search__status" role="status" aria-live="polite"></p>
+    </div>
+    <div class="adm-jump" data-reveal>
+      <p class="label">Or pick a topic</p>
+      <ul class="chips" aria-label="Topics on this page">
+        <li><a class="chip" href="#g-entry">Before you apply</a></li>
+        <li><a class="chip" href="#g-test">The test and interview</a></li>
+        <li><a class="chip" href="#g-docs">Documents</a></li>
+        <li><a class="chip" href="#g-fees">Fees and payment</a></li>
+        <li><a class="chip" href="#g-day">Uniform, transport and the day</a></li>
+        <li><a class="chip" href="#g-senior">Cambridge and the senior years</a></li>
+        <li><a class="chip" href="#g-safe">Safety and conduct</a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 03. Twenty questions in seven groups, renamed to the parent's words; ids kept where they existed so links hold. Facts only from the
+     school's pages and docs; every "not published" answer carries its CONFIRM. -->
 <section class="page-section" aria-labelledby="faq-title">
   <div class="band">
-    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Questions and answers</span><span class="sheet-rule__purpose">Six topics, sixteen questions</span></div>
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Questions and answers</span><span class="sheet-rule__purpose">Seven topics, twenty questions</span></div>
     <h2 id="faq-title" class="visually-hidden">Questions and answers</h2>
     <div class="story">
       <nav class="chapter-nav" aria-label="Topics on this page">
         <ol>
-          <li><a href="#g-entry">Entry points and tests</a></li>
+          <li><a href="#g-entry">Before you apply</a></li>
+          <li><a href="#g-test">The test and interview</a></li>
           <li><a href="#g-docs">Documents</a></li>
           <li><a href="#g-fees">Fees and payment</a></li>
-          <li><a href="#g-day">Uniform and transport</a></li>
+          <li><a href="#g-day">Uniform, transport and the day</a></li>
           <li><a href="#g-senior">Cambridge and the senior years</a></li>
           <li><a href="#g-safe">Safety and conduct</a></li>
-          <li><a href="#g-call">Still have a question?</a></li>
+          <li><a href="#call">Still have a question?</a></li>
         </ol>
       </nav>
 
@@ -25,39 +90,62 @@ standfirst: Answers to the questions families ask most, grouped by topic. Where 
         <div class="accordion__controls"><button class="link link--btn" type="button" data-accordion-toggle="faq">Expand all</button></div>
 
         <section class="accordion-group" id="g-entry" aria-labelledby="g-entry-h">
-          <h2 id="g-entry-h" class="label accordion-group__title">Entry points and tests</h2>
+          <h2 id="g-entry-h" class="label accordion-group__title">Before you apply</h2>
           <div class="accordion">
             <details class="accordion__item" id="q-open">
               <summary class="accordion__summary"><h3 class="accordion__q">Which classes are open for admission?</h3><span class="accordion__icon" aria-hidden="true"></span></summary>
               <div class="accordion__body">
-                <p>Applications for the current year are accepted if there is available space. Space changes by class and by year, so please call the admissions line for your child's section before you apply: {{phone:pg-1}} for Playgroup to Class I, {{phone:ii-vi}} for Classes II to VI, or {{phone:vii-xii}} for Classes VII to XII, {{hours:between}}.</p>
-                <!-- CONFIRM: the school's notice says A Level admission for July 2026 to June 2027 is open; it is dated and will expire. -->
+                <!-- Review r2: one call sheet per page; the three numbers are in the Still have a question band, linked here. -->
+                <p>Applications for the current year are accepted if there is space. Space changes by class and by year, so before you apply <a class="link" href="#call">call the line for your child's section</a>, {{hours:between}}.</p>
+                <!-- CONFIRM (B6): the school's notice says A Level admission for July 2026 to June 2027 is open; it is dated and will expire. -->
                 <p>The school's current notice says that admission to A Level for the academic year July 2026 to June 2027 is open.</p>
-              </div>
-            </details>
-            <details class="accordion__item" id="q-test">
-              <summary class="accordion__summary"><h3 class="accordion__q">Is there an entrance test?</h3><span class="accordion__icon" aria-hidden="true"></span></summary>
-              <div class="accordion__body">
-                <p>It depends on the class. Playgroup and Nursery children sit an assessment. From KG I to Class IX the child sits a written test in English, Bengali and Mathematics. The Principal and the parents then meet for an interview.</p>
-                <p>Admission to Class XI is based on the school's mock examinations and the O Level result.</p>
-              </div>
-            </details>
-            <details class="accordion__item" id="q-form">
-              <summary class="accordion__summary"><h3 class="accordion__q">Where do I get the admission form?</h3><span class="accordion__icon" aria-hidden="true"></span></summary>
-              <div class="accordion__body">
-                <p>From the Front Office, or from the school's website. There is one form for Playgroup to Class IX and a separate one for A Level. {{ext href="https://playpen.edu.bd/admission-procedure/" label="Download the form"}}</p>
-              </div>
-            </details>
-            <details class="accordion__item" id="q-result">
-              <summary class="accordion__summary"><h3 class="accordion__q">How will I hear the result?</h3><span class="accordion__icon" aria-hidden="true"></span></summary>
-              <div class="accordion__body">
-                <p>By telephone. Please make sure the number on the form is one you can be reached on.</p>
               </div>
             </details>
             <details class="accordion__item" id="q-visit">
               <summary class="accordion__summary"><h3 class="accordion__q">Can I visit before I apply?</h3><span class="accordion__icon" aria-hidden="true"></span></summary>
               <div class="accordion__body">
-                <p>Yes. Call the admissions line for your child's section {{hours:between}}, and come to see the building and the section your child would join. <a class="link" href="{{link:/admissions/visit/}}">Plan a visit</a></p>
+                <!-- CONFIRM (F2): the school's pages describe only visiting the Front Office to enquire and collect a form; the visit format is not published. -->
+                <p>Call the line for your child's section first; the office confirms the day. When it calls, ask whether you can see the building and the section your child would join. <a class="link" href="{{link:/admissions/visit/}}">Book a visit</a></p>
+              </div>
+            </details>
+            <details class="accordion__item" id="q-online">
+              <summary class="accordion__summary"><h3 class="accordion__q">Can I apply online?</h3><span class="accordion__icon" aria-hidden="true"></span></summary>
+              <div class="accordion__body">
+                <!-- CONFIRM (F4): whether the school accepts a form filled in online and printed, and one sent from the site. -->
+                <p>You can fill the form in online on this site and print it, or download the school's PDF. The school's procedure has the form handed in at the Front Office. <a class="link" href="{{link:/admissions/how-to-apply/#forms}}">Get the form</a></p>
+              </div>
+            </details>
+            <details class="accordion__item" id="q-notpublished">
+              <summary class="accordion__summary"><h3 class="accordion__q">What has the school not published yet?</h3><span class="accordion__icon" aria-hidden="true"></span></summary>
+              <div class="accordion__body">
+                <!-- CONFIRM (B11): ages by class, mid-year transfers, class sizes, waiting lists, siblings, meals: the school has not supplied answers; one question says so rather than six. -->
+                <p>The age for each class, whether children are taken in the middle of the year, class sizes, waiting lists, rules for brothers and sisters, and a meals policy (there is a cafeteria on the campus). The admissions team answers these on the line for your child's section, {{hours:between}}.</p>
+              </div>
+            </details>
+          </div>
+        </section>
+
+        <section class="accordion-group" id="g-test" aria-labelledby="g-test-h">
+          <h2 id="g-test-h" class="label accordion-group__title">The test and interview</h2>
+          <div class="accordion">
+            <details class="accordion__item" id="q-test">
+              <summary class="accordion__summary"><h3 class="accordion__q">Is there an entrance test?</h3><span class="accordion__icon" aria-hidden="true"></span></summary>
+              <div class="accordion__body">
+                <!-- CONFIRM (B10): the interview with the Principal and the parents (Playgroup to Class IX) and none for Class XI, from the school's procedure page. -->
+                <p>It depends on the class. Playgroup and Nursery children sit an assessment. From KG I to Class IX the child sits a written test in English, Bengali and Mathematics. After the assessment or test, the child and the parents meet the Principal, who makes the decision.</p>
+                <p>Admission to Class XI is based on the school's mock examinations and the O Level result. There is no interview for Class XI.</p>
+              </div>
+            </details>
+            <details class="accordion__item" id="q-result">
+              <summary class="accordion__summary"><h3 class="accordion__q">How will I hear the result?</h3><span class="accordion__icon" aria-hidden="true"></span></summary>
+              <div class="accordion__body">
+                <p>By telephone. Make sure the number on the form is one you answer.</p>
+              </div>
+            </details>
+            <details class="accordion__item" id="q-xi">
+              <summary class="accordion__summary"><h3 class="accordion__q">How does admission to Class XI work?</h3><span class="accordion__icon" aria-hidden="true"></span></summary>
+              <div class="accordion__body">
+                <p>It is based on the school's mock examinations and the O Level result. A Level admission has its own form. <a class="link" href="{{link:/learning/a-level/}}">AS and A Level</a></p>
               </div>
             </details>
           </div>
@@ -75,7 +163,13 @@ standfirst: Answers to the questions families ask most, grouped by topic. Where 
                   <li>The immunisation record</li>
                   <li>Report cards for the last two years</li>
                 </ul>
-                <p>Read the form in full before you submit it. The steps from the first call to the result are on <a class="link" href="{{link:/admissions/how-to-apply/}}">How to apply</a>.</p>
+                <p>Read the form in full before you hand it in. The steps from the first call to the result are on <a class="link" href="{{link:/admissions/how-to-apply/}}">How to apply</a>.</p>
+              </div>
+            </details>
+            <details class="accordion__item" id="q-form">
+              <summary class="accordion__summary"><h3 class="accordion__q">Where do I get the admission form?</h3><span class="accordion__icon" aria-hidden="true"></span></summary>
+              <div class="accordion__body">
+                <p>From the Front Office, or on this site. There is one form for Playgroup to Class IX and a separate one for A Level. <a class="link" href="{{link:/admissions/how-to-apply/#forms}}">Fill it in online, or download the PDF</a></p>
               </div>
             </details>
           </div>
@@ -87,15 +181,15 @@ standfirst: Answers to the questions families ask most, grouped by topic. Where 
             <details class="accordion__item" id="q-fees">
               <summary class="accordion__summary"><h3 class="accordion__q">What are the fees?</h3><span class="accordion__icon" aria-hidden="true"></span></summary>
               <div class="accordion__body">
-                <!-- CONFIRM: fee amounts are not published by the school; deliberately not stated. -->
-                <p>The school explains fees and monthly tuition after a child has been selected. The amounts are not published on this website, so please ask on the admissions line for your child's section. <a class="link" href="{{link:/admissions/fees/}}">Fees and payment</a></p>
+                <!-- CONFIRM (A4): fee amounts are not published by the school; deliberately not stated. -->
+                <p>The school explains the admission fee and the monthly tuition after a child has been selected. The amounts come from the admissions office, so ask on the line for your child's section. <a class="link" href="{{link:/admissions/fees/}}">Fees and payment</a></p>
               </div>
             </details>
             <details class="accordion__item" id="q-pay">
               <summary class="accordion__summary"><h3 class="accordion__q">How are fees paid?</h3><span class="accordion__icon" aria-hidden="true"></span></summary>
               <div class="accordion__body">
-                <!-- CONFIRM: payment channels as listed on the school's payment page; confirm that all are still accepted. -->
-                <p>Online, through the school's bank. Online payment has been required since the 2021 to 2022 session. Among the channels the school lists are EBL (Visa and Mastercard), DBBL, Nagad, bKash, Rocket, Upay and Epay.</p>
+                <!-- CONFIRM (B2): payment channels as listed on the school's payment page; confirm that all are still accepted. -->
+                <p>Online, through the school's bank. Online payment has been required since the 2021 to 2022 session. Card and bank: EBL (Visa and Mastercard) and DBBL. Mobile wallets: Nagad, bKash, Rocket, Upay and Epay.</p>
                 <p>{{ext:pay}}</p>
               </div>
             </details>
@@ -103,19 +197,31 @@ standfirst: Answers to the questions families ask most, grouped by topic. Where 
         </section>
 
         <section class="accordion-group" id="g-day" aria-labelledby="g-day-h">
-          <h2 id="g-day-h" class="label accordion-group__title">Uniform and transport</h2>
+          <h2 id="g-day-h" class="label accordion-group__title">Uniform, transport and the day</h2>
           <div class="accordion">
             <details class="accordion__item" id="q-uniform">
               <summary class="accordion__summary"><h3 class="accordion__q">Is there a uniform?</h3><span class="accordion__icon" aria-hidden="true"></span></summary>
               <div class="accordion__body">
-                <p>There is no uniform for Playgroup and Nursery. From KG I a uniform is compulsory. Sportswear is bought from the school. <a class="link" href="{{link:/admissions/starting-at-playpen/}}">Starting at Playpen</a></p>
+                <p>There is no uniform for Playgroup and Nursery. From KG I a uniform is compulsory, made at the school's tailoring house. Sportswear is bought from the school. <a class="link" href="{{link:/admissions/starting-at-playpen/}}">Starting at Playpen</a></p>
               </div>
             </details>
             <details class="accordion__item" id="q-transport">
               <summary class="accordion__summary"><h3 class="accordion__q">Is school transport available?</h3><span class="accordion__icon" aria-hidden="true"></span></summary>
               <div class="accordion__body">
-                <!-- CONFIRM: bus service since March 2014 and the application route are from the school's transport page; no routes are published. -->
+                <!-- CONFIRM (B4): bus service since March 2014 and the application route are from the school's transport page; no routes are published. -->
                 <p>Yes. The school has run its own bus service since March 2014. Parents who want a place apply at the Administrative Office. <a class="link" href="{{link:/school-life/transport-and-safety/}}">Transport and safety</a></p>
+              </div>
+            </details>
+            <details class="accordion__item" id="q-hours">
+              <summary class="accordion__summary"><h3 class="accordion__q">What are the school hours?</h3><span class="accordion__icon" aria-hidden="true"></span></summary>
+              <div class="accordion__body">
+                <p>The school day is described on its own page, section by section. <a class="link" href="{{link:/school-life/school-day/}}">The school day</a></p>
+              </div>
+            </details>
+            <details class="accordion__item" id="q-support">
+              <summary class="accordion__summary"><h3 class="accordion__q">Is there support for a child who needs extra help?</h3><span class="accordion__icon" aria-hidden="true"></span></summary>
+              <div class="accordion__body">
+                <p>What the school has published about support is on one page; this FAQ claims nothing beyond it. <a class="link" href="{{link:/learning/student-support/}}">Student support</a></p>
               </div>
             </details>
           </div>
@@ -136,17 +242,11 @@ standfirst: Answers to the questions families ask most, grouped by topic. Where 
                 <p>At least six at O Level, with English Language, Bengali and Mathematics among them, and at least three at AS and A Level.</p>
               </div>
             </details>
-            <details class="accordion__item" id="q-xi">
-              <summary class="accordion__summary"><h3 class="accordion__q">How does admission to Class XI work?</h3><span class="accordion__icon" aria-hidden="true"></span></summary>
-              <div class="accordion__body">
-                <p>It is based on the school's mock examinations and the O Level result. A Level admission has its own form.</p>
-              </div>
-            </details>
             <details class="accordion__item" id="q-universities">
               <summary class="accordion__summary"><h3 class="accordion__q">Will O Level and A Level results be accepted by universities in Bangladesh?</h3><span class="accordion__icon" aria-hidden="true"></span></summary>
               <div class="accordion__body">
                 <!-- CONFIRM: the school has published nothing on equivalence or university entry; the answer says so rather than guessing. -->
-                <p>The school has not published guidance on this yet. Please ask the line for Classes VII to XII, {{phone:vii-xii}}, and check the entry requirements of the university you have in mind.</p>
+                <p>The school has not published guidance on this yet. Ask the line for Classes VII to XII, {{phone:vii-xii}}, and check the entry requirements of the university you have in mind.</p>
               </div>
             </details>
           </div>
@@ -169,19 +269,30 @@ standfirst: Answers to the questions families ask most, grouped by topic. Where 
             </details>
           </div>
         </section>
-
-        <section class="accordion-group" id="g-call" aria-labelledby="g-call-h">
-          <h2 id="g-call-h" class="label accordion-group__title">Still have a question?</h2>
-          <!-- CONFIRM: ages by class, class sizes, waiting lists, siblings and mid-year transfers: the school has not supplied answers. -->
-          <div class="callout callout--wide" data-reveal>
-            <p>The admissions team can answer what is not published here, such as the age for each class, class sizes, waiting lists, siblings and transfers during the year. Call the line for your child's section, {{hours}}:</p>
-            {{phones}}
-            <p class="cluster"><a class="btn btn--primary" href="{{link:/admissions/enquire/}}"><span class="btn__label">Enquire</span></a><a class="btn btn--text" href="{{link:/admissions/visit/}}">Book a visit</a></p>
-          </div>
-        </section>
       </div>
     </div>
   </div>
 </section>
 
-{{cta}}
+<!-- 04. The close: the page's one dark block before the footer, with the two actions. No cta token after it (it may not repeat them). -->
+<!-- CONFIRM (B11): ages by class, class sizes, waiting lists, siblings and mid-year transfers: the school has not supplied answers. -->
+<section class="page-section is-night" aria-labelledby="faq-call" id="call">
+  <div class="band">
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Who to call</span><span class="sheet-rule__purpose">Lines are open {{hours}}</span></div>
+    <div class="call-band">
+      <div class="call-band__text">
+        <h2 id="faq-call" class="section-title" data-reveal>Still have a question?</h2>
+        <p>The admissions team can answer what is not published here: the age for each class, class sizes, waiting lists, siblings and transfers during the year.</p>
+        <p class="call-band__actions"><a class="btn btn--primary" href="{{link:/admissions/enquire/}}"><span class="btn__label">Enquire</span></a><a class="btn btn--text" href="{{link:/admissions/visit/}}">Book a visit</a></p>
+      </div>
+      <div class="adm-call" data-reveal>
+        <ul class="call-lines">
+          <li class="call-line" data-line="pg-1"><span class="call-line__who">Playgroup to Class I</span>{{phone:pg-1 class="call-line__tel"}}</li>
+          <li class="call-line" data-line="ii-vi"><span class="call-line__who">Classes II to VI</span>{{phone:ii-vi class="call-line__tel"}}</li>
+          <li class="call-line" data-line="vii-xii"><span class="call-line__who">Classes VII to XII</span>{{phone:vii-xii class="call-line__tel"}}</li>
+        </ul>
+        <p class="call-lines__hours">The class chosen on another admissions page lights its line here.</p>
+      </div>
+    </div>
+  </div>
+</section>

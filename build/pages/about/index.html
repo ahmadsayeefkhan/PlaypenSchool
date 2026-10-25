@@ -1,98 +1,189 @@
 ---
 title: About Playpen
 template: T02
-h1: An English-medium day school in Bashundhara, <em>Playgroup</em> to A Level.
-standfirst: The Playpen School is a non-residential day school: every child goes home in the afternoon. Since July 2018 it has had its own building of ten storeys, and a child can go from Playgroup to Class XII without changing school.
-hero_image: media/ascent-5
-hero_alt: Curved brick benches and young trees on the rooftop terrace, with the city beyond the railing.
-hero_caption: The rooftop terrace, 2024
-hero_n: 01
 ---
-<section class="page-section" aria-labelledby="about-facts">
+<!-- Redesign 2026-10-24 (group "about", plans/about.md section 1): the page opens on a photographic cover (the home's film hero, still), so the H1 is written here in the body and the build adds the breadcrumb above it. Order: cover, 01 at a glance, 02 the six pages and the class finder, 03 proof, 04 the mission in one sheet, 05 where next, the CTA band. -->
+<!-- CONFIRM: the cover photograph img/about-cover (the building from the field, cropped above the match and to the left of the palm fronds; the phone frame about-cover-tall keeps the players, small at its foot). The vault file is from May 2023; confirm the year and that the frame may appear on a public page (A3). Review fixes 2026-10-24: re-cropped and de-fringed; the source is 1475 px wide, so the desktop sizes are 960 and 1440 only. -->
+<!-- Final review 2026-10-25: the Campus card shows the courtyard from above (media/ascent-1, on the Campus walk) instead of img/campus-cover, so the facade from below appears only in the hero and the History card. -->
+<header class="abt-cover abt-cover--low" aria-label="About Playpen">
   <div class="band">
-    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">The school in five facts</span></div>
+    <div class="sheet-rule abt-cover__rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__title">About</span><span class="sheet-rule__purpose">The school in one page, and seven more</span></div>
+  </div>
+  <div class="abt-cover__media" data-abt-clear>
+    <picture class="abt-cover__picture">
+      <source media="(max-width: 767px)" type="image/webp" srcset="{{asset:img/about-cover-tall-720.webp}} 720w, {{asset:img/about-cover-tall-960.webp}} 960w, {{asset:img/about-cover-tall-1200.webp}} 1200w" sizes="100vw">
+      <source media="(max-width: 767px)" type="image/jpeg" srcset="{{asset:img/about-cover-tall-720.jpg}} 720w, {{asset:img/about-cover-tall-960.jpg}} 960w, {{asset:img/about-cover-tall-1200.jpg}} 1200w" sizes="100vw">
+      <source type="image/webp" srcset="{{asset:img/about-cover-960.webp}} 960w, {{asset:img/about-cover-1440.webp}} 1440w" sizes="100vw">
+      <img src="{{asset:img/about-cover-960.jpg}}" srcset="{{asset:img/about-cover-960.jpg}} 960w, {{asset:img/about-cover-1440.jpg}} 1440w" sizes="100vw" width="1440" height="618" alt="The ten-storey brick-and-concrete school building seen from the field, its classroom floors stepping out above the ground-floor arcade, a few palm fronds at the top right corner." fetchpriority="high" decoding="async">
+    </picture>
+    <div class="abt-cover__scrim" aria-hidden="true"></div>
+    <div class="band abt-cover__copy">
+      <h1 class="abt-cover__title">An English-medium day school in Bashundhara, <em>Playgroup</em> to A Level.</h1>
+      <p class="abt-cover__lead">The Playpen School is a day school: every child goes home in the afternoon. Since July 2018 it has had its own building of ten storeys, and a child can go from Playgroup to Class XII without changing school.</p>
+    </div>
+  </div>
+  <div class="band"><p class="caption abt-cover__cap">The building from the field, May 2023</p></div>
+</header>
+
+<section class="page-section abt-facts" aria-labelledby="about-facts">
+  <div class="band">
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">At a glance</span><span class="sheet-rule__purpose">Five facts parents ask first</span></div>
     <h2 id="about-facts" class="visually-hidden">The school in five facts</h2>
     <dl class="fact-strip fact-strip--5" data-reveal>
       <div class="fact"><dt>Curriculum</dt><dd>Cambridge O Level, AS and A Level</dd></div>
       <div class="fact"><dt>Classes</dt><dd>Playgroup to Class XII, in four sections</dd></div>
       <div class="fact"><dt>Campus</dt><dd>One building of ten storeys, in use since 19 July 2018</dd></div>
-      <div class="fact"><dt>A Level since</dt><dd>2013</dd></div>
-      <!-- CONFIRM: founding year. The home and the school's history page say 1977; the same page says the kindergarten began in 1997. Logged in docs/confirm/foundation.md. -->
-      <div class="fact"><dt>Founded</dt><dd>1977</dd></div>
+      <div class="fact abt-fact--num"><dt>A Level since</dt><dd>2013</dd></div>
+      <!-- CONFIRM: founding year (A1). The home and the school's history page say 1977; the same page says the kindergarten began in 1997. The dagger sends the reader to the note under this strip, as History does. -->
+      <div class="fact abt-fact--num"><dt>Founded</dt><dd>1977<a class="fn" href="#about-note" aria-label="Footnote: the founding year is being confirmed with the school">&dagger;</a></dd></div>
     </dl>
-  </div>
-</section>
-
-<section class="page-section" aria-labelledby="about-what">
-  <div class="band">
-    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">The school</span><span class="sheet-rule__purpose">What Playpen is, in plain words</span></div>
-    <div class="split split--center">
-      <div class="split__text">
-        <h2 id="about-what" class="section-title">One school, from Playgroup to Class XII.</h2>
-        <div class="prose" data-reveal>
-          <p>Playpen is an English-medium school in Bashundhara R/A, Dhaka. It teaches the Cambridge curriculum from its Elementary section up to O Level, AS and A Level, so a child who joins in Playgroup can stay until the end of school.</p>
-          <p>The school year has two semesters, and a written examination ends each of them. Classes are grouped in four sections: Elementary, Junior, Middle and Senior. <a href="{{link:/learning/}}">See how the four stages fit together.</a></p>
-          <p>Playpen is a day school. There is no boarding, and every child goes home in the afternoon.</p>
-        </div>
-      </div>
-      <figure class="plate split__figure" data-reveal>
-        <div class="plate__frame">{{img src="media/ascent-1" alt="Courtyard between the brick wings seen from above, with a black-and-white chequerboard floor and bougainvillea." sizes="(min-width: 900px) 38vw, 100vw"}}</div>
-        <figcaption class="plate__cap"><span class="plate__n">02</span>The courtyard between the wings, 2024</figcaption>
-      </figure>
+    <div class="abt-foot">
+      <p class="abt-foot__text">Four sections, Elementary, Junior, Middle and Senior, in one building, and a school year of two semesters with a written examination at the end of each.</p>
+      <p class="abt-foot__action"><a class="link link--arrow" href="{{link:/learning/}}">How the four stages fit together</a></p>
+      <p id="about-note" class="abt-foot__source caption">&dagger; From the school's own pages, September 2026. The founding year is being confirmed with the school.</p>
     </div>
   </div>
 </section>
 
-<section class="page-section page-section--tint" aria-labelledby="about-words">
+<section class="page-section" aria-labelledby="about-explore">
   <div class="band">
-    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">In the school's own words</span><span class="sheet-rule__purpose">From the mission statement</span></div>
-    <h2 id="about-words" class="visually-hidden">In the school's own words</h2>
-    <figure class="pull-quote" data-reveal>
-      <blockquote cite="https://playpen.edu.bd/mission-vision-and-values/">
-        <p>It is essential that children understand their own history and culture, as well as appreciate the traditions of other people and places.</p>
-        <p>They must also have a firm grasp of language, as a means of communication, and be equipped with an education that can be utilized in everyday life.</p>
-      </blockquote>
-      <figcaption><cite>From the school's {{ext href="https://playpen.edu.bd/mission-vision-and-values/" label="statement of mission, vision and values"}}.</cite></figcaption>
-    </figure>
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Explore</span><span class="sheet-rule__purpose">Six pages and a finder</span></div>
+    <div class="abt-head">
+      <h2 id="about-explore" class="section-title abt-head__title" data-reveal>Where to read more.</h2>
+      <p class="lead abt-head__lead" data-reveal>Each page answers one question: how long the school has been here, who runs it, what the building holds, how children are kept safe, what the rules are, and how to apply to teach here.</p>
+    </div>
+    <!-- The six cards below are hand-written because they carry photographs (the children token writes text cards). They must stay in step with nav.json's About children: /about/history/, /about/school-administration/, /about/campus/, /about/child-protection/, /about/policies/, /about/careers/ (plus /about/leadership/, the finder panel under the grid). Review fixes 2026-10-24: two rows of three (about.css), each card shows its page's opening photograph; Policies is a type tile (eight rule topics), not a texture. Review r3: History's door is the building from the lawn (its new hero), Careers' door the bench detail (its new hero); the Campus door follows the re-graded cover. -->
+    <ul class="ev-grid abt-doors" data-reveal-group>
+      <li class="ev">
+        <a class="ev__card" href="{{link:/about/history/}}">
+          <span class="ev__media"><span class="plate__frame">{{img src="img/history-building-lawn" alt="The whole ten-storey building seen from the lawn, brick boxes stepping out of its concrete frame." sizes="(min-width: 1024px) 30vw, 100vw" widths="960"}}</span></span>
+          <span class="ev__n label" aria-hidden="true">01</span>
+          <span class="ev__name">Our history</span>
+          <span class="ev__text">The school in dates, from a kindergarten to the first O Level candidate and the move into its own building.</span>
+          <span class="ev__more">Three eras, one timeline</span>
+        </a>
+      </li>
+      <li class="ev">
+        <a class="ev__card" href="{{link:/about/school-administration/}}">
+          <span class="ev__media"><span class="plate__frame">{{img src="img/admin-creepers" alt="Creepers hanging over the board-marked concrete of the school's street front." sizes="(min-width: 1024px) 30vw, 100vw" widths="960"}}</span></span>
+          <span class="ev__n label" aria-hidden="true">02</span>
+          <span class="ev__name">School administration</span>
+          <span class="ev__text">The Chairman, the Managing Director, the Principal, the Vice Principals and the Teachers-in-Charge, and how the school is organised.</span>
+          <span class="ev__more">Who runs the school</span>
+        </a>
+      </li>
+      <li class="ev">
+        <a class="ev__card" href="{{link:/about/campus/}}">
+          <span class="ev__media"><span class="plate__frame">{{img src="media/ascent-1" alt="The courtyard between the brick wings seen from above, with a black-and-white chequerboard floor and bougainvillea." sizes="(min-width: 1024px) 30vw, 100vw" widths="960,1440"}}</span></span>
+          <span class="ev__n label" aria-hidden="true">03</span>
+          <span class="ev__name">Our campus</span>
+          <span class="ev__text">One building of ten storeys in Bashundhara, and what it holds, from the laboratories to the roof.</span>
+          <span class="ev__more">Walk through the building</span>
+        </a>
+      </li>
+      <li class="ev">
+        <a class="ev__card" href="{{link:/about/child-protection/}}">
+          <span class="ev__media"><span class="plate__frame">{{img src="img/about-leadership-planter" alt="A curved brick planter with shrubs and a concrete bench inside the building." sizes="(min-width: 1024px) 30vw, 100vw" widths="960"}}</span></span>
+          <span class="ev__n label" aria-hidden="true">04</span>
+          <span class="ev__name">Child protection</span>
+          <span class="ev__text">How the school keeps children safe every day, and the telephone lines to call if you are worried about a child.</span>
+          <span class="ev__more">Who to call with a concern</span>
+        </a>
+      </li>
+      <li class="ev">
+        <a class="ev__card" href="{{link:/about/policies/}}">
+          <span class="ev__media"><span class="abt-door-type" aria-hidden="true"><span class="abt-door-type__row">Phones</span><span class="abt-door-type__row">The library</span><span class="abt-door-type__row">Absence</span><span class="abt-door-type__row">The bus</span><span class="abt-door-type__row">Uniform</span><span class="abt-door-type__row">Change of address</span><span class="abt-door-type__row">Identity card</span><span class="abt-door-type__row">Promotion</span></span></span>
+          <span class="ev__n label" aria-hidden="true">05</span>
+          <span class="ev__name">Policies</span>
+          <span class="ev__text">The code of conduct, attendance, uniform, the library and the school bus, summarised from the school's own pages.</span>
+          <span class="ev__more">The rules in one place</span>
+        </a>
+      </li>
+      <li class="ev">
+        <a class="ev__card" href="{{link:/about/careers/}}">
+          <span class="ev__media"><span class="plate__frame">{{img src="img/careers-bench-detail" alt="Two curved brick benches on the terrace, planters and a railing behind them, no one there." sizes="(min-width: 1024px) 30vw, 100vw" widths="960"}}</span></span>
+          <span class="ev__n label" aria-hidden="true">06</span>
+          <span class="ev__name">Careers</span>
+          <span class="ev__text">Teaching at Playpen: four facts about the school, and one route to apply.</span>
+          <span class="ev__more">How to apply to teach</span>
+        </a>
+      </li>
+    </ul>
+    <div class="abt-panel abt-panel--gold" data-reveal>
+      <span class="abt-panel__label label">Who looks after your child's class</span>
+      <p class="abt-panel__title">Pick your child's class and see the Teacher-in-Charge, the Vice Principal and the line to call.</p>
+      <a class="link link--arrow abt-panel__more" href="{{link:/about/leadership/}}">Find your child's class</a>
+    </div>
   </div>
 </section>
 
-<section class="page-section" aria-labelledby="about-goals">
+<section class="page-section" aria-labelledby="about-proof">
   <div class="band">
-    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">The four goals</span><span class="sheet-rule__purpose">Set out in the school's mission statement</span></div>
-    <div class="layout">
-      <div class="layout__main">
-        <h2 id="about-goals" class="section-title">What the school sets out to do.</h2>
-        <dl class="dl mt-m" data-reveal>
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Proof</span><span class="sheet-rule__purpose">Facts a parent can check</span></div>
+    <div class="abt-head">
+      <h2 id="about-proof" class="section-title abt-head__title" data-reveal>How to check us.</h2>
+      <p class="lead abt-head__lead" data-reveal>Three figures from the school's own records, and the four pages where the evidence sits.</p>
+    </div>
+    <!-- CONFIRM: the three figures are the home's (G-1): the May–June 2026 results summary (67 % of O Level grades A* or A), the Cambridge exam venue since 2020 approved by the British Council, and the first O Level candidate's seven A grades in 2003. They are printed here only because the home prints them; if the founder's G-1 decision changes the home's figures, this sheet changes with it. -->
+    <div class="abt-proof">
+      <div class="abt-proof__feats">
+        <ul class="feats" data-reveal-group>
+          <li class="feat"><span class="feat__n" aria-hidden="true"><span class="abt-count" data-abt-count="67">67</span>&thinsp;%</span><span class="visually-hidden">67 per cent </span><span class="feat__t">of O Level grades were A* or A in the May to June 2026 session</span></li>
+          <li class="feat"><span class="feat__n" aria-hidden="true">2020</span><span class="visually-hidden">Since 2020 </span><span class="feat__t">a Cambridge exam venue, approved by the British Council: students sit O Level and A Level in the school's own hall</span></li>
+          <li class="feat"><span class="feat__n" aria-hidden="true"><span class="abt-count" data-abt-count="7">7</span>/7</span><span class="visually-hidden">7 out of 7 </span><span class="feat__t">subjects at grade A for the school's first O Level candidate, in 2003</span></li>
+        </ul>
+      </div>
+      <div class="abt-proof__links" data-reveal>
+        <p class="label">Where the evidence sits</p>
+        <ul class="link-list">
+          <li><a class="link link--arrow" href="{{link:/learning/results/}}">Results and achievements</a></li>
+          <li><a class="link link--arrow" href="{{link:/about/child-protection/}}">Child protection</a></li>
+          <li><a class="link link--arrow" href="{{link:/about/policies/}}">Policies</a></li>
+          <li><a class="link link--arrow" href="{{link:/about/campus/}}">Our campus</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="abt-foot">
+      <p class="abt-foot__text">Every year, Playpen students receive The Daily Star Awards: for six or more A grades at O Level, and for three or more A grades at A Level.</p>
+      <p class="abt-foot__action"><a class="link link--arrow" href="{{link:/learning/results/}}">The results, year by year</a></p>
+      <p class="abt-foot__source caption">From the school's results summary for the May to June 2026 exam session, and the school's own pages, September 2026.</p>
+    </div>
+  </div>
+</section>
+
+<section class="page-section page-section--tint abt-tint" aria-labelledby="about-words">
+  <div class="band">
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">In the school's own words</span><span class="sheet-rule__purpose">The mission, and the four goals</span></div>
+    <div class="abt-head">
+      <h2 id="about-words" class="section-title abt-head__title" data-reveal>What the school sets out to do.</h2>
+      <!-- CONFIRM: the lead restates the school's own mission statement in plain words ("to realise their full potential, children need a well-balanced programme in a creative learning environment"); the school should approve the wording (P02). -->
+      <p class="lead abt-head__lead" data-reveal>To realise their full potential, the school says, children need a well-balanced programme in a creative learning environment.</p>
+    </div>
+    <div class="abt-belief">
+      <blockquote class="quote abt-belief__quote" cite="https://playpen.edu.bd/mission-vision-and-values/" data-reveal>
+        <span class="quote__mark" aria-hidden="true">&ldquo;</span>
+        <p class="quote__line display-l">It is essential that children understand their own history and culture, as well as appreciate the traditions of other people and places.</p>
+        <p class="quote__line quote__line--2 lead">They must also have a firm grasp of language, as a means of communication, and be equipped with an education that can be utilized in everyday life.</p>
+      </blockquote>
+      <div class="abt-belief__goals" data-reveal>
+        <p class="label">The four goals</p>
+        <dl class="dl mt-m">
           <div class="dl__row"><dt>Global citizens</dt><dd>Students learn the skills they need to meet the challenges of being citizens of the 21st century.</dd></div>
           <div class="dl__row"><dt>Rights and democracy</dt><dd>Students come to know human rights, and to understand how democracy works.</dd></div>
           <div class="dl__row"><dt>Economic life</dt><dd>Students are able to move forward and take a successful part in economic activity.</dd></div>
           <div class="dl__row"><dt>A society that reasons</dt><dd>Students help to build a society that thinks logically and analyses.</dd></div>
         </dl>
       </div>
-      <div class="layout__aside layout__aside--sticky">
-        <div class="callout">
-          <span class="callout__label label">The founding idea</span>
-          <p>The school says that to realise their full potential, children need a well-balanced programme in a creative learning environment, and that Playpen was born with this in mind.</p>
-        </div>
-      </div>
     </div>
-  </div>
-</section>
-
-<section class="page-section" aria-labelledby="about-more">
-  <div class="band">
-    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Read on</span><span class="sheet-rule__purpose">Six pages about the school</span></div>
-    <h2 id="about-more" class="section-title">More about the school.</h2>
-    <div class="mt-m">
-      {{children:/about/}}
+    <div class="abt-foot">
+      <p class="abt-foot__source caption"><cite>From the school's {{ext href="https://playpen.edu.bd/mission-vision-and-values/" label="statement of mission, vision and values"}}.</cite> The four goals are summarised from the same statement.</p>
     </div>
   </div>
 </section>
 
 <section class="page-section" aria-labelledby="wn-title">
   <div class="band where-next">
-    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Routes</span></div>
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Routes</span><span class="sheet-rule__purpose">Four kinds of reader</span></div>
     <h2 id="wn-title" class="where-next__title">Where next?</h2>
     <div class="where-next__grid">
       <div class="where-next__col">
@@ -117,16 +208,20 @@ hero_n: 01
         <h3>Former pupils</h3>
         <ul>
           <li><a class="link" href="{{link:/community/alumni/}}">Alumni</a></li>
+          <li><a class="link" href="{{link:/gallery/}}">Gallery</a></li>
+          <li><a class="link" href="{{link:/news/}}">News</a></li>
         </ul>
       </div>
       <div class="where-next__col">
         <h3>Teachers</h3>
         <ul>
           <li><a class="link" href="{{link:/about/careers/}}">Careers at Playpen</a></li>
+          <li><a class="link" href="{{link:/about/school-administration/}}">School administration</a></li>
+          <li><a class="link" href="{{link:/about/policies/}}">Policies</a></li>
         </ul>
       </div>
     </div>
   </div>
 </section>
 
-{{cta}}
+{{cta text="Call the admissions line for your child's section first; the office confirms the day. Or book a visit."}}

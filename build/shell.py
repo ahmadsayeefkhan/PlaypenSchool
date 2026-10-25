@@ -29,6 +29,11 @@ BASE_PATH = '/'                                     # only the absolute-URL 404.
 DESC_MIN, DESC_MAX = 60, 170                        # meta description length, in characters (nav.json, build.py and check.py agree)
 NEW_TAB = '<span class="visually-hidden"> (opens in a new tab)</span>'
 SHELL_HASH = ''                                     # set by build.py: stamps every page so check.py can see a stale shell
+# How many school notices apply now (2026-10-22, redesign-2026-10-22-notices/spec.md section 3). Shown in the inner
+# header pill ("Notices 2") and the Menu ("Notices (2 current)"). When it changes, also change by hand: the home Sheet 01
+# count line ("2 notices apply now.") and its "See all notices (3)" button in site/index.html, and the count line in
+# build/pages/notices.html. Phase 2 counts it from build/notices.json instead.
+NOTICES_CURRENT = 2
 DEFAULT_OG_IMAGE = 'media/og-1200x630.jpg'          # under site/assets/
 DEFAULT_OG_SIZE = (1200, 630)
 DEFAULT_OG_ALT = ('The rooftop terrace of The Playpen School, three young trees in planters against a '
@@ -38,7 +43,7 @@ PRELOAD_FONTS = ('vendor/fonts/newsreader-var.woff2', 'vendor/fonts/hanken-grote
 
 ALLOWED_FRONT_MATTER = {
     'title', 'description', 'template', 'eyebrow', 'breadcrumb', 'og_image', 'og_alt', 'schema', 'noindex',
-    'h1', 'standfirst', 'hero_image', 'hero_alt', 'hero_caption', 'hero_sizes', 'hero_n', 'actions', 'body_class',
+    'h1', 'standfirst', 'hero_image', 'hero_alt', 'hero_caption', 'hero_sizes', 'hero_n', 'hero_tag', 'actions', 'body_class',
     'date', 'updated', 'lastmod',
 }
 
@@ -82,6 +87,11 @@ def root_prefix(slug):
 
 
 # --------------------------------------------------------------------------- navigation model
+def indexable(p):
+    """True for a page that belongs in sitemap.xml, the search index and the sitemap page's lists (nav.json: not
+    sitemap: false, not noindex). build.py skips draft stubs on top of this."""
+    return not (p.get('sitemap') is False or p.get('noindex'))
+
 class NavError(Exception):
     pass
 
@@ -333,9 +343,14 @@ def current_state(page, group):
 def render_primary_links(ctx, page=None):
     """The <a> items of the header's primary nav (also copied into the home by sync_home.py)."""
     out = []
+    in_gallery = bool(page) and page['slug'].startswith('/gallery/')
     for g in ctx.nav.groups:
-        cur = current_state(page, g)
+        cur = None if in_gallery else current_state(page, g)
         out.append('<a href="%s"%s>%s</a>' % (h(ctx.link(g['landing'])), (' aria-current="%s"' % cur) if cur else '', h(g['label'])))
+        if g['key'] == 'school-life':
+            # Gallery gets its own header link after School life (founder, 2026-10-22); it stays under Community in the full menu
+            cur = ('page' if page['slug'] == '/gallery/' else 'true') if in_gallery else None
+            out.append('<a href="%s"%s>Gallery</a>' % (h(ctx.link('/gallery/')), (' aria-current="%s"' % cur) if cur else ''))
     return '\n      '.join(out)
 
 
@@ -344,14 +359,15 @@ def render_header(ctx, page=None):
     visit = next(a for a in nav.sticky if a.get('primary'))
     return '''<header id="top" class="nav is-over-hero">
   <div class="nav__bar">
-    <a class="nav__brand" href="%(home)s" aria-label="The Playpen School, home">
-      <span id="nav-mark" class="nav__mark"><img src="%(mark)s" width="1000" height="1039" alt=""></span>
-      <span class="nav__word">The Playpen School</span>
+    <a class="nav__brand" href="%(home)s" aria-label="Playpen School, home">
+      <span id="nav-mark" class="nav__mark"><img src="%(mark)s" width="255" height="256" alt=""></span>
+      <span class="nav__word">Playpen School</span>
     </a>
     <nav id="nav-primary" class="nav__primary" aria-label="Primary">
       %(links)s
     </nav>
     <div class="nav__right">
+      %(notices)s
       <span class="magnet-area">
         <a id="nav-visit" class="btn btn--primary btn--small" href="%(visit)s"><span class="btn__label">%(visit_label)s</span></a>
       </span>
@@ -363,10 +379,18 @@ def render_header(ctx, page=None):
     </div>
   </div>
 </header>''' % {
-        'home': h(ctx.link('/')), 'mark': h(ctx.asset('brand/logo-mark.svg')),
+        'home': h(ctx.link('/')), 'mark': h(ctx.asset('brand/logo-crest-256.webp')),
         'links': render_primary_links(ctx, page), 'visit': h(ctx.link(visit['slug'])), 'visit_label': h(visit['label']),
         'sitemap': h(ctx.link('/sitemap/')),
+        'notices': render_notices_pill(ctx, page),
     }
+
+
+def render_notices_pill(ctx, page=None):
+    """The "Notices 2" pill in the inner header (shown from 720 px; below that the Menu carries the count)."""
+    cur = ' aria-current="page"' if page and page.get('slug') == '/notices/' else ''
+    return ('<a class="nb-pill" href="%s"%s>Notices <span class="nb-pill__n" data-feed-count="notices-current">%d</span>'
+            '<span class="visually-hidden"> current</span></a>' % (h(ctx.link('/notices/')), cur, NOTICES_CURRENT))
 
 
 def _utility_html(ctx):
@@ -375,8 +399,30 @@ def _utility_html(ctx):
         if it.get('external'):
             out.append(ext_link(it['label'], it['href']))
         else:
-            out.append('<a class="link" href="%s">%s</a>' % (h(ctx.link(it['slug'])), h(it['label'])))
+            label = h(it['label'])
+            if it.get('slug') == '/notices/':
+                # the span lets additions/content.js write the live count from the operator feed (2026-10-23)
+                label = '%s (<span data-feed-count="notices-current">%d</span> current)' % (label, NOTICES_CURRENT)
+            out.append('<a class="link" href="%s">%s</a>' % (h(ctx.link(it['slug'])), label))
     return '\n        '.join(out)
+
+
+def menu_current(nav, page, k):
+    """aria-current for a page link in the menu: "page" on the page itself, "true" on the hub of a page that is not listed
+    in the menu (an event or an album marks Events or Gallery; final review 2026-10-25)."""
+    if not page:
+        return ''
+    if page['slug'] == k['slug']:
+        return ' aria-current="page"'
+    if page.get('menu'):
+        return ''
+    seen, p = set(), page
+    while p and p.get('parent') and p['parent'] not in seen:
+        seen.add(p['parent'])
+        if p['parent'] == k['slug']:
+            return ' aria-current="true"'
+        p = nav.by_slug.get(p['parent'])
+    return ''
 
 
 def render_menu(ctx, page=None):
@@ -396,7 +442,7 @@ def render_menu(ctx, page=None):
                     % (sub_id, h(g['label'])))
             sub = '<ul class="menu__sub" id="%s">%s</ul>' % (sub_id, ''.join(
                 '<li><a href="%s"%s>%s</a></li>' % (
-                    h(ctx.link(k['slug'])), ' aria-current="page"' if page and page['slug'] == k['slug'] else '', h(k['label']))
+                    h(ctx.link(k['slug'])), menu_current(nav, page, k), h(k.get('menu_label') or k['label']))
                 for k in kids))
         else:
             sub = ''
@@ -450,9 +496,12 @@ def render_footer(ctx):
     for c in nav.footer['columns']:
         links = ''.join('<li><a class="link" href="%s">%s</a></li>' % (h(ctx.link(p['slug'])), h(p.get('footer_label') or p['label'])) for p in nav.footer_links(c['key']))
         head = h(c['heading'])
+        # the link groups fold into accordions under 720 px (founder, 2026-10-18; CSS in main.css, script in additions/footer.js)
         cols.append('''<nav class="foot__links" aria-labelledby="foot-%(k)s">
-        <h2 id="foot-%(k)s" class="label foot__h">%(head)s</h2>
-        <ul>%(links)s</ul>
+        <details class="foot__group" data-foot-group>
+          <summary class="foot__sum"><h2 id="foot-%(k)s" class="label foot__h">%(head)s</h2><span class="foot__chev" aria-hidden="true"></span></summary>
+          <ul>%(links)s</ul>
+        </details>
       </nav>''' % {'k': c['key'], 'head': head, 'links': links})
     f = nav.site['further']
     phone_rows = ''.join('<li><span class="phones__who">%s</span><a href="tel:%s">%s</a></li>' % (h(p['who']), h(p['tel']), h(p['display']))
@@ -487,13 +536,15 @@ def render_footer(ctx):
       <div class="foot__col foot__col--phones">
         <h2 class="label foot__h">Telephone</h2>
         <ul class="foot__phones">%(phones)s</ul>
-        <p class="foot__email">Email: see the <a class="link" href="%(contact)s">contact page</a></p>
+        <p class="foot__email">Email: not yet published; please telephone</p>
       </div>
       %(cols)s
     </div>
     <div class="foot__util">
-      <p class="label foot__h">For current parents</p>
-      <ul>%(util)s</ul>
+      <details class="foot__group" data-foot-group>
+        <summary class="foot__sum"><span class="label foot__h">For current parents</span><span class="foot__chev" aria-hidden="true"></span></summary>
+        <ul>%(util)s</ul>
+      </details>
     </div>
     <div class="foot__bottom">
       <p class="foot__legal">%(legal)s</p>
@@ -504,11 +555,12 @@ def render_footer(ctx):
           <span class="toggle__label">Reduce motion</span>
         </button>
       </div>
+      <p class="foot__visit" data-portal-visit hidden></p>
     </div>
   </div>
 </footer>''' % {
         'crest': h(ctx.asset('brand/logo-white-160.png')), 'addr': h(nav.site['address_line']), 'map': maps_link(nav),
-        'phones': phone_rows, 'contact': h(ctx.link('/contact/')), 'cols': '\n      '.join(cols),
+        'phones': phone_rows, 'cols': '\n      '.join(cols),
         'util': ''.join('<li>%s</li>' % u for u in util), 'legal': '<span class="foot__dot" aria-hidden="true">&middot;</span>'.join(legal),
         'durl': h(d['url']), 'dname': h(d['label']), 'newtab': NEW_TAB,
     }
@@ -547,11 +599,13 @@ def render_hero(ctx, m, page, crumbs):
     if m.get('hero_image'):
         img = media.render_img(m['hero_image'], m.get('hero_alt', ''), ctx.asset(''), sizes=m.get('hero_sizes') or '100vw',
                                loading='eager', fetchpriority='high')
+        # hero_caption and hero_n are still read (pages keep them as the frame's record) but no longer shown: photographs
+        # carry no visible name caption (founder, 2026-10-18; media.strip_captions does the same for the body)
         cap = ''
-        if m.get('hero_caption'):
-            n = '<span class="plate__n">%s</span>' % h(m['hero_n']) if m.get('hero_n') else ''
-            cap = '<figcaption class="plate__cap">%s%s</figcaption>' % (n, m['hero_caption'])
-        figure = '<figure class="plate plate--bleed page-hero__plate"><div class="plate__frame">%s</div>%s</figure>' % (img, cap)
+        # hero_tag: a people-free AI plate opening a page carries the shared Illustration tag on the picture (illustration.css),
+        # as it does everywhere else; the alt says the same, so the tag is aria-hidden (final review 2026-10-25)
+        tag = ('<span class="ill-tag" aria-hidden="true">%s</span>' % h(m['hero_tag'])) if m.get('hero_tag') else ''
+        figure = '<figure class="plate plate--bleed page-hero__plate"><div class="plate__frame">%s%s</div>%s</figure>' % (img, tag, cap)
     return '''<header class="page-hero">
   <div class="band">
     %(crumbs)s
@@ -566,15 +620,30 @@ def render_hero(ctx, m, page, crumbs):
     }
 
 
-def render_children(ctx, parent=None, group=None, template=None, not_template=None, level=3, start=1):
-    """Chapter cards for the children of a page (url tree) or the menu children of a group.
-    Each card is one link (the heading's own link, stretched over the card by CSS)."""
-    nav = ctx.nav
+def child_pages(nav, parent=None, group=None, template=None, not_template=None, indexed_only=False):
     pages = nav.menu_children(group) if group else nav.children_of(parent)
     if template:
         pages = [p for p in pages if p['template'] == template]
     if not_template:
         pages = [p for p in pages if p['template'] != not_template]
+    if indexed_only:
+        pages = [p for p in pages if indexable(p)]
+    return pages
+
+
+def render_child_list(ctx, pages, cls='sm-list', numbered=False):
+    """{{children:... as="list"}}: one row per page, the label as a link and the one-line summary under it."""
+    tag = 'ol' if numbered else 'ul'
+    rows = ['<li class="%s__row"><a class="link %s__link" href="%s">%s</a><span class="%s__note">%s</span></li>'
+            % (cls, cls, h(ctx.link(p['slug'])), h(p['label']), cls, h(p['summary'])) for p in pages]
+    return '<%s class="%s">\n      %s\n    </%s>' % (tag, cls, '\n      '.join(rows), tag)
+
+
+def render_children(ctx, parent=None, group=None, template=None, not_template=None, level=3, start=1):
+    """Chapter cards for the children of a page (url tree) or the menu children of a group.
+    Each card is one link (the heading's own link, stretched over the card by CSS)."""
+    nav = ctx.nav
+    pages = child_pages(nav, parent, group, template, not_template)
     card = ('<li class="chapter-card" data-reveal>\n'
             '        <span class="chapter-card__n">%02d</span>\n'
             '        <h%d class="chapter-card__title"><a class="chapter-card__link" href="%s">%s</a></h%d>\n'
@@ -756,6 +825,18 @@ def render_seo_head(ctx, title_full, description, og_image, og_size=None, og_alt
     return '\n'.join(lines)
 
 
+def portal_meta(nav):
+    """The website portal (build/additions/portal.js): where the School Desk API is, and whether the question helper shows.
+    nav.json site.portal = {"api": "http://localhost:4104", "chat": true, "privacy": "/privacy/"}. No api, no tags: the
+    portal script then stays off and every form behaves as a prototype. check.py reads no meta content, so the API origin
+    needs no allow-list entry (website portal spec, 2026-10-23, section 8.1)."""
+    p = nav.site.get('portal') or {}
+    if not p.get('api'):
+        return ''
+    return '<meta name="pp:portal-api" content="%s">\n<meta name="pp:portal-chat" content="%s">' % (
+        h(str(p['api']).rstrip('/')), 'on' if p.get('chat', True) else 'off')
+
+
 HEAD_SCRIPT = ("<script>(function(){var d=document.documentElement;d.classList.add('js');"
                "try{if(localStorage.getItem('pp:motion')==='reduced'){d.setAttribute('data-motion','reduced');}}catch(e){}})();</script>")
 
@@ -783,6 +864,8 @@ def render_document(nav, ctx, page, m, body_html, hero_html='', canonical=True, 
         extra_head += '\n<meta name="pp:draft" content="true">'
     if SHELL_HASH:
         extra_head += '\n<meta name="pp:shell" content="%s">' % h(SHELL_HASH)
+    if portal_meta(nav):
+        extra_head += '\n' + portal_meta(nav)
     return '''<!doctype html>
 <html lang="en">
 <head>

@@ -13,10 +13,16 @@
      "summary": "The school in dates, from the first O Level candidate to the move into its own building."
     },
     {
-     "title": "Leadership and management",
-     "label": "Leadership",
+     "title": "School administration",
+     "label": "School administration",
+     "url": "about/school-administration/",
+     "summary": "The Chairman, the Managing Director, the Principal, the Vice Principals and the Teachers-in-Charge, and how the school is organised."
+    },
+    {
+     "title": "Who looks after each class",
+     "label": "Who to ask about your child's class",
      "url": "about/leadership/",
-     "summary": "Who leads the school, and which classes each Vice Principal and Teacher-in-Charge looks after."
+     "summary": "Pick your child's class to see the Teacher-in-Charge, the Vice Principal and the line to call."
     },
     {
      "title": "Our campus",
@@ -65,7 +71,7 @@
      "title": "Middle School: Class IV to VII",
      "label": "Middle",
      "url": "learning/middle/",
-     "summary": "Classes IV to VII. Two semesters a year, each with an examination."
+     "summary": "Classes IV to VII. Core subjects learned by doing, and a new uniform from Class IV."
     },
     {
      "title": "Senior School: Class VIII to XII and O Level",
@@ -83,25 +89,25 @@
      "title": "The Cambridge pathway, explained",
      "label": "Cambridge pathway",
      "url": "learning/cambridge-pathway/",
-     "summary": "How Cambridge O Level, AS and A Level fit together, in plain English."
+     "summary": "O Level, AS and A Level explained in five minutes: what is sat when, how it is graded, what the words mean."
     },
     {
      "title": "Examinations and reporting",
      "label": "Examinations",
      "url": "learning/examinations/",
-     "summary": "Two semesters, an examination at the end of each, and how reports reach families."
+     "summary": "Two semesters, an examination at the end of each, how promotion works and what parents see in the portal."
     },
     {
      "title": "Results and achievements",
      "label": "Results",
      "url": "learning/results/",
-     "summary": "Results and achievements, each with its year and source."
+     "summary": "Cambridge results 2026, awards and competitions, each with its year and source."
     },
     {
      "title": "Student support",
      "label": "Student support",
      "url": "learning/student-support/",
-     "summary": "The counsellor, career guidance and university application support."
+     "summary": "The counsellor, career and university guidance and the health centre, for every class."
     }
    ]
   },
@@ -111,40 +117,40 @@
    "url": "admissions/",
    "pages": [
     {
-     "title": "How to apply",
-     "label": "How to apply",
-     "url": "admissions/how-to-apply/",
-     "summary": "The five steps from first call to the result, and what to bring."
-    },
-    {
-     "title": "Fees and payment",
-     "label": "Fees and payment",
-     "url": "admissions/fees/",
-     "summary": "How fees are explained and how they are paid."
-    },
-    {
      "title": "Book a visit",
      "label": "Book a visit",
      "url": "admissions/visit/",
-     "summary": "Come and see the building and the section your child would join."
-    },
-    {
-     "title": "Admissions FAQ",
-     "label": "FAQ",
-     "url": "admissions/faq/",
-     "summary": "Answers to the questions families ask most, grouped by topic."
+     "summary": "Come and see the school. Call first; the office confirms the day."
     },
     {
      "title": "Enquire",
      "label": "Enquire",
      "url": "admissions/enquire/",
-     "summary": "Ask the admissions team a question."
+     "summary": "Ask the admissions team, or call the line for your child's section."
+    },
+    {
+     "title": "How to apply",
+     "label": "How to apply",
+     "url": "admissions/how-to-apply/",
+     "summary": "The five steps from the first call to the result, the form, and what to bring."
+    },
+    {
+     "title": "Fees and payment",
+     "label": "Fees and payment",
+     "url": "admissions/fees/",
+     "summary": "How fees are explained and paid. Amounts come from the admissions office."
     },
     {
      "title": "Starting at Playpen",
      "label": "Starting at Playpen",
      "url": "admissions/starting-at-playpen/",
-     "summary": "Uniform, books and the other practical details of the first weeks."
+     "summary": "Uniform, books, the bus and a list for the first day."
+    },
+    {
+     "title": "Admissions FAQ",
+     "label": "FAQ",
+     "url": "admissions/faq/",
+     "summary": "Twenty answers, grouped by topic, with a search."
     }
    ]
   },
@@ -153,6 +159,18 @@
    "label": "School life",
    "url": "school-life/",
    "pages": [
+    {
+     "title": "The school day",
+     "label": "The school day",
+     "url": "school-life/school-day/",
+     "summary": "The day from the gate to the gate, and the four things new families ask first."
+    },
+    {
+     "title": "Transport and safety",
+     "label": "Transport and safety",
+     "url": "school-life/transport-and-safety/",
+     "summary": "How the campus is kept safe, the rules at the gate, and the school bus."
+    },
     {
      "title": "Sports",
      "label": "Sports",
@@ -163,32 +181,20 @@
      "title": "Clubs and activities",
      "label": "Clubs and activities",
      "url": "school-life/clubs-and-activities/",
-     "summary": "Art and Craft, Music, Dance, Drama, Debate, the Olympiads and more."
+     "summary": "Thirteen activities in five groups, from Music and Debate to the Duke of Edinburgh's Award, and the school's trips."
     },
     {
      "title": "Culture and service",
      "label": "Culture and service",
      "url": "school-life/culture-and-service/",
      "summary": "The Cultural Programme, Pohela Boishakh and community service."
-    },
-    {
-     "title": "Transport and safety",
-     "label": "Transport and safety",
-     "url": "school-life/transport-and-safety/",
-     "summary": "School buses, the sick room, and how the campus is kept safe."
-    },
-    {
-     "title": "The school day",
-     "label": "The school day",
-     "url": "school-life/school-day/",
-     "summary": "The shape of a school day, and the practical things to know."
     }
    ]
   },
   {
    "key": "community",
    "label": "Community",
-   "url": "",
+   "url": "community/",
    "pages": [
     {
      "title": "For parents",
@@ -200,19 +206,19 @@
      "title": "Alumni",
      "label": "Alumni",
      "url": "community/alumni/",
-     "summary": "The Playpen Alumni Association, and how former students can stay in touch."
+     "summary": "The Playpen Alumni Association, the graduation albums by year, and how to stay in touch."
     },
     {
-     "title": "News",
-     "label": "News",
+     "title": "News and achievements",
+     "label": "News and achievements",
      "url": "news/",
-     "summary": "Reports from the school year."
+     "summary": "Reports from the school year and competition results."
     },
     {
-     "title": "Events and term dates",
+     "title": "Events",
      "label": "Events",
      "url": "events/",
-     "summary": "Events and term dates for the year."
+     "summary": "Fifteen events in the school year, the two semesters, and where families find the dates."
     },
     {
      "title": "Notices",
@@ -224,7 +230,7 @@
      "title": "Gallery",
      "label": "Gallery",
      "url": "gallery/",
-     "summary": "Photographs from the school year."
+     "summary": "The school's albums, in frames where no child can be recognised, and the building."
     }
    ]
   },
@@ -250,11 +256,226 @@
    "title": "Sitemap",
    "label": "Sitemap",
    "url": "sitemap/"
+  }
+ ],
+ "events": [
+  {
+   "title": "Annual Sports Day",
+   "label": "Annual Sports Day",
+   "url": "events/annual-sports-day/",
+   "summary": "The march past, the displays and the races, on the school field."
   },
   {
-   "title": "Search",
-   "label": "Search",
-   "url": "search/"
+   "title": "Pohela Boishakh",
+   "label": "Pohela Boishakh",
+   "url": "events/pohela-boishakh/",
+   "summary": "The Bengali new year, celebrated across the school, on 14 April."
+  },
+  {
+   "title": "Science and Technology Fair",
+   "label": "Science and Technology Fair",
+   "url": "events/science-and-technology-fair/",
+   "summary": "Student projects, experiments and models, shown at stalls in the hall."
+  },
+  {
+   "title": "Annual Cultural Programme",
+   "label": "Annual Cultural Programme",
+   "url": "events/annual-cultural-programme/",
+   "summary": "The school's largest performance event: music, dance and drama on stage."
+  },
+  {
+   "title": "Graduation Ceremony",
+   "label": "Graduation Ceremony",
+   "url": "events/graduation-ceremony/",
+   "summary": "The graduates of O Level and A Level, in caps, gowns and maroon sashes."
+  },
+  {
+   "title": "Shaheed Dibosh: International Mother Language Day",
+   "label": "Shaheed Dibosh",
+   "url": "events/shaheed-dibosh/",
+   "summary": "21 February: the Language Movement remembered, and International Mother Language Day."
+  },
+  {
+   "title": "Independence Day",
+   "label": "Independence Day",
+   "url": "events/independence-day/",
+   "summary": "26 March: the national day of Bangladesh, marked with a school function."
+  },
+  {
+   "title": "Victory Day",
+   "label": "Victory Day",
+   "url": "events/victory-day/",
+   "summary": "16 December: the victory of 1971, commemorated every year."
+  },
+  {
+   "title": "Annual Drama",
+   "label": "Annual Drama",
+   "url": "events/annual-drama/",
+   "summary": "Drama on the hall stage, from the Drama activity and the Drama Club."
+  },
+  {
+   "title": "Annual Milad",
+   "label": "Annual Milad",
+   "url": "events/annual-milad/",
+   "summary": "A gathering for prayer and recitation, held each year."
+  },
+  {
+   "title": "Orientation Day",
+   "label": "Orientation Day",
+   "url": "events/orientation-day/",
+   "summary": "A day that introduces students and families to the school year."
+  },
+  {
+   "title": "Book Fair",
+   "label": "Book Fair",
+   "url": "events/book-fair/",
+   "summary": "A fair of books, beside the library lessons of every class."
+  },
+  {
+   "title": "Education Fair",
+   "label": "Education Fair",
+   "url": "events/education-fair/",
+   "summary": "The yearly fair beside the school's guidance on studying further."
+  },
+  {
+   "title": "Business Week",
+   "label": "Business Week",
+   "url": "events/business-week/",
+   "summary": "A week for the business subjects and the Business Club."
+  },
+  {
+   "title": "Study Tour",
+   "label": "Study Tour",
+   "url": "events/study-tour/",
+   "summary": "Learning away from the classroom, with parents' permission."
+  }
+ ],
+ "albums": [
+  {
+   "title": "Photographs of Annual Sports Day 2026: Class I to XII",
+   "label": "Annual Sports Day 2026: Class I to XII",
+   "url": "gallery/annual-sports-day-2026-class-1-12/",
+   "summary": "Displays, the march past and athletics on the school field for Classes I to XII."
+  },
+  {
+   "title": "Photographs of Graduation Ceremony 2025",
+   "label": "Graduation Ceremony 2025",
+   "url": "gallery/graduation-2025/",
+   "summary": "The Graduation Ceremony of Ordinary and Advanced Level, held in the multipurpose hall."
+  },
+  {
+   "title": "Photographs of Pohela Boishakh 1432",
+   "label": "Pohela Boishakh 1432",
+   "url": "gallery/pohela-boishakh-1432/",
+   "summary": "The Bengali new year 1432 at school: an alpona on the courtyard floor, folk art and stalls of clay pots."
+  },
+  {
+   "title": "Photographs of NASA astronaut Joseph M. Acaba's visit",
+   "label": "NASA astronaut Joseph M. Acaba's visit",
+   "url": "gallery/nasa-astronaut-visit/",
+   "summary": "NASA astronaut Joseph M. Acaba visited the school and spoke to students in the multipurpose hall."
+  },
+  {
+   "title": "Photographs of Annual Cultural Programme 2024",
+   "label": "Annual Cultural Programme 2024",
+   "url": "gallery/cultural-programme-2024/",
+   "summary": "Dance and music on the stage of the multipurpose hall."
+  },
+  {
+   "title": "Photographs of Playpen Inter-School Football Tournament (PIFT) 2024",
+   "label": "Playpen Inter-School Football Tournament (PIFT) 2024",
+   "url": "gallery/pift-2024/",
+   "summary": "Football on the school ground, with teams from other schools. The one frame shown is the tournament banner on the building."
+  },
+  {
+   "title": "Photographs of Graduation Ceremony 2024",
+   "label": "Graduation Ceremony 2024",
+   "url": "gallery/graduation-2024/",
+   "summary": "The Graduation Ceremony 2024 in the multipurpose hall."
+  },
+  {
+   "title": "Photographs of Annual Cultural Programme 2023",
+   "label": "Annual Cultural Programme 2023",
+   "url": "gallery/cultural-programme-2023/",
+   "summary": "The Annual Cultural Programme of the Elementary and Junior Section."
+  },
+  {
+   "title": "Photographs of Graduation Ceremony 2023",
+   "label": "Graduation Ceremony 2023",
+   "url": "gallery/graduation-2023/",
+   "summary": "The Graduation Ceremony of Ordinary and Advanced Level 2023 in the multipurpose hall."
+  },
+  {
+   "title": "Photographs of Colour Week",
+   "label": "Colour Week",
+   "url": "gallery/colour-week/",
+   "summary": "A wall display for each colour day, with toys and objects of that colour on the table below."
+  },
+  {
+   "title": "Photographs of Class Party 2022 to 2023",
+   "label": "Class Party 2022 to 2023",
+   "url": "gallery/class-party-2022-2023/",
+   "summary": "Class parties in decorated classrooms."
+  },
+  {
+   "title": "Photographs of Ekushe February",
+   "label": "Ekushe February",
+   "url": "gallery/ekushe-february/",
+   "summary": "21 February, Language Martyrs' Day, marked at school with flowers at a Shaheed Minar."
+  },
+  {
+   "title": "Photographs of Book Fair",
+   "label": "Book Fair",
+   "url": "gallery/book-fair/",
+   "summary": "A fair of books at school."
+  },
+  {
+   "title": "Photographs of Independence Day Art Competition",
+   "label": "Independence Day Art Competition",
+   "url": "gallery/independence-day-art-competition/",
+   "summary": "An art competition for Independence Day, 26 March."
+  },
+  {
+   "title": "Photographs of Education Fair",
+   "label": "Education Fair",
+   "url": "gallery/education-fair/",
+   "summary": "Students' projects and models on display at the Education Fair."
+  },
+  {
+   "title": "Photographs of Mathematical Olympiad",
+   "label": "Mathematical Olympiad",
+   "url": "gallery/mathematical-olympiad/",
+   "summary": "A mathematics competition at school."
+  },
+  {
+   "title": "Photographs of Bangla Olympiad",
+   "label": "Bangla Olympiad",
+   "url": "gallery/bangla-olympiad/",
+   "summary": "Students at an inter-school Bangla Olympiad."
+  },
+  {
+   "title": "Photographs of Inter-Class Football Tournament",
+   "label": "Inter-Class Football Tournament",
+   "url": "gallery/inter-class-football/",
+   "summary": "Football between classes on the school ground."
+  },
+  {
+   "title": "Photographs of Teacher Training and Activities",
+   "label": "Teacher Training and Activities",
+   "url": "gallery/teacher-training/",
+   "summary": "Training sessions and workshops for teachers."
+  },
+  {
+   "title": "Photographs of Art and Craft",
+   "label": "Art and Craft",
+   "url": "gallery/art-and-craft/",
+   "summary": "Work from the Art and Craft programme: paper craft, clay models of houses and forts, and miniature gardens."
+  },
+  {
+   "title": "Photographs of Graduation Ceremony 2022",
+   "label": "Graduation Ceremony 2022",
+   "url": "gallery/graduation-2022/",
+   "summary": "The 17th Graduation Ceremony of Ordinary and Advanced Level, for 2021 and 2022."
   }
  ]
 }

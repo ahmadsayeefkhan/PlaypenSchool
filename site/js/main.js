@@ -6,8 +6,8 @@
    preloader.finish(): the one ScrollTrigger.refresh() on the exit's first frame → after the lift:
    html.is-loading off, Lenis, the saved scroll position or the URL's hash restored (then a settle
    pass over anything the restore jumped past), cursor, the motion toggle. The page focuses
-   nothing: the next Tab is the first skip link. The idle warm-ups (the Ground plate, the first
-   Ascent slides, the medallion rig) wait for the cover's intro to settle. Nothing here touches
+   nothing: the next Tab is the first skip link. The idle warm-ups (the Achievement photograph, the
+   first Ascent slides) wait for the cover's intro to settle. Nothing here touches
    WebGL directly. */
 
 import { gsap } from 'gsap';
@@ -22,11 +22,11 @@ import * as sheet from './sections/sheet.js';
 import * as cursor from './sections/cursor.js';
 import * as magnet from './sections/magnet.js';
 import * as cover from './sections/cover.js';
-import * as ground from './sections/ground.js';
+import * as results from './sections/results.js';
 import * as ascent from './sections/ascent.js';
 import * as learning from './sections/learning.js';
-import * as life from './sections/life.js';
-import * as ledger from './sections/ledger.js';
+import * as events from './sections/events.js';
+import * as notices from './sections/notices.js';
 import * as present from './sections/present.js';
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
@@ -227,14 +227,15 @@ safe('nav.init', () => nav.init(ctx));
 safe('menu.init', () => menu.init(ctx));
 safe('sheet.init', () => sheet.init(ctx));
 safe('cover.init', () => cover.init(ctx));
-safe('ground.init', () => ground.init(ctx));
+safe('results.init', () => results.init(ctx));
 safe('ascent.init', () => ascent.init(ctx));
 safe('learning.init', () => learning.init(ctx));
-safe('life.init', () => life.init(ctx));
-safe('ledger.init', () => ledger.init(ctx));
+safe('events.init', () => events.init(ctx));
+safe('notices.init', () => notices.init(ctx));   // the notices date guard (dormant today; not a scene, so not in order)
+safe('foot.init', () => initFootGroups());   // before the scenes: the footer's height is final when they measure
 if (html.classList.contains('present')) safe('present.init', () => present.init(ctx));
 
-const order = [cover, reveals, nav, ground, ascent, learning, life, ledger];   // page order: the triggers are created in this sequence
+const order = [cover, reveals, nav, results, ascent, learning, events];   // page order: the triggers are created in this sequence
 const mm = gsap.matchMedia();
 mm.add({ desktop: '(min-width: 1024px)', mobile: '(max-width: 1023px)' }, (c) => {
   ctx.desktop = !!c.conditions.desktop;
@@ -333,22 +334,19 @@ async function bootHero() {
   if (!mod) throw Object.assign(new Error('hero module missing'), { code: 'THREE_IMPORT_FAILED' });
   mark('hero:module');
 
-  const heroImg = document.getElementById('hero-img');
-  const heroVideo = document.getElementById('hero-video');
+  // (2026-10-20) the hero is the school's film in a plain DOM <video> (js/sections/cover.js): the
+  // renderer draws the Ascent only. Slide 0 stays as an empty placeholder so the chapter slides keep
+  // their indices (pp:chapter i -> hero.goTo(i)); heroPlane: false skips the hero's still, depth and
+  // light maps entirely (nothing fetched, nothing uploaded).
   const ascentVideo = document.getElementById('ascent-video');
   const chapterImgs = Array.from(document.querySelectorAll('img[data-chapter-img]'));
-  const largest = (img) => {
-    const set = (img.getAttribute('srcset') || '').split(',').map((s) => s.trim()).filter(Boolean);
-    return set.length ? set[set.length - 1].split(/\s+/)[0] : img.currentSrc || img.src;
-  };
   // every slide is built from its DOM <img> (createImageBitmap of the <picture>'s own AVIF, one
   // download shared with the page); the 1440 WebP is the fallback if that image fails
   const slides = [
-    { src: largest(heroImg), caption: 'The rooftop terrace, 2024', img: heroImg, video: heroVideo,
-      depth: './assets/media/hero-1-depth-960.png', luma: './assets/media/hero-1-luma-960.jpg' },
+    { src: null, caption: '', img: null, video: null },
     ...chapterImgs.map((img, i) => ({
-      src: './assets/media/ascent-' + (i + 1) + '-1440.webp',
-      caption: img.closest('.ascent__pic') ? (document.querySelector('.chapter[data-chapter="' + (i + 1) + '"] .chapter__cap')?.textContent || '') : '',
+      src: img.dataset.glSrc || './assets/media/ascent-' + (i + 1) + '-1440.webp',
+      caption: '',   // no photo captions on the home since 2026-10-18
       img,
       video: i === 0 ? ascentVideo : undefined,
     })),
@@ -356,11 +354,14 @@ async function bootHero() {
   const hero = await mod.createHero({
     canvas,
     slides,
-    medallionUrl: './assets/3d/medallion-1k.glb',
+    heroPlane: false,
+    medallionUrl: null,   // the Ledger and its crest were removed on 2026-10-18
     reducedMotion: false,
     onProgress: () => {},
     displacement: './assets/media/disp-brick-512.png',
-    warmAfter: calm,       // the medallion's idle preparation waits for the cover's intro
+    // the renderer prepares the medallion at idle once this resolves; with no medallion slot on the
+    // page it never does, so the crest's loaders and environment are never fetched
+    warmAfter: document.querySelector('[data-gl="medallion"]') ? calm : new Promise(() => {}),
     drawAfter: drawGate,   // the first frame waits for the preloader's exit
   });
   mark('hero:created');
@@ -376,13 +377,13 @@ if (heroBoot) {
   resolveReady(true);
 }
 
-/* Idle warm-up, once the cover's intro has settled: decode the Ground plate and fetch the first
-   two Ascent slides while the page is idle, so the hero → Ground → Ascent handover does not pay
-   for them mid-scroll (and the intro never pays for them either). */
+/* Idle warm-up, once the cover's intro has settled: decode the Achievement photograph and fetch
+   the first two Ascent slides while the page is idle, so the scroll from the Results into the
+   Ascent does not pay for them mid-scroll (and the intro never pays for them either). */
 Promise.all([ready, calm]).then(() => {
   const warm = () => safe('warm', () => {
     mark('warm');
-    const plate = document.querySelector('#ground-plate img');
+    const plate = document.querySelector('#achievement .frame img');
     if (plate) { plate.loading = 'eager'; if (plate.decode) plate.decode().catch(() => {}); }
     if (ctx.hero && ctx.hero.warm) ctx.hero.warm([1, 2]);
   });
@@ -395,7 +396,7 @@ window.addEventListener('pp:scene', (e) => {
   if (!hero) return;
   const { id, p } = e.detail || {};
   if (id === 'hero') safe('hero.setScroll', () => hero.setScroll(p));
-  else if ((id === 'ascent' || id === 'ledger') && hero.setScene) safe('hero.setScene', () => hero.setScene(id, p));
+  else if (id === 'ascent' && hero.setScene) safe('hero.setScene', () => hero.setScene(id, p));
 });
 window.addEventListener('pp:chapter', (e) => {
   const hero = ctx.getHero();
@@ -412,3 +413,23 @@ window.addEventListener('pp:gl', (e) => {
     setTier('light');
   }
 });
+
+/* Footer link groups (2026-10-18): <details> accordions on phones; from 720 px up they stay open and
+   their summaries leave the tab order (the same code runs on the inner pages in js/inner.js). Without
+   this script, css/main.css shows the lists on wide screens through ::details-content. */
+function initFootGroups() {
+  const groups = Array.from(document.querySelectorAll('[data-foot-group]'));
+  if (!groups.length) return;
+  const mq = matchMedia('(min-width: 720px)');
+  const sync = () => groups.forEach((d) => {
+    d.open = mq.matches;
+    const s = d.querySelector('summary');
+    if (s) { if (mq.matches) s.setAttribute('tabindex', '-1'); else s.removeAttribute('tabindex'); }
+  });
+  groups.forEach((d) => {
+    const s = d.querySelector('summary');
+    if (s) s.addEventListener('click', (e) => { if (mq.matches) e.preventDefault(); });
+  });
+  sync();
+  mq.addEventListener('change', sync);
+}

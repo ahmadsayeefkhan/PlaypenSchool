@@ -13,7 +13,10 @@
   try { stored = localStorage.getItem('pp:motion'); seen = sessionStorage.getItem('pp:introSeen'); } catch (e) {}
   var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches || stored === 'reduced';
   var webgl2 = false; try { webgl2 = !!document.createElement('canvas').getContext('webgl2'); } catch (e) {}
-  var save = !!(navigator.connection && navigator.connection.saveData);
+  // Save-Data or a 2G connection (2026-10-20): the hero film is not loaded (poster only, a Play button
+  // lets the visitor choose); html[data-save] is the one flag css/main.css and js/sections/cover.js read
+  var conn = navigator.connection || {};
+  var save = !!conn.saveData || /(^|-)2g$/.test(conn.effectiveType || '');
   var low = (navigator.hardwareConcurrency || 4) <= 4 || (navigator.deviceMemory || 4) <= 2;
   // Phones and tablets (coarse pointer, or under 1024 px) take the light tier: there is no pointer
   // relight or parallax on touch, so three.js, the Draco decoder and the GLB (about 1.4 MB raw) would
@@ -23,6 +26,7 @@
   if (forced === 'full' || forced === 'light' || forced === 'still') tier = forced;
   var h = document.documentElement;
   h.dataset.tier = tier; h.classList.add('js', 'is-loading');
+  if (save) h.dataset.save = '1';
   // (the full tier's module preloads are added after the importmap below: a preload of a module that
   // imports "gsap" must not be resolved before the map exists)
   if (seen && q.get('intro') !== '1') h.classList.add('intro-seen');
@@ -151,18 +155,25 @@
   ]
 }
 </script>
+<meta name="pp:portal-api" content="http://localhost:4120">
+<meta name="pp:portal-chat" content="on">
+<link rel="stylesheet" href="./css/portal.css">
+<script src="./js/portal.js" defer></script>
+<script src="./js/content.js" defer></script>
 <!-- pp:end seo -->
 <link rel="icon" type="image/png" sizes="32x32" href="./assets/media/favicon-32.png">
 <link rel="icon" type="image/png" sizes="512x512" href="./assets/media/favicon-512.png">
 <link rel="apple-touch-icon" sizes="180x180" href="./assets/media/favicon-180.png">
 <link rel="preload" href="./vendor/fonts/newsreader-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="./vendor/fonts/hanken-grotesk-var.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" as="image" type="image/avif" media="(max-width: 767px)" imagesrcset="./assets/media/hero-1-mobile-720.avif 720w, ./assets/media/hero-1-mobile-1080.avif 1080w" imagesizes="100vw">
-<link rel="preload" as="image" type="image/avif" media="(min-width: 768px) and (max-width: 1999px)" imagesrcset="./assets/media/hero-1-960.avif 960w, ./assets/media/hero-1-1440.avif 1440w, ./assets/media/hero-1-1920.avif 1920w" imagesizes="100vw">
-<link rel="preload" as="image" type="image/avif" media="(min-width: 2000px)" imagesrcset="./assets/media/hero-1-1920.avif 1920w, ./assets/media/hero-1-2560.avif 2560w" imagesizes="100vw">
-<link rel="preload" as="image" type="image/svg+xml" href="./assets/brand/logo-mark.svg">
+<!-- the hero film's poster (frame 0), one per screen shape; the media queries match the <picture> in #hero
+     and the file choice in js/sections/cover.js exactly, so one poster is fetched -->
+<link rel="preload" as="image" type="image/webp" fetchpriority="high" media="(max-width: 1023px) and (orientation: portrait)" href="./assets/video/hero/hero-poster-phone.webp">
+<link rel="preload" as="image" type="image/webp" fetchpriority="high" media="(min-width: 1024px) and (max-width: 1280px), (max-width: 1280px) and (orientation: landscape)" href="./assets/video/hero/hero-poster-720.webp">
+<link rel="preload" as="image" type="image/webp" fetchpriority="high" media="(min-width: 1281px)" href="./assets/video/hero/hero-poster-1920.webp">
+<link rel="preload" as="image" type="image/webp" href="./assets/brand/logo-crest-512.webp">
 <link rel="stylesheet" href="./css/preloader.css">
-<link rel="stylesheet" href="./css/main.css">
+<link rel="stylesheet" href="./css/main.css?v=20261022c">
 <link rel="stylesheet" href="./vendor/lenis/lenis.css">
 <script type="importmap">
 {
@@ -196,11 +207,11 @@
 <link rel="modulepreload" href="./js/sections/cursor.js">
 <link rel="modulepreload" href="./js/sections/magnet.js">
 <link rel="modulepreload" href="./js/sections/cover.js">
-<link rel="modulepreload" href="./js/sections/ground.js">
+<link rel="modulepreload" href="./js/sections/results.js">
 <link rel="modulepreload" href="./js/sections/ascent.js">
 <link rel="modulepreload" href="./js/sections/learning.js">
-<link rel="modulepreload" href="./js/sections/life.js">
-<link rel="modulepreload" href="./js/sections/ledger.js">
+<link rel="modulepreload" href="./js/sections/events.js">
+<link rel="modulepreload" href="./js/sections/notices.js">
 <link rel="modulepreload" href="./js/sections/present.js">
 <script>
 (function () {
@@ -208,6 +219,7 @@
   // modules are fetched and compiled while the preloader runs, so the import after start() costs
   // its evaluation only (the light and still tiers never load them)
   if (document.documentElement.dataset.tier !== 'full') return;
+  // (medallion.js is a static import of hero.js; the crest itself is no longer drawn on the home)
   ['./vendor/three/build/three.module.min.js', './js/webgl/hero.js', './js/webgl/shaders.js', './js/webgl/medallion.js', './js/webgl/medallion-procedural.js'].forEach(function (href) {
     var l = document.createElement('link'); l.rel = 'modulepreload'; l.href = href; document.head.appendChild(l);
   });
@@ -225,9 +237,9 @@
   <span class="visually-hidden">Loading The Playpen School</span>
   <i class="preloader__line" aria-hidden="true"></i>
   <div class="preloader__crest">
-    <img id="preloader-crest" src="./assets/brand/logo-mark.svg" width="1000" height="1039" alt="" data-critical>
+    <img id="preloader-crest" src="./assets/brand/logo-crest-512.webp" width="511" height="512" alt="" data-critical>
   </div>
-  <p class="preloader__word" aria-hidden="true">The Playpen School</p>
+  <p class="preloader__word" aria-hidden="true">Playpen School</p>
   <div class="preloader__ticks" aria-hidden="true">
     <i class="tick"></i><i class="tick"></i><i class="tick"></i><i class="tick"></i><i class="tick"></i><i class="tick"></i><i class="tick"></i><i class="tick"></i><i class="tick"></i><i class="tick"></i>
   </div>
@@ -238,28 +250,28 @@
 <a class="skip" href="#content">Skip to content</a>
 <a class="skip" href="#admissions">Skip to admissions</a>
 
-<header id="top" class="nav is-over-hero">
-  <!-- the utility row (Portal, Pay fees, Notices) lives in the Menu overlay and the footer now: one
-       header bar, one maroon action -->
+<header id="top" class="nav nav--film is-over-hero">
+  <!-- 2026-10-20 (founder): over the full-screen film the home header is the crest and wordmark
+       top-left and the burger top-right, nothing else. The primary links stay in the markup for
+       build/sync_home.py (its fence) and are hidden; every page is in the Menu overlay. "Book a
+       visit" moved into the hero. Inner pages keep their own header (build/shell.py). -->
   <div class="nav__bar">
-    <a class="nav__brand" href="#hero" aria-label="The Playpen School, back to the top">
-      <span id="nav-mark" class="nav__mark"><img src="./assets/brand/logo-mark.svg" width="1000" height="1039" alt=""></span>
-      <span class="nav__word">The Playpen School</span>
+    <a class="nav__brand" href="#hero" aria-label="Playpen School, back to the top">
+      <span id="nav-mark" class="nav__mark"><img src="./assets/brand/logo-crest-256.webp" width="255" height="256" alt=""></span>
+      <span class="nav__word">Playpen School</span>
     </a>
-    <nav id="nav-primary" class="nav__primary" aria-label="Primary">
+    <nav id="nav-primary" class="nav__primary" aria-label="Primary" hidden>
       <!-- pp:begin nav (generated by build/sync_home.py from build/nav.json and build/shell.py; edit those, not this block) -->
       <a href="./about/">About</a>
       <a href="./learning/">Learning</a>
       <a href="./admissions/">Admissions</a>
       <a href="./school-life/">School life</a>
-      <a href="./community/parents/">Community</a>
+      <a href="./gallery/">Gallery</a>
+      <a href="./community/">Community</a>
       <a href="./contact/">Contact</a>
       <!-- pp:end nav -->
     </nav>
     <div class="nav__right">
-      <span class="magnet-area">
-        <button id="nav-visit" class="btn btn--primary btn--small" type="button" data-sheet-open="visit" data-magnet><span class="btn__label">Book a visit</span></button>
-      </span>
       <button id="menu-btn" class="menu-btn" type="button" aria-expanded="false" aria-controls="menu">
         <span class="menu-btn__label">Menu</span>
         <span class="menu-btn__icon" aria-hidden="true"><i></i><i></i></span>
@@ -273,137 +285,325 @@
 
 <main id="content" tabindex="-1">
 
-  <!-- Sheet 00 · The cover -->
-  <section id="hero" class="hero" data-scene="hero" data-sheet-n="00" aria-labelledby="hero-title">
+  <!-- Sheet 00 · The cover (2026-10-20): the school's own film, full screen, edge to edge.
+       The <picture> is the poster (frame 0 of the film) and the no-script view. The <video> has no
+       source in the markup: js/sections/cover.js picks one file for the screen (4:5 phone cut on
+       portrait screens under 1024 px, 720p up to 1280 px wide, 1080p above; AV1 where the device
+       decodes it efficiently, else H.264) after the preloader lifts, so nothing downloads before the
+       Save-Data and reduced-motion checks, and a phone never fetches the 1080p file. Reduced motion
+       or Save-Data: poster only until the visitor presses Play. The film is decorative (it says
+       nothing the text does not), so it is hidden from assistive tech; the Pause button is not.
+       Internal preview only: the footage needs the school's consent check and written approval
+       before any public use. -->
+  <section id="hero" class="hero hero--film" data-scene="hero" data-sheet-n="00" aria-labelledby="hero-title">
+    <div class="hero__media">
+      <picture class="hero__picture">
+        <source media="(max-width: 1023px) and (orientation: portrait)" type="image/webp" srcset="./assets/video/hero/hero-poster-phone.webp">
+        <source media="(max-width: 1023px) and (orientation: portrait)" srcset="./assets/video/hero/hero-poster-phone.jpg">
+        <source media="(min-width: 1281px)" type="image/webp" srcset="./assets/video/hero/hero-poster-1920.webp">
+        <source media="(min-width: 1281px)" srcset="./assets/video/hero/hero-poster-1920.jpg">
+        <source type="image/webp" srcset="./assets/video/hero/hero-poster-720.webp">
+        <img id="hero-img" src="./assets/video/hero/hero-poster-720.jpg" width="1280" height="720" alt="The school's brick and pale concrete building rising above a line of green trees." fetchpriority="high" decoding="async" data-critical>
+      </picture>
+      <video id="hero-video" class="hero__video" muted autoplay loop playsinline preload="metadata" disablepictureinpicture disableremoteplayback aria-hidden="true" tabindex="-1"></video>
+      <i class="hero__scrim" aria-hidden="true"></i>
+    </div>
     <div class="hero__top band">
       <div class="hero__text">
         <p class="label hero__label" data-reveal>Bashundhara R/A, Dhaka</p>
-        <!-- two lines from 1280 up ("The whole of a childhood, / in one school."): each line is a
-             span that becomes a block there (css §7); SplitText reads the rendered lines -->
+        <!-- two lines from 1280 up; SplitText reads the rendered lines -->
         <h1 id="hero-title" class="display-xl hero__title" data-split="lines"><span class="hero__l">The <em>whole</em> of a childhood,</span> <span class="hero__l">in one school.</span></h1>
-      </div>
-      <div class="hero__aside">
-        <p class="hero__lead lead" data-reveal>Playgroup to A Level, under one roof. An English-medium day school with Cambridge O Level, AS and A Level, and nearly 2,000 students on one campus in Dhaka.</p>
+        <p class="hero__lead lead" data-reveal>An English-medium day school from Playgroup to Class&nbsp;XII, with Cambridge O&nbsp;Level, AS and A&nbsp;Level.</p>
         <div class="hero__actions" data-reveal>
-          <button class="btn btn--text" type="button" data-sheet-open="visit">Book a visit</button>
-          <button class="btn btn--text" type="button" data-sheet-open="apply">How to apply</button>
+          <a class="btn btn--primary" href="./admissions/visit/" data-sheet-open="visit"><span class="btn__label">Book a visit</span></a>
+          <a class="btn btn--text" href="./admissions/how-to-apply/" data-sheet-open="apply">How to apply</a>
         </div>
+        <!-- The hero notice chip was removed on 2026-10-22 at the founder's request; notices stay in Sheet 08 below. -->
       </div>
     </div>
-    <div class="hero__media" data-gl="hero">
-      <picture class="hero__picture">
-        <source media="(max-width: 767px)" type="image/avif" srcset="./assets/media/hero-1-mobile-720.avif 720w, ./assets/media/hero-1-mobile-1080.avif 1080w" sizes="100vw">
-        <source media="(max-width: 767px)" type="image/webp" srcset="./assets/media/hero-1-mobile-720.webp 720w, ./assets/media/hero-1-mobile-1080.webp 1080w" sizes="100vw">
-        <source media="(max-width: 767px)" srcset="./assets/media/hero-1-mobile-720.jpg 720w, ./assets/media/hero-1-mobile-1080.jpg 1080w" sizes="100vw">
-        <source media="(min-width: 2000px)" type="image/avif" srcset="./assets/media/hero-1-1920.avif 1920w, ./assets/media/hero-1-2560.avif 2560w" sizes="100vw">
-        <source media="(min-width: 2000px)" type="image/webp" srcset="./assets/media/hero-1-1920.webp 1920w, ./assets/media/hero-1-2560.webp 2560w" sizes="100vw">
-        <source media="(min-width: 2000px)" srcset="./assets/media/hero-1-1920.jpg 1920w, ./assets/media/hero-1-2560.jpg 2560w" sizes="100vw">
-        <source type="image/avif" srcset="./assets/media/hero-1-960.avif 960w, ./assets/media/hero-1-1440.avif 1440w, ./assets/media/hero-1-1920.avif 1920w" sizes="100vw">
-        <source type="image/webp" srcset="./assets/media/hero-1-960.webp 960w, ./assets/media/hero-1-1440.webp 1440w, ./assets/media/hero-1-1920.webp 1920w" sizes="100vw">
-        <img id="hero-img" src="./assets/media/hero-1-1920.jpg" srcset="./assets/media/hero-1-960.jpg 960w, ./assets/media/hero-1-1440.jpg 1440w, ./assets/media/hero-1-1920.jpg 1920w" sizes="100vw" width="1920" height="1080" alt="Rooftop terrace of the school: three young trees in square planters on brick paving, a low railing and the Dhaka skyline beyond." fetchpriority="high" decoding="async" data-critical data-gl-slide="0">
-      </picture>
-      <!-- the generated terrace loop was cut in the polish pass (near-static: nothing a viewer could
-           see for 1.7 MB and a pause control); the still with the shader's idle sun stands alone -->
-      <p class="hero__caption plate__cap" data-reveal><span class="plate__n">01</span>The rooftop terrace, 2024</p>
-    </div>
-    <!-- the corner rides the viewport's bottom edge from the first screen (sticky), then rests at
-         the plate's bottom-right; see css/main.css §7. The cue is a bare line and dot, no box. -->
-    <div class="hero__corner">
-      <div class="hero__corner-inner">
-        <div class="hero__cue" data-reveal aria-hidden="true">
-          <span class="hero__cue-line"><i class="hero__cue-dot"></i></span>
-        </div>
-      </div>
-    </div>
+    <!-- WCAG 2.2.2: visible whenever the film can move; the label is the button's name and swaps
+         between "Pause video" and "Play video" (js/sections/cover.js) -->
+    <button id="hero-pause" class="hero__pause" type="button" data-state="playing" hidden>
+      <i class="hero__pause-icon" aria-hidden="true"></i><span class="hero__pause-label">Pause video</span>
+    </button>
   </section>
 
-  <!-- Sheet 01 · Ground -->
-  <section id="ground" class="sheet ground" data-scene="ground" data-sheet-n="01" aria-labelledby="ground-title">
+  <!-- Sheet 01 · Results (2026-10-18). Figures: the school's own results graphic on playpen.edu.bd
+       (May–June 2026 session, read in September 2026).
+       To confirm (listed in redesign-2026-10-18/home-changes.md): whether the percentages are shares of all grades given or of candidates; the AS and A Level
+       subject lists here follow that graphic (the prospectus also lists Environmental Management, and
+       Bangladesh Studies at O Level). The markup holds the final state; js/sections/results.js draws it in. -->
+  <section id="results" class="sheet results" data-scene="results" data-sheet-n="01" aria-labelledby="results-title">
     <div class="band">
       <div class="sheet-rule">
         <i class="sheet-rule__line" aria-hidden="true"></i>
-        <span class="sheet-rule__n">Sheet 01 of 08</span>
-        <span class="sheet-rule__title">Ground</span>
-        <span class="sheet-rule__purpose">The school in one sheet</span>
+        <span class="sheet-rule__n">Sheet 01 of 09</span>
+        <span class="sheet-rule__title">Results</span>
+        <span class="sheet-rule__purpose">Cambridge exams, May&ndash;June 2026</span>
       </div>
-    </div>
-    <!-- the sheet opens on the building (image first, then the words) -->
-    <figure id="ground-plate" class="plate plate--bleed" data-clip>
-      <div class="plate__frame">
-        <picture>
-          <source type="image/avif" srcset="./assets/media/ground-1-960.avif 960w, ./assets/media/ground-1-1440.avif 1440w, ./assets/media/ground-1-1920.avif 1920w" sizes="min(100vw, 1600px)">
-          <source type="image/webp" srcset="./assets/media/ground-1-960.webp 960w, ./assets/media/ground-1-1440.webp 1440w, ./assets/media/ground-1-1920.webp 1920w" sizes="min(100vw, 1600px)">
-          <img src="./assets/media/ground-1-1440.jpg" srcset="./assets/media/ground-1-960.jpg 960w, ./assets/media/ground-1-1440.jpg 1440w, ./assets/media/ground-1-1920.jpg 1920w" sizes="min(100vw, 1600px)" width="1920" height="823" alt="The ten-storey school building seen from the grass playground, brick classroom boxes stepping out from a concrete frame." loading="lazy" decoding="async">
-        </picture>
+      <div class="results__head">
+        <h2 id="results-title" class="display-l" data-split="lines">Our Cambridge results, May&ndash;June 2026.</h2>
+        <p class="lead results__lead" data-reveal>How Playpen students did in this year&rsquo;s Cambridge O Level, AS Level and A Level exams. Each ring shows how the grades were shared out.</p>
       </div>
-      <figcaption class="plate__cap"><span class="plate__n">02</span>The building from the playground, 2021</figcaption>
-    </figure>
-    <div class="band">
-      <div class="ground__head">
-        <h2 id="ground-title" class="display-l" data-split="lines">The school in one sheet.</h2>
-        <p class="lead ground__lead" data-reveal>Playpen is a non-residential day school: every child goes home in the afternoon. Since July 2018 it has lived in its own ten-storey building of brick and concrete in Bashundhara R/A, and a child can go from Playgroup to Class XII without ever changing school.</p>
+      <div class="results__grid">
+      <article class="result" data-result data-lv="o" aria-labelledby="result-o">
+        <header class="result__head">
+          <h3 id="result-o" class="result__name">O Level</h3>
+          <p class="label">May&ndash;June 2026</p>
+        </header>
+        <div class="result__chart">
+          <svg class="donut" viewBox="0 0 120 120" aria-hidden="true" focusable="false">
+            <circle class="donut__track" cx="60" cy="60" r="50" pathLength="100"/>
+            <g class="donut__segs" transform="rotate(-90 60 60)">
+            <circle class="donut__seg seg--1" cx="60" cy="60" r="50" pathLength="100" stroke-dasharray="31.2 68.8" stroke-dashoffset="0" data-p="32" data-at="0"/>
+            <circle class="donut__seg seg--2" cx="60" cy="60" r="50" pathLength="100" stroke-dasharray="34.2 65.8" stroke-dashoffset="-32" data-p="35" data-at="32"/>
+            <circle class="donut__seg seg--3" cx="60" cy="60" r="50" pathLength="100" stroke-dasharray="18.2 81.8" stroke-dashoffset="-67" data-p="19" data-at="67"/>
+            <circle class="donut__seg seg--4" cx="60" cy="60" r="50" pathLength="100" stroke-dasharray="9.2 90.8" stroke-dashoffset="-86" data-p="10" data-at="86"/>
+            <circle class="donut__seg seg--5" cx="60" cy="60" r="50" pathLength="100" stroke-dasharray="3.2 96.8" stroke-dashoffset="-96" data-p="4" data-at="96"/>
+            </g>
+          </svg>
+          <p class="donut__centre" aria-hidden="true"><span class="donut__num"><span class="count" data-count="67">67</span><span class="donut__pc">%</span></span><span class="donut__what">A* or A</span></p>
+        </div>
+        <p class="result__say"><b>67 in every 100</b> O Level grades were A* or A. Almost one in three was an A*.</p>
+        <ul class="grades" aria-label="O Level grades, May&ndash;June 2026">
+          <li class="grades__row seg--1" style="--p: 32"><span class="grades__g">A*</span><span class="grades__bar" aria-hidden="true"><i></i></span><span class="grades__v">32%</span></li>
+          <li class="grades__row seg--2" style="--p: 35"><span class="grades__g">A</span><span class="grades__bar" aria-hidden="true"><i></i></span><span class="grades__v">35%</span></li>
+          <li class="grades__row seg--3" style="--p: 19"><span class="grades__g">B</span><span class="grades__bar" aria-hidden="true"><i></i></span><span class="grades__v">19%</span></li>
+          <li class="grades__row seg--4" style="--p: 10"><span class="grades__g">C</span><span class="grades__bar" aria-hidden="true"><i></i></span><span class="grades__v">10%</span></li>
+          <li class="grades__row seg--5" style="--p: 4"><span class="grades__g">Others</span><span class="grades__bar" aria-hidden="true"><i></i></span><span class="grades__v">4%</span></li>
+        </ul>
+        <a class="result__subj" href="#results-subjects" data-lv="o"><span class="result__subj-n">12</span><span class="result__subj-t">subjects offered<span class="visually-hidden"> at O Level, listed below</span></span><i class="result__subj-go" aria-hidden="true"></i></a>
+      </article>
+      <article class="result" data-result data-lv="as" aria-labelledby="result-as">
+        <header class="result__head">
+          <h3 id="result-as" class="result__name">AS Level</h3>
+          <p class="label">May&ndash;June 2026</p>
+        </header>
+        <div class="result__chart">
+          <svg class="donut" viewBox="0 0 120 120" aria-hidden="true" focusable="false">
+            <circle class="donut__track" cx="60" cy="60" r="50" pathLength="100"/>
+            <g class="donut__segs" transform="rotate(-90 60 60)">
+            <circle class="donut__seg seg--1" cx="60" cy="60" r="50" pathLength="100" stroke-dasharray="45.2 54.8" stroke-dashoffset="0" data-p="46" data-at="0"/>
+            <circle class="donut__seg seg--2" cx="60" cy="60" r="50" pathLength="100" stroke-dasharray="17.2 82.8" stroke-dashoffset="-46" data-p="18" data-at="46"/>
+            <circle class="donut__seg seg--3" cx="60" cy="60" r="50" pathLength="100" stroke-dasharray="14.2 85.8" stroke-dashoffset="-64" data-p="15" data-at="64"/>
+            <circle class="donut__seg seg--4" cx="60" cy="60" r="50" pathLength="100" stroke-dasharray="20.2 79.8" stroke-dashoffset="-79" data-p="21" data-at="79"/>
+            </g>
+          </svg>
+          <p class="donut__centre" aria-hidden="true"><span class="donut__num"><span class="count" data-count="46">46</span><span class="donut__pc">%</span></span><span class="donut__what">grade a</span></p>
+        </div>
+        <p class="result__say"><b>46 in every 100</b> AS Level grades were an a, the top AS grade.</p>
+        <ul class="grades" aria-label="AS Level grades, May&ndash;June 2026">
+          <li class="grades__row seg--1" style="--p: 46"><span class="grades__g">a</span><span class="grades__bar" aria-hidden="true"><i></i></span><span class="grades__v">46%</span></li>
+          <li class="grades__row seg--2" style="--p: 18"><span class="grades__g">b</span><span class="grades__bar" aria-hidden="true"><i></i></span><span class="grades__v">18%</span></li>
+          <li class="grades__row seg--3" style="--p: 15"><span class="grades__g">c</span><span class="grades__bar" aria-hidden="true"><i></i></span><span class="grades__v">15%</span></li>
+          <li class="grades__row seg--4" style="--p: 21"><span class="grades__g">Others</span><span class="grades__bar" aria-hidden="true"><i></i></span><span class="grades__v">21%</span></li>
+        </ul>
+        <a class="result__subj" href="#results-subjects" data-lv="as"><span class="result__subj-n">11</span><span class="result__subj-t">subjects offered<span class="visually-hidden"> at AS Level, listed below</span></span><i class="result__subj-go" aria-hidden="true"></i></a>
+      </article>
+      <article class="result" data-result data-lv="a" aria-labelledby="result-a">
+        <header class="result__head">
+          <h3 id="result-a" class="result__name">A Level</h3>
+          <p class="label">May&ndash;June 2026</p>
+        </header>
+        <div class="result__chart">
+          <svg class="donut" viewBox="0 0 120 120" aria-hidden="true" focusable="false">
+            <circle class="donut__track" cx="60" cy="60" r="50" pathLength="100"/>
+            <g class="donut__segs" transform="rotate(-90 60 60)">
+            <circle class="donut__seg seg--1" cx="60" cy="60" r="50" pathLength="100" stroke-dasharray="18.2 81.8" stroke-dashoffset="0" data-p="19" data-at="0"/>
+            <circle class="donut__seg seg--2" cx="60" cy="60" r="50" pathLength="100" stroke-dasharray="22.2 77.8" stroke-dashoffset="-19" data-p="23" data-at="19"/>
+            <circle class="donut__seg seg--3" cx="60" cy="60" r="50" pathLength="100" stroke-dasharray="18.2 81.8" stroke-dashoffset="-42" data-p="19" data-at="42"/>
+            <circle class="donut__seg seg--4" cx="60" cy="60" r="50" pathLength="100" stroke-dasharray="15.2 84.8" stroke-dashoffset="-61" data-p="16" data-at="61"/>
+            <circle class="donut__seg seg--5" cx="60" cy="60" r="50" pathLength="100" stroke-dasharray="22.2 77.8" stroke-dashoffset="-77" data-p="23" data-at="77"/>
+            </g>
+          </svg>
+          <p class="donut__centre" aria-hidden="true"><span class="donut__num"><span class="count" data-count="42">42</span><span class="donut__pc">%</span></span><span class="donut__what">A* or A</span></p>
+        </div>
+        <p class="result__say"><b>42 in every 100</b> A Level grades were A* or A.</p>
+        <ul class="grades" aria-label="A Level grades, May&ndash;June 2026">
+          <li class="grades__row seg--1" style="--p: 19"><span class="grades__g">A*</span><span class="grades__bar" aria-hidden="true"><i></i></span><span class="grades__v">19%</span></li>
+          <li class="grades__row seg--2" style="--p: 23"><span class="grades__g">A</span><span class="grades__bar" aria-hidden="true"><i></i></span><span class="grades__v">23%</span></li>
+          <li class="grades__row seg--3" style="--p: 19"><span class="grades__g">B</span><span class="grades__bar" aria-hidden="true"><i></i></span><span class="grades__v">19%</span></li>
+          <li class="grades__row seg--4" style="--p: 16"><span class="grades__g">C</span><span class="grades__bar" aria-hidden="true"><i></i></span><span class="grades__v">16%</span></li>
+          <li class="grades__row seg--5" style="--p: 23"><span class="grades__g">Others</span><span class="grades__bar" aria-hidden="true"><i></i></span><span class="grades__v">23%</span></li>
+        </ul>
+        <a class="result__subj" href="#results-subjects" data-lv="a"><span class="result__subj-n">11</span><span class="result__subj-t">subjects offered<span class="visually-hidden"> at A Level, listed below</span></span><i class="result__subj-go" aria-hidden="true"></i></a>
+      </article>
       </div>
-      <div class="ground__body">
-        <!-- six rows, one size, hairlines only (the earlier ten tinted cells read as a spreadsheet);
-             the founding year carries its footnote in the Ledger -->
-        <dl id="title-block" class="title-block">
-          <div class="cell" data-reveal><dt>Curriculum</dt><dd>Cambridge O Level, AS and A Level</dd></div>
-          <div class="cell" data-reveal><dt>Classes</dt><dd>Playgroup to Class XII, in four sections</dd></div>
-          <div class="cell" data-reveal><dt>Students</dt><dd class="is-num" data-count="2000" data-count-prefix="Nearly "><span class="count" aria-hidden="true">Nearly 2,000</span><span class="visually-hidden">Nearly 2,000</span></dd></div>
-          <div class="cell" data-reveal><dt>Campus</dt><dd>One building of ten storeys in Bashundhara R/A, in use since 19 July 2018</dd></div>
-          <div class="cell" data-reveal><dt>A Level since</dt><dd class="is-num" data-count="2013" data-count-plain><span class="count" aria-hidden="true">2013</span><span class="visually-hidden">2013</span></dd></div>
-          <div class="cell" data-reveal><dt>Founded</dt><dd class="is-num">1977</dd></div>
-        </dl>
-        <div class="ground__materials">
-          <p class="label" data-reveal>Materials</p>
-          <ul id="materials" class="swatches">
-            <li data-reveal>
-              <figure class="swatch">
-                <picture>
-                  <source type="image/avif" srcset="./assets/media/swatch-1-480.avif 480w, ./assets/media/swatch-1-720.avif 720w" sizes="(min-width: 1024px) 30vw, 50vw">
-                  <source type="image/webp" srcset="./assets/media/swatch-1-480.webp 480w, ./assets/media/swatch-1-720.webp 720w" sizes="(min-width: 1024px) 30vw, 50vw">
-                  <img src="./assets/media/swatch-1-480.jpg" srcset="./assets/media/swatch-1-480.jpg 480w, ./assets/media/swatch-1-720.jpg 720w" sizes="(min-width: 1024px) 30vw, 50vw" width="720" height="720" alt="" loading="lazy" decoding="async">
-                </picture>
-                <figcaption class="caption">Brick</figcaption>
-              </figure>
-            </li>
-            <li data-reveal>
-              <figure class="swatch">
-                <picture>
-                  <source type="image/avif" srcset="./assets/media/swatch-2-480.avif 480w, ./assets/media/swatch-2-720.avif 720w" sizes="(min-width: 1024px) 30vw, 50vw">
-                  <source type="image/webp" srcset="./assets/media/swatch-2-480.webp 480w, ./assets/media/swatch-2-720.webp 720w" sizes="(min-width: 1024px) 30vw, 50vw">
-                  <img src="./assets/media/swatch-2-480.jpg" srcset="./assets/media/swatch-2-480.jpg 480w, ./assets/media/swatch-2-720.jpg 720w" sizes="(min-width: 1024px) 30vw, 50vw" width="720" height="720" alt="" loading="lazy" decoding="async">
-                </picture>
-                <figcaption class="caption">Board-marked concrete</figcaption>
-              </figure>
-            </li>
-            <li data-reveal>
-              <figure class="swatch">
-                <picture>
-                  <source type="image/avif" srcset="./assets/media/swatch-4-480.avif 480w, ./assets/media/swatch-4-720.avif 720w" sizes="(min-width: 1024px) 30vw, 50vw">
-                  <source type="image/webp" srcset="./assets/media/swatch-4-480.webp 480w, ./assets/media/swatch-4-720.webp 720w" sizes="(min-width: 1024px) 30vw, 50vw">
-                  <img src="./assets/media/swatch-4-480.jpg" srcset="./assets/media/swatch-4-480.jpg 480w, ./assets/media/swatch-4-720.jpg 720w" sizes="(min-width: 1024px) 30vw, 50vw" width="720" height="720" alt="" loading="lazy" decoding="async">
-                </picture>
-                <figcaption class="caption">Laboratory glass</figcaption>
-              </figure>
-            </li>
-          </ul>
+      <!-- Subjects (2026-10-21, round 2): the founder's users missed the fold-out lists, so every
+           subject shows at once. One compact panel under the cards: 14 subjects in 5 groups, laid out in
+           three columns; the badges after each subject say at which level the school teaches it
+           (O, AS, A; an empty slot keeps the badges lined up). Hovering a card's "subjects offered"
+           line lights that level's badges (CSS :has). Lists as on the school's results graphic. -->
+      <div id="results-subjects" class="sub">
+        <div class="sub__head" data-reveal>
+          <div class="sub__intro">
+            <p class="label">Subjects</p>
+            <h3 class="sub__title">What students can study at each level</h3>
+          </div>
+          <p class="sub__key"><span class="sub__b" data-lv="o" aria-hidden="true">O</span> O Level <span class="sub__b" data-lv="as" aria-hidden="true">AS</span> AS Level <span class="sub__b" data-lv="a" aria-hidden="true">A</span> A Level</p>
+        </div>
+        <div class="sub__grid">
+          <div class="sub__col" data-reveal>
+            <div class="sub__grp">
+              <h4 class="sub__gh label">Languages</h4>
+              <ul class="sub__list">
+                <li class="sub__row"><span class="sub__name">English Language</span><span class="sub__lvs"><span class="visually-hidden">Taught at: </span><span class="sub__b" data-lv="o">O<span class="visually-hidden"> Level</span></span><span class="sub__b" data-lv="as">AS<span class="visually-hidden"> Level</span></span><span class="sub__b" data-lv="a">A<span class="visually-hidden"> Level</span></span></span></li>
+                <li class="sub__row"><span class="sub__name">Bengali</span><span class="sub__lvs"><span class="visually-hidden">Taught at: </span><span class="sub__b" data-lv="o">O<span class="visually-hidden"> Level</span></span><span class="sub__b is-off" aria-hidden="true"></span><span class="sub__b is-off" aria-hidden="true"></span></span></li>
+              </ul>
+            </div>
+            <div class="sub__grp">
+              <h4 class="sub__gh label">Mathematics</h4>
+              <ul class="sub__list">
+                <li class="sub__row"><span class="sub__name">Mathematics<span class="sub__note">O Level: Syllabus D</span></span><span class="sub__lvs"><span class="visually-hidden">Taught at: </span><span class="sub__b" data-lv="o">O<span class="visually-hidden"> Level</span></span><span class="sub__b" data-lv="as">AS<span class="visually-hidden"> Level</span></span><span class="sub__b" data-lv="a">A<span class="visually-hidden"> Level</span></span></span></li>
+                <li class="sub__row"><span class="sub__name">Additional Mathematics</span><span class="sub__lvs"><span class="visually-hidden">Taught at: </span><span class="sub__b" data-lv="o">O<span class="visually-hidden"> Level</span></span><span class="sub__b is-off" aria-hidden="true"></span><span class="sub__b is-off" aria-hidden="true"></span></span></li>
+                <li class="sub__row"><span class="sub__name">Further Mathematics</span><span class="sub__lvs"><span class="visually-hidden">Taught at: </span><span class="sub__b is-off" aria-hidden="true"></span><span class="sub__b" data-lv="as">AS<span class="visually-hidden"> Level</span></span><span class="sub__b" data-lv="a">A<span class="visually-hidden"> Level</span></span></span></li>
+              </ul>
+            </div>
+          </div>
+          <div class="sub__col" data-reveal>
+            <div class="sub__grp">
+              <h4 class="sub__gh label">Sciences and computing</h4>
+              <ul class="sub__list">
+                <li class="sub__row"><span class="sub__name">Physics</span><span class="sub__lvs"><span class="visually-hidden">Taught at: </span><span class="sub__b" data-lv="o">O<span class="visually-hidden"> Level</span></span><span class="sub__b" data-lv="as">AS<span class="visually-hidden"> Level</span></span><span class="sub__b" data-lv="a">A<span class="visually-hidden"> Level</span></span></span></li>
+                <li class="sub__row"><span class="sub__name">Chemistry</span><span class="sub__lvs"><span class="visually-hidden">Taught at: </span><span class="sub__b" data-lv="o">O<span class="visually-hidden"> Level</span></span><span class="sub__b" data-lv="as">AS<span class="visually-hidden"> Level</span></span><span class="sub__b" data-lv="a">A<span class="visually-hidden"> Level</span></span></span></li>
+                <li class="sub__row"><span class="sub__name">Biology</span><span class="sub__lvs"><span class="visually-hidden">Taught at: </span><span class="sub__b" data-lv="o">O<span class="visually-hidden"> Level</span></span><span class="sub__b" data-lv="as">AS<span class="visually-hidden"> Level</span></span><span class="sub__b" data-lv="a">A<span class="visually-hidden"> Level</span></span></span></li>
+                <li class="sub__row"><span class="sub__name">Computer Science</span><span class="sub__lvs"><span class="visually-hidden">Taught at: </span><span class="sub__b" data-lv="o">O<span class="visually-hidden"> Level</span></span><span class="sub__b" data-lv="as">AS<span class="visually-hidden"> Level</span></span><span class="sub__b" data-lv="a">A<span class="visually-hidden"> Level</span></span></span></li>
+              </ul>
+            </div>
+          </div>
+          <div class="sub__col" data-reveal>
+            <div class="sub__grp">
+              <h4 class="sub__gh label">Business and economics</h4>
+              <ul class="sub__list">
+                <li class="sub__row"><span class="sub__name">Economics</span><span class="sub__lvs"><span class="visually-hidden">Taught at: </span><span class="sub__b" data-lv="o">O<span class="visually-hidden"> Level</span></span><span class="sub__b" data-lv="as">AS<span class="visually-hidden"> Level</span></span><span class="sub__b" data-lv="a">A<span class="visually-hidden"> Level</span></span></span></li>
+                <li class="sub__row"><span class="sub__name">Accounting</span><span class="sub__lvs"><span class="visually-hidden">Taught at: </span><span class="sub__b" data-lv="o">O<span class="visually-hidden"> Level</span></span><span class="sub__b" data-lv="as">AS<span class="visually-hidden"> Level</span></span><span class="sub__b" data-lv="a">A<span class="visually-hidden"> Level</span></span></span></li>
+                <li class="sub__row"><span class="sub__name">Business<span class="sub__note">O Level: Business Studies</span></span><span class="sub__lvs"><span class="visually-hidden">Taught at: </span><span class="sub__b" data-lv="o">O<span class="visually-hidden"> Level</span></span><span class="sub__b" data-lv="as">AS<span class="visually-hidden"> Level</span></span><span class="sub__b" data-lv="a">A<span class="visually-hidden"> Level</span></span></span></li>
+              </ul>
+            </div>
+            <div class="sub__grp">
+              <h4 class="sub__gh label">Arts and social science</h4>
+              <ul class="sub__list">
+                <li class="sub__row"><span class="sub__name">Art &amp; Design</span><span class="sub__lvs"><span class="visually-hidden">Taught at: </span><span class="sub__b" data-lv="o">O<span class="visually-hidden"> Level</span></span><span class="sub__b is-off" aria-hidden="true"></span><span class="sub__b is-off" aria-hidden="true"></span></span></li>
+                <li class="sub__row"><span class="sub__name">Psychology</span><span class="sub__lvs"><span class="visually-hidden">Taught at: </span><span class="sub__b is-off" aria-hidden="true"></span><span class="sub__b" data-lv="as">AS<span class="visually-hidden"> Level</span></span><span class="sub__b" data-lv="a">A<span class="visually-hidden"> Level</span></span></span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="results__foot">
+        <div class="venue" data-reveal>
+          <p class="label">Exams at home</p>
+          <p class="venue__text">Since 2020 the school has been a Cambridge exam venue, approved by the British Council. O Level and A Level students sit their exams in the school&rsquo;s own hall, in a building they know.</p>
+        </div>
+        <div class="results__aside" data-reveal>
+          <p class="results__links"><a class="link" href="./learning/results/">See all results</a><a class="link" href="./learning/cambridge-pathway/">How the Cambridge pathway works</a></p>
+          <p class="caption results__note">From the school&rsquo;s results summary for the May&ndash;June 2026 exam session. &ldquo;Others&rdquo; means all grades below C (below c at AS Level).</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Sheet 02 · The Ascent -->
-  <section id="ascent" class="sheet ascent" data-scene="ascent" data-sheet-n="02" aria-labelledby="ascent-title">
+  <!-- Sheet 02 · Achievement (2026-10-20): a slow cross-dissolve carousel of 7 photographs from the
+       school's own photo gallery (playpen.edu.bd/photo-gallery/, Graduation Ceremony 2025), cropped,
+       resized and colour-graded with PIL only; no AI generation or editing (they are children: founder's rule).
+       Motion: js/sections/results.js (carousel); without JavaScript the first photograph shows on its own.
+       To confirm before any public push: the school's written photo consent for the students shown.
+       The older Daily Star award photograph (home-achievement-720/1015) stays on disk, unused. -->
+  <section id="achievement" class="sheet achievement" data-scene="achievement" data-sheet-n="02" aria-labelledby="achievement-title">
+    <div class="band">
+      <div class="sheet-rule">
+        <i class="sheet-rule__line" aria-hidden="true"></i>
+        <span class="sheet-rule__n">Sheet 02 of 09</span>
+        <span class="sheet-rule__title">Achievement</span>
+        <span class="sheet-rule__purpose">Awards and firsts</span>
+      </div>
+      <div class="achievement__layout">
+        <div class="ach-carousel" role="region" aria-roledescription="carousel" aria-label="Graduation Ceremony 2025 photographs" data-ach-carousel>
+          <figure class="frame" data-clip>
+            <div class="frame__mat">
+              <div class="plate__frame ach-plate">
+                <div class="ach-slide is-active" role="group" aria-roledescription="slide" aria-label="1 of 7" data-ach-slide>
+                  <picture class="ach-slide__media">
+                    <source type="image/webp" srcset="./assets/img/home-achievement-grad-01-720.webp 720w, ./assets/img/home-achievement-grad-01-1080.webp 1080w, ./assets/img/home-achievement-grad-01-1500.webp 1500w" sizes="(min-width: 1024px) 50vw, 92vw">
+                    <img src="./assets/img/home-achievement-grad-01-1080.jpg" srcset="./assets/img/home-achievement-grad-01-720.jpg 720w, ./assets/img/home-achievement-grad-01-1080.jpg 1080w, ./assets/img/home-achievement-grad-01-1500.jpg 1500w" sizes="(min-width: 1024px) 50vw, 92vw" width="1500" height="1000" alt="Graduates in black gowns and maroon sashes throw their caps into the air in front of the Graduation Ceremony banner." loading="lazy" decoding="async">
+                  </picture>
+                </div>
+                <div class="ach-slide" role="group" aria-roledescription="slide" aria-label="2 of 7" aria-hidden="true" inert data-ach-slide>
+                  <picture class="ach-slide__media">
+                    <source type="image/webp" data-srcset="./assets/img/home-achievement-grad-02-720.webp 720w, ./assets/img/home-achievement-grad-02-1080.webp 1080w, ./assets/img/home-achievement-grad-02-1500.webp 1500w" sizes="(min-width: 1024px) 50vw, 92vw">
+                    <img data-src="./assets/img/home-achievement-grad-02-1080.jpg" data-srcset="./assets/img/home-achievement-grad-02-720.jpg 720w, ./assets/img/home-achievement-grad-02-1080.jpg 1080w, ./assets/img/home-achievement-grad-02-1500.jpg 1500w" sizes="(min-width: 1024px) 50vw, 92vw" width="1500" height="1000" alt="High view across the hall: rows of graduates in caps and maroon sashes face a red stage flanked by two large screens showing the national flag." decoding="async">
+                  </picture>
+                </div>
+                <div class="ach-slide" role="group" aria-roledescription="slide" aria-label="3 of 7" aria-hidden="true" inert data-ach-slide>
+                  <picture class="ach-slide__media">
+                    <source type="image/webp" data-srcset="./assets/img/home-achievement-grad-03-720.webp 720w, ./assets/img/home-achievement-grad-03-1080.webp 1080w, ./assets/img/home-achievement-grad-03-1500.webp 1500w" sizes="(min-width: 1024px) 50vw, 92vw">
+                    <img data-src="./assets/img/home-achievement-grad-03-1080.jpg" data-srcset="./assets/img/home-achievement-grad-03-720.jpg 720w, ./assets/img/home-achievement-grad-03-1080.jpg 1080w, ./assets/img/home-achievement-grad-03-1500.jpg 1500w" sizes="(min-width: 1024px) 50vw, 92vw" width="1500" height="1000" alt="A row of graduates in caps with red tassels stands in line in the hall, with stage lights glowing behind them." decoding="async">
+                  </picture>
+                </div>
+                <div class="ach-slide" role="group" aria-roledescription="slide" aria-label="4 of 7" aria-hidden="true" inert data-ach-slide>
+                  <picture class="ach-slide__media">
+                    <source type="image/webp" data-srcset="./assets/img/home-achievement-grad-04-720.webp 720w, ./assets/img/home-achievement-grad-04-1080.webp 1080w, ./assets/img/home-achievement-grad-04-1500.webp 1500w" sizes="(min-width: 1024px) 50vw, 92vw">
+                    <img data-src="./assets/img/home-achievement-grad-04-1080.jpg" data-srcset="./assets/img/home-achievement-grad-04-720.jpg 720w, ./assets/img/home-achievement-grad-04-1080.jpg 1080w, ./assets/img/home-achievement-grad-04-1500.jpg 1500w" sizes="(min-width: 1024px) 50vw, 92vw" width="1500" height="1000" alt="Graduates in caps and gowns sit in rows in the school hall, turned towards the stage." decoding="async">
+                  </picture>
+                </div>
+                <div class="ach-slide" role="group" aria-roledescription="slide" aria-label="5 of 7" aria-hidden="true" inert data-ach-slide>
+                  <picture class="ach-slide__media">
+                    <source type="image/webp" data-srcset="./assets/img/home-achievement-grad-05-720.webp 720w, ./assets/img/home-achievement-grad-05-1080.webp 1080w, ./assets/img/home-achievement-grad-05-1500.webp 1500w" sizes="(min-width: 1024px) 50vw, 92vw">
+                    <img data-src="./assets/img/home-achievement-grad-05-1080.jpg" data-srcset="./assets/img/home-achievement-grad-05-720.jpg 720w, ./assets/img/home-achievement-grad-05-1080.jpg 1080w, ./assets/img/home-achievement-grad-05-1500.jpg 1500w" sizes="(min-width: 1024px) 50vw, 92vw" width="1500" height="1000" alt="A graduate wearing a medal smiles while shaking hands with a guest across a flower-decked table." decoding="async">
+                  </picture>
+                </div>
+                <div class="ach-slide" role="group" aria-roledescription="slide" aria-label="6 of 7" aria-hidden="true" inert data-ach-slide>
+                  <picture class="ach-slide__media">
+                    <source type="image/webp" data-srcset="./assets/img/home-achievement-grad-06-720.webp 720w, ./assets/img/home-achievement-grad-06-1080.webp 1080w, ./assets/img/home-achievement-grad-06-1500.webp 1500w" sizes="(min-width: 1024px) 50vw, 92vw">
+                    <img data-src="./assets/img/home-achievement-grad-06-1080.jpg" data-srcset="./assets/img/home-achievement-grad-06-720.jpg 720w, ./assets/img/home-achievement-grad-06-1080.jpg 1080w, ./assets/img/home-achievement-grad-06-1500.jpg 1500w" sizes="(min-width: 1024px) 50vw, 92vw" width="1500" height="1000" alt="Graduates wearing medals stand on the red stage behind a row of trophies, with guests and the school crest banner behind them." decoding="async">
+                  </picture>
+                </div>
+                <div class="ach-slide" role="group" aria-roledescription="slide" aria-label="7 of 7" aria-hidden="true" inert data-ach-slide>
+                  <picture class="ach-slide__media">
+                    <source type="image/webp" data-srcset="./assets/img/home-achievement-grad-07-720.webp 720w, ./assets/img/home-achievement-grad-07-1080.webp 1080w, ./assets/img/home-achievement-grad-07-1500.webp 1500w" sizes="(min-width: 1024px) 50vw, 92vw">
+                    <img data-src="./assets/img/home-achievement-grad-07-1080.jpg" data-srcset="./assets/img/home-achievement-grad-07-720.jpg 720w, ./assets/img/home-achievement-grad-07-1080.jpg 1080w, ./assets/img/home-achievement-grad-07-1500.jpg 1500w" sizes="(min-width: 1024px) 50vw, 92vw" width="1500" height="1000" alt="The graduating class in caps and gowns gathered on tiered seating in front of the school crest banner." decoding="async">
+                  </picture>
+                </div>
+              </div>
+            </div>
+          </figure>
+          <div class="ach-bar">
+            <span class="ach-bar__track" aria-hidden="true"><i class="ach-bar__fill" data-ach-fill></i></span>
+            <p class="ach-cap"><span class="ach-count" aria-hidden="true"><span class="ach-count__now" data-ach-current>01</span><span class="ach-count__sep">/</span><span class="ach-count__all">07</span></span><span class="ach-cap__t">Graduation Ceremony 2025</span></p>
+            <div class="ach-nav">
+              <button type="button" class="ach-btn ach-btn--prev" aria-label="Previous photograph" data-ach-prev><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M19 12H5M10.5 6.5 5 12l5.5 5.5"/></svg></button>
+              <button type="button" class="ach-btn ach-btn--toggle" aria-label="Pause the slideshow" data-state="playing" data-ach-toggle><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path class="ach-ico-pause" d="M9.5 7v10M14.5 7v10"/><path class="ach-ico-play" d="M9 6.8v10.4l8.2-5.2z"/></svg></button>
+              <button type="button" class="ach-btn ach-btn--next" aria-label="Next photograph" data-ach-next><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M5 12h14M13.5 6.5 19 12l-5.5 5.5"/></svg></button>
+            </div>
+            <p class="visually-hidden" aria-live="polite" aria-atomic="true" data-ach-status></p>
+          </div>
+        </div>
+        <div class="achievement__text">
+          <h2 id="achievement-title" class="display-l" data-split="lines">Honoured <em>every</em> year.</h2>
+          <p class="lead" data-reveal>Every year, Playpen students receive The Daily Star Awards: for six or more A grades at O Level, and for three or more A grades at A Level.</p>
+          <p class="achievement__body" data-reveal>The record goes back to 2003, when the school&rsquo;s first O Level candidate earned straight A grades in all seven subjects. Many former students have since gone on to study at universities abroad.</p>
+          <ul class="feats">
+            <li class="feat" data-reveal><span class="feat__n" aria-hidden="true"><span class="count" data-count="6">6</span>+</span><span class="visually-hidden">6 or more </span><span class="feat__t">A grades at O Level for a Daily Star Award</span></li>
+            <li class="feat" data-reveal><span class="feat__n" aria-hidden="true"><span class="count" data-count="3">3</span>+</span><span class="visually-hidden">3 or more </span><span class="feat__t">A grades at A Level for a Daily Star Award</span></li>
+            <li class="feat" data-reveal><span class="feat__n" aria-hidden="true"><span class="count" data-count="7">7</span>/7</span><span class="visually-hidden">7 out of 7 </span><span class="feat__t">subjects at grade A for the first O Level candidate, 2003</span></li>
+          </ul>
+          <p class="achievement__link" data-reveal><a class="link" href="./learning/results/">Results and achievements</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sheet 03 · The building (the Ascent scene) -->
+  <section id="ascent" class="sheet ascent" data-scene="ascent" data-sheet-n="03" aria-labelledby="ascent-title">
     <div class="band ascent__intro">
       <div class="sheet-rule">
         <i class="sheet-rule__line" aria-hidden="true"></i>
-        <span class="sheet-rule__n">Sheet 02 of 08</span>
-        <span class="sheet-rule__title">The Ascent</span>
-        <span class="sheet-rule__purpose">The building, read from the ground up</span>
+        <span class="sheet-rule__n">Sheet 03 of 09</span>
+        <span class="sheet-rule__title">The building</span>
+        <span class="sheet-rule__purpose">Five spaces in one building</span>
       </div>
-      <h2 id="ascent-title" class="display-l" data-split="lines">Five rooms, read from the ground up.</h2>
-      <p class="lead" data-reveal>The campus is one purpose-built building, designed by architect Ehsan Khan and in use since July 2018. Scroll to climb it, from the courtyards at its foot to the terraces on its roof.</p>
+      <h2 id="ascent-title" class="display-l" data-split="lines">A walk up the building.</h2>
+      <p class="lead" data-reveal>Since July 2018 the whole school has been in one building of its own, ten storeys high, designed by the architect Ehsan Khan. Scroll down to see five of its spaces.</p>
     </div>
     <div class="ascent__pin">
       <!-- a five-stop scale: one tick per room, lit as the chapter changes (the earlier ten-storey
@@ -422,13 +622,21 @@
       <div class="ascent__media">
         <div class="ascent__mount">
         <div id="ascent-stage" class="ascent__stage" data-gl="ascent">
+          <!-- Chapter 1 (2026-10-21, round 2, founder's choice): the rooftop swimming pool. The founder says
+               the school has a pool on its roof; no photograph exists yet, so these are AI illustrations
+               (Higgsfield nano_banana_2_1, no people, built from the school's own building photos as
+               references; job notes in image-jobs/2026-10-21-rooftop-pool/round2/). The still is the day
+               view (r2-v1); the film (ascent-pool-film.mp4, 15 s loop, 0 credits, ffmpeg) fades from day to
+               the evening view (r2-v3) and back, through the same film path the courtyard film used. The
+               chapter says on screen that the pictures are illustrations. The round-1 image is in
+               redesign-2026-10-21-backup/pool-v1/; the courtyard still and film stay for the inner pages. -->
           <picture class="ascent__pic" data-chapter-pic="1">
-            <source type="image/avif" srcset="./assets/media/ascent-1-960.avif 960w, ./assets/media/ascent-1-1440.avif 1440w, ./assets/media/ascent-1-1920.avif 1920w" sizes="(min-width: 1024px) 56vw, 100vw">
-            <source type="image/webp" srcset="./assets/media/ascent-1-960.webp 960w, ./assets/media/ascent-1-1440.webp 1440w, ./assets/media/ascent-1-1920.webp 1920w" sizes="(min-width: 1024px) 56vw, 100vw">
-            <img class="ascent__img" src="./assets/media/ascent-1-1440.jpg" srcset="./assets/media/ascent-1-960.jpg 960w, ./assets/media/ascent-1-1440.jpg 1440w, ./assets/media/ascent-1-1920.jpg 1920w" sizes="(min-width: 1024px) 56vw, 100vw" width="1920" height="1200" alt="Courtyard between the brick wings seen from above, with a black-and-white chequerboard floor and bougainvillea." loading="lazy" decoding="async" data-chapter-img="1" data-gl-slide="1">
+            <source type="image/avif" srcset="./assets/media/ascent-pool-960.avif 960w, ./assets/media/ascent-pool-1440.avif 1440w, ./assets/media/ascent-pool-1920.avif 1920w" sizes="(min-width: 1024px) 56vw, 100vw">
+            <source type="image/webp" srcset="./assets/media/ascent-pool-960.webp 960w, ./assets/media/ascent-pool-1440.webp 1440w, ./assets/media/ascent-pool-1920.webp 1920w" sizes="(min-width: 1024px) 56vw, 100vw">
+            <img class="ascent__img" src="./assets/media/ascent-pool-1440.jpg" srcset="./assets/media/ascent-pool-960.jpg 960w, ./assets/media/ascent-pool-1440.jpg 1440w, ./assets/media/ascent-pool-1920.jpg 1920w" sizes="(min-width: 1024px) 56vw, 100vw" width="1920" height="1200" alt="Illustration of the rooftop swimming pool in golden light: a wide pool with lane ropes and starting blocks on a terracotta-tiled roof, with brick planters, bougainvillea, wooden loungers, black railings, the school's brick and concrete upper storey and apartment towers behind." loading="lazy" decoding="async" data-chapter-img="1" data-gl-slide="1" data-gl-src="./assets/media/ascent-pool-1440.webp">
           </picture>
           <video id="ascent-video" class="ascent__video" muted playsinline loop preload="none" aria-hidden="true" tabindex="-1" data-chapter-video="1">
-            <source src="./assets/media/ascent-1-film.mp4" type="video/mp4">
+            <source src="./assets/media/ascent-pool-film.mp4" type="video/mp4">
           </video>
           <picture class="ascent__pic" data-chapter-pic="2">
             <source type="image/avif" srcset="./assets/media/ascent-2-960.avif 960w, ./assets/media/ascent-2-1440.avif 1440w, ./assets/media/ascent-2-1920.avif 1920w" sizes="(min-width: 1024px) 56vw, 100vw">
@@ -451,7 +659,7 @@
             <img class="ascent__img" src="./assets/media/ascent-5-1440.jpg" srcset="./assets/media/ascent-5-960.jpg 960w, ./assets/media/ascent-5-1440.jpg 1440w, ./assets/media/ascent-5-1920.jpg 1920w" sizes="(min-width: 1024px) 56vw, 100vw" width="1920" height="1200" alt="Curved brick benches and flowering shrubs on a rooftop terrace, apartment blocks behind the railing." loading="lazy" decoding="async" data-chapter-img="5" data-gl-slide="5">
           </picture>
           <button id="ascent-pause" class="media-pause" type="button" aria-pressed="false" hidden>
-            <span class="visually-hidden">Pause the courtyard film</span>
+            <span class="visually-hidden">Pause the pool film</span>
             <i class="media-pause__icon" aria-hidden="true"></i>
           </button>
         </div>
@@ -461,8 +669,8 @@
         </div>
       </div>
       <div class="ascent__side">
-        <ol id="ascent-rail" class="rail" aria-label="Stops on the way up">
-          <li data-chapter="1" class="is-active"><a href="#chapter-1">The courtyards</a></li>
+        <ol id="ascent-rail" class="rail" aria-label="Five spaces in the building">
+          <li data-chapter="1" class="is-active"><a href="#chapter-1">The swimming pool</a></li>
           <li data-chapter="2"><a href="#chapter-2">The laboratories</a></li>
           <li data-chapter="3"><a href="#chapter-3">The library</a></li>
           <li data-chapter="4"><a href="#chapter-4">The hall</a></li>
@@ -471,31 +679,27 @@
         </ol>
         <div class="ascent__chapters">
           <article id="chapter-1" class="chapter is-active" data-chapter="1">
-            <h3 class="display-m chapter__title">Ground: the courtyards and the field.</h3>
-            <p>A grass playground and open courtyards at the foot of the building. Annual Sports Day is held on the field; Pohela Boishakh fills the courtyard.</p>
-            <p class="plate__cap chapter__cap"><span class="plate__n">03</span>The courtyard between the wings, 2024</p>
+            <h3 class="display-m chapter__title">The rooftop swimming pool.</h3>
+            <p>A swimming pool on the roof of the school building, among the brick terraces.</p>
+            <p class="chapter__note">The pictures are illustrations, by day and in the evening. A photograph of the pool will replace them.</p>
           </article>
           <article id="chapter-2" class="chapter" data-chapter="2">
             <h3 class="display-m chapter__title">The laboratories.</h3>
-            <p>Separate laboratories for Physics, Chemistry, Biology and Computer Science. The Science Fair is one of the school's five annual events, with Annual Sports, Community Service, the Cultural Programme and student workshops.</p>
-            <p class="plate__cap chapter__cap"><span class="plate__n">04</span>Chemistry laboratory, 2024</p>
+            <p>Separate laboratories for Physics, Chemistry, Biology and Computer Science, where students do their practical work.</p>
           </article>
           <article id="chapter-3" class="chapter" data-chapter="3">
             <h3 class="display-m chapter__title">The library.</h3>
-            <p>A reading room with library classes for every level, run by the Librarian. Students borrow books to take home.</p>
-            <p class="plate__cap chapter__cap"><span class="plate__n">05</span>The library, 2024</p>
+            <p>A reading room with library lessons for every class. Students borrow books to take home.</p>
           </article>
           <article id="chapter-4" class="chapter" data-chapter="4">
             <h3 class="display-m chapter__title">The multipurpose hall.</h3>
-            <p>The hall holds the school's gatherings: this is the visit of NASA astronaut Joseph M. Acaba in December 2024. It also holds the graduation ceremony.</p>
-            <p class="plate__cap chapter__cap"><span class="plate__n">06</span>The multipurpose hall, 2024</p>
+            <p>A large hall for the cultural programme, seminars, visiting speakers and graduation. It is also where students sit their Cambridge O and A Level exams.</p>
           </article>
           <article id="chapter-5" class="chapter" data-chapter="5">
             <h3 class="display-m chapter__title">The terraces and the roof.</h3>
-            <p>Brick terraces with trees in planters and curved benches, the city beyond the railing. A basketball court sits on the roof.</p>
-            <p class="plate__cap chapter__cap"><span class="plate__n">07</span>The terrace, 2024</p>
+            <p>Brick terraces with trees and benches, and a basketball court on the roof.</p>
             <ul class="ascent__facilities" aria-label="Facilities">
-              <li>Air-conditioned classrooms</li><li>Science laboratories</li><li>IT laboratories</li><li>Library</li><li>Multipurpose hall</li><li>Cafeteria</li><li>Indoor games</li><li>Rooftop basketball court</li><li>Grass playground</li><li>Drama and activity rooms</li><li>Sick room</li><li>CCTV and 24-hour security</li><li>School transport</li>
+              <li>Air-conditioned classrooms</li><li>Science laboratories</li><li>IT laboratories</li><li>Library</li><li>Multipurpose hall</li><li>Cafeteria</li><li>Indoor games</li><li>Rooftop swimming pool</li><li>Rooftop basketball court</li><li>Grass playground</li><li>Drama and activity rooms</li><li>Sick room</li><li>CCTV and 24-hour security</li><li>School transport</li>
             </ul>
           </article>
         </div>
@@ -503,12 +707,12 @@
     </div>
   </section>
 
-  <!-- Sheet 03 · Learning -->
-  <section id="learning" class="sheet learning" data-scene="learning" data-sheet-n="03" aria-labelledby="learning-title">
+  <!-- Sheet 04 · Learning -->
+  <section id="learning" class="sheet learning" data-scene="learning" data-sheet-n="04" aria-labelledby="learning-title">
     <div class="band">
       <div class="sheet-rule">
         <i class="sheet-rule__line" aria-hidden="true"></i>
-        <span class="sheet-rule__n">Sheet 03 of 08</span>
+        <span class="sheet-rule__n">Sheet 04 of 09</span>
         <span class="sheet-rule__title">Learning</span>
         <span class="sheet-rule__purpose">Playgroup to Class XII, four stages</span>
       </div>
@@ -529,12 +733,11 @@
                   <img src="./assets/media/learning-1-960.jpg" srcset="./assets/media/learning-1-720.jpg 720w, ./assets/media/learning-1-960.jpg 960w, ./assets/media/learning-1-1200.jpg 1200w" sizes="(min-width: 1024px) 22vw, 100vw" width="1200" height="1500" alt="Hundreds of young children in yellow shirts and blue headbands on the field in warm morning light." loading="lazy" decoding="async">
                 </picture>
               </div>
-              <figcaption class="plate__cap"><span class="plate__n">08</span>Elementary morning on the field, January 2026</figcaption>
             </figure>
             <p class="stage__n label">01</p>
             <h3 class="stage__name display-m">Elementary</h3>
             <p class="stage__classes label">Playgroup, Nursery, KG I, KG II</p>
-            <p>The first classrooms. Admission by assessment; no uniform until KG I.</p>
+            <p>The first years at school. Children join after a simple assessment, and wear play clothes until KG I.</p>
             <a class="stage__link link" href="./learning/elementary/">Elementary school</a>
           </article>
           <article class="stage" data-stage="2">
@@ -546,12 +749,11 @@
                   <img src="./assets/media/learning-2-960.jpg" srcset="./assets/media/learning-2-720.jpg 720w, ./assets/media/learning-2-960.jpg 960w, ./assets/media/learning-2-1200.jpg 1200w" sizes="(min-width: 1024px) 22vw, 100vw" width="1200" height="1500" alt="Students in white uniforms choosing books at the shelves of the school bookshop." loading="lazy" decoding="async">
                 </picture>
               </div>
-              <figcaption class="plate__cap"><span class="plate__n">09</span>The school bookshop, 2021</figcaption>
             </figure>
             <p class="stage__n label">02</p>
             <h3 class="stage__name display-m">Junior</h3>
             <p class="stage__classes label">Classes I to III</p>
-            <p>Admission by a written test in English, Bengali and Mathematics, then an interview with the Principal and parents. Library lessons for every level.</p>
+            <p>Children join after a short written test in English, Bengali and Mathematics and a meeting with the Principal. Library lessons for every class.</p>
             <a class="stage__link link" href="./learning/junior/">Junior school</a>
           </article>
           <article class="stage" data-stage="3">
@@ -563,12 +765,11 @@
                   <img src="./assets/media/learning-3-960.jpg" srcset="./assets/media/learning-3-720.jpg 720w, ./assets/media/learning-3-960.jpg 960w, ./assets/media/learning-3-1200.jpg 1200w" sizes="(min-width: 1024px) 22vw, 100vw" width="1200" height="1500" alt="Girls in brown uniform practising a dance on the terrace with their teacher." loading="lazy" decoding="async">
                 </picture>
               </div>
-              <figcaption class="plate__cap"><span class="plate__n">10</span>Dance practice on the terrace, 2023</figcaption>
             </figure>
             <p class="stage__n label">03</p>
             <h3 class="stage__name display-m">Middle</h3>
             <p class="stage__classes label">Classes IV to VII</p>
-            <p>Four years in two semesters each, with an examination at the end of every semester. The core subjects carry the passing marks for the year.</p>
+            <p>Two semesters a year, each ending with an exam. Passing the year depends on the main subjects.</p>
             <a class="stage__link link" href="./learning/middle/">Middle school</a>
           </article>
           <article class="stage" data-stage="4">
@@ -580,12 +781,11 @@
                   <img src="./assets/media/learning-4-960.jpg" srcset="./assets/media/learning-4-720.jpg 720w, ./assets/media/learning-4-960.jpg 960w, ./assets/media/learning-4-1200.jpg 1200w" sizes="(min-width: 1024px) 22vw, 100vw" width="1200" height="1500" alt="Students in brown uniform at a row of monitors in the computer laboratory." loading="lazy" decoding="async">
                 </picture>
               </div>
-              <figcaption class="plate__cap"><span class="plate__n">11</span>Computer laboratory, 2024</figcaption>
             </figure>
             <p class="stage__n label">04</p>
             <h3 class="stage__name display-m">Senior</h3>
             <p class="stage__classes label">Classes VIII to XII</p>
-            <p>Electives are chosen in Class VIII and carried to Cambridge O Level, with at least six subjects; AS and A Level follow with at least three. A Level since 2013.</p>
+            <p>Students choose their O Level subjects in Class VIII and sit at least six. At AS and A Level they take at least three. A Level has been taught here since 2013.</p>
             <a class="stage__link link" href="./learning/senior/">Senior school and A Level</a>
           </article>
         </div>
@@ -593,184 +793,99 @@
     </div>
   </section>
 
-  <!-- Sheet 04 · School life -->
-  <section id="life" class="sheet life" data-scene="life" data-sheet-n="04" aria-labelledby="life-title">
-    <figure id="life-opener" class="plate plate--bleed plate--tall" data-clip data-parallax>
-      <div class="plate__frame">
-        <picture>
-          <source type="image/avif" srcset="./assets/media/life-0-720.avif 720w, ./assets/media/life-0-1080.avif 1080w, ./assets/media/life-0-1440.avif 1440w" sizes="100vw">
-          <source type="image/webp" srcset="./assets/media/life-0-720.webp 720w, ./assets/media/life-0-1080.webp 1080w, ./assets/media/life-0-1440.webp 1440w" sizes="100vw">
-          <img src="./assets/media/life-0-1080.jpg" srcset="./assets/media/life-0-720.jpg 720w, ./assets/media/life-0-1080.jpg 1080w, ./assets/media/life-0-1440.jpg 1440w" sizes="100vw" width="1440" height="2160" alt="The school courtyard from above on Pohela Boishakh: a painted alpona floor, a crowd in red and white, stalls under the brick building." loading="lazy" decoding="async">
-        </picture>
-      </div>
-      <figcaption class="plate__cap"><span class="plate__n">12</span>Pohela Boishakh in the courtyard, April 2025</figcaption>
-    </figure>
+  <!-- Sheet 05 · Events (2026-10-18): five of the school's yearly events, each with its own page
+       (built by the inner-pages group). No dates here: the school publishes them in its calendar. -->
+  <section id="top-events" class="sheet top-events" data-scene="events" data-sheet-n="05" aria-labelledby="events-title">
     <div class="band">
       <div class="sheet-rule">
         <i class="sheet-rule__line" aria-hidden="true"></i>
-        <span class="sheet-rule__n">Sheet 04 of 08</span>
-        <span class="sheet-rule__title">School life</span>
-        <span class="sheet-rule__purpose">The year, in the courtyard and on the field</span>
+        <span class="sheet-rule__n">Sheet 05 of 09</span>
+        <span class="sheet-rule__title">Events</span>
+        <span class="sheet-rule__purpose">Through the school year</span>
       </div>
-      <div class="life__head">
-        <h2 id="life-title" class="display-l" data-split="lines">Pohela Boishakh, painted on the courtyard floor.</h2>
-        <p class="life__body" data-reveal>In April 2025 the courtyard was laid with an alpona for Pohela Boishakh, the Bengali new year, and the school came in red and white. The same ground holds Annual Sports Day; the hall holds the Science and Technology Fair, the Cultural Programme and the graduation.</p>
+      <div class="top-events__head">
+        <h2 id="events-title" class="display-l" data-split="lines">The big days of the school year.</h2>
+        <p class="lead" data-reveal>Five events the whole school looks forward to, on the field, in the courtyard and in the hall.</p>
       </div>
-      <h3 class="life__grid-title" data-reveal>A year at Playpen.</h3>
-      <ul id="plates" class="plates">
-        <li class="plates__item is-wide">
-          <figure class="plate" data-clip>
-            <button class="plate__open" type="button" data-plate="13" data-cursor="view" aria-label="Open plate 13, Annual Sports Day from above, January 2026">
+      <ul class="ev-grid" data-feed="events-home">
+        <li class="ev ev--wide" data-feed-id="E01">
+          <a class="ev__card" href="./events/annual-sports-day/">
+            <span class="ev__media" data-clip><span class="plate__frame">
               <picture>
-                <source type="image/avif" srcset="./assets/media/life-1-960.avif 960w, ./assets/media/life-1-1440.avif 1440w, ./assets/media/life-1-1920.avif 1920w" sizes="(min-width: 1024px) 60vw, 100vw">
-                <source type="image/webp" srcset="./assets/media/life-1-960.webp 960w, ./assets/media/life-1-1440.webp 1440w, ./assets/media/life-1-1920.webp 1920w" sizes="(min-width: 1024px) 60vw, 100vw">
-                <img src="./assets/media/life-1-1440.jpg" srcset="./assets/media/life-1-960.jpg 960w, ./assets/media/life-1-1440.jpg 1440w, ./assets/media/life-1-1920.jpg 1920w" sizes="(min-width: 1024px) 60vw, 100vw" width="1920" height="960" alt="Students in red kneeling in a formation on the white-lined field, seen from above." loading="lazy" decoding="async">
+                <source type="image/avif" srcset="./assets/media/life-1-960.avif 960w, ./assets/media/life-1-1440.avif 1440w" sizes="(min-width: 1024px) 48vw, 100vw">
+                <source type="image/webp" srcset="./assets/media/life-1-960.webp 960w, ./assets/media/life-1-1440.webp 1440w" sizes="(min-width: 1024px) 48vw, 100vw">
+                <img src="./assets/media/life-1-960.jpg" srcset="./assets/media/life-1-960.jpg 960w, ./assets/media/life-1-1440.jpg 1440w" sizes="(min-width: 1024px) 48vw, 100vw" width="1920" height="960" alt="Students in red kneeling in a formation on the white-lined field, seen from above." loading="lazy" decoding="async">
               </picture>
-            </button>
-            <figcaption class="plate__cap"><span class="plate__n">13</span>Annual Sports Day from above, January 2026</figcaption>
-          </figure>
+            </span></span>
+            <span class="ev__n label" aria-hidden="true">01</span>
+            <span class="ev__name">Annual Sports Day</span>
+            <span class="ev__text">Students take to the field for races, displays and the march past, with families watching.</span>
+            <span class="ev__more" aria-hidden="true">About Sports Day</span>
+          </a>
         </li>
-        <li class="plates__item">
-          <figure class="plate" data-clip>
-            <button class="plate__open" type="button" data-plate="14" data-cursor="view" aria-label="Open plate 14, Dance on the alpona floor, April 2025">
+        <li class="ev ev--wide" data-feed-id="E02">
+          <a class="ev__card" href="./events/pohela-boishakh/">
+            <span class="ev__media" data-clip><span class="plate__frame">
               <picture>
-                <source type="image/avif" srcset="./assets/media/life-2-720.avif 720w, ./assets/media/life-2-960.avif 960w, ./assets/media/life-2-1440.avif 1440w" sizes="(min-width: 1024px) 30vw, 100vw">
-                <source type="image/webp" srcset="./assets/media/life-2-720.webp 720w, ./assets/media/life-2-960.webp 960w, ./assets/media/life-2-1440.webp 1440w" sizes="(min-width: 1024px) 30vw, 100vw">
-                <img src="./assets/media/life-2-960.jpg" srcset="./assets/media/life-2-720.jpg 720w, ./assets/media/life-2-960.jpg 960w, ./assets/media/life-2-1440.jpg 1440w" sizes="(min-width: 1024px) 30vw, 100vw" width="1440" height="960" alt="Girls in bright saris dancing on the painted alpona floor." loading="lazy" decoding="async">
+                <source type="image/avif" srcset="./assets/media/life-0-720.avif 720w, ./assets/media/life-0-1080.avif 1080w" sizes="(min-width: 1024px) 48vw, 100vw">
+                <source type="image/webp" srcset="./assets/media/life-0-720.webp 720w, ./assets/media/life-0-1080.webp 1080w" sizes="(min-width: 1024px) 48vw, 100vw">
+                <img src="./assets/media/life-0-720.jpg" srcset="./assets/media/life-0-720.jpg 720w, ./assets/media/life-0-1080.jpg 1080w" sizes="(min-width: 1024px) 48vw, 100vw" width="1440" height="2160" alt="The school courtyard from above on Pohela Boishakh: a painted alpona floor and a crowd in red and white." loading="lazy" decoding="async">
               </picture>
-            </button>
-            <figcaption class="plate__cap"><span class="plate__n">14</span>Dance on the alpona floor, April 2025</figcaption>
-          </figure>
+            </span></span>
+            <span class="ev__n label" aria-hidden="true">02</span>
+            <span class="ev__name">Pohela Boishakh</span>
+            <span class="ev__text">The Bengali new year: an alpona painted on the courtyard floor, music, dance and stalls.</span>
+            <span class="ev__more" aria-hidden="true">About Pohela Boishakh</span>
+          </a>
         </li>
-        <li class="plates__item">
-          <figure class="plate" data-clip>
-            <button class="plate__open" type="button" data-plate="15" data-cursor="view" aria-label="Open plate 15, Science and Technology Fair, 2024">
+        <li class="ev" data-feed-id="E03">
+          <a class="ev__card" href="./events/science-and-technology-fair/">
+            <span class="ev__media" data-clip><span class="plate__frame">
               <picture>
-                <source type="image/avif" srcset="./assets/media/life-3-720.avif 720w, ./assets/media/life-3-960.avif 960w, ./assets/media/life-3-1440.avif 1440w" sizes="(min-width: 1024px) 30vw, 100vw">
-                <source type="image/webp" srcset="./assets/media/life-3-720.webp 720w, ./assets/media/life-3-960.webp 960w, ./assets/media/life-3-1440.webp 1440w" sizes="(min-width: 1024px) 30vw, 100vw">
-                <img src="./assets/media/life-3-960.jpg" srcset="./assets/media/life-3-720.jpg 720w, ./assets/media/life-3-960.jpg 960w, ./assets/media/life-3-1440.jpg 1440w" sizes="(min-width: 1024px) 30vw, 100vw" width="1440" height="960" alt="Students in laboratory coats running an experiment at a science fair stall." loading="lazy" decoding="async">
+                <source type="image/avif" srcset="./assets/media/swatch-4-480.avif 480w, ./assets/media/swatch-4-720.avif 720w" sizes="(min-width: 1024px) 31vw, 100vw">
+                <source type="image/webp" srcset="./assets/media/swatch-4-480.webp 480w, ./assets/media/swatch-4-720.webp 720w" sizes="(min-width: 1024px) 31vw, 100vw">
+                <img src="./assets/media/swatch-4-720.jpg" srcset="./assets/media/swatch-4-480.jpg 480w, ./assets/media/swatch-4-720.jpg 720w" sizes="(min-width: 1024px) 31vw, 100vw" width="720" height="720" alt="Laboratory glassware on a bench in one of the school's science laboratories." loading="lazy" decoding="async">
               </picture>
-            </button>
-            <figcaption class="plate__cap"><span class="plate__n">15</span>Science and Technology Fair, 2024</figcaption>
-          </figure>
+            </span></span>
+            <span class="ev__n label" aria-hidden="true">03</span>
+            <span class="ev__name">Science and Technology Fair</span>
+            <span class="ev__text">Students set up experiments and models in the hall and explain them to visitors.</span>
+            <span class="ev__more" aria-hidden="true">About the fair</span>
+          </a>
         </li>
-        <li class="plates__item is-tall">
-          <figure class="plate" data-clip>
-            <button class="plate__open" type="button" data-plate="16" data-cursor="view" aria-label="Open plate 16, Annual Cultural Programme, 2024">
+        <li class="ev" data-feed-id="E04">
+          <a class="ev__card" href="./events/annual-cultural-programme/">
+            <span class="ev__media" data-clip><span class="plate__frame">
               <picture>
-                <source type="image/avif" srcset="./assets/media/life-4-720.avif 720w, ./assets/media/life-4-960.avif 960w, ./assets/media/life-4-1200.avif 1200w" sizes="(min-width: 1024px) 30vw, 100vw">
-                <source type="image/webp" srcset="./assets/media/life-4-720.webp 720w, ./assets/media/life-4-960.webp 960w, ./assets/media/life-4-1200.webp 1200w" sizes="(min-width: 1024px) 30vw, 100vw">
-                <img src="./assets/media/life-4-960.jpg" srcset="./assets/media/life-4-720.jpg 720w, ./assets/media/life-4-960.jpg 960w, ./assets/media/life-4-1200.jpg 1200w" sizes="(min-width: 1024px) 30vw, 100vw" width="1200" height="1500" alt="Dancers on stage at the annual cultural programme." loading="lazy" decoding="async">
+                <source type="image/avif" srcset="./assets/media/life-4-720.avif 720w, ./assets/media/life-4-960.avif 960w" sizes="(min-width: 1024px) 31vw, 100vw">
+                <source type="image/webp" srcset="./assets/media/life-4-720.webp 720w, ./assets/media/life-4-960.webp 960w" sizes="(min-width: 1024px) 31vw, 100vw">
+                <img src="./assets/media/life-4-720.jpg" srcset="./assets/media/life-4-720.jpg 720w, ./assets/media/life-4-960.jpg 960w" sizes="(min-width: 1024px) 31vw, 100vw" width="1200" height="1500" alt="Dancers on stage at the annual cultural programme." loading="lazy" decoding="async">
               </picture>
-            </button>
-            <figcaption class="plate__cap"><span class="plate__n">16</span>Annual Cultural Programme, 2024</figcaption>
-          </figure>
+            </span></span>
+            <span class="ev__n label" aria-hidden="true">04</span>
+            <span class="ev__name">Annual Cultural Programme</span>
+            <span class="ev__text">Song, dance and drama on stage, performed by the students.</span>
+            <span class="ev__more" aria-hidden="true">About the programme</span>
+          </a>
         </li>
-        <li class="plates__item is-wide">
-          <figure class="plate" data-clip>
-            <button class="plate__open" type="button" data-plate="17" data-cursor="view" aria-label="Open plate 17, Graduation, 2025">
+        <li class="ev" data-feed-id="E05">
+          <a class="ev__card" href="./events/graduation-ceremony/">
+            <span class="ev__media" data-clip><span class="plate__frame">
               <picture>
-                <source type="image/avif" srcset="./assets/media/life-5-960.avif 960w, ./assets/media/life-5-1440.avif 1440w, ./assets/media/life-5-1920.avif 1920w" sizes="(min-width: 1024px) 60vw, 100vw">
-                <source type="image/webp" srcset="./assets/media/life-5-960.webp 960w, ./assets/media/life-5-1440.webp 1440w, ./assets/media/life-5-1920.webp 1920w" sizes="(min-width: 1024px) 60vw, 100vw">
-                <img src="./assets/media/life-5-1440.jpg" srcset="./assets/media/life-5-960.jpg 960w, ./assets/media/life-5-1440.jpg 1440w, ./assets/media/life-5-1920.jpg 1920w" sizes="(min-width: 1024px) 60vw, 100vw" width="1920" height="960" alt="Rows of seated graduates in caps and gowns in the hall." loading="lazy" decoding="async">
+                <source type="image/webp" srcset="./assets/img/gal-grad-hall-960.webp 960w, ./assets/img/gal-grad-hall-1440.webp 1440w" sizes="(min-width: 1024px) 31vw, 100vw">
+                <img src="./assets/img/gal-grad-hall-960.jpg" srcset="./assets/img/gal-grad-hall-960.jpg 960w, ./assets/img/gal-grad-hall-1440.jpg 1440w" sizes="(min-width: 1024px) 31vw, 100vw" width="1440" height="960" alt="Graduates in caps, gowns and maroon sashes in the hall, seen from behind, facing the stage." loading="lazy" decoding="async">
               </picture>
-            </button>
-            <figcaption class="plate__cap"><span class="plate__n">17</span>Graduation, 2025</figcaption>
-          </figure>
-        </li>
-        <li class="plates__item is-tall">
-          <figure class="plate" data-clip>
-            <button class="plate__open" type="button" data-plate="18" data-cursor="view" aria-label="Open plate 18, A student's painting of astronaut Joseph M. Acaba, 2024">
-              <picture>
-                <source type="image/avif" srcset="./assets/media/life-6-720.avif 720w, ./assets/media/life-6-960.avif 960w, ./assets/media/life-6-1200.avif 1200w" sizes="(min-width: 1024px) 30vw, 100vw">
-                <source type="image/webp" srcset="./assets/media/life-6-720.webp 720w, ./assets/media/life-6-960.webp 960w, ./assets/media/life-6-1200.webp 1200w" sizes="(min-width: 1024px) 30vw, 100vw">
-                <img src="./assets/media/life-6-960.jpg" srcset="./assets/media/life-6-720.jpg 720w, ./assets/media/life-6-960.jpg 960w, ./assets/media/life-6-1200.jpg 1200w" sizes="(min-width: 1024px) 30vw, 100vw" width="1200" height="1500" alt="A student-painted portrait of an astronaut in a blue flight suit, signed." loading="lazy" decoding="async">
-              </picture>
-            </button>
-            <figcaption class="plate__cap"><span class="plate__n">18</span>A student's painting of astronaut Joseph M. Acaba, 2024</figcaption>
-          </figure>
-        </li>
-        <li class="plates__item">
-          <figure class="plate" data-clip>
-            <button class="plate__open" type="button" data-plate="19" data-cursor="view" aria-label="Open plate 19, Annual Sports Day, the field, January 2026">
-              <picture>
-                <source type="image/avif" srcset="./assets/media/life-7-720.avif 720w, ./assets/media/life-7-960.avif 960w, ./assets/media/life-7-1440.avif 1440w" sizes="(min-width: 1024px) 30vw, 100vw">
-                <source type="image/webp" srcset="./assets/media/life-7-720.webp 720w, ./assets/media/life-7-960.webp 960w, ./assets/media/life-7-1440.webp 1440w" sizes="(min-width: 1024px) 30vw, 100vw">
-                <img src="./assets/media/life-7-960.jpg" srcset="./assets/media/life-7-720.jpg 720w, ./assets/media/life-7-960.jpg 960w, ./assets/media/life-7-1440.jpg 1440w" sizes="(min-width: 1024px) 30vw, 100vw" width="1440" height="960" alt="A wide field of students in red with palm trees and the building behind." loading="lazy" decoding="async">
-              </picture>
-            </button>
-            <figcaption class="plate__cap"><span class="plate__n">19</span>Annual Sports Day, the field, January 2026</figcaption>
-          </figure>
-        </li>
-        <li class="plates__item is-tall">
-          <figure class="plate" data-clip>
-            <button class="plate__open" type="button" data-plate="20" data-cursor="view" aria-label="Open plate 20, The main stair, 2024">
-              <picture>
-                <source type="image/avif" srcset="./assets/media/life-8-720.avif 720w, ./assets/media/life-8-960.avif 960w, ./assets/media/life-8-1200.avif 1200w" sizes="(min-width: 1024px) 30vw, 100vw">
-                <source type="image/webp" srcset="./assets/media/life-8-720.webp 720w, ./assets/media/life-8-960.webp 960w, ./assets/media/life-8-1200.webp 1200w" sizes="(min-width: 1024px) 30vw, 100vw">
-                <img src="./assets/media/life-8-960.jpg" srcset="./assets/media/life-8-720.jpg 720w, ./assets/media/life-8-960.jpg 960w, ./assets/media/life-8-1200.jpg 1200w" sizes="(min-width: 1024px) 30vw, 100vw" width="1200" height="1500" alt="A red-tiled staircase descending between white walls and metal railings." loading="lazy" decoding="async">
-              </picture>
-            </button>
-            <figcaption class="plate__cap"><span class="plate__n">20</span>The main stair, 2024</figcaption>
-          </figure>
-        </li>
-        <li class="plates__item is-wide-desktop">
-          <figure class="plate" data-clip>
-            <button class="plate__open" type="button" data-plate="21" data-cursor="view" aria-label="Open plate 21, A graduate in the maroon Playpen sash, 2025">
-              <picture>
-                <source type="image/avif" srcset="./assets/media/life-9-720.avif 720w, ./assets/media/life-9-960.avif 960w, ./assets/media/life-9-1440.avif 1440w" sizes="(min-width: 1024px) 30vw, 100vw">
-                <source type="image/webp" srcset="./assets/media/life-9-720.webp 720w, ./assets/media/life-9-960.webp 960w, ./assets/media/life-9-1440.webp 1440w" sizes="(min-width: 1024px) 30vw, 100vw">
-                <img src="./assets/media/life-9-960.jpg" srcset="./assets/media/life-9-720.jpg 720w, ./assets/media/life-9-960.jpg 960w, ./assets/media/life-9-1440.jpg 1440w" sizes="(min-width: 1024px) 30vw, 100vw" width="1440" height="960" alt="A graduate in a black gown and maroon sash walking into the hall while parents film." loading="lazy" decoding="async">
-              </picture>
-            </button>
-            <figcaption class="plate__cap"><span class="plate__n">21</span>A graduate in the maroon Playpen sash, 2025</figcaption>
-          </figure>
+            </span></span>
+            <span class="ev__n label" aria-hidden="true">05</span>
+            <span class="ev__name">Graduation Ceremony</span>
+            <span class="ev__text">Leavers in cap and gown are honoured in the hall, with their families there to see it.</span>
+            <span class="ev__more" aria-hidden="true">About graduation</span>
+          </a>
         </li>
       </ul>
-      <p class="life__clubs" data-reveal>Clubs run from Art and Craft, Music and Dance to Drama, Debate, the Olympiads and the Duke of Edinburgh's Award. Teams play football, basketball, handball, athletics, table tennis, chess and carrom.</p>
-      <p class="life__link" data-reveal><a class="link" href="./gallery/">Gallery</a></p>
-    </div>
-    <dialog id="plate-dialog" class="dialog" data-lenis-prevent aria-labelledby="plate-dialog-cap">
-      <figure class="dialog__figure">
-        <img class="dialog__img" alt="" width="1920" height="1280">
-        <figcaption id="plate-dialog-cap" class="dialog__cap plate__cap"></figcaption>
-      </figure>
-      <button class="dialog__close" type="button">Close</button>
-    </dialog>
-  </section>
-
-  <!-- Sheet 05 · The Ledger -->
-  <section id="ledger" class="sheet ledger is-night" data-scene="ledger" data-sheet-n="05" aria-labelledby="ledger-title">
-    <div class="band">
-      <div class="sheet-rule">
-        <i class="sheet-rule__line" aria-hidden="true"></i>
-        <span class="sheet-rule__n">Sheet 05 of 08</span>
-        <span class="sheet-rule__title">The Ledger</span>
-        <span class="sheet-rule__purpose">The record, in dates</span>
-      </div>
-      <h2 id="ledger-title" class="display-l" data-split="lines">Six dates, <em>one</em> school.</h2>
-      <div class="ledger__layout">
-        <!-- the crest is a small seal beside the dates now (about 200 px, no glow, no label): the dates
-             are the record; the cast crest at 300 px read as a coin page -->
-        <div class="ledger__medallion">
-          <div class="ledger__sticky">
-            <div id="medallion-slot" class="medallion" data-gl="medallion" role="img" aria-label="The Playpen School crest: a maroon shield with a gold rim, gold stars and the word PLAYPEN">
-              <img class="medallion__fallback" src="./assets/3d/medallion-fallback-1200.webp" width="1200" height="1300" alt="" loading="lazy" decoding="async">
-            </div>
-          </div>
-        </div>
-        <div class="ledger__dates">
-          <ol id="dates" class="dates">
-            <li class="date" data-reveal><span class="date__year display-l">1977</span><span class="date__text">Founded in Dhaka by Mrs Zeba Khan. <a class="fn" href="#ledger-note" aria-label="Footnote: the founding year is being confirmed with the school">&dagger;</a></span></li>
-            <li class="date" data-reveal><span class="date__year display-l">2003</span><span class="date__text">The first O Level candidate sits the examination.</span></li>
-            <li class="date" data-reveal><span class="date__year display-l">2013</span><span class="date__text">A Level classes begin.</span></li>
-            <li class="date" data-reveal><span class="date__year display-l">2015</span><span class="date__text">The first A Level batch enrols.</span></li>
-            <li class="date" data-reveal><span class="date__year display-l">2018</span><span class="date__text">On 19 July the school moves into its own ten-storey building in Bashundhara.</span></li>
-            <li class="date" data-reveal><span class="date__year display-l">2026</span><span class="date__text">In October 2026 the second phase of the building is in progress. <a class="fn" href="#ledger-note" aria-label="Footnote: the building work is being confirmed with the school">&dagger;</a></span></li>
-          </ol>
-          <p id="ledger-note" class="ledger__note caption" data-reveal data-sample>&dagger; Dates from the school's own records; the founding year and the current building work are being confirmed with the school.</p>
-          <p data-reveal><a class="ledger__link link" href="./about/history/">Our history</a></p>
-        </div>
+      <div class="top-events__foot">
+        <p class="top-events__more" data-reveal>The year also brings Victory Day, Independence Day, Shaheed Dibosh, the Book Fair, the Education Fair, Business Week, the Annual Drama, Orientation Day, class parties and a study tour.</p>
+        <p class="top-events__link" data-reveal><a class="btn btn--secondary" href="./events/">See all events</a></p>
       </div>
     </div>
   </section>
@@ -780,7 +895,7 @@
     <div class="band">
       <div class="sheet-rule">
         <i class="sheet-rule__line" aria-hidden="true"></i>
-        <span class="sheet-rule__n">Sheet 06 of 08</span>
+        <span class="sheet-rule__n">Sheet 06 of 09</span>
         <span class="sheet-rule__title">In their own words</span>
         <span class="sheet-rule__purpose">From the mission statement</span>
       </div>
@@ -794,94 +909,127 @@
     </div>
   </section>
 
-  <!-- Sheet 07 · For current parents -->
+  <!-- Sheet 07 · For current parents. The invented sample events and news teasers were removed on
+       2026-10-18; the first column is from the school's prospectus (undated). The notices column moved to
+       its own sheet on 2026-10-22 (Sheet 08, right after this one). -->
   <section id="parents" class="sheet parents" data-scene="parents" data-sheet-n="07" aria-labelledby="parents-title">
     <div class="band">
       <div class="sheet-rule">
         <i class="sheet-rule__line" aria-hidden="true"></i>
-        <span class="sheet-rule__n">Sheet 07 of 08</span>
+        <span class="sheet-rule__n">Sheet 07 of 09</span>
         <span class="sheet-rule__title">For current parents</span>
-        <span class="sheet-rule__purpose">Notices, events, news</span>
+        <span class="sheet-rule__purpose">The portal, staying in touch</span>
       </div>
       <h2 id="parents-title" class="display-l" data-split="lines">For families already here.</h2>
       <div class="parents__grid">
-        <aside id="notices" class="parents__col notices-col" aria-labelledby="notices-title">
-          <h3 id="notices-title" class="label parents__h">Notices</h3>
+        <div id="keep-in-touch" class="parents__col">
+          <h3 class="label parents__h">Staying in touch</h3>
           <ul class="notices">
-            <li data-reveal>Admission for A Level, academic year July 2026 to June 2027, is open. Call between 9.00 am and 1.00 pm.</li>
+            <li data-reveal>The parent portal shows your child&rsquo;s class tests, homework, report cards, attendance and the academic calendar.</li>
+            <li data-reveal>Urgent notices also come to you by SMS and email.</li>
+            <li data-reveal>Parent&ndash;teacher meetings are announced during the year. Please come to each one.</li>
+            <li data-reveal>If your child is away for a day or two, fill in the Leave of Absence page in the diary.</li>
           </ul>
-          <p class="parents__links" data-reveal>
-            <a class="link" href="./notices/">All notices</a>
-            <a class="link link--ext" href="https://portal.playpen.edu.bd/login" target="_blank" rel="noopener">Portal<span class="link__site">current site</span><span class="visually-hidden"> (opens in a new tab)</span></a>
-            <a class="link link--ext" href="https://playpen.edu.bd/online-facility-payment/" target="_blank" rel="noopener">Pay fees<span class="link__site">current site</span><span class="visually-hidden"> (opens in a new tab)</span></a>
-          </p>
-        </aside>
-        <div id="events" class="parents__col">
-          <h3 class="label parents__h">Events</h3>
-          <ul class="events">
-            <li data-reveal data-sample><time datetime="2026-11-18">Wednesday 18 November 2026</time><span class="events__what">Science and Technology Fair, multipurpose hall</span></li>
-            <li data-reveal data-sample><time datetime="2027-01">January 2027</time><span class="events__what">Annual Sports Day, Classes I to XII, date to be announced</span></li>
-            <li data-reveal data-sample><time datetime="2027-04-14">Wednesday 14 April 2027</time><span class="events__what">Pohela Boishakh in the courtyard</span></li>
-          </ul>
-          <p class="parents__links" data-reveal><a class="link" href="./events/">Events and term dates</a></p>
         </div>
-        <div id="news" class="parents__col">
-          <h3 class="label parents__h">News</h3>
-          <article class="news-card" data-reveal>
-            <figure class="plate plate--flat">
-              <picture>
-                <source type="image/avif" srcset="./assets/media/news-1-480.avif 480w, ./assets/media/news-1-960.avif 960w" sizes="(min-width: 1024px) 28vw, 100vw">
-                <source type="image/webp" srcset="./assets/media/news-1-480.webp 480w, ./assets/media/news-1-960.webp 960w" sizes="(min-width: 1024px) 28vw, 100vw">
-                <img src="./assets/media/news-1-960.jpg" srcset="./assets/media/news-1-480.jpg 480w, ./assets/media/news-1-960.jpg 960w" sizes="(min-width: 1024px) 28vw, 100vw" width="960" height="640" alt="Senior athletes on the track with the stepped facade of the school behind them." loading="lazy" decoding="async">
-              </picture>
-            </figure>
-            <time class="label" datetime="2026-01">January 2026</time>
-            <h4 class="news-card__title display-m">Annual Sports Day 2026</h4>
-            <p data-sample>Classes I to XII on the field for the march past and the displays, the building behind them.</p>
-          </article>
-          <article class="news-card" data-reveal>
-            <figure class="plate plate--flat">
-              <picture>
-                <source type="image/avif" srcset="./assets/media/news-2-480.avif 480w, ./assets/media/news-2-960.avif 960w" sizes="(min-width: 1024px) 28vw, 100vw">
-                <source type="image/webp" srcset="./assets/media/news-2-480.webp 480w, ./assets/media/news-2-960.webp 960w" sizes="(min-width: 1024px) 28vw, 100vw">
-                <img src="./assets/media/news-2-960.jpg" srcset="./assets/media/news-2-480.jpg 480w, ./assets/media/news-2-960.jpg 960w" sizes="(min-width: 1024px) 28vw, 100vw" width="960" height="640" alt="Clay pots and traditional crafts on a Pohela Boishakh stall." loading="lazy" decoding="async">
-              </picture>
-            </figure>
-            <time class="label" datetime="2025-04">April 2025</time>
-            <h4 class="news-card__title display-m">Pohela Boishakh 1432</h4>
-            <p data-sample>An alpona on the courtyard floor, stalls with clay pots and crafts, and dance for the Bengali new year.</p>
-          </article>
-          <article class="news-card" data-reveal>
-            <figure class="plate plate--flat">
-              <picture>
-                <source type="image/avif" srcset="./assets/media/news-3-480.avif 480w, ./assets/media/news-3-960.avif 960w" sizes="(min-width: 1024px) 28vw, 100vw">
-                <source type="image/webp" srcset="./assets/media/news-3-480.webp 480w, ./assets/media/news-3-960.webp 960w" sizes="(min-width: 1024px) 28vw, 100vw">
-                <img src="./assets/media/news-3-960.jpg" srcset="./assets/media/news-3-480.jpg 480w, ./assets/media/news-3-960.jpg 960w" sizes="(min-width: 1024px) 28vw, 100vw" width="960" height="640" alt="Project stalls and models at the Science and Technology Fair in the hall." loading="lazy" decoding="async">
-              </picture>
-            </figure>
-            <time class="label" datetime="2024-11">November 2024</time>
-            <h4 class="news-card__title display-m">Science and Technology Fair 2024</h4>
-            <p data-sample>Experiments and models at stalls in the hall, run by students in laboratory coats.</p>
-          </article>
-          <p class="parents__links news__all" data-reveal><a class="link" href="./news/">All news</a></p>
+        <div id="parent-links" class="parents__col">
+          <h3 class="label parents__h">Quick links</h3>
+          <ul class="quick">
+            <li data-reveal><a class="link" href="#notices">Notices (just below)</a></li>
+            <li data-reveal><a class="link link--ext" href="https://portal.playpen.edu.bd/login" target="_blank" rel="noopener">Parent portal<span class="link__site">current site</span><span class="visually-hidden"> (opens in a new tab)</span></a></li>
+            <li data-reveal><a class="link link--ext" href="https://playpen.edu.bd/online-facility-payment/" target="_blank" rel="noopener">Pay fees online<span class="link__site">current site</span><span class="visually-hidden"> (opens in a new tab)</span></a></li>
+            <li data-reveal><a class="link" href="./events/">Events and term dates</a></li>
+            <li data-reveal><a class="link" href="./news/">School news</a></li>
+            <li data-reveal><a class="link" href="./school-life/transport-and-safety/">Transport and safety</a></li>
+            <li data-reveal><a class="link" href="./community/parents/">More for parents</a></li>
+          </ul>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Sheet 08 · Admissions -->
-  <section id="admissions" class="sheet admissions" data-scene="admissions" data-sheet-n="08" aria-labelledby="admissions-title">
+  <!-- Sheet 08 · Notices (moved after For current parents on 2026-10-22; first built (2026-10-22). The three notices are the school's own (its site, September 2026);
+       wording in redesign-2026-10-22-notices/spec.md section 6. To confirm: closing date for A Level admission,
+       posting dates, who at the school owns notices. The ended exam notice is kept on /notices/ only.
+       The count line and "See all notices (3)" follow NOTICES_CURRENT in build/shell.py: change them together. -->
+  <section id="notices" class="sheet nb-sheet" data-scene="notices" data-sheet-n="08" aria-labelledby="notices-title">
     <div class="band">
       <div class="sheet-rule">
         <i class="sheet-rule__line" aria-hidden="true"></i>
-        <span class="sheet-rule__n">Sheet 08 of 08</span>
+        <span class="sheet-rule__n">Sheet 08 of 09</span>
+        <span class="sheet-rule__title">Notices</span>
+        <span class="sheet-rule__purpose">What you need to know now</span>
+      </div>
+      <h2 id="notices-title" class="display-l" data-split="lines">Notices from the <em>school.</em></h2>
+      <p class="lead nb-lead" data-reveal>Read these first. Each notice says who it is for, what to do and when it applies.</p>
+      <p class="nb-count" data-reveal data-feed-line="notices-current">2 notices apply now.</p>
+      <div class="nb-board">
+        <div class="nb-grid" data-feed="notices-current">
+          <!-- To confirm: closing date for applications; posting date; that "Students who want to join A Level, and
+               their parents" is the right audience. -->
+          <article class="nb-card nb-card--feature nb-topic--admissions" id="n-alevel" data-feed-id="n-alevel" data-tags="admissions" data-status="current" aria-labelledby="n-alevel-t" data-reveal>
+            <div class="nb-card__head">
+              <p class="nb-tile" aria-hidden="true"><span class="nb-tile__big">2026&ndash;27</span><span class="nb-tile__small">School year</span></p>
+              <p class="nb-card__chips"><span class="nb-status nb-status--current">Current</span><span class="nb-topic">Admissions</span></p>
+            </div>
+            <h3 id="n-alevel-t" class="nb-card__title">A Level admission is open for July 2026 to June 2027</h3>
+            <dl class="nb-card__facts">
+              <div class="nb-fact"><dt class="label">For</dt><dd>Students who want to join A Level, and their parents.</dd></div>
+              <div class="nb-fact"><dt class="label">What to do</dt><dd>Get an admission form from the Admin Office or from the school website. Call the school between 9.00&nbsp;am and 1.00&nbsp;pm.</dd></div>
+              <div class="nb-fact"><dt class="label">When</dt><dd>For the school year July 2026 to June 2027. Ask the school for the last date to apply.</dd></div>
+            </dl>
+            <p class="nb-card__actions"><a class="btn btn--primary btn--small" href="./admissions/how-to-apply/"><span class="btn__label">How to apply</span></a></p>
+            <p class="nb-card__source caption">From the school's notice board.</p>
+          </article>
+          <article class="nb-card nb-topic--rules" id="n-phones" data-feed-id="n-phones" data-tags="rules" data-status="always" aria-labelledby="n-phones-t" data-reveal>
+            <div class="nb-card__head">
+              <p class="nb-tile" aria-hidden="true"><span class="nb-tile__big">Daily</span><span class="nb-tile__small">No end date</span></p>
+              <p class="nb-card__chips"><span class="nb-status nb-status--always">Always applies</span><span class="nb-topic">School rules</span></p>
+            </div>
+            <h3 id="n-phones-t" class="nb-card__title">Students must not bring mobile phones to school</h3>
+            <dl class="nb-card__facts">
+              <div class="nb-fact"><dt class="label">For</dt><dd>All students, and their parents.</dd></div>
+              <div class="nb-fact"><dt class="label">What to do</dt><dd>Leave your phone at home. Bags are checked at the entrance every morning. To call a parent in an emergency, go to the Admin Office on Level 2.</dd></div>
+              <div class="nb-fact"><dt class="label">When</dt><dd>Every school day. This rule has no end date.</dd></div>
+            </dl>
+            <p class="nb-card__actions"><a class="btn btn--secondary btn--small" href="./about/policies/"><span class="btn__label">Read the school rules</span></a></p>
+            <p class="nb-card__source caption">From the school's code of conduct.</p>
+          </article>
+          <!-- To confirm: the school has not named who posts notices or how often. -->
+          <div class="nb-empty" role="note" data-reveal>
+            <p class="label">No other notice</p>
+            <p class="nb-empty__text">There is no other notice right now. When the school posts one, it appears here.</p>
+          </div>
+        </div>
+        <aside class="nb-ask" aria-labelledby="home-ask-t" data-reveal>
+          <p class="label">Ask the school</p>
+          <h3 id="home-ask-t" class="nb-ask__title">A question about a notice?</h3>
+          <p>Call the line for your child's section. The school takes calls between 9.00&nbsp;am and 1.00&nbsp;pm.</p>
+          <ul class="phones">
+            <li class="phones__row"><span class="phones__who">Playgroup to Class I</span><a href="tel:+8801755689482">01755 689 482</a></li>
+            <li class="phones__row"><span class="phones__who">Classes II to VI</span><a href="tel:+8801755515893">01755 515 893</a></li>
+            <li class="phones__row"><span class="phones__who">Classes VII to XII</span><a href="tel:+8801755693623">01755 693 623</a></li>
+          </ul>
+          <p>Notices for one class come through the parent portal. Urgent notices also come by SMS and email.</p>
+          <p><a class="link link--ext" href="https://portal.playpen.edu.bd/login" target="_blank" rel="noopener">Parent portal<span class="link__site">current site</span><span class="visually-hidden"> (opens in a new tab)</span></a></p>
+        </aside>
+      </div>
+      <p class="nb-more" data-reveal><a class="btn btn--secondary" href="./notices/">See all notices (<span data-feed-count="notices-all">3</span>)</a><span class="nb-more__note">Ended notices are kept on the notices page.</span></p>
+    </div>
+  </section>
+
+  <!-- Sheet 09 · Admissions -->
+  <section id="admissions" class="sheet admissions" data-scene="admissions" data-sheet-n="09" aria-labelledby="admissions-title">
+    <div class="band">
+      <div class="sheet-rule">
+        <i class="sheet-rule__line" aria-hidden="true"></i>
+        <span class="sheet-rule__n">Sheet 09 of 09</span>
         <span class="sheet-rule__title">Admissions</span>
         <span class="sheet-rule__purpose">Visit, enquire, apply</span>
       </div>
       <h2 id="admissions-title" class="display-l" data-split="lines">Visit, enquire, apply.</h2>
       <p class="lead admissions__lead" data-reveal>Applications for the current year are accepted if there is available space.</p>
       <ol id="steps" class="steps">
-        <li class="step" data-reveal><span class="step__n display-m">01</span><h3>Call or visit.</h3><p>Admissions take calls between 9.00 am and 1.00 pm. Call the line for your child's section, or come and see the building.</p></li>
+        <li class="step" data-reveal><span class="step__n display-m">01</span><h3>Call or visit.</h3><p>Admissions take calls between 9.00&nbsp;am and 1.00&nbsp;pm. Call the line for your child's section, or come and see the building.</p></li>
         <li class="step" data-reveal><span class="step__n display-m">02</span><h3>Collect the form.</h3><p>From the Front Office, or download it from the school's site.</p></li>
         <li class="step" data-reveal><span class="step__n display-m">03</span><h3>Assessment or test.</h3><p>Playgroup and Nursery sit an assessment. KG I to Class IX sit a written test in English, Bengali and Mathematics. Class XI admission is based on the school's mock examinations and the O Level result.</p></li>
         <li class="step" data-reveal><span class="step__n display-m">04</span><h3>Interview.</h3><p>With the Principal and the parents.</p></li>
@@ -910,6 +1058,31 @@
         <button class="btn btn--secondary" type="button" data-sheet-open="enquire">Enquire</button>
         <a class="btn btn--text" href="https://playpen.edu.bd/admission-procedure/" target="_blank" rel="noopener">Download the form<span class="link__site">current site</span><span class="visually-hidden"> (opens in a new tab)</span></a>
       </div>
+
+      <!-- Find the school (2026-10-22, founder request): live Google map + directions. The pin uses the geo point in
+           build/nav.json (23.817814, 90.440179); no API key needed (embed URL). Map is tinted to the palette and
+           shows full colour on hover/focus. -->
+      <div id="find-us" class="findus" aria-labelledby="findus-title" role="region" data-reveal>
+        <div class="findus__panel">
+          <p class="label findus__label">Find the school</p>
+          <h3 id="findus-title" class="findus__title">Come and see the <em>building.</em></h3>
+          <address class="findus__address">
+            <span>House 545/A, Block J, Road 19</span>
+            <span>Bashundhara R/A, Dhaka 1229</span>
+          </address>
+          <dl class="findus__facts">
+            <div><dt class="label">Calls</dt><dd>9.00&nbsp;am to 1.00&nbsp;pm</dd></div>
+            <div><dt class="label">Front desk</dt><dd><a href="tel:+8801755515885">01755 515 885</a></dd></div>
+          </dl>
+          <div class="findus__actions">
+            <a class="btn btn--gold" href="https://www.google.com/maps/dir/?api=1&amp;destination=The+Playpen+School%2C+Bashundhara+R%2FA%2C+Dhaka" target="_blank" rel="noopener"><span class="btn__label">Get directions</span><span class="visually-hidden"> (opens Google Maps in a new tab)</span></a>
+            <a class="findus__open" href="https://www.google.com/maps/search/?api=1&amp;query=The+Playpen+School%2C+Bashundhara+R%2FA%2C+Dhaka" target="_blank" rel="noopener">Open in Google Maps<span aria-hidden="true"> &nearr;</span><span class="visually-hidden"> (opens in a new tab)</span></a>
+          </div>
+        </div>
+        <div class="findus__map">
+          <iframe class="findus__frame" title="Map showing The Playpen School in Bashundhara R/A, Dhaka" src="https://www.google.com/maps?q=The+Playpen+School,+Bashundhara+R%2FA,+Dhaka&amp;z=16&amp;hl=en&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -934,28 +1107,38 @@
       <div class="foot__col foot__col--phones">
         <h2 class="label foot__h">Telephone</h2>
         <ul class="foot__phones"><li><span class="phones__who">Playgroup to Class I</span><a href="tel:+8801755689482">01755 689 482</a></li><li><span class="phones__who">Classes II to VI</span><a href="tel:+8801755515893">01755 515 893</a></li><li><span class="phones__who">Classes VII to XII</span><a href="tel:+8801755693623">01755 693 623</a></li><li><span class="phones__who">Further queries and emergencies</span><span class="foot__nums"><a href="tel:+8801755515885">01755 515 885</a><span class="foot__dot" aria-hidden="true">&middot;</span><a href="tel:+8809678434241">+880 9678 434241</a></span></li></ul>
-        <p class="foot__email">Email: see the <a class="link" href="./contact/">contact page</a></p>
+        <p class="foot__email">Email: not yet published; please telephone</p>
       </div>
       <nav class="foot__links" aria-labelledby="foot-about">
-        <h2 id="foot-about" class="label foot__h">About</h2>
-        <ul><li><a class="link" href="./about/">Overview</a></li><li><a class="link" href="./about/history/">History</a></li><li><a class="link" href="./about/leadership/">Leadership</a></li><li><a class="link" href="./about/campus/">Campus</a></li><li><a class="link" href="./about/careers/">Careers</a></li></ul>
+        <details class="foot__group" data-foot-group>
+          <summary class="foot__sum"><h2 id="foot-about" class="label foot__h">About</h2><span class="foot__chev" aria-hidden="true"></span></summary>
+          <ul><li><a class="link" href="./about/">About Playpen</a></li><li><a class="link" href="./about/history/">History</a></li><li><a class="link" href="./about/school-administration/">School administration</a></li><li><a class="link" href="./about/leadership/">Who to ask about your child&#x27;s class</a></li><li><a class="link" href="./about/campus/">Campus</a></li><li><a class="link" href="./about/careers/">Careers</a></li></ul>
+        </details>
       </nav>
       <nav class="foot__links" aria-labelledby="foot-learning">
-        <h2 id="foot-learning" class="label foot__h">Learning</h2>
-        <ul><li><a class="link" href="./learning/">Overview</a></li><li><a class="link" href="./learning/elementary/">Elementary</a></li><li><a class="link" href="./learning/junior/">Junior</a></li><li><a class="link" href="./learning/middle/">Middle</a></li><li><a class="link" href="./learning/senior/">Senior</a></li><li><a class="link" href="./learning/a-level/">A Level</a></li><li><a class="link" href="./learning/cambridge-pathway/">Cambridge pathway</a></li></ul>
+        <details class="foot__group" data-foot-group>
+          <summary class="foot__sum"><h2 id="foot-learning" class="label foot__h">Learning</h2><span class="foot__chev" aria-hidden="true"></span></summary>
+          <ul><li><a class="link" href="./learning/">Learning at Playpen</a></li><li><a class="link" href="./learning/elementary/">Elementary</a></li><li><a class="link" href="./learning/junior/">Junior</a></li><li><a class="link" href="./learning/middle/">Middle</a></li><li><a class="link" href="./learning/senior/">Senior</a></li><li><a class="link" href="./learning/a-level/">A Level</a></li><li><a class="link" href="./learning/cambridge-pathway/">Cambridge pathway</a></li><li><a class="link" href="./learning/examinations/">Examinations</a></li><li><a class="link" href="./learning/results/">Results</a></li><li><a class="link" href="./learning/student-support/">Student support</a></li></ul>
+        </details>
       </nav>
       <nav class="foot__links" aria-labelledby="foot-admissions">
-        <h2 id="foot-admissions" class="label foot__h">Admissions</h2>
-        <ul><li><a class="link" href="./admissions/">Overview</a></li><li><a class="link" href="./admissions/how-to-apply/">How to apply</a></li><li><a class="link" href="./admissions/fees/">Fees and payment</a></li><li><a class="link" href="./admissions/visit/">Book a visit</a></li><li><a class="link" href="./admissions/faq/">FAQ</a></li></ul>
+        <details class="foot__group" data-foot-group>
+          <summary class="foot__sum"><h2 id="foot-admissions" class="label foot__h">Admissions</h2><span class="foot__chev" aria-hidden="true"></span></summary>
+          <ul><li><a class="link" href="./admissions/">Admissions overview</a></li><li><a class="link" href="./admissions/visit/">Book a visit</a></li><li><a class="link" href="./admissions/enquire/">Enquire</a></li><li><a class="link" href="./admissions/how-to-apply/">How to apply</a></li><li><a class="link" href="./admissions/fees/">Fees and payment</a></li><li><a class="link" href="./admissions/starting-at-playpen/">Starting at Playpen</a></li><li><a class="link" href="./admissions/faq/">FAQ</a></li></ul>
+        </details>
       </nav>
       <nav class="foot__links" aria-labelledby="foot-community">
-        <h2 id="foot-community" class="label foot__h">Community</h2>
-        <ul><li><a class="link" href="./school-life/">School life</a></li><li><a class="link" href="./community/parents/">Parents</a></li><li><a class="link" href="./community/alumni/">Alumni</a></li><li><a class="link" href="./news/">News</a></li><li><a class="link" href="./events/">Events</a></li><li><a class="link" href="./notices/">Notices</a></li><li><a class="link" href="./gallery/">Gallery</a></li></ul>
+        <details class="foot__group" data-foot-group>
+          <summary class="foot__sum"><h2 id="foot-community" class="label foot__h">Life at Playpen</h2><span class="foot__chev" aria-hidden="true"></span></summary>
+          <ul><li><a class="link" href="./school-life/">School life</a></li><li><a class="link" href="./school-life/school-day/">The school day</a></li><li><a class="link" href="./school-life/sports/">Sports</a></li><li><a class="link" href="./school-life/clubs-and-activities/">Clubs and activities</a></li><li><a class="link" href="./school-life/culture-and-service/">Culture and service</a></li><li><a class="link" href="./community/alumni/">Alumni</a></li><li><a class="link" href="./news/">News and achievements</a></li><li><a class="link" href="./events/">Events</a></li><li><a class="link" href="./gallery/">Gallery</a></li></ul>
+        </details>
       </nav>
     </div>
     <div class="foot__util">
-      <p class="label foot__h">For current parents</p>
-      <ul><li><a class="link link--ext" href="https://portal.playpen.edu.bd/login" target="_blank" rel="noopener">Portal<span class="link__site">current site</span><span class="visually-hidden"> (opens in a new tab)</span></a></li><li><a class="link link--ext" href="https://playpen.edu.bd/online-facility-payment/" target="_blank" rel="noopener">Pay fees<span class="link__site">current site</span><span class="visually-hidden"> (opens in a new tab)</span></a></li><li><a class="link" href="./notices/">Notices</a></li><li><a class="link" href="./school-life/transport-and-safety/">Transport and safety</a></li><li><a class="link" href="./search/">Search</a></li><li><a class="link" href="./contact/">Contact</a></li></ul>
+      <details class="foot__group" data-foot-group>
+        <summary class="foot__sum"><span class="label foot__h">For current parents</span><span class="foot__chev" aria-hidden="true"></span></summary>
+        <ul><li><a class="link link--ext" href="https://portal.playpen.edu.bd/login" target="_blank" rel="noopener">Portal<span class="link__site">current site</span><span class="visually-hidden"> (opens in a new tab)</span></a></li><li><a class="link link--ext" href="https://playpen.edu.bd/online-facility-payment/" target="_blank" rel="noopener">Pay fees<span class="link__site">current site</span><span class="visually-hidden"> (opens in a new tab)</span></a></li><li><a class="link" href="./community/parents/">Parents</a></li><li><a class="link" href="./notices/">Notices</a></li><li><a class="link" href="./school-life/transport-and-safety/">Transport and safety</a></li><li><a class="link" href="./search/">Search</a></li><li><a class="link" href="./contact/">Contact</a></li></ul>
+      </details>
     </div>
     <div class="foot__bottom">
       <p class="foot__legal"><a class="link" href="./about/child-protection/">Child protection</a><span class="foot__dot" aria-hidden="true">&middot;</span><a class="link" href="./about/policies/">Policies</a><span class="foot__dot" aria-hidden="true">&middot;</span><a class="link" href="./privacy/">Privacy</a><span class="foot__dot" aria-hidden="true">&middot;</span><a class="link" href="./terms/">Terms of use</a><span class="foot__dot" aria-hidden="true">&middot;</span><a class="link" href="./sitemap/">Sitemap</a></p>
@@ -966,6 +1149,7 @@
           <span class="toggle__label">Reduce motion</span>
         </button>
       </div>
+      <p class="foot__visit" data-portal-visit hidden></p>
     </div>
   </div>
 </footer>
@@ -973,7 +1157,7 @@
 
 <!-- phones only: the bottom bar (the desktop floating pill was removed; the header's Book a visit and
      the Admissions sheet are the desktop's two devices) -->
-<div id="actions" class="actions" aria-label="Admissions shortcuts">
+<div id="actions" class="actions" role="region" aria-label="Admissions shortcuts">
   <div class="actions__bar">
     <button class="actions__item actions__item--primary" type="button" data-sheet-open="visit">Book a visit</button>
     <button class="actions__item" type="button" data-sheet-open="enquire">Enquire</button>
@@ -989,7 +1173,7 @@
     <h2 id="sheet-title" class="sheet__title display-m" tabindex="-1">Book a visit</h2>
 
     <div class="sheet__variant" data-variant="visit" data-title="Book a visit">
-      <p class="sheet__text">Come and see the building and the section your child would join. Call the admissions line for that section between 9.00 am and 1.00 pm:</p>
+      <p class="sheet__text">Come and see the building and the section your child would join. Call the admissions line for that section between 9.00&nbsp;am and 1.00&nbsp;pm:</p>
       <ul class="sheet__phones phones">
         <li class="phones__row"><span class="phones__who">Playgroup to Class I</span><a href="tel:+8801755689482">01755 689 482</a></li>
         <li class="phones__row"><span class="phones__who">Classes II to VI</span><a href="tel:+8801755515893">01755 515 893</a></li>
@@ -1037,7 +1221,7 @@
 
     <div class="sheet__variant" data-variant="apply" data-title="How to apply">
       <ol class="sheet__steps">
-        <li><b>Call or visit.</b> Admissions take calls between 9.00 am and 1.00 pm.</li>
+        <li><b>Call or visit.</b> Admissions take calls between 9.00&nbsp;am and 1.00&nbsp;pm.</li>
         <li><b>Collect the form.</b> From the Front Office, or download it from the school's site.</li>
         <li><b>Assessment or test.</b> Playgroup and Nursery sit an assessment; KG I to Class IX sit a written test in English, Bengali and Mathematics; Class XI is based on the school's mock examinations and the O Level result.</li>
         <li><b>Interview.</b> With the Principal and the parents.</li>
@@ -1057,11 +1241,11 @@
     <div class="menu__main">
       <nav aria-label="All pages">
         <ol class="menu__list">
-          <li class="menu__item" data-group="about"><div class="menu__row"><a class="menu__link" href="./about/" data-menu-preview="1"><span class="menu__i" aria-hidden="true">01</span>About</a><button class="menu__toggle" type="button" aria-expanded="false" aria-controls="menu-sub-about"><span class="visually-hidden">About pages</span><span class="menu__toggle-icon" aria-hidden="true"></span></button></div><ul class="menu__sub" id="menu-sub-about"><li><a href="./about/history/">History</a></li><li><a href="./about/leadership/">Leadership</a></li><li><a href="./about/campus/">Campus</a></li><li><a href="./about/child-protection/">Child protection</a></li><li><a href="./about/policies/">Policies</a></li><li><a href="./about/careers/">Careers</a></li></ul></li>
-          <li class="menu__item" data-group="learning"><div class="menu__row"><a class="menu__link" href="./learning/" data-menu-preview="2"><span class="menu__i" aria-hidden="true">02</span>Learning</a><button class="menu__toggle" type="button" aria-expanded="false" aria-controls="menu-sub-learning"><span class="visually-hidden">Learning pages</span><span class="menu__toggle-icon" aria-hidden="true"></span></button></div><ul class="menu__sub" id="menu-sub-learning"><li><a href="./learning/elementary/">Elementary</a></li><li><a href="./learning/junior/">Junior</a></li><li><a href="./learning/middle/">Middle</a></li><li><a href="./learning/senior/">Senior</a></li><li><a href="./learning/a-level/">A Level</a></li><li><a href="./learning/cambridge-pathway/">Cambridge pathway</a></li><li><a href="./learning/examinations/">Examinations</a></li><li><a href="./learning/results/">Results</a></li><li><a href="./learning/student-support/">Student support</a></li></ul></li>
-          <li class="menu__item" data-group="admissions"><div class="menu__row"><a class="menu__link" href="./admissions/" data-menu-preview="3"><span class="menu__i" aria-hidden="true">03</span>Admissions</a><button class="menu__toggle" type="button" aria-expanded="false" aria-controls="menu-sub-admissions"><span class="visually-hidden">Admissions pages</span><span class="menu__toggle-icon" aria-hidden="true"></span></button></div><ul class="menu__sub" id="menu-sub-admissions"><li><a href="./admissions/how-to-apply/">How to apply</a></li><li><a href="./admissions/fees/">Fees and payment</a></li><li><a href="./admissions/visit/">Book a visit</a></li><li><a href="./admissions/faq/">FAQ</a></li><li><a href="./admissions/enquire/">Enquire</a></li><li><a href="./admissions/starting-at-playpen/">Starting at Playpen</a></li></ul></li>
-          <li class="menu__item" data-group="school-life"><div class="menu__row"><a class="menu__link" href="./school-life/" data-menu-preview="4"><span class="menu__i" aria-hidden="true">04</span>School life</a><button class="menu__toggle" type="button" aria-expanded="false" aria-controls="menu-sub-school-life"><span class="visually-hidden">School life pages</span><span class="menu__toggle-icon" aria-hidden="true"></span></button></div><ul class="menu__sub" id="menu-sub-school-life"><li><a href="./school-life/sports/">Sports</a></li><li><a href="./school-life/clubs-and-activities/">Clubs and activities</a></li><li><a href="./school-life/culture-and-service/">Culture and service</a></li><li><a href="./school-life/transport-and-safety/">Transport and safety</a></li><li><a href="./school-life/school-day/">The school day</a></li></ul></li>
-          <li class="menu__item" data-group="community"><div class="menu__row"><a class="menu__link" href="./community/parents/" data-menu-preview="5"><span class="menu__i" aria-hidden="true">05</span>Community</a><button class="menu__toggle" type="button" aria-expanded="false" aria-controls="menu-sub-community"><span class="visually-hidden">Community pages</span><span class="menu__toggle-icon" aria-hidden="true"></span></button></div><ul class="menu__sub" id="menu-sub-community"><li><a href="./community/parents/">Parents</a></li><li><a href="./community/alumni/">Alumni</a></li><li><a href="./news/">News</a></li><li><a href="./events/">Events</a></li><li><a href="./notices/">Notices</a></li><li><a href="./gallery/">Gallery</a></li></ul></li>
+          <li class="menu__item" data-group="about"><div class="menu__row"><a class="menu__link" href="./about/" data-menu-preview="1"><span class="menu__i" aria-hidden="true">01</span>About</a><button class="menu__toggle" type="button" aria-expanded="false" aria-controls="menu-sub-about"><span class="visually-hidden">About pages</span><span class="menu__toggle-icon" aria-hidden="true"></span></button></div><ul class="menu__sub" id="menu-sub-about"><li><a href="./about/history/">History</a></li><li><a href="./about/school-administration/">School administration</a></li><li><a href="./about/leadership/">Who to ask about your child&#x27;s class</a></li><li><a href="./about/campus/">Campus</a></li><li><a href="./about/child-protection/">Child protection</a></li><li><a href="./about/policies/">Policies</a></li><li><a href="./about/careers/">Careers</a></li></ul></li>
+          <li class="menu__item" data-group="learning"><div class="menu__row"><a class="menu__link" href="./learning/" data-menu-preview="2"><span class="menu__i" aria-hidden="true">02</span>Learning</a><button class="menu__toggle" type="button" aria-expanded="false" aria-controls="menu-sub-learning"><span class="visually-hidden">Learning pages</span><span class="menu__toggle-icon" aria-hidden="true"></span></button></div><ul class="menu__sub" id="menu-sub-learning"><li><a href="./learning/elementary/">Elementary (Playgroup to KG II)</a></li><li><a href="./learning/junior/">Junior (Class I to III)</a></li><li><a href="./learning/middle/">Middle (Class IV to VII)</a></li><li><a href="./learning/senior/">Senior (Class VIII to XII)</a></li><li><a href="./learning/a-level/">AS and A Level (from Class XI)</a></li><li><a href="./learning/cambridge-pathway/">Cambridge pathway</a></li><li><a href="./learning/examinations/">Examinations</a></li><li><a href="./learning/results/">Results</a></li><li><a href="./learning/student-support/">Student support</a></li></ul></li>
+          <li class="menu__item" data-group="admissions"><div class="menu__row"><a class="menu__link" href="./admissions/" data-menu-preview="3"><span class="menu__i" aria-hidden="true">03</span>Admissions</a><button class="menu__toggle" type="button" aria-expanded="false" aria-controls="menu-sub-admissions"><span class="visually-hidden">Admissions pages</span><span class="menu__toggle-icon" aria-hidden="true"></span></button></div><ul class="menu__sub" id="menu-sub-admissions"><li><a href="./admissions/visit/">Book a visit</a></li><li><a href="./admissions/enquire/">Enquire</a></li><li><a href="./admissions/how-to-apply/">How to apply</a></li><li><a href="./admissions/fees/">Fees and payment</a></li><li><a href="./admissions/starting-at-playpen/">Starting at Playpen</a></li><li><a href="./admissions/faq/">FAQ</a></li></ul></li>
+          <li class="menu__item" data-group="school-life"><div class="menu__row"><a class="menu__link" href="./school-life/" data-menu-preview="4"><span class="menu__i" aria-hidden="true">04</span>School life</a><button class="menu__toggle" type="button" aria-expanded="false" aria-controls="menu-sub-school-life"><span class="visually-hidden">School life pages</span><span class="menu__toggle-icon" aria-hidden="true"></span></button></div><ul class="menu__sub" id="menu-sub-school-life"><li><a href="./school-life/school-day/">The school day</a></li><li><a href="./school-life/transport-and-safety/">Transport and safety</a></li><li><a href="./school-life/sports/">Sports</a></li><li><a href="./school-life/clubs-and-activities/">Clubs and activities</a></li><li><a href="./school-life/culture-and-service/">Culture and service</a></li></ul></li>
+          <li class="menu__item" data-group="community"><div class="menu__row"><a class="menu__link" href="./community/" data-menu-preview="5"><span class="menu__i" aria-hidden="true">05</span>Community</a><button class="menu__toggle" type="button" aria-expanded="false" aria-controls="menu-sub-community"><span class="visually-hidden">Community pages</span><span class="menu__toggle-icon" aria-hidden="true"></span></button></div><ul class="menu__sub" id="menu-sub-community"><li><a href="./community/parents/">Parents</a></li><li><a href="./community/alumni/">Alumni</a></li><li><a href="./news/">News and achievements</a></li><li><a href="./events/">Events</a></li><li><a href="./notices/">Notices</a></li><li><a href="./gallery/">Gallery</a></li></ul></li>
           <li class="menu__item" data-group="contact"><div class="menu__row"><a class="menu__link" href="./contact/" data-menu-preview="6"><span class="menu__i" aria-hidden="true">06</span>Contact</a></div></li>
         </ol>
       </nav>
@@ -1071,14 +1255,14 @@
         <img class="menu__img is-current" data-preview="1" src="./assets/media/menu-1-960.jpg" width="960" height="600" alt="" loading="lazy" decoding="async">
         <img class="menu__img" data-preview="2" src="./assets/media/menu-3-960.jpg" width="960" height="600" alt="" loading="lazy" decoding="async">
         <img class="menu__img" data-preview="3" src="./assets/media/menu-5-960.jpg" width="960" height="600" alt="" loading="lazy" decoding="async">
-        <img class="menu__img" data-preview="4" src="./assets/media/menu-4-960.jpg" width="960" height="600" alt="" loading="lazy" decoding="async">
+        <img class="menu__img" data-preview="4" src="./assets/img/sl-courtyard-hero-960.jpg" width="960" height="600" alt="" loading="lazy" decoding="async">
         <img class="menu__img" data-preview="5" src="./assets/media/menu-2-960.jpg" width="960" height="600" alt="" loading="lazy" decoding="async">
         <img class="menu__img" data-preview="6" src="./assets/media/menu-6-960.jpg" width="960" height="600" alt="" loading="lazy" decoding="async">
       </div>
       <div class="menu__util">
         <a class="link link--ext" href="https://portal.playpen.edu.bd/login" target="_blank" rel="noopener">Portal<span class="link__site">current site</span><span class="visually-hidden"> (opens in a new tab)</span></a>
         <a class="link link--ext" href="https://playpen.edu.bd/online-facility-payment/" target="_blank" rel="noopener">Pay fees<span class="link__site">current site</span><span class="visually-hidden"> (opens in a new tab)</span></a>
-        <a class="link" href="./notices/">Notices</a>
+        <a class="link" href="./notices/">Notices (<span data-feed-count="notices-current">2</span> current)</a>
         <a class="link" href="./search/">Search</a>
       </div>
       <div class="menu__actions">

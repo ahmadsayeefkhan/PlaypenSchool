@@ -42,7 +42,7 @@ node ../qa-tools/shot.mjs http://localhost:5180/learning/elementary/ ../qa-tools
 
 You never edit: `build/nav.json`, `build/shell.py`, `build/build.py`, `build/check.py`, `build/media.py`, `build/htmlutil.py`, `site/index.html`, `site/css/*.css`, `site/js/*.js`, `docs/consent-cleared.txt`, another agent's page or additions. If you need a page added, a label or a description changed, or a behaviour that is not here, ask the Foundation (the coordinator).
 
-The set of pages is fixed in `build/nav.json`: 43 pages, P03 (the Principal's welcome) is not built. You may read it; it lists every page's slug, label, title, template and SEO description.
+The set of pages is fixed in `build/nav.json`: 98 pages (with the Community hub, 15 event pages and 38 albums), P03 (the Principal's welcome) is not built. You may read it; it lists every page's slug, label, title, template and SEO description.
 
 ## 2. How a page is built
 
@@ -122,6 +122,7 @@ Tokens are written `{{name}}`, `{{name:argument}}` or `{{name attr="value"}}`. T
 | `{{asset:path}}` | The relative URL of a file under `site/assets/`. The file must exist. | `href="{{asset:img/form.pdf}}"` |
 | `{{img src="..." alt="..." sizes="..."}}` | A responsive `<picture>` (AVIF, WebP, JPG, srcset, width, height, lazy). See "Images". | |
 | `{{no}}` | The next section number, `01`, `02`, ... | `<span class="sheet-rule__n">{{no}}</span>` |
+| `{{no:sheet}}` | The same counter written as the home writes it, `Sheet 02 of 05` (the total is every `{{no}}` of the page). Use one form per page. | `<span class="sheet-rule__n">{{no:sheet}}</span>` |
 | `{{children:/about/}}` | Chapter cards for the pages whose parent is `/about/`, in nav.json order. Options: `template="T04"` (only that template), `not="T04"`, `level="2"` (heading level, default 3). `{{children:group=community}}` takes a menu group. | see section 4.5 |
 | `{{phones}}`, `{{phones:all}}` | The phone lines by section, exactly as on the home (`:all` adds the further-queries line). It is a list: never put it inside a `<p>`. | |
 | `{{phone:pg-1}}` | One number as a `tel:` link with the house's gold underline (`class="link"`). Keys: `pg-1`, `ii-vi`, `vii-xii`, `further`, `call`. `class="..."` replaces the class (a contact card uses `contact-card__tel`). | `call {{phone:ii-vi}}`, `{{phone:pg-1 class="contact-card__tel"}}` |
@@ -131,7 +132,10 @@ Tokens are written `{{name}}`, `{{name:argument}}` or `{{name attr="value"}}`. T
 | `{{ext:portal}}`, `{{ext:pay}}` | The portal and the online fee payment: new tab, `rel="noopener"`, the quiet "current site" tag and the hidden "(opens in a new tab)". `label="..."` renames the link. | `<li>{{ext:portal}}</li>` |
 | `{{ext href="..." label="..."}}` | Any other outside address the school's pages may keep (the admission form, the mission statement, files under `/wp-content/uploads/`): `href` must be on the `external_ok` list in nav.json. Anything else is an error. | `{{ext href="https://playpen.edu.bd/admission-procedure/" label="Download the form"}}` |
 | `{{cta}}` | The closing band: "Come and see the school." and the three admissions actions. Optional `heading="..." text="..."` (plain text). Put it last. | |
-| `{{sitemap}}` | The human sitemap (used by /sitemap/). A list of sections: never inside a `<p>`. | |
+| `{{sitemap}}` | The old one-list human sitemap (no page uses it since the 2026-10-25 sitemap). A list of sections: never inside a `<p>`. |
+| `{{sitemap:count}}` | A computed count: every page in `sitemap.xml` (`{{sitemap:count}}`), a menu group's pages (`{{sitemap:count group="about"}}`) or the indexed children of a page (`{{sitemap:count parent="/events/"}}`). Never type a count of pages. | `Six sections and {{sitemap:count}} pages.` |
+| `{{children:/events/ as="list"}}` | The children (or `group=...` menu pages) as a hairline list, label and one-line summary per row, without the pages kept out of `sitemap.xml`; `numbered="yes"` writes an ordered list. Styled by `sm-list` (`build/additions/sitemap.css`). | `{{children:group=admissions as="list" numbered="yes"}}` |
+| `{{updated}}` | The front matter's `updated:` date written out: `25 October 2026`. The build stops if the page has no `updated:`. | `Last updated {{updated}}.` | |
 | `{{breadcrumb}}` | The breadcrumb (only needed in a page with its own `<h1>`). | |
 | `{{root}}` | The relative path back to the site root (`../../`). Rarely needed. | |
 
@@ -375,7 +379,9 @@ A short note with a gold edge; `callout--important` has a maroon edge for what m
 
 The numbers come from `{{phone:key}}` and `{{phones}}`, never from your keyboard: the checker rejects a typed number that is not one of the school's.
 
-### 4.15 List rows: notices, events, news (`ul.rows`)
+### 4.15 List rows: events, news (`ul.rows`)
+
+**Notices no longer use rows (2026-10-22).** A notice is an `nb-card` (notice board card): a date tile, a status chip (`Current`, `Always applies`, `Ended`, `New`), a topic chip (`Admissions`, `Exams`, `School rules`), the title as an `h3`, a `dl` with exactly `For` / `What to do` / `When`, one action and a source line. The shared CSS is in `site/css/main.css` section 14b (`nb-card`, `nb-status--*`, `nb-topic--*`, `nb-tile`, `nb-grid`, `nb-board`, `nb-empty`, `nb-ask`, `nb-hero`, `nb-pill`); the markup contract and the canonical wording of the three real notices are in `redesign-2026-10-22-notices/spec.md` sections 4 and 6. The home uses it in Sheet 01, `/notices/` adds only its own `nbp-` layout (`build/additions/notices.css`). Never fake an example notice: use the `nb-empty` slot.
 
 The whole row is one link. Dates are absolute and in a `<time>`. Tags are optional.
 

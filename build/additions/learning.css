@@ -1,22 +1,258 @@
 /* ==========================================================================
    Learning group (page group "learning"): extra components
-   Pages: /learning/, /learning/junior/ ... /learning/student-support/
-   Written 2026-10-11. Tokens only; mobile first; no motion.
+   Pages: /learning/, /learning/elementary/ ... /learning/student-support/
+   Written 2026-10-11; redesigned 2026-10-24 to the new home's language (redesign-2026-10-24-pages/plans/learning.md).
+   Tokens only; mobile first. Every page of the group carries body_class "lr-page", so the restyles below touch
+   no other group. Prefix: lr- (the shared "pk-" kit was not built; these are this group's own copies, see
+   docs/additions/learning.md). Motion: the step line, the ring and the counter in learning.js, all off under
+   prefers-reduced-motion and the footer switch (PP.reduced()).
    ========================================================================== */
 
-/* /learning/ and /learning/cambridge-pathway/: the class path (learning, 2026-10-11)
-   The sixteen classes in a line, grouped under their four stages, like the rule on the home.
-   A stage is a list item whose width in classes is --n (4, 3, 4, 5). It answers to the width of its own box, not the
-   screen's: from 940 px the stages run in one line (hub's wide band at 1366 px and up, the story column from about
-   1500 px); from 560 px they pair up; below that they stack. The one-line version was first allowed from 760 px and
-   "KG II" ran into its neighbour in the story column (reviewed 2026-10-11): at 940 px a class cell is 56 px wide, and
-   the widest label ("KG II", 2.13 em) needs 2.13 x 18 px + 12 px = 50 px. */
+/* --- 1. The hero plate, mounted (all learning pages, 2026-10-24)
+   The shell writes the hero photograph as a bare full-bleed plate. The home never shows a bare photograph:
+   every picture sits on a paper-3 mount with a clay hairline. The plate is pulled back into the band and mounted.
+   On phones it is 3:2 (not the 4:3 strip), so a 21:9 frame keeps more of its width. lr-hero-3x2 keeps a 3:2 frame
+   at 3:2 on every screen (the hub, Examinations and Results open on 3:2 photographs with no 1920 px file). */
+.lr-page .page-hero__plate {
+  width: min(100% - 2 * var(--margin), var(--band-max));
+  margin-inline: auto;
+  padding: 12px;
+  border: 1px solid var(--clay);
+  background: var(--paper-3);
+}
+.lr-page .page-hero__plate img { aspect-ratio: 3 / 2; object-fit: cover; width: 100%; }
+@media (min-width: 768px) { .lr-page .page-hero__plate img { aspect-ratio: 16 / 9; } }
+@media (min-width: 1024px) { .lr-page .page-hero__plate img { aspect-ratio: 21 / 9; } }
+.lr-page.lr-hero-3x2 .page-hero__plate img { aspect-ratio: 3 / 2; }
+/* Final review 2026-10-25: one hero ratio for the whole group on a desktop. The 3:2 pages used a 16:9 frame (653 px tall
+   at 1366) beside the 21:9 band (498 px) of their siblings, so paging through the section made the layout jump. Every
+   page is now 21:9 from 1024 px. lr-hero-cap keeps a frame whose largest file is 960 px (A Level) at that width, centred,
+   so it is never scaled up on a standard screen. */
+@media (min-width: 1024px) {
+  .lr-page.lr-hero-3x2 .page-hero__plate img { aspect-ratio: 21 / 9; }
+  .lr-page.lr-hero-cap .page-hero__plate { max-width: 986px; }
+  /* a frame whose subject fills its 16:9 height (the Book Fair lettering) keeps 16:9 but at the band's 21:9 height
+     (about 498 px at 1366), so the page lines up with its siblings without cutting the words */
+  .lr-page.lr-hero-169 .page-hero__plate { max-width: calc(min(100vw - 2 * var(--margin), var(--band-max)) * 9 / 21 * 16 / 9 + 26px); }
+  .lr-page.lr-hero-169 .page-hero__plate img { aspect-ratio: 16 / 9; }
+}
+
+/* --- 2. One H2 voice with the home (all learning pages, 2026-10-24)
+   The home sets every sheet H2 in .display-l (36 to 96 px, 300 from 1715 px); pages.css sets .section-title smaller.
+   Inside the group the two are made the same, so a parent who clicks from the home reads the same headline size. */
+.lr-page .section-title {
+  font-size: clamp(36px, 4.8vw, 96px);
+  font-weight: 400;
+  line-height: 0.98;
+  letter-spacing: -0.012em;
+  max-width: 18ch;
+}
+@media (min-width: 1715px) { .lr-page .section-title { font-weight: 300; } }
+.lr-page .section-title em { color: var(--maroon); font-style: italic; font-weight: inherit; }
+
+/* The one coloured sheet of a page is full paper-2, as on the home (pages.css mixes it to 50 %). */
+.lr-page .page-section--tint { background: var(--paper-2); }
+
+/* --- 3. Sheet head (lr-head) and sheet foot (lr-foot) (all learning pages, 2026-10-24)
+   The home's sheet skeleton: H2 on 10 of 12 columns, lead on 7; a foot row on a hairline with a sentence, an action
+   and the source caption. The source line moves from the comments onto the page. */
+.lr-head { display: grid; grid-template-columns: minmax(0, 1fr); row-gap: clamp(20px, 2.6vw, 36px); margin-bottom: clamp(32px, 4vw, 56px); }
+.lr-head .lead { max-width: 54ch; }
+.lr-head .section-title + * { margin-top: 0; }
+@media (min-width: 1024px) {
+  .lr-head { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter); }
+  .lr-head > .section-title { grid-column: 1 / span 10; }
+  .lr-head > .lead, .lr-head > .lr-head__aside { grid-column: 1 / span 7; }
+}
+.lr-foot {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 20px var(--gutter);
+  align-items: end;
+  margin-top: clamp(32px, 4vw, 56px);
+  padding-top: 22px;
+  border-top: var(--hairline);
+}
+.lr-foot__text { font: 400 18px / 1.55 var(--font-serif); max-width: 62ch; }
+.lr-foot__action { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; }
+.lr-foot__source { max-width: 72ch; }
+@media (min-width: 1024px) {
+  .lr-foot { grid-template-columns: repeat(12, minmax(0, 1fr)); }
+  .lr-foot__text { grid-column: 1 / span 8; }
+  .lr-foot__action { grid-column: 10 / -1; justify-content: flex-end; justify-self: end; }
+  .lr-foot__source { grid-column: 1 / -1; }
+  .lr-foot__text:last-child, .lr-foot__source:only-child { grid-column: 1 / span 8; }
+}
+
+/* --- 4. Panel (lr-panel): the home's results-card recipe as a general box (2026-10-24)
+   paper-3, a clay hairline, a 3 px coloured top rule (maroon; --gold and --ink variants). A row of them: lr-panels. */
+.lr-panel {
+  --lr-edge: var(--maroon);
+  position: relative;
+  padding: clamp(20px, 2.2vw, 30px) clamp(20px, 2.2vw, 30px) clamp(22px, 2.4vw, 32px);
+  background: var(--paper-3);
+  border: 1px solid var(--clay);
+  border-top: 3px solid var(--lr-edge);
+}
+.lr-panel--gold { --lr-edge: var(--gold); }
+.lr-panel--ink { --lr-edge: var(--ink); }
+.lr-panel > * + * { margin-top: 12px; }
+.lr-panel__title { font: 400 clamp(22px, 1.9vw, 30px) / 1.15 var(--font-serif); letter-spacing: -0.005em; }
+.lr-panel__title + * { margin-top: 12px; }
+.lr-panel p, .lr-panel li { font-size: 17px; line-height: 1.55; }
+.lr-panel ul { list-style: none; }
+.lr-panel ul li { position: relative; padding: 7px 0 7px 20px; border-bottom: var(--hairline); }
+.lr-panel ul li:last-child { border-bottom: 0; }
+.lr-panel ul li::before { content: ''; position: absolute; left: 0; top: 1.05em; width: 10px; height: 1px; background: var(--gold); }
+.lr-panel .label + * { margin-top: 8px; }
+.lr-panel__foot { margin-top: 16px; padding-top: 12px; border-top: var(--hairline); font: 400 15px / 1.5 var(--font-sans); color: var(--ink-2); }
+.lr-panels { list-style: none; display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--gutter); }
+@media (min-width: 640px) { .lr-panels { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1024px) { .lr-panels { grid-template-columns: repeat(3, minmax(0, 1fr)); } .lr-panels--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 640px) { .lr-panels--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 640px) and (max-width: 1023px) { .lr-panels > :last-child:nth-child(odd) { grid-column: 1 / -1; } .lr-panels--2 > :last-child:nth-child(odd) { grid-column: auto; } }
+.lr-panels.lr-panels--stack { grid-template-columns: minmax(0, 1fr); }
+.lr-panels.lr-panels--stack > :last-child:nth-child(odd) { grid-column: auto; }
+/* a frame whose top edge must stay out of the crop (kept for any plate whose subject sits at the bottom edge) */
+.lr-plate--bottom img { object-position: 50% 100%; }
+
+/* --- 5. Contact panel (lr-call): the stage's phone line beside the people who look after it (stage pages, 2026-10-24)
+   The one phone block of a stage page (one per page, plus the CTA band). The number is a full-width 44 px tap row. */
+.lr-call { --lr-edge: var(--gold); }
+.lr-call__rows { list-style: none; border-top: var(--hairline); }
+.lr-panel .lr-call__rows li { padding-left: 0; }
+.lr-panel .lr-call__rows li::before { content: none; }
+.lr-call__row { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 4px 16px; padding: 10px 0; border-bottom: var(--hairline); }
+.lr-call__who { font: 400 15px / 1.4 var(--font-sans); color: var(--ink-2); }
+.lr-call__num {
+  display: inline-block;
+  min-height: 44px;
+  padding: 6px 0 4px;
+  font: 300 clamp(26px, 2.2vw, 34px) / 1.1 var(--font-serif);
+  font-variant-numeric: tabular-nums lining-nums;
+  color: var(--ink);
+  text-decoration: none;
+  white-space: nowrap;
+  background-image: linear-gradient(var(--gold), var(--gold));
+  background-repeat: no-repeat;
+  background-position: 0 calc(100% - 6px);
+  background-size: 100% 1px;
+}
+.lr-call__num:hover, .lr-call__num:focus-visible { background-size: 100% 2px; }
+.lr-call__hours { font: 400 15px / 1.5 var(--font-sans); color: var(--ink-2); }
+.lr-call__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; margin-top: 18px; }
+@media (max-width: 559px) { .lr-call__row { flex-direction: column; align-items: flex-start; } .lr-call__num { display: block; width: 100%; } }
+
+/* The people sheet: the names in 8 columns, the contact panel in 4 (stage pages). */
+.lr-people { display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(28px, 4vw, 56px) var(--gutter); align-items: start; }
+@media (min-width: 1024px) {
+  .lr-people { grid-template-columns: repeat(12, minmax(0, 1fr)); }
+  .lr-people__list { grid-column: 1 / span 8; }
+  .lr-people__list--wide { grid-column: 1 / -1; }
+  .lr-people__aside { grid-column: 10 / -1; }
+  .lr-people__list--wide + .lr-people__aside { grid-column: 1 / span 5; }
+}
+.lr-people .people { margin-top: 0; }
+
+/* --- 6. Steps: the home's "Visit, enquire, apply" grammar on inner pages (2026-10-24)
+   main.css lays .steps five across; the stage pages have three and Examinations four. The ink line over each step is
+   drawn on reveal (learning.js sets --drawn), as on the home. */
+.steps.lr-steps { margin-top: clamp(28px, 3vw, 44px); }
+@media (min-width: 1024px) {
+  .steps.lr-steps--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .steps.lr-steps--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+.lr-steps .step::before { transition: transform 700ms var(--ease-out); }
+html.js-reveal .lr-steps .step:not(.is-in) { --drawn: 0; }
+.lr-steps .step p a[href^="tel:"] { white-space: nowrap; }
+.lr-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 28px; margin-top: clamp(24px, 3vw, 36px); }
+
+/* --- 7. Numbers (feats) in two columns, and the counter (2026-10-24)
+   .feats is the home's hairline list with the maroon numeral. On the hub six rows run in two columns from 1024 px.
+   .lr-count is the counter learning.js animates; the final number is in the markup. */
+.feats.lr-feats { margin-top: clamp(20px, 2.4vw, 32px); }
+@media (min-width: 1024px) {
+  .feats.lr-feats--2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: clamp(28px, 3vw, 56px); }
+}
+.lr-count { display: inline-block; min-width: 1.1ch; text-align: right; font-variant-numeric: tabular-nums lining-nums; }
+.feat .feat__t a { color: inherit; text-decoration: none; background-image: linear-gradient(var(--gold), var(--gold)); background-repeat: no-repeat; background-position: 0 100%; background-size: 100% 1px; }
+.feat .feat__t a:hover, .feat .feat__t a:focus-visible { background-size: 100% 2px; }
+
+/* --- 8. Results panels on inner pages (results, senior, a-level, hub; 2026-10-24)
+   The home's .result markup (ring, plain sentence, bars) reused as it is; this is only the layout around it.
+   The rings and bars are drawn by learning.js when the panel comes into view; without JavaScript the final values are
+   in the markup. */
+.lr-results { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--gutter); margin-top: clamp(24px, 3vw, 40px); }
+@media (min-width: 1024px) { .lr-results { grid-template-columns: repeat(3, minmax(0, 1fr)); } .lr-results--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 640px) and (max-width: 1023px) { .lr-results--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.lr-results .result { height: 100%; }
+.lr-ring .donut__seg { transition: stroke-dasharray 900ms var(--ease-out); }
+.lr-ring .grades__bar i { transition: transform 700ms var(--ease-out); }
+.lr-ring.lr-ring--armed .donut__seg { stroke-dasharray: 0 100; }
+.lr-ring.lr-ring--armed .grades__bar i { transform: scaleX(0); }
+.lr-page .sub { margin-top: clamp(28px, 3vw, 44px); }
+.lr-page .result__subj { display: flex; align-items: center; gap: 14px; margin-top: auto; padding-top: 16px; border-top: var(--hairline); color: inherit; text-decoration: none; font: 400 16px / 1.3 var(--font-sans); }
+/* a 5 / 7 split: one ring left, the plain lines right (the hub's results sheet) */
+.lr-split { display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(28px, 4vw, 48px) var(--gutter); align-items: start; }
+@media (min-width: 1024px) {
+  .lr-split { grid-template-columns: repeat(12, minmax(0, 1fr)); }
+  .lr-split__a { grid-column: 1 / span 5; }
+  .lr-split__b { grid-column: 7 / -1; }
+}
+
+/* The home's results and subject markup carries three hook classes that main.css gives no rule (the home's script uses
+   them); the checker wants every class in the HTML to have one, so here they are, harmless. */
+.donut__segs { pointer-events: none; }
+.grades__g { font-variant-numeric: lining-nums; }
+.sub__intro { min-width: 0; }
+
+/* --- 9. The venue panel on inner pages (2026-10-24)
+   .venue is the home's paper-2 panel with the 3 px gold left rule; main.css gives it a grid-column that only matters
+   inside the home's grid. Here it is a block. */
+.lr-page .venue { max-width: 68ch; }
+.lr-page .venue + .venue { margin-top: var(--gutter); }
+.lr-page .venue__text a, .lr-page .venue p a { color: inherit; text-decoration: none; background-image: linear-gradient(var(--gold), var(--gold)); background-repeat: no-repeat; background-position: 0 calc(100% - 1px); background-size: 100% 1px; padding: 2px 0 3px; }
+.lr-page .venue__text a:hover, .lr-page .venue p a:hover { background-size: 100% 2px; }
+.lr-page .venue .dl { margin-top: 16px; }
+.lr-page .venue .dl dd { font-size: 17px; }
+
+/* --- 10. Photo cards (ev-grid) on the hub (2026-10-24)
+   The home's events cards (whole card one link, mounted 16:9 picture, number, serif name, grey text, gold "more"
+   line) for the four non-stage pages. main.css already snaps them sideways on phones. */
+.lr-page .ev-grid { margin-top: clamp(24px, 3vw, 40px); }
+.lr-page .ev__card:focus-visible { outline: 2px solid var(--maroon); outline-offset: 6px; }
+.lr-page .ev__name { color: var(--ink); }
+
+/* --- 11. Stage cards: a sideways snap row on phones (hub, 2026-10-24)
+   Under 560 px the four 4:5 plates were four screens tall; as a snapping row they are one swipe, like the home's
+   event cards. From 560 px pages.css lays them two and four across. */
+@media (max-width: 559px) {
+  .stage-cards.lr-snap {
+    display: flex;
+    gap: 16px;
+    margin-inline: calc(-1 * var(--margin));
+    padding: 0 var(--margin) 12px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--margin);
+    overscroll-behavior-x: contain;
+  }
+  .stage-cards.lr-snap > .stage { flex: 0 0 78%; scroll-snap-align: start; }
+}
+.lr-page .stage__name a:focus-visible::after { outline: 2px solid var(--maroon); outline-offset: 6px; }
+
+/* --- 12. The class path (hub, Cambridge pathway, Middle; learning, 2026-10-11, revised 2026-10-24)
+   The sixteen classes in a line, grouped under their four stages, like the rule on the home. A stage is a list item
+   whose width in classes is --n (4, 3, 4, 5). It answers to the width of its own box: from 940 px the stages run in one
+   line, from 560 px they pair up, below that they stack (one compact row per stage, 44 px cells). 2026-10-24: the stage
+   names are links to the stage pages (with an invisible 44 px hit area), the Senior marker reads "O Level · AS · A Level"
+   as on the home, and lr-path-quiet dims the stages that are not the page's own (the Middle page's bridge to Senior). */
 .class-path { margin-top: clamp(28px, 3vw, 44px); container-type: inline-size; }
 .class-path__stages {
   list-style: none;
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  gap: 26px;
+  gap: 18px;
 }
 .class-path__stage { border-top: 1px solid var(--ink); padding-top: 12px; min-width: 0; }
 .class-path__name {
@@ -25,6 +261,19 @@
   text-transform: uppercase;
   color: var(--ink-2);
 }
+.class-path__name a {
+  position: relative;
+  display: inline-block;
+  color: var(--ink);
+  text-decoration: none;
+  background-image: linear-gradient(var(--gold), var(--gold));
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 100% 1px;
+  padding-bottom: 2px;
+}
+.class-path__name a::before { content: ''; position: absolute; inset: -16px -6px; }
+.class-path__name a:hover, .class-path__name a:focus-visible { color: var(--maroon); background-size: 100% 2px; }
 .class-path__classes {
   list-style: none;
   display: grid;
@@ -33,7 +282,8 @@
   border-bottom: var(--hairline);
 }
 .class-path__classes li {
-  padding: 14px 6px 16px;
+  padding: 11px 6px 13px;
+  min-height: 44px;
   border-left: var(--hairline);
   font: 300 clamp(20px, 5.2vw, 28px) / 1 var(--font-serif);
   letter-spacing: -0.005em;
@@ -52,9 +302,12 @@
   color: var(--maroon);
 }
 .class-path__cambridge::before { content: ''; position: absolute; left: 0; top: 0.78em; width: 10px; height: 1px; background: var(--maroon); }
+.class-path__stage.lr-path-quiet { border-top-color: var(--clay); }
+.class-path__stage.lr-path-quiet .class-path__classes li, .class-path__stage.lr-path-quiet .class-path__name { color: var(--ink-2); opacity: 0.72; }
+.class-path__stage.lr-path-quiet .class-path__name a { color: var(--ink-2); opacity: 1; }
 @container (min-width: 560px) {
-  .class-path__stages { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--gutter); }
-  .class-path__classes li { font-size: clamp(20px, 3.4cqw, 26px); padding-left: 6px; padding-right: 6px; }
+  .class-path__stages { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--gutter); row-gap: 26px; }
+  .class-path__classes li { font-size: clamp(20px, 3.4cqw, 26px); padding: 14px 6px 16px; }
 }
 @container (min-width: 940px) {
   .class-path__stages { grid-template-columns: repeat(16, minmax(0, 1fr)); column-gap: 14px; row-gap: 0; }
@@ -62,9 +315,9 @@
   .class-path__classes li { padding: 16px 6px 18px; font-size: clamp(18px, 2cqw, 28px); }
 }
 
-/* /learning/a-level/: the subject ledger (learning, 2026-10-11)
-   A numbered, single-column list of subjects in large serif type, for the one night section of the page.
-   It also works on paper. */
+/* --- 13. The subject ledger (/learning/a-level/, learning, 2026-10-11; on paper since 2026-10-24)
+   A numbered, single-column list of subjects in large serif type. The night variant stays for the record; the page
+   now sets it on paper, because the footer is the site's only dark block. */
 .subject-ledger { list-style: none; border-top: 1px solid var(--ink); }
 .subject-ledger__item {
   display: grid;
@@ -84,27 +337,156 @@
 .is-night .subject-ledger__item { border-bottom-color: var(--night-line); }
 .is-night .subject-ledger__n { color: var(--gold-text); }
 
-/* /learning/senior/: the subject table (learning, 2026-10-11)
-   A table of subjects with the kind of subject in each level. A cell that says "Not listed" is quieter than one that
-   says "Compulsory" or "Elective"; the word is what carries the meaning, not the colour. */
-.subject-table td.is-quiet { color: var(--ink-2); }
-.subject-table td.is-fixed { font-weight: 500; }
-@media (min-width: 640px) {
-  .subject-table th[scope="row"] { width: 34%; }
-}
-
-/* /learning/examinations/ and /learning/results/: a note about something the school has not published (learning, 2026-10-11)
-   The empty state of a results table or of the Cambridge series: a plain statement and the number to call, nothing
-   invented. (Reviewed 2026-10-11: the phone list inside it was dropped, so the .phones rule went too.) */
-.pending-note { max-width: 62ch; }
-
-/* /learning/: four chapter cards in one row (learning, 2026-10-11)
-   {{children:}} writes a three-column list from 1024 px; with four pages under the hub the fourth would sit alone on a
-   second row. The wrapper keeps the token (so the cards stay in step with nav.json) and sets four columns. */
+/* --- 14. Compact achievements timeline (/learning/results/, 2026-10-24)
+   Eleven dated rows should not dominate the page: smaller dates, tighter rows, two columns from 1024 px. */
 @media (min-width: 1024px) {
-  .learning-cards4 .chapter-cards { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .timeline.lr-timeline--compact { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: clamp(28px, 3vw, 56px); border-top: 0; }
+  .timeline.lr-timeline--compact::before { display: none; }
+  .timeline.lr-timeline--compact .timeline__item { grid-template-columns: minmax(150px, 2fr) 5fr; padding: 18px 0 20px 0; border-top: var(--hairline); border-bottom: 0; }
+  .timeline.lr-timeline--compact .timeline__item::before { display: none; }
+  .timeline.lr-timeline--compact .timeline__item:nth-child(-n+2) { border-top: 1px solid var(--ink); }
+}
+.timeline.lr-timeline--compact .timeline__date--sm { font-size: clamp(24px, 2vw, 32px); }
+.timeline.lr-timeline--compact .timeline__title { font-size: clamp(19px, 1.5vw, 24px); }
+.timeline.lr-timeline--compact .timeline__body p { font-size: 16px; }
+
+/* --- 15. The mission quotation in the home's quotation style (/learning/cambridge-pathway/, 2026-10-24)
+   .quote, .quote__mark, .quote__line and .quote__cite are the home's; this only spaces the block in a story column. */
+.lr-page .quote { margin-top: clamp(36px, 5vw, 64px); }
+.lr-page .quote__line { max-width: 26ch; }
+.lr-page .quote__line--2 { max-width: 58ch; }
+.lr-page .quote__cite { margin-top: clamp(20px, 2.6vw, 36px); padding-left: clamp(36px, 5vw, 80px); }
+
+/* --- 16. Telephone numbers never break (all learning pages, 2026-10-11) */
+.process__body a[href^="tel:"], .callout a[href^="tel:"], .accordion__body a[href^="tel:"], .prose a[href^="tel:"], .small-print a[href^="tel:"], .lr-panel a[href^="tel:"], .venue a[href^="tel:"] { white-space: nowrap; }
+
+/* --- 17. Motion off (2026-10-24) */
+@media (prefers-reduced-motion: reduce) {
+  .lr-steps .step { --drawn: 1 !important; }
+  .lr-steps .step::before, .lr-ring .donut__seg, .lr-ring .grades__bar i { transition: none !important; }
 }
 
-/* All learning pages: a telephone number never breaks across two lines (learning, 2026-10-11)
-   "01755 693 623" is one thing to dial; inside a narrow column the browser split it after the first group. */
-.process__body a[href^="tel:"], .callout a[href^="tel:"], .accordion__body a[href^="tel:"], .prose a[href^="tel:"], .small-print a[href^="tel:"] { white-space: nowrap; }
+/* --- 18. Hero crop positions on phones (review fixes, 2026-10-24)
+   Under 768 px the shell's hero is cut to 3:2 from a 21:9 or 16:9 file. Two frames need the cut moved: the Elementary
+   colour wall's lettering sits in the lower part of the 21:9 frame (lr-hero-low), and the trophies on the Results page
+   sit at the bottom edge of their 16:9 frame (lr-hero-bottom). The body_class of the page carries the switch. */
+.lr-page.lr-hero-low .page-hero__plate img { object-position: 50% 72%; }
+.lr-page.lr-hero-bottom .page-hero__plate img { object-position: 50% 100%; }
+/* A 21:9 frame cut to 3:2 loses its sides, not its top, so object-position cannot save lettering that spans the width
+   (the Elementary colour wall). lr-hero-swap hides the shell's plate under 768 px and shows the page's own 4:3 crop of the
+   same frame (figure.lr-hero-phone, first in section 01) instead; from 768 px that figure is not rendered, so its lazy
+   image is never requested. The shell's own hero is still fetched on phones (it is eager); the swap costs that one file. */
+.lr-hero-phone { display: none; }
+@media (max-width: 767px) {
+  .lr-page.lr-hero-swap .page-hero__plate { display: none; }
+  .lr-page.lr-hero-swap .lr-hero-phone { display: block; margin: 0 0 clamp(36px, 5vw, 56px); }
+  .lr-page.lr-hero-swap .lr-hero-phone img { aspect-ratio: 4 / 3; object-fit: cover; width: 100%; transform: scale(1.15); transform-origin: 70% 100%; }
+}
+
+/* --- 19. Paper behind every photograph (review fixes, 2026-10-24)
+   A plate that is still decoding showed as a white hole in the QA captures (the hub's Junior plate). The frame is now
+   paper-2 until the picture arrives, and the four stage plates load eagerly in the markup. */
+.lr-page .plate__frame { background: var(--paper-2); }
+
+/* --- 20. Chapter navigation on phones (/learning/cambridge-pathway/, review fixes, 2026-10-24)
+   pages.css lays the chapter links in one scrolling row with the scrollbar hidden, so on a 390 px screen the third link
+   is cut and nothing says the row scrolls. Inside the learning group the row wraps under 600 px (two rows, 44 px links)
+   and the chapters keep clear of the taller sticky index when a link jumps to them. */
+@media (max-width: 599px) {
+  .lr-page .chapter-nav ol { flex-wrap: wrap; gap: 0 20px; overflow-x: visible; padding: 4px 0; }
+  .lr-page .chapter-nav a { padding: 12px 0 11px; min-height: 44px; }
+  .lr-page .story-chapter { scroll-margin-top: calc(var(--nav-h) + 108px); }
+}
+
+/* --- 21. Disclosure (lr-disclose): a details element with the house summary row (review fixes, 2026-10-24)
+   Results folds its subject grid behind one row at every width (closed in the markup; learning.js opens it when a link
+   points inside it). Senior folds the same grid on phones only: lr-disclose--phone is written open, learning.js closes it
+   under 600 px, and from 600 px the summary row is hidden so the grid always shows (without JavaScript it is simply open). */
+.lr-disclose { margin-top: clamp(28px, 3vw, 44px); border-top: 1px solid var(--ink); }
+.lr-disclose > summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 60px;
+  padding: 12px 0;
+  font: 400 clamp(19px, 1.5vw, 24px) / 1.3 var(--font-serif);
+  color: var(--ink);
+}
+.lr-disclose > summary::-webkit-details-marker { display: none; }
+.lr-disclose > summary::after {
+  content: '+';
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--clay);
+  font: 300 28px / 1 var(--font-serif);
+  color: var(--maroon);
+}
+.lr-disclose[open] > summary::after { content: '\2212'; }
+.lr-disclose > summary:hover { color: var(--maroon); }
+.lr-disclose > summary:focus-visible { outline: 2px solid var(--maroon); outline-offset: 4px; }
+.lr-disclose > summary .lr-disclose__open { display: none; }
+.lr-disclose[open] > summary .lr-disclose__open { display: inline; }
+.lr-disclose[open] > summary .lr-disclose__closed { display: none; }
+.lr-disclose .lr-disclose__body { padding-bottom: 8px; }
+.lr-disclose .sub { margin-top: 12px; }
+@media (min-width: 600px) {
+  .lr-disclose--phone { border-top: 0; margin-top: 0; }
+  .lr-disclose--phone > summary { display: none; }
+}
+
+/* --- 22. "More answers" row above the pager (stage pages, review fixes, 2026-10-24)
+   The FAQ sheet's aside (a label and two links beside the accordion) left the stage pages to shorten them on phones; the
+   two links sit on a hairline row above the pager instead, with 44 px hit areas. */
+.lr-more { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 28px; margin-bottom: clamp(20px, 2.6vw, 36px); padding-bottom: 10px; border-bottom: var(--hairline); }
+.lr-more .label { margin: 0; }
+.lr-more a { display: inline-flex; align-items: center; min-height: 44px; }
+
+/* --- 23. The split's figure fills its column (stage pages 03, review fixes, 2026-10-24)
+   Beside a venue panel and a link list the 4:5 plate is the taller element; it stays at the top of the row. */
+.lr-page .split .split__figure { margin-top: 0; }
+.lr-page .split .link-list + .link-list, .lr-page .split .venue + .label, .lr-page .split .prose + .label { margin-top: clamp(24px, 3vw, 36px); }
+
+/* --- 24. The further-queries row of the phone list (Examinations 05, Student support 05; review fixes r2, 2026-10-24)
+   main.css stacks the two numbers of .phones__nums in a right-aligned column, so the second number sat orphaned under the row
+   with no label. Inside the group the two numbers sit side by side with the footer's middle dot and, when the row is too
+   narrow for label and numbers together, drop to their own line under the label, left-aligned. */
+.lr-page .phones__row { flex-wrap: wrap; max-width: none; }
+.lr-page .phones__nums { display: inline-flex; flex-direction: row; flex-wrap: wrap; align-items: baseline; justify-content: flex-end; gap: 4px 10px; margin-left: auto; }
+.lr-page .phones__nums .foot__dot { display: inline; color: var(--ink-2); }
+.lr-page .phones a { display: inline-flex; align-items: center; min-height: 44px; }
+.lr-page .phones__nums a { white-space: nowrap; }
+@media (max-width: 479px) {
+  .lr-page .phones__nums { width: 100%; justify-content: flex-start; margin-left: 0; }
+  .lr-page .phones__nums .foot__dot { display: none; }
+  .lr-page .phones__nums a { flex: 1 1 100%; min-height: 40px; }
+}
+
+/* --- 25. The people sheet with one short row (Elementary 05, Junior 05; review fixes r2, 2026-10-24)
+   Three names fill one row of the 8-column list while the contact panel ran four rows deep beside them. With
+   lr-people--short the panel takes five columns from 1024 px and lays out in two: the line and the hours on the left, the
+   button on the right, so names and panel end together. */
+@media (min-width: 1024px) {
+  .lr-people--short .lr-people__list { grid-column: 1 / span 7; }
+  .lr-people--short .lr-people__aside { grid-column: 8 / -1; }
+  .lr-people--short .lr-call { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: 28px; align-items: end; }
+  .lr-people--short .lr-call > .label { grid-column: 1 / -1; margin-top: 0; }
+  .lr-people--short .lr-call__rows { grid-column: 1; grid-row: 2; margin-top: 12px; }
+  .lr-people--short .lr-call__hours { grid-column: 1; grid-row: 3; margin-top: 10px; }
+  .lr-people--short .lr-call__actions { grid-column: 2; grid-row: 2 / span 2; margin-top: 0; align-self: end; justify-self: end; padding-bottom: 2px; }
+}
+
+/* --- AI plates round (2026-10-25): /learning/senior/ sheet 03 has its figure again, the labelled AI plate
+   img/learning-lab-still (4:5) beside the three panels stacked. On a phone the panels come first and the plate follows,
+   at most 26rem wide; from 1024 px the plate takes 5 columns and the panels 6. */
+.lr-split--fig .lr-fig { order: 2; margin: 0; max-width: 26rem; }
+.lr-split--fig .lr-split__b { order: 1; }
+@media (min-width: 1024px) {
+  .lr-split--fig .lr-fig, .lr-split--fig .lr-split__b { order: 0; }
+  .lr-split--fig .lr-fig { max-width: none; }
+}

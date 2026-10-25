@@ -43,11 +43,11 @@ Checked on 2026-10-11: every destination is a page of the site, no rule points a
 | `/admission-procedure/` | `/admissions/how-to-apply/` | How to apply |
 | `/the-school-uniform/` | `/admissions/starting-at-playpen/` | Starting at Playpen |
 | `/code-of-conduct/` | `/about/policies/` | Policies |
-| `/annual-sports/` | `/school-life/sports/` | Sports |
+| `/annual-sports/` | `/events/annual-sports-day/` | Annual Sports Day (since 2026-10-25) |
 | `/extra-curricular-activities/` | `/school-life/clubs-and-activities/` | Clubs and activities |
 | `/community-service/` | `/school-life/culture-and-service/` | Culture and service |
-| `/cultural-programme/` | `/school-life/culture-and-service/` | Culture and service |
-| `/science-fair/` | `/school-life/clubs-and-activities/` | Clubs and activities |
+| `/cultural-programme/` | `/events/annual-cultural-programme/` | Annual Cultural Programme (since 2026-10-25) |
+| `/science-fair/` | `/events/science-and-technology-fair/` | Science and Technology Fair (since 2026-10-25) |
 | `/workshop-for-students/` | `/school-life/clubs-and-activities/` | Clubs and activities |
 | `/multimedia-projector/` | `/school-life/clubs-and-activities/` | Clubs and activities |
 | `/online-facility-payment/` | `/admissions/fees/` | Fees and payment |
@@ -128,11 +128,11 @@ location = /the-identity-card/ { return 301 /about/policies/; }
 location = /admission-procedure/ { return 301 /admissions/how-to-apply/; }
 location = /the-school-uniform/ { return 301 /admissions/starting-at-playpen/; }
 location = /code-of-conduct/ { return 301 /about/policies/; }
-location = /annual-sports/ { return 301 /school-life/sports/; }
+location = /annual-sports/ { return 301 /events/annual-sports-day/; }
 location = /extra-curricular-activities/ { return 301 /school-life/clubs-and-activities/; }
 location = /community-service/ { return 301 /school-life/culture-and-service/; }
-location = /cultural-programme/ { return 301 /school-life/culture-and-service/; }
-location = /science-fair/ { return 301 /school-life/clubs-and-activities/; }
+location = /cultural-programme/ { return 301 /events/annual-cultural-programme/; }
+location = /science-fair/ { return 301 /events/science-and-technology-fair/; }
 location = /workshop-for-students/ { return 301 /school-life/clubs-and-activities/; }
 location = /multimedia-projector/ { return 301 /school-life/clubs-and-activities/; }
 location = /online-facility-payment/ { return 301 /admissions/fees/; }
@@ -178,11 +178,11 @@ RewriteRule ^the-identity-card/?$ /about/policies/ [R=301,L]
 RewriteRule ^admission-procedure/?$ /admissions/how-to-apply/ [R=301,L]
 RewriteRule ^the-school-uniform/?$ /admissions/starting-at-playpen/ [R=301,L]
 RewriteRule ^code-of-conduct/?$ /about/policies/ [R=301,L]
-RewriteRule ^annual-sports/?$ /school-life/sports/ [R=301,L]
+RewriteRule ^annual-sports/?$ /events/annual-sports-day/ [R=301,L]
 RewriteRule ^extra-curricular-activities/?$ /school-life/clubs-and-activities/ [R=301,L]
 RewriteRule ^community-service/?$ /school-life/culture-and-service/ [R=301,L]
-RewriteRule ^cultural-programme/?$ /school-life/culture-and-service/ [R=301,L]
-RewriteRule ^science-fair/?$ /school-life/clubs-and-activities/ [R=301,L]
+RewriteRule ^cultural-programme/?$ /events/annual-cultural-programme/ [R=301,L]
+RewriteRule ^science-fair/?$ /events/science-and-technology-fair/ [R=301,L]
 RewriteRule ^workshop-for-students/?$ /school-life/clubs-and-activities/ [R=301,L]
 RewriteRule ^multimedia-projector/?$ /school-life/clubs-and-activities/ [R=301,L]
 RewriteRule ^online-facility-payment/?$ /admissions/fees/ [R=301,L]

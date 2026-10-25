@@ -24,7 +24,8 @@ import { gsap } from 'gsap';
    ends at about 1.1 s, which is the real floor of `min`. */
 const T = {
   min: 700,        // the exit never starts earlier than this after start()
-  max: 2000,       // ... and never later, whatever the progress says
+  max: 1200,       // ... and never later, whatever the progress says (2026-10-20 film hero: was
+                   // 2000; the light tier caps at 900 in start(), so the first screen settles by ~2.5 s)
   hold: 120,       // the tenth tick has been filled at least this long before the exit starts
   skipAt: 900,     // Skip becomes visible (it was focusable from 0 ms)
   flip: 480,       // crest FLIP preloader → nav
@@ -143,9 +144,10 @@ function paintTicks(v) {
 function ready() {
   if (S.skipped) return true;
   const e = elapsed();
-  if (S.mode === 'full') return (S.target >= 1 && e >= T.min) || e >= T.max;
+  const max = S.max || T.max;
+  if (S.mode === 'full') return (S.target >= 1 && e >= T.min) || e >= max;
   if (S.mode === 'short') return S.target >= 1 || e >= T.shortMax;
-  return S.target >= 1 || e >= T.max;
+  return S.target >= 1 || e >= max;
 }
 function check() {
   if (S.waitResolve && ready()) { const r = S.waitResolve; S.waitResolve = null; r(); }
@@ -289,6 +291,7 @@ function start() {
   const html = document.documentElement;
   const tier = html.dataset.tier || 'full';
   S.mode = tier === 'still' ? 'still' : html.classList.contains('intro-seen') ? 'short' : 'full';
+  if (tier === 'light') S.max = 900;   // phones and light desktops: the shorter cap
   S.phase = 'entering';
 
   if (!S.el) { emit('start', { mode: S.mode }); return; }
@@ -306,7 +309,7 @@ function start() {
   }
   armSkip(el);
   later(check, T.min);
-  later(check, T.max);
+  later(check, S.max || T.max);
   later(check, T.shortMax);
   later(() => {
     if (!S.finishing && S.phase !== 'done') {

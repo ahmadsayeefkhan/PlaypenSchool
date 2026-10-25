@@ -1,35 +1,39 @@
 ---
 title: Alumni
 template: T05
-description: The Playpen Alumni Association: how former students can register their details and stay in touch with the school, and what the school has not yet published.
-h1: The Playpen Alumni <em>Association</em>.
-standfirst: The school wants to hear from former students, wherever they are now. This page says how to send your details, and what the school has not yet published.
-hero_image: img/community-alumni-hero
-hero_alt: A red-tiled staircase between concrete and white walls, with a black railing, seen from the landing above.
-hero_caption: The stairs between the floors, 2024
-hero_n: 01
+body_class: cc-page
+description: The Playpen Alumni Association: how former students send their details, the albums of each graduation year, and the school's dates.
+h1: For former students of <em>Playpen</em>.
+standfirst: The Playpen Alumni Association collects the details of former students. Find out how to send yours, find the album of your graduation year, and see the school as it is today.
 actions: false
 ---
-<section class="page-section" aria-labelledby="alu-what">
+<section class="page-section cc-opening" aria-labelledby="alu-what">
   <div class="band">
-    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">The association</span><span class="sheet-rule__purpose">Who it is for</span></div>
-    <div class="layout">
-      <div class="layout__main">
-        <h2 id="alu-what" class="section-title">Keeping in touch with former students.</h2>
-        <!-- CONFIRM: the association's own wording, who may register and who coordinates it. The school's alumni page says it wishes to connect with former students "who have excelled in their respective fields", collects their details and a photograph by email, and names no coordinator. It does not say whether every former student may register, so this page does not say so either. The form's fields (class and year, what you do now, a memory) are ours, not the school's: confirm what the association wants to collect. -->
-        <div class="prose mt-m" data-reveal>
-          <p>The Playpen Alumni Association collects the details of former students, with a recent photograph. The school says it wishes to connect with students who have excelled in their fields, wherever in the world that has taken them.</p>
-          <p>The form below is a draft of what to send: your name, your class and the year you left, how to reach you, and a memory of the school if you wish to give one.</p>
-          <p>The school has published little about its former students so far: no alumni events and no named alumni. The sections below say where each of those stands.</p>
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">The association</span><span class="sheet-rule__purpose">Who it is for, and what the association asks</span></div>
+    <div class="cc-head">
+      <h2 id="alu-what" class="display-l cc-head__title" data-reveal><span class="cc-head__line">The Playpen Alumni Association.</span></h2>
+      <!-- CONFIRM: the association's own wording, who may register and who coordinates it. The school's alumni page says it wishes to connect with former students "who have excelled in their respective fields", collects their details and a photograph by email, and names no coordinator. It does not say whether every former student may register, so this page does not say so either; if the school confirms that every former student is welcome, the lead's last sentence becomes "Every former student is welcome to send them; how to send them is below." The details asked for (class and year, what you do now) are ours, not the school's: confirm what the association wants to collect. -->
+      <p class="lead" data-reveal>The association collects the details of former students, with a recent photograph, and says it wishes to connect with students who have excelled in their fields, wherever that has taken them. How to send them is below.</p>
+    </div>
+    <div class="cc-split">
+      <!-- Photograph: img/alumni-grad24-stage, the stage set for the Graduation Ceremony 2024 in its daylight grade, nobody on it (catalogued "none"). Review r2 (2026-10-25) swapped the two stage frames: the electric-blue 2023 stage read as a glitch beside the home's bone, clay and maroon on paper, so it moved to the night sheet, where blue reads as stage light. The hall frame used on 2026-10-24 morning (img/gal-grad23-hall) showed recognisable faces at plate size and is catalogued "faces", so the build refuses it. -->
+      <figure class="plate plate--3x2 cc-split__figure" data-reveal>
+        <div class="plate__frame">{{img src="img/alumni-grad24-stage" alt="The stage set for the graduation: a backdrop reading Congratulations Graduates 2024, balloons, lights, the Playpen lectern and potted plants along the front." sizes="(min-width: 900px) 56vw, 100vw"}}</div>
+        <figcaption class="plate__cap"><span class="plate__n">01</span>The stage set for the Graduation Ceremony, 2024</figcaption>
+      </figure>
+      <div class="cc-split__text">
+        <div class="venue" data-reveal>
+          <p class="label">Register</p>
+          <p class="venue__text">The association asks for your name, your class and the year you left, how to reach you, and a recent photograph. The next sheet says how to send them today.</p>
         </div>
-      </div>
-      <div class="layout__aside">
-        <p class="label">Read first</p>
-        <ul class="link-list mt-m">
-          <li><a class="link link--arrow" href="{{link:/about/history/}}">History of the school</a></li>
-          <li><a class="link link--arrow" href="{{link:/about/campus/}}">The campus today</a></li>
-          <li><a class="link link--arrow" href="{{link:/about/leadership/}}">Who leads the school</a></li>
-        </ul>
+        <div data-reveal>
+          <p class="label">Read first</p>
+          <ul class="link-list">
+            <li><a class="link link--arrow" href="{{link:/about/history/}}">History of the school</a></li>
+            <li><a class="link link--arrow" href="{{link:/about/campus/}}">The campus today</a></li>
+            <li><a class="link link--arrow" href="{{link:/about/school-administration/}}">Who leads the school</a></li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
@@ -37,99 +41,164 @@ actions: false
 
 <section class="page-section page-section--tint" aria-labelledby="alu-form">
   <div class="band">
-    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Register</span><span class="sheet-rule__purpose">A form that checks, and sends nothing</span></div>
-    <h2 id="alu-form" class="section-title">Send your details.</h2>
-    <div class="layout layout--aside-first mt-m">
-      <div class="layout__main">
-        <!-- CONFIRM: the school's alumni email address is not published (it is hidden on the school's current site), and no one is named to read it. Until the school supplies one and a mail handler, this form is a prototype and sends nothing. -->
-        <p class="form-note">This form is a prototype. It checks what you type, then shows the school's numbers. Nothing is sent.</p>
-        <form class="page-form" data-prototype-form novalidate action="#" method="post">
-          <div class="form-row form-row--2">
-            <div class="field"><label for="al-name">Full name</label><input id="al-name" name="name" type="text" autocomplete="name" required aria-describedby="al-name-err"><p id="al-name-err" class="field__error" aria-live="polite"></p></div>
-            <div class="field"><label for="al-year">Class and year you left</label><input id="al-year" name="year" type="text" required aria-describedby="al-year-err"><p id="al-year-err" class="field__error" aria-live="polite"></p></div>
-          </div>
-          <div class="form-row form-row--2">
-            <div class="field"><label for="al-email">Email address</label><input id="al-email" name="email" type="email" autocomplete="email" required aria-describedby="al-email-err"><p id="al-email-err" class="field__error" aria-live="polite"></p></div>
-            <div class="field"><label for="al-phone">Phone (optional)</label><input id="al-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" aria-describedby="al-phone-err"><p id="al-phone-err" class="field__error" aria-live="polite"></p></div>
-          </div>
-          <div class="field"><label for="al-now">What you do now (optional)</label><input id="al-now" name="now" type="text" aria-describedby="al-now-hint"><p id="al-now-hint" class="field__hint">University, work, city: whatever you would like the association to know.</p></div>
-          <div class="field"><label for="al-memory">A memory of Playpen (optional)</label><textarea id="al-memory" name="memory" rows="4"></textarea></div>
-          <button class="btn btn--primary" type="submit"><span class="btn__label">Register as a former student</span></button>
-        </form>
-        <div class="form-notice" role="status"><p class="form-notice__text"></p>{{phones}}</div>
-        <noscript><div class="form-note"><p>This form needs JavaScript. Please call the school instead:</p>{{phones}}</div></noscript>
-        <!-- CONFIRM: whether the school's further-queries line takes alumni registrations by phone. Nothing in the school's pages says so, and the line has no published hours; it is the only general number open to a former student today. -->
-        <div class="callout mt-l" data-reveal>
-          <span class="callout__label label">To reach the school today</span>
-          <p>The school has not published an alumni contact. Its general line, for further queries, is {{phone:further}}.</p>
-        </div>
-      </div>
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Register</span><span class="sheet-rule__purpose">How to send your details today, and what to have to hand</span></div>
+    <div class="cc-head">
+      <h2 id="alu-form" class="display-l cc-head__title" data-reveal><span class="cc-head__line">How to register today.</span></h2>
+      <p class="lead" data-reveal>This website has no form for former students yet, because the association has not said where the details should go. Until it does, the school's general line is the way in.</p>
+    </div>
+    <!-- CONFIRM: Option A or B for registration (plan community-contact.md 2.2). Review r1, 2026-10-24: the prototype form built that morning (six fields and a primary button that sent nothing) is held out of the page, in redesign-2026-10-24-pages/build/alumni-form-held.html, until the association has a place to receive the details. A: connect that form to the School Desk as a fourth form type with an ALU- code, a consent tick and a note on sending the photograph; Privacy's forms chapter and Terms clause 6 then list it. B (as built now): this telephone panel. The school's alumni email address is not published (hidden on its current site) and no one is named to read it. -->
+    <!-- CONFIRM: whether the school's further-queries line takes alumni registrations by phone. Nothing in the school's pages says so, and the line has no published hours; it is the only general number open to a former student today. -->
+    <div class="layout cc-aside-first">
       <div class="layout__aside">
         <p class="label">Have to hand</p>
         <ul class="checklist mt-m" data-reveal>
           <li>Your full name</li>
           <li>Your class and the year you left</li>
           <li>An email address, and a phone number if you like</li>
-          <li>A recent photograph: the association asks for one, and this form cannot take it</li>
+          <li>A recent photograph: the association asks for one</li>
         </ul>
       </div>
+      <div class="layout__main">
+        <div class="cc-panel cc-panel--gold" data-reveal>
+          <div class="cc-panel__head"><h3 class="cc-panel__name">Send your details</h3><span class="label">By telephone</span></div>
+          <div class="cc-panel__body">
+            <p class="cc-panel__tel">{{phone:further class="contact-card__tel"}}</p>
+            <p>The school has not published an alumni contact. Its general line, for further queries, is the one number open to a former student today: call it and say that you are a former student. The line has no published hours.</p>
+            <p class="small-print">When the association gives its details a place to go, a form for former students will sit here, and the <a class="link" href="{{link:/privacy/}}">Privacy</a> page will say what it keeps.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="page-section" aria-labelledby="alu-albums">
+  <div class="band">
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Find your year</span><span class="sheet-rule__purpose">Four graduation albums, each linked to its photographs</span></div>
+    <div class="cc-head">
+      <h2 id="alu-albums" class="display-l cc-head__title" data-reveal><span class="cc-head__line">Find your graduation year.</span></h2>
+      <p class="lead" data-reveal>The school's albums of the Graduation Ceremony of Ordinary and Advanced Level, newest first.</p>
+    </div>
+    <!-- CONFIRM: that the four album links are the right ceremonies for the right years (the 2022 album covers 2021 and 2022). The 2024 and 2023 covers are details of those years' arches (the lettering; the year alone, re-cut 2026-10-25 so no word is clipped), cut on 2026-10-24 so that no two cards in the row show the same arch over the same doors; the albums themselves keep their own covers. -->
+    <div class="cc-years">
+      <ul class="ev-grid" data-reveal-group>
+        <li class="ev">
+          <a class="ev__card" href="{{link:/gallery/graduation-2025/}}">
+            <span class="ev__media"><span class="plate__frame">{{img src="img/gal-grad25-arch" alt="A decorated arch over the wooden doors of the hall, with paper mortarboards and stars, the word Graduation down one side, Ceremony down the other and 2025 at the top." sizes="(min-width: 1200px) 22vw, 50vw" widths="480,960"}}</span></span>
+            <span class="ev__n label" aria-hidden="true">2025</span>
+            <h3 class="ev__name">Graduation Ceremony 2025</h3>
+            <span class="ev__text">The Graduation Ceremony of Ordinary and Advanced Level, held in the multipurpose hall.</span>
+            <span class="ev__more" aria-hidden="true">See the album</span>
+          </a>
+        </li>
+        <li class="ev">
+          <a class="ev__card" href="{{link:/gallery/graduation-2024/}}">
+            <span class="ev__media"><span class="plate__frame">{{img src="img/alumni-grad24-lettering" alt="The lettering of the 2024 graduation arch, close: Graduation Ceremony in gold on blue, with the school crest and stars, and the tops of the hall's wooden doors." sizes="(min-width: 1200px) 22vw, 50vw" widths="480,960"}}</span></span>
+            <span class="ev__n label" aria-hidden="true">2024</span>
+            <h3 class="ev__name">Graduation Ceremony 2024</h3>
+            <span class="ev__text">The Graduation Ceremony 2024 in the multipurpose hall.</span>
+            <span class="ev__more" aria-hidden="true">See the album</span>
+          </a>
+        </li>
+        <li class="ev">
+          <a class="ev__card" href="{{link:/gallery/graduation-2023/}}">
+            <span class="ev__media"><span class="plate__frame">{{img src="img/alumni-grad23-year" alt="The end of the 2023 graduation arch against the concrete wall: the year 2023 in blue on orange, with gold tassels." sizes="(min-width: 1200px) 22vw, 50vw" widths="480,590"}}</span></span>
+            <span class="ev__n label" aria-hidden="true">2023</span>
+            <h3 class="ev__name">Graduation Ceremony 2023</h3>
+            <span class="ev__text">The Graduation Ceremony of Ordinary and Advanced Level 2023 in the multipurpose hall.</span>
+            <span class="ev__more" aria-hidden="true">See the album</span>
+          </a>
+        </li>
+        <li class="ev">
+          <a class="ev__card" href="{{link:/gallery/graduation-2022/}}">
+            <span class="ev__media"><span class="plate__frame">{{img src="img/gal-grad22-welcome" alt="A hand-made board welcoming guests to the O and A Level Graduation Ceremony, with paper mortarboards and scrolls." sizes="(min-width: 1200px) 22vw, 50vw" widths="480,960"}}</span></span>
+            <span class="ev__n label" aria-hidden="true">2022</span>
+            <h3 class="ev__name">Graduation Ceremony 2022</h3>
+            <span class="ev__text">The 17th Graduation Ceremony of Ordinary and Advanced Level, for 2021 and 2022.</span>
+            <span class="ev__more" aria-hidden="true">See the album</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="cc-foot" data-reveal>
+      <p class="cc-foot__text">Earlier ceremonies have no album on the school's website.</p>
+      <p class="cc-foot__action"><a class="link link--arrow" href="{{link:/gallery/}}">All albums</a></p>
+      <p class="cc-foot__source caption">From the school's gallery, as published on its website.</p>
     </div>
   </div>
 </section>
 
 <section class="page-section is-night" aria-labelledby="alu-years">
   <div class="band">
-    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">The school across the years</span><span class="sheet-rule__purpose">From the school's own record</span></div>
-    <div class="layout layout--wide-aside">
-      <div class="layout__main">
-        <h2 id="alu-years" class="section-title">Dates to place your year.</h2>
-        <p class="section-lead mt-m" data-reveal>A few dates from the school's own record. Earlier years are on the <a href="{{link:/about/history/}}">History</a> page.</p>
-        <ol class="timeline mt-l" data-reveal-group>
-          <li class="timeline__item">
-            <time class="timeline__date" datetime="2003">2003</time>
-            <div class="timeline__body"><h3 class="timeline__title">The first O Level candidate</h3><p>Playpen enters its first candidate for the Ordinary Level examination, who takes top marks in seven subjects.</p></div>
-          </li>
-          <li class="timeline__item">
-            <time class="timeline__date" datetime="2013">2013</time>
-            <div class="timeline__body"><h3 class="timeline__title">A Level classes begin</h3><p>The school completes the path from Playgroup to A Level.</p></div>
-          </li>
-          <li class="timeline__item">
-            <time class="timeline__date timeline__date--sm" datetime="2014-03">March 2014</time>
-            <div class="timeline__body"><h3 class="timeline__title">The school's own buses</h3><p>The school begins to run its own bus service.</p></div>
-          </li>
-          <li class="timeline__item">
-            <time class="timeline__date timeline__date--sm" datetime="2018-07-19">19 July 2018</time>
-            <div class="timeline__body"><h3 class="timeline__title">The move to the new building</h3><p>The school moves into its own building in Bashundhara R/A, where it teaches today.</p></div>
-          </li>
-          <li class="timeline__item">
-            <time class="timeline__date" datetime="2025">2025</time>
-            <div class="timeline__body"><h3 class="timeline__title">Graduation of O Level and A Level students</h3><p>The ceremony is held in the multipurpose hall, with the graduates in caps, gowns and maroon sashes.</p></div>
-          </li>
-        </ol>
-      </div>
-      <div class="layout__aside layout__aside--sticky">
-        <figure class="plate" data-reveal>
-          <div class="plate__frame">{{img src="img/gal-grad-hall" alt="Graduates in black caps, gowns and maroon sashes seen from behind and above, facing a red stage and the ceremony banner." sizes="(min-width: 1024px) 36vw, 100vw"}}</div>
-          <figcaption class="plate__cap"><span class="plate__n">02</span>The Graduation Ceremony, 2025</figcaption>
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">The school across the years</span><span class="sheet-rule__purpose">Dates to place your year, from the History page</span></div>
+    <div class="cc-head">
+      <h2 id="alu-years" class="display-l cc-head__title" data-reveal><span class="cc-head__line">Dates to place your year.</span></h2>
+      <p class="lead" data-reveal>A few dates from the school's own record; the full story is on the <a href="{{link:/about/history/}}">History</a> page.</p>
+    </div>
+    <!-- CONFIRM: these entries are copied word for word from /about/history/ as it stands on 2026-10-24 evening (1998, 2003, 2013, March 2014, 2015, 19 July 2018), including History's own CONFIRM on what the 2013 and 2015 dates mean (P04) and its "the school's own history gives no year for them". The founding entry is not printed (the founding year is decision A1), and the "October 2026: the second phase" entry is left out because the About group removes it from History; when History changes, change this list the same day, or replace it with a build-time include if the Foundation gives one. -->
+    <div class="cc-dates">
+      <div class="cc-dates__plate">
+        <!-- review r2 (2026-10-25): the 2023 stage, cut 4:5 and toned down for the dark ground, at the full width of the right column -->
+        <figure class="plate plate--4x5" data-reveal>
+          <div class="plate__frame">{{img src="img/alumni-grad23-night" alt="The stage before the Graduation Ceremony 2023: a lit blue backdrop with the school crest and the ceremony's name, and the table for the guests on the empty red stage." sizes="(min-width: 1024px) 34vw, 100vw" widths="480,960"}}</div>
+          <figcaption class="plate__cap"><span class="plate__n">02</span>The stage before the Graduation Ceremony of Ordinary and Advanced Level, 2023</figcaption>
         </figure>
+        <div class="cc-dates__more" data-reveal>
+          <p class="label">On this page</p>
+          <ul class="link-list">
+            <li><a class="link link--arrow" href="#alu-albums">Find your graduation year</a></li>
+            <li><a class="link link--arrow" href="#alu-form">How to register today</a></li>
+          </ul>
+        </div>
       </div>
+      <ol class="timeline cc-dates__list" data-reveal-group>
+        <li class="timeline__item">
+          <time class="timeline__date" datetime="1998">1998</time>
+          <div class="timeline__body"><h3 class="timeline__title">Primary classes</h3><p>By 1998 the school has added primary classes. Secondary classes follow; the school's own history gives no year for them.</p></div>
+        </li>
+        <li class="timeline__item">
+          <time class="timeline__date" datetime="2003">2003</time>
+          <div class="timeline__body"><h3 class="timeline__title">The first O Level candidate</h3><p>The school's first Ordinary Level candidate sits the examination and earns straight A grades in all seven subjects.</p></div>
+        </li>
+        <li class="timeline__item">
+          <time class="timeline__date" datetime="2013">2013</time>
+          <div class="timeline__body"><h3 class="timeline__title">A Level classes begin</h3><p>Chairman Mr A. Mannan Khan introduces A Level. The school now teaches from Playgroup to A Level.</p></div>
+        </li>
+        <li class="timeline__item">
+          <time class="timeline__date timeline__date--sm" datetime="2014-03">March 2014</time>
+          <div class="timeline__body"><h3 class="timeline__title">The school's own buses</h3><p>The school begins to run its own bus service.</p></div>
+        </li>
+        <li class="timeline__item">
+          <time class="timeline__date" datetime="2015">2015</time>
+          <div class="timeline__body"><h3 class="timeline__title">The first A Level batch</h3><p>The first full batch of students enrols for the two-year course. A Level teaching had begun in 2013.</p></div>
+        </li>
+        <li class="timeline__item">
+          <time class="timeline__date timeline__date--sm" datetime="2018-07-19">19 July 2018</time>
+          <div class="timeline__body"><h3 class="timeline__title">The move to Bashundhara</h3><p>Under Principal Mrs Sorabon Tohura, the school moves into its own building of ten storeys in Bashundhara Residential Area. The architect is Mr Ehsan Khan.</p></div>
+        </li>
+      </ol>
+    </div>
+    <div class="cc-foot" data-reveal>
+      <p class="cc-foot__text">Your own ceremony is in the albums above; the dates here place it against the school's story.</p>
+      <p class="cc-foot__action"><a class="link link--arrow" href="{{link:/about/history/}}">The full history</a></p>
+      <p class="cc-foot__source caption">From the school's history pages, as set out on the History page.</p>
     </div>
   </div>
 </section>
 
 <section class="page-section" aria-labelledby="alu-stories">
   <div class="band">
-    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Stories and events</span><span class="sheet-rule__purpose">Not yet published by the school</span></div>
-    <h2 id="alu-stories" class="visually-hidden">Stories and events</h2>
-    <!-- CONFIRM: alumni stories (the plan holds a place for three, named and consented) and any alumni event. None has been supplied; this note stands in for them. -->
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Stories</span><span class="sheet-rule__purpose">Be the first: published only with the person's agreement</span></div>
+    <h2 id="alu-stories" class="visually-hidden">Stories from former students</h2>
+    <!-- CONFIRM: alumni stories (the plan holds a place for three, named and consented) and any alumni event. None has been supplied; this note stands in for them. The rule that a story appears only with the person's agreement, by name, is our wording. -->
     <div class="empty-note" data-reveal>
       <div>
         <p class="label">To be published by the school</p>
-        <p class="empty-note__title">No stories from former students are published here yet.</p>
+        <p class="empty-note__title">Be the first story.</p>
       </div>
       <div class="empty-note__body">
-        <p>A story will appear on this page only when the person who tells it has agreed to it, by name. The school has not supplied any yet, and it has not published an alumni event.</p>
-        <p>If you would like to tell yours, register above. For news of the school today, see <a href="{{link:/news/}}">News</a> and <a href="{{link:/events/}}">Events</a>.</p>
+        <p>A story appears here only when the person who tells it has agreed to it, by name. The school has not published one yet, and it has not published an alumni event.</p>
+        <p>If you would like to tell yours, send your details as the Register sheet says. For news of the school today, see <a href="{{link:/news/}}">News</a> and <a href="{{link:/events/}}">Events</a>.</p>
       </div>
     </div>
   </div>
@@ -144,8 +213,9 @@ actions: false
         <h3>The school today</h3>
         <ul>
           <li><a class="link" href="{{link:/news/}}">News</a></li>
-          <li><a class="link" href="{{link:/events/}}">Events and term dates</a></li>
+          <li><a class="link" href="{{link:/events/}}">Events and the school year</a></li>
           <li><a class="link" href="{{link:/gallery/}}">Gallery</a></li>
+          <li><a class="link" href="{{link:/community/}}">All community pages</a></li>
         </ul>
       </div>
       <div class="where-next__col">
@@ -159,10 +229,12 @@ actions: false
       <div class="where-next__col">
         <h3>Come back</h3>
         <ul>
-          <li><a class="link" href="{{link:/about/careers/}}">Careers at Playpen</a></li>
+          <li><a class="link" href="{{link:/about/careers/}}">Come back to teach: Careers at Playpen</a></li>
           <li><a class="link" href="{{link:/contact/}}">Contact the school</a></li>
         </ul>
       </div>
     </div>
   </div>
 </section>
+
+{{cta heading="Bringing your own child to Playpen?"}}
