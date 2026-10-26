@@ -1465,17 +1465,17 @@ html.menu-open .nav--film .nav__mark::before { opacity: 0; }
    plate holds its 3:2 shape, the slides are stacked in it and cross-dissolve (js/sections/results.js
    drives the fade, the slow drift and the gold progress line). Without JavaScript the first slide
    shows on its own and the counter and buttons stay hidden. */
-.achievement .ach-carousel { grid-column: 1 / span 7; min-width: 0; }
-.achievement .ach-plate { aspect-ratio: 3 / 2; background: var(--paper-2); touch-action: pan-y; }
-.achievement .ach-slide { position: absolute; inset: 0; opacity: 0; z-index: 0; }
-.achievement .ach-slide.is-active { opacity: 1; z-index: 1; }
-.achievement .ach-slide.is-incoming { z-index: 2; }
-.achievement .ach-slide__media { display: block; width: 100%; height: 100%; }
-.achievement .ach-slide img { width: 100%; height: 100%; object-fit: cover; }
-.achievement .ach-carousel:not(.is-still) .ach-slide.is-active .ach-slide__media,
-.achievement .ach-carousel:not(.is-still) .ach-slide.is-incoming .ach-slide__media { will-change: transform; }
-.achievement .ach-carousel:not(.is-still) .ach-slide.is-incoming { will-change: opacity; }
-.achievement .ach-bar {
+:is(.achievement, .words) .ach-carousel { grid-column: 1 / span 7; min-width: 0; }
+:is(.achievement, .words) .ach-plate { aspect-ratio: 3 / 2; background: var(--paper-2); touch-action: pan-y; }
+:is(.achievement, .words) .ach-slide { position: absolute; inset: 0; opacity: 0; z-index: 0; }
+:is(.achievement, .words) .ach-slide.is-active { opacity: 1; z-index: 1; }
+:is(.achievement, .words) .ach-slide.is-incoming { z-index: 2; }
+:is(.achievement, .words) .ach-slide__media { display: block; width: 100%; height: 100%; }
+:is(.achievement, .words) .ach-slide img { width: 100%; height: 100%; object-fit: cover; }
+:is(.achievement, .words) .ach-carousel:not(.is-still) .ach-slide.is-active .ach-slide__media,
+:is(.achievement, .words) .ach-carousel:not(.is-still) .ach-slide.is-incoming .ach-slide__media { will-change: transform; }
+:is(.achievement, .words) .ach-carousel:not(.is-still) .ach-slide.is-incoming { will-change: opacity; }
+:is(.achievement, .words) .ach-bar {
   position: relative;
   display: flex;
   align-items: center;
@@ -1484,8 +1484,8 @@ html.menu-open .nav--film .nav__mark::before { opacity: 0; }
   margin-top: clamp(18px, 2vw, 26px);
   padding-top: clamp(14px, 1.6vw, 20px);
 }
-.achievement .ach-bar__track { position: absolute; top: 0; left: 0; right: 0; height: 1px; background: var(--clay); }
-.achievement .ach-bar__fill {
+:is(.achievement, .words) .ach-bar__track { position: absolute; top: 0; left: 0; right: 0; height: 1px; background: var(--clay); }
+:is(.achievement, .words) .ach-bar__fill {
   position: absolute;
   top: -0.5px; left: 0; right: 0;
   height: 2px;
@@ -1493,24 +1493,24 @@ html.menu-open .nav--film .nav__mark::before { opacity: 0; }
   transform: scaleX(0);
   transform-origin: 0 50%;
 }
-.achievement .ach-cap { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 16px; flex: 1 1 0; min-width: 0; }
-.achievement .ach-count {
+:is(.achievement, .words) .ach-cap { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 16px; flex: 1 1 0; min-width: 0; }
+:is(.achievement, .words) .ach-count {
   font: 300 clamp(22px, 1.8vw, 28px) / 1 var(--font-serif);
   font-variant-numeric: tabular-nums lining-nums;
   letter-spacing: 0.01em;
   color: var(--ink-2);
   white-space: nowrap;
 }
-.achievement .ach-count__now { display: inline-block; color: var(--maroon); }
-.achievement .ach-count__sep { margin: 0 0.32em; color: var(--clay); }
-.achievement .ach-cap__t {
+:is(.achievement, .words) .ach-count__now { display: inline-block; color: var(--maroon); }
+:is(.achievement, .words) .ach-count__sep { margin: 0 0.32em; color: var(--clay); }
+:is(.achievement, .words) .ach-cap__t {
   font: 500 11.5px / 1.35 var(--font-sans);
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--ink-2);
 }
-.achievement .ach-nav { display: flex; gap: 8px; flex: none; }
-.achievement .ach-btn {
+:is(.achievement, .words) .ach-nav { display: flex; gap: 8px; flex: none; }
+:is(.achievement, .words) .ach-btn {
   width: 44px; height: 44px;
   padding: 0;
   display: grid;
@@ -1522,7 +1522,7 @@ html.menu-open .nav--film .nav__mark::before { opacity: 0; }
   cursor: pointer;
   transition: border-color var(--t-hover) var(--ease-out), color var(--t-hover) var(--ease-out), background-color var(--t-hover) var(--ease-out);
 }
-.achievement .ach-btn svg {
+:is(.achievement, .words) .ach-btn svg {
   fill: none;
   stroke: currentColor;
   stroke-width: 1.25;
@@ -1530,22 +1530,22 @@ html.menu-open .nav--film .nav__mark::before { opacity: 0; }
   stroke-linejoin: round;
   transition: transform var(--t-hover) var(--ease-out);
 }
-.achievement .ach-btn:hover { border-color: var(--maroon); color: var(--maroon); background-color: var(--paper-3); }
-.achievement .ach-btn--prev:hover svg { transform: translateX(-2px); }
-.achievement .ach-btn--next:hover svg { transform: translateX(2px); }
-.achievement .ach-btn--toggle .ach-ico-play { display: none; }
-.achievement .ach-btn--toggle[data-state="paused"] .ach-ico-play { display: inline; }
-.achievement .ach-btn--toggle[data-state="paused"] .ach-ico-pause { display: none; }
-.achievement .ach-btn[hidden] { display: none; }
-.achievement .ach-carousel:not(.is-ready) .ach-count,
-.achievement .ach-carousel:not(.is-ready) .ach-nav,
-.achievement .ach-carousel:not(.is-ready) .ach-bar__fill { visibility: hidden; }
-.achievement .ach-carousel.is-still .ach-bar__fill { display: none; }
+:is(.achievement, .words) .ach-btn:hover { border-color: var(--maroon); color: var(--maroon); background-color: var(--paper-3); }
+:is(.achievement, .words) .ach-btn--prev:hover svg { transform: translateX(-2px); }
+:is(.achievement, .words) .ach-btn--next:hover svg { transform: translateX(2px); }
+:is(.achievement, .words) .ach-btn--toggle .ach-ico-play { display: none; }
+:is(.achievement, .words) .ach-btn--toggle[data-state="paused"] .ach-ico-play { display: inline; }
+:is(.achievement, .words) .ach-btn--toggle[data-state="paused"] .ach-ico-pause { display: none; }
+:is(.achievement, .words) .ach-btn[hidden] { display: none; }
+:is(.achievement, .words) .ach-carousel:not(.is-ready) .ach-count,
+:is(.achievement, .words) .ach-carousel:not(.is-ready) .ach-nav,
+:is(.achievement, .words) .ach-carousel:not(.is-ready) .ach-bar__fill { visibility: hidden; }
+:is(.achievement, .words) .ach-carousel.is-still .ach-bar__fill { display: none; }
 @media (max-width: 1023px) {
-  .achievement .ach-carousel { grid-column: 1 / -1; }
+  :is(.achievement, .words) .ach-carousel { grid-column: 1 / -1; }
 }
 @media (max-width: 767px) {
-  .achievement .ach-cap__t { font-size: 12.5px; }
+  :is(.achievement, .words) .ach-cap__t { font-size: 12.5px; }
 }
 
 /* 9. The Ascent ------------------------------------------------------------ */
@@ -1955,7 +1955,8 @@ html.menu-open .nav--film .nav__mark::before { opacity: 0; }
 .quote__cite { margin-top: clamp(24px, 3vw, 40px); padding-left: clamp(36px, 5vw, 80px); }
 .quote__cite cite { font-style: normal; }
 /* 2026-10-26: laid out like Achievement (above): .achievement__layout, .frame, .frame__mat and .achievement__text
-   are shared; only what the words need is here. The street front is a 4:5 photograph, cropped to the same 3:2 plate. */
+   are shared; only what the words need is here. Since 2026-10-26 the plate is a carousel of the school's 3 playground
+   photographs (pre-cropped to 3:2), sharing the Achievement carousel rules above. */
 .words .ach-plate { aspect-ratio: 3 / 2; background: var(--paper-2); }
 .words .ach-plate picture { display: block; width: 100%; height: 100%; }
 .words .ach-plate img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 42%; }

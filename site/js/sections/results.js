@@ -11,6 +11,10 @@ export function init(ctx) {
   // the carousel is built once here, not in create(): create() re-runs on every breakpoint change
   const root = achievement && achievement.querySelector('[data-ach-carousel]');
   if (root && ctx) ctx.safe('achievement.carousel', () => carousel(ctx, root));
+  // 2026-10-26: Sheet 06 (In their own words) runs the same carousel with the school's 3 playground photographs
+  const words = document.getElementById('words');
+  const wordsRoot = words && words.querySelector('[data-ach-carousel]');
+  if (wordsRoot && ctx) ctx.safe('words.carousel', () => carousel(ctx, wordsRoot));
 }
 
 /* Achievement carousel (2026-10-20): 7 Graduation Ceremony 2025 photographs in the maroon mount.

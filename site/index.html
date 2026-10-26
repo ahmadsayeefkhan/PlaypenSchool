@@ -903,18 +903,48 @@
       <!-- 2026-10-26 (founder): the school's own words, verbatim from playpen.edu.bd/mission-vision-and-values/ (the page is one
            paragraph; source saved in docs/sources/mission-vision-and-values-2026-10-26.md), laid out like Sheet 02 Achievement:
            the same 12-column layout, the maroon frame with its gold line and paper mat (3:2) on the left, the words on the right;
-           stacked on phones, the photograph first. The photograph is the street front (img/admissions-entrance, no people). -->
+           stacked on phones, the photograph first.
+           2026-10-26 (founder): the street front was replaced by the same 3 playground photographs the school's own
+           mission page shows in its slider (wp-content/uploads/2021/06/MISSION-VISION-AND-VALUE(S)-2/3/4-1.jpg), cropped
+           to 3:2 with PIL only, run by the Achievement carousel (js/sections/results.js). They show children's faces:
+           listed in docs/CONTENT-TO-CONFIRM.md (A3) for the school's written consent. The originals are only 768-1024 px wide. -->
       <div class="achievement__layout">
-        <figure class="frame" data-clip>
-          <div class="frame__mat">
-            <div class="plate__frame ach-plate">
-              <picture>
-                <source type="image/webp" srcset="./assets/img/admissions-entrance-720.webp 720w, ./assets/img/admissions-entrance-960.webp 960w, ./assets/img/admissions-entrance-1200.webp 1200w" sizes="(min-width: 1024px) 50vw, 92vw">
-                <img src="./assets/img/admissions-entrance-960.jpg" srcset="./assets/img/admissions-entrance-720.jpg 720w, ./assets/img/admissions-entrance-960.jpg 960w, ./assets/img/admissions-entrance-1200.jpg 1200w" sizes="(min-width: 1024px) 50vw, 92vw" width="1200" height="1500" alt="The school's street front: a board-marked concrete wall hung with creepers, the crest and the name Playpen above the entrance." loading="lazy" decoding="async">
-              </picture>
+        <div class="ach-carousel" role="region" aria-roledescription="carousel" aria-label="Play time photographs from the school's mission page" data-ach-carousel>
+          <figure class="frame" data-clip>
+            <div class="frame__mat">
+              <div class="plate__frame ach-plate">
+                <div class="ach-slide is-active" role="group" aria-roledescription="slide" aria-label="1 of 3" data-ach-slide>
+                  <picture class="ach-slide__media">
+                    <source type="image/webp" srcset="./assets/img/home-words-play-01-720.webp 720w, ./assets/img/home-words-play-01-768.webp 768w" sizes="(min-width: 1024px) 50vw, 92vw">
+                    <img src="./assets/img/home-words-play-01-768.jpg" srcset="./assets/img/home-words-play-01-720.jpg 720w, ./assets/img/home-words-play-01-768.jpg 768w" sizes="(min-width: 1024px) 50vw, 92vw" width="768" height="512" alt="Young children sit in rows along a long orange swing on the school field, a teacher standing behind them." loading="lazy" decoding="async">
+                  </picture>
+                </div>
+                <div class="ach-slide" role="group" aria-roledescription="slide" aria-label="2 of 3" aria-hidden="true" inert data-ach-slide>
+                  <picture class="ach-slide__media">
+                    <source type="image/webp" data-srcset="./assets/img/home-words-play-02-720.webp 720w, ./assets/img/home-words-play-02-768.webp 768w" sizes="(min-width: 1024px) 50vw, 92vw">
+                    <img data-src="./assets/img/home-words-play-02-768.jpg" data-srcset="./assets/img/home-words-play-02-720.jpg 720w, ./assets/img/home-words-play-02-768.jpg 768w" sizes="(min-width: 1024px) 50vw, 92vw" width="768" height="512" alt="Children take turns on a double metal slide while two teachers help them down." loading="lazy" decoding="async">
+                  </picture>
+                </div>
+                <div class="ach-slide" role="group" aria-roledescription="slide" aria-label="3 of 3" aria-hidden="true" inert data-ach-slide>
+                  <picture class="ach-slide__media">
+                    <source type="image/webp" data-srcset="./assets/img/home-words-play-03-720.webp 720w, ./assets/img/home-words-play-03-1024.webp 1024w" sizes="(min-width: 1024px) 50vw, 92vw">
+                    <img data-src="./assets/img/home-words-play-03-1024.jpg" data-srcset="./assets/img/home-words-play-03-720.jpg 720w, ./assets/img/home-words-play-03-1024.jpg 1024w" sizes="(min-width: 1024px) 50vw, 92vw" width="1024" height="683" alt="Children ride orange see-saws in a green corner of the playground, two teachers beside them." loading="lazy" decoding="async">
+                  </picture>
+                </div>
+              </div>
             </div>
+          </figure>
+          <div class="ach-bar">
+            <span class="ach-bar__track" aria-hidden="true"><i class="ach-bar__fill" data-ach-fill></i></span>
+            <p class="ach-cap"><span class="ach-count" aria-hidden="true"><span class="ach-count__now" data-ach-current>01</span><span class="ach-count__sep">/</span><span class="ach-count__all">03</span></span><span class="ach-cap__t">Play time at Playpen</span></p>
+            <div class="ach-nav">
+              <button type="button" class="ach-btn ach-btn--prev" aria-label="Previous photograph" data-ach-prev><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M19 12H5M10.5 6.5 5 12l5.5 5.5"/></svg></button>
+              <button type="button" class="ach-btn ach-btn--toggle" aria-label="Pause the slideshow" data-state="playing" data-ach-toggle><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path class="ach-ico-pause" d="M9.5 7v10M14.5 7v10"/><path class="ach-ico-play" d="M9 6.8v10.4l8.2-5.2z"/></svg></button>
+              <button type="button" class="ach-btn ach-btn--next" aria-label="Next photograph" data-ach-next><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M5 12h14M13.5 6.5 19 12l-5.5 5.5"/></svg></button>
+            </div>
+            <p class="visually-hidden" aria-live="polite" aria-atomic="true" data-ach-status></p>
           </div>
-        </figure>
+        </div>
         <div class="achievement__text">
           <blockquote id="mission" class="quote" cite="https://playpen.edu.bd/mission-vision-and-values/">
             <span class="quote__mark" aria-hidden="true">&ldquo;</span>
