@@ -297,11 +297,15 @@ function panel(ctx, article) {
   });
   if (bars.length) {
     gsap.set(bars, { scaleX: 0 });
-    tl.to(bars, { scaleX: 1, duration: 0.8, ease: 'power3.out', stagger: 0.07, clearProps: 'transform' }, 0.2);
+    tl.to(bars, { scaleX: 1, duration: 0.8, ease: 'power3.out', stagger: 0.07 }, 0.2);
   }
   if (count) countUp(tl, count, 0.1, DRAW + 0.2);
 
-  ScrollTrigger.create({ trigger: article, start: 'top 78%', once: true, onEnter: () => tl.play() });
+  // plays every time the panel scrolls into view (from above or below); it rewinds only once the
+  // panel is fully off screen, so the rewind is never seen
+  const playIfRewound = () => { if (tl.progress() === 0) tl.play(); };
+  ScrollTrigger.create({ trigger: article, start: 'top 78%', end: 'bottom 22%', onEnter: playIfRewound, onEnterBack: playIfRewound });
+  ScrollTrigger.create({ trigger: article, start: 'top bottom', end: 'bottom top', onLeave: () => tl.pause(0), onLeaveBack: () => tl.pause(0) });
 }
 
 export function create(ctx) {
