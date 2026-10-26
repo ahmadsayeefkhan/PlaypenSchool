@@ -1327,7 +1327,7 @@
     title.id = 'ppc-title';
     title.tabIndex = -1;
     hText.appendChild(title);
-    hText.appendChild(el('p', 'ppc__sub', 'An AI assistant, not a person. Answers come from the school’s published pages. Admissions staff may read this conversation, kept for 30 days. A person at the school decides every admission.'));
+    hText.appendChild(el('p', 'ppc__sub', 'An AI assistant is ready to help you anytime.'));
     var close = el('button', 'ppc__close');
     close.type = 'button';
     close.setAttribute('aria-label', 'Close the Admissions Desk');
@@ -1364,17 +1364,32 @@
     var person = el('button', 'ppc__person', 'Talk to a person');
     person.type = 'button';
     on(person, 'click', function () { openHandoff(); });
+    /* the privacy notice, unchanged, behind "How this chat works" (founder, 2026-10-26): a note that opens inside the form */
+    var about = el('p', 'ppc__about', 'An AI assistant, not a person. Answers come from the school’s published pages. Admissions staff may read this conversation, kept for 30 days. A person at the school decides every admission.');
+    about.id = 'ppc-about';
+    about.hidden = true;
+    var aboutBtn = el('button', 'ppc__how', 'How this chat works');
+    aboutBtn.type = 'button';
+    aboutBtn.setAttribute('aria-expanded', 'false');
+    aboutBtn.setAttribute('aria-controls', 'ppc-about');
+    on(aboutBtn, 'click', function () {
+      about.hidden = !about.hidden;
+      aboutBtn.setAttribute('aria-expanded', about.hidden ? 'false' : 'true');
+    });
+    var links = el('span', 'ppc__links');
+    links.appendChild(aboutBtn);
+    links.appendChild(person);
     foot.appendChild(hint);
-    foot.appendChild(person);
-    /* suggested questions sit UNDER the question box, never in the conversation (founder, 2026-10-26): the log keeps its
-       height and the newest answer is never pushed up. Before the first question they wrap with a label; once the chat
-       has started they are one compact row that scrolls sideways, so they always take the same small space. */
+    foot.appendChild(links);
+    /* suggested questions sit UNDER the question box, never in the conversation (founder, 2026-10-26): one compact row
+       that scrolls sideways in every state, so it always takes the same small strip and the newest answer never moves */
     suggest = el('div', 'ppc__suggest');
     suggest.hidden = true;
     formEl.appendChild(lab);
     formEl.appendChild(row);
     formEl.appendChild(suggest);
     formEl.appendChild(foot);
+    formEl.appendChild(about);
     on(formEl, 'submit', function (e) {
       e.preventDefault();
       var q = (input.value || '').trim();
@@ -1446,16 +1461,14 @@
   }
   function clearChips() {
     $$('.ppc__chips', log).forEach(function (c) { c.parentNode.removeChild(c); });
-    if (suggest) { suggest.textContent = ''; suggest.hidden = true; suggest.classList.remove('is-start'); }
+    if (suggest) { suggest.textContent = ''; suggest.hidden = true; }
   }
-  function setChips(chips, start) {
+  function setChips(chips) {
     clearChips();
     if (!suggest) return;
     var row = chipRow(chips);
     if (!row.childNodes.length) return;
-    if (start) suggest.appendChild(el('p', 'ppc__suggest-label', 'Suggested questions'));
     suggest.appendChild(row);
-    suggest.classList.toggle('is-start', !!start);
     suggest.hidden = false;
     row.scrollLeft = 0;
   }
@@ -1506,7 +1519,7 @@
       sp.appendChild(a);
       li.appendChild(sp);
     });
-    if (isLast && Array.isArray(m.chips) && m.chips.length) setChips(m.chips, m === FIRST);
+    if (isLast && Array.isArray(m.chips) && m.chips.length) setChips(m.chips);
     log.appendChild(li);
     return li;
   }
@@ -1525,7 +1538,7 @@
   }
   function push(m) {
     /* while the answer is coming the compact row stays (switched off), so the box below the log keeps its height */
-    if (m.from === 'me' && suggest && !suggest.hidden && !suggest.classList.contains('is-start')) $$('button', suggest).forEach(function (b) { b.disabled = true; });
+    if (m.from === 'me' && suggest && !suggest.hidden) $$('button', suggest).forEach(function (b) { b.disabled = true; });
     else clearChips();
     state.messages.push(m);
     saveState();

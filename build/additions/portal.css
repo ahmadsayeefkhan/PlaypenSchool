@@ -464,15 +464,18 @@ html.ppc-robot .ppc-tease { bottom: calc(16px + 56px + 12px + 68px + var(--pp-ac
 .ppc__suggest { margin-top: 8px; }
 .ppc__suggest[hidden] { display: none; }
 .ppc__suggest .ppc__chips { margin-top: 0; }
-.ppc__suggest-label { margin: 0 0 6px; font: 500 12px / 1.2 var(--font-sans); color: var(--ink-2); }
-.ppc__suggest:not(.is-start) .ppc__chips {
+.ppc__suggest .ppc__chips {
   flex-wrap: nowrap; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x proximity;
   padding-bottom: 4px; scrollbar-width: thin;
   -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent);
   mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent);
 }
-.ppc__suggest:not(.is-start) .ppc__chip { flex: none; white-space: nowrap; scroll-snap-align: start; }
-.ppc__suggest:not(.is-start) .ppc__chip:last-child { margin-right: 24px; }
+.ppc__suggest .ppc__chip { flex: none; white-space: nowrap; scroll-snap-align: start; }
+.ppc__suggest .ppc__chip:last-child { margin-right: 24px; }
+/* footer links and the "How this chat works" note (2026-10-26) */
+.ppc__links { flex: none; display: inline-flex; gap: 2px 14px; flex-wrap: wrap; }
+.ppc__about { margin: 8px 0 0; padding: 10px 12px; border-left: 3px solid var(--gold); background: var(--paper); font: 400 13px / 1.45 var(--font-sans); color: var(--ink); }
+.ppc__about[hidden] { display: none; }
 /* a short screen (a phone with its keyboard open): while typing, the suggestions step aside so the answer keeps the room */
 @media (max-height: 560px) { .ppc__form:focus-within .ppc__suggest { display: none; } }
 
@@ -501,11 +504,11 @@ html.ppc-robot .ppc-tease { bottom: calc(16px + 56px + 12px + 68px + var(--pp-ac
 .ppc__send:disabled { opacity: 0.55; cursor: progress; }
 .ppc__foot { display: flex; align-items: center; justify-content: space-between; gap: 4px 10px; margin-top: 6px; flex-wrap: wrap; }
 .ppc__hint { flex: 1 1 180px; margin: 0; font: 400 12px / 1.4 var(--font-sans); color: var(--ink-2); }
-.ppc__person {
+.ppc__person, .ppc__how {
   flex: none; min-height: 44px; padding: 0 4px; border: 0; background: none; color: var(--ink); cursor: pointer;
   font: 500 13px / 1.2 var(--font-sans); text-decoration: underline; text-underline-offset: 4px;
 }
-.ppc__person:hover { color: var(--maroon); }
+.ppc__person:hover, .ppc__how:hover { color: var(--maroon); }
 
 /* the short enquiry form inside the helper */
 .ppc__hand { padding: 14px 14px 6px; border: 1px solid var(--clay); border-left: 3px solid var(--gold); border-radius: 4px; background: var(--paper); }
