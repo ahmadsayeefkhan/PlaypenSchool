@@ -94,7 +94,7 @@
   --band-max: 1600px;
   /* polish pass: 96..192 left 100-200 px of dead paper between sheets at 1440 and 1920 */
   --section-pad: clamp(72px, 9vw, 144px);
-  --nav-h: 72px;
+  --nav-h: 80px;                                    /* 2026-10-26: 72 -> 80 for the stacked lockup (phones: 72, below) */
   --util-h: 0px;   /* the utility row was folded into the Menu overlay and the footer */
   --hairline: 1px solid var(--clay);
 
@@ -765,6 +765,34 @@ html.menu-open .nav__primary, html.menu-open .nav__right .magnet-area { opacity:
 @media (max-width: 359px) {
   #nav-visit { display: none; }
 }
+
+/* 6b. The centred lockup (2026-10-26, founder; every page: build/shell.py and the home): the Menu on the left, the crest with
+   "The Playpen School" under it in the centre, Notices and Book a visit on the right. The primary links stay in the
+   markup for the scripts and the home sync; every page is in the Menu overlay. */
+.nav--lockup .nav__bar { grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); gap: 16px; }
+.nav--lockup .nav__left { grid-column: 1; justify-self: start; display: flex; align-items: center; min-width: 0; }
+.nav--lockup .nav__brand { grid-column: 2; justify-self: center; flex-direction: column; justify-content: center; gap: 4px; text-align: center; width: max-content; max-width: 100%; }
+.nav--lockup .nav__mark { width: 46px; height: 46px; }
+.nav--lockup.is-solid .nav__mark, .nav--lockup.is-night .nav__mark { width: 38px; height: 38px; }
+.nav--lockup .nav__word { display: block; font: 400 16px / 1.1 var(--font-serif); letter-spacing: 0.01em; }
+.nav--lockup .nav__primary { display: none !important; }
+.nav--lockup .nav__right { grid-column: 3; }
+.nav--lockup .menu-btn__icon { order: -1; }
+.nav--film.nav--lockup .nav__bar { grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); }
+.nav--film.nav--lockup .nav__brand { justify-self: center; width: max-content; }
+@media (max-width: 599px) {
+  :root { --nav-h: 72px; }
+  .nav--lockup .nav__bar { gap: 10px; }
+  .nav--lockup .nav__mark { width: 34px; height: 34px; }
+  .nav--lockup.is-solid .nav__mark, .nav--lockup.is-night .nav__mark { width: 30px; height: 30px; }
+  .nav--lockup .nav__word { display: block; font-size: 13px; }
+  /* the button keeps its name ("Menu" / "Close") for screen readers; on a phone it shows as the icon only */
+  .nav--lockup:not(.nav--film) .menu-btn__label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .nav--lockup:not(.nav--film) .menu-btn { min-width: 44px; justify-content: center; }
+  /* Book a visit stays on one line in the right third (360 px: about 94 px wide) */
+  .nav--lockup #nav-visit { white-space: nowrap; padding: 0 10px; font-size: 13px; }
+}
+@media (max-width: 339px) { .nav--lockup .nav__word { display: none; } }
 
 /* 7. Hero ------------------------------------------------------------------ */
 /* The plate is lifted under the lead by --hero-lift (spec §3.3: the copy sits in the paper zone of

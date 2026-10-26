@@ -357,11 +357,21 @@ def render_primary_links(ctx, page=None):
 def render_header(ctx, page=None):
     nav = ctx.nav
     visit = next(a for a in nav.sticky if a.get('primary'))
-    return '''<header id="top" class="nav is-over-hero">
+    # 2026-10-26 (founder): a centred lockup (the crest, "The Playpen School" under it), the Menu on the left and Notices +
+    # Book a visit on the right; every page is in the Menu overlay. #nav-primary stays in the markup (build/sync_home.py
+    # reads it; js/inner.js marks the current page) but is not shown in the bar (main.css .nav--lockup).
+    return '''<header id="top" class="nav nav--lockup is-over-hero">
   <div class="nav__bar">
-    <a class="nav__brand" href="%(home)s" aria-label="Playpen School, home">
+    <div class="nav__left">
+      <button id="menu-btn" class="menu-btn" type="button" aria-expanded="false" aria-controls="menu">
+        <span class="menu-btn__icon" aria-hidden="true"><i></i><i></i></span>
+        <span class="menu-btn__label">Menu</span>
+      </button>
+      <noscript><a class="menu-btn menu-btn--link" href="%(sitemap)s"><span class="menu-btn__label">Sitemap</span></a></noscript>
+    </div>
+    <a class="nav__brand" href="%(home)s" aria-label="The Playpen School, home">
       <span id="nav-mark" class="nav__mark"><img src="%(mark)s" width="255" height="256" alt=""></span>
-      <span class="nav__word">Playpen School</span>
+      <span class="nav__word">The Playpen School</span>
     </a>
     <nav id="nav-primary" class="nav__primary" aria-label="Primary">
       %(links)s
@@ -371,11 +381,6 @@ def render_header(ctx, page=None):
       <span class="magnet-area">
         <a id="nav-visit" class="btn btn--primary btn--small" href="%(visit)s"><span class="btn__label">%(visit_label)s</span></a>
       </span>
-      <button id="menu-btn" class="menu-btn" type="button" aria-expanded="false" aria-controls="menu">
-        <span class="menu-btn__label">Menu</span>
-        <span class="menu-btn__icon" aria-hidden="true"><i></i><i></i></span>
-      </button>
-      <noscript><a class="menu-btn menu-btn--link" href="%(sitemap)s"><span class="menu-btn__label">Sitemap</span></a></noscript>
     </div>
   </div>
 </header>''' % {
