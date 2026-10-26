@@ -303,9 +303,11 @@ function panel(ctx, article) {
 
   // plays every time the panel scrolls into view (from above or below); it rewinds only once the
   // panel is fully off screen, so the rewind is never seen
-  const playIfRewound = () => { if (tl.progress() === 0) tl.play(); };
-  ScrollTrigger.create({ trigger: article, start: 'top 78%', end: 'bottom 22%', onEnter: playIfRewound, onEnterBack: playIfRewound });
-  ScrollTrigger.create({ trigger: article, start: 'top bottom', end: 'bottom top', onLeave: () => tl.pause(0), onLeaveBack: () => tl.pause(0) });
+  let armed = true;
+  const replay = () => { if (!armed) return; armed = false; tl.restart(); };
+  const rearm = () => { armed = true; tl.pause(0); };
+  ScrollTrigger.create({ trigger: article, start: 'top 78%', end: 'bottom 22%', onEnter: replay, onEnterBack: replay });
+  ScrollTrigger.create({ trigger: article, start: 'top bottom', end: 'bottom top', onLeave: rearm, onLeaveBack: rearm });
 }
 
 export function create(ctx) {
