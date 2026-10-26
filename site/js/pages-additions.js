@@ -3267,7 +3267,7 @@ PP.ready(function () {
   var STATE_KEY = 'pp:chat';
   var state = json(STATE_KEY) || {};
   if (!state || typeof state !== 'object' || state.v !== 1) state = { v: 1, chatCode: null, chatKey: null, context: null, messages: [], lastUnanswered: null };
-  var launcher = null, panel = null, log = null, input = null, sendBtn = null, typing = null, waiting = false;
+  var launcher = null, panel = null, log = null, input = null, sendBtn = null, typing = null, waiting = false, suggest = null;
   var FIRST = {
     from: 'bot', kind: 'hello',
     text: 'This is the Admissions Desk, an AI assistant. I answer from the school’s published pages. Ask about admission, the curriculum, visits or school life.',
@@ -3819,8 +3819,14 @@ PP.ready(function () {
     on(person, 'click', function () { openHandoff(); });
     foot.appendChild(hint);
     foot.appendChild(person);
+    /* suggested questions sit UNDER the question box, never in the conversation (founder, 2026-10-26): the log keeps its
+       height and the newest answer is never pushed up. Before the first question they wrap with a label; once the chat
+       has started they are one compact row that scrolls sideways, so they always take the same small space. */
+    suggest = el('div', 'ppc__suggest');
+    suggest.hidden = true;
     formEl.appendChild(lab);
     formEl.appendChild(row);
+    formEl.appendChild(suggest);
     formEl.appendChild(foot);
     on(formEl, 'submit', function (e) {
       e.preventDefault();
@@ -3835,7 +3841,7 @@ PP.ready(function () {
     panel.appendChild(formEl);
     on(panel, 'keydown', function (e) {
       if (e.key === 'Escape' || e.key === 'Esc') { e.preventDefault(); closeChat(); return; }
-      /* Tab wraps inside the helper at every width, so the chips above the input are reached with Tab too (review correctness-6) */
+      /* Tab wraps inside the helper at every width, so the suggested questions under the input are reached with Tab too (review correctness-6) */
       if (e.key === 'Tab') trapTab(e);
     });
     /* Esc closes the helper even when focus has gone back to the launcher or the page */
@@ -3883,7 +3889,7 @@ PP.ready(function () {
     launcherText(TITLE_IDLE, TITLE_SHORT, waiting ? 'Writing your answer…' : STATUS_IDLE);
     launcher.focus();
   }
-  function scrollLog() { if (log) log.scrollTop = log.scrollHeight; }
+  function scrollLog() { if (log) log.scrollTop = state.messages.length ? log.scrollHeight : 0; } /* a fresh chat shows the welcome from its first line */
 
   function renderAll() {
     log.textContent = '';
@@ -3891,7 +3897,21 @@ PP.ready(function () {
     state.messages.forEach(function (m, i) { renderMsg(m, i === state.messages.length - 1); });
     scrollLog();
   }
-  function clearChips() { $$('.ppc__chips', log).forEach(function (c) { c.parentNode.removeChild(c); }); }
+  function clearChips() {
+    $$('.ppc__chips', log).forEach(function (c) { c.parentNode.removeChild(c); });
+    if (suggest) { suggest.textContent = ''; suggest.hidden = true; suggest.classList.remove('is-start'); }
+  }
+  function setChips(chips, start) {
+    clearChips();
+    if (!suggest) return;
+    var row = chipRow(chips);
+    if (!row.childNodes.length) return;
+    if (start) suggest.appendChild(el('p', 'ppc__suggest-label', 'Suggested questions'));
+    suggest.appendChild(row);
+    suggest.classList.toggle('is-start', !!start);
+    suggest.hidden = false;
+    row.scrollLeft = 0;
+  }
   function safeTel(t) { return typeof t === 'string' && /^\+?\d{6,15}$/.test(t); }
   function renderMsg(m, isLast) {
     var li = el('li', 'ppc__msg ppc__msg--' + (m.from === 'me' ? 'me' : 'bot'));
@@ -3939,7 +3959,7 @@ PP.ready(function () {
       sp.appendChild(a);
       li.appendChild(sp);
     });
-    if (isLast && Array.isArray(m.chips) && m.chips.length) li.appendChild(chipRow(m.chips));
+    if (isLast && Array.isArray(m.chips) && m.chips.length) setChips(m.chips, m === FIRST);
     log.appendChild(li);
     return li;
   }
@@ -3957,11 +3977,18 @@ PP.ready(function () {
     return row;
   }
   function push(m) {
-    clearChips();
+    /* while the answer is coming the compact row stays (switched off), so the box below the log keeps its height */
+    if (m.from === 'me' && suggest && !suggest.hidden && !suggest.classList.contains('is-start')) $$('button', suggest).forEach(function (b) { b.disabled = true; });
+    else clearChips();
     state.messages.push(m);
     saveState();
-    renderMsg(m, true);
+    var li = renderMsg(m, true);
     scrollLog();
+    /* a long answer: show it from its first line (with the question just above it), not from its end */
+    if (m.from !== 'me' && li && log && li.offsetHeight > log.clientHeight - 24) {
+      var q = li.previousElementSibling, top = (q && q.classList.contains('ppc__msg--me') ? q : li).offsetTop;
+      log.scrollTop = Math.max(0, top - log.offsetTop - 8);
+    }
   }
   function showTyping(onNow) {
     if (launcher) launcher.classList.toggle('is-thinking', !!onNow);

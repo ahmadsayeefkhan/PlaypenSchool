@@ -3784,6 +3784,21 @@ html.ppc-robot .ppc-tease { bottom: calc(16px + 56px + 12px + 68px + var(--pp-ac
 }
 .ppc__chip:hover { border-style: solid; background: var(--paper); }
 .ppc__lines { margin-top: 6px; padding: 0 4px; }
+/* suggested questions under the question box (2026-10-26): never inside or over the conversation */
+.ppc__suggest { margin-top: 8px; }
+.ppc__suggest[hidden] { display: none; }
+.ppc__suggest .ppc__chips { margin-top: 0; }
+.ppc__suggest-label { margin: 0 0 6px; font: 500 12px / 1.2 var(--font-sans); color: var(--ink-2); }
+.ppc__suggest:not(.is-start) .ppc__chips {
+  flex-wrap: nowrap; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x proximity;
+  padding-bottom: 4px; scrollbar-width: thin;
+  -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent);
+  mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent);
+}
+.ppc__suggest:not(.is-start) .ppc__chip { flex: none; white-space: nowrap; scroll-snap-align: start; }
+.ppc__suggest:not(.is-start) .ppc__chip:last-child { margin-right: 24px; }
+/* a short screen (a phone with its keyboard open): while typing, the suggestions step aside so the answer keeps the room */
+@media (max-height: 560px) { .ppc__form:focus-within .ppc__suggest { display: none; } }
 
 .ppc__typing { align-self: flex-start; display: inline-flex; gap: 5px; align-items: center; padding: 14px 16px; border-radius: 14px; background: var(--paper-2); }
 .ppc__dot { width: 7px; height: 7px; border-radius: 50%; background: var(--ink-2); opacity: 0.35; animation: ppc-dot 1.1s var(--ease-soft) infinite; }
