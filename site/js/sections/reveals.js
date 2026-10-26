@@ -154,9 +154,9 @@ export function create(ctx) {
   if (quote) splitLines(ctx, quote, { duration: 0.9, stagger: 0.09 });
   const mark = document.querySelector('.quote__mark');
   if (mark && !still) gsap.from(mark, { scaleY: 0, opacity: 0, duration: 0.9, ease: 'expo.out', scrollTrigger: { trigger: '#mission', start: 'top 85%', once: true } });
-  /* ...and the street-front photograph beside it: the curtain clip (still tier: simply there) */
-  const wordsPlate = document.querySelector('#words .words__plate[data-clip]');
-  if (wordsPlate) clipReveal(ctx, wordsPlate, { start: 'top 82%', delay: 0.15 });
+  /* ...and the street-front photograph in the Achievement frame: the same curtain clip as Achievement (still tier: simply there) */
+  const wordsFrame = document.querySelector('#words .frame[data-clip]');
+  if (wordsFrame) clipReveal(ctx, wordsFrame, { start: 'top 80%' });
 
   /* Generic reveals outside the sections that choreograph their own */
   const own = '#hero, #ascent, #learning';
