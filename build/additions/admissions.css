@@ -409,6 +409,9 @@ html[data-motion="reduced"] .call-line { transition: none; }
 .adm-answer { margin: 18px 0 28px; }
 .adm-answer[hidden] { display: none; }
 html:not(.js) .adm-topics { display: none; }
+/* quick picks above a free-text box (Book a visit, "A time that suits you"; 2026-10-26) */
+.adm-picks { margin: 10px 0 12px; }
+html:not(.js) .adm-picks { display: none; }
 .adm-topics .chip[aria-pressed="true"] { border-color: var(--maroon); background: var(--maroon); color: var(--paper); }
 
 /* ---- 13. adm-check: a tickable, printable list (What to bring, fee questions, before the first day; 2026-10-24) -------

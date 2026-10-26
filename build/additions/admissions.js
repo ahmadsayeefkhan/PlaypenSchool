@@ -11,6 +11,7 @@
    6  the FAQ search ([data-adm-search]) filters the questions as you type and says how many are shown
    7  the Enquire topic chips ([data-adm-topics]) show one answer and pre-fill the question; #topic-<key> presses a chip
    8  the "More" disclosure in the online form's action bar on phones ([data-adm-more])
+   9  quick picks above a free-text box ([data-adm-picks="<input id>"]): a chip fills the box, typing still works
    Without JavaScript: the picker, the chips, the search and the toggles are hidden by CSS and everything is shown open. */
 PP.ready(function () {
   'use strict';
@@ -239,5 +240,26 @@ PP.ready(function () {
       menu.hidden = !open;
       btn.setAttribute('aria-expanded', open ? 'true' : 'false');
     });
+  });
+
+  /* 9 ---- quick picks: a chip writes its words into the box; the box stays free text, the chip matching it shows pressed */
+  PP.$$('[data-adm-picks]').forEach(function (list) {
+    var box = doc.getElementById(list.getAttribute('data-adm-picks'));
+    if (!box) return;
+    var chips = PP.$$('[data-pick]', list);
+    function mark() {
+      var v = (box.value || '').trim();
+      chips.forEach(function (c) { c.setAttribute('aria-pressed', c.getAttribute('data-pick') === v ? 'true' : 'false'); });
+    }
+    chips.forEach(function (c) {
+      PP.on(c, 'click', function () {
+        box.value = c.getAttribute('data-pick');
+        box.dispatchEvent(new Event('input', { bubbles: true }));
+        mark();
+      });
+    });
+    PP.on(box, 'input', mark);
+    var form = box.form;
+    if (form) PP.on(form, 'reset', function () { window.setTimeout(mark, 0); });
   });
 });

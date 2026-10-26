@@ -92,7 +92,7 @@ html:not(.js) .af, .af:not(.is-ready) .af__bar { display: none; }
    one column, and holds one primary action (Download filled form) plus a "More" disclosure for Print blank, Clear and,
    when the portal is on, Send online. From 640 px the disclosure's contents sit in the bar as before and "More" is hidden. */
 .af__more { display: none; }
-.af__more-menu { display: contents; }
+.af__more-menu, .af__more-menu[hidden] { display: contents; }   /* hidden means "closed" on phones only (pages.css data-hidden-narrow) */
 @media (max-width: 639px) {
   .af__bar { position: static; flex-direction: column; align-items: stretch; gap: 10px; margin-inline: 0; border-radius: 0; }
   .af__bar .btn { width: 100%; }

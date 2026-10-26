@@ -47,8 +47,10 @@
    tighter because an inner page holds more sheets than the home's eight. */
 body.inner { --page-pad: clamp(64px, 8.2vw, 130px); --prose: 65ch; }
 #content:focus { outline: none; }
-/* the filter chips (js/inner.js) set hidden on any item: a card, a stage, a timeline entry, a row, a person */
-body.inner [hidden] { display: none !important; }
+/* the filter chips (js/inner.js) set hidden on any item: a card, a stage, a timeline entry, a row, a person.
+   [data-hidden-narrow] opts out: its hidden attribute only means "closed on a phone" and its own stylesheet decides
+   (the admission form's "More" menu: Send online, Print blank, Clear are always shown from 640 px). 2026-10-26 */
+body.inner [hidden]:not([data-hidden-narrow]) { display: none !important; }
 body.inner[data-actions="off"] .actions { display: none; }
 .moved { padding-top: calc(var(--nav-h) + 48px); padding-bottom: 96px; max-width: 46rem; }
 .moved h1 { margin: 20px 0 24px; }
