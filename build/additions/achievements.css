@@ -1,0 +1,131 @@
+/* Achievement stories (2026-11-05, founder): story circles, the full-screen viewer, cards and the full story.
+   Script: additions/achievements.js. Also copied to site/css/achievements.css for the hand-built home. */
+
+/* ---------- circles ---------- */
+.ach-circles { display: flex; gap: clamp(14px, 2.4vw, 26px); list-style: none; margin: 0; padding: 4px 2px 8px; overflow-x: auto; scrollbar-width: none; }
+.ach-circles::-webkit-scrollbar { display: none; }
+.ach-circles li { flex: none; }
+/* 2026-11-05 (founder): reel-size cards (9:16), like Instagram / Facebook reels. Class names kept from the first "circles" version. */
+.ach-circle { position: relative; display: block; width: clamp(128px, 11vw, 160px); padding: 0; border: 0; background: none; color: var(--paper); cursor: pointer; text-decoration: none; font: inherit; text-align: left; }
+.ach-circle__ring { position: relative; display: block; width: 100%; aspect-ratio: 9 / 16; border-radius: 14px; padding: 3px; overflow: hidden;
+  background: linear-gradient(160deg, var(--gold-text), var(--maroon) 55%, var(--gold-soft)); transition: transform var(--t-ui), box-shadow var(--t-ui);
+  box-shadow: 0 14px 30px -18px rgba(60, 10, 10, 0.55); }
+.ach-circle__ring img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 25%; border-radius: 11px; background: var(--maroon-deep); }
+.ach-circle__ring::after { content: ""; position: absolute; inset: 3px; border-radius: 11px; pointer-events: none;
+  background: linear-gradient(180deg, rgba(30, 1, 2, 0.35) 0%, transparent 28%, transparent 55%, rgba(30, 1, 2, 0.88) 100%); }
+.ach-circle__play { position: absolute; z-index: 2; top: 12px; right: 12px; width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center;
+  background: rgba(30, 1, 2, 0.55); border: 1px solid rgba(217, 178, 92, 0.7); color: var(--paper); font-size: 11px; line-height: 1; padding-left: 2px; }
+.ach-circle:hover .ach-circle__ring { transform: translateY(-4px); box-shadow: 0 22px 36px -18px rgba(60, 10, 10, 0.6); }
+.ach-circle:focus-visible { outline: none; }
+.ach-circle:focus-visible .ach-circle__ring { outline: 3px solid var(--gold); outline-offset: 3px; }
+.ach-circle__label { position: absolute; z-index: 2; left: 12px; right: 12px; bottom: 12px; font: 600 14px / 1.25 var(--font-sans); color: var(--paper); text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5); }
+.ach-circle--all .ach-circle__ring, .ach-circle--soon .ach-circle__ring { background: var(--paper-2); box-shadow: none; }
+.ach-circle--all .ach-circle__ring::after, .ach-circle--soon .ach-circle__ring::after { display: none; }
+.ach-circle--all .ach-circle__label, .ach-circle--soon .ach-circle__label { color: var(--maroon); text-shadow: none; text-align: center; }
+.ach-circle__all { display: grid; place-items: center; width: 100%; height: 100%; border-radius: 11px; border: 1px dashed var(--gold); font-size: 30px; color: var(--maroon); }
+@media (max-width: 719px) { .ach-circle { width: 132px; } }
+
+/* the home strip that holds the circles */
+.ach-bar-sheet { padding-block: clamp(28px, 4vw, 44px); background: var(--paper); border-bottom: 1px solid var(--paper-2); }
+.ach-bar-sheet .band { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: clamp(18px, 3vw, 40px); align-items: start; }
+.ach-bar__head { display: grid; gap: 6px; }
+.ach-bar__title { margin: 0; font: 400 clamp(22px, 2.4vw, 30px) / 1.1 var(--font-serif); color: var(--maroon); }
+.ach-bar__title em { color: var(--gold); }
+.ach-bar__link { font: 600 14px / 1.2 var(--font-sans); color: var(--ink-2); }
+@media (max-width: 719px) { .ach-bar-sheet .band { grid-template-columns: 1fr; } }
+/* two groups under "Our Recent Updates": Achievements and Study Tour */
+.ach-groups { display: flex; flex-wrap: wrap; gap: clamp(18px, 3vw, 44px); min-width: 0; }
+.ach-group { min-width: 0; display: grid; gap: 10px; }
+.ach-group + .ach-group { padding-left: clamp(18px, 3vw, 44px); border-left: 1px solid var(--paper-2); }
+.ach-group__title { margin: 0; font: 700 12px / 1 var(--font-sans); letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); }
+.ach-circle--soon { cursor: default; opacity: 0.75; }
+@media (max-width: 719px) { .ach-groups { display: grid; } .ach-group + .ach-group { padding-left: 0; border-left: 0; padding-top: 14px; border-top: 1px solid var(--paper-2); } }
+.ach-anchor { scroll-margin-top: 120px; }
+
+/* ---------- viewer ---------- */
+html.ach-viewer-open { overflow: hidden; }
+.ach-viewer { position: fixed; inset: 0; z-index: 9999; display: grid; place-items: center; background: rgba(20, 3, 4, 0.92); backdrop-filter: blur(6px);
+  opacity: 0; transition: opacity 250ms; }
+.ach-viewer.is-open { opacity: 1; }
+.ach-viewer[hidden] { display: none; }
+.ach-viewer__card { position: relative; width: min(420px, 100vw); height: min(92vh, 760px); border-radius: 16px; overflow: hidden; background: var(--maroon-deep); color: var(--paper);
+  box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.8); touch-action: pan-y; user-select: none; }
+@media (max-width: 520px) { .ach-viewer__card { width: 100vw; height: 100dvh; border-radius: 0; } }
+.ach-viewer__bars { position: absolute; z-index: 4; top: 10px; left: 10px; right: 10px; display: flex; gap: 4px; }
+.ach-viewer__bars i { flex: 1; height: 3px; border-radius: 3px; background: rgba(255, 255, 255, 0.3); overflow: hidden; }
+.ach-viewer__bars b { display: block; height: 100%; background: var(--paper); transform: scaleX(0); transform-origin: left; }
+.ach-viewer__bars i.is-done b { transform: scaleX(1); }
+.ach-viewer__head { position: absolute; z-index: 5; top: 22px; left: 12px; right: 8px; display: flex; align-items: center; gap: 6px; }
+.ach-viewer__who { flex: 1; display: flex; flex-direction: column; font: 13px / 1.25 var(--font-sans); text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6); }
+.ach-viewer__who b { font-weight: 700; font-size: 14px; }
+.ach-viewer__who span { opacity: 0.8; }
+.ach-viewer__btn { width: 40px; height: 40px; border-radius: 50%; border: 0; background: rgba(0, 0, 0, 0.3); color: var(--paper); font-size: 16px; line-height: 1; cursor: pointer; }
+.ach-viewer__close { font-size: 26px; }
+.ach-viewer__btn:focus-visible, .ach-viewer__arrow:focus-visible, .ach-viewer__tap:focus-visible { outline: 3px solid var(--gold-text); outline-offset: 2px; }
+.ach-viewer__stage { position: absolute; inset: 0; }
+.ach-viewer__card.is-text .ach-viewer__stage { z-index: 4; }   /* the last slide: its button sits above the tap areas */
+.ach-viewer__tap { position: absolute; z-index: 3; top: 70px; bottom: 90px; width: 35%; border: 0; background: transparent; cursor: pointer; }
+.ach-viewer__tap--prev { left: 0; }
+.ach-viewer__tap--next { right: 0; width: 65%; }
+.ach-viewer__arrow { position: absolute; top: 50%; translate: 0 -50%; width: 52px; height: 52px; border-radius: 50%; border: 1px solid rgba(217, 178, 92, 0.6); background: rgba(30, 1, 2, 0.6); color: var(--paper); font-size: 22px; cursor: pointer; }
+.ach-viewer__arrow:disabled { opacity: 0.25; cursor: default; }
+.ach-viewer__arrow--prev { left: calc(50% - 300px); }
+.ach-viewer__arrow--next { right: calc(50% - 300px); }
+@media (max-width: 720px) { .ach-viewer__arrow { display: none; } }
+
+.ach-slide { position: absolute; inset: 0; animation: ach-in 350ms ease both; }
+@keyframes ach-in { from { opacity: 0; transform: scale(1.02); } to { opacity: 1; transform: none; } }
+.ach-slide__bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: blur(24px) brightness(0.5); transform: scale(1.2); }
+.ach-slide__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
+.ach-slide__cap { position: absolute; left: 0; right: 0; bottom: 0; padding: 70px 22px 28px; background: linear-gradient(180deg, transparent, rgba(30, 1, 2, 0.92)); }
+.ach-slide__top { margin: 0; font: 500 28px / 1.1 var(--font-serif); color: var(--gold-text); }
+.ach-slide__bottom { margin: 6px 0 0; font: 600 14px / 1.35 var(--font-sans); letter-spacing: 0.02em; }
+.ach-slide--text { display: flex; flex-direction: column; justify-content: center; gap: 14px; padding: 80px 28px 40px;
+  background: radial-gradient(120% 80% at 50% 20%, var(--maroon), var(--maroon-deep)); }
+.ach-slide__kicker { margin: 0; font: 700 12px / 1 var(--font-sans); letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-text); }
+.ach-slide__title { margin: 0; font: 500 30px / 1.12 var(--font-serif); }
+.ach-slide__sum { margin: 0; font: 16px / 1.55 var(--font-sans); opacity: 0.9; }
+.ach-slide__go { position: relative; z-index: 6; align-self: flex-start; margin-top: 8px; }
+
+/* ---------- cards ---------- */
+.ach-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: clamp(18px, 2.4vw, 28px); }
+.ach-card__link { display: flex; flex-direction: column; height: 100%; border-radius: 12px; overflow: hidden; background: var(--paper-3); border: 1px solid var(--paper-2); color: inherit; text-decoration: none;
+  transition: transform var(--t-ui), box-shadow var(--t-ui); }
+.ach-card__link:hover { transform: translateY(-3px); box-shadow: 0 18px 36px -20px rgba(60, 10, 10, 0.45); }
+.ach-card__link:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+.ach-card__media { position: relative; display: block; aspect-ratio: 4 / 5; background: var(--paper-2); overflow: hidden; }
+.ach-card__media img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 25%; }
+.ach-card__tag { position: absolute; left: 14px; top: 14px; padding: 6px 10px; border-radius: 999px; background: var(--maroon); color: var(--paper); font: 700 11px / 1 var(--font-sans); letter-spacing: 0.14em; text-transform: uppercase; }
+.ach-card__body { display: flex; flex-direction: column; gap: 8px; padding: 18px 20px 22px; flex: 1; }
+.ach-card__date { font: 600 12px / 1 var(--font-sans); letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); }
+.ach-card__title { font: 500 21px / 1.2 var(--font-serif); color: var(--maroon); }
+.ach-card__who { font: 14px / 1.4 var(--font-sans); color: var(--ink-2); }
+.ach-card__more { margin-top: auto; padding-top: 8px; font: 700 14px / 1 var(--font-sans); color: var(--maroon); }
+.ach-empty { color: var(--ink-2); }
+
+/* ---------- full story ---------- */
+.ach-story { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(24px, 4vw, 56px); align-items: start; }
+@media (max-width: 899px) { .ach-story { grid-template-columns: 1fr; } }
+.ach-story__media { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.ach-story__fig { margin: 0; }
+.ach-story__fig img { display: block; width: 100%; height: auto; border-radius: 10px; box-shadow: 0 18px 40px -24px rgba(60, 10, 10, 0.5); }
+.ach-story__fig figcaption { margin-top: 8px; }
+.ach-story__meta { display: flex; gap: 12px; align-items: center; margin: 0 0 14px; font: 600 13px / 1 var(--font-sans); color: var(--ink-2); }
+.ach-story__tag { padding: 6px 10px; border-radius: 999px; background: var(--maroon); color: var(--paper); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; }
+.ach-story__headline { margin: 0; font: 500 clamp(30px, 3.4vw, 44px) / 1.05 var(--font-serif); color: var(--gold); }
+.ach-story__subline { margin: 8px 0 0; font: 600 15px / 1.4 var(--font-sans); color: var(--ink); }
+.ach-story__facts { display: grid; gap: 0; margin: 22px 0; border-top: 1px solid var(--paper-2); }
+.ach-story__facts div { display: grid; grid-template-columns: 130px 1fr; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--paper-2); }
+.ach-story__facts dt { font: 600 12px / 1.4 var(--font-sans); letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); }
+.ach-story__facts dd { margin: 0; font: 15px / 1.45 var(--font-sans); }
+.ach-story__p { font: 17px / 1.65 var(--font-sans); color: var(--ink); margin: 0 0 14px; max-width: 62ch; }
+.ach-story__source { margin-top: 18px; }
+.ach-story__actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-top: 22px; }
+.ach-pager { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: clamp(32px, 5vw, 56px); padding-top: 22px; border-top: 1px solid var(--paper-2); }
+.ach-pager__a { display: flex; flex-direction: column; gap: 6px; color: var(--maroon); text-decoration: none; font: 500 18px / 1.3 var(--font-serif); }
+.ach-pager__a--prev { text-align: right; }
+
+@media (prefers-reduced-motion: reduce) {
+  .ach-viewer, .ach-slide, .ach-card__link, .ach-circle__ring { transition: none; animation: none; }
+}
+.ach-page .ach-circles { margin: 8px 0 clamp(20px, 3vw, 32px); }

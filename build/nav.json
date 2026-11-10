@@ -1,10 +1,10 @@
 {
-  "_readme": "SINGLE SOURCE OF TRUTH for the information architecture of The Playpen School site. build.py and shell.py read this file; nothing about which pages exist, how they are grouped, what the menu and footer show, or which phone numbers appear is written anywhere else. Page ids (P02...) are the ids in DS's full site plan (P03 'Welcome from the Principal' is not built: it needs the Principal's own words). 'slug' is always the URL path with a leading and a trailing slash. A page's source lives at build/pages/<slug-without-slashes>.html or build/pages/<slug>/index.html. Fields per page: id, slug, label (short name for menu, footer, breadcrumb), title (document title and default H1), template (T01..T12, see 'templates'), parent (breadcrumb parent slug or null), group (key of the primary-menu group or null), menu (true = listed under its group in the full-screen menu), footer (footer column key or null), description (SEO meta description, 60 to 170 characters, plain text with no HTML entities, factual), summary (one line for chapter cards and the human sitemap), optional: menu_label (a longer name for the full-screen menu only, e.g. the class range; label stays short for the breadcrumb, cards and eyebrow), footer_label (the name in the footer column), eyebrow, og_image (path under site/assets/), noindex, schema (school | faq | contact | about | collection | article), sitemap (false keeps it out of sitemap.xml and the search index), actions (false hides the sticky actions on that page).",
+  "_readme": "SINGLE SOURCE OF TRUTH for the information architecture of Playpen School site. build.py and shell.py read this file; nothing about which pages exist, how they are grouped, what the menu and footer show, or which phone numbers appear is written anywhere else. Page ids (P02...) are the ids in DS's full site plan (P03 'Welcome from the Principal' is not built: it needs the Principal's own words). 'slug' is always the URL path with a leading and a trailing slash. A page's source lives at build/pages/<slug-without-slashes>.html or build/pages/<slug>/index.html. Fields per page: id, slug, label (short name for menu, footer, breadcrumb), title (document title and default H1), template (T01..T12, see 'templates'), parent (breadcrumb parent slug or null), group (key of the primary-menu group or null), menu (true = listed under its group in the full-screen menu), footer (footer column key or null), description (SEO meta description, 60 to 170 characters, plain text with no HTML entities, factual), summary (one line for chapter cards and the human sitemap), optional: menu_label (a longer name for the full-screen menu only, e.g. the class range; label stays short for the breadcrumb, cards and eyebrow), footer_label (the name in the footer column), eyebrow, og_image (path under site/assets/), noindex, schema (school | faq | contact | about | collection | article), sitemap (false keeps it out of sitemap.xml and the search index), actions (false hides the sticky actions on that page).",
 
   "site": {
-    "name": "The Playpen School",
+    "name": "Playpen School",
     "short_name": "Playpen",
-    "title_suffix": " | The Playpen School, Dhaka",
+    "title_suffix": " | Playpen School, Dhaka",
     "tagline": "Playgroup to A Level, under one roof",
     "address_line": "House 545/A, Block J, Road 19, Bashundhara R/A, Dhaka 1229",
     "address": {
@@ -161,14 +161,14 @@
 
   "pages": [
     {
-      "id": "P01", "slug": "/", "label": "Home", "title": "The Playpen School, Dhaka: Playgroup to A Level, under one roof",
+      "id": "P01", "slug": "/", "label": "Home", "title": "Playpen School, Dhaka: Playgroup to A Level, under one roof",
       "template": "T01", "parent": null, "group": null, "menu": false, "footer": null, "source": "handbuilt",
       "description": "An English-medium day school in Bashundhara R/A, Dhaka. Cambridge O Level, AS and A Level. Playgroup to Class XII on one purpose-built campus of ten storeys.",
       "summary": "The school in one scroll."
     },
     {
       "id": "P02", "footer_label": "About Playpen", "slug": "/about/", "label": "About", "title": "About Playpen", "template": "T02", "parent": null, "group": "about", "menu": false, "footer": "about", "schema": "school",
-      "description": "The Playpen School is an English-medium day school in Bashundhara R/A, Dhaka: Playgroup to Class XII on one campus, with Cambridge O Level, AS and A Level.",
+      "description": "Playpen School is an English-medium day school in Bashundhara R/A, Dhaka: Playgroup to Class XII on one campus, with Cambridge O Level, AS and A Level.",
       "summary": "What the school is, and where to read more about its history, people, campus and policies."
     },
     {
@@ -178,12 +178,12 @@
     },
     {
       "id": "P05A", "slug": "/about/school-administration/", "label": "School administration", "title": "School administration", "template": "T11", "parent": "/about/", "group": "about", "menu": true, "footer": "about",
-      "description": "The people who run The Playpen School: the Chairman, Managing Director, Principal, Vice Principals and Teachers-in-Charge, and how the school is organised.",
+      "description": "The people who run Playpen School: the Chairman, Managing Director, Principal, Vice Principals and Teachers-in-Charge, and how the school is organised.",
       "summary": "The Chairman, the Managing Director, the Principal, the Vice Principals and the Teachers-in-Charge, and how the school is organised."
     },
     {
       "id": "P05", "slug": "/about/leadership/", "label": "Who to ask about your child's class", "title": "Who looks after each class", "template": "T11", "parent": "/about/", "group": "about", "menu": true, "footer": "about",
-      "description": "Which Teacher-in-Charge and Vice Principal look after each class at The Playpen School, from Playgroup to Class XII, and the telephone line to call about it.",
+      "description": "Which Teacher-in-Charge and Vice Principal look after each class at Playpen School, from Playgroup to Class XII, and the telephone line to call about it.",
       "summary": "Pick your child's class to see the Teacher-in-Charge, the Vice Principal and the line to call."
     },
     {
@@ -193,17 +193,17 @@
     },
     {
       "id": "P07", "slug": "/about/child-protection/", "label": "Child protection", "title": "Child protection and safeguarding", "template": "T05", "parent": "/about/", "group": "about", "menu": true, "footer": null,
-      "description": "How The Playpen School keeps children safe every day, and the telephone lines to call if you are worried about a child.",
+      "description": "How Playpen School keeps children safe every day, and the telephone lines to call if you are worried about a child.",
       "summary": "How the school looks after children, and how to raise a concern."
     },
     {
       "id": "P08", "slug": "/about/policies/", "label": "Policies", "title": "Policies and documents", "template": "T05", "parent": "/about/", "group": "about", "menu": true, "footer": null,
-      "description": "The code of conduct, uniform rules, attendance and other policies of The Playpen School, with the documents families may need.",
+      "description": "The code of conduct, uniform rules, attendance and other policies of Playpen School, with the documents families may need.",
       "summary": "The code of conduct, uniform, attendance and other documents, in one place."
     },
     {
       "id": "P09", "slug": "/about/careers/", "label": "Careers", "title": "Careers at Playpen", "template": "T05", "parent": "/about/", "group": "about", "menu": true, "footer": "about",
-      "description": "Teach at The Playpen School: how to apply, what to send and where current vacancies are listed.",
+      "description": "Teach at Playpen School: how to apply, what to send and where current vacancies are listed.",
       "summary": "Teaching at Playpen: how to apply and where vacancies are listed."
     },
     {
@@ -233,7 +233,7 @@
     },
     {
       "id": "P15", "slug": "/learning/a-level/", "label": "A Level", "menu_label": "AS and A Level (from Class XI)", "title": "AS and A Level", "template": "T04", "parent": "/learning/", "group": "learning", "menu": true, "footer": "learning",
-      "description": "AS and A Level at The Playpen School, taught since 2013: the eleven subjects offered, how many a student takes, the 2026 results and how admission to Class XI works.",
+      "description": "AS and A Level at Playpen School, taught since 2013: the eleven subjects offered, how many a student takes, the 2026 results and how admission to Class XI works.",
       "summary": "AS and A Level, taught at Playpen since 2013."
     },
     {
@@ -248,22 +248,22 @@
     },
     {
       "id": "P18", "slug": "/learning/results/", "label": "Results", "title": "Results and achievements", "template": "T12", "parent": "/learning/", "group": "learning", "menu": true, "footer": "learning",
-      "description": "Cambridge results for May–June 2026 at The Playpen School, the awards its students receive, and the competitions it has published results for, with the year and source.",
+      "description": "Cambridge results for May–June 2026 at Playpen School, the awards its students receive, and the competitions it has published results for, with the year and source.",
       "summary": "Cambridge results 2026, awards and competitions, each with its year and source."
     },
     {
       "id": "P19", "slug": "/learning/student-support/", "label": "Student support", "title": "Student support", "template": "T05", "parent": "/learning/", "group": "learning", "menu": true, "footer": "learning",
-      "description": "The student counsellor, career guidance, university application support and the health centre at The Playpen School, for every class from Playgroup to Class XII.",
+      "description": "The student counsellor, career guidance, university application support and the health centre at Playpen School, for every class from Playgroup to Class XII.",
       "summary": "The counsellor, career and university guidance and the health centre, for every class."
     },
     {
       "id": "P20", "footer_label": "Admissions overview", "slug": "/admissions/", "label": "Admissions", "title": "Admissions", "template": "T02", "parent": null, "group": "admissions", "menu": false, "footer": "admissions",
-      "description": "Admission to The Playpen School: visit, enquire and apply. Playgroup to Class XII, with applications accepted for the current year if there is space.",
+      "description": "Admission to Playpen School: visit, enquire and apply. Playgroup to Class XII, with applications accepted for the current year if there is space.",
       "summary": "Visit, enquire, apply."
     },
     {
       "id": "P23", "slug": "/admissions/visit/", "label": "Book a visit", "title": "Book a visit", "template": "T07", "parent": "/admissions/", "group": "admissions", "menu": true, "footer": "admissions", "actions": false,
-      "description": "Plan a visit to The Playpen School in Bashundhara R/A, Dhaka. Call the admissions line for your child's section, 9.00 am to 1.00 pm; the office confirms the day.",
+      "description": "Plan a visit to Playpen School in Bashundhara R/A, Dhaka. Call the admissions line for your child's section, 9.00 am to 1.00 pm; the office confirms the day.",
       "summary": "Come and see the school. Call first; the office confirms the day."
     },
     {
@@ -273,12 +273,12 @@
     },
     {
       "id": "P21", "slug": "/admissions/how-to-apply/", "label": "How to apply", "title": "How to apply", "template": "T06", "parent": "/admissions/", "group": "admissions", "menu": true, "footer": "admissions",
-      "description": "The five steps from first call to result at The Playpen School, the assessment for each entry point, what to bring and where to get the form.",
+      "description": "The five steps from first call to result at Playpen School, the assessment for each entry point, what to bring and where to get the form.",
       "summary": "The five steps from the first call to the result, the form, and what to bring."
     },
     {
       "id": "P22", "slug": "/admissions/fees/", "label": "Fees and payment", "title": "Fees and payment", "template": "T06", "parent": "/admissions/", "group": "admissions", "menu": true, "footer": "admissions",
-      "description": "How fees and monthly tuition are explained after selection at The Playpen School, and how they are paid online through the school's bank.",
+      "description": "How fees and monthly tuition are explained after selection at Playpen School, and how they are paid online through the school's bank.",
       "summary": "How fees are explained and paid. Amounts come from the admissions office."
     },
     {
@@ -288,22 +288,22 @@
     },
     {
       "id": "P24", "slug": "/admissions/faq/", "label": "FAQ", "title": "Admissions FAQ", "template": "T06", "parent": "/admissions/", "group": "admissions", "menu": true, "footer": "admissions", "schema": "faq",
-      "description": "Answers to the questions families ask most about admission to The Playpen School: tests, documents, fees, uniform, transport and safety.",
+      "description": "Answers to the questions families ask most about admission to Playpen School: tests, documents, fees, uniform, transport and safety.",
       "summary": "Twenty answers, grouped by topic, with a search."
     },
     {
       "id": "P27", "slug": "/school-life/", "label": "School life", "title": "School life at Playpen", "template": "T02", "parent": null, "group": "school-life", "menu": false, "footer": "community",
-      "description": "Sport, clubs, the Cultural Programme, community service and the school day at The Playpen School in Bashundhara R/A, Dhaka.",
+      "description": "Sport, clubs, the Cultural Programme, community service and the school day at Playpen School in Bashundhara R/A, Dhaka.",
       "summary": "The year, in the courtyard and on the field."
     },
     {
       "id": "P32", "slug": "/school-life/school-day/", "label": "The school day", "title": "The school day", "template": "T05", "parent": "/school-life/", "group": "school-life", "menu": true, "footer": "community",
-      "description": "How a school day runs at The Playpen School, from arrival to home time, with the practical things families should know first.",
+      "description": "How a school day runs at Playpen School, from arrival to home time, with the practical things families should know first.",
       "summary": "The day from the gate to the gate, and the four things new families ask first."
     },
     {
       "id": "P31", "slug": "/school-life/transport-and-safety/", "label": "Transport and safety", "title": "Transport and safety", "template": "T05", "parent": "/school-life/", "group": "school-life", "menu": true, "footer": null,
-      "description": "The school bus service, the sick room, CCTV and 24-hour security at The Playpen School, and how to apply for a bus place.",
+      "description": "The school bus service, the sick room, CCTV and 24-hour security at Playpen School, and how to apply for a bus place.",
       "summary": "How the campus is kept safe, the rules at the gate, and the school bus."
     },
     {
@@ -313,17 +313,17 @@
     },
     {
       "id": "P29", "slug": "/school-life/clubs-and-activities/", "label": "Clubs and activities", "title": "Clubs and activities", "template": "T05", "parent": "/school-life/", "group": "school-life", "menu": true, "footer": "community",
-      "description": "Art and Craft, Music, Dance, Drama, Debate, the Olympiads, the Duke of Edinburgh's Award and other clubs at The Playpen School.",
+      "description": "Art and Craft, Music, Dance, Drama, Debate, the Olympiads, the Duke of Edinburgh's Award and other clubs at Playpen School.",
       "summary": "Thirteen activities in five groups, from Music and Debate to the Duke of Edinburgh's Award, and the school's trips."
     },
     {
       "id": "P30", "slug": "/school-life/culture-and-service/", "label": "Culture and service", "title": "Culture and service", "template": "T03", "parent": "/school-life/", "group": "school-life", "menu": true, "footer": "community",
-      "description": "The Cultural Programme, Pohela Boishakh in the courtyard and community service at The Playpen School.",
+      "description": "The Cultural Programme, Pohela Boishakh in the courtyard and community service at Playpen School.",
       "summary": "The Cultural Programme, Pohela Boishakh and community service."
     },
     {
       "id": "P33H", "slug": "/community/", "label": "Community", "title": "Community", "template": "T02", "parent": null, "group": "community", "menu": false, "footer": null,
-      "description": "Parents, alumni, news, events, notices and photographs from The Playpen School in Bashundhara R/A, Dhaka: the pages for families who are already part of the school.",
+      "description": "Parents, alumni, news, events, notices and photographs from Playpen School in Bashundhara R/A, Dhaka: the pages for families who are already part of the school.",
       "summary": "Parents, alumni, news, events, notices and photographs."
     },
     {
@@ -333,317 +333,327 @@
     },
     {
       "id": "P34", "slug": "/community/alumni/", "label": "Alumni", "title": "Alumni", "template": "T05", "parent": "/community/", "group": "community", "menu": true, "footer": "community",
-      "description": "The Playpen Alumni Association: how former students send their details, the albums of each graduation year, and the school's dates.",
-      "summary": "The Playpen Alumni Association, the graduation albums by year, and how to stay in touch."
+      "description": "Former students: albums by year, the school's dates, and how to join Playpen Alumni.",
+      "summary": "Albums by year and how to join the alumni community."
+    },
+    {
+      "id": "P35a", "slug": "/achievements/", "label": "Our recent updates", "title": "Our recent updates", "template": "T08", "parent": null, "group": "community", "menu": true, "footer": "community",
+      "description": "Our recent updates from Playpen School: students' achievements and study tours, newest first, each with its own story.",
+      "summary": "Students' prizes and commendations, newest first, each with its story."
+    },
+    {
+      "id": "P35b", "slug": "/achievements/story/", "label": "Story", "title": "Story", "template": "T09", "parent": "/achievements/", "group": "community", "menu": false, "footer": null,
+      "description": "One achievement story from Playpen School: the student, the prize, the photographs and the certificate, as the school first shared it.",
+      "summary": "One achievement story."
     },
     {
       "id": "P35", "slug": "/news/", "label": "News and achievements", "title": "News and achievements", "template": "T08", "parent": null, "group": "community", "menu": true, "footer": "community",
-      "description": "News and achievements at The Playpen School: reports from Sports Day, Pohela Boishakh, a NASA astronaut's visit and graduation, and eleven competition results, dated.",
+      "description": "News and achievements at Playpen School: reports from Sports Day, Pohela Boishakh, a NASA astronaut's visit and graduation, and eleven competition results, dated.",
       "summary": "Reports from the school year and competition results."
     },
     {
       "id": "P36", "slug": "/events/", "label": "Events", "title": "Events", "template": "T08", "parent": null, "group": "community", "menu": true, "footer": "community",
-      "description": "The events of the school year at The Playpen School, from Annual Sports Day and Pohela Boishakh to graduation, and where families find the dates.",
+      "description": "The events of the school year at Playpen School, from Annual Sports Day and Pohela Boishakh to graduation, and where families find the dates.",
       "summary": "Fifteen events in the school year, the two semesters, and where families find the dates."
     },
     {
       "id": "E01", "slug": "/events/annual-sports-day/", "label": "Annual Sports Day", "title": "Annual Sports Day", "template": "T09", "parent": "/events/", "group": "community", "menu": false, "footer": null,
-      "description": "The whole school on the field: the march past, the displays, races and inter-house competition at The Playpen School's Annual Sports Day.",
+      "description": "The whole school on the field: the march past, the displays, races and inter-house competition at Playpen School's Annual Sports Day.",
       "summary": "The march past, the displays and the races, on the school field."
     },
     {
       "id": "E02", "slug": "/events/pohela-boishakh/", "label": "Pohela Boishakh", "title": "Pohela Boishakh", "template": "T09", "parent": "/events/", "group": "community", "menu": false, "footer": null,
-      "description": "Pohela Boishakh, the Bengali new year, at The Playpen School: an alpona on the courtyard floor, stalls of folk art and clay pots, and dance.",
+      "description": "Pohela Boishakh, the Bengali new year, at Playpen School: an alpona on the courtyard floor, stalls of folk art and clay pots, and dance.",
       "summary": "The Bengali new year, celebrated across the school, on 14 April."
     },
     {
       "id": "E03", "slug": "/events/science-and-technology-fair/", "label": "Science and Technology Fair", "title": "Science and Technology Fair", "template": "T09", "parent": "/events/", "group": "community", "menu": false, "footer": null,
-      "description": "The Science and Technology Fair at The Playpen School: students show their projects, experiments and models at stalls in the multipurpose hall.",
+      "description": "The Science and Technology Fair at Playpen School: students show their projects, experiments and models at stalls in the multipurpose hall.",
       "summary": "Student projects, experiments and models, shown at stalls in the hall."
     },
     {
       "id": "E04", "slug": "/events/annual-cultural-programme/", "label": "Annual Cultural Programme", "title": "Annual Cultural Programme", "template": "T09", "parent": "/events/", "group": "community", "menu": false, "footer": null,
-      "description": "The Annual Cultural Programme at The Playpen School: the school's largest performance event, with music, dance and drama in the multipurpose hall.",
+      "description": "The Annual Cultural Programme at Playpen School: the school's largest performance event, with music, dance and drama in the multipurpose hall.",
       "summary": "The school's largest performance event: music, dance and drama on stage."
     },
     {
       "id": "E05", "slug": "/events/graduation-ceremony/", "label": "Graduation Ceremony", "title": "Graduation Ceremony", "template": "T09", "parent": "/events/", "group": "community", "menu": false, "footer": null,
-      "description": "The Graduation Ceremony of Ordinary and Advanced Level at The Playpen School: graduates in caps, gowns and maroon sashes in the multipurpose hall.",
+      "description": "The Graduation Ceremony of Ordinary and Advanced Level at Playpen School: graduates in caps, gowns and maroon sashes in the multipurpose hall.",
       "summary": "The graduates of O Level and A Level, in caps, gowns and maroon sashes."
     },
     {
       "id": "E06", "slug": "/events/shaheed-dibosh/", "label": "Shaheed Dibosh", "title": "Shaheed Dibosh: International Mother Language Day", "template": "T09", "parent": "/events/", "group": "community", "menu": false, "footer": null,
-      "description": "Shaheed Dibosh at The Playpen School: on 21 February the school remembers the Language Movement of 1952 and marks International Mother Language Day.",
+      "description": "Shaheed Dibosh at Playpen School: on 21 February the school remembers the Language Movement of 1952 and marks International Mother Language Day.",
       "summary": "21 February: the Language Movement remembered, and International Mother Language Day."
     },
     {
       "id": "E07", "slug": "/events/independence-day/", "label": "Independence Day", "title": "Independence Day", "template": "T09", "parent": "/events/", "group": "community", "menu": false, "footer": null,
-      "description": "Independence Day at The Playpen School: the national day of Bangladesh, 26 March, marked by the school with a function each year.",
+      "description": "Independence Day at Playpen School: the national day of Bangladesh, 26 March, marked by the school with a function each year.",
       "summary": "26 March: the national day of Bangladesh, marked with a school function."
     },
     {
       "id": "E08", "slug": "/events/victory-day/", "label": "Victory Day", "title": "Victory Day", "template": "T09", "parent": "/events/", "group": "community", "menu": false, "footer": null,
-      "description": "Victory Day at The Playpen School: on 16 December the school commemorates the victory of 1971 and the end of the Liberation War of Bangladesh.",
+      "description": "Victory Day at Playpen School: on 16 December the school commemorates the victory of 1971 and the end of the Liberation War of Bangladesh.",
       "summary": "16 December: the victory of 1971, commemorated every year."
     },
     {
       "id": "E09", "slug": "/events/annual-drama/", "label": "Annual Drama", "title": "Annual Drama", "template": "T09", "parent": "/events/", "group": "community", "menu": false, "footer": null,
-      "description": "The Annual Drama at The Playpen School: one of the school's yearly events, beside Drama as a regular activity and the school's Drama Club.",
+      "description": "The Annual Drama at Playpen School: one of the school's yearly events, beside Drama as a regular activity and the school's Drama Club.",
       "summary": "Drama on the hall stage, from the Drama activity and the Drama Club."
     },
     {
       "id": "E10", "slug": "/events/annual-milad/", "label": "Annual Milad", "title": "Annual Milad", "template": "T09", "parent": "/events/", "group": "community", "menu": false, "footer": null,
-      "description": "The Annual Milad at The Playpen School: a gathering for prayer and recitation, held each year as part of the school's calendar.",
+      "description": "The Annual Milad at Playpen School: a gathering for prayer and recitation, held each year as part of the school's calendar.",
       "summary": "A gathering for prayer and recitation, held each year."
     },
     {
       "id": "E11", "slug": "/events/orientation-day/", "label": "Orientation Day", "title": "Orientation Day", "template": "T09", "parent": "/events/", "group": "community", "menu": false, "footer": null,
-      "description": "Orientation Day at The Playpen School: the day that introduces students and families to the school and its year, with the practical details of the first weeks.",
+      "description": "Orientation Day at Playpen School: the day that introduces students and families to the school and its year, with the practical details of the first weeks.",
       "summary": "A day that introduces students and families to the school year."
     },
     {
       "id": "E12", "slug": "/events/book-fair/", "label": "Book Fair", "title": "Book Fair", "template": "T09", "parent": "/events/", "group": "community", "menu": false, "footer": null,
-      "description": "The Book Fair at The Playpen School: a fair of books held at the school each year, alongside the library and the reading lessons of every class.",
+      "description": "The Book Fair at Playpen School: a fair of books held at the school each year, alongside the library and the reading lessons of every class.",
       "summary": "A fair of books, beside the library lessons of every class."
     },
     {
       "id": "E13", "slug": "/events/education-fair/", "label": "Education Fair", "title": "Education Fair", "template": "T09", "parent": "/events/", "group": "community", "menu": false, "footer": null,
-      "description": "The Education Fair at The Playpen School: one of the yearly events the school lists, beside its workshops on applying to colleges and universities.",
+      "description": "The Education Fair at Playpen School: one of the yearly events the school lists, beside its workshops on applying to colleges and universities.",
       "summary": "The yearly fair beside the school's guidance on studying further."
     },
     {
       "id": "E14", "slug": "/events/business-week/", "label": "Business Week", "title": "Business Week", "template": "T09", "parent": "/events/", "group": "community", "menu": false, "footer": null,
-      "description": "Business Week at The Playpen School: one of the school's yearly events, beside its Business Club and the business subjects taught at O Level and A Level.",
+      "description": "Business Week at Playpen School: one of the school's yearly events, beside its Business Club and the business subjects taught at O Level and A Level.",
       "summary": "A week for the business subjects and the Business Club."
     },
     {
       "id": "E15", "slug": "/events/study-tour/", "label": "Study Tour", "title": "Study Tour", "template": "T09", "parent": "/events/", "group": "community", "menu": false, "footer": null,
-      "description": "The Study Tour at The Playpen School: students learn away from the classroom on trips and outings, taken with their parents' permission.",
+      "description": "The Study Tour at Playpen School: students learn away from the classroom on trips and outings, taken with their parents' permission.",
       "summary": "Learning away from the classroom, with parents' permission."
     },
     {
       "id": "P37", "slug": "/notices/", "label": "Notices", "title": "Notices", "template": "T08", "parent": null, "group": "community", "menu": true, "footer": null,
-      "description": "Current notices from The Playpen School, including admission notices and examination dates.",
+      "description": "Current notices from Playpen School, including admission notices and examination dates.",
       "summary": "Current notices from the school."
     },
     {
       "id": "P38", "slug": "/gallery/", "label": "Gallery", "title": "Gallery", "template": "T10", "parent": null, "group": "community", "menu": true, "footer": "community",
-      "description": "Photographs from the school year at The Playpen School: Annual Sports Day, Pohela Boishakh, the Cultural Programme, the Science and Technology Fair and graduation.",
+      "description": "Photographs from the school year at Playpen School: Annual Sports Day, Pohela Boishakh, the Cultural Programme, the Science and Technology Fair and graduation.",
       "summary": "The school's albums, in frames where no child can be recognised, and the building."
     },
     {
       "id": "G01", "slug": "/gallery/annual-sports-day-2026-playgroup-kg/", "label": "Annual Sports Day 2026: Playgroup to KG II", "title": "Photographs of Annual Sports Day 2026: Playgroup to KG II", "template": "T10", "parent": "/gallery/", "group": "community", "menu": false, "footer": null, "noindex": true,
-      "description": "Annual Sports Day 2026: Playgroup to KG II: an album from the school gallery of The Playpen School, Dhaka, in frames where no child can be recognised.",
+      "description": "Annual Sports Day 2026: Playgroup to KG II: an album from the school gallery of Playpen School, Dhaka, in frames where no child can be recognised.",
       "summary": "Sports Day on the school field for the youngest classes, Playgroup to KG II."
     },
     {
       "id": "G02", "slug": "/gallery/annual-sports-day-2026-class-1-12/", "label": "Annual Sports Day 2026: Class I to XII", "title": "Photographs of Annual Sports Day 2026: Class I to XII", "template": "T10", "parent": "/gallery/", "group": "community", "menu": false, "footer": null,
-      "description": "Annual Sports Day 2026: Class I to XII: an album from the school gallery of The Playpen School, Dhaka, in frames where no child can be recognised.",
+      "description": "Annual Sports Day 2026: Class I to XII: an album from the school gallery of Playpen School, Dhaka, in frames where no child can be recognised.",
       "summary": "Displays, the march past and athletics on the school field for Classes I to XII."
     },
     {
       "id": "G03", "slug": "/gallery/cie-top-achievers-2025/", "label": "CIE Top Achievers 2025", "title": "Photographs of CIE Top Achievers 2025", "template": "T10", "parent": "/gallery/", "group": "community", "menu": false, "footer": null, "noindex": true,
-      "description": "CIE Top Achievers 2025: an album from the school gallery of The Playpen School, Dhaka, in frames where no child can be recognised.",
+      "description": "CIE Top Achievers 2025: an album from the school gallery of Playpen School, Dhaka, in frames where no child can be recognised.",
       "summary": "One poster congratulating the school's top achievers in the Cambridge (CIE) examinations of 2025; shown when the school agrees."
     },
     {
       "id": "G04", "slug": "/gallery/graduation-2025/", "label": "Graduation Ceremony 2025", "title": "Photographs of Graduation Ceremony 2025", "template": "T10", "parent": "/gallery/", "group": "community", "menu": false, "footer": null,
-      "description": "Graduation Ceremony 2025: an album from the school gallery of The Playpen School, Dhaka, in frames where no child can be recognised.",
+      "description": "Graduation Ceremony 2025: an album from the school gallery of Playpen School, Dhaka, in frames where no child can be recognised.",
       "summary": "The Graduation Ceremony of Ordinary and Advanced Level, held in the multipurpose hall."
     },
     {
       "id": "G05", "slug": "/gallery/pohela-boishakh-1432/", "label": "Pohela Boishakh 1432", "title": "Photographs of Pohela Boishakh 1432", "template": "T10", "parent": "/gallery/", "group": "community", "menu": false, "footer": null,
-      "description": "Pohela Boishakh 1432: an album from the school gallery of The Playpen School, Dhaka, in frames where no child can be recognised.",
+      "description": "Pohela Boishakh 1432: an album from the school gallery of Playpen School, Dhaka, in frames where no child can be recognised.",
       "summary": "The Bengali new year 1432 at school: an alpona on the courtyard floor, folk art and stalls of clay pots."
     },
     {
       "id": "G06", "slug": "/gallery/nasa-astronaut-visit/", "label": "NASA astronaut Joseph M. Acaba's visit", "title": "Photographs of NASA astronaut Joseph M. Acaba's visit", "template": "T10", "parent": "/gallery/", "group": "community", "menu": false, "footer": null,
-      "description": "NASA astronaut Joseph M. Acaba's visit: an album from the school gallery of The Playpen School, Dhaka, in frames where no child can be recognised.",
+      "description": "NASA astronaut Joseph M. Acaba's visit: an album from the school gallery of Playpen School, Dhaka, in frames where no child can be recognised.",
       "summary": "NASA astronaut Joseph M. Acaba visited the school and spoke to students in the multipurpose hall."
     },
     {
       "id": "G07", "slug": "/gallery/cultural-programme-2024/", "label": "Annual Cultural Programme 2024", "title": "Photographs of Annual Cultural Programme 2024", "template": "T10", "parent": "/gallery/", "group": "community", "menu": false, "footer": null,
-      "description": "Annual Cultural Programme 2024: an album from the school gallery of The Playpen School, Dhaka, in frames where no child can be recognised.",
+      "description": "Annual Cultural Programme 2024: an album from the school gallery of Playpen School, Dhaka, in frames where no child can be recognised.",
       "summary": "Dance and music on the stage of the multipurpose hall."
     },
     {
       "id": "G08", "slug": "/gallery/science-technology-fair-2024/", "label": "Science and Technology Fair 2024", "title": "Photographs of Science and Technology Fair 2024", "template": "T10", "parent": "/gallery/", "group": "community", "menu": false, "footer": null, "noindex": true,
-      "description": "Science and Technology Fair 2024: an album from the school gallery of The Playpen School, Dhaka, in frames where no child can be recognised.",
+      "description": "Science and Technology Fair 2024: an album from the school gallery of Playpen School, Dhaka, in frames where no child can be recognised.",
       "summary": "Students' science and technology projects on display."
     },
     {
       "id": "G09", "slug": "/gallery/pift-2024/", "label": "Playpen Inter-School Football Tournament (PIFT) 2024", "title": "Photographs of Playpen Inter-School Football Tournament (PIFT) 2024", "template": "T10", "parent": "/gallery/", "group": "community", "menu": false, "footer": null,
-      "description": "Playpen Inter-School Football Tournament (PIFT) 2024: an album from the school gallery of The Playpen School, Dhaka, in frames where no child can be recognised.",
+      "description": "Playpen Inter-School Football Tournament (PIFT) 2024: an album from the school gallery of Playpen School, Dhaka, in frames where no child can be recognised.",
       "summary": "Football on the school ground, with teams from other schools. The one frame shown is the tournament banner on the building."
     },
     {
       "id": "G10", "slug": "/gallery/class-party-2024/", "label": "Class Party 2024", "title": "Photographs of Class Party 2024", "template": "T10", "parent": "/gallery/", "group": "community", "menu": false, "footer": null, "noindex": true,
-      "description": "Class Party 2024: an album from the school gallery of The Playpen School, Dhaka, in frames where no child can be recognised.",
+      "description": "Class Party 2024: an album from the school gallery of Playpen School, Dhaka, in frames where no child can be recognised.",
       "summary": "Class parties in decorated classrooms."
     },
     {
       "id": "G11", "slug": "/gallery/graduation-2024/", "label": "Graduation Ceremony 2024", "title": "Photographs of Graduation Ceremony 2024", "template": "T10", "parent": "/gallery/", "group": "community", "menu": false, "footer": null,
-      "description": "Graduation Ceremony 2024: an album from the school gallery of The Playpen School, Dhaka, in frames where no child can be recognised.",
+      "description": "Graduation Ceremony 2024: an album from the school gallery of Playpen School, Dhaka, in frames where no child can be recognised.",
       "summary": "The Graduation Ceremony 2024 in the multipurpose hall."
     },
     {
       "id": "G12", "slug": "/gallery/cultural-programme-2023/", "label": "Annual Cultural Programme 2023", "title": "Photographs of Annual Cultural Programme 2023", "template": "T10", "parent": "/gallery/", "group": "community", "menu": false, "footer": null,
-      "description": "Annual Cultural Programme 2023: an album from the school gallery of The Playpen School, Dhaka, in frames where no child can be recognised.",
+      "description": "Annual Cultural Programme 2023: an album from the school gallery of Playpen School, Dhaka, in frames where no child can be recognised.",
       "summary": "The Annual Cultural Programme of the Elementary and Junior Section."
     },
     {
       "id": "G13", "slug": "/gallery/graduation-2023/", "label": "Graduation Ceremony 2023", "title": "Photographs of Graduation Ceremony 2023", "template": "T10", "parent": "/gallery/", "group": "community", "menu": false, "footer": null,
-      "description": "Graduation Ceremony 2023: an album from the school gallery of The Playpen School, Dhaka, in frames where no child can be recognised.",
+      "description": "Graduation Ceremony 2023: an album from the school gallery of Playpen School, Dhaka, in frames where no child can be recognised.",
       "summary": "The Graduation Ceremony of Ordinary and Advanced Level 2023 in the multipurpose hall."
     },
     {
       "id": "G14", "slug": "/gallery/colour-week/", "label": "Colour Week", "title": "Photographs of Colour Week", "template": "T10", "parent": "/gallery/", "group": "community", "menu": false, "footer": null,
-      "description": "Colour Week: an album from the school gallery of The Playpen School, Dhaka, in frames where no child can be recognised.",
+      "description": "Colour Week: an album from the school gallery of Playpen School, Dhaka, in frames where no child can be recognised.",
       "summary": "A wall display for each colour day, with toys and objects of that colour on the table below."
     },
     {
       "id": "G15", "slug": "/gallery/class-party-2022-2023/", "label": "Class Party 2022 to 2023", "title": "Photographs of Class Party 2022 to 2023", "template": "T10", "parent": "/gallery/", "group": "community", "menu": false, "footer": null,
-      "description": "Class Party 2022 to 2023: an album from the school gallery of The Playpen School, Dhaka, in frames where no child can be recognised.",
+      "description": "Class Party 2022 to 2023: an album from the school gallery of Playpen School, Dhaka, in frames where no child can be recognised.",
       "summary": "Class parties in decorated classrooms."
     },
     {
       "id": "G16", "slug": "/gallery/ekushe-february/", "label": "Ekushe February", "title": "Photographs of Ekushe February", "template": "T10", "parent": "/gallery/", "group": "community", "menu": false, "footer": null,
-      "description": "Ekushe February: an album from the school gallery of The Playpen School, Dhaka, in frames where no child can be recognised.",
+      "description": "Ekushe February: an album from the school gallery of Playpen School, Dhaka, in frames where no child can be recognised.",
       "summary": "21 February, Language Martyrs' Day, marked at school with flowers at a Shaheed Minar."
     },
     {
       "id": "G17", "slug": "/gallery/book-fair/", "label": "Book Fair", "title": "Photographs of Book Fair", "template": "T10", "parent": "/gallery/", "group": "community", "menu": false, "footer": null,
-      "description": "Book Fair: an album from the school gallery of The Playpen School, Dhaka, in frames where no child can be recognised.",
+      "description": "Book Fair: an album from the school gallery of Playpen School, Dhaka, in frames where no child can be recognised.",
       "summary": "A fair of books at school."
     },
     {
       "id": "G18", "slug": "/gallery/independence-day-art-competition/", "label": "Independence Day Art Competition", "title": "Photographs of Independence Day Art Competition", "template": "T10", "parent": "/gallery/", "group": "community", "menu": false, "footer": null,
-      "description": "Independence Day Art Competition: an album from the school gallery of The Playpen School, Dhaka, in frames where no child can be recognised.",
+      "description": "Independence Day Art Competition: an album from the school gallery of Playpen School, Dhaka, in frames where no child can be recognised.",
       "summary": "An art competition for Independence Day, 26 March."
     },
     {
       "id": "G19", "slug": "/gallery/education-fair/", "label": "Education Fair", "title": "Photographs of Education Fair", "template": "T10", "parent": "/gallery/", "group": "community", "menu": false, "footer": null,
-      "description": "Education Fair: an album from the school gallery of The Playpen School, Dhaka, in frames where no child can be recognised.",
+      "description": "Education Fair: an album from the school gallery of Playpen School, Dhaka, in frames where no child can be recognised.",
       "summary": "Students' projects and models on display at the Education Fair."
     },
     {
       "id": "G20", "slug": "/gallery/mathematical-olympiad/", "label": "Mathematical Olympiad", "title": "Photographs of Mathematical Olympiad", "template": "T10", "parent": "/gallery/", "group": "community", "menu": false, "footer": null,
-      "description": "Mathematical Olympiad: an album from the school gallery of The Playpen School, Dhaka, in frames where no child can be recognised.",
+      "description": "Mathematical Olympiad: an album from the school gallery of Playpen School, Dhaka, in frames where no child can be recognised.",
       "summary": "A mathematics competition at school."
     },
     {
       "id": "G21", "slug": "/gallery/bangla-olympiad/", "label": "Bangla Olympiad", "title": "Photographs of Bangla Olympiad", "template": "T10", "parent": "/gallery/", "group": "community", "menu": false, "footer": null,
-      "description": "Bangla Olympiad: an album from the school gallery of The Playpen School, Dhaka, in frames where no child can be recognised.",
+      "description": "Bangla Olympiad: an album from the school gallery of Playpen School, Dhaka, in frames where no child can be recognised.",
       "summary": "Students at an inter-school Bangla Olympiad."
     },
     {
       "id": "G22", "slug": "/gallery/eca-cultural-competition/", "label": "ECA Cultural Competition", "title": "Photographs of ECA Cultural Competition", "template": "T10", "parent": "/gallery/", "group": "community", "menu": false, "footer": null, "noindex": true,
-      "description": "ECA Cultural Competition: an album from the school gallery of The Playpen School, Dhaka, in frames where no child can be recognised.",
+      "description": "ECA Cultural Competition: an album from the school gallery of Playpen School, Dhaka, in frames where no child can be recognised.",
       "summary": "The school's current website lists this album but shows no photographs in it."
     },
     {
       "id": "G23", "slug": "/gallery/inter-class-football/", "label": "Inter-Class Football Tournament", "title": "Photographs of Inter-Class Football Tournament", "template": "T10", "parent": "/gallery/", "group": "community", "menu": false, "footer": null,
-      "description": "Inter-Class Football Tournament: an album from the school gallery of The Playpen School, Dhaka, in frames where no child can be recognised.",
+      "description": "Inter-Class Football Tournament: an album from the school gallery of Playpen School, Dhaka, in frames where no child can be recognised.",
       "summary": "Football between classes on the school ground."
     },
     {
       "id": "G24", "slug": "/gallery/inter-school-football/", "label": "Inter-School Football Tournament", "title": "Photographs of Inter-School Football Tournament", "template": "T10", "parent": "/gallery/", "group": "community", "menu": false, "footer": null, "noindex": true,
-      "description": "Inter-School Football Tournament: an album from the school gallery of The Playpen School, Dhaka, in frames where no child can be recognised.",
+      "description": "Inter-School Football Tournament: an album from the school gallery of Playpen School, Dhaka, in frames where no child can be recognised.",
       "summary": "Football against teams from other schools."
     },
     {
       "id": "G25", "slug": "/gallery/extra-curricular-activities/", "label": "Extra-Curricular Activities", "title": "Photographs of Extra-Curricular Activities", "template": "T10", "parent": "/gallery/", "group": "community", "menu": false, "footer": null, "noindex": true,
-      "description": "Extra-Curricular Activities: an album from the school gallery of The Playpen School, Dhaka, in frames where no child can be recognised.",
+      "description": "Extra-Curricular Activities: an album from the school gallery of Playpen School, Dhaka, in frames where no child can be recognised.",
       "summary": "Karate, table tennis, basketball and games on the field."
     },
     {
       "id": "G26", "slug": "/gallery/foundation-day/", "label": "Foundation Day celebration", "title": "Photographs of Foundation Day celebration", "template": "T10", "parent": "/gallery/", "group": "community", "menu": false, "footer": null, "noindex": true,
-      "description": "Foundation Day celebration: an album from the school gallery of The Playpen School, Dhaka, in frames where no child can be recognised.",
+      "description": "Foundation Day celebration: an album from the school gallery of Playpen School, Dhaka, in frames where no child can be recognised.",
       "summary": "The school's Foundation Day, marked with a cake and a banner in the school grounds."
     },
     {
       "id": "G27", "slug": "/gallery/study-tour/", "label": "Study Tour", "title": "Photographs of Study Tour", "template": "T10", "parent": "/gallery/", "group": "community", "menu": false, "footer": null, "noindex": true,
-      "description": "Study Tour: an album from the school gallery of The Playpen School, Dhaka, in frames where no child can be recognised.",
+      "description": "Study Tour: an album from the school gallery of Playpen School, Dhaka, in frames where no child can be recognised.",
       "summary": "Class trips away from school."
     },
     {
       "id": "G28", "slug": "/gallery/base-camp/", "label": "Base Camp", "title": "Photographs of Base Camp", "template": "T10", "parent": "/gallery/", "group": "community", "menu": false, "footer": null, "noindex": true,
-      "description": "Base Camp: an album from the school gallery of The Playpen School, Dhaka, in frames where no child can be recognised.",
+      "description": "Base Camp: an album from the school gallery of Playpen School, Dhaka, in frames where no child can be recognised.",
       "summary": "An outdoor camp with rope courses, obstacle crawls and a pond crossing."
     },
     {
       "id": "G29", "slug": "/gallery/visit-to-an-old-home/", "label": "Visit to an Old Home", "title": "Photographs of Visit to an Old Home", "template": "T10", "parent": "/gallery/", "group": "community", "menu": false, "footer": null, "noindex": true,
-      "description": "Visit to an Old Home: an album from the school gallery of The Playpen School, Dhaka, in frames where no child can be recognised.",
+      "description": "Visit to an Old Home: an album from the school gallery of Playpen School, Dhaka, in frames where no child can be recognised.",
       "summary": "Students visiting the residents of an old people's home."
     },
     {
       "id": "G30", "slug": "/gallery/teacher-training/", "label": "Teacher Training and Activities", "title": "Photographs of Teacher Training and Activities", "template": "T10", "parent": "/gallery/", "group": "community", "menu": false, "footer": null,
-      "description": "Teacher Training and Activities: an album from the school gallery of The Playpen School, Dhaka, in frames where no child can be recognised.",
+      "description": "Teacher Training and Activities: an album from the school gallery of Playpen School, Dhaka, in frames where no child can be recognised.",
       "summary": "Training sessions and workshops for teachers."
     },
     {
       "id": "G31", "slug": "/gallery/workshop-for-students/", "label": "Workshop for Students", "title": "Photographs of Workshop for Students", "template": "T10", "parent": "/gallery/", "group": "community", "menu": false, "footer": null, "noindex": true,
-      "description": "Workshop for Students: an album from the school gallery of The Playpen School, Dhaka, in frames where no child can be recognised.",
+      "description": "Workshop for Students: an album from the school gallery of Playpen School, Dhaka, in frames where no child can be recognised.",
       "summary": "Talks and workshops for senior students in the hall."
     },
     {
       "id": "G32", "slug": "/gallery/art-and-craft/", "label": "Art and Craft", "title": "Photographs of Art and Craft", "template": "T10", "parent": "/gallery/", "group": "community", "menu": false, "footer": null,
-      "description": "Art and Craft: an album from the school gallery of The Playpen School, Dhaka, in frames where no child can be recognised.",
+      "description": "Art and Craft: an album from the school gallery of Playpen School, Dhaka, in frames where no child can be recognised.",
       "summary": "Work from the Art and Craft programme: paper craft, clay models of houses and forts, and miniature gardens."
     },
     {
       "id": "G33", "slug": "/gallery/graduation-2022/", "label": "Graduation Ceremony 2022", "title": "Photographs of Graduation Ceremony 2022", "template": "T10", "parent": "/gallery/", "group": "community", "menu": false, "footer": null,
-      "description": "Graduation Ceremony 2022: an album from the school gallery of The Playpen School, Dhaka, in frames where no child can be recognised.",
+      "description": "Graduation Ceremony 2022: an album from the school gallery of Playpen School, Dhaka, in frames where no child can be recognised.",
       "summary": "The 17th Graduation Ceremony of Ordinary and Advanced Level, for 2021 and 2022."
     },
     {
       "id": "G34", "slug": "/gallery/sports/", "label": "Sports", "title": "Photographs of Sports", "template": "T10", "parent": "/gallery/", "group": "community", "menu": false, "footer": null, "noindex": true,
-      "description": "Sports: an album from the school gallery of The Playpen School, Dhaka, in frames where no child can be recognised.",
+      "description": "Sports: an album from the school gallery of Playpen School, Dhaka, in frames where no child can be recognised.",
       "summary": "Races, football and drills on the school field."
     },
     {
       "id": "G35", "slug": "/gallery/cultural-programme/", "label": "Cultural Programme", "title": "Photographs of Cultural Programme", "template": "T10", "parent": "/gallery/", "group": "community", "menu": false, "footer": null, "noindex": true,
-      "description": "Cultural Programme: an album from the school gallery of The Playpen School, Dhaka, in frames where no child can be recognised.",
+      "description": "Cultural Programme: an album from the school gallery of Playpen School, Dhaka, in frames where no child can be recognised.",
       "summary": "Songs and dances by the Elementary and Junior Section on the hall stage."
     },
     {
       "id": "G36", "slug": "/gallery/science-fair/", "label": "Science Fair", "title": "Photographs of Science Fair", "template": "T10", "parent": "/gallery/", "group": "community", "menu": false, "footer": null, "noindex": true,
-      "description": "Science Fair: an album from the school gallery of The Playpen School, Dhaka, in frames where no child can be recognised.",
+      "description": "Science Fair: an album from the school gallery of Playpen School, Dhaka, in frames where no child can be recognised.",
       "summary": "On the school's current website this album shows the same 12 photographs as the Education Fair album."
     },
     {
       "id": "G37", "slug": "/gallery/student-life/", "label": "Student Life", "title": "Photographs of Student Life", "template": "T10", "parent": "/gallery/", "group": "community", "menu": false, "footer": null, "noindex": true,
-      "description": "Student Life: an album from the school gallery of The Playpen School, Dhaka, in frames where no child can be recognised.",
+      "description": "Student Life: an album from the school gallery of Playpen School, Dhaka, in frames where no child can be recognised.",
       "summary": "Everyday school life: lessons, the library, the garden, the laboratories and the morning assembly."
     },
     {
       "id": "G38", "slug": "/gallery/pitha-utshob-2024/", "label": "Pitha Utshob 2024", "title": "Photographs of Pitha Utshob 2024", "template": "T10", "parent": "/gallery/", "group": "community", "menu": false, "footer": null, "noindex": true,
-      "description": "Pitha Utshob 2024: an album from the school gallery of The Playpen School, Dhaka, in frames where no child can be recognised.",
+      "description": "Pitha Utshob 2024: an album from the school gallery of Playpen School, Dhaka, in frames where no child can be recognised.",
       "summary": "The school's current website lists this album but shows no photographs in it."
     },
     {
       "id": "P39", "slug": "/contact/", "label": "Contact", "title": "Contact", "template": "T07", "parent": null, "group": "contact", "menu": false, "footer": null, "schema": "contact", "actions": false,
-      "description": "Contact The Playpen School: a phone line for each section, open 9.00 am to 1.00 pm, the address in Bashundhara R/A, Dhaka, the map, and how to write to the office.",
+      "description": "Contact Playpen School: a phone line for each section, open 9.00 am to 1.00 pm, the address in Bashundhara R/A, Dhaka, the map, and how to write to the office.",
       "summary": "Phone lines by section, the address and the map, and the two forms that send."
     },
     {
       "id": "U01", "slug": "/privacy/", "label": "Privacy", "title": "Privacy", "template": "T05", "parent": null, "group": null, "menu": false, "footer": null,
-      "description": "How the website of The Playpen School handles information about its visitors, in plain words.",
+      "description": "How the website of Playpen School handles information about its visitors, in plain words.",
       "summary": "How this website handles information about its visitors."
     },
     {
       "id": "U02", "slug": "/terms/", "label": "Terms of use", "title": "Terms of use", "template": "T05", "parent": null, "group": null, "menu": false, "footer": null,
-      "description": "The terms for using the website of The Playpen School, including links to other sites and use of photographs.",
+      "description": "The terms for using the website of Playpen School, including links to other sites and use of photographs.",
       "summary": "The terms for using this website."
     },
     {
       "id": "U03", "slug": "/sitemap/", "label": "Sitemap", "title": "Sitemap", "template": "T05", "parent": null, "group": null, "menu": false, "footer": null,
-      "description": "The Playpen School website in one map: where to start, your child's class from Playgroup to A Level, the six sections, the events and the photograph albums.",
+      "description": "Playpen School website in one map: where to start, your child's class from Playgroup to A Level, the six sections, the events and the photograph albums.",
       "summary": "The website in one map: where to start, the classes, the six sections, events and albums."
     },
     {
       "id": "U04", "slug": "/search/", "label": "Search", "title": "Search", "template": "T05", "parent": null, "group": null, "menu": false, "footer": null, "noindex": true,
-      "description": "Search the pages of The Playpen School website for admissions, learning, school life, notices and contact details.",
+      "description": "Search the pages of Playpen School website for admissions, learning, school life, notices and contact details.",
       "summary": "Search the website."
     },
     {

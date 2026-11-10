@@ -3267,3 +3267,43 @@ html.intro-seen #preloader { z-index: 65; }
 html.intro-seen #preloader .preloader__crest,
 html.intro-seen #preloader .preloader__skip,
 html.intro-seen #preloader-flip { visibility: hidden; }
+
+/* 2026-11-05 (founder): "Playpen turns 50" header pill, every page (build/shell.py render_p50_pill + site/index.html).
+   Gold on maroon/film; the short label under 720 px so it fits beside the centred crest. */
+.p50-pill {
+  display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 16px 0 12px;
+  border-radius: 999px; border: 1px solid #F1DD9C;
+  background: linear-gradient(180deg, #F3D98C 0%, #D9B25C 55%, #B98A2E 100%);
+  color: var(--maroon-deep); font: 700 14px / 1 var(--font-sans); letter-spacing: 0.01em;
+  text-decoration: none; white-space: nowrap;
+  box-shadow: 0 6px 18px -8px rgba(60, 10, 10, 0.55);
+  transition: transform var(--t-ui), box-shadow var(--t-ui);
+}
+.p50-pill:hover { transform: translateY(-1px); box-shadow: 0 10px 22px -8px rgba(60, 10, 10, 0.6); }
+.p50-pill:focus-visible { outline: 3px solid var(--gold-text); outline-offset: 3px; }
+.p50-pill__icon { width: 18px; height: 18px; flex: none; }
+.p50-pill__short { display: none; }
+.nav__right .p50-pill + .nb-pill, .nav__right .p50-pill + .magnet-area { margin-left: 4px; }
+html.menu-open .nav__right .p50-pill { opacity: 0; pointer-events: none; transition: opacity var(--t-ui); }
+@media (max-width: 1099px) { .nav:not(.nav--film) .p50-pill__long { display: none; } .nav:not(.nav--film) .p50-pill__short { display: inline; } }
+@media (max-width: 719px) {
+  .p50-pill { padding: 0 10px; min-height: 40px; font-size: 12px; gap: 5px; }
+  .p50-pill__long { display: none; } .p50-pill__short { display: inline; }
+  .p50-pill__icon { width: 15px; height: 15px; }
+}
+@media (max-width: 389px) { .p50-pill__short { display: none; } .p50-pill { padding: 0 11px; } .p50-pill::after { content: "50"; } }
+@media (forced-colors: active) { .p50-pill { border: 1px solid CanvasText; background: Canvas; color: LinkText; } }
+@media (prefers-reduced-motion: reduce) { .p50-pill, .p50-pill:hover { transition: none; transform: none; } }
+/* phones, inner pages (Book a visit is also on the right): the 50th pill becomes a round cake icon */
+@media (max-width: 719px) {
+  .nav:not(.nav--film) .nav__right { gap: 6px; }
+  .nav:not(.nav--film) .p50-pill { width: 40px; min-height: 40px; height: 40px; padding: 0; justify-content: center; }
+  .nav:not(.nav--film) .p50-pill__short, .nav:not(.nav--film) .p50-pill__long { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; display: inline; }
+  .nav:not(.nav--film) .p50-pill::after { content: none; }
+  .nav:not(.nav--film) .p50-pill__icon { width: 18px; height: 18px; }
+}
+@media (max-width: 719px) {
+  .nav:not(.nav--film) .nav__bar { position: relative; }
+  .nav:not(.nav--film) .p50-pill { position: absolute; left: 72px; top: 50%; transform: translateY(-50%); }
+  .nav:not(.nav--film) .p50-pill:hover { transform: translateY(-50%); }
+}

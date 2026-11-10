@@ -8,11 +8,11 @@ The September 2026 brand system from DS's first 14-page redesign of playpen.edu.
 
 ## Why it is superseded
 
-The live site (https://playpen-school.vercel.app, built 2026-10-11) uses a different system: paper #F5F1EA, ink #1C1715, maroon #8A0204 and gold, set in Newsreader + Hanken Grotesk, with drawing-sheet devices. Its tokens are recorded in `C:/Ai Practise/01DS/04-Projects/playpen-school-v1/docs/final-spec.md` section 2 and in `site/css/main.css`. The two systems contradict each other, so this folder must not be shown to the school or used as the base for any new brand piece. The repo README's line calling this "the brand system (keep)" is out of date.
+The live site (https://playpen-school.vercel.app, built 2026-10-11) uses a different system: paper #F5F1EA, ink #1C1715, maroon #8A0204 and gold, set in Newsreader + Hanken Grotesk, with drawing-sheet devices. Its tokens are recorded in `D:/NEW DS/04-Projects/playpen-school-v1/docs/final-spec.md` section 2 and in `site/css/main.css`. The two systems contradict each other, so this folder must not be shown to the school or used as the base for any new brand piece. The repo README's line calling this "the brand system (keep)" is out of date.
 
 ## What replaces it
 
-The new brand system is built in Phase 2 of the sample-work set at `C:/Ai Practise/01DS/04-Projects/playpen-school-sample-work/brand/playpen/` (`tokens.json`, `brand-guideline.html`, `brand-board.html`), issued from the live site's tokens. Until it exists, the live site's CSS is the only source of truth for colour and type.
+The new brand system is built in Phase 2 of the sample-work set at `D:/NEW DS/04-Projects/playpen-school-sample-work/brand/playpen/` (`tokens.json`, `brand-guideline.html`, `brand-board.html`), issued from the live site's tokens. Until it exists, the live site's CSS is the only source of truth for colour and type.
 
 ## What stays in use
 
@@ -23,4 +23,4 @@ The new brand system is built in Phase 2 of the sample-work set at `C:/Ai Practi
 
 After the Phase 2 guideline exists, this folder moves to `Archive/` on the founder's OK. Do not move it before then; do not run git for this note (the coordinator commits).
 
-Hub: `C:/Ai Practise/01DS/04-Projects/playpen-school-sample-work/README.md`.
+Hub: `D:/NEW DS/04-Projects/playpen-school-sample-work/README.md`.

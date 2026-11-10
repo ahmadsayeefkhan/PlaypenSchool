@@ -54,6 +54,8 @@ def generate(nav):
         seo += '\n%s\n<link rel="stylesheet" href="./css/portal.css">\n<script src="./js/portal.js" defer></script>' % meta
         # notices, events and news from the Website Operator's feed (additions/content.js, 2026-10-23)
         seo += '\n<script src="./js/content.js" defer></script>'
+    # the accessibility button (additions/a11y.*, 2026-11-03): always on, with or without the portal
+    seo += '\n<link rel="stylesheet" href="./css/a11y.css">\n<script src="./js/a11y.js" defer></script>'
     return {
         'seo': seo,
         'nav': indent(shell.render_primary_links(ctx, None), 0).replace('\n      ', '\n      '),

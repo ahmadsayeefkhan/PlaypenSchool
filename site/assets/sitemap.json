@@ -206,7 +206,13 @@
      "title": "Alumni",
      "label": "Alumni",
      "url": "community/alumni/",
-     "summary": "The Playpen Alumni Association, the graduation albums by year, and how to stay in touch."
+     "summary": "Albums by year and how to join the alumni community."
+    },
+    {
+     "title": "Our recent updates",
+     "label": "Our recent updates",
+     "url": "achievements/",
+     "summary": "Students' prizes and commendations, newest first, each with its story."
     },
     {
      "title": "News and achievements",

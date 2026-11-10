@@ -163,7 +163,7 @@ def main(argv=None):
             if new:
                 f.write('# Credits log\n\nOne line per photograph used on the site that is not already in docs/CREDITS.md. Append only.\n\n')
             f.write('- %s  site/assets/%s/%s-*  credit: %s  source: %s\n' % (
-                datetime.date.today().isoformat(), args.folder, args.name, args.credit or 'The Playpen School', args.src_note or args.source))
+                datetime.date.today().isoformat(), args.folder, args.name, args.credit or 'Playpen School', args.src_note or args.source))
         print('logged in docs/credits-log.md')
     print('use it: {{img src="%s/%s" alt="..." sizes="(min-width: 1024px) 40vw, 100vw"}}' % (args.folder, args.name))
     return 0

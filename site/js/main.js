@@ -1,4 +1,4 @@
-/* The Playpen School sample homepage: boot (Contract C, spec §10.4; polish pass 2026-10-09).
+/* Playpen School sample homepage: boot (Contract C, spec §10.4; polish pass 2026-10-09).
    Order: tier and caps → preloader.start() (the storyboard runs from here; the heavy work below
    lands under it, where a long frame pauses the tweens instead of jumping them) → the renderer
    (full tier) → the interaction modules, then the scenes (every ScrollTrigger and SplitText, in

@@ -21,11 +21,14 @@ const BLOCKS = '.hero__label, .hero__lead, .hero__actions';
 const SRC = './assets/video/hero/';
 const KEY = 'pp:heroPaused';
 
-/* the codec strings of the encoded files (ffprobe, 2026-10-20): AV1 Main 8-bit, H.264 High */
+/* v3 "clean" film (2026-11-03, from the 4K source). Codec strings from ffprobe: AV1 Main 10-bit,
+   H.264 High. 'hero-1440' is AV1 only (no H.264 file): without AV1 it falls back to hero-1080.mp4. */
 const FILES = {
-  'hero-phone': { av1: 'av01.0.04M.08', h264: 'avc1.640028', w: 720, h: 900 },
-  'hero-720': { av1: 'av01.0.05M.08', h264: 'avc1.64001F', w: 1280, h: 720 },
-  'hero-1080': { av1: 'av01.0.08M.08', h264: 'avc1.640028', w: 1920, h: 1080 },
+  'hero-9x16-720': { av1: 'av01.0.05M.10', h264: 'avc1.64001F', w: 720, h: 1280 },
+  'hero-9x16-1080': { av1: 'av01.0.08M.10', h264: 'avc1.640028', w: 1080, h: 1920 },
+  'hero-720': { av1: 'av01.0.05M.10', h264: 'avc1.64001F', w: 1280, h: 720 },
+  'hero-1080': { av1: 'av01.0.08M.10', h264: 'avc1.640028', w: 1920, h: 1080 },
+  'hero-1440': { av1: 'av01.0.12M.10', h264: null, w: 2560, h: 1440 },
 };
 
 const readSession = (k) => { try { return sessionStorage.getItem(k); } catch (e) { return null; } };
@@ -155,12 +158,18 @@ function setButton() {
 }
 
 /* One file for this screen, chosen once per visit (a rotate keeps it: cover still fills the screen).
-   Portrait screens under 1024 px: the 4:5 phone cut. Up to 1280 px wide: 720p. Above: 1080p.
+   Portrait screens under 1024 px: the 9:16 phone cut (1080x1920 on sharp screens, 720x1280 on
+   low-density ones). Landscape: up to 1280 px wide 720p, above that 1080p, and 1440p on screens
+   with more than 2200 device pixels across (AV1 only).
    AV1 where the device decodes it smoothly and power-efficiently (MediaCapabilities), else H.264. */
 async function pickFile() {
   const w = window.innerWidth, h = window.innerHeight;
-  const name = (w < 1024 && h >= w) ? 'hero-phone' : (w <= 1280 ? 'hero-720' : 'hero-1080');
-  const f = FILES[name];
+  const dpr = window.devicePixelRatio || 1;
+  let name;
+  if (w < 1024 && h >= w) name = (w * dpr >= 800) ? 'hero-9x16-1080' : 'hero-9x16-720';
+  else if (w <= 1280) name = 'hero-720';
+  else name = (w * dpr > 2200) ? 'hero-1440' : 'hero-1080';
+  let f = FILES[name];
   let av1 = video.canPlayType('video/webm; codecs="' + f.av1 + '"') === 'probably';
   if (av1 && navigator.mediaCapabilities && navigator.mediaCapabilities.decodingInfo) {
     try {
@@ -171,6 +180,7 @@ async function pickFile() {
       if (info) av1 = !!(info.supported && info.smooth && info.powerEfficient);
     } catch (e) { /* keep the canPlayType answer */ }
   }
+  if (!av1 && !f.h264) { name = 'hero-1080'; f = FILES[name]; }
   return SRC + name + (av1 ? '.av1.webm' : '.mp4');
 }
 

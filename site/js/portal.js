@@ -260,7 +260,7 @@
     if (!s && !m && !c) return null;
     return { source: s ? s.slice(0, 64) : null, medium: m ? m.slice(0, 64) : null, campaign: c ? c.slice(0, 64) : null };
   }
-  function pageTitle() { return clip(String(doc.title || '').replace(/\s*\|\s*The Playpen School, Dhaka\s*$/, ''), 120); }
+  function pageTitle() { return clip(String(doc.title || '').replace(/\s*\|\s*Playpen School, Dhaka\s*$/, ''), 120); }
 
   function startPageview() {
     if (!counting) return;

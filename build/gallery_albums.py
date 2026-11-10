@@ -253,7 +253,7 @@ def index_page(albums):
 title: Gallery
 schema: collection
 template: T10
-description: Photographs from the school year at The Playpen School, in the school's own albums: sports, festivals, ceremonies, fairs, student work and the building.
+description: Photographs from the school year at Playpen School, in the school's own albums: sports, festivals, ceremonies, fairs, student work and the building.
 h1: The school year in <em>photographs</em>.
 standfirst: %(n)d albums with photographs, from Annual Sports Day 2026 back to %(first)d, and the building itself. Each album shows only frames in which no child can be recognised; %(without)d more albums are added when the school agrees in writing. <a href="#building">Or see the building.</a>
 hero_image: img/gallery-formation
@@ -522,13 +522,13 @@ def album_page(a, prev, nxt, albums):
     shown, total = len(a['frames']), a['count']
     name = a['name']
     h1 = e(name)
-    desc = '%s: an album of photographs from The Playpen School, Dhaka, showing only frames in which no child can be recognised.' % name
+    desc = '%s: an album of photographs from Playpen School, Dhaka, showing only frames in which no child can be recognised.' % name
     if len(desc) > 170:
-        desc = '%s: photographs from The Playpen School, Dhaka, in which no child can be recognised.' % name
+        desc = '%s: photographs from Playpen School, Dhaka, in which no child can be recognised.' % name
     if not shown:
-        desc = '%s: an album of The Playpen School, Dhaka. Its photographs are added here once the school has agreed to them.' % name
+        desc = '%s: an album of Playpen School, Dhaka. Its photographs are added here once the school has agreed to them.' % name
         if len(desc) > 170:
-            desc = '%s: an album of The Playpen School. Photographs are added once the school agrees.' % name
+            desc = '%s: an album of Playpen School. Photographs are added once the school agrees.' % name
     out = ['---', 'title: Photographs of %s' % name, 'schema: collection', 'template: T10', 'eyebrow: Gallery',
            'description: %s' % desc, 'h1: %s' % h1, 'standfirst: %s' % a['note']]
     cover = cover_of(a)
@@ -657,9 +657,9 @@ def album_page(a, prev, nxt, albums):
 def nav_entries(albums):
     rows = []
     for i, a in enumerate(albums, 1):
-        desc = '%s: an album from the school gallery of The Playpen School, Dhaka, in frames where no child can be recognised.' % a['name']
+        desc = '%s: an album from the school gallery of Playpen School, Dhaka, in frames where no child can be recognised.' % a['name']
         if len(desc) > 170:
-            desc = '%s: an album from the gallery of The Playpen School, Dhaka.' % a['name']
+            desc = '%s: an album from the gallery of Playpen School, Dhaka.' % a['name']
         if len(desc) < 60:
             desc = desc[:-1] + ', in frames where no child can be recognised.'
         # an album may carry its own one-line "summary"; otherwise the note, cut at a word when it is long (a cut can leave a

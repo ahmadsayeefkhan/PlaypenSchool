@@ -1,0 +1,89 @@
+/* Sheet 07 · Playpen Voices (2026-11-05, founder; pattern from the "JIS Voices" strip on jerudonginternationalschool.com).
+   Three strips: Student voices, Parent voices, Teacher voices. Each strip is a row of video panels; the active
+   panel opens wide with a play button, the others stay narrow with the name and role written upwards.
+   Phones: one swipeable row of full cards per strip. Videos open in a dialog (js/sections/voices.js).
+   Content lives in VOICES at the top of js/sections/voices.js. */
+
+#voices.sheet { padding-block: var(--section-pad); background: linear-gradient(180deg, var(--maroon-deep) 0%, #3A0103 100%); color: var(--paper); }
+.sheet + #voices.sheet { padding-top: var(--section-pad); }
+#voices + .sheet { padding-top: var(--section-pad); }
+#voices .sheet-rule { color: var(--gold-text); }
+#voices .sheet-rule__line { background: rgba(217, 178, 92, 0.45); }
+
+.voices__head { display: grid; gap: 16px; margin-bottom: clamp(32px, 5vw, 56px); max-width: 760px; }
+.voices__title { margin: 0; color: var(--paper); }
+.voices__title em { color: var(--gold-text); }
+.voices__lead { margin: 0; color: #E9D8CF; max-width: 600px; }
+
+.voices__group { margin-top: clamp(36px, 5vw, 64px); }
+.voices__group:first-of-type { margin-top: 0; }
+.voices__ghead { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-bottom: 18px; border-bottom: 1px solid rgba(217, 178, 92, 0.35); padding-bottom: 12px; }
+.voices__gtitle { margin: 0; font: 400 clamp(24px, 3vw, 34px) / 1.1 var(--font-serif); color: var(--paper); display: flex; align-items: center; gap: 14px; }
+.voices__gtitle::before { content: ""; width: 28px; height: 2px; background: var(--gold-text); }
+.voices__count { font: 600 13px / 1 var(--font-sans); letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold-text); white-space: nowrap; }
+
+/* the strip */
+.vstrip { display: flex; gap: 6px; height: clamp(360px, 38vw, 500px); list-style: none; margin: 0; padding: 0; }
+.vpanel { position: relative; flex: 1 1 0; min-width: 0; overflow: hidden; border-radius: 6px; background: #2A0204; transition: flex-grow 600ms cubic-bezier(.2, .7, .2, 1); }
+.vpanel.is-active { flex-grow: 4.2; }
+.vpanel__btn { position: absolute; inset: 0; display: block; width: 100%; height: 100%; padding: 0; border: 0; background: none; color: inherit; cursor: pointer; text-align: left; font: inherit; }
+.vpanel__btn:focus-visible { outline: 3px solid var(--gold-text); outline-offset: -3px; }
+.vpanel__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: saturate(.85); transform: scale(1.04); transition: transform 900ms cubic-bezier(.2, .7, .2, 1), filter 600ms; }
+.vpanel.is-active .vpanel__img { transform: scale(1); filter: saturate(1); }
+.vpanel__shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(58, 1, 3, 0.15) 0%, rgba(58, 1, 3, 0.35) 45%, rgba(30, 1, 2, 0.9) 100%); transition: background 600ms; }
+.vpanel:not(.is-active) .vpanel__shade { background: linear-gradient(180deg, rgba(58, 1, 3, 0.55), rgba(30, 1, 2, 0.88)); }
+
+/* narrow state: name and role written upwards, bottom left */
+.vpanel__side { position: absolute; left: 50%; bottom: 22px; transform: translateX(-50%); writing-mode: vertical-rl; rotate: 180deg; display: flex; gap: 6px; align-items: flex-start; white-space: nowrap; transition: opacity 300ms; }
+.vpanel__side b { font: 600 20px / 1 var(--font-sans); color: var(--paper); }
+.vpanel__side span { font: 500 14px / 1 var(--font-sans); color: var(--gold-text); }
+.vpanel.is-active .vpanel__side { opacity: 0; }
+
+/* open state: play button and caption */
+.vpanel__open { position: absolute; inset: auto 0 0 0; padding: 26px 28px; opacity: 0; transform: translateY(12px); transition: opacity 400ms 150ms, transform 500ms 150ms; }
+.vpanel.is-active .vpanel__open { opacity: 1; transform: none; }
+.vpanel__name, .vpanel__role, .vpanel__quote { display: block; }
+.vpanel__name { font: 500 clamp(24px, 2.4vw, 32px) / 1.1 var(--font-serif); color: var(--paper); margin: 0; }
+.vpanel__role { font: 600 13px / 1.3 var(--font-sans); letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-text); margin: 6px 0 0; }
+.vpanel__quote { font: italic 400 17px / 1.45 var(--font-serif); color: #F1E3DA; margin: 12px 0 0; max-width: 38ch; }
+.vpanel__play { position: absolute; left: 50%; top: 44%; width: 68px; height: 68px; margin: -34px 0 0 -34px; border-radius: 50%; display: grid; place-items: center;
+  background: var(--maroon); color: var(--paper); box-shadow: 0 0 0 6px rgba(217, 178, 92, 0.35), 0 14px 30px -8px rgba(0, 0, 0, .6);
+  opacity: 0; scale: .7; transition: opacity 400ms 200ms, scale 500ms 200ms cubic-bezier(.2, .9, .3, 1.3); }
+.vpanel.is-active .vpanel__play { opacity: 1; scale: 1; }
+.vpanel__btn:hover .vpanel__play { box-shadow: 0 0 0 9px rgba(217, 178, 92, 0.45), 0 14px 30px -8px rgba(0, 0, 0, .6); }
+.vpanel__play svg { width: 26px; height: 26px; margin-left: 4px; }
+.vpanel__soon { position: absolute; left: 50%; top: 44%; translate: -50% -50%; white-space: nowrap; padding: 8px 14px; border: 1px solid rgba(217, 178, 92, 0.7); border-radius: 999px;
+  font: 600 12px / 1 var(--font-sans); letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-text); background: rgba(30, 1, 2, 0.6); opacity: 0; transition: opacity 400ms 200ms; }
+.vpanel.is-active .vpanel__soon { opacity: 1; }
+.vpanel--soon .vpanel__btn { cursor: default; }
+.voices__note { margin: 14px 0 0; font: 400 13px / 1.5 var(--font-sans); color: #CDB8AE; }
+
+/* phones and small tablets: a swipeable row of full cards */
+@media (max-width: 767px) {
+  .vstrip { height: auto; overflow-x: auto; scroll-snap-type: x mandatory; gap: 12px; padding-bottom: 8px; margin-inline: calc(-1 * var(--margin)); padding-inline: var(--margin); scrollbar-width: none; }
+  .vstrip::-webkit-scrollbar { display: none; }
+  .vpanel, .vpanel.is-active { flex: 0 0 78%; height: 440px; scroll-snap-align: center; }
+  .vpanel .vpanel__side { display: none; }
+  .vpanel .vpanel__open, .vpanel .vpanel__play, .vpanel .vpanel__soon { opacity: 1; transform: none; scale: 1; }
+  .vpanel .vpanel__shade { background: linear-gradient(180deg, rgba(58, 1, 3, 0.1) 0%, rgba(58, 1, 3, 0.3) 45%, rgba(30, 1, 2, 0.9) 100%); }
+  .vpanel .vpanel__img { transform: none; filter: none; }
+}
+
+/* the video dialog */
+.vdialog { width: min(1100px, 94vw); max-height: 92vh; padding: 0; border: 0; border-radius: 10px; background: #000; color: var(--paper); overflow: visible; }
+.vdialog::backdrop { background: rgba(20, 2, 3, 0.86); backdrop-filter: blur(4px); }
+.vdialog__frame { position: relative; aspect-ratio: 16 / 9; width: 100%; background: #000; border-radius: 10px; overflow: hidden; }
+.vdialog__frame.is-portrait { aspect-ratio: 9 / 16; width: min(420px, 90vw); margin-inline: auto; max-height: 82vh; }
+.vdialog__frame iframe, .vdialog__frame video { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.vdialog__cap { padding: 14px 4px 0; font: 500 15px / 1.4 var(--font-sans); color: #E9D8CF; text-align: center; }
+.vdialog__cap b { color: var(--paper); font-family: var(--font-serif); font-size: 19px; font-weight: 500; }
+.vdialog__close { position: absolute; top: -52px; right: 0; width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(217, 178, 92, .7); background: rgba(30, 1, 2, .7); color: var(--paper); font-size: 24px; line-height: 1; cursor: pointer; }
+.vdialog__close:focus-visible { outline: 3px solid var(--gold-text); outline-offset: 2px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .vpanel, .vpanel__img, .vpanel__open, .vpanel__play, .vpanel__side, .vpanel__soon { transition: none; }
+}
+@media (forced-colors: active) {
+  .vpanel { border: 1px solid CanvasText; }
+  .vpanel__play { border: 2px solid ButtonText; }
+}

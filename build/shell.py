@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""The shared page shell of The Playpen School site (Python 3 standard library only).
+"""The shared page shell of Playpen School site (Python 3 standard library only).
 
 Everything that is the same on every page lives here, so a change is one edit:
 document head (meta, canonical, Open Graph, Twitter, icons, preloads, JSON-LD), skip link, header, the
@@ -36,7 +36,7 @@ SHELL_HASH = ''                                     # set by build.py: stamps ev
 NOTICES_CURRENT = 2
 DEFAULT_OG_IMAGE = 'media/og-1200x630.jpg'          # under site/assets/
 DEFAULT_OG_SIZE = (1200, 630)
-DEFAULT_OG_ALT = ('The rooftop terrace of The Playpen School, three young trees in planters against a '
+DEFAULT_OG_ALT = ('The rooftop terrace of Playpen School, three young trees in planters against a '
                   'paper-white sky, with the page title set above.')
 THEME_COLOR = '#F5F1EA'
 PRELOAD_FONTS = ('vendor/fonts/newsreader-var.woff2', 'vendor/fonts/hanken-grotesk-var.woff2')
@@ -357,7 +357,7 @@ def render_primary_links(ctx, page=None):
 def render_header(ctx, page=None):
     nav = ctx.nav
     visit = next(a for a in nav.sticky if a.get('primary'))
-    # 2026-10-26 (founder): a centred lockup (the crest, "The Playpen School" under it), the Menu on the left and Notices +
+    # 2026-10-26 (founder): a centred lockup (the crest, "Playpen School" under it), the Menu on the left and Notices +
     # Book a visit on the right; every page is in the Menu overlay. #nav-primary stays in the markup (build/sync_home.py
     # reads it; js/inner.js marks the current page) but is not shown in the bar (main.css .nav--lockup).
     return '''<header id="top" class="nav nav--lockup is-over-hero">
@@ -369,14 +369,15 @@ def render_header(ctx, page=None):
       </button>
       <noscript><a class="menu-btn menu-btn--link" href="%(sitemap)s"><span class="menu-btn__label">Sitemap</span></a></noscript>
     </div>
-    <a class="nav__brand" href="%(home)s" aria-label="The Playpen School, home">
+    <a class="nav__brand" href="%(home)s" aria-label="Playpen School, home">
       <span id="nav-mark" class="nav__mark"><img src="%(mark)s" width="255" height="256" alt=""></span>
-      <span class="nav__word">The Playpen School</span>
+      <span class="nav__word">Playpen School</span>
     </a>
     <nav id="nav-primary" class="nav__primary" aria-label="Primary">
       %(links)s
     </nav>
     <div class="nav__right">
+      %(p50)s
       %(notices)s
       <span class="magnet-area">
         <a id="nav-visit" class="btn btn--primary btn--small" href="%(visit)s"><span class="btn__label">%(visit_label)s</span></a>
@@ -388,7 +389,15 @@ def render_header(ctx, page=None):
         'links': render_primary_links(ctx, page), 'visit': h(ctx.link(visit['slug'])), 'visit_label': h(visit['label']),
         'sitemap': h(ctx.link('/sitemap/')),
         'notices': render_notices_pill(ctx, page),
+        'p50': render_p50_pill(ctx),
     }
+
+
+def render_p50_pill(ctx):
+    """2026-11-05 (founder): the gold "Playpen turns 50" pill in the header of every page; it opens the 50th birthday
+    card maker at /playpen-50/ (a hand-built page, not made by this builder)."""
+    return ('<a class="p50-pill" href="%s"><svg class="p50-pill__icon" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2.5c1.2 1.4 1.4 2.6.6 3.4a1 1 0 0 1-1.2 0c-.8-.8-.6-2 .6-3.4Z" fill="currentColor"/><path d="M11.25 7.5h1.5v3h-1.5z" fill="currentColor"/><path d="M5 11h14a1 1 0 0 1 1 1v3.2c-1.1.9-2.2.9-3.3 0-1.1.9-2.2.9-3.4 0-1.1.9-2.2.9-3.3 0-1.1.9-2.2.9-3.3 0-1 .9-2 .9-2.7.3V12a1 1 0 0 1 1-1Z" fill="currentColor"/><path d="M4 16.9c1 .5 2 .4 2.9-.3 1.1.9 2.2.9 3.3 0 1.1.9 2.2.9 3.3 0 1.1.9 2.3.9 3.4 0 .9.7 1.9.8 3.1.2V21H4Z" fill="currentColor" opacity=".75"/></svg><span class="p50-pill__long">Turns 50: make your card</span>'
+            '<span class="p50-pill__short" aria-hidden="true">50th card</span></a>' % h(ctx.link('/playpen-50/')))
 
 
 def render_notices_pill(ctx, page=None):
@@ -530,7 +539,7 @@ def render_footer(ctx):
     <div class="foot__top">
       <div class="foot__brand">
         <img class="foot__crest" src="%(crest)s" width="160" height="160" alt="" loading="lazy" decoding="async">
-        <p class="foot__name">The Playpen School</p>
+        <p class="foot__name">Playpen School</p>
       </div>
       <address class="foot__address">
         <span>%(addr)s</span>
@@ -731,7 +740,7 @@ def school_node(nav, ctx_root=SITE_URL):
 
 
 def website_node():
-    return {'@type': 'WebSite', '@id': SITE_URL + '/#website', 'url': SITE_URL + '/', 'name': 'The Playpen School',
+    return {'@type': 'WebSite', '@id': SITE_URL + '/#website', 'url': SITE_URL + '/', 'name': 'Playpen School',
             'inLanguage': 'en', 'publisher': {'@id': SITE_URL + '/#school'}}
 
 
@@ -807,7 +816,7 @@ def render_seo_head(ctx, title_full, description, og_image, og_size=None, og_alt
         lines.append('<link rel="canonical" href="%s">' % h(canon))
     lines += [
         '<meta name="theme-color" content="%s">' % THEME_COLOR,
-        '<meta property="og:site_name" content="The Playpen School">',
+        '<meta property="og:site_name" content="Playpen School">',
         '<meta property="og:type" content="%s">' % h(og_type),
         '<meta property="og:title" content="%s">' % h(title_full),
         '<meta property="og:description" content="%s">' % h(description),
@@ -966,7 +975,7 @@ def render_redirect(nav, slug_old, target, hashes, base_root='./'):
 </head>
 <body class="moved-page">
 <main id="content" class="moved band">
-  <p class="label">The Playpen School</p>
+  <p class="label">Playpen School</p>
   <h1 class="display-m">This page has moved</h1>
   <p class="lead">The page you asked for is now <a class="link" href="%(dest)s">%(ptitle)s</a>. If your browser does not take you there, use that link.</p>
   <p><a class="link" href="%(home)s">Go to the home page</a></p>

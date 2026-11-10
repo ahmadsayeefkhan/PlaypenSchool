@@ -1,0 +1,36 @@
+{
+  "_readme": "Our Recent Updates (2026-11-05). Each story has a section: \"achievement\" or \"study-tour\". Newest first. Used by the home's story circles, /achievements/ (cards) and /achievements/story/?s=<id> (the full story). Image paths are relative to site/assets/. Add a story only with the written consent of the student and a parent (docs/CONTENT-TO-CONFIRM.md). Text comes from the school's own post; never add facts it does not state.",
+  "stories": [
+    {
+      "id": "nailah-haque-john-locke-2026",
+      "section": "achievement",
+      "date": "2026-11-02",
+      "category": "Competition",
+      "circle": "Essay prize",
+      "title": "High Commendation in the John Locke Global Essay Prize",
+      "person": "Nailah Haque",
+      "class": "Class VIII",
+      "headline": "High Commendation",
+      "subline": "John Locke Institute Global Essay Prize 2026 · Junior Psychology",
+      "summary": "Nailah Haque of Class VIII has earned a High Commendation in the Junior Psychology category of the John Locke Institute Global Essay Competition 2026.",
+      "facts": [
+        ["Award", "High Commendation"],
+        ["Competition", "John Locke Institute Global Essay Prize 2026"],
+        ["Category", "Junior Psychology"],
+        ["Student", "Nailah Haque, Class VIII"],
+        ["Ceremony", "3 October 2026, London Hilton on Park Lane, Mayfair, London"]
+      ],
+      "body": [
+        "Nailah Haque of Class VIII has earned a High Commendation in the Junior Psychology category of the John Locke Institute Global Essay Competition 2026, placing among the top 2–3% of over 100,227 submissions worldwide.",
+        "With a passion for writing and literature, Nailah explored the question: “Is mental illness over-diagnosed now, or just better recognized?”",
+        "In recognition of her achievement, Nailah was invited to attend the Awards Ceremony and Gala Dinner at the London Hilton on Park Lane, Mayfair, London. She was also awarded a £1,000 scholarship for a John Locke Summer School programme abroad.",
+        "The school extends its heartiest congratulations to Nailah on this outstanding accomplishment."
+      ],
+      "images": [
+        { "src": "img/ach-nailah-john-locke-photo.jpg", "w": 332, "h": 676, "alt": "Nailah Haque in her Playpen uniform, holding her John Locke Institute certificate in front of a brick wall and plants.", "caption": "Nailah Haque with her certificate" },
+        { "src": "img/ach-nailah-john-locke-certificate.jpg", "w": 334, "h": 676, "alt": "The John Locke Institute certificate: Junior Global Essay Prize in Psychology, awarded to Nailah Haque, High Commendation, 3 October 2026, London Hilton on Park Lane.", "caption": "The certificate, John Locke Institute" }
+      ],
+      "source": "Playpen School on Facebook, 2 November 2026"
+    }
+  ]
+}

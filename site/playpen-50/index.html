@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Playpen at 50 · Make your card</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --maroon:#8A0204; --maroon-deep:#5C0407; --gold:#9A6F1E; --gold-soft:#B98A2E; --gold-text:#D9B25C;
+    --paper:#F5F1EA; --paper-2:#ECE6DB; --paper-3:#FBF9F5; --ink:#1C1715; --ink-2:#4A413C; --line:#D9C7B2;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{background:var(--paper);color:var(--ink);font-family:'Hanken Grotesk',Arial,sans-serif;font-size:16px;line-height:1.5}
+  .top{background:linear-gradient(160deg,var(--maroon),var(--maroon-deep));color:var(--paper);border-bottom:4px solid var(--gold-soft)}
+  .top .in{max-width:1180px;margin:0 auto;padding:18px 16px;display:flex;align-items:center;gap:14px}
+  .top img{width:52px;height:auto}
+  .top .t1{font-family:'Newsreader',Georgia,serif;font-size:22px;line-height:1.1}
+  .top .back{margin-left:auto;color:var(--paper);text-decoration:none;font-size:14px;font-weight:600;border:1px solid rgba(217,178,92,.6);border-radius:999px;padding:8px 16px}
+  .top .back:hover{background:rgba(255,255,255,.08)}
+  .top a.home{display:flex;align-items:center;gap:14px;color:inherit;text-decoration:none}
+  .top .t2{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-text);font-weight:600}
+  .hero{max-width:1180px;margin:0 auto;padding:28px 16px 8px}
+  .hero h1{font-family:'Newsreader',Georgia,serif;font-weight:500;font-size:clamp(30px,5vw,48px);line-height:1.05;margin:0 0 8px;color:var(--maroon)}
+  .hero h1 em{color:var(--gold)}
+  .hero p{margin:0;color:var(--ink-2);max-width:620px}
+  main{max-width:1180px;margin:0 auto;padding:20px 16px 48px;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:32px;align-items:start}
+  @media (max-width:860px){main{grid-template-columns:1fr}}
+  .stage{position:sticky;top:16px}
+  @media (max-width:860px){.stage{position:static}}
+  .stage canvas{display:block;width:auto;max-width:100%;height:auto;max-height:82vh;margin:0 auto;border-radius:14px;box-shadow:0 24px 50px -24px rgba(60,10,10,.55);background:var(--maroon-deep);touch-action:none;cursor:grab}
+  .stage canvas.dragging{cursor:grabbing}
+  .hint{font-size:13px;color:var(--ink-2);text-align:center;margin-top:10px}
+  .panel{background:var(--paper-3);border:1px solid var(--line);border-radius:14px;padding:22px}
+  .step{padding:4px 0 18px;border-bottom:1px solid var(--paper-2);margin-bottom:18px}
+  .step:last-of-type{border-bottom:0;margin-bottom:0}
+  .num{display:inline-flex;width:26px;height:26px;border-radius:50%;background:var(--maroon);color:var(--paper);font-weight:700;font-size:13px;align-items:center;justify-content:center;margin-right:8px}
+  .lab{font-weight:700;font-size:15px;display:flex;align-items:center;margin-bottom:10px}
+  .drop{display:flex;align-items:center;justify-content:center;gap:10px;border:2px dashed var(--gold-soft);border-radius:12px;padding:20px;text-align:center;cursor:pointer;background:#fff;color:var(--ink-2);font-weight:600}
+  .drop:hover,.drop.over{background:#FFF8EA;border-color:var(--maroon)}
+  .drop input{display:none}
+  input[type=text],select{width:100%;font:inherit;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--ink)}
+  input[type=text]:focus,select:focus{outline:3px solid var(--gold-text);outline-offset:1px;border-color:var(--gold)}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .row.one{grid-template-columns:1fr}
+  .small{font-size:13px;color:var(--ink-2);margin:6px 0 0}
+  .zoom{display:flex;align-items:center;gap:12px;margin-top:12px}
+  .zoom input{flex:1;accent-color:var(--maroon)}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:inherit;font-weight:700;border-radius:999px;padding:14px 22px;border:0;cursor:pointer}
+  .btn.primary{background:var(--maroon);color:var(--paper);width:100%;font-size:17px}
+  .btn.primary:hover{background:var(--maroon-deep)}
+  .btn.ghost{background:transparent;color:var(--maroon);border:1px solid var(--maroon);padding:8px 14px;font-size:13px}
+  .btn:disabled{opacity:.45;cursor:not-allowed}
+  .acts{display:grid;gap:10px}
+  .acts .btn.share{background:#fff;color:var(--maroon);border:1px solid var(--maroon);width:100%}
+  .privacy{display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(--ink-2);background:var(--paper-2);border-radius:10px;padding:12px 14px;margin-top:14px}
+  details{margin-top:18px;border-top:1px solid var(--paper-2);padding-top:14px}
+  summary{cursor:pointer;font-weight:700;font-size:14px;color:var(--maroon)}
+  details .row{margin-top:10px}
+  details label{font-size:12px;font-weight:600;color:var(--ink-2);display:block;margin-bottom:4px}
+  footer{text-align:center;font-size:12px;color:var(--ink-2);padding:0 16px 32px}
+</style>
+</head>
+<body>
+<header class="top"><div class="in"><a class="home" href="../">
+  <img src="../assets/brand/logo-crest-512.png" alt="Playpen School crest">
+  <div><div class="t1">Playpen School</div><div class="t2">Turns 50 &middot; 1977 &ndash; 2027</div></div></a><a class="back" href="../">&larr; Back to website</a>
+</div></header>
+
+<section class="hero">
+  <h1>Coming to our <em>50th birthday?</em></h1>
+  <p>Add your photo and name to make your own &ldquo;I&rsquo;m attending&rdquo; card. Download it and share it with #Playpen50.</p>
+</section>
+
+<main>
+  <div class="stage">
+    <canvas id="cv" width="1440" height="1800" aria-label="Your card preview"></canvas>
+    <div class="hint" id="hint">Upload a photo, then drag it inside the circle to move it.</div>
+  </div>
+
+  <div class="panel">
+    <div class="step">
+      <div class="lab"><span class="num">1</span>Your photo</div>
+      <label class="drop" id="drop">
+        <input type="file" id="file" accept="image/*">
+        <span id="dropTxt">Tap to choose a photo, or drop it here</span>
+      </label>
+      <div class="zoom">
+        <span class="small" style="margin:0">Zoom</span>
+        <input type="range" id="zoom" min="1" max="3" step="0.01" value="1" disabled>
+        <button class="btn ghost" id="reset" type="button" disabled>Reset</button>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="lab"><span class="num">2</span>Your name</div>
+      <input type="text" id="name" maxlength="40" placeholder="e.g. Nusrat Jahan" autocomplete="name">
+    </div>
+
+    <div class="step">
+      <div class="lab"><span class="num">3</span>You are coming as</div>
+      <div class="row" id="roleRow">
+        <select id="role">
+          <option value="">Choose one</option>
+          <option>Student</option>
+          <option>Alumni</option>
+          <option>Parent</option>
+          <option>Teacher</option>
+          <option>Staff</option>
+          <option>Well-wisher</option>
+          <option>Guest</option>
+        </select>
+        <input type="text" id="batch" maxlength="4" inputmode="numeric" placeholder="Batch year" hidden>
+      </div>
+    </div>
+
+    <div class="step acts">
+      <button class="btn primary" id="dl" type="button">Download my card</button>
+      <button class="btn share" id="share" type="button" hidden>Share</button>
+      <div class="privacy"><span aria-hidden="true">&#128274;</span><span>Your photo stays on your phone or computer. Nothing is uploaded or saved by the school.</span></div>
+    </div>
+
+    <details>
+      <summary>Event details (for the organiser)</summary>
+      <div class="row one"><div><label for="evTitle">Event name</label><input type="text" id="evTitle"></div></div>
+      <div class="row"><div><label for="evDate">Date</label><input type="text" id="evDate"></div><div><label for="evTime">Time</label><input type="text" id="evTime"></div></div>
+      <div class="row one"><div><label for="evVenue">Venue</label><input type="text" id="evVenue"></div></div>
+      <div class="row one"><div><label for="evTag">Hashtag</label><input type="text" id="evTag"></div></div>
+    </details>
+  </div>
+</main>
+<footer>Playpen School &middot; Established in 1977 &middot; Dhaka</footer>
+
+<script>
+/* ---------- Event settings (the organiser edits these) ---------- */
+const EVENT = {
+  title: 'Golden Jubilee Celebration',
+  date:  'Date to be announced',
+  time:  'Time to be announced',
+  venue: 'Playpen School, Bashundhara R/A',
+  tag:   '#Playpen50'
+};
+
+const W = 1440, H = 1800;
+const C = { maroon:'#8A0204', deep:'#5C0407', darker:'#3A0103', gold:'#9A6F1E', goldSoft:'#B98A2E', goldText:'#D9B25C', goldLight:'#F6E3A6', paper:'#F5F1EA', rose:'#E7A3B1', cream:'#FBF4E4' };
+const SERIF = "'Newsreader', Georgia, serif", SANS = "'Hanken Grotesk', Arial, sans-serif";
+
+const cv = document.getElementById('cv'), ctx = cv.getContext('2d');
+const $ = id => document.getElementById(id);
+const crest = new Image(); crest.src = '../assets/brand/logo-crest-512.png';
+
+const state = { img:null, zoom:1, ox:0, oy:0 };
+const PHOTO = { cx:1060, cy:620, r:262 };
+
+/* ---------- helpers ---------- */
+function rng(seed){ return function(){ seed |= 0; seed = seed + 0x6D2B79F5 | 0; let t = Math.imul(seed ^ seed >>> 15, 1 | seed); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+function rr(x,y,w,h,r){ ctx.beginPath(); ctx.moveTo(x+r,y); ctx.arcTo(x+w,y,x+w,y+h,r); ctx.arcTo(x+w,y+h,x,y+h,r); ctx.arcTo(x,y+h,x,y,r); ctx.arcTo(x,y,x+w,y,r); ctx.closePath(); }
+function goldGrad(y0,y1){ const g = ctx.createLinearGradient(0,y0,0,y1); g.addColorStop(0,'#FFF1C4'); g.addColorStop(.35,'#E9C773'); g.addColorStop(.7,'#B8862B'); g.addColorStop(1,'#8A6216'); return g; }
+function spaced(text, x, y, spacing, align){ // letter-spaced text
+  const chars = [...text]; let w = 0; chars.forEach(c => w += ctx.measureText(c).width + spacing); w -= spacing;
+  let sx = align === 'center' ? x - w/2 : align === 'right' ? x - w : x;
+  const old = ctx.textAlign; ctx.textAlign = 'left';
+  chars.forEach(c => { ctx.fillText(c, sx, y); sx += ctx.measureText(c).width + spacing; });
+  ctx.textAlign = old; return w;
+}
+function wrap(text, maxW){ const words = text.split(/\s+/).filter(Boolean); const lines = []; let line = '';
+  words.forEach(w => { const t = line ? line + ' ' + w : w; if (ctx.measureText(t).width > maxW && line) { lines.push(line); line = w; } else line = t; });
+  if (line) lines.push(line); return lines; }
+
+/* ---------- layers ---------- */
+function background(){
+  const g = ctx.createRadialGradient(760,640,80,760,760,1250);
+  g.addColorStop(0,'#A70A0D'); g.addColorStop(.45,C.maroon); g.addColorStop(1,C.darker);
+  ctx.fillStyle = g; ctx.fillRect(0,0,W,H);
+  // soft rays behind the photo
+  ctx.save(); ctx.translate(PHOTO.cx, PHOTO.cy); ctx.globalAlpha = .07; ctx.fillStyle = C.goldLight;
+  for (let i = 0; i < 36; i++){ ctx.rotate(Math.PI*2/36); ctx.beginPath(); ctx.moveTo(0,0); ctx.lineTo(1400,-60); ctx.lineTo(1400,60); ctx.closePath(); ctx.fill(); }
+  ctx.restore();
+  // dotted grid, bottom right (like a festive sparkle field)
+  ctx.save(); ctx.fillStyle = 'rgba(246,227,166,.10)';
+  for (let x = 980; x < W; x += 28) for (let y = 1180; y < 1560; y += 28){ const d = Math.hypot(x-1440,y-1560)/600; if (d < 1) { ctx.globalAlpha = 1-d; ctx.beginPath(); ctx.arc(x,y,2.4,0,7); ctx.fill(); } }
+  ctx.restore();
+}
+function bunting(){
+  const cols = [C.goldText, C.paper, C.rose, C.goldSoft, C.cream];
+  [[0, 30, 105, 1], [0, 6, 70, 0]].forEach(([_, y0, sag, set]) => {
+    const pt = t => ({ x: t*W, y: y0 + sag*4*t*(1-t) });
+    ctx.strokeStyle = 'rgba(246,227,166,.6)'; ctx.lineWidth = 2.5; ctx.beginPath();
+    for (let t = 0; t <= 1.001; t += .02){ const p = pt(t); t ? ctx.lineTo(p.x,p.y) : ctx.moveTo(p.x,p.y); } ctx.stroke();
+    const n = set ? 15 : 12;
+    for (let i = 0; i < n; i++){
+      const t0 = (i + (set ? .2 : .65)) / n, t1 = t0 + (set ? .045 : .05);
+      if (t1 > 1) continue;
+      const a = pt(t0), b = pt(t1), mx = (a.x+b.x)/2, my = (a.y+b.y)/2;
+      const len = set ? 64 : 48;
+      ctx.fillStyle = cols[(i + (set ? 0 : 2)) % cols.length]; ctx.globalAlpha = set ? 1 : .55;
+      ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.lineTo(mx + (b.y-a.y)*.15, my + len); ctx.closePath(); ctx.fill();
+      ctx.globalAlpha = 1;
+    }
+  });
+}
+function confetti(){
+  const r = rng(50); const cols = [C.goldText, C.goldLight, C.paper, C.rose, C.goldSoft];
+  const avoid = (x,y) => Math.hypot(x-PHOTO.cx, y-PHOTO.cy) < PHOTO.r + 40 || (x < 760 && y > 300 && y < 860) || (y > 1590);
+  for (let i = 0; i < 150; i++){
+    const x = r()*W, y = 170 + r()*(H-200); if (avoid(x,y)) continue;
+    ctx.save(); ctx.translate(x,y); ctx.rotate(r()*Math.PI); ctx.fillStyle = cols[i % cols.length]; ctx.globalAlpha = .35 + r()*.55;
+    const k = r();
+    if (k < .45) ctx.fillRect(-9,-4,18,8);
+    else if (k < .75){ ctx.beginPath(); ctx.arc(0,0,5+r()*4,0,7); ctx.fill(); }
+    else { ctx.strokeStyle = ctx.fillStyle; ctx.lineWidth = 4; ctx.beginPath(); ctx.moveTo(-14,0); ctx.quadraticCurveTo(-5,-12,0,0); ctx.quadraticCurveTo(5,12,14,0); ctx.stroke(); }
+    ctx.restore();
+  }
+  // sparkles
+  const star = (x,y,s) => { ctx.save(); ctx.translate(x,y); ctx.fillStyle = C.goldLight; ctx.beginPath();
+    for (let i = 0; i < 4; i++){ ctx.rotate(Math.PI/2); ctx.moveTo(0,0); ctx.quadraticCurveTo(s*.12,-s*.12,0,-s); ctx.quadraticCurveTo(-s*.12,-s*.12,0,0); } ctx.fill(); ctx.restore(); };
+  [[1355,320,30],[770,250,20],[1340,1000,24],[700,900,18],[1395,560,16]].forEach(a => star(...a));
+}
+function roundBalloon(x,y,rx,col,tilt){
+  ctx.save(); ctx.translate(x,y); ctx.rotate(tilt);
+  ctx.strokeStyle = 'rgba(246,227,166,.55)'; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(0, rx*1.2+14);
+  ctx.bezierCurveTo(26, rx*1.2+90, -26, rx*1.2+160, 8, rx*1.2+250); ctx.stroke();
+  const g = ctx.createRadialGradient(-rx*.35,-rx*.45,rx*.1,0,0,rx*1.3); g.addColorStop(0,'#fff'); g.addColorStop(.18,col); g.addColorStop(1,shade(col));
+  ctx.fillStyle = g; ctx.beginPath(); ctx.ellipse(0,0,rx,rx*1.2,0,0,7); ctx.fill();
+  ctx.beginPath(); ctx.moveTo(-9,rx*1.2+14); ctx.lineTo(9,rx*1.2+14); ctx.lineTo(0,rx*1.2-2); ctx.closePath(); ctx.fill();
+  ctx.restore();
+}
+function shade(hex){ const n = parseInt(hex.slice(1),16); const f = v => Math.max(0, Math.round(v*.62)); return `rgb(${f(n>>16)},${f(n>>8&255)},${f(n&255)})`; }
+
+function header(){
+  if (crest.complete && crest.naturalWidth){ const w = 116, h = w*crest.naturalHeight/crest.naturalWidth; ctx.drawImage(crest, 88, 190, w, h); }
+  ctx.fillStyle = C.paper; ctx.font = `500 46px ${SERIF}`; ctx.textBaseline = 'alphabetic'; ctx.fillText('Playpen School', 226, 252);
+  ctx.fillStyle = C.goldText; ctx.font = `700 21px ${SANS}`; spaced('ESTABLISHED IN 1977 · DHAKA', 228, 292, 4, 'left');
+  ctx.fillStyle = C.goldText; ctx.font = `700 26px ${SANS}`; spaced(EVENT.tag.toUpperCase(), 1352, 238, 5, 'right');
+}
+function attendingPill(){
+  const x = 90, y = 372, w = 430, h = 86;
+  ctx.strokeStyle = 'rgba(246,227,166,.5)'; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(30, y+h/2); ctx.lineTo(x, y+h/2); ctx.moveTo(x+w, y+h/2); ctx.lineTo(x+w+90, y+h/2); ctx.stroke();
+  rr(x,y,w,h,h/2); ctx.fillStyle = 'rgba(30,2,3,.45)'; ctx.fill(); ctx.lineWidth = 3; ctx.strokeStyle = C.goldText; ctx.stroke();
+  ctx.fillStyle = C.paper; ctx.font = `600 40px ${SANS}`; ctx.textAlign = 'center'; ctx.fillText('I’m Attending', x+w/2, y+57); ctx.textAlign = 'left';
+}
+function title(){
+  ctx.fillStyle = C.paper; ctx.font = `500 76px ${SERIF}`; ctx.fillText('Playpen’s', 90, 572);
+  ctx.fillStyle = goldGrad(580, 740); ctx.font = `italic 500 150px ${SERIF}`; ctx.fillText('50th', 86, 712);
+  ctx.fillStyle = C.paper; ctx.font = `500 76px ${SERIF}`; ctx.fillText('Birthday', 90, 800);
+  // event line
+  ctx.fillStyle = C.goldText; ctx.font = `700 24px ${SANS}`;
+  const label = EVENT.title.toUpperCase(); ctx.save(); let fs = 24; while (ctx.measureText(label).width + label.length*5 > 600 && fs > 16){ fs--; ctx.font = `700 ${fs}px ${SANS}`; }
+  spaced(label, 92, 858, 5, 'left'); ctx.restore();
+}
+function numberBalloons(){
+  // foil "5" and "0" drawn on an offscreen canvas so the shine stays inside the digits
+  const off = document.createElement('canvas'); off.width = 760; off.height = 720; const o = off.getContext('2d');
+  const digit = (ch, x, y, rot) => {
+    o.save(); o.translate(x,y); o.rotate(rot); o.font = `600 600px ${SERIF}`; o.textAlign = 'center';
+    o.lineJoin = 'round'; o.lineWidth = 34; o.strokeStyle = '#C9A04A'; o.strokeText(ch, 0, 0); // puffy foil edge
+    const g = o.createLinearGradient(-200,-480,160,40); g.addColorStop(0,'#FFF4CF'); g.addColorStop(.3,'#EBC970'); g.addColorStop(.62,'#B98A2E'); g.addColorStop(1,'#7E5814');
+    o.fillStyle = g; o.fillText(ch, 0, 0);
+    o.lineWidth = 34; o.strokeStyle = g; o.strokeText(ch, 0, 0);
+    o.restore();
+  };
+  digit('5', 220, 590, -.08); digit('0', 520, 600, .07);
+  // shine
+  o.globalCompositeOperation = 'source-atop';
+  const s = o.createLinearGradient(0,0,760,720); s.addColorStop(.18,'rgba(255,255,255,0)'); s.addColorStop(.26,'rgba(255,255,255,.55)'); s.addColorStop(.32,'rgba(255,255,255,0)');
+  s.addColorStop(.55,'rgba(255,255,255,0)'); s.addColorStop(.6,'rgba(255,255,255,.28)'); s.addColorStop(.64,'rgba(255,255,255,0)');
+  o.fillStyle = s; o.fillRect(0,0,760,720);
+  // strings
+  const bx = 40, by = 860;
+  ctx.strokeStyle = 'rgba(246,227,166,.7)'; ctx.lineWidth = 2.5;
+  [[bx+225, by+600, 300, 1640], [bx+520, by+610, 340, 1640]].forEach(([x0,y0,x1,y1]) => { ctx.beginPath(); ctx.moveTo(x0,y0); ctx.bezierCurveTo(x0+40,y0+40,x1-50,y1-40,x1,y1); ctx.stroke(); });
+  ctx.save(); ctx.shadowColor = 'rgba(20,0,0,.55)'; ctx.shadowBlur = 40; ctx.shadowOffsetY = 24; ctx.drawImage(off, bx, by); ctx.restore();
+  // small cake-candle flames on top of the 5 and the 0 (birthday touch)
+  [[bx+262, by+130],[bx+525, by+118]].forEach(([x,y]) => {
+    ctx.fillStyle = '#F5F1EA'; rr(x-9, y-58, 18, 58, 4); ctx.fill();
+    ctx.fillStyle = C.rose; for (let k = 0; k < 3; k++) ctx.fillRect(x-9, y-50+k*18, 18, 6);
+    const fg = ctx.createRadialGradient(x, y-80, 2, x, y-80, 34); fg.addColorStop(0,'rgba(255,248,220,1)'); fg.addColorStop(.4,'rgba(255,200,90,.9)'); fg.addColorStop(1,'rgba(255,140,40,0)');
+    ctx.fillStyle = fg; ctx.beginPath(); ctx.ellipse(x, y-82, 26, 40, 0, 0, 7); ctx.fill();
+    ctx.fillStyle = '#FFF6D8'; ctx.beginPath(); ctx.moveTo(x, y-108); ctx.quadraticCurveTo(x+12, y-80, x, y-64); ctx.quadraticCurveTo(x-12, y-80, x, y-108); ctx.fill();
+  });
+}
+function photo(){
+  const { cx, cy, r } = PHOTO;
+  // glow + rings
+  ctx.save(); ctx.shadowColor = 'rgba(246,227,166,.55)'; ctx.shadowBlur = 50; ctx.beginPath(); ctx.arc(cx,cy,r+18,0,7); ctx.fillStyle = C.deep; ctx.fill(); ctx.restore();
+  const ring = ctx.createLinearGradient(cx-r, cy-r, cx+r, cy+r); ring.addColorStop(0,'#FFF1C4'); ring.addColorStop(.5,'#C9993C'); ring.addColorStop(1,'#FCE7A8');
+  ctx.beginPath(); ctx.arc(cx,cy,r+18,0,7); ctx.fillStyle = ring; ctx.fill();
+  ctx.beginPath(); ctx.arc(cx,cy,r+42,0,7); ctx.strokeStyle = 'rgba(246,227,166,.35)'; ctx.lineWidth = 2; ctx.setLineDash([3,12]); ctx.stroke(); ctx.setLineDash([]);
+  ctx.save(); ctx.beginPath(); ctx.arc(cx,cy,r,0,7); ctx.clip();
+  if (state.img){
+    const im = state.img, base = Math.max((2*r)/im.width, (2*r)/im.height) * state.zoom;
+    const w = im.width*base, h = im.height*base;
+    ctx.drawImage(im, cx - w/2 + state.ox, cy - h/2 + state.oy, w, h);
+  } else {
+    const g = ctx.createLinearGradient(0, cy-r, 0, cy+r); g.addColorStop(0,'#F3E7D2'); g.addColorStop(1,'#D9C7B2'); ctx.fillStyle = g; ctx.fillRect(cx-r, cy-r, 2*r, 2*r);
+    ctx.fillStyle = 'rgba(92,4,7,.25)'; ctx.beginPath(); ctx.arc(cx, cy-50, 92, 0, 7); ctx.fill();
+    ctx.beginPath(); ctx.ellipse(cx, cy+215, 190, 150, 0, 0, 7); ctx.fill();
+    ctx.fillStyle = C.deep; ctx.font = `700 30px ${SANS}`; ctx.textAlign = 'center'; ctx.fillText('Your photo here', cx, cy+92); ctx.textAlign = 'left';
+  }
+  ctx.restore();
+}
+function badge(){
+  const cx = PHOTO.cx, cy = PHOTO.cy + PHOTO.r + 70, w = 470, h = 108;
+  ctx.save(); ctx.translate(cx, cy); ctx.rotate(-.045);
+  ctx.shadowColor = 'rgba(20,0,0,.5)'; ctx.shadowBlur = 24; ctx.shadowOffsetY = 12;
+  rr(-w/2, -h/2, w, h, 22); ctx.fillStyle = goldGrad(-h/2, h/2); ctx.fill(); ctx.shadowColor = 'transparent';
+  ctx.lineWidth = 3; ctx.strokeStyle = '#FFF1C4'; ctx.stroke();
+  ctx.fillStyle = C.deep; ctx.font = `800 54px ${SANS}`; ctx.textAlign = 'center'; ctx.fillText('JOIN ME', 0, 19);
+  ctx.restore(); ctx.textAlign = 'left';
+}
+function nameBlock(){
+  const cx = PHOTO.cx, maxW = 640;
+  const raw = $('name').value.trim() || 'Your Name';
+  let fs = 74; ctx.font = `600 ${fs}px ${SERIF}`; let lines = wrap(raw, maxW);
+  while ((lines.length > 2 || lines.some(l => ctx.measureText(l).width > maxW)) && fs > 44){ fs -= 4; ctx.font = `600 ${fs}px ${SERIF}`; lines = wrap(raw, maxW); }
+  lines = lines.slice(0,2);
+  ctx.fillStyle = C.paper; ctx.textAlign = 'center';
+  let y = 1092; lines.forEach(l => { ctx.fillText(l, cx, y); y += fs*1.08; });
+  // role line
+  const role = $('role').value, batch = $('batch').value.trim();
+  let roleTxt = role ? (role === 'Alumni' && batch ? `Alumni · Batch of ${batch}` : role) : '';
+  if (roleTxt){ ctx.fillStyle = C.goldText; ctx.font = `700 26px ${SANS}`; spaced(roleTxt.toUpperCase(), cx, y + 8, 4, 'center'); y += 40; }
+  // divider with a glowing dot
+  const dy = y + 22; const g = ctx.createLinearGradient(cx-220,0,cx+220,0); g.addColorStop(0,'rgba(217,178,92,0)'); g.addColorStop(.5,'rgba(217,178,92,.9)'); g.addColorStop(1,'rgba(217,178,92,0)');
+  ctx.strokeStyle = g; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(cx-220, dy); ctx.lineTo(cx+220, dy); ctx.stroke();
+  ctx.fillStyle = C.goldLight; ctx.beginPath(); ctx.arc(cx, dy, 5, 0, 7); ctx.fill();
+  ctx.textAlign = 'left';
+}
+function infoBar(){
+  const x = 90, y = 1610, w = 1260, h = 120;
+  ctx.save(); ctx.shadowColor = 'rgba(20,0,0,.45)'; ctx.shadowBlur = 30; rr(x,y,w,h,30); ctx.fillStyle = 'rgba(40,1,3,.72)'; ctx.fill(); ctx.restore();
+  rr(x,y,w,h,30); ctx.lineWidth = 2.5; ctx.strokeStyle = 'rgba(217,178,92,.75)'; ctx.stroke();
+  const cells = [ ['cal', EVENT.date], ['clock', EVENT.time], ['pin', EVENT.venue] ];
+  const cw = [380, 330, 550]; let cx = x;
+  ctx.strokeStyle = C.goldText; ctx.lineWidth = 3.5; ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+  cells.forEach(([ic, txt], i) => {
+    const ix = cx + 50, iy = y + h/2;
+    ctx.strokeStyle = C.goldText;
+    if (ic === 'cal'){ rr(ix-20, iy-18, 40, 38, 6); ctx.stroke(); ctx.beginPath(); ctx.moveTo(ix-20, iy-6); ctx.lineTo(ix+20, iy-6); ctx.moveTo(ix-9, iy-25); ctx.lineTo(ix-9, iy-13); ctx.moveTo(ix+9, iy-25); ctx.lineTo(ix+9, iy-13); ctx.stroke(); }
+    if (ic === 'clock'){ ctx.beginPath(); ctx.arc(ix, iy, 21, 0, 7); ctx.stroke(); ctx.beginPath(); ctx.moveTo(ix, iy-11); ctx.lineTo(ix, iy); ctx.lineTo(ix+9, iy+6); ctx.stroke(); }
+    if (ic === 'pin'){ ctx.beginPath(); ctx.moveTo(ix, iy+24); ctx.bezierCurveTo(ix-30, iy-4, ix-20, iy-26, ix, iy-26); ctx.bezierCurveTo(ix+20, iy-26, ix+30, iy-4, ix, iy+24); ctx.stroke(); ctx.beginPath(); ctx.arc(ix, iy-6, 7, 0, 7); ctx.stroke(); }
+    ctx.fillStyle = C.paper; let fs = 30; ctx.font = `600 ${fs}px ${SANS}`; const maxW = cw[i] - 110;
+    let lines = wrap(txt, maxW); while ((lines.length > 2 || lines.some(l => ctx.measureText(l).width > maxW)) && fs > 20){ fs -= 2; ctx.font = `600 ${fs}px ${SANS}`; lines = wrap(txt, maxW); }
+    lines = lines.slice(0,2); const lh = fs*1.15, ty = iy - (lines.length-1)*lh/2 + fs*.35;
+    lines.forEach((l, k) => ctx.fillText(l, ix + 42, ty + k*lh));
+    if (i < cells.length-1){ ctx.strokeStyle = 'rgba(217,178,92,.4)'; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(cx + cw[i], y+26); ctx.lineTo(cx + cw[i], y+h-26); ctx.stroke(); ctx.lineWidth = 3.5; }
+    cx += cw[i];
+  });
+}
+
+function draw(){
+  ctx.clearRect(0,0,W,H);
+  background(); bunting(); confetti();
+  roundBalloon(1330, 380, 62, C.rose, .12);
+  roundBalloon(1240, 300, 50, C.goldText, -.08);
+  header(); attendingPill(); title();
+  numberBalloons();
+  photo(); badge(); nameBlock(); infoBar();
+}
+
+/* ---------- photo input ---------- */
+function loadFile(f){
+  if (!f || !f.type.startsWith('image/')) return;
+  const url = URL.createObjectURL(f); const im = new Image();
+  im.onload = () => { state.img = im; state.zoom = 1; state.ox = 0; state.oy = 0; $('zoom').value = 1; $('zoom').disabled = false; $('reset').disabled = false; $('dropTxt').textContent = 'Change photo'; draw(); };
+  im.src = url;
+}
+$('file').addEventListener('change', e => loadFile(e.target.files[0]));
+const drop = $('drop');
+['dragenter','dragover'].forEach(t => drop.addEventListener(t, e => { e.preventDefault(); drop.classList.add('over'); }));
+['dragleave','drop'].forEach(t => drop.addEventListener(t, e => { e.preventDefault(); drop.classList.remove('over'); }));
+drop.addEventListener('drop', e => loadFile(e.dataTransfer.files[0]));
+$('zoom').addEventListener('input', e => { state.zoom = +e.target.value; draw(); });
+$('reset').addEventListener('click', () => { state.zoom = 1; state.ox = 0; state.oy = 0; $('zoom').value = 1; draw(); });
+
+// drag to move the photo inside the circle
+let drag = null;
+const toCanvas = e => { const b = cv.getBoundingClientRect(); return { x:(e.clientX-b.left)*W/b.width, y:(e.clientY-b.top)*H/b.height }; };
+cv.addEventListener('pointerdown', e => { if (!state.img) return; const p = toCanvas(e); if (Math.hypot(p.x-PHOTO.cx, p.y-PHOTO.cy) > PHOTO.r + 40) return; drag = { p, ox:state.ox, oy:state.oy }; cv.setPointerCapture(e.pointerId); cv.classList.add('dragging'); });
+cv.addEventListener('pointermove', e => { if (!drag) return; const p = toCanvas(e); state.ox = drag.ox + p.x - drag.p.x; state.oy = drag.oy + p.y - drag.p.y; draw(); });
+['pointerup','pointercancel'].forEach(t => cv.addEventListener(t, () => { drag = null; cv.classList.remove('dragging'); }));
+cv.addEventListener('wheel', e => { if (!state.img) return; e.preventDefault(); state.zoom = Math.min(3, Math.max(1, state.zoom - e.deltaY*.0015)); $('zoom').value = state.zoom; draw(); }, { passive:false });
+
+/* ---------- text inputs ---------- */
+$('name').addEventListener('input', draw);
+$('role').addEventListener('change', () => { $('batch').hidden = $('role').value !== 'Alumni'; draw(); });
+$('batch').addEventListener('input', e => { e.target.value = e.target.value.replace(/\D/g,''); draw(); });
+[['evTitle','title'],['evDate','date'],['evTime','time'],['evVenue','venue'],['evTag','tag']].forEach(([id,k]) => {
+  $(id).value = EVENT[k]; $(id).addEventListener('input', e => { EVENT[k] = e.target.value; draw(); });
+});
+
+/* ---------- download / share ---------- */
+const fileName = () => 'playpen-50-' + (($('name').value.trim() || 'card').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')) + '.png';
+$('dl').addEventListener('click', () => cv.toBlob(b => { const a = document.createElement('a'); a.href = URL.createObjectURL(b); a.download = fileName(); a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 4000); }, 'image/png'));
+if (navigator.canShare && navigator.canShare({ files:[new File([''], 'x.png', { type:'image/png' })] })){
+  $('share').hidden = false;
+  $('share').addEventListener('click', () => cv.toBlob(async b => { try { await navigator.share({ files:[new File([b], fileName(), { type:'image/png' })], text: `I'm attending Playpen School's 50th birthday! ${EVENT.tag}` }); } catch(e){} }, 'image/png'));
+}
+
+/* ---------- start ---------- */
+Promise.all([
+  document.fonts.load(`600 600px ${SERIF}`), document.fonts.load(`italic 500 150px ${SERIF}`), document.fonts.load(`500 76px ${SERIF}`),
+  document.fonts.load(`800 54px ${SANS}`), document.fonts.load(`700 26px ${SANS}`), document.fonts.load(`600 30px ${SANS}`),
+  new Promise(r => { if (crest.complete) r(); else { crest.onload = r; crest.onerror = r; } })
+]).catch(()=>{}).finally(draw);
+draw();
+</script>
+</body>
+</html>

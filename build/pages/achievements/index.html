@@ -1,0 +1,32 @@
+---
+title: Our recent updates
+schema: collection
+template: T08
+h1: Our recent <em>updates</em>.
+standfirst: Our students' achievements and study tours, newest first. Tap a circle to watch a story, or open a card to read it in full.
+eyebrow: Community
+body_class: ach-page
+---
+<!-- 2026-11-05 (founder): "Our Recent Updates" (was "Achievement stories"), two sections: Achievements and Study Tour,
+     so the school's news lives on its own site, not only on Facebook.
+     The circles and cards are filled by additions/achievements.js from site/assets/data/achievements.json
+     (each story has "section": "achievement" or "study-tour").
+     CONFIRM: written consent from each student and a parent before a story with their name or photo is published. -->
+<section class="page-section ach-anchor" id="achievement" aria-labelledby="ach-h-achievement">
+  <div class="band">
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Achievements</span><span class="sheet-rule__purpose">Prizes and commendations</span></div>
+    <h2 id="ach-h-achievement" class="section-title">Achievements.</h2>
+    <ul class="ach-circles" data-ach-circles data-ach-section="achievement" data-ach-all="false" aria-label="Achievement stories"></ul>
+    <div class="ach-list" data-ach-list data-ach-section="achievement"><p class="ach-empty">Loading the stories&hellip;</p></div>
+    <p class="caption">Earlier competition results are on <a href="{{link:/news/}}">News and achievements</a> and <a href="{{link:/learning/results/}}">Results and achievements</a>.</p>
+  </div>
+</section>
+
+<section class="page-section ach-anchor" id="study-tour" aria-labelledby="ach-h-study-tour">
+  <div class="band">
+    <div class="sheet-rule"><i class="sheet-rule__line" aria-hidden="true"></i><span class="sheet-rule__n">{{no}}</span><span class="sheet-rule__title">Study Tour</span><span class="sheet-rule__purpose">Learning beyond the campus</span></div>
+    <h2 id="ach-h-study-tour" class="section-title">Study Tour.</h2>
+    <ul class="ach-circles" data-ach-circles data-ach-section="study-tour" data-ach-all="false" aria-label="Study tour stories"></ul>
+    <div class="ach-list" data-ach-list data-ach-section="study-tour"><p class="ach-empty">Loading the stories&hellip;</p></div>
+  </div>
+</section>

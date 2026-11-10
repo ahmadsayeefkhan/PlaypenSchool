@@ -1,4 +1,4 @@
-/* The Playpen School: behaviour of the inner pages (js/inner.js).
+/* Playpen School: behaviour of the inner pages (js/inner.js).
    Vanilla JavaScript, no libraries, no modules, one file, loaded with defer by every page the build writes
    (the home has its own modules). Every feature is progressive: the pages read and work without it, and each
    block below checks that its markup exists before it does anything.

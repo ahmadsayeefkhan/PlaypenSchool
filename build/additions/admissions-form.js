@@ -318,7 +318,7 @@ PP.ready(function () {
   function box(on) { return '<span class="afp__box">' + (on ? '&#10003;' : '') + '</span>'; }
   function printHtml(blank) {
     var spec = FORMS[current], v = blank ? {} : values();
-    var out = '<header class="afp__head"><img src="' + CREST + '" alt="" width="64" height="64"><div><p class="afp__school">The Playpen School</p>' +
+    var out = '<header class="afp__head"><img src="' + CREST + '" alt="" width="64" height="64"><div><p class="afp__school">Playpen School</p>' +
       '<p class="afp__addr">House 545/A, Road 19, Block J, Bashundhara R/A, Dhaka 1229</p></div>' +
       '<div class="afp__title"><p class="afp__t">' + esc(spec.title) + '</p><p class="afp__s">' + esc(spec.sub) + '</p>' +
       (current === 'pg' ? '<p class="afp__receipt">Money receipt no. <span></span></p>' : '') + '</div></header>' +
